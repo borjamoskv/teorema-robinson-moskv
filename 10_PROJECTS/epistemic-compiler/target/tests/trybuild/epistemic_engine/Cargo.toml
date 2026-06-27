@@ -21,30 +21,42 @@ path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/
 
 [[bin]]
 name = "trybuild001"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/full_pipeline.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/empty_graph.rs"
 
 [[bin]]
 name = "trybuild002"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/long_chain.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/full_pipeline.rs"
 
 [[bin]]
 name = "trybuild003"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/cycle_detected.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/long_chain.rs"
 
 [[bin]]
 name = "trybuild004"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/duplicate_edge.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/multi_incoming.rs"
 
 [[bin]]
 name = "trybuild005"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/multi_fanout.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/cycle_detected.rs"
 
 [[bin]]
 name = "trybuild006"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/proxy_to_invariant.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/duplicate_edge.rs"
 
 [[bin]]
 name = "trybuild007"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/multi_fanout.rs"
+
+[[bin]]
+name = "trybuild008"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/proxy_to_invariant.rs"
+
+[[bin]]
+name = "trybuild009"
 path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/self_cycle.rs"
+
+[[bin]]
+name = "trybuild010"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/syntax_error.rs"
 
 [workspace]
