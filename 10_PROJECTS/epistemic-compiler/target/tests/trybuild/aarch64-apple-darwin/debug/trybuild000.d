@@ -1,0 +1,1 @@
+$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/target/tests/trybuild/aarch64-apple-darwin/debug/trybuild000: $CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/src/lib.rs $CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/full_pipeline.rs $CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_macros/src/lib.rs

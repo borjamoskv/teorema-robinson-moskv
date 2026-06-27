@@ -1,0 +1,30 @@
+[package]
+name = "epistemic_engine-tests"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies.epistemic_engine]
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/"
+default-features = false
+
+[dependencies.epistemic_macros]
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/../epistemic_macros/"
+
+[[bin]]
+name = "epistemic_engine-tests"
+path = "main.rs"
+
+[[bin]]
+name = "trybuild000"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/pass/full_pipeline.rs"
+
+[[bin]]
+name = "trybuild001"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/cycle_detected.rs"
+
+[[bin]]
+name = "trybuild002"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/proxy_to_invariant.rs"
+
+[workspace]
