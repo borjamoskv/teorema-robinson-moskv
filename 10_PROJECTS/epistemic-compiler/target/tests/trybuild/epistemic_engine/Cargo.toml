@@ -297,202 +297,210 @@ path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail/
 
 [[bin]]
 name = "trybuild070"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_00.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/epistemic_002_intervention.rs"
 
 [[bin]]
 name = "trybuild071"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_01.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/epistemic_002_provenance.rs"
 
 [[bin]]
 name = "trybuild072"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_02.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_00.rs"
 
 [[bin]]
 name = "trybuild073"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_03.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_01.rs"
 
 [[bin]]
 name = "trybuild074"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_04.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_02.rs"
 
 [[bin]]
 name = "trybuild075"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_05.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_03.rs"
 
 [[bin]]
 name = "trybuild076"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_06.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_04.rs"
 
 [[bin]]
 name = "trybuild077"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_07.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_05.rs"
 
 [[bin]]
 name = "trybuild078"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_08.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_06.rs"
 
 [[bin]]
 name = "trybuild079"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_09.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_07.rs"
 
 [[bin]]
 name = "trybuild080"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_10.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_08.rs"
 
 [[bin]]
 name = "trybuild081"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_11.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_09.rs"
 
 [[bin]]
 name = "trybuild082"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_12.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_10.rs"
 
 [[bin]]
 name = "trybuild083"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_13.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_11.rs"
 
 [[bin]]
 name = "trybuild084"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_14.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_12.rs"
 
 [[bin]]
 name = "trybuild085"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_15.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_13.rs"
 
 [[bin]]
 name = "trybuild086"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_16.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_14.rs"
 
 [[bin]]
 name = "trybuild087"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_17.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_15.rs"
 
 [[bin]]
 name = "trybuild088"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_18.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_16.rs"
 
 [[bin]]
 name = "trybuild089"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_19.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_17.rs"
 
 [[bin]]
 name = "trybuild090"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_20.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_18.rs"
 
 [[bin]]
 name = "trybuild091"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_21.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_19.rs"
 
 [[bin]]
 name = "trybuild092"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_22.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_20.rs"
 
 [[bin]]
 name = "trybuild093"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_23.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_21.rs"
 
 [[bin]]
 name = "trybuild094"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_24.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_22.rs"
 
 [[bin]]
 name = "trybuild095"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_25.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_23.rs"
 
 [[bin]]
 name = "trybuild096"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_26.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_24.rs"
 
 [[bin]]
 name = "trybuild097"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_27.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_25.rs"
 
 [[bin]]
 name = "trybuild098"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_28.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_26.rs"
 
 [[bin]]
 name = "trybuild099"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_29.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_27.rs"
 
 [[bin]]
 name = "trybuild100"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_30.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_28.rs"
 
 [[bin]]
 name = "trybuild101"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_31.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_29.rs"
 
 [[bin]]
 name = "trybuild102"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_32.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_30.rs"
 
 [[bin]]
 name = "trybuild103"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_33.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_31.rs"
 
 [[bin]]
 name = "trybuild104"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_34.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_32.rs"
 
 [[bin]]
 name = "trybuild105"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_35.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_33.rs"
 
 [[bin]]
 name = "trybuild106"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_36.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_34.rs"
 
 [[bin]]
 name = "trybuild107"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_37.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_35.rs"
 
 [[bin]]
 name = "trybuild108"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_38.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_36.rs"
 
 [[bin]]
 name = "trybuild109"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_39.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_37.rs"
 
 [[bin]]
 name = "trybuild110"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_40.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_38.rs"
 
 [[bin]]
 name = "trybuild111"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_41.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_39.rs"
 
 [[bin]]
 name = "trybuild112"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_42.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_40.rs"
 
 [[bin]]
 name = "trybuild113"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_43.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_41.rs"
 
 [[bin]]
 name = "trybuild114"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_44.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_42.rs"
 
 [[bin]]
 name = "trybuild115"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_45.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_43.rs"
 
 [[bin]]
 name = "trybuild116"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_46.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_44.rs"
 
 [[bin]]
 name = "trybuild117"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_47.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_45.rs"
 
 [[bin]]
 name = "trybuild118"
-path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_48.rs"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_46.rs"
 
 [[bin]]
 name = "trybuild119"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_47.rs"
+
+[[bin]]
+name = "trybuild120"
+path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_48.rs"
+
+[[bin]]
+name = "trybuild121"
 path = "$CORTEX_ROOT/10_PROJECTS/epistemic-compiler/epistemic_engine/tests/fail_generated/fuzz_49.rs"
 
 [workspace]
