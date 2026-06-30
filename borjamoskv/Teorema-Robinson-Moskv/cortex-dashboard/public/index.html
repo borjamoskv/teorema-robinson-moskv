@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX KERNEL | Visual Topology</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <h1>CORTEX <span>KERNEL</span></h1>
+            <div class="status-indicator">
+                <span class="dot pulse"></span>
+                <span>C5-REAL ACTIVE</span>
+            </div>
+        </div>
+        <div class="stats" id="stats">
+            <!-- Stats injected here -->
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <aside class="sidebar">
+            <nav class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">ALL NODES</button>
+                <button class="filter-btn" data-filter="PRIMITIVAS">PRIMITIVAS</button>
+                <button class="filter-btn" data-filter="INVARIANTES">INVARIANTES</button>
+                <button class="filter-btn" data-filter="ANTIPATRONES">ANTIPATRONES</button>
+                <button class="filter-btn" data-filter="REDUNDANCIAS">REDUNDANCIAS</button>
+                <button class="filter-btn" data-filter="VECTORES">VECTORES</button>
+            </nav>
+        </aside>
+
+        <section class="grid-container" id="grid">
+            <!-- Cards injected here -->
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
