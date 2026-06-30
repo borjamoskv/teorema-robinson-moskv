@@ -39,6 +39,7 @@ def init_db():
         
     conn = sqlite3.connect(DB_PATH, timeout=5.0) # busy_timeout 5000ms
     conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA busy_timeout=5000;")
     return conn
 
 def main():

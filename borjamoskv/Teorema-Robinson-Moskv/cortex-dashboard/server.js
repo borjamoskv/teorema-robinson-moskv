@@ -16,7 +16,9 @@ const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
     if (err) {
         console.error('[C5-REAL] Error connecting to DB:', err.message);
     } else {
-        console.log('[C5-REAL] Connected to SQLite DB (Read-Only).');
+        db.configure('busyTimeout', 5000);
+        db.run('PRAGMA journal_mode=WAL;');
+        console.log('[C5-REAL] Connected to SQLite DB (Read-Only). Forcing WAL and busy_timeout=5000ms.');
     }
 });
 
