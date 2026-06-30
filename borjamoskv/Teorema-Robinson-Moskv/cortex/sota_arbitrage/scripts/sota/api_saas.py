@@ -39,24 +39,8 @@ def get_collection():
     return client.get_or_create_collection(name="sota_frontier_nodes", embedding_function=emb_fn)
 
 @app.get("/api/v1/signals/latest")
-def get_latest_signals(api_key: str = Depends(get_api_key)):
-    """Retorna los nodos de frontera más recientes (sin filtro vectorial, solo offset)."""
-    collection = get_collection()
-    res = collection.get(limit=10)
-    return {"status": "ok", "nodes": res}
 
 @app.post("/api/v1/signals/query")
-def query_signals(query_data: SignalQuery, api_key: str = Depends(get_api_key)):
-    """Ejecuta una búsqueda vectorial RAG para fondos HFT."""
-    collection = get_collection()
-    where_clause = {"domain": query_data.domain} if query_data.domain else None
-    
-    results = collection.query(
-        query_texts=[query_data.query],
-        n_results=query_data.n_results,
-        where=where_clause
-    )
-    return {"status": "ok", "query": query_data.query, "results": results}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
