@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # MATRIZ 5: VECTORES DE ATAQUE ADVERSARIAL
 
 | ID | Vector Adversarial | Superficie de Ataque | Mecanismo de Explotación | Impacto Termodinámico | Defensa (Mitigación) |

@@ -7,17 +7,10 @@
 import os
 import re
 import sys
+import glob
 
 ONTOLOGY_DIR = os.path.dirname(os.path.abspath(__file__))
-FILES_TO_CHECK = [
-    "batch_1_primitivas.md",
-    "batch_2_invariantes.md",
-    "batch_3_antipatrones.md",
-    "batch_4_redundancias.md",
-    "batch_5_vectores.md",
-    "sinergia_exergetica.md",
-    "ouroboros_category_apex.md"
-]
+FILES_TO_CHECK = [os.path.basename(f) for f in glob.glob(os.path.join(ONTOLOGY_DIR, "*.md"))]
 
 def validate_file(filename, all_ids):
     filepath = os.path.join(ONTOLOGY_DIR, filename)

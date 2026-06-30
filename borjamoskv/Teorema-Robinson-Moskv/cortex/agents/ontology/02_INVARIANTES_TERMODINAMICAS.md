@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # MATRIZ 2: INVARIANTES TERMODINÁMICAS
 
 | ID | Invariante | Lógica / Principio | Implicación Operacional | Condición de Borde | Métrica Falsable |

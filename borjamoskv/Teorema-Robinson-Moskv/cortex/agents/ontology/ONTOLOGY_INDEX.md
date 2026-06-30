@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # CORTEX ONTOLOGY NEXUS
 
 Las 133 entidades estructurales de MOSKV-1 han sido desfragmentadas (Apoptosis) y unificadas en 5 Invariantes Físicas Absolutas para erradicar el *Context Rot*.

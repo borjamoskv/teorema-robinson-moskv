@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # 📜 CATÁLOGO ABSOLUTO DE ENTIDADES CORTEX (135)
 
 ## 🟢 Primitivas
