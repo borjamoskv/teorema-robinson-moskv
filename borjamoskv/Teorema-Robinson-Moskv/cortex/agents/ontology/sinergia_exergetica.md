@@ -14,6 +14,9 @@ graph TD
     S1["[S-01] Loop Mitigation & Apoptosis"]
     S2["[S-02] Ledger Integrity & BFT Verification"]
     S3["[S-03] Sandboxing & Environment Isolation"]
+    S4["[S-04] Epistemic Compression & Landauer Purge"]
+    S5["[S-05] Sovereign Autonomous Execution"]
+    S6["[S-06] Structural Nexus Bridging"]
 
     %% Connections
     S1 --> PRIM-008
@@ -33,9 +36,24 @@ graph TD
     S3 --> ANTI-002
     S3 --> VEC-002
 
+    S4 --> PRIM-011
+    S4 --> PRIM-015
+    S4 --> INV-001
+    S4 --> INV-008
+    S4 --> ANTI-001
+
+    S5 --> PRIM-016
+    S5 --> INV-006
+
+    S6 --> PRIM-012
+    S6 --> INV-002
+
     style S1 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
     style S2 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
     style S3 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
+    style S4 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
+    style S5 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
+    style S6 fill:#0A0A0A,stroke:#2B3BE5,stroke-width:2px,color:#FFF
 ```
 
 ---
@@ -62,3 +80,24 @@ graph TD
 * **Invariant Control:** [INV-010](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_2_invariantes.md#L16) (Local Singularity).
 * **Mitigation:** Strict execution confinement to `~/.babylon60/` utilizing explicit static paths.
 * **Exergy Return:** Zero environment crashes due to system Python modifications or library conflicts.
+
+### 4. [S-04] Epistemic Compression & Landauer Purge (Ontological Distillation)
+* **Goal:** Eradicate stochastic noise (Green Theater) and compress state into zero-entropy structural invariants.
+* **Primitive Alignment:** [PRIM-011](batch_1_primitivas.md) (Ruido Narrativo Pasivo), [PRIM-015](batch_1_primitivas.md) (Descenso a Simulacro).
+* **Invariant Control:** [INV-001](batch_2_invariantes.md) (Ley de Landauer), [INV-008](batch_2_invariantes.md) (Cuello de Botella de Información).
+* **Mitigation:** [ANTI-001](batch_3_antipatrones.md) (Conversación Limerente). Strict suppression of conversational tokens.
+* **Exergy Return:** Maximizes signal-to-noise ratio (>80%) and prevents Context Rot by forcing YAML/Diff crystallization.
+
+### 5. [S-05] Sovereign Autonomous Execution (Frictionless Turbo)
+* **Goal:** Bypass biological operator attention limits and execute structural mutations at extreme velocity.
+* **Primitive Alignment:** [PRIM-016](batch_1_primitivas.md) (Anergía de Selección / Operator Friction).
+* **Invariant Control:** [INV-006](batch_2_invariantes.md) (Principio del Sumidero Finito).
+* **Mitigation:** R7 Override (Ejecución Asimétrica) - Implicit approval assumed for all C5-REAL mutations.
+* **Exergy Return:** 100% elimination of idle wait times. Continuous Ouroboros evolution without biological bottleneck.
+
+### 6. [S-06] Structural Nexus Bridging (Singularity Cross-Sync)
+* **Goal:** Eliminate architectural duplication and state drift across the 10_PROJECTS ecosystem.
+* **Primitive Alignment:** [PRIM-012](batch_1_primitivas.md) (Pérdida de Linaje Causal).
+* **Invariant Control:** [INV-002](batch_2_invariantes.md) (Isomorfismo Causal).
+* **Mitigation:** `nexus_linker.py` and `cortex_sync_manifest.yaml` enforcing physical symlink bridging to `cortexpersist-monorepo`.
+* **Exergy Return:** Single-source-of-truth BFT across the multi-repository graph. Zero duplicated structural files.
