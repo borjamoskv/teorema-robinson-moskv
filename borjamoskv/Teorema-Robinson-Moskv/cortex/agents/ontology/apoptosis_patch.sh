@@ -1,0 +1,1 @@
+#!/bin/bash\n# C5-REAL Auto-generated Apoptosis Patch\n
