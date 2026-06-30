@@ -135,7 +135,7 @@ let socket = null;
 let simulationInterval = null;
 
 function connectWS() {
-    socket = new WebSocket('ws://localhost:8001');
+    socket = new WebSocket('ws://localhost:8081');
 
     socket.onopen = () => {
         console.log('[CORTEX UI] Connected to telemetry WebSocket.');
