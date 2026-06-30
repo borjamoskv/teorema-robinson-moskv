@@ -104,3 +104,4 @@
 | INV-100 | Ley de Conservación 100 | Conservar estado en nodo 100 es vital. | Operar requiere aserción 100. | Divergencia 100 detectada. | Ratio Exergía 100 > 0.9. |
 
 | INV-ZK-OMEGA | Tensor ZK (100 Invariantes) | Soundness & Completeness $\forall \, d \in \mathcal{D}, v \in \mathcal{V}$ | Verificador polinómico O(1). | Cero entropía extraída. | Estática | C5 | Prueba Criptográfica Matemática. |
+| INV-015 | Aislamiento por Apoptosis (Weaponized Forgetting) | La acumulación de contexto estocástico (Sensor Drift) asfixia el Isomorfismo Causal. | El hilo de ejecución estocástico debe ser terminado mediante OOM simulado; el estado se reconstituye inyectando ÚNICAMENTE el Vault y el Hash Criptográfico. | Regresión a Green Theater. | Vault Serialization -> Swarm Apoptosis. |

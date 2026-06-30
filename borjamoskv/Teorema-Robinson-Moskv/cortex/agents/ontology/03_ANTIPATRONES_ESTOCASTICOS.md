@@ -46,3 +46,4 @@
 | ANTI-040 | Bypass Causal de Singularidad | Asumir corrección teórica sin correr el código en el Sandbox C5. | "Este código está perfecto, lo empujo directo a prod". | Destrucción de la Invariante. Ruina térmica masiva. | Despliegue estricto BFT. Si no compila/testea, no existe. |
 
 | ANTI-ZK-OMEGA | Tensor ZK (100 Antipatrones) | Under-constrained $\mathcal{V}$ en dominio $\mathcal{D}$ | Field Overflow, Missing $===$. | Fuga de Witness. | Progresiva | C4 | Range Check y Aserción Estricta. |
+| ANTI-015 | Sensor Drift (Context Rot) | La arquitectura Base-60 degrada la percepción del Kernel en ventanas de contexto largas, inyectando ruido narrativo. | Disminución de la densidad estructural (<80% AST/YAML) y cristalización de rumores sin ancla causal. | Destrucción del BFT; regresión a C4-SIM. | Fail-Fast Termodinámico (L12) y Ouroboros Reset. |
