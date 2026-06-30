@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX Master Exergy Inventory</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cortex-wrapper">
+        <header class="cortex-header">
+            <div class="sys-id-badge">SYS_ID: borjamoskv</div>
+            <h1>CORTEX <span>EXERGY INVENTORY</span></h1>
+            <div class="status-indicator">
+                <span class="pulse"></span> C5-REAL JIT ACTIVE
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Global Exergy Panel -->
+            <section class="panel exergy-global">
+                <div class="panel-header">
+                    <h2>GLOBAL EXERGY</h2>
+                    <span class="live-tag">LIVE</span>
+                </div>
+                <div class="metric-container">
+                    <div class="primary-metric" id="total-exergy">0.00%</div>
+                    <div class="sub-metrics">
+                        <div>ANERGY: <span id="anergy-level" class="warning-text">0.00%</span></div>
+                        <div>YIELD: <span id="exergy-yield">0.00x</span></div>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="exergy-bar"></div>
+                </div>
+            </section>
+
+            <!-- Metrics Matrix Panel -->
+            <section class="panel metrics-matrix">
+                <div class="panel-header">
+                    <h2>AST METRICS MATRIX</h2>
+                </div>
+                <div class="matrix-grid">
+                    <div class="matrix-item">
+                        <div class="label">MCCABE COMPLEXITY</div>
+                        <div class="value" id="mccabe-val">0</div>
+                    </div>
+                    <div class="matrix-item">
+                        <div class="label">MAX NESTING DEPTH</div>
+                        <div class="value" id="nesting-val">0</div>
+                    </div>
+                    <div class="matrix-item">
+                        <div class="label">DEAD CODE TOKENS</div>
+                        <div class="value" id="deadcode-val">0</div>
+                    </div>
+                    <div class="matrix-item">
+                        <div class="label">ENTROPY GRADIENT</div>
+                        <div class="value" id="entropy-val">0.00</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Real-Time Feed Panel -->
+            <section class="panel telemetry-feed">
+                <div class="panel-header">
+                    <h2>TELEMETRY LOG</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">ALL</button>
+                        <button class="filter-btn" data-filter="critical">CRITICAL</button>
+                        <button class="filter-btn" data-filter="stable">STABLE</button>
+                    </div>
+                </div>
+                <div class="log-container" id="telemetry-log">
+                    <!-- Logs will be populated here by JS -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="cortex-footer">
+            <div class="author-info">Author: Borja Moskv</div>
+            <div class="mantra">∴ Cero anergía es la muerte.</div>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
