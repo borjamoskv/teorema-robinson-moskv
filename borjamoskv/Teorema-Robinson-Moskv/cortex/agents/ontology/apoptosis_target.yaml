@@ -1,1 +1,5 @@
-Claim: Redundancias Estructurales Detectadas\nProof: { Base: N-Gram Jaccard Index, Confidence: C5-REAL }\nFractures:\n
+Claim: Redundancias Estructurales Detectadas
+Proof: 
+  Base: N-Gram Jaccard Index
+  Confidence: C5-REAL
+Fractures: []
