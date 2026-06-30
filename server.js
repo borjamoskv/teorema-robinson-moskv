@@ -18,6 +18,30 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
+    if (req.url === '/api/telemetry' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            try {
+                const payload = JSON.parse(body);
+                // Retransmitir a los WebSockets
+                wss.clients.forEach((client) => {
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(JSON.stringify(payload));
+                    }
+                });
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ status: 'ok', clients: wss.clients.size }));
+            } catch (e) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+            }
+        });
+        return;
+    }
+
     // [C5-REAL] Mitigación de Path Traversal (Anergía de Seguridad)
     const normalizedUrl = path.normalize(req.url);
     let filePath = path.join(PUBLIC_DIR, normalizedUrl === '/' || normalizedUrl === '\\' ? 'index.html' : normalizedUrl);
@@ -68,7 +92,9 @@ wss.on('connection', (ws) => {
             if (data.type === 'telemetry') {
                 console.log(`[CORTEX TELEMETRY] ${data.log?.module || 'VM'} -> ${data.log?.text || ''}`);
             }
-        } catch (_) {}
+        } catch (err) {
+            console.error(`[CORTEX ERROR] Fallo al parsear payload de telemetría: ${err.message}`);
+        }
 
         wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
