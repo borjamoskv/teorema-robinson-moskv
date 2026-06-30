@@ -1,0 +1,33 @@
+Frontier_Node:
+  Domain: Systems
+  Subdomain: Rust
+  Core_Insight: Avance estructural en CodeBendKit/codeseek
+  Evidence:
+  - Type: Repo
+    Title: CodeBendKit/codeseek
+    URI: https://github.com/CodeBendKit/codeseek
+    Date: '2026-06-03T05:41:22Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: 'yes'
+  Mechanism: Rust-powered code intelligence CLI for AI coding agents. Builds call
+    graphs and hybrid semantic search indexes (Dense + Sparse + RRF + Reranker) across
+    7 languages. Ships as native MCP tools for Claud...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de CodeBendKit/codeseek a menor\
+      \ costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://github.com/CodeBendKit/codeseek
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

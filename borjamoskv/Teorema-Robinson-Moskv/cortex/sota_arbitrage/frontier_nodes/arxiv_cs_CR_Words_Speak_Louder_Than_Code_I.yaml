@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: cs.CR
+  Core_Insight: 'Avance estructural en Words Speak Louder Than Code: Investigating
+    Cognitive Heuristics in LLM-Based Code Vulnerability Detection'
+  Evidence:
+  - Type: Paper
+    Title: 'Words Speak Louder Than Code: Investigating Cognitive Heuristics in LLM-Based
+      Code Vulnerability Detection'
+    URI: http://arxiv.org/abs/2606.30587v1
+    Date: '2026-06-29T17:31:10Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: Researchers and practitioners increasingly apply Large Language Models
+    (LLMs) for automated vulnerability detection. Recent work has shown that LLMs
+    are susceptible to the same cognitive heuristics th...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Words Speak Louder Than Code:\
+      \ Investigating Cognitive Heuristics in LLM-Based Code Vulnerability Detection\
+      \ a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.30587v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

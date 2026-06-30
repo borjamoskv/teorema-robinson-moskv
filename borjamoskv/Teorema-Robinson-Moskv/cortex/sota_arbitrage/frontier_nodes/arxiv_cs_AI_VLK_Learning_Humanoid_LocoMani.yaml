@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: AI
+  Subdomain: cs.AI
+  Core_Insight: 'Avance estructural en VLK: Learning Humanoid Loco-Manipulation from
+    Synthetic Interactions in Reconstructed Scenes'
+  Evidence:
+  - Type: Paper
+    Title: 'VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in
+      Reconstructed Scenes'
+    URI: http://arxiv.org/abs/2606.30645v1
+    Date: '2026-06-29T17:59:55Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: Perception-based humanoid loco-manipulation requires connecting egocentric
+    observations and task instructions to whole-body motion. Learning this mapping
+    requires synchronized egocentric images, langu...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de VLK: Learning Humanoid Loco-Manipulation\
+      \ from Synthetic Interactions in Reconstructed Scenes a menor costo entr\xF3\
+      pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.30645v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85
