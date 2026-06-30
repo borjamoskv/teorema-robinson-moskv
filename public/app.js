@@ -11,6 +11,10 @@ const DOM = {
     nestingVal: document.getElementById('nesting-val'),
     deadcodeVal: document.getElementById('deadcode-val'),
     entropyVal: document.getElementById('entropy-val'),
+    llmViolations: document.getElementById('llm-violations-val'),
+    cpmViolations: document.getElementById('cpm-violations-val'),
+    llmLatency: document.getElementById('llm-latency-val'),
+    cpmLatency: document.getElementById('cpm-latency-val'),
     logContainer: document.getElementById('telemetry-log'),
     filterBtns: document.querySelectorAll('.filter-btn')
 };
@@ -24,6 +28,10 @@ let exergyState = {
     nesting: 3,
     deadcode: 45,
     entropy: 0.12,
+    llmViolations: 0,
+    cpmViolations: 0,
+    llmLatency: 0.0,
+    cpmLatency: 0.0,
     logs: [],
     filter: 'all'
 };
@@ -67,6 +75,20 @@ function updateDOM() {
     const newEntropy = exergyState.entropy.toFixed(3);
     if (DOM.entropyVal.textContent !== newEntropy) flashElement(DOM.entropyVal);
     DOM.entropyVal.textContent = newEntropy;
+
+    if (DOM.llmViolations.textContent !== String(exergyState.llmViolations)) flashElement(DOM.llmViolations);
+    DOM.llmViolations.textContent = exergyState.llmViolations;
+
+    if (DOM.cpmViolations.textContent !== String(exergyState.cpmViolations)) flashElement(DOM.cpmViolations);
+    DOM.cpmViolations.textContent = exergyState.cpmViolations;
+
+    const newLlmLat = exergyState.llmLatency.toFixed(2) + 'ms';
+    if (DOM.llmLatency.textContent !== newLlmLat) flashElement(DOM.llmLatency);
+    DOM.llmLatency.textContent = newLlmLat;
+
+    const newCpmLat = exergyState.cpmLatency.toFixed(2) + 'μs';
+    if (DOM.cpmLatency.textContent !== newCpmLat) flashElement(DOM.cpmLatency);
+    DOM.cpmLatency.textContent = newCpmLat;
 }
 
 function addLogEntry(module, text, type, metric) {
@@ -137,6 +159,11 @@ function connectWS() {
                 exergyState.nesting = data.nesting;
                 exergyState.deadcode = data.deadcode;
                 exergyState.entropy = data.entropy;
+                
+                if (data.llmViolations !== undefined) exergyState.llmViolations = data.llmViolations;
+                if (data.cpmViolations !== undefined) exergyState.cpmViolations = data.cpmViolations;
+                if (data.llmLatency !== undefined) exergyState.llmLatency = data.llmLatency;
+                if (data.cpmLatency !== undefined) exergyState.cpmLatency = data.cpmLatency;
 
                 if (data.log) {
                     addLogEntry(data.log.module, data.log.text, data.log.type, data.log.metric);

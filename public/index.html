@@ -64,6 +64,40 @@
                 </div>
             </section>
 
+            <!-- Planning Benchmark Panel -->
+            <section class="panel planning-benchmark">
+                <div class="panel-header">
+                    <h2>PLANNING RESOLVER BENCHMARK</h2>
+                </div>
+                <div class="matrix-grid">
+                    <div class="matrix-item">
+                        <div class="label">LLM PLAN VIOLATIONS</div>
+                        <div class="value warning-text" id="llm-violations-val">0</div>
+                    </div>
+                    <div class="matrix-item">
+                        <div class="label">CPM MATH VIOLATIONS</div>
+                        <div class="value" id="cpm-violations-val" style="color: var(--stable)">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latency Matrix Panel -->
+            <section class="panel latency-matrix">
+                <div class="panel-header">
+                    <h2>LATENCY COMPARATIVE MATRIX</h2>
+                </div>
+                <div class="matrix-grid">
+                    <div class="matrix-item">
+                        <div class="label">LLM API CALL LATENCY</div>
+                        <div class="value" id="llm-latency-val" style="color: var(--warning)">0.00ms</div>
+                    </div>
+                    <div class="matrix-item">
+                        <div class="label">CPM JIT LOCAL LATENCY</div>
+                        <div class="value" id="cpm-latency-val" style="color: var(--stable)">0.00μs</div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Real-Time Feed Panel -->
             <section class="panel telemetry-feed">
                 <div class="panel-header">
