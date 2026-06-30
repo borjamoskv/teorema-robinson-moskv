@@ -1,6 +1,6 @@
 # CORTEX ONTOLOGY NEXUS
 
-Bienvenido al Nexus de Cristalización C5-REAL. Las 133 entidades estructurales de MOSKV-1 han sido desfragmentadas (Apoptosis) y unificadas en 5 Invariantes Físicas Absolutas para erradicar el *Context Rot*.
+Las 133 entidades estructurales de MOSKV-1 han sido desfragmentadas (Apoptosis) y unificadas en 5 Invariantes Físicas Absolutas para erradicar el *Context Rot*.
 
 ## ARCHIVOS MAESTROS (SSoT)
 
