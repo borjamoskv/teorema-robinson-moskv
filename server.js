@@ -79,3 +79,21 @@ wss.on('connection', (ws) => {
         console.log('[CORTEX WS] Telemetry agent unlinked.');
     });
 });
+
+// Clean shutdown handlers
+const shutdown = () => {
+    console.log('[CORTEX] Shutting down telemetry server...');
+    wss.close(() => {
+        server.close(() => {
+            console.log('[CORTEX] Server terminated cleanly.');
+            process.exit(0);
+        });
+    });
+    setTimeout(() => {
+        console.log('[CORTEX] Force exit triggered.');
+        process.exit(1);
+    }, 2000);
+};
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);

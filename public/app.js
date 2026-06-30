@@ -44,6 +44,12 @@ function formatTime(date) {
     return date.toTimeString().split(' ')[0] + '.' + String(date.getMilliseconds()).padStart(3, '0');
 }
 
+function flashElement(el) {
+    el.classList.remove('value-flash');
+    void el.offsetWidth; // trigger reflow
+    el.classList.add('value-flash');
+}
+
 function updateDOM() {
     DOM.totalExergy.textContent = exergyState.total.toFixed(2) + '%';
     DOM.anergyLevel.textContent = exergyState.anergy.toFixed(2) + '%';
@@ -58,11 +64,19 @@ function updateDOM() {
     if (exergyState.anergy > 20) DOM.anergyLevel.style.color = 'var(--warning)';
     else DOM.anergyLevel.style.color = 'var(--stable)';
 
-    // Matrix
+    // Matrix updates with flash
+    if (DOM.mccabeVal.textContent !== String(exergyState.mccabe)) flashElement(DOM.mccabeVal);
     DOM.mccabeVal.textContent = exergyState.mccabe;
+
+    if (DOM.nestingVal.textContent !== String(exergyState.nesting)) flashElement(DOM.nestingVal);
     DOM.nestingVal.textContent = exergyState.nesting;
+
+    if (DOM.deadcodeVal.textContent !== String(exergyState.deadcode)) flashElement(DOM.deadcodeVal);
     DOM.deadcodeVal.textContent = exergyState.deadcode;
-    DOM.entropyVal.textContent = exergyState.entropy.toFixed(3);
+
+    const newEntropy = exergyState.entropy.toFixed(3);
+    if (DOM.entropyVal.textContent !== newEntropy) flashElement(DOM.entropyVal);
+    DOM.entropyVal.textContent = newEntropy;
 }
 
 function addLogEntry(module, text, type, metric) {

@@ -18,6 +18,16 @@ done
 echo "[CORTEX] Initializing Sovereign Telemetry Panel..."
 echo "[CORTEX] Target Port: $PORT"
 
+# Clean up any orphan processes on target ports to prevent EADDRINUSE
+echo "[CORTEX] Auditing ports to prevent EADDRINUSE..."
+for port in "$PORT" 8081; do
+    PID=$(lsof -t -i :"$port")
+    if [ -n "$PID" ]; then
+        echo "[CORTEX] Releasing port $port (killing process $PID)..."
+        kill -9 "$PID" 2>/dev/null || true
+    fi
+done
+
 if command -v npm &> /dev/null; then
     echo "[CORTEX] Auto-detected Node.js environment."
     npm run start:node
