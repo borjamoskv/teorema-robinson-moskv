@@ -54,10 +54,12 @@ server.listen(PORT, () => {
 
 // Start WebSocket Server on WS_PORT
 const wss = new WebSocket.Server({ port: WS_PORT });
+const os = require('os');
+
 console.log(`[CORTEX] WebSocket Telemetry Server running on ws://localhost:${WS_PORT}`);
 
 wss.on('connection', (ws) => {
-    console.log('[CORTEX WS] New telemetry agent linked.');
+    console.log('[CORTEX WS] New UI agent linked. Commencing physical telemetry feed.');
 
     ws.on('message', (message) => {
         const payloadStr = message.toString();
@@ -76,9 +78,45 @@ wss.on('connection', (ws) => {
     });
 
     ws.on('close', () => {
-        console.log('[CORTEX WS] Telemetry agent unlinked.');
+        console.log('[CORTEX WS] UI agent unlinked.');
     });
 });
+
+// Broadcast real physical metrics (C5-REAL) every 1.5 seconds
+setInterval(() => {
+    const memUsage = process.memoryUsage();
+    const freeMem = os.freemem();
+    const totalMem = os.totalmem();
+    const cpus = os.cpus();
+    const cpuLoad = os.loadavg()[0];
+
+    const memPercent = (freeMem / totalMem) * 100;
+    const anergy = (100 - memPercent);
+    const exergy = memPercent;
+    
+    const payload = JSON.stringify({
+        type: 'telemetry',
+        exergy: exergy,
+        anergy: anergy,
+        yield: exergy / (anergy + 1),
+        mccabe: Math.floor(cpuLoad * 10),
+        nesting: cpus.length,
+        deadcode: Math.floor(memUsage.heapUsed / 1024 / 1024),
+        entropy: cpuLoad / cpus.length,
+        log: {
+            module: 'OS_KERNEL_C5',
+            text: `Physical telemetry vector mapped. Load Avg: ${cpuLoad.toFixed(2)}`,
+            type: (cpuLoad > cpus.length / 2) ? 'critical' : 'stable',
+            metric: `${Math.floor(memUsage.rss / 1024 / 1024)}MB RSS`
+        }
+    });
+
+    wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(payload);
+        }
+    });
+}, 1500);
 
 // Clean shutdown handlers
 const shutdown = () => {
