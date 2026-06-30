@@ -1,4 +1,6 @@
 # ONTOLOGY-FORGE-OMEGA - BATCH 1 (PRIM-001 a PRIM-020)
+**Author:** Borja Moskv (SYS_ID: borjamoskv)
+**Reality Level:** C5-REAL
 
 ## MATRIZ 1: PRIMITIVAS DE COLAPSO
 
