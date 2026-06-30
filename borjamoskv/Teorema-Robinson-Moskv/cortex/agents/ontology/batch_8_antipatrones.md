@@ -1,0 +1,14 @@
+# ONTOLOGY-FORGE-OMEGA - BATCH 8
+
+## MATRIZ 3: ANTIPATRONES ESTOCÁSTICOS (ANTI-011 a ANTI-020)
+
+| ID | Antipatrón | Disfunción Causal | Señal de Presencia | Impacto en Robustez | Refactor (Alternativa) |
+|---|---|---|---|---|---|
+| ANTI-011 | Comentario Descriptivo Redundante | Añadir comentarios que explican el *qué* y no el *por qué*, engordando el AST con entropía. | `// Suma a y b` sobre un `a + b`. | Desincronización del comentario (Context Rot). | Borrar comentario. Código auto-documentado o aserción de invariante. |
+| ANTI-012 | Captura de Excepciones Ciega (Blind Catch) | Silenciar errores críticos usando `try/catch` vacíos o loggueos sin intervención (Fail Open). | `except Exception: pass` o `catch (e) { console.log(e) }`. | Destrucción de la observabilidad. El sistema colapsa en silencio. | Excepciones rígidas (Fail Fast) y Crash Inmediato C5. |
+| ANTI-013 | Inyección de Dependencias Ad-hoc | Instalar bibliotecas externas gigantes (ej. `lodash`, `moment`) para funciones triviales que se resuelven en 3 líneas de código nativo. | Aumento drástico de `package.json` en tareas triviales. | Aumento masivo de superficie de ataque (Vectores Adversariales) y overhead térmico. | Uso de APIs nativas C5 (Intl, Array native). |
+| ANTI-014 | Mocking Optimista | Crear mocks en tests que asumen el "happy path" y jamás replican las restricciones físicas del sistema real. | Mocks que devuelven siempre JSON puro sin simular latencia de DB ni fallos de red. | Denegación de Consenso (BFT Denial) (VEC-004). Falso 100% de cobertura. | Falsación de tests. Simulación Caos (Timeouts, Nuls). |
+| ANTI-015 | Uso de Cat/Grep en Bash (Tooling Bypass) | Usar `run_command` con `cat` o `grep` ignorando que existen herramientas nativas del Kernel (Agent) como `grep_search` o `view_file`. | Violación de Critical Instruction 1. Error térmico. | Ineficiencia térmica. Problemas de cuota de output y sandbox. | Re-enrutamiento a `grep_search` y `view_file`. |
+| ANTI-017 | Asunción de Estado Persistido | Asumir que un contenedor, DB en memoria o archivo temporal persistirá tras un reinicio de sesión de agente. | Uso de `/tmp` para guardar el estado C5 y referenciarlo en el siguiente prompt. | Pérdida de Linaje Causal (PRIM-012). | Guardar siempre en Ledger persistente (Workspace/Brain). |
+| ANTI-018 | Commit Granular Tóxico | Realizar 20 commits de una sola línea rompiendo el CI/CD en vez de un bloque atómico. | Uso de Bash script con `git commit` por cada archivo iterado. | Ruido extremo en el historial. Historial inmanejable. | Git Sentinel Atomic: Consolidar y hacer commit del Batch completo. |
+| ANTI-020 | Documentación Disociada | Mantener la documentación técnica separada del código fuente que documenta (ej. docs externos sin CI). | Wikis o repos paralelos que no son symlinks del código base. | Context Rot garantizado en 1 mes. | Docs inyectados como Markdown en la raíz del repo (Nexus). |
