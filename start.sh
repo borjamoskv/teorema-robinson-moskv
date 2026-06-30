@@ -4,7 +4,7 @@
 # Author: borjamoskv
 # Reality Level: C5-REAL
 
-export PORT=8000
+export PORT=8080
 FORCE_NODE=0
 FORCE_PYTHON=0
 

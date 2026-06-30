@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
 
-const PORT = process.env.PORT || 8000;
-const WS_PORT = 8001;
+const PORT = process.env.PORT || 8080;
+const WS_PORT = 8081;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
 const MIME_TYPES = {
