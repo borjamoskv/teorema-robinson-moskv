@@ -1,4 +1,4 @@
-// CORTEX Exergy Simulation Kernel
+// CORTEX Exergy Telemetry Kernel
 // Level: C5-REAL JIT
 // Author: borjamoskv
 
@@ -130,8 +130,60 @@ DOM.filterBtns.forEach(btn => {
     });
 });
 
+// WebSocket Connection
+let socket = null;
+let simulationInterval = null;
+
+function connectWS() {
+    socket = new WebSocket('ws://localhost:8001');
+
+    socket.onopen = () => {
+        console.log('[CORTEX UI] Connected to telemetry WebSocket.');
+        document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--stable); box-shadow: 0 0 8px var(--stable);"></span> C5-REAL LINKED';
+        document.querySelector('.status-indicator').style.color = 'var(--stable)';
+        document.querySelector('.status-indicator').style.background = 'rgba(43, 229, 148, 0.05)';
+        if (simulationInterval) {
+            clearInterval(simulationInterval);
+            simulationInterval = null;
+        }
+    };
+
+    socket.onmessage = (event) => {
+        try {
+            const data = JSON.parse(event.data);
+            if (data.type === 'telemetry') {
+                exergyState.total = data.exergy;
+                exergyState.anergy = data.anergy;
+                exergyState.yield = data.yield;
+                exergyState.mccabe = data.mccabe;
+                exergyState.nesting = data.nesting;
+                exergyState.deadcode = data.deadcode;
+                exergyState.entropy = data.entropy;
+                
+                if (data.log) {
+                    addLogEntry(data.log.module, data.log.text, data.log.type, data.log.metric);
+                }
+                updateDOM();
+            }
+        } catch (e) {
+            console.error('Failed to parse telemetry frame', e);
+        }
+    };
+
+    socket.onclose = () => {
+        console.log('[CORTEX UI] Telemetry WebSocket unlinked. Falling back to C4-STANDBY.');
+        document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--warning); box-shadow: 0 0 8px var(--warning);"></span> C4-STANDBY';
+        document.querySelector('.status-indicator').style.color = 'var(--warning)';
+        document.querySelector('.status-indicator').style.background = 'rgba(229, 43, 43, 0.05)';
+        if (!simulationInterval) {
+            simulationInterval = setInterval(simulateTick, 1000);
+        }
+        setTimeout(connectWS, 3000);
+    };
+}
+
 // Initialization
 addLogEntry('CORTEX_SYS', 'Kernel bootstrap sequence initiated', 'stable', '0.00ms');
 addLogEntry('EXERGY_CORE', 'Metrics matrix synchronized', 'stable', '1.24ms');
 updateDOM();
-setInterval(simulateTick, 1000);
+connectWS();
