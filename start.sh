@@ -1,8 +1,10 @@
 #!/bin/bash
-
-# CORTEX Unified Start Script (Refactored: Causal Debt 0)
+# [C5-REAL] CORTEX Unified Start Script (Refactored: Causal Debt 0)
 # Author: borjamoskv
 # Reality Level: C5-REAL
+
+set -euo pipefail
+IFS=$'\n\t'
 
 export PORT=8080
 
@@ -15,23 +17,23 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-echo "[CORTEX] Initializing Sovereign Telemetry Panel..."
-echo "[CORTEX] Target Port: $PORT"
+echo -e "\033[1;34m[CORTEX]\033[0m Initializing Sovereign Telemetry Panel..."
+echo -e "\033[1;34m[CORTEX]\033[0m Target Port: $PORT"
 
 # Clean up any orphan processes on target ports to prevent EADDRINUSE
-echo "[CORTEX] Auditing ports to prevent EADDRINUSE..."
+echo -e "\033[1;33m[CORTEX]\033[0m Auditing ports to prevent EADDRINUSE..."
 for port in "$PORT" 8081; do
-    PID=$(lsof -t -i :"$port")
+    PID=$(lsof -t -i :"$port" || true)
     if [ -n "$PID" ]; then
-        echo "[CORTEX] Releasing port $port (killing process $PID)..."
+        echo -e "\033[1;31m[CORTEX]\033[0m Releasing port $port (killing process $PID)..."
         kill -9 "$PID" 2>/dev/null || true
     fi
 done
 
 if command -v npm &> /dev/null; then
-    echo "[CORTEX] Auto-detected Node.js environment."
-    npm run start:node
+    echo -e "\033[1;32m[CORTEX]\033[0m Auto-detected Node.js environment."
+    exec npm run start:node
 else
-    echo "[ERROR] Node.js not found. Anergy level critical. System halt."
+    echo -e "\033[1;31m[ERROR]\033[0m Node.js not found. Anergy level critical. System halt." >&2
     exit 1
 fi
