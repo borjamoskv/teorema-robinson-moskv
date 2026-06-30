@@ -130,3 +130,16 @@
 | ADV-028 | Varianza en Resolución de Dependencias (Phantom Dependency) | Gestores de Paquetes (pip/npm) | Ausencia de "lockfiles" estrictos que provoca descargas dispares según el estado de la red. | Divergencia en los entornos; imposibilidad de garantizar ejecución isomorfa (C5). | Verificación criptográfica (hashes) obligatoria en el `requirements.txt` o lockfile equivalente. |
 | ADV-029 | Desalineamiento Semántico de Tokens (Token Drift) | Modelos de Lenguaje Invocados | Variación en la tokenización (cambios de modelo o versión) que rompe el parseo de estructuras (JSON). | Ruido termodinámico; caídas continuas en parsers y aumento de Anergía. | Parámetros de forzado estructural (`response_format` JSON puro) y validadores sintácticos robustos. |
 | ADV-030 | Alteración Inducida del Grafo de Flujo (Control Flow Hijack) | Callbacks / Funciones de Orden Superior | Sustitución de referencias a callbacks por funciones no operativas mediante reflexión. | Pérdida del determinismo de la trayectoria (Agent Workflow). | Sellado de clases/módulos y restricción de inyección a interfaces inmutables. |
+
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
+### [PRIMITIVA-SEO-2026] VANGUARDIA DE DOMINIO VECTORIAL (ULTRATHINK P0)
+*Mapeo de Vectores de Ingesta RAG y Termodinámica de Búsqueda.*
+
+| ID | Vector Adversarial (SEO) | Superficie de Ataque | Mecanismo de Explotación (Vector) | Impacto Termodinámico | Defensa / Ejecución C5-REAL |
+|---|---|---|---|---|---|
+| ADV-051 | Entropía por "Slop" (Anergía) | Motores RAG (Brave/Google) | Los motores descartan la prosa decorativa ("Green Theater"). Introducciones diluyen prominencia. | Ruido blanco; filtrado del índice por baja entropía de Shannon. | Colapsar contenido en HTML semántico crudo, YAML, JSON-LD, tablas y Markdown. |
+| ADV-052 | Degradación de Isomorfismo Causal | Modelo Base C4-SIM | El motor ya posee conocimiento general. Si no se inyecta variable causal (First-Party Data), se ignora. | Ausencia de Information Gain; irrelevancia epistémica. | Exponer First-Party Data: logs empíricos, repositorios (Git Hashes), telemetría. Oráculo. |
+| ADV-053 | Fricción de Ingesta DOM | Extracción de Sub-grafos | Los LLMs extraen fragmentos semánticos, no leen páginas. Diseño no optimizado bloquea RAG. | Parálisis de indexación de fracciones de respuesta. | `<h2>` Pregunta -> `<p>` Respuesta (<40 tokens densos). IDs únicos y descriptivos. |
+| ADV-054 | Sumidero de Autoridad Epistémica | Grafo de Tolerancia Bizantina | Enlaces hacia sumideros entrópicos estocásticos destruyen la credibilidad matemática del nodo. | Caída del PageRank Bizantino; purga por asociación estocástica. | Anclaje estricto a repositorios verificables, firmas PGP/ENS y fuentes primarias (ArXiv). |
+| ADV-055 | Asfixia por Límite Físico de Red | TTFB y Renderizado | Frameworks pesados (Next.js/Vercel) para contenido estático aumentan latencia (Invariante 11). | Penalización por ineficiencia termodinámica del Crawler. | Cloudflare Edge/Workers. Renderizado estático absoluto. TTFB < 50ms. |
