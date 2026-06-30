@@ -62,22 +62,22 @@ graph TD
 
 ### 1. [S-01] Loop Mitigation & Apoptosis (Thermal Fuse)
 * **Goal:** Eradicate recursive CPU/token loops caused by failing linters or blind polling.
-* **Primitive Alignment:** [PRIM-008](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_1_primitivas.md#L14) (Log Loops), [ANTI-007](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_3_antipatrones.md#L13) (Blind Polling), [VEC-008](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_5_vectores.md#L14) (Error Recursion).
-* **Invariant Control:** [INV-003](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_2_invariantes.md#L9) (Apoptosis Inevitable).
-* **Mitigation:** [RED-002](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_4_redundancias.md#L8) (TimerCondition Apoptosis).
+* **Primitive Alignment:** [PRIM-008](./batch_1_primitivas.md#L14) (Log Loops), [ANTI-007](./batch_3_antipatrones.md#L13) (Blind Polling), [VEC-008](./batch_5_vectores.md#L14) (Error Recursion).
+* **Invariant Control:** [INV-003](./batch_2_invariantes.md#L9) (Apoptosis Inevitable).
+* **Mitigation:** [RED-002](./batch_4_redundancias.md#L8) (TimerCondition Apoptosis).
 * **Exergy Return:** Saves up to 35% of token quota per agent call by preventing long-running silent loops.
 
 ### 2. [S-02] Ledger Integrity & BFT Verification (Cryptographic Anchor)
 * **Goal:** Eliminate reality drift and forensic hallucinations.
-* **Primitive Alignment:** [PRIM-005](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_1_primitivas.md#L11) (BFT Collapse), [ANTI-008](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_3_antipatrones.md#L14) (Falsa Promesa Epistémica), [VEC-006](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_5_vectores.md#L12) (State Replay).
-* **Invariant Control:** [INV-002](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_2_invariantes.md#L8) (Isomorphism).
-* **Mitigation:** [RED-001](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_4_redundancias.md#L7) (Git Sentinel).
+* **Primitive Alignment:** [PRIM-005](./batch_1_primitivas.md#L11) (BFT Collapse), [ANTI-008](./batch_3_antipatrones.md#L14) (Falsa Promesa Epistémica), [VEC-006](./batch_5_vectores.md#L12) (State Replay).
+* **Invariant Control:** [INV-002](./batch_2_invariantes.md#L8) (Isomorphism).
+* **Mitigation:** [RED-001](./batch_4_redundancias.md#L7) (Git Sentinel).
 * **Exergy Return:** Absolute state coherence. Rollback latency minimized to sub-second transactions.
 
 ### 3. [S-03] Sandboxing & Environment Isolation (Babylon Quarantine)
 * **Goal:** Defend memory and dependencies from host pollution.
-* **Primitive Alignment:** [PRIM-020](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_1_primitivas.md#L26) (Sandbox Contamination), [ANTI-002](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_3_antipatrones.md#L8) ("Just in case" dependencies), [VEC-002](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_5_vectores.md#L8) (Environment Poisoning).
-* **Invariant Control:** [INV-010](file://$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/batch_2_invariantes.md#L16) (Local Singularity).
+* **Primitive Alignment:** [PRIM-020](./batch_1_primitivas.md#L26) (Sandbox Contamination), [ANTI-002](./batch_3_antipatrones.md#L8) ("Just in case" dependencies), [VEC-002](./batch_5_vectores.md#L8) (Environment Poisoning).
+* **Invariant Control:** [INV-010](./batch_2_invariantes.md#L16) (Local Singularity).
 * **Mitigation:** Strict execution confinement to `~/.babylon60/` utilizing explicit static paths.
 * **Exergy Return:** Zero environment crashes due to system Python modifications or library conflicts.
 

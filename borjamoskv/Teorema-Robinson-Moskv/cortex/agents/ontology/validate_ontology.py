@@ -60,12 +60,17 @@ def validate_file(filename, all_ids):
         else:
             all_ids.add(item_id)
 
-    # Check file link integrity (e.g. [name](file:///path/to/file#anchor))
-    link_pattern = re.compile(r"\[.*?\]\((file://$CORTEX_ROOT/.*?)\)")
+    # Check file link integrity (e.g. [name](./file#anchor) or [name](file.md))
+    link_pattern = re.compile(r"\[.*?\]\(([^)]+)\)")
     links = link_pattern.findall(content)
     for link in links:
         # Strip query/anchor parameters
         clean_path = link.replace("file://", "").split("#")[0]
+        
+        # If relative, resolve relative to ONTOLOGY_DIR
+        if not os.path.isabs(clean_path):
+            clean_path = os.path.join(ONTOLOGY_DIR, clean_path)
+            
         if not os.path.exists(clean_path):
             print(f"  [ERROR] Link path does not exist: {clean_path}")
             errors += 1
