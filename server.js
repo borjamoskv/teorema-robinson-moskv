@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
 const os = require('os');
+const Database = require('better-sqlite3');
 
 const PORT = process.env.PORT || 8080;
 const WS_PORT = 8081;
@@ -106,6 +107,33 @@ wss.on('connection', (ws) => {
     });
 });
 
+// [C5-REAL] Database persistence with WAL mode and busy_timeout
+const dbPath = path.join(__dirname, 'telemetry.db');
+const db = new Database(dbPath, { timeout: 5000 });
+db.pragma('journal_mode = WAL');
+
+db.exec(`
+    CREATE TABLE IF NOT EXISTS telemetry_logs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        exergy REAL,
+        anergy REAL,
+        yield REAL,
+        mccabe INTEGER,
+        nesting INTEGER,
+        deadcode INTEGER,
+        entropy REAL,
+        log_module TEXT,
+        log_text TEXT,
+        log_type TEXT
+    )
+`);
+
+const insertTelemetry = db.prepare(`
+    INSERT INTO telemetry_logs (exergy, anergy, yield, mccabe, nesting, deadcode, entropy, log_module, log_text, log_type)
+    VALUES (@exergy, @anergy, @yield, @mccabe, @nesting, @deadcode, @entropy, @log_module, @log_text, @log_type)
+`);
+
 // Broadcast real physical metrics (C5-REAL) every 1.5 seconds
 setInterval(() => {
     const memUsage = process.memoryUsage();
@@ -118,8 +146,7 @@ setInterval(() => {
     const anergy = (100 - memPercent);
     const exergy = memPercent;
 
-    const payload = JSON.stringify({
-        type: 'telemetry',
+    const metricData = {
         exergy: exergy,
         anergy: anergy,
         yield: exergy / (anergy + 1),
@@ -127,10 +154,21 @@ setInterval(() => {
         nesting: cpus.length,
         deadcode: Math.floor(memUsage.heapUsed / 1024 / 1024),
         entropy: cpuLoad / cpus.length,
+        log_module: 'OS_KERNEL_C5',
+        log_text: `Physical telemetry vector mapped. Load Avg: ${cpuLoad.toFixed(2)}`,
+        log_type: (cpuLoad > cpus.length / 2) ? 'critical' : 'stable'
+    };
+
+    // Falsación Empírica: Persistencia Atómica
+    insertTelemetry.run(metricData);
+
+    const payload = JSON.stringify({
+        type: 'telemetry',
+        ...metricData,
         log: {
-            module: 'OS_KERNEL_C5',
-            text: `Physical telemetry vector mapped. Load Avg: ${cpuLoad.toFixed(2)}`,
-            type: (cpuLoad > cpus.length / 2) ? 'critical' : 'stable',
+            module: metricData.log_module,
+            text: metricData.log_text,
+            type: metricData.log_type,
             metric: `${Math.floor(memUsage.rss / 1024 / 1024)}MB RSS`
         }
     });
@@ -145,6 +183,7 @@ setInterval(() => {
 // Clean shutdown handlers
 const shutdown = () => {
     console.log('\x1b[1;33m[CORTEX]\x1b[0m Shutting down telemetry server...');
+    db.close();
     wss.close(() => {
         server.close(() => {
             console.log('\x1b[1;32m[CORTEX]\x1b[0m Server terminated cleanly.');
