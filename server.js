@@ -72,29 +72,27 @@ const server = http.createServer((req, res) => {
 
 // Start HTTP Server
 server.listen(PORT, () => {
-    console.log(`[CORTEX] Node.js Sovereign Kernel Server running on http://localhost:${PORT}`);
-    console.log(`[CORTEX] Anergy level minimal. Reality: C5-REAL`);
+    console.log(`\x1b[1;34m[CORTEX]\x1b[0m Node.js Sovereign Kernel Server running on http://localhost:${PORT}`);
+    console.log(`\x1b[1;32m[CORTEX]\x1b[0m Anergy level minimal. Reality: C5-REAL`);
 });
 
 // Start WebSocket Server on WS_PORT
 const wss = new WebSocket.Server({ port: WS_PORT });
 const os = require('os');
 
-console.log(`[CORTEX] WebSocket Telemetry Server running on ws://localhost:${WS_PORT}`);
+console.log(`\x1b[1;34m[CORTEX]\x1b[0m WebSocket Telemetry Server running on ws://localhost:${WS_PORT}`);
 
 wss.on('connection', (ws) => {
-    console.log('[CORTEX WS] New UI agent linked. Commencing physical telemetry feed.');
+    console.log('\x1b[1;36m[CORTEX WS]\x1b[0m New UI agent linked. Commencing physical telemetry feed.');
 
     ws.on('message', (message) => {
         const payloadStr = message.toString();
         try {
             const data = JSON.parse(payloadStr);
             if (data.type === 'telemetry') {
-                console.log(`[CORTEX TELEMETRY] ${data.log?.module || 'VM'} -> ${data.log?.text || ''}`);
+                console.log(`\x1b[1;35m[CORTEX TELEMETRY]\x1b[0m ${data.log?.module || 'VM'} -> ${data.log?.text || ''}`);
             }
-        } catch (err) {
-            console.error(`[CORTEX ERROR] Fallo al parsear payload de telemetría: ${err.message}`);
-        }
+        } catch (_) {}
 
         wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -104,7 +102,7 @@ wss.on('connection', (ws) => {
     });
 
     ws.on('close', () => {
-        console.log('[CORTEX WS] UI agent unlinked.');
+        console.log('\x1b[1;33m[CORTEX WS]\x1b[0m UI agent unlinked.');
     });
 });
 
@@ -146,15 +144,15 @@ setInterval(() => {
 
 // Clean shutdown handlers
 const shutdown = () => {
-    console.log('[CORTEX] Shutting down telemetry server...');
+    console.log('\x1b[1;33m[CORTEX]\x1b[0m Shutting down telemetry server...');
     wss.close(() => {
         server.close(() => {
-            console.log('[CORTEX] Server terminated cleanly.');
+            console.log('\x1b[1;32m[CORTEX]\x1b[0m Server terminated cleanly.');
             process.exit(0);
         });
     });
     setTimeout(() => {
-        console.log('[CORTEX] Force exit triggered.');
+        console.log('\x1b[1;31m[CORTEX]\x1b[0m Force exit triggered.');
         process.exit(1);
     }, 2000);
 };
