@@ -45,7 +45,7 @@ function updateDOM() {
     DOM.anergyLevel.textContent = exergyState.anergy.toFixed(2) + '%';
     DOM.exergyYield.textContent = exergyState.yield.toFixed(2) + 'x';
     DOM.exergyBar.style.width = exergyState.total + '%';
-    
+
     // Update colors based on thresholds
     if (exergyState.total > 90) DOM.totalExergy.style.color = 'var(--stable)';
     else if (exergyState.total < 75) DOM.totalExergy.style.color = 'var(--warning)';
@@ -137,7 +137,7 @@ function connectWS() {
                 exergyState.nesting = data.nesting;
                 exergyState.deadcode = data.deadcode;
                 exergyState.entropy = data.entropy;
-                
+
                 if (data.log) {
                     addLogEntry(data.log.module, data.log.text, data.log.type, data.log.metric);
                 }
@@ -153,7 +153,7 @@ function connectWS() {
         document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--warning); box-shadow: 0 0 8px var(--warning);"></span> DISCONNECTED';
         document.querySelector('.status-indicator').style.color = 'var(--warning)';
         document.querySelector('.status-indicator').style.background = 'rgba(229, 43, 43, 0.05)';
-        
+
         // Reconexión determinista en 5000ms. Cero simulación estocástica.
         setTimeout(connectWS, 5000);
     };

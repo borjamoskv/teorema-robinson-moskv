@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
+const os = require('os');
 
 const PORT = process.env.PORT || 8080;
 const WS_PORT = 8081;
@@ -78,7 +79,6 @@ server.listen(PORT, () => {
 
 // Start WebSocket Server on WS_PORT
 const wss = new WebSocket.Server({ port: WS_PORT });
-const os = require('os');
 
 console.log(`\x1b[1;34m[CORTEX]\x1b[0m WebSocket Telemetry Server running on ws://localhost:${WS_PORT}`);
 
@@ -117,7 +117,7 @@ setInterval(() => {
     const memPercent = (freeMem / totalMem) * 100;
     const anergy = (100 - memPercent);
     const exergy = memPercent;
-    
+
     const payload = JSON.stringify({
         type: 'telemetry',
         exergy: exergy,
