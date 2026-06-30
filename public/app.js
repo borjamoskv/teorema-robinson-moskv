@@ -28,17 +28,7 @@ let exergyState = {
     filter: 'all'
 };
 
-const MODULES = ['AST_PARSER', 'JIT_COMPILER', 'EXERGY_CORE', 'GIT_SENTINEL', 'MEMORY_VAULT'];
-const MESSAGES = [
-    { text: 'Optimizing recursive depth tree', type: 'stable' },
-    { text: 'Dead code token purged', type: 'stable' },
-    { text: 'Entropy spike detected in execution block', type: 'critical' },
-    { text: 'McCabe complexity exceeded threshold', type: 'critical' },
-    { text: 'Anergy levels stabilized', type: 'stable' },
-    { text: 'Recompiling JIT graph', type: 'stable' },
-    { text: 'Green theater patterns suppressed', type: 'stable' },
-    { text: 'Bypass Narrative triggered', type: 'critical' }
-];
+// [C5-REAL] Variables estocásticas purgadas. Cero Anergía.
 
 function formatTime(date) {
     return date.toTimeString().split(' ')[0] + '.' + String(date.getMilliseconds()).padStart(3, '0');
@@ -109,30 +99,7 @@ function renderLogs() {
     });
 }
 
-function simulateTick() {
-    // Random walks for metrics
-    exergyState.total = Math.max(0, Math.min(100, exergyState.total + (Math.random() - 0.45) * 2));
-    exergyState.anergy = 100 - exergyState.total;
-    exergyState.yield = exergyState.total / 50;
-
-    // Occasionally change matrix
-    if (Math.random() > 0.8) {
-        exergyState.mccabe = Math.max(1, Math.floor(exergyState.mccabe + (Math.random() - 0.5) * 3));
-        exergyState.nesting = Math.max(1, Math.floor(exergyState.nesting + (Math.random() - 0.5) * 2));
-        exergyState.deadcode = Math.max(0, Math.floor(exergyState.deadcode + (Math.random() - 0.6) * 10));
-        exergyState.entropy = Math.max(0, exergyState.entropy + (Math.random() - 0.48) * 0.05);
-    }
-
-    // Add random log
-    if (Math.random() > 0.7) {
-        const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
-        const mod = MODULES[Math.floor(Math.random() * MODULES.length)];
-        const metric = `${(Math.random() * 10).toFixed(2)}ms`;
-        addLogEntry(mod, msg.text, msg.type, metric);
-    }
-
-    updateDOM();
-}
+// [C5-REAL] Función estocástica simulateTick() eliminada. Cero anergía.
 
 // Event Listeners
 DOM.filterBtns.forEach(btn => {
@@ -146,20 +113,17 @@ DOM.filterBtns.forEach(btn => {
 
 // WebSocket Connection
 let socket = null;
-let simulationInterval = null;
 
 function connectWS() {
-    socket = new WebSocket('ws://localhost:8081');
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const host = window.location.hostname || 'localhost';
+    socket = new WebSocket(`${protocol}//${host}:8081`);
 
     socket.onopen = () => {
         console.log('[CORTEX UI] Connected to telemetry WebSocket.');
         document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--stable); box-shadow: 0 0 8px var(--stable);"></span> C5-REAL LINKED';
         document.querySelector('.status-indicator').style.color = 'var(--stable)';
         document.querySelector('.status-indicator').style.background = 'rgba(43, 229, 148, 0.05)';
-        if (simulationInterval) {
-            clearInterval(simulationInterval);
-            simulationInterval = null;
-        }
     };
 
     socket.onmessage = (event) => {
@@ -180,19 +144,18 @@ function connectWS() {
                 updateDOM();
             }
         } catch (e) {
-            console.error('Failed to parse telemetry frame', e);
+            console.error('[CORTEX ERROR] Failed to parse telemetry frame', e);
         }
     };
 
     socket.onclose = () => {
-        console.log('[CORTEX UI] Telemetry WebSocket unlinked. Falling back to C4-STANDBY.');
-        document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--warning); box-shadow: 0 0 8px var(--warning);"></span> C4-STANDBY';
+        console.log('[CORTEX UI] Telemetry WebSocket unlinked. Freezing state. NO C4-SIM ALLOWED.');
+        document.querySelector('.status-indicator').innerHTML = '<span class="pulse" style="background-color: var(--warning); box-shadow: 0 0 8px var(--warning);"></span> DISCONNECTED';
         document.querySelector('.status-indicator').style.color = 'var(--warning)';
         document.querySelector('.status-indicator').style.background = 'rgba(229, 43, 43, 0.05)';
-        if (!simulationInterval) {
-            simulationInterval = setInterval(simulateTick, 1000);
-        }
-        setTimeout(connectWS, 3000);
+        
+        // Reconexión determinista en 5000ms. Cero simulación estocástica.
+        setTimeout(connectWS, 5000);
     };
 }
 
