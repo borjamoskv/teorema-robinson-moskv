@@ -1,0 +1,14 @@
+{
+  "name": "teorema-robinson-moskv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./start.sh",
+    "start:node": "node server.js",
+    "start:python": "python3 server.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
