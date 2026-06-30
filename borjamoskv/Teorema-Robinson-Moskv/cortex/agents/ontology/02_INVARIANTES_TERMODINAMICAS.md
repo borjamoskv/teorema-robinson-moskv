@@ -102,3 +102,5 @@
 | INV-098 | Ley de Conservación 98 | Conservar estado en nodo 98 es vital. | Operar requiere aserción 98. | Divergencia 98 detectada. | Ratio Exergía 98 > 0.9. |
 | INV-099 | Ley de Conservación 99 | Conservar estado en nodo 99 es vital. | Operar requiere aserción 99. | Divergencia 99 detectada. | Ratio Exergía 99 > 0.9. |
 | INV-100 | Ley de Conservación 100 | Conservar estado en nodo 100 es vital. | Operar requiere aserción 100. | Divergencia 100 detectada. | Ratio Exergía 100 > 0.9. |
+
+| INV-ZK-OMEGA | Tensor ZK (100 Invariantes) | Soundness & Completeness $\forall \, d \in \mathcal{D}, v \in \mathcal{V}$ | Verificador polinómico O(1). | Cero entropía extraída. | Estática | C5 | Prueba Criptográfica Matemática. |

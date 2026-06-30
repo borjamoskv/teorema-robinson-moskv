@@ -44,3 +44,5 @@
 | ANTI-038 | Delegación de Negocio Oculta | Esconder lógica de dominio en triggers SQL oscuros o reglas de base de datos sin source control. | Base de datos que muta campos "mágicamente" on-insert. | Imposibilidad de debug. Sistema BFT opaco. | Lógica explícita en capa de aplicación C5. |
 | ANTI-039 | Anergía de Falso DRY | Unificar dos módulos que se ven iguales temporalmente pero difieren semánticamente. | Abstracciones tempranas con banderas condicionales masivas. | Código espagueti (Ouroboros negativo). | Esperar a regla de 3 repeticiones BFT antes de extraer. |
 | ANTI-040 | Bypass Causal de Singularidad | Asumir corrección teórica sin correr el código en el Sandbox C5. | "Este código está perfecto, lo empujo directo a prod". | Destrucción de la Invariante. Ruina térmica masiva. | Despliegue estricto BFT. Si no compila/testea, no existe. |
+
+| ANTI-ZK-OMEGA | Tensor ZK (100 Antipatrones) | Under-constrained $\mathcal{V}$ en dominio $\mathcal{D}$ | Field Overflow, Missing $===$. | Fuga de Witness. | Progresiva | C4 | Range Check y Aserción Estricta. |

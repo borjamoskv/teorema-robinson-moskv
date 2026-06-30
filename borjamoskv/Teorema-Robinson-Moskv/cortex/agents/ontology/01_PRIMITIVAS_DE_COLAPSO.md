@@ -103,3 +103,5 @@
 | PRIM-098 | Entropía Causal 98 (Causal Entropy 98) | Degradación termodinámica de capa 98. | Evento estocástico 98. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 98. |
 | PRIM-099 | Entropía Causal 99 (Causal Entropy 99) | Degradación termodinámica de capa 99. | Evento estocástico 99. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 99. |
 | PRIM-100 | Entropía Causal 100 (Causal Entropy 100) | Degradación termodinámica de capa 100. | Evento estocástico 100. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 100. |
+
+| PRIM-ZK-OMEGA | Tensor ZK (100 Primitivas) | $\mathcal{D} \otimes \mathcal{V} \to \mathcal{R}$ donde $\mathcal{D}=\{R1CS...Noir\}$ y $\mathcal{V}=\{Witness...Nullifier\}$ | Asignación ZK Criptográfica. | Colapso algebraico determinista. | Inmediata | C5 | Compresión O(1) de 100 primitivas. |

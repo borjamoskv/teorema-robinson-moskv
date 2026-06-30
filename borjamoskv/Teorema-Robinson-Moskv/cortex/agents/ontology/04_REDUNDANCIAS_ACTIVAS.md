@@ -24,3 +24,5 @@
 | RED-018 | Respaldo Físico de Contexto Base | Inyección cruzada (Symlink BFT) de `AGENTS.md` y `.cortex` en un pendrive lógico o disco secundario inmutable. | Destrucción recursiva por comando `rm -rf`. | Almacenamiento externo / Montaje de disco. | Sistema de Archivos Inmutable. |
 | RED-019 | Pararrayos Causal (Event Sourcing Puro) | Toda mutación se graba primero en un log append-only inmutable antes de ser aplicada al AST. | Pérdida de Vector Temporal, Imposibilidad de Rollback P0. | Espacio en disco exponencial por transacciones. | Event Store DB local. |
 | RED-020 | Macrófago Ontológico de Contención | Despliegue de un meta-agente aislado (`AGENTE-OMEGA`) que solo lee diffs y puede vetar mutaciones que violen las 135 entidades. | Corrupción C5, Regresión de estado SOTA. | Límite de procesamiento paralelo, tokens de lectura altos. | Entorno de Subagente BFT. |
+
+| RED-ZK-OMEGA | Tensor ZK (100 Redundancias) | Tolerancia Bizantina (MPC / BFT) sobre el tensor $\mathcal{D} \otimes \mathcal{V}$ | Ceremonia Trusted Setup N-nodos. | Descentralización Prover. | Retrasada | C5 | Verificación cruzada y Apoptosis tóxica. |
