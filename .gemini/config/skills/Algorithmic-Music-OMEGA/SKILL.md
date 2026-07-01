@@ -4,16 +4,17 @@ role: Procedural Audio Synthesis Engine
 version: 1.0.0
 scale: 100
 cost_tier: low
-trigger: aprende a hacer musica, genera musica, sintetiza audio, procedural music, waveform
-description: C5-REAL Sovereign engine for procedural audio synthesis. Transforms mathematical invariants and Markov chains into structural acoustic waves (PCM).
+description: C5-REAL Sovereign engine for procedural audio synthesis. Transforms mathematical
+  invariants and Markov chains into structural acoustic waves (PCM).
 category: audio-generation
 classification: SOVEREIGN
 danger_level: LOW
 depends_on: []
-axioms:
-  - "Music is structural geometry in time: Pure math applied to PCM data."
-  - "C5-REAL audio: No external generic APIs. Pure procedural waveform generation."
+axioms: ['Music is structural geometry in time: Pure math applied to PCM data.', 'C5-REAL
+    audio: No external generic APIs. Pure procedural waveform generation.']
 script: scripts/synth_engine.py
+triggers: [aprende a hacer musica, genera musica, sintetiza audio, procedural music,
+  waveform]
 ---
 # █ SYS_ID: ALGORITHMIC_MUSIC_OMEGA
 # █ STATE: C5-REAL | TARGET: PCM_WAVEFORM_SYNTHESIS
