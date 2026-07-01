@@ -10,15 +10,13 @@ def extract_entities():
     entities = []
     
     prim1000_path = "$CORTEX_ROOT/Downloads/matriz_1000_primitivas.yaml"
-    try:
-        with open(prim1000_path, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-            for t_key, t_val in data.items():
-                if not isinstance(t_val, dict): continue
-                for d_key, d_list in t_val.get("dimensions", {}).items():
-                    for prim in d_list:
-                        entities.append({"id": f"{t_key}:{prim}", "text": f"{t_key} {d_key} {prim}", "source": "MATRIZ_1000"})
-    except: pass
+    with open(prim1000_path, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f)
+        for t_key, t_val in data.items():
+            if not isinstance(t_val, dict): continue
+            for d_key, d_list in t_val.get("dimensions", {}).items():
+                for prim in d_list:
+                    entities.append({"id": f"{t_key}:{prim}", "text": f"{t_key} {d_key} {prim}", "source": "MATRIZ_1000"})
     
     for yf in glob.glob(os.path.join(ONTOLOGY_DIR, "*.yaml")):
         basename = os.path.basename(yf)

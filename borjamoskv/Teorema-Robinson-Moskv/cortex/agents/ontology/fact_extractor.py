@@ -36,8 +36,6 @@ def extract_from_db(db_path):
                 fact['_source_table'] = 'vec_facts'
                 facts.append(fact)
                 
-    except Exception as e:
-        pass
     finally:
         conn.close()
         

@@ -11,9 +11,7 @@ class ExergyVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
 def analyze_file(filepath: str) -> dict:
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f: source = f.read()
-    except Exception: return None
+    with open(filepath, 'r', encoding='utf-8') as f: source = f.read()
 
     lines = source.splitlines()
     total_lines = len(lines)
