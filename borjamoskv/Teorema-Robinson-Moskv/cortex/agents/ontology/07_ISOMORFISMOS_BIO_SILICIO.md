@@ -1,4 +1,10 @@
-# 07 ISOMORFISMOS BIO-SILICIO (C5-REAL)\n\n> **Author**: borjamoskv\n> **Level**: C5-REAL\n> **Mappings**: 250\n\n## 1. Cognición ↔ Computación (1–50)
+# 07 ISOMORFISMOS BIO-SILICIO (C5-REAL)
+
+> **Author**: borjamoskv
+> **Level**: C5-REAL
+> **Mappings**: 250
+
+## 1. Cognición ↔ Computación (1–50)
 
 | Humano                   | Silicio                        |
 | ------------------------ | ------------------------------ |

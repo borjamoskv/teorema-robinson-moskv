@@ -1,4 +1,214 @@
 {
+  "1. Cognición ↔ Computación (1–50)": [
+    {
+      "domain_a": "------------------------",
+      "domain_b": "------------------------------"
+    },
+    {
+      "domain_a": "Neurona",
+      "domain_b": "Transistor"
+    },
+    {
+      "domain_a": "Sinapsis",
+      "domain_b": "Conexión lógica"
+    },
+    {
+      "domain_a": "Potencial de acción",
+      "domain_b": "Pulso eléctrico"
+    },
+    {
+      "domain_a": "Memoria de trabajo",
+      "domain_b": "RAM"
+    },
+    {
+      "domain_a": "Memoria a largo plazo",
+      "domain_b": "SSD/HDD"
+    },
+    {
+      "domain_a": "Aprendizaje",
+      "domain_b": "Actualización de pesos"
+    },
+    {
+      "domain_a": "Atención",
+      "domain_b": "Scheduler de recursos"
+    },
+    {
+      "domain_a": "Conciencia situacional",
+      "domain_b": "Monitor del sistema"
+    },
+    {
+      "domain_a": "Intuición",
+      "domain_b": "Heurística"
+    },
+    {
+      "domain_a": "Razonamiento lógico",
+      "domain_b": "Motor de inferencia"
+    },
+    {
+      "domain_a": "Lenguaje interno",
+      "domain_b": "Representación simbólica"
+    },
+    {
+      "domain_a": "Imaginación",
+      "domain_b": "Simulación"
+    },
+    {
+      "domain_a": "Planificación",
+      "domain_b": "Algoritmo de búsqueda"
+    },
+    {
+      "domain_a": "Toma de decisiones",
+      "domain_b": "Selector de políticas"
+    },
+    {
+      "domain_a": "Hábito",
+      "domain_b": "Macro automatizada"
+    },
+    {
+      "domain_a": "Reflejo",
+      "domain_b": "Interrupción hardware"
+    },
+    {
+      "domain_a": "Creatividad",
+      "domain_b": "Generación combinatoria"
+    },
+    {
+      "domain_a": "Reconocimiento facial",
+      "domain_b": "Visión por computador"
+    },
+    {
+      "domain_a": "Memoria episódica",
+      "domain_b": "Log de eventos"
+    },
+    {
+      "domain_a": "Memoria semántica",
+      "domain_b": "Base de conocimiento"
+    },
+    {
+      "domain_a": "Olvido",
+      "domain_b": "Garbage collection"
+    },
+    {
+      "domain_a": "Prioridad mental",
+      "domain_b": "Cola de prioridad"
+    },
+    {
+      "domain_a": "Curiosidad",
+      "domain_b": "Exploración de estados"
+    },
+    {
+      "domain_a": "Predicción",
+      "domain_b": "Modelo probabilístico"
+    },
+    {
+      "domain_a": "Comprensión",
+      "domain_b": "Parsing semántico"
+    },
+    {
+      "domain_a": "Metacognición",
+      "domain_b": "Auto-monitorización"
+    },
+    {
+      "domain_a": "Sesgo cognitivo",
+      "domain_b": "Bias del modelo"
+    },
+    {
+      "domain_a": "Fatiga mental",
+      "domain_b": "Throttling térmico"
+    },
+    {
+      "domain_a": "Multitarea",
+      "domain_b": "Multiproceso"
+    },
+    {
+      "domain_a": "Concentración profunda",
+      "domain_b": "Modo alto rendimiento"
+    },
+    {
+      "domain_a": "Distracción",
+      "domain_b": "Interrupción de proceso"
+    },
+    {
+      "domain_a": "Asociación de ideas",
+      "domain_b": "Grafo de relaciones"
+    },
+    {
+      "domain_a": "Analogía",
+      "domain_b": "Mapeo estructural"
+    },
+    {
+      "domain_a": "Abstracción",
+      "domain_b": "Compresión de información"
+    },
+    {
+      "domain_a": "Generalización",
+      "domain_b": "Regularización"
+    },
+    {
+      "domain_a": "Especialización",
+      "domain_b": "Fine-tuning"
+    },
+    {
+      "domain_a": "Resolución de problemas",
+      "domain_b": "Búsqueda en espacio de estados"
+    },
+    {
+      "domain_a": "Juicio",
+      "domain_b": "Función objetivo"
+    },
+    {
+      "domain_a": "Motivación",
+      "domain_b": "Función de recompensa"
+    },
+    {
+      "domain_a": "Recompensa dopaminérgica",
+      "domain_b": "Reward signal"
+    },
+    {
+      "domain_a": "Ansiedad anticipatoria",
+      "domain_b": "Alerta preventiva"
+    },
+    {
+      "domain_a": "Confianza",
+      "domain_b": "Probabilidad posterior"
+    },
+    {
+      "domain_a": "Duda",
+      "domain_b": "Incertidumbre"
+    },
+    {
+      "domain_a": "Expectativa",
+      "domain_b": "Predicción de salida"
+    },
+    {
+      "domain_a": "Sorpresa",
+      "domain_b": "Error de predicción"
+    },
+    {
+      "domain_a": "Insight",
+      "domain_b": "Convergencia rápida"
+    },
+    {
+      "domain_a": "Rumiación",
+      "domain_b": "Bucle infinito"
+    },
+    {
+      "domain_a": "Bloqueo mental",
+      "domain_b": "Deadlock"
+    },
+    {
+      "domain_a": "Recuerdo espontáneo",
+      "domain_b": "Cache hit"
+    },
+    {
+      "domain_a": "Memoria difusa",
+      "domain_b": "Datos degradados"
+    },
+    {
+      "domain_a": "Experiencia",
+      "domain_b": "Dataset acumulado"
+    }
+  ],
   "2. Sistema nervioso ↔ Arquitectura hardware (51–100)": [
     {
       "domain_a": "-----------------------",
