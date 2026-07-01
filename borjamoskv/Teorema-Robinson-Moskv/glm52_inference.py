@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 tokenizer = AutoTokenizer.from_pretrained("zai-org/GLM-5.2")
 model = AutoModelForCausalLM.from_pretrained(
     "zai-org/GLM-5.2",
-    torch_dtype=torch.bfloat16,
+    dtype=torch.bfloat16,
     device_map="auto"
 )
 
