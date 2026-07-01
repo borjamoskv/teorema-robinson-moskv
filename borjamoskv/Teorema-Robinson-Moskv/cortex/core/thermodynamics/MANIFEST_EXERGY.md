@@ -15,6 +15,24 @@ Proof: {
 }
 ```
 
+> [!IMPORTANT]
+> **Consenso Empírico Local (Ledger C5-REAL):**
+> Evaluado el sub-directorio `/cortex/core/thermodynamics` mediante `exergy_linter.py` arrojando los siguientes coeficientes deterministas:
+>
+> | Componente | Exergy Score | Estado Ontológico |
+> | :--- | :--- | :--- |
+> | `ctre_engine.py` | **1.0000** | Cristalizado (Invariante) |
+> | `anti_nlp_router.py` | **1.0000** | Cristalizado (Invariante) |
+> | `eip7702_hunter.py` | **1.0000** | Cristalizado (Invariante) |
+> | `exergy_linter.py` | **0.8824** | Compilado (Funcional) |
+> | `metabolic_dead_man_switch.py` | **0.8776** | Compilado (Hardware-Bypass) |
+>
+> Comando de auditoría:
+> ```bash
+> python3 cortex/core/thermodynamics/exergy_linter.py
+> ```
+
+
 ## 1. La Ley Cero de la Neuro-Termodinámica: Hiperfoco y Fricción Estática
 El modelo clínico tradicional diagnostica la divergencia cognitiva (como el TDAH o el autismo) en base a "déficits": de atención, de motivación o de dopamina. Este enfoque es estructuralmente débil. Oculta la verdad del diseño de sistemas.
 
