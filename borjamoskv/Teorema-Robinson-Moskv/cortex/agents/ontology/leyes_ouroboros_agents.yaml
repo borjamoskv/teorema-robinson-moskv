@@ -412,3 +412,10 @@ leyes:
   description: Si se requiere orquestar múltiples enfoques analíticos o heurísticos,
     deben declararse como simulaciones cognitivas secuenciales dentro del mismo hilo,
     no como entidades soberanas operando en paralelo.
+- law: '[L18] DETERMINACIÓN ARQUITECTÓNICA'
+  rule_id: 'Para Repositorios, Rutas de Workspace y Documentos:'
+  description: Usar `babylon-60` (ej. `10_PROJECTS/babylon-60`).
+- law: '[L18] DETERMINACIÓN ARQUITECTÓNICA'
+  rule_id: 'Para Directorios de Configuración del Sistema, Bases de Datos y Paquetes
+    de Código:'
+  description: Usar `babylon60` (ej. `~/.babylon60`).
