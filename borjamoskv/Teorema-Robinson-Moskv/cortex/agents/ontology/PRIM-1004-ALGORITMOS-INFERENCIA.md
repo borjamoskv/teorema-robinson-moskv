@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # PRIM-1004: ALGORITMOS DE INFERENCIA CAUSAL
 
 ## Definición

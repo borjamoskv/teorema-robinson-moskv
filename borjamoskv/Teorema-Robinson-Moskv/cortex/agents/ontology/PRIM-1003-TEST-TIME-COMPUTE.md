@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # PRIM-1003: TEST-TIME COMPUTE (ESCALADO EN INFERENCIA)
 
 ## Definición

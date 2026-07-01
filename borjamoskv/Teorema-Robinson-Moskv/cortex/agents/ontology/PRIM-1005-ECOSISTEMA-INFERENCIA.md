@@ -1,3 +1,5 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
+
 # PRIM-1005: ECOSISTEMA Y REPOSITORIOS DE INFERENCIA ESCALADA
 
 ## Definición
