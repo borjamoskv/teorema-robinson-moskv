@@ -41,6 +41,7 @@
 - **PRIM-037**: Memoria Fantasma (Phantom Memory)
 - **PRIM-039**: Estancamiento de CI (CI Stagnation)
 - **PRIM-040**: Agotamiento de Workers (Worker Exhaustion)
+- **PRIM-1002**: Arquitectura Post-Autorregresiva (Cognición Distribuida)
 
 ## 🔵 Invariantes
 - **INV-001**: Ley de Landauer (Compresión de Estado)
