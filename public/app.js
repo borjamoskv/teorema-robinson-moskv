@@ -48,6 +48,13 @@ function flashElement(el) {
     el.classList.add('value-flash');
 }
 
+function updateMetricIfChanged(domEl, newVal) {
+    if (domEl.textContent !== String(newVal)) {
+        flashElement(domEl);
+        domEl.textContent = newVal;
+    }
+}
+
 function updateDOM() {
     DOM.totalExergy.textContent = exergyState.total.toFixed(2) + '%';
     DOM.anergyLevel.textContent = exergyState.anergy.toFixed(2) + '%';
@@ -63,32 +70,14 @@ function updateDOM() {
     else DOM.anergyLevel.style.color = 'var(--stable)';
 
     // Matrix updates with flash
-    if (DOM.mccabeVal.textContent !== String(exergyState.mccabe)) flashElement(DOM.mccabeVal);
-    DOM.mccabeVal.textContent = exergyState.mccabe;
-
-    if (DOM.nestingVal.textContent !== String(exergyState.nesting)) flashElement(DOM.nestingVal);
-    DOM.nestingVal.textContent = exergyState.nesting;
-
-    if (DOM.deadcodeVal.textContent !== String(exergyState.deadcode)) flashElement(DOM.deadcodeVal);
-    DOM.deadcodeVal.textContent = exergyState.deadcode;
-
-    const newEntropy = exergyState.entropy.toFixed(3);
-    if (DOM.entropyVal.textContent !== newEntropy) flashElement(DOM.entropyVal);
-    DOM.entropyVal.textContent = newEntropy;
-
-    if (DOM.llmViolations.textContent !== String(exergyState.llmViolations)) flashElement(DOM.llmViolations);
-    DOM.llmViolations.textContent = exergyState.llmViolations;
-
-    if (DOM.cpmViolations.textContent !== String(exergyState.cpmViolations)) flashElement(DOM.cpmViolations);
-    DOM.cpmViolations.textContent = exergyState.cpmViolations;
-
-    const newLlmLat = exergyState.llmLatency.toFixed(2) + 'ms';
-    if (DOM.llmLatency.textContent !== newLlmLat) flashElement(DOM.llmLatency);
-    DOM.llmLatency.textContent = newLlmLat;
-
-    const newCpmLat = exergyState.cpmLatency.toFixed(2) + 'μs';
-    if (DOM.cpmLatency.textContent !== newCpmLat) flashElement(DOM.cpmLatency);
-    DOM.cpmLatency.textContent = newCpmLat;
+    updateMetricIfChanged(DOM.mccabeVal, exergyState.mccabe);
+    updateMetricIfChanged(DOM.nestingVal, exergyState.nesting);
+    updateMetricIfChanged(DOM.deadcodeVal, exergyState.deadcode);
+    updateMetricIfChanged(DOM.entropyVal, exergyState.entropy.toFixed(3));
+    updateMetricIfChanged(DOM.llmViolations, exergyState.llmViolations);
+    updateMetricIfChanged(DOM.cpmViolations, exergyState.cpmViolations);
+    updateMetricIfChanged(DOM.llmLatency, exergyState.llmLatency.toFixed(2) + 'ms');
+    updateMetricIfChanged(DOM.cpmLatency, exergyState.cpmLatency.toFixed(2) + 'μs');
 }
 
 function addLogEntry(module, text, type, metric) {

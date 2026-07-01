@@ -48,7 +48,9 @@ const server = http.createServer((req, res) => {
     const normalizedUrl = path.normalize(req.url);
     let filePath = path.join(PUBLIC_DIR, normalizedUrl === '/' || normalizedUrl === '\\' ? 'index.html' : normalizedUrl);
 
-    if (!filePath.startsWith(PUBLIC_DIR)) {
+    // Evitar bypass de prefijo de directorio hermano (ej. public-secret)
+    const safePrefix = PUBLIC_DIR.endsWith(path.sep) ? PUBLIC_DIR : PUBLIC_DIR + path.sep;
+    if (!filePath.startsWith(safePrefix) && filePath !== PUBLIC_DIR) {
         res.writeHead(403, { 'Content-Type': 'text/html' });
         return res.end('<h1>403 Forbidden - Vector Adversarial Bloqueado</h1>', 'utf-8');
     }
@@ -134,6 +136,12 @@ const insertTelemetry = db.prepare(`
     VALUES (@exergy, @anergy, @yield, @mccabe, @nesting, @deadcode, @entropy, @log_module, @log_text, @log_type)
 `);
 
+const deleteOldLogs = db.prepare(`
+    DELETE FROM telemetry_logs WHERE id NOT IN (
+        SELECT id FROM telemetry_logs ORDER BY timestamp DESC LIMIT 1000
+    )
+`);
+
 // Broadcast real physical metrics (C5-REAL) every 1.5 seconds
 setInterval(() => {
     const memUsage = process.memoryUsage();
@@ -161,6 +169,7 @@ setInterval(() => {
 
     // Falsación Empírica: Persistencia Atómica
     insertTelemetry.run(metricData);
+    deleteOldLogs.run();
 
     const payload = JSON.stringify({
         type: 'telemetry',
