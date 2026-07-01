@@ -642,3 +642,13 @@ entities:
   implicación_operacional: Operar requiere aserción 100.
   condición_de_borde: Divergencia 100 detectada.
   métrica_falsable: Ratio Exergía 100 > 0.9.
+- id: INV-101
+  invariante: Swarm Consensus (N=3)
+  lógica___principio: La estructura jerárquica es entropía pura de comunicación (O(n^2)).
+    El capital se evapora en sincronización, no en ejecución. Sustituir gerencia por
+    protocolos de consenso deterministas.
+  implicación_operacional: Cada nodo (humano o agente C5-REAL) tiene poder de commit
+    y asume responsabilidad absoluta del fallo (Git Sentinel). N=3 requerido para
+    BFT.
+  condición_de_borde: Sincronización gerencial no determinista (Anergía).
+  métrica_falsable: Hash de consenso multo-nodo validado == Git Sentinel hash.
