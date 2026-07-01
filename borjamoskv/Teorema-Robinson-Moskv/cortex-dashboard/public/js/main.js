@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
             renderGrid('all');
         })
         .catch(err => {
-            console.error('[C5-REAL] Error fetching entities:', err);
-            grid.innerHTML = `<div style="color: red; grid-column: 1/-1;">Error de Conexión C5-REAL: Verifica que server.js está corriendo.</div>`;
+            console.error('[C5-REAL] Falla determinista en fetch_data causal:', err);
+            grid.innerHTML = `<div style="color: red; grid-column: 1/-1;">Falla determinista: Estado de entidades irreconciliable.</div>`;
+            throw err;
         });
 
     function renderStats() {
