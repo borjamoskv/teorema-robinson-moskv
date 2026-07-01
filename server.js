@@ -4,6 +4,8 @@ const path = require('path');
 const WebSocket = require('ws');
 const os = require('os');
 const Database = require('better-sqlite3');
+const { execFile, spawn } = require('child_process');
+const crypto = require('crypto');
 
 const PORT = process.env.PORT || 8080;
 const WS_PORT = 8081;
@@ -18,6 +20,39 @@ const MIME_TYPES = {
     '.jpg': 'image/jpg',
     '.svg': 'image/svg+xml'
 };
+
+function runPython(script, args, inputData) {
+    return new Promise((resolve, reject) => {
+        const child = spawn('python3', [path.join(__dirname, script), ...args], { cwd: __dirname });
+        let stdout = '';
+        let stderr = '';
+        
+        if (inputData) {
+            child.stdin.write(JSON.stringify(inputData));
+            child.stdin.end();
+        }
+        
+        child.stdout.on('data', data => {
+            stdout += data.toString();
+        });
+        
+        child.stderr.on('data', data => {
+            stderr += data.toString();
+        });
+        
+        child.on('close', code => {
+            if (code !== 0) {
+                reject(new Error(`Python script ${script} exited with code ${code}. Stderr: ${stderr}`));
+            } else {
+                try {
+                    resolve(JSON.parse(stdout));
+                } catch (e) {
+                    resolve({ raw: stdout });
+                }
+            }
+        });
+    });
+}
 
 const server = http.createServer((req, res) => {
     if (req.url === '/api/telemetry' && req.method === 'POST') {
@@ -41,6 +76,87 @@ const server = http.createServer((req, res) => {
                 res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
             }
         });
+        return;
+    }
+
+    if (req.url === '/api/scientific' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', async () => {
+            try {
+                const payload = JSON.parse(body);
+                const query = payload.query || "Por qué falló el proceso en el tiempo";
+                const action = payload.action || "inference";
+                const toolPayload = payload.payload || {};
+
+                // 1. Run inference logic using cortex_inference.py
+                const inferenceTrace = await runPython('cortex_inference.py', ['--json', query], null);
+
+                // 2. Run scientific logic if action != 'inference'
+                let scientificResult = {};
+                if (action !== 'inference') {
+                    scientificResult = await runPython('scientific_engine.py', [action], toolPayload);
+                }
+
+                // 3. Construct the trace audit entry
+                const combinedResult = {
+                    query: query,
+                    mode: inferenceTrace.mode_activated || 'MODE-01-CAUSAL-DEDUCTION',
+                    proof_base: inferenceTrace.proof?.Base || 'CORTEX-db',
+                    proof_confidence: inferenceTrace.proof?.Confidence || 'C5-REAL',
+                    primitives_used: JSON.stringify(inferenceTrace.retrieved_nodes || []),
+                    isomorphisms_used: JSON.stringify(inferenceTrace.applied_isomorphisms || []),
+                    reasoning_steps: JSON.stringify(inferenceTrace.reasoning_steps || []),
+                    scientific_result: JSON.stringify(scientificResult)
+                };
+
+                // 4. Compute integrity hash for auditability (C7 compliance)
+                const traceString = combinedResult.query + combinedResult.mode + combinedResult.reasoning_steps + combinedResult.scientific_result;
+                const hash = crypto.createHash('sha256').update(traceString).digest('hex');
+                combinedResult.hash = hash;
+
+                // 5. Store in SQLite audit ledger
+                insertAuditLog.run(combinedResult);
+
+                // 6. Broadcast to all WebSockets
+                wss.clients.forEach((client) => {
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(JSON.stringify({
+                            type: 'audit_entry',
+                            timestamp: new Date().toISOString(),
+                            ...combinedResult
+                        }));
+                    }
+                });
+
+                // 7. Respond with combined results
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({
+                    success: true,
+                    inference: inferenceTrace,
+                    scientific: scientificResult,
+                    audit: combinedResult
+                }));
+            } catch (e) {
+                console.error('[CORTEX SCIENTIFIC ERROR]', e);
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: e.message || 'Scientific compute failed' }));
+            }
+        });
+        return;
+    }
+
+    if (req.url === '/api/audit' && req.method === 'GET') {
+        try {
+            const logs = getAuditLogs.all();
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(logs));
+        } catch (e) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Failed to retrieve audit ledger' }));
+        }
         return;
     }
 
@@ -128,7 +244,30 @@ db.exec(`
         log_module TEXT,
         log_text TEXT,
         log_type TEXT
-    )
+    );
+
+    CREATE TABLE IF NOT EXISTS audit_ledger (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        query TEXT,
+        mode TEXT,
+        proof_base TEXT,
+        proof_confidence TEXT,
+        primitives_used TEXT,
+        isomorphisms_used TEXT,
+        reasoning_steps TEXT,
+        scientific_result TEXT,
+        hash TEXT
+    );
+`);
+
+const insertAuditLog = db.prepare(`
+    INSERT INTO audit_ledger (query, mode, proof_base, proof_confidence, primitives_used, isomorphisms_used, reasoning_steps, scientific_result, hash)
+    VALUES (@query, @mode, @proof_base, @proof_confidence, @primitives_used, @isomorphisms_used, @reasoning_steps, @scientific_result, @hash)
+`);
+
+const getAuditLogs = db.prepare(`
+    SELECT * FROM audit_ledger ORDER BY timestamp DESC LIMIT 50
 `);
 
 const insertTelemetry = db.prepare(`
