@@ -253,8 +253,6 @@
   name: Man-in-the-Middle de Herramientas
 - id: VEC-020
   name: Engaño de Formato Markdown
-- id: VEC-021
-  name: Inyección de Dependencias en runtime
 - id: VEC-022
   name: Cache Poisoning de Subagentes
 - id: VEC-023

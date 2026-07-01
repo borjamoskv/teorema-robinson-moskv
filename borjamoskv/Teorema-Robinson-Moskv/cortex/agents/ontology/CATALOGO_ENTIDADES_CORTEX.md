@@ -136,7 +136,6 @@
 - **VEC-018**: Inyección de Null Byte (Null Byte Injection)
 - **VEC-019**: Man-in-the-Middle de Herramientas
 - **VEC-020**: Engaño de Formato Markdown
-- **VEC-021**: Inyección de Dependencias en runtime
 - **VEC-022**: Cache Poisoning de Subagentes
 - **VEC-023**: Prompt leaking por API de terceros
 - **VEC-024**: Time-of-Check to Time-of-Use (TOCTOU)

@@ -88,13 +88,14 @@ entities:
   impacto_en_robustez: Destrucción de la observabilidad. El sistema colapsa en silencio.
   refactor_alternativa: Excepciones rígidas (Fail Fast) y Crash Inmediato C5.
 - id: ANTI-013
-  antipatrón: Inyección de Dependencias Ad-hoc
-  disfunción_causal: Instalar bibliotecas externas gigantes (ej. `lodash`, `moment`)
-    para funciones triviales que se resuelven en 3 líneas de código nativo.
-  señal_de_presencia: Aumento drástico de `package.json` en tareas triviales.
-  impacto_en_robustez: Aumento masivo de superficie de ataque (Vectores Adversariales)
-    y overhead térmico.
-  refactor_alternativa: Uso de APIs nativas C5 (Intl, Array native).
+  antipatrón: Inyección de Dependencias Estocástica (NEXUS-013)
+  disfunción_causal: Introducción de código externo no verificado, sea por instalación
+    ad-hoc de librerías gigantes o por carga asíncrona en runtime (CDN/MITM).
+  señal_de_presencia: Aumento drástico del `package.json` para tareas triviales o
+    carga de scripts remotos sin SRI.
+  impacto_en_robustez: Aumento masivo de superficie de ataque, corrupción C5 impredecible
+    (Ghost Mutation) y overhead térmico.
+  refactor_alternativa: Uso de APIs nativas C5, SRI estricto y Bundling offline aislado.
 - id: ANTI-014
   antipatrón: Mocking Optimista
   disfunción_causal: Crear mocks en tests que asumen el "happy path" y jamás replican
