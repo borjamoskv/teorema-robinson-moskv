@@ -4,7 +4,7 @@ import yaml
 import re
 
 ONTOLOGY_DIR = "$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology"
-ARTIFACT_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/8d29b729-587d-4f17-8623-789e7dd39de2/redundancias_convergencias.md"
+ARTIFACT_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/5e16ae97-2190-4550-90e2-3dd8495c4339/redundancias_convergencias.md"
 
 def extract_entities():
     entities = []

@@ -5,8 +5,8 @@ import re
 import csv
 
 ONTOLOGY_DIR = "$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology"
-ARTIFACT_MD_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/8d29b729-587d-4f17-8623-789e7dd39de2/redundancias_convergencias_extendido.md"
-ARTIFACT_CSV_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/8d29b729-587d-4f17-8623-789e7dd39de2/todas_redundancias.csv"
+ARTIFACT_MD_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/5e16ae97-2190-4550-90e2-3dd8495c4339/redundancias_convergencias_extendido.md"
+ARTIFACT_CSV_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/5e16ae97-2190-4550-90e2-3dd8495c4339/todas_redundancias.csv"
 
 def extract_entities():
     entities = []

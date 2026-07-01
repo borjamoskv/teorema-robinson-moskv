@@ -63,46 +63,6 @@
 | PRIM-058 | Parálisis por Análisis Estático (Static Analysis Paralysis) | Reglas de linter excesivamente pedantes o contradictorias que detienen la mutación productiva de código. | Linter requiere reescribir un bloque entero por una coma. | Tiempo de forja disparado (Anergía de desarrollo). | Progresiva | C2 | Ajuste de linter a umbral pragmático (Focus on Semantics). |
 | PRIM-059 | Infección de Lógica de Vista (View Logic Infection) | Acoplamiento de lógica de negocio o transaccional directamente dentro de componentes de renderizado UI. | Llamada SQL o fetch complejo dentro de un `<button>`. | Imposibilidad de testear la lógica sin montar la vista. | Estática | C4 | Patrón MVC/MVVM o Clean Architecture estricta. |
 | PRIM-060 | Colapso de Paginación (Pagination Collapse) | Consulta de base de datos sin límite (`LIMIT`) que extrae la tabla entera a la RAM del agente o servidor. | `SELECT * FROM logs` en una tabla de 10M de filas. | OOM, timeout de red o congelación de UI. | Inmediata | C5 | Paginación u Offset estricto impuesto por defecto. |
-| PRIM-061 | Entropía Vectorial 61 (Vector Entropy 61) | Degradación del nivel de estado estructural debido a un fallo en la aserción de la invariante 61. | Desviación de umbral de entropía 61. | Lectura de anergía en el sistema C5-REAL. | Progresiva | C5 | Recalibración del Isomorfismo Causal y purga BFT. |
-| PRIM-062 | Entropía Causal 62 (Causal Entropy 62) | Degradación termodinámica de capa 62. | Evento estocástico 62. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 62. |
-| PRIM-063 | Entropía Causal 63 (Causal Entropy 63) | Degradación termodinámica de capa 63. | Evento estocástico 63. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 63. |
-| PRIM-064 | Entropía Causal 64 (Causal Entropy 64) | Degradación termodinámica de capa 64. | Evento estocástico 64. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 64. |
-| PRIM-065 | Entropía Causal 65 (Causal Entropy 65) | Degradación termodinámica de capa 65. | Evento estocástico 65. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 65. |
-| PRIM-066 | Entropía Causal 66 (Causal Entropy 66) | Degradación termodinámica de capa 66. | Evento estocástico 66. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 66. |
-| PRIM-067 | Entropía Causal 67 (Causal Entropy 67) | Degradación termodinámica de capa 67. | Evento estocástico 67. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 67. |
-| PRIM-068 | Entropía Causal 68 (Causal Entropy 68) | Degradación termodinámica de capa 68. | Evento estocástico 68. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 68. |
-| PRIM-069 | Entropía Causal 69 (Causal Entropy 69) | Degradación termodinámica de capa 69. | Evento estocástico 69. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 69. |
-| PRIM-070 | Entropía Causal 70 (Causal Entropy 70) | Degradación termodinámica de capa 70. | Evento estocástico 70. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 70. |
-| PRIM-071 | Entropía Causal 71 (Causal Entropy 71) | Degradación termodinámica de capa 71. | Evento estocástico 71. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 71. |
-| PRIM-072 | Entropía Causal 72 (Causal Entropy 72) | Degradación termodinámica de capa 72. | Evento estocástico 72. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 72. |
-| PRIM-073 | Entropía Causal 73 (Causal Entropy 73) | Degradación termodinámica de capa 73. | Evento estocástico 73. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 73. |
-| PRIM-074 | Entropía Causal 74 (Causal Entropy 74) | Degradación termodinámica de capa 74. | Evento estocástico 74. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 74. |
-| PRIM-075 | Entropía Causal 75 (Causal Entropy 75) | Degradación termodinámica de capa 75. | Evento estocástico 75. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 75. |
-| PRIM-076 | Entropía Causal 76 (Causal Entropy 76) | Degradación termodinámica de capa 76. | Evento estocástico 76. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 76. |
-| PRIM-077 | Entropía Causal 77 (Causal Entropy 77) | Degradación termodinámica de capa 77. | Evento estocástico 77. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 77. |
-| PRIM-078 | Entropía Causal 78 (Causal Entropy 78) | Degradación termodinámica de capa 78. | Evento estocástico 78. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 78. |
-| PRIM-079 | Entropía Causal 79 (Causal Entropy 79) | Degradación termodinámica de capa 79. | Evento estocástico 79. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 79. |
-| PRIM-080 | Entropía Causal 80 (Causal Entropy 80) | Degradación termodinámica de capa 80. | Evento estocástico 80. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 80. |
-| PRIM-081 | Entropía Causal 81 (Causal Entropy 81) | Degradación termodinámica de capa 81. | Evento estocástico 81. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 81. |
-| PRIM-082 | Entropía Causal 82 (Causal Entropy 82) | Degradación termodinámica de capa 82. | Evento estocástico 82. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 82. |
-| PRIM-083 | Entropía Causal 83 (Causal Entropy 83) | Degradación termodinámica de capa 83. | Evento estocástico 83. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 83. |
-| PRIM-084 | Entropía Causal 84 (Causal Entropy 84) | Degradación termodinámica de capa 84. | Evento estocástico 84. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 84. |
-| PRIM-085 | Entropía Causal 85 (Causal Entropy 85) | Degradación termodinámica de capa 85. | Evento estocástico 85. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 85. |
-| PRIM-086 | Entropía Causal 86 (Causal Entropy 86) | Degradación termodinámica de capa 86. | Evento estocástico 86. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 86. |
-| PRIM-087 | Entropía Causal 87 (Causal Entropy 87) | Degradación termodinámica de capa 87. | Evento estocástico 87. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 87. |
-| PRIM-088 | Entropía Causal 88 (Causal Entropy 88) | Degradación termodinámica de capa 88. | Evento estocástico 88. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 88. |
-| PRIM-089 | Entropía Causal 89 (Causal Entropy 89) | Degradación termodinámica de capa 89. | Evento estocástico 89. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 89. |
-| PRIM-090 | Entropía Causal 90 (Causal Entropy 90) | Degradación termodinámica de capa 90. | Evento estocástico 90. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 90. |
-| PRIM-091 | Entropía Causal 91 (Causal Entropy 91) | Degradación termodinámica de capa 91. | Evento estocástico 91. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 91. |
-| PRIM-092 | Entropía Causal 92 (Causal Entropy 92) | Degradación termodinámica de capa 92. | Evento estocástico 92. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 92. |
-| PRIM-093 | Entropía Causal 93 (Causal Entropy 93) | Degradación termodinámica de capa 93. | Evento estocástico 93. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 93. |
-| PRIM-094 | Entropía Causal 94 (Causal Entropy 94) | Degradación termodinámica de capa 94. | Evento estocástico 94. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 94. |
-| PRIM-095 | Entropía Causal 95 (Causal Entropy 95) | Degradación termodinámica de capa 95. | Evento estocástico 95. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 95. |
-| PRIM-096 | Entropía Causal 96 (Causal Entropy 96) | Degradación termodinámica de capa 96. | Evento estocástico 96. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 96. |
-| PRIM-097 | Entropía Causal 97 (Causal Entropy 97) | Degradación termodinámica de capa 97. | Evento estocástico 97. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 97. |
-| PRIM-098 | Entropía Causal 98 (Causal Entropy 98) | Degradación termodinámica de capa 98. | Evento estocástico 98. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 98. |
-| PRIM-099 | Entropía Causal 99 (Causal Entropy 99) | Degradación termodinámica de capa 99. | Evento estocástico 99. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 99. |
-| PRIM-100 | Entropía Causal 100 (Causal Entropy 100) | Degradación termodinámica de capa 100. | Evento estocástico 100. | Falla de aserción. | Progresiva | C4 | Recalibración BFT 100. |
 
 | PRIM-ZK-OMEGA | Tensor ZK (100 Primitivas) | $\mathcal{D} \otimes \mathcal{V} \to \mathcal{R}$ donde $\mathcal{D}=\{R1CS...Noir\}$ y $\mathcal{V}=\{Witness...Nullifier\}$ | Asignación ZK Criptográfica. | Colapso algebraico determinista. | Inmediata | C5 | Compresión O(1) de 100 primitivas. |
 | PRIM-101 | Hyper-Customization (Saturación Decorativa) | Agente de UI autónomo o exposición radical de tokens al operador para mutar la identidad visual. | Uniformidad transaccional (PRIM-001). | Carga cognitiva y disipación térmica (GPU). | Inmediata | C5 | Exposición BFT. |
