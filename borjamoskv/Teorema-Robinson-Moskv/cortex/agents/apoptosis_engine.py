@@ -6,30 +6,21 @@ import os
 import sys
 
 class ApoptosisVisitor(ast.NodeVisitor):
-    def __init__(self):
-        self.defined = set()
-        self.used = set()
+    def __init__(self) -> None:
+        self.defined: set[str] = set()
+        self.used: set[str] = set()
 
-
-
-
-        
-
-
-def prune_file(filepath, dead_nodes):
+def prune_file(filepath: str, dead_nodes: set[str]) -> bool:
     if not dead_nodes:
         return False
         
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            
-        with open(filepath, 'r', encoding='utf-8') as f:
-            code = f.read()
-            
-        tree = ast.parse(code)
-    except:
-        return False
+    with open(filepath, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        
+    with open(filepath, 'r', encoding='utf-8') as f:
+        code = f.read()
+        
+    tree = ast.parse(code)
         
     to_remove = []
     for node in ast.walk(tree):
@@ -50,31 +41,28 @@ def prune_file(filepath, dead_nodes):
         
     return True
 
-def run_apoptosis(target_dir):
+def run_apoptosis(target_dir: str) -> None:
     print(f"[*] Detonando Apoptosis Ontológica (AST-Pruner) en {target_dir}")
     total_files = 0
     pruned_files = 0
     
     # Gather global usage across all files first to prevent cross-file false positives
-    global_used = set()
-    global_defined = set()
-    file_map = {}
+    global_used: set[str] = set()
+    global_defined: set[str] = set()
+    file_map: dict[str, tuple[set[str], ast.AST]] = {}
     
     for root, _, files in os.walk(target_dir):
         for file in files:
             if file.endswith('.py'):
                 filepath = os.path.join(root, file)
                 total_files += 1
-                try:
-                    with open(filepath, 'r', encoding='utf-8') as f:
-                        tree = ast.parse(f.read())
-                    visitor = ApoptosisVisitor()
-                    visitor.visit(tree)
-                    global_used.update(visitor.used)
-                    global_defined.update(visitor.defined)
-                    file_map[filepath] = (visitor.defined, tree)
-                except:
-                    continue
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    tree = ast.parse(f.read())
+                visitor = ApoptosisVisitor()
+                visitor.visit(tree)
+                global_used.update(visitor.used)
+                global_defined.update(visitor.defined)
+                file_map[filepath] = (visitor.defined, tree)
                     
     # Only prune nodes that are NEVER used anywhere in the codebase
     dead_global = global_defined - global_used

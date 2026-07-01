@@ -15,7 +15,7 @@ body = "---".join(parts[2:])
 pattern = r"\*\*Ciclo (\d+):\*\* (.*?)(?=\*\*Ciclo|\n\n>|\Z)"
 matches = re.findall(pattern, body, flags=re.DOTALL)
 
-matrix = []
+matrix: list[dict[str, int | str]] = []
 for m in matches:
     cycle_id = int(m[0])
     text = m[1].strip().replace("\n", " ")

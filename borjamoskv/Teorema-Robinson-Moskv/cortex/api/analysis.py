@@ -60,11 +60,8 @@ def log_audit_event(method: str, path: str, ip: str, status: int, latency: float
         "latency_ms": latency,
         "user": user
     }
-    try:
-        with open(log_file, "a", encoding="utf-8") as f:
-            f.write(json.dumps(event) + "\n")
-    except Exception as e:
-        print(f"[AUDIT LOG ERROR] {e}")
+    with open(log_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(event) + "\n")
 
 # Forensic Middleware
 @app.middleware("http")
@@ -78,13 +75,10 @@ async def forensic_audit_middleware(request: Request, call_next):
     user = "anonymous"
     auth_header = request.headers.get("Authorization")
     if auth_header:
-        try:
-            scheme, token = auth_header.split()
-            if scheme.lower() == "bearer":
-                payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-                user = payload.get("user", "sys_auditor")
-        except Exception:
-            user = "invalid_token"
+        scheme, token = auth_header.split()
+        if scheme.lower() == "bearer":
+            payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+            user = payload.get("user", "sys_auditor")
 
     log_audit_event(
         method=request.method,
@@ -96,34 +90,27 @@ async def forensic_audit_middleware(request: Request, call_next):
     )
     return response
 
-def verify_strict_token(authorization: str = Header(None)):
+def verify_strict_token(authorization: str = Header(None)) -> dict:
     if not authorization:
         raise HTTPException(status_code=401, detail="MISSING_BFT_AUTHORIZATION")
-    try:
-        scheme, token = authorization.split()
-        if scheme.lower() != "bearer":
-            raise HTTPException(status_code=401, detail="INVALID_BFT_SCHEME")
-        
-        # Verify strict HS256 signature
-        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-        return payload
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="BFT_TOKEN_EXPIRED")
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"BFT_SIGNATURE_INVALID: {str(e)}")
+    scheme, token = authorization.split()
+    if scheme.lower() != "bearer":
+        raise HTTPException(status_code=401, detail="INVALID_BFT_SCHEME")
+    
+    # Verify strict HS256 signature
+    payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+    return payload
 
 def _query_db_worker(query: str) -> list[FactNode]:
     """Synchronous worker thread to query the WAL SQLite Database safely"""
-    facts = []
+    facts: list[FactNode] = []
     if not os.path.exists(DB_PATH):
         return facts
 
-    conn = None
-    try:
-        conn = sqlite3.connect(DB_PATH, timeout=5.0)
-        conn.execute("PRAGMA journal_mode=WAL;")
-        conn.execute("PRAGMA busy_timeout=5000;")
-        cursor = conn.cursor()
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
+    conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA busy_timeout=5000;")
+    cursor = conn.cursor()
 
         tables = {
             "primitivas_de_colapso": ["id", "primitiva", "mecanismo_causal"],
@@ -168,35 +155,28 @@ def _query_db_worker(query: str) -> list[FactNode]:
                     content=content_str,
                     timestamp=datetime.now(UTC).isoformat()
                 ))
-    except Exception as e:
-        print(f"[DB WORKER ERROR] {e}")
-    finally:
-        if conn:
-            conn.close()
+    conn.close()
     return facts
 
 def _read_memory_worker(query: str) -> list[FactNode]:
     """Synchronous worker thread to read cortex system memory"""
     ghosts_file = os.path.join(MEMORY_PATH, "ghosts.json")
-    facts = []
+    facts: list[FactNode] = []
     if os.path.exists(ghosts_file):
-        try:
-            with open(ghosts_file, encoding="utf-8") as f:
-                data = json.load(f)
-                for proj, ghost in data.items():
-                    task = ghost.get("last_task", "")
-                    if query.lower() in task.lower() or query.lower() == "all":
-                        facts.append(FactNode(
-                            id=f"GHOST-{proj.upper()}",
-                            content=f"Project: {proj} | Task: {task} | Status: {ghost.get('status', 'active')}",
-                            timestamp=ghost.get("timestamp", datetime.now(UTC).isoformat())
-                        ))
-        except Exception as e:
-            print(f"[MEMORY WORKER ERROR] {e}")
+        with open(ghosts_file, encoding="utf-8") as f:
+            data = json.load(f)
+            for proj, ghost in data.items():
+                task = ghost.get("last_task", "")
+                if query.lower() in task.lower() or query.lower() == "all":
+                    facts.append(FactNode(
+                        id=f"GHOST-{proj.upper()}",
+                        content=f"Project: {proj} | Task: {task} | Status: {ghost.get('status', 'active')}",
+                        timestamp=ghost.get("timestamp", datetime.now(UTC).isoformat())
+                    ))
     return facts
 
 @app.get("/health")
-def health_check():
+def health_check() -> dict:
     return {
         "status": "C5-REAL",
         "engine": "MOSKV-1 OMEGA",
@@ -243,7 +223,7 @@ async def get_facts(
 
 # Shannon Entropy Analyzer Endpoint
 @app.get("/entropy")
-def get_entropy_signature(payload: str = Query(..., min_length=2)):
+def get_entropy_signature(payload: str = Query(..., min_length=2)) -> dict:
     """Computes Shannon Entropy of target payloads before compilation ingestion."""
     if not payload:
         return {"entropy": 0.0, "classification": "EMPTY"}
