@@ -98,6 +98,110 @@
                 </div>
             </section>
 
+            <!-- Ultrathink Console & Scientific Panel -->
+            <section class="panel ultrathink-console-panel">
+                <div class="panel-header">
+                    <h2>ULTRATHINK WORKSPACE</h2>
+                    <span class="live-tag">C7 ENG</span>
+                </div>
+                <div class="console-body">
+                    <div class="input-group">
+                        <label for="console-query" class="console-label">ULTRATHINK INFERENCE QUERY</label>
+                        <textarea id="console-query" placeholder="E.g., Por qué falló el proceso en el tiempo? or describe system anomalies..."></textarea>
+                    </div>
+                    <div class="controls-row">
+                        <div class="input-group select-group">
+                            <label for="scientific-action" class="console-label">SCIENTIFIC TOOL</label>
+                            <select id="scientific-action">
+                                <option value="inference">None (Inference Only)</option>
+                                <option value="entropy">Shannon Entropy</option>
+                                <option value="fisher">Fisher Information</option>
+                                <option value="dsep">d-Separation Solver</option>
+                                <option value="kolmogorov">Kolmogorov MDL Approximation</option>
+                            </select>
+                        </div>
+                        <button id="execute-btn" class="execute-btn">EXECUTE COMPUTE</button>
+                    </div>
+                    
+                    <!-- Dynamic parameter inputs depending on action -->
+                    <div id="parameter-inputs" class="parameter-inputs">
+                        <!-- Will be dynamically injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Analysis & Canvas Panel -->
+            <section class="panel visual-analysis-panel">
+                <div class="panel-header">
+                    <h2>VISUAL ANALYSIS MANIFOLD</h2>
+                    <span class="live-tag">CANVAS</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="analysis-canvas" width="500" height="230"></canvas>
+                </div>
+            </section>
+
+            <!-- Live Pipeline Visualizer Panel -->
+            <section class="panel pipeline-visualizer-panel">
+                <div class="panel-header">
+                    <h2>INFERENCE PIPELINE TRACKER</h2>
+                </div>
+                <div class="pipeline-flow">
+                    <div class="pipeline-step" id="step-1">
+                        <div class="step-num">01</div>
+                        <div class="step-label">PARSING</div>
+                        <div class="step-status">IDLE</div>
+                    </div>
+                    <div class="pipeline-step" id="step-2">
+                        <div class="step-num">02</div>
+                        <div class="step-label">RETRIEVAL</div>
+                        <div class="step-status">IDLE</div>
+                    </div>
+                    <div class="pipeline-step" id="step-3">
+                        <div class="step-num">03</div>
+                        <div class="step-label">FUSION</div>
+                        <div class="step-status">IDLE</div>
+                    </div>
+                    <div class="pipeline-step" id="step-4">
+                        <div class="step-num">04</div>
+                        <div class="step-label">SCIENTIFIC</div>
+                        <div class="step-status">IDLE</div>
+                    </div>
+                    <div class="pipeline-step" id="step-5">
+                        <div class="step-num">05</div>
+                        <div class="step-label">LEDGIFICATION</div>
+                        <div class="step-status">IDLE</div>
+                    </div>
+                </div>
+                <div id="pipeline-details" class="pipeline-details">
+                    Select a tool and press execute to witness C5-REAL trace compilation.
+                </div>
+            </section>
+
+            <!-- C7 Audit Ledger Panel -->
+            <section class="panel audit-ledger-panel">
+                <div class="panel-header">
+                    <h2>C7 AUDIT LEDGER (PROV-TRACEABLE)</h2>
+                </div>
+                <div class="audit-list-container">
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Query</th>
+                                <th>Mode</th>
+                                <th>Confidence</th>
+                                <th>Hash Ledger</th>
+                                <th>Inspect</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
             <!-- Real-Time Feed Panel -->
             <section class="panel telemetry-feed">
                 <div class="panel-header">

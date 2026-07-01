@@ -1,0 +1,198 @@
+# CORTEX Inference Engine v1.0
+# Motor de razonamiento sobre 1000 primitivas + 120 isomorfismos
+# ---
+
+meta:
+  name: CORTEX-Inference-Engine-v1.0
+  claim: Motor de razonamiento sobre 1000 primitivas + 120 isomorfismos
+  base: Isomorfismo Causal / PeARL-77
+  primitives: 1000
+  isomorphisms: 120
+  fusion_operators: 20
+  inference_modes: 6
+  complexity: O(n log n) per inference cycle
+inference_modes:
+  MODE-01-CAUSAL-DEDUCTION:
+    description: Razonamiento causal puro usando T01 + T07
+    activation_trigger: query_contains_causal_verbs OR query_contains_intervention_language
+    primitive_pool:
+    - T01
+    - T07
+    isomorphism_pool:
+    - T01↔T07
+    - T01↔T04
+    inference_steps:
+    - 1. Parse query into causal graph (T07.D01-D03)
+    - 2. Identify intervention points (T01.D01)
+    - 3. Compute counterfactuals via nearby-worlds (T01.D02 ↔ T04.D02)
+    - 4. Validate paths using d-separation (T01.D07 ↔ T07.D06)
+    - 5. Output causal effect estimate with uncertainty bounds (T01.D10)
+    output_format: causal_estimate_with_confidence_interval
+    fallback_mode: MODE-04-MODAL-EXPLORATION
+  MODE-02-MEREOTOPOLOGICAL-COMPOSITION:
+    description: Análisis de partes, todo y fronteras usando T02 + T10 + T07
+    activation_trigger: query_contains_part_whole OR query_contains_boundary OR query_contains_system_decomposition
+    primitive_pool:
+    - T02
+    - T10
+    - T07
+    isomorphism_pool:
+    - T02↔T10
+    - T02↔T07
+    - T07↔T10
+    inference_steps:
+    - 1. Decompose target into proper parts (T02.D01)
+    - 2. Classify boundary types (T02.D03 ↔ T10.D01)
+    - 3. Map parts to graph nodes (T02.D01 ↔ T07.D01)
+    - 4. Identify connection topology (T02.D04 ↔ T07.D02)
+    - 5. Assess systemic regulation via feedback loops (T10.D03 ↔ T01.D03)
+    - 6. Output compositional architecture with boundary conditions
+    output_format: mereotopological_diagram_with_systemic_regulation
+    fallback_mode: MODE-05-INFORMATION-GEOMETRY
+  MODE-03-PROCESS-DYNAMICS:
+    description: Análisis temporal y dinámico usando T03 + T05 + T10
+    activation_trigger: query_contains_time OR query_contains_change OR query_contains_evolution OR query_contains_flow
+    primitive_pool:
+    - T03
+    - T05
+    - T10
+    isomorphism_pool:
+    - T03↔T10
+    - T03↔T05
+    - T05↔T10
+    inference_steps:
+    - 1. Identify event sequence (T03.D01-D02)
+    - 2. Map to temporal modalities (T03.D02 ↔ T04.D09)
+    - 3. Compute information flow along process (T03.D06 ↔ T05.D05)
+    - 4. Detect attractors and stability states (T03.D04 ↔ T10.D06)
+    - 5. Assess phase transitions (T03.D05)
+    - 6. Predict future states using Fisher information metric (T05.D03)
+    - 7. Output dynamical trajectory with bifurcation points
+    output_format: dynamical_system_model_with_predictions
+    fallback_mode: MODE-06-SEMIOTIC-DECODING
+  MODE-04-MODAL-EXPLORATION:
+    description: Exploración de mundos posibles usando T04 + T08 + T09
+    activation_trigger: query_contains_possible OR query_contains_what_if OR query_contains_could OR query_contains_scenario
+    primitive_pool:
+    - T04
+    - T08
+    - T09
+    isomorphism_pool:
+    - T04↔T08
+    - T04↔T09
+    - T08↔T09
+    inference_steps:
+    - 1. Generate possible worlds from query (T04.D02)
+    - 2. Classify by accessibility relations (T04.D03)
+    - 3. Compute computational complexity of each world (T04.D01 ↔ T08.D03)
+    - 4. Map to intentional states (T04.D08 ↔ T09.D01)
+    - 5. Evaluate deontic constraints (T04.D07)
+    - 6. Rank worlds by alethic necessity (T04.D10)
+    - 7. Output modal landscape with optimal world recommendation
+    output_format: modal_world_ranking_with_accessibility_graph
+    fallback_mode: MODE-01-CAUSAL-DEDUCTION
+  MODE-05-INFORMATION-GEOMETRY:
+    description: Optimización en variedades de información usando T05 + T08 + T07
+    activation_trigger: query_contains_optimize OR query_contains_learn OR query_contains_data OR query_contains_model
+    primitive_pool:
+    - T05
+    - T08
+    - T07
+    isomorphism_pool:
+    - T05↔T08
+    - T05↔T07
+    - T07↔T08
+    inference_steps:
+    - 1. Construct statistical manifold from data (T05.D04)
+    - 2. Compute Fisher metric and natural gradient (T05.D03)
+    - 3. Measure divergence from target (T05.D02)
+    - 4. Apply algorithmic paradigm (T08.D06 ↔ T05.D08)
+    - 5. Optimize using graph-based community structure (T07.D06 ↔ T05.D07)
+    - 6. Assess complexity and compressibility (T05.D09)
+    - 7. Output optimal parameter configuration with uncertainty geometry
+    output_format: information_manifold_with_optimal_point
+    fallback_mode: MODE-03-PROCESS-DYNAMICS
+  MODE-06-SEMIOTIC-DECODING:
+    description: Interpretación de signos y significados usando T06 + T09 + T04
+    activation_trigger: query_contains_meaning OR query_contains_text OR query_contains_language OR query_contains_sign
+    primitive_pool:
+    - T06
+    - T09
+    - T04
+    isomorphism_pool:
+    - T06↔T09
+    - T06↔T04
+    - T09↔T04
+    inference_steps:
+    - 1. Parse sign types in input (T06.D01)
+    - 2. Map to representational contents (T06.D01 ↔ T09.D03)
+    - 3. Decode meaning levels (T06.D04)
+    - 4. Identify discourse form (T06.D05)
+    - 5. Construct possible worlds of interpretation (T06.D04 ↔ T04.D02)
+    - 6. Evaluate intentional attitudes (T09.D01 ↔ T04.D08)
+    - 7. Output multi-layer interpretation with confidence per layer
+    output_format: semiotic_stack_with_intentional_attribution
+    fallback_mode: MODE-02-MEREOTOPOLOGICAL-COMPOSITION
+inference_pipeline:
+  stage_1_query_parsing:
+    description: Análisis léxico-semántico para activación de modo
+    operations:
+    - Tokenizar query
+    - Etiquetar verbos causales (causar, provocar, generar, hacer)
+    - Etiquetar verbos modales (podría, debería, sería, quizás)
+    - Etiquetar verbos de proceso (cambiar, evolucionar, fluir, transitar)
+    - Etiquetar verbos de optimización (mejorar, optimizar, aprender, entrenar)
+    - Etiquetar verbos de composición (parte, todo, sistema, estructura)
+    - Etiquetar verbos de significado (significar, querer decir, interpretar, leer)
+    output: activation_vector_6d [causal, mereo, process, modal, info, semiotic]
+  stage_2_primitive_retrieval:
+    description: Recuperación de primitivas relevantes desde memoria
+    operations:
+    - Activar modo con score más alto del vector
+    - Si score < 0.3, activar MODE-00-GENERAL (mezcla ponderada de todos)
+    - Recuperar primitivas del pool del modo activo
+    - Recuperar isomorfismos conectados
+    - Expandir 1-hop via isomorfismos de alta fuerza (>0.85)
+    - Aplicar pruning por irrelevancia
+    output: active_primitive_set + active_isomorphism_set
+  stage_3_fusion_orchestration:
+    description: Orquestación de operadores de fusión cuando múltiples teorías son necesarias
+    operations:
+    - Detectar si el problema requiere 2+ teorías (intersección de pools)
+    - Seleccionar fusion_operators aplicables
+    - Ordenar por relevancia (dot product entre query embedding y operator description)
+    - Ejecutar cadena de fusión si es necesario (operator chaining)
+    - Verificar consistencia de la salida fusionada
+    output: fused_primitive_space
+  stage_4_reasoning_execution:
+    description: Ejecución del razonamiento paso a paso
+    operations:
+    - Recorrer inference_steps del modo activo
+    - En cada paso, seleccionar primitiva con mayor activation * relevance
+    - Aplicar isomorfismos para traducir entre dominios
+    - Acumular resultados intermedios en working memory
+    - Detectar dead-ends y activar fallback_mode
+    - Verificar coherencia lógica entre pasos
+    output: reasoning_trace + intermediate_results
+  stage_5_output_synthesis:
+    description: Síntesis de la respuesta final
+    operations:
+    - Agregar resultados intermedios
+    - Aplicar formato de salida del modo
+    - Incluir confidence score basado en fuerza de isomorfismos usados
+    - Incluir fallback_path si se activó
+    - Generar explicación trazable (chain-of-thought)
+    output: final_response_with_metadata
+activation_function:
+  description: Cálculo de activación de primitiva p en contexto c
+  formula: activation(p, c) = relevance(p, c) * recency(p) * frequency(p) * isomorphism_boost(p, active_set)
+  components:
+    relevance: cosine_similarity(embedding(p), embedding(c))
+    recency: exp(-λ * time_since_last_access)
+    frequency: log(1 + access_count)
+    isomorphism_boost: sum(strength(i) for i in active_isomorphisms_connected_to_p) / max_possible
+fallback_protocols:
+  protocol_1: Si modo principal score < 0.3, activar MODE-00-GENERAL con mezcla uniforme
+  protocol_2: Si dead-end en paso n, retroceder a paso n-1 y activar fallback_mode
+  protocol_3: Si inconsistencia detectada, activar MODE-04-MODAL-EXPLORATION para explorar alternativas
+  protocol_4: Si timeout, retornar mejor resultado parcial con flag INCOMPLETE

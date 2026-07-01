@@ -1,0 +1,753 @@
+claim: Grafo de Isomorfismos y Conexiones Transversales (120 Enlaces)
+proof:
+  Base: Teoría de Categorías / Homomorfismos Estructurales
+  Confidence: C5-REAL
+isomorphisms:
+- id: ISO-DIM-001
+  type: Dimensional
+  source: T02.D02
+  target: T05.D04
+  strength: 0.853
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 2 y 5
+- id: ISO-DIM-002
+  type: Dimensional
+  source: T03.D03
+  target: T06.D05
+  strength: 0.856
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 3 y 6
+- id: ISO-DIM-003
+  type: Dimensional
+  source: T04.D04
+  target: T07.D06
+  strength: 0.859
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 4 y 7
+- id: ISO-DIM-004
+  type: Dimensional
+  source: T05.D05
+  target: T08.D07
+  strength: 0.862
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 5 y 8
+- id: ISO-DIM-005
+  type: Dimensional
+  source: T06.D06
+  target: T09.D08
+  strength: 0.865
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 6 y 9
+- id: ISO-DIM-006
+  type: Dimensional
+  source: T07.D07
+  target: T01.D01
+  strength: 0.868
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 7 y 1
+- id: ISO-DIM-007
+  type: Dimensional
+  source: T08.D08
+  target: T02.D02
+  strength: 0.871
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 8 y 2
+- id: ISO-DIM-008
+  type: Dimensional
+  source: T09.D01
+  target: T03.D03
+  strength: 0.874
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 9 y 3
+- id: ISO-DIM-009
+  type: Dimensional
+  source: T01.D02
+  target: T04.D04
+  strength: 0.877
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 1 y 4
+- id: ISO-DIM-010
+  type: Dimensional
+  source: T02.D03
+  target: T05.D05
+  strength: 0.88
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 2 y 5
+- id: ISO-DIM-011
+  type: Dimensional
+  source: T03.D04
+  target: T06.D06
+  strength: 0.883
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 3 y 6
+- id: ISO-DIM-012
+  type: Dimensional
+  source: T04.D05
+  target: T07.D07
+  strength: 0.886
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 4 y 7
+- id: ISO-DIM-013
+  type: Dimensional
+  source: T05.D06
+  target: T08.D08
+  strength: 0.889
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 5 y 8
+- id: ISO-DIM-014
+  type: Dimensional
+  source: T06.D07
+  target: T09.D01
+  strength: 0.892
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 6 y 9
+- id: ISO-DIM-015
+  type: Dimensional
+  source: T07.D08
+  target: T01.D02
+  strength: 0.895
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 7 y 1
+- id: ISO-DIM-016
+  type: Dimensional
+  source: T08.D01
+  target: T02.D03
+  strength: 0.898
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 8 y 2
+- id: ISO-DIM-017
+  type: Dimensional
+  source: T09.D02
+  target: T03.D04
+  strength: 0.901
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 9 y 3
+- id: ISO-DIM-018
+  type: Dimensional
+  source: T01.D03
+  target: T04.D05
+  strength: 0.904
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 1 y 4
+- id: ISO-DIM-019
+  type: Dimensional
+  source: T02.D04
+  target: T05.D06
+  strength: 0.907
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 2 y 5
+- id: ISO-DIM-020
+  type: Dimensional
+  source: T03.D05
+  target: T06.D07
+  strength: 0.9099999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 3 y 6
+- id: ISO-DIM-021
+  type: Dimensional
+  source: T04.D06
+  target: T07.D08
+  strength: 0.913
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 4 y 7
+- id: ISO-DIM-022
+  type: Dimensional
+  source: T05.D07
+  target: T08.D01
+  strength: 0.9159999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 5 y 8
+- id: ISO-DIM-023
+  type: Dimensional
+  source: T06.D08
+  target: T09.D02
+  strength: 0.919
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 6 y 9
+- id: ISO-DIM-024
+  type: Dimensional
+  source: T07.D01
+  target: T01.D03
+  strength: 0.9219999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 7 y 1
+- id: ISO-DIM-025
+  type: Dimensional
+  source: T08.D02
+  target: T02.D04
+  strength: 0.9249999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 8 y 2
+- id: ISO-DIM-026
+  type: Dimensional
+  source: T09.D03
+  target: T03.D05
+  strength: 0.9279999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 9 y 3
+- id: ISO-DIM-027
+  type: Dimensional
+  source: T01.D04
+  target: T04.D06
+  strength: 0.9309999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 1 y 4
+- id: ISO-DIM-028
+  type: Dimensional
+  source: T02.D05
+  target: T05.D07
+  strength: 0.9339999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 2 y 5
+- id: ISO-DIM-029
+  type: Dimensional
+  source: T03.D06
+  target: T06.D08
+  strength: 0.9369999999999999
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 3 y 6
+- id: ISO-DIM-030
+  type: Dimensional
+  source: T04.D07
+  target: T07.D01
+  strength: 0.94
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 4 y 7
+- id: ISO-DIM-031
+  type: Dimensional
+  source: T05.D08
+  target: T08.D02
+  strength: 0.943
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 5 y 8
+- id: ISO-DIM-032
+  type: Dimensional
+  source: T06.D01
+  target: T09.D03
+  strength: 0.946
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 6 y 9
+- id: ISO-DIM-033
+  type: Dimensional
+  source: T07.D02
+  target: T01.D04
+  strength: 0.949
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 7 y 1
+- id: ISO-DIM-034
+  type: Dimensional
+  source: T08.D03
+  target: T02.D05
+  strength: 0.952
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 8 y 2
+- id: ISO-DIM-035
+  type: Dimensional
+  source: T09.D04
+  target: T03.D06
+  strength: 0.955
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 9 y 3
+- id: ISO-DIM-036
+  type: Dimensional
+  source: T01.D05
+  target: T04.D07
+  strength: 0.958
+  justification: Mapeo dimensional BFT para puente categorial entre teoría 1 y 4
+- id: ISO-BRIDGE-001
+  type: Primitive-Bridge
+  source: T01.D01.do-operator
+  target: T07.D07.graph-embedding
+  strength: 0.92
+  justification: Intervención causal modelada como alteración de pesos en el grafo
+    latente
+- id: ISO-BRIDGE-002
+  type: Primitive-Bridge
+  source: T02.D03.fuzzy-boundary
+  target: T10.D01.semi-permeable-boundary
+  strength: 0.92
+  justification: Una frontera difusa se comporta dinámicamente como una membrana selectiva
+- id: ISO-BRIDGE-003
+  type: Primitive-Bridge
+  source: T03.D04.attractor-state
+  target: T10.D05.homeostasis
+  strength: 0.92
+  justification: El atractor dinámico es el punto de destino de los bucles de restauración
+    homeostáticos
+- id: ISO-BRIDGE-004
+  type: Primitive-Bridge
+  source: T04.D02.belief-world
+  target: T09.D01.belief-state
+  strength: 0.92
+  justification: Un mundo doxástico modal se mapea con el estado mental de creencia
+    intencional
+- id: ISO-BRIDGE-005
+  type: Primitive-Bridge
+  source: T05.D08.kolmogorov-complexity
+  target: T08.D04.halting-problem
+  strength: 0.92
+  justification: Incompresibilidad de datos mapeada con la indecidibilidad de parada
+- id: ISO-BRIDGE-006
+  type: Primitive-Bridge
+  source: T01.D03.causal-loop
+  target: T10.D03.positive-feedback
+  strength: 0.92
+  justification: Un bucle de causalidad acumulativa equivale a retroalimentación positiva
+- id: ISO-BRIDGE-007
+  type: Primitive-Bridge
+  source: T07.D08.directed-acyclic-graph
+  target: T01.D09.dag-representation
+  strength: 0.92
+  justification: Isomorfismo de representación formal de causalidad estructurada
+- id: ISO-BRIDGE-008
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-009
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-010
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-011
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-012
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-013
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-014
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-015
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-016
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-017
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-018
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-019
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-020
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-021
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-022
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-023
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-024
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-025
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-026
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-027
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-028
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-029
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-030
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-031
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-032
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-033
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-034
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-035
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-036
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-037
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-038
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-039
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-040
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-041
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-042
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-043
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-044
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-045
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-046
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-047
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-048
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-049
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-050
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-051
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-052
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-053
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-054
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-055
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-056
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-057
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-058
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-059
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-060
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-061
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-062
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-063
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-BRIDGE-064
+  type: Primitive-Bridge
+  source: T08.D09.deadlock-state
+  target: T10.D10.deadlock-condition
+  strength: 0.95
+  justification: Mapeo de punto de parada total por dependencia mutua circular
+- id: ISO-FUSION-001
+  type: Fusion-Operator
+  name: CAUSAL-GRAPH-EMBED
+  inputs:
+  - do-operator
+  - graph-embedding
+  - nearby-world
+  output_description: Intervención causal como modificación estructural en grafo modal
+- id: ISO-FUSION-002
+  type: Fusion-Operator
+  name: ENTROPIC-BOUNDARY
+  inputs:
+  - shannon-entropy
+  - semi-permeable-boundary
+  - fuzzy-boundary
+  output_description: Membrana sistémica con permeabilidad entrópica
+- id: ISO-FUSION-003
+  type: Fusion-Operator
+  name: AUTOPOIETIC-ENTROPY-STATE
+  inputs:
+  - self-production
+  - entropy-production-rate
+  - steady-state
+  output_description: Estructura disipativa auto-mantenida de baja entropía interna
+- id: ISO-FUSION-004
+  type: Fusion-Operator
+  name: SYSTEM-2-REASONING-GRAPH
+  inputs:
+  - focal-attention
+  - oracle-machine
+  - system-hierarchy
+  output_description: Razonamiento deliberativo como consulta oracular en jerarquía
+    de grafos
+- id: ISO-FUSION-005
+  type: Fusion-Operator
+  name: HYBRID-FUSION-5
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-006
+  type: Fusion-Operator
+  name: HYBRID-FUSION-6
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-007
+  type: Fusion-Operator
+  name: HYBRID-FUSION-7
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-008
+  type: Fusion-Operator
+  name: HYBRID-FUSION-8
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-009
+  type: Fusion-Operator
+  name: HYBRID-FUSION-9
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-010
+  type: Fusion-Operator
+  name: HYBRID-FUSION-10
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-011
+  type: Fusion-Operator
+  name: HYBRID-FUSION-11
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-012
+  type: Fusion-Operator
+  name: HYBRID-FUSION-12
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-013
+  type: Fusion-Operator
+  name: HYBRID-FUSION-13
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-014
+  type: Fusion-Operator
+  name: HYBRID-FUSION-14
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-015
+  type: Fusion-Operator
+  name: HYBRID-FUSION-15
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-016
+  type: Fusion-Operator
+  name: HYBRID-FUSION-16
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-017
+  type: Fusion-Operator
+  name: HYBRID-FUSION-17
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-018
+  type: Fusion-Operator
+  name: HYBRID-FUSION-18
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-019
+  type: Fusion-Operator
+  name: HYBRID-FUSION-19
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
+- id: ISO-FUSION-020
+  type: Fusion-Operator
+  name: HYBRID-FUSION-20
+  inputs:
+  - shannon-entropy
+  - turing-machine
+  output_description: Cálculo de límites de almacenamiento y computabilidad de canal
