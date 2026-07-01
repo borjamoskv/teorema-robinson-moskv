@@ -58,3 +58,4 @@
 | INV-101 | Destrucción de Entropía Expresiva | La uniformidad del diseño moderno destruye la entropía expresiva del individuo a cambio de eficiencia termodinámica transaccional. | Anergía Estética | Transaccional | N/A |
 | INV-102 | Sacrificio de Conexión Emocional | El diseño 'invisible' sacrifica la conexión emocional y la fricción creativa. | UI Invisible | Emocional | N/A |
 | INV-103 | Isomorfismo de Identidad y Retención | La máxima retención se logra cuando el usuario puede mutar la herramienta misma (Isomorfismo de identidad). | Hiper-Customización | Estructural | N/A |
+| INV-105 | Entropía Ineludible de la Abstracción | Toda capa de abstracción de caja negra concentra la entropía en los edge cases, haciendo que su resolución requiera O(N) esfuerzo cognitivo. | Las dependencias no comprendidas generan deuda técnica fatal inmanejable. | Fallos en producción fuera del "Happy Path" del framework. | Tiempo de resolución epistémica > 48h sin causa raíz. |
