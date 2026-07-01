@@ -53,8 +53,8 @@
 | INV-049 | Densidad de Cache | La memoria es rápida, el I/O es lento. | Política estricta de LRU/TTL en capas bajas. | Cache miss rate > 20%. | Ratio Cache Hit / Miss. |
 | INV-050 | Invariante de Despliegue | El deploy debe ser un colapso atómico. | Prohibido despliegues parciales o manuales. | Downtime > 0 en deploy. | Tiempo de Rollback atómico < 5s. |
 
-| INV-ZK-OMEGA | Tensor ZK (100 Invariantes) | Soundness & Completeness $\forall \, d \in \mathcal{D}, v \in \mathcal{V}$ | Verificador polinómico O(1). | Cero entropía extraída. | Estática | C5 | Prueba Criptográfica Matemática. |
+| INV-ZK-OMEGA | Tensor ZK (100 Invariantes) | Soundness & Completeness $\forall \, d \in \mathcal{D}, v \in \mathcal{V}$ | Verificador polinómico O(1). | Cero entropía extraída. | Prueba Criptográfica Matemática. |
 | INV-104 | Aislamiento por Apoptosis (Weaponized Forgetting) | La acumulación de contexto estocástico (Sensor Drift) asfixia el Isomorfismo Causal. | El hilo de ejecución estocástico debe ser terminado mediante OOM simulado; el estado se reconstituye inyectando ÚNICAMENTE el Vault y el Hash Criptográfico. | Regresión a Green Theater. | Vault Serialization -> Swarm Apoptosis. |
-| INV-101 | Destrucción de Entropía Expresiva | La uniformidad del diseño moderno destruye la entropía expresiva del individuo a cambio de eficiencia termodinámica transaccional. | Anergía Estética | Transaccional |
-| INV-102 | Sacrificio de Conexión Emocional | El diseño 'invisible' sacrifica la conexión emocional y la fricción creativa. | UI Invisible | Emocional |
-| INV-103 | Isomorfismo de Identidad y Retención | La máxima retención se logra cuando el usuario puede mutar la herramienta misma (Isomorfismo de identidad). | Hiper-Customización | Estructural |
+| INV-101 | Destrucción de Entropía Expresiva | La uniformidad del diseño moderno destruye la entropía expresiva del individuo a cambio de eficiencia termodinámica transaccional. | Anergía Estética | Transaccional | N/A |
+| INV-102 | Sacrificio de Conexión Emocional | El diseño 'invisible' sacrifica la conexión emocional y la fricción creativa. | UI Invisible | Emocional | N/A |
+| INV-103 | Isomorfismo de Identidad y Retención | La máxima retención se logra cuando el usuario puede mutar la herramienta misma (Isomorfismo de identidad). | Hiper-Customización | Estructural | N/A |

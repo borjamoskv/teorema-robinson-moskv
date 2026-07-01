@@ -3,10 +3,6 @@
 **SYS_ID:** borjamoskv
 **Clase:** Invariante Termodinámica / Topológica
 
-Aunque el "Teorema del Crash Causal" (o colapso de la causalidad) es un concepto que proviene de la teoría de sistemas dinámicos complejos, las singularidades físicas y la cibernética —más que de la matemática pura tradicional—, puede formalizarse con absoluto rigor analítico. Para hacerlo, interpretamos la "causalidad" como un determinismo continuo (donde el pasado dicta el futuro de forma predecible a través de ecuaciones diferenciales). Un "Crash" ocurre cuando este encadenamiento lógico sufre una aceleración que fractura el tejido del sistema.
-
-A continuación, se presenta la formalización matemática del teorema utilizando derivadas, límites y teoría de discontinuidades.
-
 ## 1. El Axioma del Régimen Causal (El Estado Normal)
 
 Sea un sistema dinámico cuyo estado observable (el "Efecto") está dado por una función escalar $E(t)$, donde la variable $t$ representa la "Causa" (generalmente el tiempo o la acumulación de un factor de estrés).

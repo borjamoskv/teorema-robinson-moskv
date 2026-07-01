@@ -25,6 +25,6 @@
 | RED-019 | Pararrayos Causal (Event Sourcing Puro) | Toda mutación se graba primero en un log append-only inmutable antes de ser aplicada al AST. | Pérdida de Vector Temporal, Imposibilidad de Rollback P0. | Espacio en disco exponencial por transacciones. | Event Store DB local. |
 | RED-020 | Macrófago Ontológico de Contención | Despliegue de un meta-agente aislado (`AGENTE-OMEGA`) que solo lee diffs y puede vetar mutaciones que violen las 135 entidades. | Corrupción C5, Regresión de estado SOTA. | Límite de procesamiento paralelo, tokens de lectura altos. | Entorno de Subagente BFT. |
 
-| RED-ZK-OMEGA | Tensor ZK (100 Redundancias) | Tolerancia Bizantina (MPC / BFT) sobre el tensor $\mathcal{D} \otimes \mathcal{V}$ | Ceremonia Trusted Setup N-nodos. | Descentralización Prover. | Retrasada | C5 | Verificación cruzada y Apoptosis tóxica. |
+| RED-ZK-OMEGA | Tensor ZK (100 Redundancias) | Tolerancia Bizantina (MPC / BFT) sobre el tensor $\mathcal{D} \otimes \mathcal{V}$ | Ceremonia Trusted Setup N-nodos. | Descentralización Prover. | Verificación cruzada y Apoptosis tóxica. |
 | RED-021 | AESTHETIC-OMEGA Micro-animaciones | Inyección de micro-animaciones asimétricas para romper la inercia moderna. | Inercia transaccional. | Sobrecarga GPU. | CSS transform BFT. |
 | RED-022 | Tokens Desacoplados BFT | Exposición de opciones de tematización extrema al Operador. | Centralización de UI. | Complejidad de estado. | Sistema CSS Tokens. |
