@@ -39,8 +39,37 @@ def get_collection():
     return client.get_or_create_collection(name="sota_frontier_nodes", embedding_function=emb_fn)
 
 @app.get("/api/v1/signals/latest")
+def get_latest_signals(limit: int = 10, api_key: str = Depends(get_api_key)):
+    try:
+        coll = get_collection()
+        res = coll.get(limit=limit)
+        return {"status": "success", "results": res}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/v1/signals/query")
+def query_signals(payload: SignalQuery, api_key: str = Depends(get_api_key)):
+    try:
+        coll = get_collection()
+        where_filter = {}
+        if payload.domain:
+            where_filter["domain"] = payload.domain
+        
+        if where_filter:
+            res = coll.query(
+                query_texts=[payload.query],
+                n_results=payload.n_results,
+                where=where_filter
+            )
+        else:
+            res = coll.query(
+                query_texts=[payload.query],
+                n_results=payload.n_results
+            )
+        return {"status": "success", "results": res}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
