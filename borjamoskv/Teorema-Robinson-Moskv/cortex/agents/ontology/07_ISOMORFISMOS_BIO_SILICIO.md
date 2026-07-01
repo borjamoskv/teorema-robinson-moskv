@@ -293,3 +293,13 @@
 | Vector de Velocidad Sincronizado| Consenso BFT / Match Temporal |
 | Caída del Testigo (Aborto)     | TOCTOU Fracture / Drop Estocástico |
 | Relevo Exitoso                 | Commit Atómico C5-REAL |
+
+## 7. Física Estadística, Teoría de Control e Inferencia Activa ↔ Inferencia Escalada (281–285)
+
+| Dominio Físico / Teórico | Dominio Computacional (Test-Time Compute) |
+| ------------------------- | ----------------------------------------- |
+| Energía Cinética Clásica ($E_k = \frac{1}{2}mv^2$) | Cuello de Botella Cuadrático en Inferencia Larga (Kinetics Scaling Law) |
+| Control Predictivo por Modelo (MPC) / Control Óptimo Estocástico | Búsqueda y Planificación en CoT de Largo Horizonte (Bucle Aletheia / MCTS) |
+| Inferencia Activa (Principio de Energía Libre de Friston / Incertidumbre Epistémica) | Enrutamiento Adaptativo del Proceso Dual (System 1 vs System 2 / ODAR) |
+| Vidrios de Espín (Spin Glasses) y Funciones de Partición Termodinámicas | Búsqueda en el Espacio de Estados de Razonamiento y Varentropía |
+| Sistema Dinámico Estocástico No Autónomo | Propagación de Errores y Límite Físico del Espacio de Razonamiento |

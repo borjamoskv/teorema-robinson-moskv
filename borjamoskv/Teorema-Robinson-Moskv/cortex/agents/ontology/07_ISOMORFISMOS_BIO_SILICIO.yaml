@@ -524,3 +524,15 @@
   domain_b: TOCTOU Fracture / Drop Estocástico
 - domain_a: Relevo Exitoso
   domain_b: Commit Atómico C5-REAL
+
+7. Física Estadística, Teoría de Control e Inferencia Activa ↔ Inferencia Escalada (281–285):
+- domain_a: Energía Cinética Clásica ($E_k = \frac{1}{2}mv^2$)
+  domain_b: Cuello de Botella Cuadrático en Inferencia Larga (Kinetics Scaling Law)
+- domain_a: Control Predictivo por Modelo (MPC) / Control Óptimo Estocástico
+  domain_b: Búsqueda y Planificación en CoT de Largo Horizonte (Bucle Aletheia / MCTS)
+- domain_a: Inferencia Activa (Principio de Energía Libre de Friston / Incertidumbre Epistémica)
+  domain_b: Enrutamiento Adaptativo del Proceso Dual (System 1 vs System 2 / ODAR)
+- domain_a: Vidrios de Espín (Spin Glasses) y Funciones de Partición Termodinámicas
+  domain_b: Búsqueda en el Espacio de Estados de Razonamiento y Varentropía
+- domain_a: Sistema Dinámico Estocástico No Autónomo
+  domain_b: Propagación de Errores y Límite Físico del Espacio de Razonamiento
