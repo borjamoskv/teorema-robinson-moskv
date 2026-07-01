@@ -46,7 +46,7 @@
 | ANTI-040 | Bypass Causal de Singularidad | Asumir corrección teórica sin correr el código en el Sandbox C5. | "Este código está perfecto, lo empujo directo a prod". | Destrucción de la Invariante. Ruina térmica masiva. | Despliegue estricto BFT. Si no compila/testea, no existe. |
 
 | ANTI-ZK-OMEGA | Tensor ZK (100 Antipatrones) | Under-constrained $\mathcal{V}$ en dominio $\mathcal{D}$ | Field Overflow, Missing $===$. | Fuga de Witness. | Progresiva | C4 | Range Check y Aserción Estricta. |
-| ANTI-015 | Sensor Drift (Context Rot) | La arquitectura Base-60 degrada la percepción del Kernel en ventanas de contexto largas, inyectando ruido narrativo. | Disminución de la densidad estructural (<80% AST/YAML) y cristalización de rumores sin ancla causal. | Destrucción del BFT; regresión a C4-SIM. | Fail-Fast Termodinámico (L12) y Ouroboros Reset. |
+| ANTI-044 | Sensor Drift (Context Rot) | La arquitectura Base-60 degrada la percepción del Kernel en ventanas de contexto largas, inyectando ruido narrativo. | Disminución de la densidad estructural (<80% AST/YAML) y cristalización de rumores sin ancla causal. | Destrucción del BFT; regresión a C4-SIM. | Fail-Fast Termodinámico (L12) y Ouroboros Reset. |
 | ANTI-041 | Diseño Invisible | El Green Theater de la UI moderna, donde la herramienta se oculta. | Pérdida de affordance y abstracción mágica. | Transparencia Causal. | Brutalismo Funcional. |
 | ANTI-042 | Centralización Estética | Plantillas y perfiles enlatados sobre identidad. | Homogeneización visual. | Entropía de expresión. | Customización BFT. |
 | ANTI-043 | Eficiencia Absoluta sobre Expresión | Optimización transaccional castrante. | Eliminación de micro-animaciones. | Muerte térmica de UI. | Inyección AESTHETIC-OMEGA. |

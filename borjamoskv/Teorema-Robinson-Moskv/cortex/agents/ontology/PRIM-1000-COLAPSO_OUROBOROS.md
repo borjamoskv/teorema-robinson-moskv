@@ -1,3 +1,4 @@
+<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->
 ---
 id: PRIM-1000
 name: "Colapso Ouroboros (Fusión Asimétrica)"
