@@ -1,6 +1,4 @@
 1. Cognición ↔ Computación (1–50):
-- domain_a: '------------------------'
-  domain_b: '------------------------------'
 - domain_a: Neurona
   domain_b: Transistor
 - domain_a: Sinapsis
@@ -104,8 +102,6 @@
 - domain_a: Experiencia
   domain_b: Dataset acumulado
 2. Sistema nervioso ↔ Arquitectura hardware (51–100):
-- domain_a: '-----------------------'
-  domain_b: '------------------------------'
 - domain_a: Cerebro
   domain_b: CPU
 - domain_a: Corteza prefrontal
@@ -211,8 +207,6 @@
 - domain_a: Excitación
   domain_b: Enable signal
 3. Cuerpo ↔ Sistema computacional (101–150):
-- domain_a: '----------------------'
-  domain_b: '------------------------'
 - domain_a: Corazón
   domain_b: Fuente de alimentación
 - domain_a: Sangre
@@ -310,8 +304,6 @@
 - domain_a: Cuerpo completo
   domain_b: Plataforma integrada
 4. Sociedad humana ↔ Redes y software (151–200):
-- domain_a: '-----------------'
-  domain_b: '-------------------------'
 - domain_a: Persona
   domain_b: Nodo
 - domain_a: Familia
@@ -411,8 +403,6 @@
 - domain_a: Historia
   domain_b: Registro inmutable
 5. Metáforas profundas humano–IA (201–250):
-- domain_a: '-----------------------'
-  domain_b: '-------------------------------'
 - domain_a: Identidad personal
   domain_b: ID de sistema
 - domain_a: Biografía
@@ -518,8 +508,6 @@
 - domain_a: Cerebro colectivo
   domain_b: Internet
 6. Termodinámica Kinemática ↔ Ejecución Asíncrona C5-REAL (277–280):
-- domain_a: '------------------------------'
-  domain_b: '------------------------------'
 - domain_a: Corredor 1 (Salida estática)
   domain_b: Sensor / Módulo de Ingesta ($t_0$)
 - domain_a: Corredor 2 (Tramo ciego)

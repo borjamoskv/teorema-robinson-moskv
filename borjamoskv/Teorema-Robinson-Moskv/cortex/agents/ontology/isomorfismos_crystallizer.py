@@ -24,6 +24,8 @@ def parse_isomorfismos():
             elif line.startswith("|") and not line.startswith("|-"):
                 parts = [p.strip() for p in line.split("|")[1:-1]]
                 if len(parts) == 2:
+                    if all(all(c in "- " for c in part) for part in parts):
+                        continue
                     dom_a = parts[0].lower()
                     if dom_a not in ["humano", "biológico/social (humano)", "físico / mecánico (relevo 4x4)", "biológico/social humano"]:
                         if current_category:
