@@ -11,7 +11,7 @@ ARTIFACT_CSV_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/5e16ae97-2190-4550-9
 def extract_entities():
     entities = []
     
-    prim1000_path = "$CORTEX_ROOT/Downloads/matriz_1000_primitivas.yaml"
+    prim1000_path = os.path.join(ONTOLOGY_DIR, "06_MATRIZ_1000.yaml")
     with open(prim1000_path, 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
         for t_key, t_val in data.items():
