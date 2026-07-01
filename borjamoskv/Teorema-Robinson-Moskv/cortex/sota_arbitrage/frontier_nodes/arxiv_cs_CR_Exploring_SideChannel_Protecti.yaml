@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: cs.CR
+  Core_Insight: Avance estructural en Exploring Side-Channel Protections in Hardware
+    Implementations of PQC ML-KEM Verification
+  Evidence:
+  - Type: Paper
+    Title: Exploring Side-Channel Protections in Hardware Implementations of PQC ML-KEM
+      Verification
+    URI: http://arxiv.org/abs/2606.31681v1
+    Date: '2026-06-30T13:57:33Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: As ML-KEM is adopted as a post-quantum cryptographic standard, resilience
+    against physical side-channel attacks has become essential. Among the constituent
+    steps, the decapsulation Fujisaki-Okamoto (F...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Exploring Side-Channel Protections\
+      \ in Hardware Implementations of PQC ML-KEM Verification a menor costo entr\xF3\
+      pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.31681v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

@@ -1,0 +1,35 @@
+Frontier_Node:
+  Domain: AI
+  Subdomain: cs.AI
+  Core_Insight: 'Avance estructural en When LLMs Read Tables Carelessly: Measuring
+    and Reducing Data Referencing Errors'
+  Evidence:
+  - Type: Paper
+    Title: 'When LLMs Read Tables Carelessly: Measuring and Reducing Data Referencing
+      Errors'
+    URI: http://arxiv.org/abs/2606.32029v1
+    Date: '2026-06-30T17:54:50Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: While large language models (LLMs) perform well on table tasks, they
+    still make data referencing errors (DREs), i.e., incorrectly citing or omitting
+    table values, despite understanding the table struc...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de When LLMs Read Tables Carelessly:\
+      \ Measuring and Reducing Data Referencing Errors a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.32029v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

@@ -1,0 +1,31 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: hn_sec
+  Core_Insight: Avance estructural en Swiss e-ID delayed to beef up security
+  Evidence:
+  - Type: Discussion
+    Title: Swiss e-ID delayed to beef up security
+    URI: https://www.swissinfo.ch/eng/swiss-ai/introduction-of-e-id-delayed-for-security-reasons/91675866
+    Date: Tue, 30 Jun 2026 17:59:14 +0000
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: '<p>Article URL: <a href="https://www.swissinfo.ch/eng/swiss-ai/introduction-of-e-id-delayed-for-security-reasons/91675866">https://www.swissinfo.ch/eng/swiss-ai/introduction-of-e-id-delayed-for-securi...'
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Swiss e-ID delayed to beef up\
+      \ security a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://www.swissinfo.ch/eng/swiss-ai/introduction-of-e-id-delayed-for-security-reasons/91675866
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

@@ -1,0 +1,32 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: hn_sec
+  Core_Insight: Avance estructural en Three major cyberattacks have raised alarms
+    about New Zealand's security
+  Evidence:
+  - Type: Discussion
+    Title: Three major cyberattacks have raised alarms about New Zealand's security
+    URI: https://www.rnz.co.nz/news/science-and-technology/650122/three-major-cyberattacks-have-raised-alarms-about-new-zealand-s-security
+    Date: Wed, 01 Jul 2026 01:48:27 +0000
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: '<p>Article URL: <a href="https://www.rnz.co.nz/news/science-and-technology/650122/three-major-cyberattacks-have-raised-alarms-about-new-zealand-s-security">https://www.rnz.co.nz/news/science-and-techn...'
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Three major cyberattacks have\
+      \ raised alarms about New Zealand's security a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://www.rnz.co.nz/news/science-and-technology/650122/three-major-cyberattacks-have-raised-alarms-about-new-zealand-s-security
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

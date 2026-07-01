@@ -1,0 +1,5 @@
+cortex/sota_arbitrage/.venv/
+cortex/sota_arbitrage/raw_data/
+**/__pycache__/
+*.pyc
+.DS_Store
