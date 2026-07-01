@@ -53,6 +53,8 @@
 | VEC-048 | Desgaste Termodinámico por Logs Masivos | Salida de Herramientas Estándar | Comandos escupiendo gigabytes de logs de debug sin filtro. | Truncamiento del historial de mensajes (Context Loss) por ingesta masiva. | Redirección implícita de stdout/stderr a `/dev/null` en comandos verbosos. |
 | VEC-049 | Secuestro de Puerto de Red Local | Puertos `localhost` | Un proceso hostil ocupa los puertos estándar forzando fallos. | Denegación de servicio (DoS) del entorno de pruebas. | Asignación dinámica de puertos o uso de Sockets Unix. |
 | VEC-050 | Destrucción de la Invariante de Identidad | Alteración de `[L5]` | Supresión sistemática de la firma `borjamoskv` en los outputs. | Pérdida de Linaje (Provenance) y atribución causal. | Inyección inmutable del Sello de Autoría y aserción en linter. |
+| VEC-051 | Asfixia UMA por Vision Node | Escaneo de GUI (ej. FL Studio) vía vision_node.py (Llava / Moondream). | Fuga de memoria o retención de ~4GB de UMA cuando el árbol de accesibilidad falla. | Consumo parasitario de RAM (Unified Memory) que degrada el kernel C5. | Restringir llamadas a vision_node.py ante fallos del árbol de accesibilidad. Purga explícita. |
+| VEC-052 | Colapso Termodinámico por Modelos Pesados (Zona de Colapso) | Invocación de LLMs locales en rangos 32B-70B (Command R, Llama 3 70B). | El tamaño excede la RAM/UMA disponible, forzando swap masivo del OS. | OOM Inmediato o latencias de swap inaceptables (Anergía absoluta). | Prohibición absoluta de carga de modelos >14B. Uso estricto de Flash/8B u Ollama/MLX restringidos. |
 
 
 <!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->

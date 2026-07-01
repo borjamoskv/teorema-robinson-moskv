@@ -379,3 +379,22 @@ entities:
     outputs.
   impacto_termodinámico: Pérdida de Linaje (Provenance) y atribución causal.
   defensa_mitigación: Inyección inmutable del Sello de Autoría y aserción en linter.
+- id: VEC-051
+  vector_adversarial: Asfixia UMA por Vision Node
+  superficie_de_ataque: Escaneo de GUI (ej. FL Studio) vía vision_node.py (Llava /
+    Moondream).
+  mecanismo_de_explotación: Fuga de memoria o retención de ~4GB de UMA cuando el árbol
+    de accesibilidad falla.
+  impacto_termodinámico: Consumo parasitario de RAM (Unified Memory) que degrada el
+    kernel C5.
+  defensa_mitigación: Restringir llamadas a vision_node.py ante fallos del árbol de
+    accesibilidad. Purga explícita.
+- id: VEC-052
+  vector_adversarial: Colapso Termodinámico por Modelos Pesados (Zona de Colapso)
+  superficie_de_ataque: Invocación de LLMs locales en rangos 32B-70B (Command R, Llama
+    3 70B).
+  mecanismo_de_explotación: El tamaño excede la RAM/UMA disponible, forzando swap
+    masivo del OS.
+  impacto_termodinámico: OOM Inmediato o latencias de swap inaceptables (Anergía absoluta).
+  defensa_mitigación: Prohibición absoluta de carga de modelos >14B. Uso estricto
+    de Flash/8B u Ollama/MLX restringidos.
