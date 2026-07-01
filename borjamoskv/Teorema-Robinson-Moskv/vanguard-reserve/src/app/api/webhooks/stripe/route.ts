@@ -17,9 +17,9 @@ export async function POST(req: Request) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET || 'whsec_mock'
     );
-  } catch (error: any) {
-    console.error('⚠️ Webhook signature verification failed.', error.message);
-    return NextResponse.json({ error: error.message }, { status: 400 });
+  } catch (error) {
+    const e = error as Error;
+    return NextResponse.json({ error: e.message }, { status: 400 });
   }
 
   // Handle B2B2B Events (Stripe Connect & Subscriptions)
@@ -28,13 +28,11 @@ export async function POST(req: Request) {
       case 'account.updated': {
         const account = event.data.object as Stripe.Account;
         // Logic to update agency or clinic onboarding status in DB
-        console.log(`Connected account updated: ${account.id}`);
         break;
       }
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
         // Logic to confirm appointment and distribute funds
-        console.log(`Checkout completed for session: ${session.id}`);
         if (session.metadata?.appointmentId) {
           await db.update(appointments)
             .set({ status: 'confirmed' })
@@ -44,10 +42,9 @@ export async function POST(req: Request) {
       }
       // Add other B2B2B events: payment_intent.succeeded, customer.subscription.created, etc.
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        break;
     }
-  } catch (error: any) {
-    console.error('Error processing webhook event', error);
+  } catch (error) {
     return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 });
   }
 

@@ -34,7 +34,6 @@ export async function getSession() {
     });
     return payload;
   } catch (error) {
-    console.error('Failed to verify session', error);
     return null;
   }
 }

@@ -14,7 +14,8 @@ const DB_PATH = path.join(os.homedir(), '.babylon60', 'cortex.db');
 // Connect to SQLite DB in WAL mode
 const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
     if (err) {
-        console.error('[C5-REAL] Error connecting to DB:', err.message);
+        console.error('[C5-REAL] Falla determinista en conexión a DB causal:', err.message);
+        throw err;
     } else {
         db.configure('busyTimeout', 5000);
         db.run('PRAGMA journal_mode=WAL;');
