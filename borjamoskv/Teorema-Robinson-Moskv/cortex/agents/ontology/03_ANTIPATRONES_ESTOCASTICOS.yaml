@@ -289,3 +289,9 @@ entities:
   señal_de_presencia: '"Este código está perfecto, lo empujo directo a prod".'
   impacto_en_robustez: Destrucción de la Invariante. Ruina térmica masiva.
   refactor_alternativa: Despliegue estricto BFT. Si no compila/testea, no existe.
+- id: ANTI-047
+  antipatrón: Orquestación como Atomicidad (TOCTOU Ciego)
+  disfunción_causal: Intentar resolver colisiones de concurrencia física (RMW) pasando el turno de ejecución entre agentes en la capa semántica.
+  señal_de_presencia: Agentes enjambre que leen un JSON y sobrescriben el estado persistente sin usar bloqueos de Kernel (OS).
+  impacto_en_robustez: Condición de carrera ineludible. Corrupción masiva del estado. Anergía.
+  refactor_alternativa: Bloqueos POSIX (fcntl.flock) o transacciones ACID exclusivas directas al disco.
