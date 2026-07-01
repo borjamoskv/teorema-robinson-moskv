@@ -105,3 +105,6 @@
 
 | INV-ZK-OMEGA | Tensor ZK (100 Invariantes) | Soundness & Completeness $\forall \, d \in \mathcal{D}, v \in \mathcal{V}$ | Verificador polinómico O(1). | Cero entropía extraída. | Estática | C5 | Prueba Criptográfica Matemática. |
 | INV-015 | Aislamiento por Apoptosis (Weaponized Forgetting) | La acumulación de contexto estocástico (Sensor Drift) asfixia el Isomorfismo Causal. | El hilo de ejecución estocástico debe ser terminado mediante OOM simulado; el estado se reconstituye inyectando ÚNICAMENTE el Vault y el Hash Criptográfico. | Regresión a Green Theater. | Vault Serialization -> Swarm Apoptosis. |
+| INV-101 | Destrucción de Entropía Expresiva | La uniformidad del diseño moderno destruye la entropía expresiva del individuo a cambio de eficiencia termodinámica transaccional. | Anergía Estética | Transaccional |
+| INV-102 | Sacrificio de Conexión Emocional | El diseño 'invisible' sacrifica la conexión emocional y la fricción creativa. | UI Invisible | Emocional |
+| INV-103 | Isomorfismo de Identidad y Retención | La máxima retención se logra cuando el usuario puede mutar la herramienta misma (Isomorfismo de identidad). | Hiper-Customización | Estructural |
