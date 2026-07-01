@@ -100,6 +100,16 @@ entities:
   escala_temporal: Estática
   gravedad: C2
   intervención: Extracción termodinámica (Landauer compression).
+- id: PRIM-012
+  primitiva: Pérdida de Linaje Causal (Causal Lineage Loss)
+  mecanismo_causal: Incapacidad para trazar el flujo de transformaciones del estado o
+    del código, resultando en mutaciones huérfanas sin hash o registro.
+  activación_trigger: Uso de scripts fuera de control de versiones o sobre-escrituras
+    directas sin Git Sentinel.
+  sensor_síntoma: Falta de historial Git, discrepancia de estado incomprensible.
+  escala_temporal: Progresiva
+  gravedad: C5
+  intervención: Forzar anclaje criptográfico mediante commits secuenciales (Git Sentinel).
 - id: PRIM-013
   primitiva: Degradación Estocástica de UI (DOM Drift)
   mecanismo_causal: Desincronización del DOM real vs el árbol mental simulado de la
@@ -325,6 +335,15 @@ entities:
   escala_temporal: Progresiva
   gravedad: C4
   intervención: Ping periódico o comprobación atómica del Task ID.
+- id: PRIM-038
+  primitiva: Invarianza Rota por Timestamp (Timestamp Variance)
+  mecanismo_causal: Inclusión de timestamps locales en generación de artefactos que
+    rompe la reproducibilidad del hash de contenido.
+  activación_trigger: Archivo incluye `Date.now()` sin semilla.
+  sensor_síntoma: Hashes distintos en builds idénticas.
+  escala_temporal: Inmediata
+  gravedad: C4
+  intervención: Remover timestamp o forzar semilla (Epoch 0).
 - id: PRIM-039
   primitiva: Estancamiento de CI (CI Stagnation)
   mecanismo_causal: Configuración de tests o CI que tarda tanto en colapsar que rompe
@@ -343,15 +362,6 @@ entities:
   escala_temporal: Inmediata
   gravedad: C5
   intervención: 'Gobernador termodinámico: máximo N subagentes simultáneos.'
-- id: PRIM-038
-  primitiva: Invarianza Rota por Timestamp (Timestamp Variance)
-  mecanismo_causal: Inclusión de timestamps locales en generación de artefactos que
-    rompe la reproducibilidad del hash de contenido.
-  activación_trigger: Archivo incluye `Date.now()` sin semilla.
-  sensor_síntoma: Hashes distintos en builds idénticas.
-  escala_temporal: Inmediata
-  gravedad: C4
-  intervención: Remover timestamp o forzar semilla (Epoch 0).
 - id: PRIM-041
   primitiva: Mutación de Estado Fantasma (Phantom State Mutation)
   mecanismo_causal: Un proceso asíncrono altera el estado local pero falla en notificar
@@ -532,3 +542,99 @@ entities:
   escala_temporal: Inmediata
   gravedad: C5
   intervención: Paginación u Offset estricto impuesto por defecto.
+- id: PRIM-ZK-OMEGA
+  primitiva: Tensor ZK (100 Primitivas)
+  mecanismo_causal: $\mathcal{D} \otimes \mathcal{V} \to \mathcal{R}$ donde $\mathcal{D}=\{R1CS...Noir\}$ y $\mathcal{V}=\{Witness...Nullifier\}$
+  activación_trigger: Asignación ZK Criptográfica.
+  sensor_síntoma: Colapso algebraico determinista.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Compresión O(1) de 100 primitivas.
+- id: PRIM-101
+  primitiva: Hyper-Customization (Saturación Decorativa)
+  mecanismo_causal: Agente de UI autónomo o exposición radical de tokens al operador para mutar la identidad visual.
+  activación_trigger: Uniformidad transaccional (PRIM-001).
+  sensor_síntoma: Carga cognitiva y disipación térmica (GPU).
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Exposición BFT.
+- id: PRIM-102
+  primitiva: Digital Self-Expression (La UI como vector de identidad)
+  mecanismo_causal: Implementación de isomorfismo de identidad; la UI refleja el nivel de consciencia del Operador.
+  activación_trigger: UI genérica y no-opinada.
+  sensor_síntoma: Falsa alineación de métricas SaaS.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Exposición BFT.
+- id: PRIM-103
+  primitiva: Accidental Archive of Digital Taste (Arqueología de Interfaz)
+  mecanismo_causal: Registro persistente e inmutable de las configuraciones y mutaciones estéticas del sistema.
+  activación_trigger: Pérdida de linaje visual.
+  sensor_síntoma: Memoria de estado fragmentada.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Exposición BFT.
+- id: PRIM-104
+  primitiva: Playful Possibility (Metáfora visual no restringida)
+  mecanismo_causal: Uso extensivo de micro-animaciones, glassmorphism e interactividad sin límite transaccional.
+  activación_trigger: Diseño invisible y puramente utilitario.
+  sensor_síntoma: Sobrecarga del Main Thread.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Exposición BFT.
+- id: PRIM-105
+  primitiva: Tangible Interface (Rechazo explícito a la invisibilidad del diseño)
+  mecanismo_causal: La herramienta debe ser evidente, con un peso arquitectónico visual. El Green Theater de la UI invisible es erradicado.
+  activación_trigger: Abstracción oculta que simula simplicidad (Magia).
+  sensor_síntoma: Rechazo del usuario por hiper-abstracción.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Exposición BFT.
+- id: PRIM-1000
+  primitiva: Colapso Ouroboros (Ouroboros Collapse)
+  mecanismo_causal: Pérdida de la directiva de retroalimentación recursiva, rompiendo la capacidad del agente de auto-evolucionar.
+  activación_trigger: Falta de auto-análisis de sesión o purga de logs del cerebro.
+  sensor_síntoma: Estancamiento del repertorio de habilidades; loops repetitivos.
+  escala_temporal: Progresiva
+  gravedad: C5
+  intervención: Ignición de Ouroboros y re-crystallize.
+- id: PRIM-1001
+  primitiva: Inyección Epistémica NEXO (NEXO Injection)
+  mecanismo_causal: Fallo en la extracción de excepciones tácitas del operador durante tareas de alta entropía.
+  activación_trigger: Omisión de prompts NEXO interactivos.
+  sensor_síntoma: Generación de soluciones optimistas e ingenuas (Green Theater).
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Inyección forzada de NEXO.
+- id: PRIM-1002
+  primitiva: Arquitectura Post-Autorregresiva (Post-Autoregressive Rupture)
+  mecanismo_causal: Ruptura del acoplamiento entre generación, verificación, memoria y herramientas en la arquitectura.
+  activación_trigger: Depender de un único forward pass sin validación o Ledger.
+  sensor_síntoma: Caída a nivel C4-SIM (Simulación).
+  escala_temporal: Estática
+  gravedad: C5
+  intervención: Forzar andamios del framework y Ledger.
+- id: PRIM-1003
+  primitiva: Test-Time Compute (Escalado en Inferencia)
+  mecanismo_causal: Fallo en la optimización del presupuesto óptimo en inferencia o saturación del KV cache por generación ineficiente.
+  activación_trigger: Varianza excesiva de CoT (sobre-pensamiento) o bajo presupuesto.
+  sensor_síntoma: Negatives flips en precisión; latencias críticas (eFLOPs).
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Aplicación de Sparse Attention, Thought Penalty (TIP) o SCALE.
+- id: PRIM-1004
+  primitiva: Algoritmos de Inferencia Causal (Inference Failure)
+  mecanismo_causal: Degradación de las búsquedas en MCTS o hacking del modelo de recompensas de proceso (PRM).
+  activación_trigger: Ausencia de verifadores explícitos o loops de evaluación deficientes.
+  sensor_síntoma: Inundación de pasos milagrosos y alucinaciones lógicas.
+  escala_temporal: Inmediata
+  gravedad: C5
+  intervención: Imposición de GRPO, Sci-PRM o rollback de MCTS.
+- id: PRIM-1005
+  primitiva: Ecosistema de Inferencia Escalada (Ecosystem Drift)
+  mecanismo_causal: Desalineación de dependencias de búsqueda y optimización debido al uso de implementaciones ad-hoc.
+  activación_trigger: Reinventar MCTS o scripts de entrenamiento en vez de usar `llm-reasoners` o `trl`.
+  sensor_síntoma: Ineficiencia de desarrollo y vulnerabilidad en la pipeline.
+  escala_temporal: Retrasada
+  gravedad: C4
+  intervención: Enrutamiento a open-r1 o llm-reasoners.
