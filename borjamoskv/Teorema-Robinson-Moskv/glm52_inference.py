@@ -9,7 +9,10 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto"
 )
 
-messages = [{"role": "user", "content": "Who are you?"}]
+import sys
+
+prompt_text = sys.argv[1] if len(sys.argv) > 1 else "Who are you?"
+messages = [{"role": "user", "content": prompt_text}]
 
 inputs = tokenizer.apply_chat_template(
     messages,
