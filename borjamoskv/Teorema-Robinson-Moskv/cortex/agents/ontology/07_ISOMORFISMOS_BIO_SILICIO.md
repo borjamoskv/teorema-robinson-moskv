@@ -273,4 +273,17 @@
 | Coordinación social     | Protocolo compartido            |
 | Civilización            | Red de redes                    |
 | Humanidad               | Sistema distribuido planetario  |
-| Cerebro colectivo       | Internet                        |\n| Biológico/Social (Humano) | Computacional (Silicio) |\n| :--- | :--- |\n\n
+| Cerebro colectivo       | Internet                        |
+
+## 6. Termodinámica Kinemática ↔ Ejecución Asíncrona C5-REAL (277–280)
+
+| Físico / Mecánico (Relevo 4x4) | Computacional (Silicio / CTRE) |
+| ------------------------------ | ------------------------------ |
+| Corredor 1 (Salida estática)   | Sensor / Módulo de Ingesta ($t_0$) |
+| Corredor 2 (Tramo ciego)       | Motor de Inferencia LLM ($\Delta t$) |
+| Zona de Transferencia (Juez)   | Motor CTRE (Cálculo de CVaR) |
+| Corredor 4 (Línea de Meta)     | Actuador Determinista / Commit ($t_1$) |
+| Testigo (Baton)                | Delta de Estado (Transaction Payload) |
+| Vector de Velocidad Sincronizado| Consenso BFT / Match Temporal |
+| Caída del Testigo (Aborto)     | TOCTOU Fracture / Drop Estocástico |
+| Relevo Exitoso                 | Commit Atómico C5-REAL |
