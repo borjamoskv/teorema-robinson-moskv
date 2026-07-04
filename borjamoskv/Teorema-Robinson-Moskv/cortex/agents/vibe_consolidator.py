@@ -49,10 +49,12 @@ class CodeParser:
         return result
 
     def parse_js(self, code: str):
+        functions = re.findall(r'function\s+([A-Za-z0-9_]+)|const\s+([A-Za-z0-9_]+)\s*=\s*\(', code)
+        imports = re.findall(r'import\s+.*?from\s+[\'"](.+?)[\'"]|require\([\'"](.+?)[\'"]\)', code)
         return {
             "classes": re.findall(r'class\s+([A-Za-z0-9_]+)', code),
-            "functions": re.findall(r'function\s+([A-Za-z0-9_]+)|const\s+([A-Za-z0-9_]+)\s*=\s*\(', code),
-            "imports": re.findall(r'import\s+.*?from\s+[\'"](.+?)[\'"]|require\([\'"](.+?)[\'"]\)', code)
+            "functions": [f[0] or f[1] for f in functions if f],
+            "imports": [i[0] or i[1] for i in imports if i]
         }
 
 def detect_cycles(dependency_graph: dict):
