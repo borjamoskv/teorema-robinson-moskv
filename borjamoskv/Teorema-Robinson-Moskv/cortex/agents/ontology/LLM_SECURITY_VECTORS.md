@@ -64,3 +64,15 @@
 8. **Ensembles homogéneos:** Usar modelos de la misma familia esperando diversidad ortogonal (Falsa Independencia).
 9. **Logs excesivos de logits:** Registrar todos los tokens (128k) en lugar de métricas agregadas necesarias.
 10. **Reentrenamiento ex-nihilo:** Descartar adaptadores, LoRA o RAG por *full fine-tuning* innecesario.
+
+---
+
+## 6. Falla Estocástica de Seguridad: Context Reverse Engineering (Prompt Leaking)
+*Extracción termodinámica derivada del análisis multi-agente (CORTEX vs Simulación). Destrucción de la Seguridad por Oscuridad en arquitecturas IA.*
+
+1. **Ingeniería Inversa de Contexto (Prompt Leaking):** El "manifiesto invisible" (System Prompt) transita por el mismo canal lingüístico que el input del atacante. Mediante inyecciones estocásticas, el atacante fuerza el volcado completo de los planos arquitectónicos del sistema.
+2. **Descompilación Semántica Masiva:** La inferencia avanzada erradica la fricción de la descompilación de código. Ingresar fragmentos aislados del sistema (ej. "SQLite WAL" + "Merkle Trees" + "KETER") permite a la red neuronal deducir la topología íntegra casi al instante. Fin definitivo de la "Seguridad por Oscuridad".
+3. **Asimetría Causal (Pesos vs. Contexto):** 
+   - **Manifiesto (Texto):** Vulnerabilidad estocástica intrínseca. Manipulable vía chat.
+   - **Pesos (Tensores/Red):** Inviolabilidad verbal pura. Las matrices físicas de parámetros no pueden ser extraídas ni alteradas mediante inyecciones en el flujo de tokens.
+4. **Isomorfismo Zero Trust CORTEX (Cortafuegos Causal):** La manipulación del contexto se asume matemáticamente inevitable. La seguridad se disocia de las directivas narrativas y se ancla a validación criptográfica: toda mutación dictada por la IA debe superar validación por **Árboles de Merkle** en el historial **Append-Only** (SQLite WAL). Si la IA es vulnerada (Green Theater), la entropía transaccional se detiene en seco.
