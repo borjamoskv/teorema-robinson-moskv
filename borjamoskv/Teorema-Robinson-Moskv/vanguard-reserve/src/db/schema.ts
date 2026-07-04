@@ -56,3 +56,30 @@ export const appointments = pgTable('appointments', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
+
+export const subscriptions = pgTable('subscriptions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  agencyId: uuid('agency_id').references(() => agencies.id).notNull(),
+  stripeCustomerId: varchar('stripe_customer_id', { length: 255 }).unique().notNull(),
+  stripeSubscriptionId: varchar('stripe_subscription_id', { length: 255 }).unique().notNull(),
+  stripePriceId: varchar('stripe_price_id', { length: 255 }).notNull(),
+  status: varchar('status', { length: 50 }).notNull(), // "active", "trialing", "canceled", "incomplete"
+  currentPeriodStart: timestamp('current_period_start').notNull(),
+  currentPeriodEnd: timestamp('current_period_end').notNull(),
+  cancelAtPeriodEnd: boolean('cancel_at_period_end').default(false).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const invoices = pgTable('invoices', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  agencyId: uuid('agency_id').references(() => agencies.id).notNull(),
+  stripeInvoiceId: varchar('stripe_invoice_id', { length: 255 }).unique().notNull(),
+  amountCents: integer('amount_cents').notNull(),
+  currency: varchar('currency', { length: 10 }).notNull().default('usd'),
+  status: varchar('status', { length: 50 }).notNull(), // "paid", "open", "uncollectible"
+  hostedInvoiceUrl: text('hosted_invoice_url'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
