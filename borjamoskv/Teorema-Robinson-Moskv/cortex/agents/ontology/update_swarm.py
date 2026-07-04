@@ -1,9 +1,17 @@
 import yaml
+import sys
 
 yaml_file = '$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/agents/ontology/02_INVARIANTES_TERMODINAMICAS.yaml'
 
-with open(yaml_file, 'r') as f:
-    data = yaml.safe_load(f)
+try:
+    with open(yaml_file, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f)
+except yaml.YAMLError as e:
+    print(f"Error C5-REAL parseando YAML (YAMLError): {e}", file=sys.stderr)
+    sys.exit(1)
+except Exception as e:
+    print(f"Error I/O: {e}", file=sys.stderr)
+    sys.exit(1)
 
 new_inv = {
     'id': 'INV-101',

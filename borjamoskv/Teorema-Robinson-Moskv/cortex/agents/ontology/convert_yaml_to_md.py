@@ -9,9 +9,12 @@ def main():
     try:
         with open(yaml_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
+    except yaml.YAMLError as e:
+        print(f"Error C5-REAL parseando YAML (YAMLError): {e}", file=sys.stderr)
+        sys.exit(1)
     except Exception as e:
-        print(f"Error reading YAML: {e}")
-        return
+        print(f"Error I/O: {e}", file=sys.stderr)
+        sys.exit(1)
         
     with open(out_md, "w", encoding="utf-8") as out:
         out.write("<!-- Author: Borja Moskv (SYS_ID: borjamoskv) -->\n\n")
