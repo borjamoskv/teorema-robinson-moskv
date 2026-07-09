@@ -5,6 +5,9 @@ import os
 import sys
 import json
 import hashlib
+import math
+from collections import Counter
+from scientific_engine import compute_asymmetric_trust_isomorphism
 
 # CONFIGURACIÓN
 _BASE = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +33,8 @@ class CortexInferenceEngine:
             "process": r"(cambiar|evolucionar|fluir|transitar|dinámica|tiempo)",
             "modal": r"(podría|debería|sería|quizás|posible|mundo)",
             "info": r"(mejorar|optimizar|aprender|entrenar|divergencia|entropía)",
-            "semiotic": r"(significar|interpretar|leer|texto|signo|código)"
+            "semiotic": r"(significar|interpretar|leer|texto|signo|código)",
+            "epistemic": r"(confianza|verdad|verificar|test|hash|isomorfismo)"
         }
         
         scores = {k: 0.0 for k in triggers.keys()}
@@ -51,7 +55,8 @@ class CortexInferenceEngine:
             "MODE-03-PROCESS-DYNAMICS": ["PROCESS-DYNAMICS", "INFORMATION-GEOMETRY", "SYSTEMIC-BOUNDARIES"],
             "MODE-04-MODAL-EXPLORATION": ["MODAL-SPACES", "COMPUTATIONAL-STATES", "INTENTIONAL-STRUCTURES"],
             "MODE-05-INFORMATION-GEOMETRY": ["INFORMATION-GEOMETRY", "COMPUTATIONAL-STATES", "GRAPH-MORPHISMS"],
-            "MODE-06-SEMIOTIC-DECODING": ["SEMIOTIC-ENCODING", "INTENTIONAL-STRUCTURES", "MODAL-SPACES"]
+            "MODE-06-SEMIOTIC-DECODING": ["SEMIOTIC-ENCODING", "INTENTIONAL-STRUCTURES", "MODAL-SPACES"],
+            "MODE-07-EPISTEMIC-TRUST": ["EPISTEMIC-BOUNDARY", "ASYMMETRIC-TRUST", "GRAPH-MORPHISMS"]
         }
         
         theories = theory_map.get(mode, ["CAUSAL-ONTOLOGY"])
@@ -89,7 +94,8 @@ class CortexInferenceEngine:
             "process": "MODE-03-PROCESS-DYNAMICS",
             "modal": "MODE-04-MODAL-EXPLORATION",
             "info": "MODE-05-INFORMATION-GEOMETRY",
-            "semiotic": "MODE-06-SEMIOTIC-DECODING"
+            "semiotic": "MODE-06-SEMIOTIC-DECODING",
+            "epistemic": "MODE-07-EPISTEMIC-TRUST"
         }
         
         active_mode = mode_mapping.get(max_category, "MODE-01-CAUSAL-DEDUCTION")
@@ -101,12 +107,30 @@ class CortexInferenceEngine:
         # Simular pipeline de inferencia
         steps = self.config["inference_modes"][active_mode]["inference_steps"]
         
+        # Calculate entropy of primitive nodes to feed isomorphism
+        node_names = [p["name"] for p in primitives]
+        total = len(node_names)
+        entropy = 0.0
+        if total > 0:
+            counts = Counter(node_names)
+            for c in counts.values():
+                p_val = c / total
+                entropy -= p_val * math.log2(p_val)
+                
+        if active_mode == "MODE-07-EPISTEMIC-TRUST":
+            has_hash = "hash" in query.lower() or "isomorfismo" in query.lower()
+            has_test = "test" in query.lower() or "verificar" in query.lower()
+            trust_metric = compute_asymmetric_trust_isomorphism(has_hash, has_test, entropy)
+            confidence = trust_metric["reality_level"]
+        else:
+            confidence = "C5-REAL" if len(primitives) > 3 else "C4-SIM"
+        
         # Sintetizar traza
         trace = {
             "claim": f"Resolución de inferencia en modo {active_mode}",
             "proof": {
                 "Base": "Teorema-Robinson-Moskv / CORTEX-db",
-                "Confidence": "C5-REAL" if len(primitives) > 3 else "C4-SIM"
+                "Confidence": confidence
             },
             "query": query,
             "mode_activated": active_mode,
@@ -115,6 +139,10 @@ class CortexInferenceEngine:
             "applied_isomorphisms": [i["id"] for i in isomorphisms],
             "reasoning_steps": steps
         }
+        
+        if active_mode == "MODE-07-EPISTEMIC-TRUST":
+            trace["epistemic_trust_metric"] = trust_metric
+
         
         return trace
 
