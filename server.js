@@ -23,9 +23,13 @@ const MIME_TYPES = {
 
 function runPython(script, args, inputData) {
     return new Promise((resolve, reject) => {
-        const venvPython = path.join(__dirname, '.venv', 'bin', 'python');
-        const pythonExecutable = fs.existsSync(venvPython) ? venvPython : 'python3';
-        const child = spawn(pythonExecutable, [path.join(__dirname, script), ...args], { cwd: __dirname });
+        const venvPython = path.join(__dirname, '.venv', 'bin', 'python3');
+        if (!fs.existsSync(venvPython)) {
+            console.error('\x1b[1;31m[CORTEX APOPTOSIS]\x1b[0m .venv/bin/python3 missing. Crashing to prevent global env contamination.');
+            process.exit(1); // C5-REAL Fail-Fast
+        }
+        
+        const child = spawn(venvPython, [path.join(__dirname, script), ...args], { cwd: __dirname });
         let stdout = '';
         let stderr = '';
         
