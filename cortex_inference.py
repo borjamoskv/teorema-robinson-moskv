@@ -127,7 +127,8 @@ class CortexInferenceEngine:
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             has_hash = "hash" in query.lower() or "isomorfismo" in query.lower()
             has_test = "test" in query.lower() or "verificar" in query.lower()
-            trust_metric = compute_asymmetric_trust_isomorphism(has_hash, has_test, entropy)
+            query_hash = hashlib.sha256(query.encode('utf-8')).hexdigest()
+            trust_metric = compute_asymmetric_trust_isomorphism(query_hash if has_hash else None, has_test, entropy)
             confidence = trust_metric["reality_level"]
         else:
             confidence = "C5-REAL" if len(primitives) > 3 else "C4-SIM"
