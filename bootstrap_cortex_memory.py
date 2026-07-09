@@ -49,6 +49,11 @@ def bootstrap_cortex():
         )
     """)
     
+    # Crear índices para optimizar búsquedas de O(N) a O(log N)
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_l1_theory ON L1_primitive_nodes (theory);")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_l2_source ON L2_isomorphism_edges (source);")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_l2_target ON L2_isomorphism_edges (target);")
+    
     # Insertar primitivas
     primitives_inserted = 0
     for t_id, t_info in matriz["theories"].items():
