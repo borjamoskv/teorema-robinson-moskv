@@ -49,6 +49,9 @@ primitivas_de_colision:
   - primitiva: "PRIMITIVA_03_POLARIZACION_ACTIVA_HATE_DIRIGIDO"
     mecanismo: "El 'hate' como feature funcional y prueba social. Gestión del odio con sentido del humor ('Culo Pelao'): celebrar el insulto con ironía, corregir ortografía con elegancia ('vendehúmos') y usar al hater como motor de contenido diario."
 herramientas_ia_soberanas:
+  - nombre: "BACKUP_AUTOMATICO_ALGARA"
+    tipo: "Motor de Soberanía y Extracción Local-First (< Mafia Tools >)"
+    funcion: "Puentear la vulnerabilidad de la plataforma Substack mediante copias de seguridad automáticas y recurrentes. Desacopla la lista de suscriptores del riesgo catastrófico de borrado sin aviso, transformando un favor de plataforma en un activo propio inmutable."
   - nombre: "SICARIO"
     tipo: "Motor de Redacción Persuasiva"
     funcion: "Escribir emails de venta con IA sin que se note el camuflaje tecnológico, convirtiendo ideas en cashflow constante."
