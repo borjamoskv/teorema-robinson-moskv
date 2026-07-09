@@ -598,7 +598,9 @@ window.inspectAuditItem = function(id) {
     try {
         const steps = JSON.parse(item.reasoning_steps);
         steps.forEach((s, i) => { text += `  ${i+1}. ${s}\n`; });
-    } catch (_) {}
+    } catch (err) {
+        console.error('[CORTEX AUDIT] Error parsing reasoning_steps:', err);
+    }
     
     text += `Scientific Result:\n  ${item.scientific_result}\n`;
     text += `SHA-256 Ledger Hash: ${item.hash}\n`;
@@ -627,7 +629,9 @@ window.inspectAuditItem = function(id) {
         } else if (action === 'kolmogorov') {
             drawKolmogorovResult(sci);
         }
-    } catch (_) {}
+    } catch (err) {
+        console.error('[CORTEX AUDIT] Error rendering scientific result:', err);
+    }
 };
 
 // Fetch initial audit records on load
