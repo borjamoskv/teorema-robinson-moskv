@@ -7,3 +7,8 @@ telemetry.db-*
 *.db
 
 __pycache__/
+cortex_memory.db-shm
+cortex_memory.db-wal
+*.db-shm
+*.db-wal
+
