@@ -67,17 +67,22 @@ class CortexInferenceEngine:
         cursor.execute(f"""
             SELECT id, theory, name FROM L1_primitive_nodes 
             WHERE theory IN ({placeholders})
-            ORDER BY (id * ?) % 10007 LIMIT 5
-        """, theories + [query_seed])
-        primitives = [dict(row) for row in cursor.fetchall()]
+        """, theories)
+        all_primitives = [dict(row) for row in cursor.fetchall()]
+        
+        # Ordenamiento determinista en base a query_seed en Python
+        # para evitar fallos de coerción TEXT a NUMERIC en SQLite (id * ?)
+        all_primitives.sort(key=lambda p: hashlib.md5(f"{p['id']}-{query_seed}".encode('utf-8')).hexdigest())
+        primitives = all_primitives[:5]
         
         # Obtener isomorfismos
         cursor.execute("""
             SELECT id, type, source, target, weight, justification 
             FROM L2_isomorphism_edges
-            ORDER BY (id * ?) % 10007 LIMIT 3
-        """, (query_seed,))
-        isomorphisms = [dict(row) for row in cursor.fetchall()]
+        """)
+        all_isomorphisms = [dict(row) for row in cursor.fetchall()]
+        all_isomorphisms.sort(key=lambda i: hashlib.md5(f"{i['id']}-{query_seed}".encode('utf-8')).hexdigest())
+        isomorphisms = all_isomorphisms[:3]
         
         return primitives, isomorphisms
 
