@@ -1,9 +1,12 @@
 import sqlite3
 import yaml
 
-DB_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/cortex_memory.db"
-MATRIZ_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/matriz_1000_primitivas.yaml"
-ISOMORFISMOS_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/isomorfismos_cruzados_1000_primitivas.yaml"
+import os
+
+_BASE = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.environ.get("CORTEX_DB_PATH", os.path.join(_BASE, "cortex_memory.db"))
+MATRIZ_PATH = os.environ.get("CORTEX_MATRIZ_PATH", os.path.join(_BASE, "matriz_1000_primitivas.yaml"))
+ISOMORFISMOS_PATH = os.environ.get("CORTEX_ISOMORFISMOS_PATH", os.path.join(_BASE, "isomorfismos_cruzados_1000_primitivas.yaml"))
 
 def bootstrap_cortex():
     print("[CORTEX] Iniciando bootstrap de persistencia de base de datos...")

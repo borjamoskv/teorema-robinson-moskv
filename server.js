@@ -66,7 +66,11 @@ const server = http.createServer((req, res) => {
                 // Retransmitir a los WebSockets
                 wss.clients.forEach((client) => {
                     if (client.readyState === WebSocket.OPEN) {
-                        client.send(JSON.stringify(payload));
+                        try {
+                            client.send(JSON.stringify(payload));
+                        } catch (e) {
+                            console.error('\x1b[1;31m[CORTEX WS BROADCAST ERROR]\x1b[0m', e.message);
+                        }
                     }
                 });
                 res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -123,11 +127,15 @@ const server = http.createServer((req, res) => {
                 // 6. Broadcast to all WebSockets
                 wss.clients.forEach((client) => {
                     if (client.readyState === WebSocket.OPEN) {
-                        client.send(JSON.stringify({
-                            type: 'audit_entry',
-                            timestamp: new Date().toISOString(),
-                            ...combinedResult
-                        }));
+                        try {
+                            client.send(JSON.stringify({
+                                type: 'audit_entry',
+                                timestamp: new Date().toISOString(),
+                                ...combinedResult
+                            }));
+                        } catch (e) {
+                            console.error('\x1b[1;31m[CORTEX WS BROADCAST ERROR]\x1b[0m', e.message);
+                        }
                     }
                 });
 
@@ -215,7 +223,11 @@ wss.on('connection', (ws) => {
 
         wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
-                client.send(payloadStr);
+                try {
+                    client.send(payloadStr);
+                } catch (e) {
+                    console.error('\x1b[1;31m[CORTEX WS ERROR]\x1b[0m', e.message);
+                }
             }
         });
     });
@@ -333,7 +345,11 @@ setInterval(() => {
 
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
-            client.send(payload);
+            try {
+                client.send(payload);
+            } catch (e) {
+                console.error('\x1b[1;31m[CORTEX WS TELEMETRY ERROR]\x1b[0m', e.message);
+            }
         }
     });
 }, 1500);

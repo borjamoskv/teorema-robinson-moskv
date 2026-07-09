@@ -8,7 +8,9 @@ from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
 
 # Config C5-REAL
-JWT_SECRET = os.environ.get("CORTEX_JWT_SECRET", "babylon60_apex_key")
+JWT_SECRET = os.environ.get("CORTEX_JWT_SECRET")
+if not JWT_SECRET:
+    raise ValueError("[CORTEX SAGA-0] CORTEX_JWT_SECRET environment variable is missing. Halting execution to prevent C4-SIM entropy.")
 JWT_ALGORITHM = "HS256"
 
 app = FastAPI(docs_url=None)  # Override default docs
@@ -48,7 +50,8 @@ def health_check():
 
 @app.get("/audit")
 def get_audit_artifact(token: dict = Depends(verify_jwt)):
-    audit_path = "$CORTEX_ROOT/.gemini/antigravity/brain/be4de698-23dc-4438-b538-6f84d8e1955d/cortex_mythos_audit.md"
+    default_path = os.path.expanduser("~/.gemini/antigravity/brain/be4de698-23dc-4438-b538-6f84d8e1955d/cortex_mythos_audit.md")
+    audit_path = os.environ.get("CORTEX_AUDIT_PATH", default_path)
     if not os.path.exists(audit_path):
         raise HTTPException(status_code=404, detail="Artifact no encontrado.")
     
