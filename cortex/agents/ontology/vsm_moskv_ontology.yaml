@@ -58,6 +58,7 @@ vsm_subsystems:
     primitivas_moskv1:
       - "AGENTS.md (Leyes Fundamentales)"
       - "Master Ledger (Cortex Vault)"
+      - "Canal Algedónico (Señal de Alarma Directa al Operador / Fail-Fast)"
       - "Identidad Soberana (El Operador / Borja Moskv)"
       - "Ruta de máxima resistencia formal (Supremacía C5-REAL)"
     ley_termodinamica: "Conservación de la Invarianza. Límite epistémico absoluto."
