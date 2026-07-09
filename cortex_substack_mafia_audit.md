@@ -357,3 +357,83 @@ En el manifold 2026, la división ya no es entre creadores que usan inteligencia
 La física de colisión no admite empates. El folio en blanco espera a las 5:00 AM. La bóveda WAL está abierta.
 
 **Escribe, vende o muere.**
+
+---
+
+## 18. El Protocolo `Saga-0` de Cuarentena de Secretos e Identidad Criptográfica en Substack (`Stripe Webhook & Subscriber Taint Escrow`)
+
+La integración del transductor **Backup Automático** de Manuel Algara y de las herramientas de redacción **Sicario / Consiglieri** exige una disciplina estricta de seguridad operacional. En cumplimiento de las Leyes C5-REAL (**[L35] FILTRO DE COMPILACIÓN INMEDIATA — SAGA-0** y **[L32] SENTINEL EXECUTION**), se impone un muro cortafuegos asimétrico entre el entorno de inferencia de IA y los activos transaccionales de pago.
+
+### 18.1. Cuarentena Criptográfica de Credenciales (`Zero-Leak Assurance`)
+Queda terminantemente prohibido (*C4-SIM / Anergía*) inyectar claves secretas de API de Stripe (`sk_live_...`), tokens de sesión de Substack o identificadores personales de clientes en prompts de modelos de lenguaje externos. 
+
+El transductor de Algara implementa una bóveda aislada (**Vesicular-Runtime-OMEGA / Taint Escrow**):
+1. **Sanitización Pre-Inferencia:** Antes de enviar cualquier texto o historial transaccional a **Consiglieri** o **Sicario** para analizar conversiones o redactar correos, el módulo `Saga-0` intercepta el payload y reemplaza los correos e ID de clientes por hashes efímeros de un solo uso (`0xTAINT_CLIENT_...`).
+2. **Firma CORTEX-TAINT Obligatoria:** Todo nuevo suscriptor o transacción capturada por el **Backup Automático** recibe una firma criptográfica `BLAKE2b` en la base de datos `~/.babylon60/substack_subscribers_vault.db`. Si un archivo CSV o JSON de respaldo es extraído por un subagente o atacante, el sello de agua criptográfico delata inmediatamente el punto exacto de exfiltración.
+
+---
+
+## 19. El Teorema de la Fricción Cero en Ventas (`Zero-Friction Sales Matrix & Stripe Payment Links JIT`)
+
+Uno de los cuellos de botella más comunes en creadores amateurs es la dependencia de *landing pages* barrocas, videos de ventas interminables (*VSL*) y embudos de múltiples clics que disipan la intención de compra del usuario antes de llegar al pago.
+
+### 19.1. La Topología del Enlace Directo a Quemarropa (`One-Click Transduction`)
+En el modelo *Substack Mafia*, la venta es un colapso físico instantáneo:
+\[
+\lim_{\text{Clics} \to 1} P(\text{Conversión}) = \mathcal{C}_{\max}
+\]
+1. **Eliminación de la Landing Page:** El correo de las **5:00 AM** (*Primitiva 01*) o el impacto de *Substack Notes* (*Primitiva 02*) funciona en sí mismo como la carta de ventas completa. El texto aporta la prueba social, el gancho polarizante y la urgencia.
+2. **Stripe Payment Link Directo:** El único enlace del mensaje apunta directamente a la pasarela de cobro de Stripe para los Talleres de $17\text{€}$ (*Nivel 1*) o la suscripción al *Cuartel General* (*Nivel 2*).
+3. **Reducción Empírica de Abandono:** Al eliminar pasos intermedios y páginas web que demoran en cargar en dispositivos móviles, se aniquila el abandono de carrito ($\Delta C_{\text{drop}} \to 0$), maximizando la velocidad transaccional de la lista.
+
+---
+
+## 20. El Motor de Filtrado Antrópico y el Algoritmo de Puntuación de Leads (`Lead Scoring Feo y Sesiones Pre-Mafia 30 min`)
+
+Para proteger la integridad neurológica del Capo David Domínguez en el **Nivel 3 (MafiaMind y Mentoría 1v1 Infinita)**, el sistema erradica el antipatrón de los **"Clientes Chupasangre"** mediante un algoritmo transductor de filtrado en tiempo real programado en [c5_lead_scoring_premafia.py](file:///Users/borjafernandezangulo/.gemini/antigravity/scratch/c5_lead_scoring_premafia.py).
+
+### 20.1. El Índice Chupasangre ($\mathcal{I}_{ch}$) y la Cuarentena de Wannabes
+El motor evalúa periódicamente a cada suscriptor de la base de datos local comparando la demanda de recursos técnicos o de soporte frente a su rentabilidad verificada:
+\[
+\mathcal{I}_{ch} = \frac{\text{Support Tickets / Quejas / Regateos}}{\text{Stripe LTV Verified (EUR)} + \epsilon}
+\]
+* Si $\mathcal{I}_{ch} \geq 15.0$ o si el usuario acumula solicitudes exigentes estando en el *tier* gratuito, el transductor lo etiqueta automáticamente como **`CHUPASANGRE_PURGADO`** y bloquea su acceso a promociones de mentoría o consultas privadas.
+* **Sesión Pre-Mafia 30 Minutos:** Ningún lead puede acceder directamente al *MafiaMind 1v1*. Debe pasar por un filtro de cualificación sincrónico de 30 minutos o un cuestionario crudo donde se evalúa su capacidad de ejecución. Si busca "fórmulas mágicas" o no tolera el estilo directo militar, se le reembolsa y expulsa del proceso (*"pedir mutis sin dignidad pero con el bolsillo a salvo"*).
+
+---
+
+## 21. Topología del Cuartel General (`Mansión Clandestina`): Estructura de Red Libre de Escala ($Scale-Free Network$) y Efecto de Red Incremental
+
+Las comunidades tradicionales en redes sociales o plataformas de chat (*Discord/Telegram gratuitos*) colapsan por saturación entrópica: a medida que entra más gente, el ratio de ruido aumenta exponencialmente hasta que los miembros de alto valor abandonan el grupo (*Tragedy of the Commons*).
+
+### 21.1. Ley de Metcalfe Modificada por Muros de Pago (+560%)
+El **Cuartel General / Mansión Clandestina** (*Nivel 2 de la Refinería*) revierte este deterioro aplicando una topología de **Red Libre de Escala (Scale-Free Network)** gobernada por barreras financieras incrementales:
+\[
+V_{\text{comunidad}} = \sum_{i \neq j} \left( \frac{\mathcal{E}_i \times \mathcal{E}_j}{\text{Fricción de Entrada}} \right) \times \text{Filtro de Pago}(+560\%)
+\]
+Al exigir un pago estricto al contado sin fraccionamientos y subir los precios de forma constante a medida que se llenan los cupos, la comunidad actúa como un **colisionador de partículas de alta masa**:
+1. Solo acceden operadores con capacidad productiva e ingresos reales (*dueños de negocios, copywriters pro, programadores de micro-apps*).
+2. El networking interno genera alianzas de negocio, colaboraciones y contratos directos entre miembros, elevando el valor de la suscripción mucho más allá del contenido emitido por el creador principal.
+
+---
+
+## 22. El Código de Máquina Completo de Tracción C5-REAL (`MOSKV-1 APEX MAFIA MASTER COMPILER`)
+
+La auditoría forense culmina con la síntesis del **Manifiesto Unificado de 22 Secciones** en una matriz de control de exergía inmutable. Toda decisión arquitectónica, publicación diaria o desarrollo de software en el ecosistema *Substack Mafia* debe verificar cumplimiento contra esta tabla canonical:
+
+| Nivel Arquitectónico | Componente / Primitiva C5-REAL | Mecanismo Físico / Herramienta Soberana | Resultado Termodinámico Verificado |
+| :--- | :--- | :--- | :--- |
+| **Capa 0: Soberanía de Datos** | **Backup Automático (Algara)** | Transductor `API -> SQLite WAL` y snapshots cifrados `JSONL + BLAKE2b` en `~/.babylon60/`. | Cero riesgo de pérdida por borrado de cuenta en Substack (`SPOF Neutralized`). |
+| **Capa 1: Inferencia e Identidad** | **NotebookLM Custom / Cosa Nostra** | Ingestión exclusiva de archivos de vida, diario militar y vivencias propias (Metodología Fuentes/Gallo). | Erradicación del efecto "fotocopia genérica" y voz auténtica rugosa inalcanzable para IA estándar. |
+| **Capa 2: Redacción Persuasiva** | **Sicario & Consiglieri Di La Mafia** | Prompts profesionales de alta densidad y motor de correos de venta camuflados (Sincronización `Interlat`). | Conversión continua de ideas a flujo de caja transaccional (*Stripe Cashflow Verified*). |
+| **Capa 3: Tracción Frontal** | **Primitiva 01 (5:00 AM) & Notes (X10)** | Alta frecuencia diaria ("a lo creisi"), fricción en Notes y ganchos de polarización (*4 Patrones Letales*). | Dominio de la órbita de atención y eliminación del sesgo de oportunidad algorítmico. |
+| **Capa 4: Antifragilidad** | **Primitiva 03 (Doctrina Culo Pelao)** | Aikido lésico (*vendehúmos*), celebración del insulto e inyección del odio en el correo del día siguiente. | Transmutación de la entropía de los *haters* en prueba social, tribalismo y ventas (*Hate-to-Cashflow*). |
+| **Capa 5: Fidelización JIT** | **Sietecincuenta (< 60 min JIT)** | Desarrollo ágil de micro-aplicaciones útiles desplegadas dentro de la suscripción de Substack. | Creación de un foso de infraestructura (`SaaS Lock-In`) que dispara la retención de miembros del Nivel 2. |
+| **Capa 6: Refinería & Vértice** | **Muros de Carga & MafiaMind 1v1** | Talleres 17€, Cuartel General (+560% precio), Lead Scoring Feo (`Saga-0`) y Mentoría Infinita 0.01%. | Capitalización máxima del ecosistema y protección absoluta del tiempo y exergía del Capo. |
+
+---
+
+⚡ **RESOLUCIÓN Y COMPROMISO EN DISCO (`C5-REAL AUDIT FINALISED`):**  
+El archivo maestro de auditoría termodinámica ha colapsado en sus 22 secciones canonicales en los repositorios locales [cortex_substack_mafia_audit.md](file:///Users/borjafernandezangulo/10_PROJECTS/babylon-60/cortex_substack_mafia_audit.md) y [cortex_substack_mafia_audit.md](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/cortex_substack_mafia_audit.md). Todos los vectores de soberanía, desde la rutina castrense de las 5:00 AM hasta el transductor de Manuel Algara en SQLite WAL, están blindados por **Git Sentinel**.
+
+**Escribe, vende o muere.**
