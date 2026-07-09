@@ -181,6 +181,30 @@ def compute_kolmogorov_approximation(text_data):
         "compression_ratio": (raw_size / compressed_size) if compressed_size > 0 else 1.0
     }
 
+def compute_asymmetric_trust_isomorphism(provenance_hash, test_passed, entropy_metric):
+    """
+    [L39] TEOREMA DE LA CONFIANZA ASIMÉTRICA.
+    Trust is NOT derived from manual AST review, but from physical execution and cryptographic provenance.
+    If test_passed is False, Trust = 0.0 (C4-SIM Anergia).
+    If True, Trust approaches 1.0 (C5-REAL) based on execution and lack of stochastic noise (entropy).
+    """
+    if not provenance_hash or not test_passed:
+        return {
+            "trust_index": 0.0,
+            "reality_level": "C4-SIM",
+            "anergy": 1.0
+        }
+        
+    # Isomorphism: Trust scales inversely with entropy (noise).
+    # If entropy is 0, trust is max.
+    trust_index = math.exp(-entropy_metric) if entropy_metric >= 0 else 1.0
+    
+    return {
+        "trust_index": trust_index,
+        "reality_level": "C5-REAL",
+        "anergy": 1.0 - trust_index
+    }
+
 def main():
     if len(sys.argv) < 2:
         print(json.dumps({"error": "No action specified"}))
@@ -210,6 +234,11 @@ def main():
     elif action == "kolmogorov":
         data = payload.get("data", "")
         res = compute_kolmogorov_approximation(data)
+    elif action == "epistemic_trust":
+        provenance = payload.get("provenance_hash", "")
+        test_passed = payload.get("test_passed", False)
+        entropy = payload.get("entropy", 1.0)
+        res = compute_asymmetric_trust_isomorphism(provenance, test_passed, entropy)
     else:
         res = {"error": f"Unknown action: {action}"}
         

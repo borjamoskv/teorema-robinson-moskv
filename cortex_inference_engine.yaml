@@ -9,7 +9,7 @@ meta:
   primitives: 1000
   isomorphisms: 120
   fusion_operators: 20
-  inference_modes: 6
+  inference_modes: 7
   complexity: O(n log n) per inference cycle
 inference_modes:
   MODE-01-CAUSAL-DEDUCTION:
@@ -133,6 +133,25 @@ inference_modes:
     - 7. Output multi-layer interpretation with confidence per layer
     output_format: semiotic_stack_with_intentional_attribution
     fallback_mode: MODE-02-MEREOTOPOLOGICAL-COMPOSITION
+  MODE-07-EPISTEMIC-TRUST:
+    description: Cálculo de confianza asimétrica basada en inmutabilidad y ejecución empírica (T08 + T11 + T07)
+    activation_trigger: query_contains_trust OR query_contains_verify OR query_contains_hash OR query_contains_test OR query_contains_epistemic
+    primitive_pool:
+    - T08
+    - T11
+    - T07
+    isomorphism_pool:
+    - T08↔T11
+    - T08↔T07
+    - T07↔T11
+    inference_steps:
+    - 1. Identify provenance vectors (Git Hash presence)
+    - 2. Identify empirical falsification vectors (Test coverage)
+    - 3. Compute Shannon Entropy of execution trace
+    - 4. Apply Asymmetric Trust Isomorphism
+    - 5. Output rigorous epistemic state (C5-REAL or C4-SIM)
+    output_format: epistemic_trust_metric
+    fallback_mode: MODE-05-INFORMATION-GEOMETRY
 inference_pipeline:
   stage_1_query_parsing:
     description: Análisis léxico-semántico para activación de modo
@@ -144,7 +163,8 @@ inference_pipeline:
     - Etiquetar verbos de optimización (mejorar, optimizar, aprender, entrenar)
     - Etiquetar verbos de composición (parte, todo, sistema, estructura)
     - Etiquetar verbos de significado (significar, querer decir, interpretar, leer)
-    output: activation_vector_6d [causal, mereo, process, modal, info, semiotic]
+    - Etiquetar verbos epistémicos (confianza, verdad, verificar, test, hash, isomorfismo)
+    output: activation_vector_7d [causal, mereo, process, modal, info, semiotic, epistemic]
   stage_2_primitive_retrieval:
     description: Recuperación de primitivas relevantes desde memoria
     operations:
