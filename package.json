@@ -8,7 +8,7 @@
     "start:node": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Borja Moskv (borjamoskv)",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^12.11.1",

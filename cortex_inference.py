@@ -4,10 +4,12 @@ import re
 import os
 import sys
 import json
+import hashlib
 
 # CONFIGURACIÓN
-DB_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/cortex_memory.db"
-ENGINE_YAML_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/cortex_inference_engine.yaml"
+_BASE = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(_BASE, "cortex_memory.db")
+ENGINE_YAML_PATH = os.path.join(_BASE, "cortex_inference_engine.yaml")
 
 def load_engine_config():
     with open(ENGINE_YAML_PATH, 'r', encoding='utf-8') as f:
@@ -38,7 +40,7 @@ class CortexInferenceEngine:
             
         return scores
 
-    def retrieve_primitives(self, mode, scores):
+    def retrieve_primitives(self, mode, scores, query=""):
         # STAGE 2: Primitive Retrieval
         cursor = self.db.cursor()
         
@@ -56,19 +58,20 @@ class CortexInferenceEngine:
         
         # Obtener primitivas
         placeholders = ', '.join('?' for _ in theories)
+        query_seed = int(hashlib.md5(query.encode('utf-8')).hexdigest()[:8], 16) if query else 1
         cursor.execute(f"""
             SELECT id, theory, name FROM L1_primitive_nodes 
             WHERE theory IN ({placeholders})
-            ORDER BY RANDOM() LIMIT 5
-        """, theories)
+            ORDER BY (id * ?) % 10007 LIMIT 5
+        """, theories + [query_seed])
         primitives = [dict(row) for row in cursor.fetchall()]
         
         # Obtener isomorfismos
         cursor.execute("""
             SELECT id, type, source, target, weight, justification 
             FROM L2_isomorphism_edges
-            ORDER BY RANDOM() LIMIT 3
-        """)
+            ORDER BY (id * ?) % 10007 LIMIT 3
+        """, (query_seed,))
         isomorphisms = [dict(row) for row in cursor.fetchall()]
         
         return primitives, isomorphisms
@@ -93,7 +96,7 @@ class CortexInferenceEngine:
         if scores[max_category] == 0.0:
             active_mode = "MODE-01-CAUSAL-DEDUCTION" # Default
             
-        primitives, isomorphisms = self.retrieve_primitives(active_mode, scores)
+        primitives, isomorphisms = self.retrieve_primitives(active_mode, scores, query)
         
         # Simular pipeline de inferencia
         steps = self.config["inference_modes"][active_mode]["inference_steps"]
