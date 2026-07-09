@@ -97,18 +97,6 @@ def solve_d_separation(nodes, edges, x_node, y_node, z_set):
     # To implement this cleanly, we do a search over the configuration space.
     # State: (node, direction_of_entry)
     # direction_of_entry: 'UP' (coming from child, going up to parent) or 'DOWN' (coming from parent, going down to child)
-    visited = set()
-    active_paths = []
-    
-    # Start searching from x_node
-    # We can go UP (to parents) or DOWN (to children)
-    queue = []
-    # If X itself is in Z, then X is blocked? Wait, standard d-separation:
-    # we start at X, which is not in Z (or if it is, it's trivial).
-    for parent in adj_in[x_node]:
-        queue.append((x_node, parent, 'UP'))
-    for child in adj_out[x_node]:
-        queue.append((x_node, child, 'DOWN'))
         
     d_separated = True
     paths_found = []

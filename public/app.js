@@ -29,8 +29,28 @@ const DOM = {
     canvas: document.getElementById('analysis-canvas')
 };
 
+function esc(str) {
+    if (str === null || str === undefined) return '';
+    const d = document.createElement('div');
+    d.textContent = String(str);
+    return d.innerHTML;
+}
+
 // Canvas context
-const ctx = DOM.canvas ? DOM.canvas.getContext('2d') : null;
+function setupCanvas(canvas) {
+    if (!canvas) return null;
+    const dpr = window.devicePixelRatio || 1;
+    const width = canvas.width || 500;
+    const height = canvas.height || 230;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return ctx;
+}
+const ctx = setupCanvas(DOM.canvas);
 
 // State
 let exergyState = {
@@ -166,10 +186,10 @@ function renderLogs() {
         const el = document.createElement('div');
         el.className = `log-entry ${log.type}`;
         el.innerHTML = `
-            <div class="log-time">${log.time}</div>
-            <div class="log-module">[${log.module}]</div>
-            <div class="log-message">${log.text}</div>
-            <div class="log-metric">${log.metric}</div>
+            <div class="log-time">${esc(log.time)}</div>
+            <div class="log-module">[${esc(log.module)}]</div>
+            <div class="log-message">${esc(log.text)}</div>
+            <div class="log-metric">${esc(log.metric)}</div>
         `;
         DOM.logContainer.appendChild(el);
     });
@@ -552,11 +572,11 @@ function renderAuditTable() {
         const tr = document.createElement('tr');
         const ts = new Date(row.timestamp).toLocaleTimeString();
         tr.innerHTML = `
-            <td>${ts}</td>
-            <td class="query-td" title="${row.query}">${row.query}</td>
-            <td><span class="mode-badge">${row.mode}</span></td>
-            <td><span class="conf-badge">${row.proof_confidence}</span></td>
-            <td class="hash-td" title="${row.hash}"><code>${row.hash.substring(0, 10)}...</code></td>
+            <td>${esc(ts)}</td>
+            <td class="query-td" title="${esc(row.query)}">${esc(row.query)}</td>
+            <td><span class="mode-badge">${esc(row.mode)}</span></td>
+            <td><span class="conf-badge">${esc(row.proof_confidence)}</span></td>
+            <td class="hash-td" title="${esc(row.hash)}"><code>${esc(row.hash.substring(0, 10))}...</code></td>
             <td><button class="inspect-btn" onclick="inspectAuditItem(${row.id})">🔍</button></td>
         `;
         DOM.auditTbody.appendChild(tr);
@@ -583,7 +603,10 @@ window.inspectAuditItem = function(id) {
     text += `Scientific Result:\n  ${item.scientific_result}\n`;
     text += `SHA-256 Ledger Hash: ${item.hash}\n`;
     
-    alert(text);
+    if (DOM.pipelineDetails) {
+        DOM.pipelineDetails.innerHTML = `<div style="white-space: pre-wrap; font-size: 0.8em; color: var(--text-primary); text-align: left;">${esc(text)}</div>`;
+        DOM.pipelineDetails.scrollIntoView({ behavior: 'smooth' });
+    }
     
     // Draw the results in canvas if possible
     try {

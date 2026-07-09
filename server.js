@@ -211,7 +211,7 @@ wss.on('connection', (ws) => {
             if (data.type === 'telemetry') {
                 console.log(`\x1b[1;35m[CORTEX TELEMETRY]\x1b[0m ${data.log?.module || 'VM'} -> ${data.log?.text || ''}`);
             }
-        } catch (_) {}
+        } catch (wsParseErr) { console.error('\x1b[1;31m[CORTEX WS PARSE ERROR]\x1b[0m', wsParseErr.message); }
 
         wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -259,6 +259,16 @@ db.exec(`
         scientific_result TEXT,
         hash TEXT
     );
+
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_audit_hash ON audit_ledger(hash);
+
+    CREATE TRIGGER IF NOT EXISTS trg_audit_no_update
+    BEFORE UPDATE ON audit_ledger
+    BEGIN SELECT RAISE(ABORT, 'LEDGER_IMMUTABLE'); END;
+
+    CREATE TRIGGER IF NOT EXISTS trg_audit_no_delete
+    BEFORE DELETE ON audit_ledger
+    BEGIN SELECT RAISE(ABORT, 'LEDGER_IMMUTABLE'); END;
 `);
 
 const insertAuditLog = db.prepare(`
