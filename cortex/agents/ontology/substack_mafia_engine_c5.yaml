@@ -49,9 +49,6 @@ primitivas_de_colision:
   - primitiva: "PRIMITIVA_03_POLARIZACION_ACTIVA_HATE_DIRIGIDO"
     mecanismo: "El 'hate' como feature funcional y prueba social. Gestión del odio con sentido del humor ('Culo Pelao'): celebrar el insulto con ironía, corregir ortografía con elegancia ('vendehúmos') y usar al hater como motor de contenido diario."
 herramientas_ia_soberanas:
-  - nombre: "BACKUP_AUTOMATICO_ALGARA"
-    tipo: "Motor de Soberanía y Extracción Local-First (< Mafia Tools >)"
-    funcion: "Puentear la vulnerabilidad de la plataforma Substack mediante copias de seguridad automáticas y recurrentes. Desacopla la lista de suscriptores del riesgo catastrófico de borrado sin aviso, transformando un favor de plataforma en un activo propio inmutable."
   - nombre: "SICARIO"
     tipo: "Motor de Redacción Persuasiva"
     funcion: "Escribir emails de venta con IA sin que se note el camuflaje tecnológico, convirtiendo ideas en cashflow constante."
@@ -91,49 +88,3 @@ ecuaciones_termodinamicas:
   - "STRIPE_CASHFLOW > OPEN_RATE_VANITY_GUI"
   - "COLLISION_RATE_MAX = MASS_IDEAS * VELOCITY_AUDIENCE"
   - "EXERGY_OUTPUT = REVENUE_STRIPE / TIME_COGNITIVE_INPUT"
-vector_de_prueba_visual_c5:
-  vector_id: "SUBSTACK_MAFIA_VISUAL_PROOF_v1"
-  definicion: "La autoridad en Substack Mafia no se argumenta solo con prosa; se ancla y valida físicamente mediante impactos visuales crudos, sin filtros de agencia noruegos."
-  componentes_visuales:
-    - clase: "SELFIES_Y_FOTOS_PERSONALES_CRUDAS"
-      mecanismo: "Selfies a las 5:00 AM (disciplina castrense), fotos en eventos de alta energía (Tony Robbins) o imagen con barba/sin filtro. Destruye la distancia institucional y humaniza la marca ('Oda al contenido mal hecho')."
-    - clase: "CAPTURAS_DE_LOGROS_Y_AUTORIDAD_STRIPE"
-      mecanismo: "Capturas directas del panel de Stripe, número de suscriptores y 'fotos secretas'. La ostentación de resultados ($Stripe\_Cashflow$) actúa como prueba social irrefutable y filtro antimediocres."
-    - clase: "ESTILO_DE_VIDA_Y_RUGOSIDAD_REAL"
-      mecanismo: "Fotos de amaneceres mientras se graba un audio de madrugada o eventos familiares (presentación del libro del hermano Samuel). Aporta prueba de libertad temporal y arraigo en el mundo real."
-    - clase: "MEMES_Y_CARTELES_JIT_POLARIZANTES"
-      mecanismo: "Memes agresivos para polarizar contra los 'gurútidores' y carteles diseñados 'a lo creisi' o con Sietecincuenta para promocionar los Talleres Prácticos de 17€ con urgencia visual instantánea."
-arquitectura_cosa_nostra_c5:
-  definicion: "La IA Prohibida de Substack Mafia. A diferencia de las IAs comerciales generalistas (juguetes tecnológicos que no dan dinero y destruyen el tono), Cosa Nostra opera bajo la Línea Roja de la Invisibilidad y la especialización mafiosa extrema."
-  puntos_de_ruptura_con_ia_convencional:
-    - eje: "MONETIZACIÓN_REAL_VS_JUGUETES"
-      mecanismo: "Rechazo frontal a aplicaciones de IA 'que no dan dinero'. Cada token y prompt en Cosa Nostra / Sicario tiene como único KPI la conversión transaccional en Stripe y la dominación de la bandeja de entrada."
-    - eje: "LA_LÍNEA_ROJA_DE_LA_INVISIBILIDAD"
-      mecanismo: "El camuflaje estilístico absoluto. Está estrictamente prohibido que el lector detecte cadencias robóticas o sintaxis plástica. La IA debe preservar la voz humana y la rugosidad del creador para evitar la autoaniquilación de la newsletter por 'efecto fotocopia'."
-    - eje: "ESPECIALIZACIÓN_EN_ROLES_MAFIOSOS"
-      mecanismo: "División de trabajo asimétrica: 'Consiglieri Di La Mafia' (generación de prompts estructurales), 'Sicario' (redacción letal de emails de venta directos) y 'Cosa Nostra' (productividad y análisis competitivo clandestino)."
-    - eje: "SOBERANÍA_DE_DATOS_PROPIOS_NOTEBOOKLM"
-      mecanismo: "Alimentación exclusiva con notas de voz, diarios, correos históricos y audios propios mediante NotebookLM custom (metodología Roberto Fuentes / Mané Gallo). Erradica la alucinación genérica y asegura una voz 100% auténtica."
-taxonomia_titulares_substack_mafia_c5:
-  origen_datos: "Archivo cronológico Crecer en Substack (Dic 2025 - Jul 2026)"
-  patrones_estructurales:
-    - patron: "POLARIZACIÓN_Y_BURLA_A_COPYTIDORES"
-      ejemplos:
-        - "Cosas que he hecho hoy en Substack para 1) reírme de mis copytidores, y 2) aliviar el dolor del mundo"
-        - "Detestable Gurú de Substack TE ENGAÑA descaradamente sobre cuánto trabaja cada día"
-        - "Mr. Air-Fryer lanza email marketero vacilando de servicio agotado..."
-    - patron: "OSTENTACIÓN_CRUDO_DE_RESULTADOS_STRIPE"
-      ejemplos:
-        - "Pantallazo del dinero que he ganado en mi primer año vendiendo en Substack"
-        - "El Capo confiesa: 'Llevo un mes escribiendo con IA y he ganado pasta por un tubo por hacerlo'"
-        - "Cómo ganar los mismos suscriptores en Substack en 17 días que los que otros ganan en 2 años"
-    - patron: "ROJO_SALSEO_Y_PRENSA_ROSA_SUBSTACKERA"
-      ejemplos:
-        - "SALSEO EXTREMO: Substack Mafia crea el primer programa de prensa rosa de la historia de Substack"
-        - "Substackme Deluxe 11: Especial Substack Sponsorships + salseos y marujeos substackeros"
-        - "Lord Lunesfiestington y detalles importantes sobre lo de venir a 'La Mafiadera'"
-    - patron: "CONTRACULTURA_ANTI_CORPORATIVA_Y_MILI"
-      ejemplos:
-        - "Por qué los funcionarios están más j+didos de lo que creen, y por qué aprender IA tampoco es la solución"
-        - "¿Qué hace un GENERAL DE DIVISIÓN hablando con un soldado? Una historia de la mili"
-        - "Por qué poner precios caros es mejor que el mindfulness"
