@@ -1,6 +1,5 @@
 import sqlite3
 import yaml
-import os
 
 DB_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/cortex_memory.db"
 MATRIZ_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/matriz_1000_primitivas.yaml"
@@ -89,7 +88,7 @@ def bootstrap_cortex():
     conn.commit()
     conn.close()
     
-    print(f"[CORTEX] SQLite persistida exitosamente.")
+    print("[CORTEX] SQLite persistida exitosamente.")
     print(f"[CORTEX] Nodos Primitivos (L1) instanciados: {primitives_inserted}")
     print(f"[CORTEX] Enlaces Isomorfos (L2) instanciados: {isomorphisms_inserted}")
 

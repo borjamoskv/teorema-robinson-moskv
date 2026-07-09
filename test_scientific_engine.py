@@ -1,4 +1,3 @@
-import pytest
 import math
 from scientific_engine import (
     compute_shannon_entropy,

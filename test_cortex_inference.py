@@ -1,6 +1,4 @@
-import pytest
 from cortex_inference import CortexInferenceEngine
-import os
 
 def test_engine_initialization():
     engine = CortexInferenceEngine()
