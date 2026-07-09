@@ -21,7 +21,9 @@ def load_engine_config():
 class CortexInferenceEngine:
     def __init__(self):
         self.config = load_engine_config()
-        self.db = sqlite3.connect(DB_PATH)
+        self.db = sqlite3.connect(DB_PATH, timeout=5.0)
+        self.db.execute("PRAGMA journal_mode = WAL;")
+        self.db.execute("PRAGMA busy_timeout = 5000;")
         self.db.row_factory = sqlite3.Row
         
     def parse_query(self, query):
