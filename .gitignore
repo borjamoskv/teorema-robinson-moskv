@@ -6,3 +6,4 @@ telemetry.db
 telemetry.db-*
 *.db
 
+__pycache__/
