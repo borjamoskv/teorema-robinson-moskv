@@ -76,7 +76,9 @@ def query_facts(query: str, token: dict = Depends(verify_jwt)):
         return {"query": query, "results": [], "warning": "No local DB found"}
     
     try:
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(db_path, timeout=5.0)
+        conn.execute("PRAGMA journal_mode = WAL;")
+        conn.execute("PRAGMA busy_timeout = 5000;")
         cursor = conn.cursor()
         
         # Since we don't know the exact query format, we attempt a naive search over L1 nodes if it exists
