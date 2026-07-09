@@ -23,7 +23,9 @@ const MIME_TYPES = {
 
 function runPython(script, args, inputData) {
     return new Promise((resolve, reject) => {
-        const child = spawn('python3', [path.join(__dirname, script), ...args], { cwd: __dirname });
+        const venvPython = path.join(__dirname, '.venv', 'bin', 'python');
+        const pythonExecutable = fs.existsSync(venvPython) ? venvPython : 'python3';
+        const child = spawn(pythonExecutable, [path.join(__dirname, script), ...args], { cwd: __dirname });
         let stdout = '';
         let stderr = '';
         
