@@ -26,6 +26,8 @@
 - NEVER introduce generic `try/except Exception` or `catch(e)` blocks.
 - NEVER add placeholder comments like "Add more tests here" or "TODO: implement".
 - NEVER reorganize project structure without explicit instruction.
+- ALWAYS use `importlib.import_module` when importing python modules with numerical prefixes (e.g. `01_event_sourcing.py`) to bypass identifier syntax restrictions.
+- NEVER include `ArtifactMetadata` in `write_to_file` / `multi_replace_file_content` calls targeting workspace paths outside the designated session artifact directory.
 - ALWAYS run the full test suite before submitting a PR.
 - ALWAYS preserve existing comments and docstrings unrelated to your changes.
 - ALWAYS use the existing project structure and conventions.
