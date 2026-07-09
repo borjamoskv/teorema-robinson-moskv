@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "babylon-60"
+version = "0.1.0"
+authors = [
+  { name="Borja Moskv", email="borjamoskv@users.noreply.github.com" },
+]
+description = "CORTEX C5-REAL Sovereign Autonomous Execution Core"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pytest",
+    "sqlite3; python_version < '3.0'",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/borjamoskv/BABYLON-60"
+"Bug Tracker" = "https://github.com/borjamoskv/BABYLON-60/issues"
