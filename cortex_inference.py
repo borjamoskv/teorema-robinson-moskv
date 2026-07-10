@@ -19,12 +19,22 @@ def load_engine_config():
         return yaml.safe_load(f)
 
 class CortexInferenceEngine:
-    def __init__(self):
+    def __init__(self, db_path=None):
         self.config = load_engine_config()
-        self.db = sqlite3.connect(DB_PATH, timeout=5.0)
+        self.db = sqlite3.connect(db_path or DB_PATH, timeout=5.0)
         self.db.execute("PRAGMA journal_mode = WAL;")
         self.db.execute("PRAGMA busy_timeout = 5000;")
         self.db.row_factory = sqlite3.Row
+        
+    def __enter__(self):
+        return self
+        
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+        
+    def close(self):
+        if hasattr(self, "db") and self.db:
+            self.db.close()
         
     def parse_query(self, query):
         # STAGE 1: Query Parsing -> Activation Vector 6D
