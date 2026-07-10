@@ -70,7 +70,7 @@ def extract_python_primitives(content: str):
             elif isinstance(node, ast.ImportFrom):
                 if node.module:
                     imports.append(node.module)
-    except Exception:
+    except SyntaxError:
         pass
     return classes, functions, list(set(imports))
 
@@ -84,7 +84,7 @@ def extract_generic_primitives(content: str):
 def analyze_file(filepath: Path):
     try:
         content = filepath.read_text(encoding="utf-8")
-    except Exception:
+    except (OSError, UnicodeDecodeError):
         return None
     
     entropy = calculate_shannon_entropy(content)
@@ -124,7 +124,7 @@ def worker_thread(filepath: Path):
             data["lines"], data["classes"], data["functions"], data["imports"]
         ))
         conn.commit()
-    except Exception as e:
+    except sqlite3.Error as e:
         logging.error(f"DB Error on {filepath}: {e}")
     finally:
         conn.close()

@@ -52,7 +52,7 @@ class AcousticKernel:
         """
         Bridge to MLX STT -> LLM -> TTS.
         """
-        await asyncio.sleep(0.15) # Simulating C5-REAL MLX Execution
+        # Zero Anergy - No simulated latency
         self._state_hash = hashlib.blake2b(pcm_frame[::-1]).hexdigest()
         logging.info(f"New Tensor State: {self._state_hash[:16]}")
 

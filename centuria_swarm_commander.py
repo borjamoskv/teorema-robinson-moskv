@@ -33,7 +33,7 @@ def generate_100_vectors():
                         "target": f"{os.path.basename(fpath)}::{node.name}",
                         "directive": "Audit memory footprint and state mutability."
                     })
-        except Exception as e:
+        except (SyntaxError, FileNotFoundError) as e:
             print(f"Error parsing {fpath}: {e}")
             
     # 2. Add structural boundaries (Database, Networking, State)
