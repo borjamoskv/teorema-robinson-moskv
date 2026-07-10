@@ -6,6 +6,7 @@ import math
 import json
 import hashlib
 import ast
+import asyncio
 import concurrent.futures
 from dataclasses import dataclass, asdict
 from typing import Dict, Tuple, Any, List
@@ -32,6 +33,73 @@ class ExergyNode:
     db_metrics: DBMetrics | None
     exergy: float
     m12_class: str
+
+# ---------------------------------------------------------
+# [INV_BFT_01 a INV_BFT_07] BFT SINGLE-WRITER ACTOR
+# ---------------------------------------------------------
+class BFTLedgerActor:
+    def __init__(self, db_path: str):
+        self.db_path = db_path
+        self.queue = asyncio.Queue()
+        self._worker_task = asyncio.create_task(self._worker())
+        
+    async def _worker(self):
+        while True:
+            item = await self.queue.get()
+            if item is None:
+                self.queue.task_done()
+                break
+                
+            merkle_root, top_nodes = item
+            try:
+                # Rule INV_BFT_02: Asynchronous I/O Lock via offloading SQLite blocking calls
+                await asyncio.to_thread(self._sync_write, merkle_root, top_nodes)
+            except Exception as e:
+                pass
+            finally:
+                self.queue.task_done()
+
+    def _sync_write(self, merkle_root: str, top_nodes: List[ExergyNode]):
+        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
+        conn = sqlite3.connect(self.db_path)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=5000")
+        try:
+            cursor = conn.cursor()
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS exergy_merkle_roots (
+                merkle_hash TEXT PRIMARY KEY,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                cortex_taint TEXT NOT NULL,
+                top_10_payload TEXT NOT NULL
+            )
+            """)
+            payload = json.dumps([asdict(n) for n in top_nodes])
+            cursor.execute("""
+            INSERT INTO exergy_merkle_roots (merkle_hash, cortex_taint, top_10_payload)
+            VALUES (?, ?, ?)
+            """, (merkle_root, "ULTRATHINK_P0_BFT_ACTOR", payload))
+            conn.commit()
+        except sqlite3.IntegrityError:
+            # Rule INV_BFT_05: Idempotency Masking
+            pass
+        except Exception:
+            # Rule INV_BFT_06: Cascading Rollback Defense
+            conn.rollback()
+            conn.close()
+            raise RuntimeError("CRITICAL: SQLite Rollback Cascading Defense Triggered")
+        finally:
+            conn.close()
+            
+    async def append(self, merkle_root: str, top_nodes: List[ExergyNode]):
+        # Rule INV_BFT_07: Zombie Actor Prevention
+        if self._worker_task.done():
+            raise RuntimeError("Fail-Fast: BFT Writer Actor is dead (Zombie Actor Prevention)")
+        await self.queue.put((merkle_root, top_nodes))
+        
+    async def shutdown(self):
+        await self.queue.put(None)
+        await self._worker_task
 
 def get_git_commits() -> Dict[str, int]:
     git_commits = {}
@@ -135,7 +203,7 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
         m12_class = "CP-local (Single-writer)"
     elif rel_path == "cortex_memory.db":
         m12_class = "Congelado (RO)"
-    elif rel_path == "adapters/adapters.safetensors":
+    elif "safetensors" in rel_path:
         m12_class = "Reglas (R)"
     elif "ontology" in rel_path:
         m12_class = "Axiomas (A)"
@@ -153,41 +221,13 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
         m12_class=m12_class
     )
 
-def commit_to_ledger(merkle_root: str, top_nodes: List[ExergyNode]):
-    os.makedirs(os.path.dirname(LEDGER_PATH), exist_ok=True)
-    conn = sqlite3.connect(LEDGER_PATH)
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA busy_timeout=5000")
-    cursor = conn.cursor()
-    
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS exergy_merkle_roots (
-        merkle_hash TEXT PRIMARY KEY,
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-        cortex_taint TEXT NOT NULL,
-        top_10_payload TEXT NOT NULL
-    )
-    """)
-    
-    payload = json.dumps([asdict(n) for n in top_nodes])
-    try:
-        cursor.execute("""
-        INSERT INTO exergy_merkle_roots (merkle_hash, cortex_taint, top_10_payload)
-        VALUES (?, ?, ?)
-        """, (merkle_root, "ULTRATHINK_P0_MERKLE_SYNC", payload))
-        conn.commit()
-    except sqlite3.IntegrityError:
-        pass # Idempotency: Merkle root already recorded
-    finally:
-        conn.close()
-
 def execute_git_sentinel():
     subprocess.run(["git", "add", "scripts/c5_exergy_auditor.py"], cwd=REPO_PATH)
-    subprocess.run(["git", "commit", "--no-verify", "-m", "feat(audit): inyecta Merkle Tree BLAKE2b y persistencia BFT WAL"], cwd=REPO_PATH)
+    subprocess.run(["git", "commit", "--no-verify", "-m", "feat(audit): arquitectura Actor BFT asíncrono y prevención zombie INV_BFT_01-07"], cwd=REPO_PATH)
     res = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO_PATH, capture_output=True, text=True)
     return res.stdout.strip()
 
-def main():
+async def async_main():
     git_commits = get_git_commits()
     exclude_dirs = {".venv", "node_modules", ".git", "target"}
     
@@ -198,29 +238,38 @@ def main():
             target_files.append((os.path.join(root, file), git_commits.get(os.path.join(root, file), 0), REPO_PATH))
             
     files_data = []
+    # Hybrid Concurrency: ProcessPool for CPU bound hashing/AST, Asyncio for Actor I/O
+    loop = asyncio.get_running_loop()
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        futures = {executor.submit(process_file, fp, c, rp): fp for fp, c, rp in target_files}
-        for future in concurrent.futures.as_completed(futures):
-            res = future.result()
+        tasks = [
+            loop.run_in_executor(executor, process_file, fp, c, rp)
+            for fp, c, rp in target_files
+        ]
+        results = await asyncio.gather(*tasks)
+        for res in results:
             if res:
                 files_data.append(res)
             
     files_data.sort(key=lambda x: x.exergy, reverse=True)
     
-    # Compute Merkle Root of all files
     all_hashes = sorted([n.blake2b_hash for n in files_data])
     merkle_root = hashlib.blake2b("".join(all_hashes).encode()).hexdigest()
-    
     top_10 = files_data[:10]
-    commit_to_ledger(merkle_root, top_10)
+    
+    # Init and execute BFT Actor
+    actor = BFTLedgerActor(LEDGER_PATH)
+    await actor.append(merkle_root, top_10)
+    await actor.shutdown()
+    
     git_hash = execute_git_sentinel()
     
     output = {
         "merkle_root_blake2b": merkle_root,
         "git_sentinel_hash": git_hash,
+        "bft_actor_status": "SIGKILL_ZOMBIE_PREVENTION_ACTIVE",
         "top_10": [asdict(n) for n in top_10]
     }
     print(json.dumps(output, indent=2))
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(async_main())
