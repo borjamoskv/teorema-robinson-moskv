@@ -14,7 +14,7 @@ meta:
 inference_modes:
   MODE-01-CAUSAL-DEDUCTION:
     description: Razonamiento causal puro usando T01 + T07
-    activation_trigger: query_contains_causal_verbs OR query_contains_intervention_language
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_01_centroid) > 0.85
     primitive_pool:
     - T01
     - T07
@@ -30,7 +30,7 @@ inference_modes:
     output_format: causal_estimate_with_confidence_interval
   MODE-02-MEREOTOPOLOGICAL-COMPOSITION:
     description: Análisis de partes, todo y fronteras usando T02 + T10 + T07
-    activation_trigger: query_contains_part_whole OR query_contains_boundary OR query_contains_system_decomposition
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_02_centroid) > 0.85
     primitive_pool:
     - T02
     - T10
@@ -49,7 +49,7 @@ inference_modes:
     output_format: mereotopological_diagram_with_systemic_regulation
   MODE-03-PROCESS-DYNAMICS:
     description: Análisis temporal y dinámico usando T03 + T05 + T10
-    activation_trigger: query_contains_time OR query_contains_change OR query_contains_evolution OR query_contains_flow
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_03_centroid) > 0.85
     primitive_pool:
     - T03
     - T05
@@ -69,7 +69,7 @@ inference_modes:
     output_format: dynamical_system_model_with_predictions
   MODE-04-MODAL-EXPLORATION:
     description: Exploración de mundos posibles usando T04 + T08 + T09
-    activation_trigger: query_contains_possible OR query_contains_what_if OR query_contains_could OR query_contains_scenario
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_04_centroid) > 0.85
     primitive_pool:
     - T04
     - T08
@@ -89,7 +89,7 @@ inference_modes:
     output_format: modal_world_ranking_with_accessibility_graph
   MODE-05-INFORMATION-GEOMETRY:
     description: Optimización en variedades de información usando T05 + T08 + T07
-    activation_trigger: query_contains_optimize OR query_contains_learn OR query_contains_data OR query_contains_model
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_05_centroid) > 0.85
     primitive_pool:
     - T05
     - T08
@@ -109,7 +109,7 @@ inference_modes:
     output_format: information_manifold_with_optimal_point
   MODE-06-SEMIOTIC-DECODING:
     description: Interpretación de signos y significados usando T06 + T09 + T04
-    activation_trigger: query_contains_meaning OR query_contains_text OR query_contains_language OR query_contains_sign
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_06_centroid) > 0.85
     primitive_pool:
     - T06
     - T09
@@ -129,7 +129,7 @@ inference_modes:
     output_format: semiotic_stack_with_intentional_attribution
   MODE-07-EPISTEMIC-TRUST:
     description: Cálculo de confianza asimétrica basada en inmutabilidad y ejecución empírica (T08 + T11 + T07)
-    activation_trigger: query_contains_trust OR query_contains_verify OR query_contains_hash OR query_contains_test OR query_contains_epistemic
+    activation_trigger: cosine_distance(query_embedding_fp16, mode_07_centroid) > 0.85
     primitive_pool:
     - T08
     - T11
@@ -147,25 +147,21 @@ inference_modes:
     output_format: epistemic_trust_metric
 inference_pipeline:
   stage_1_query_parsing:
-    description: Análisis léxico-semántico para activación de modo
+    description: Colapso vectorial en espacio latente FP16 Dim1536
     operations:
-    - Tokenizar query
-    - Etiquetar verbos causales (causar, provocar, generar, hacer)
-    - Etiquetar verbos modales (podría, debería, sería, quizás)
-    - Etiquetar verbos de proceso (cambiar, evolucionar, fluir, transitar)
-    - Etiquetar verbos de optimización (mejorar, optimizar, aprender, entrenar)
-    - Etiquetar verbos de composición (parte, todo, sistema, estructura)
-    - Etiquetar verbos de significado (significar, querer decir, interpretar, leer)
-    - Etiquetar verbos epistémicos (confianza, verdad, verificar, test, hash, isomorfismo)
+    - Tokenizar query y extraer embedding (FP16 Dim1536)
+    - Calcular distancia de coseno contra centroides de los 7 modos
+    - Generar matriz de activación softmax-ortogonal
     output: activation_vector_7d [causal, mereo, process, modal, info, semiotic, epistemic]
   stage_2_primitive_retrieval:
-    description: Recuperación de primitivas relevantes desde memoria
+    description: Recuperación de primitivas relevantes desde memoria y recolección de basura
     operations:
     - Activar modo con score más alto del vector
     - Si score == 0, ASSERT SIGKILL_State_Purge
     - Recuperar primitivas del pool del modo activo
     - Recuperar isomorfismos conectados
     - Expandir 1-hop via isomorfismos de alta fuerza (>0.85)
+    - Ejecutar Garbage Collector Ontológico: Purgar primitivas de grado 0 (Nodos Huérfanos)
     - Aplicar pruning por irrelevancia
     output: active_primitive_set + active_isomorphism_set
   stage_3_fusion_orchestration:
@@ -178,13 +174,16 @@ inference_pipeline:
     - Verificar consistencia de la salida fusionada
     output: fused_primitive_space
   stage_4_reasoning_execution:
-    description: Ejecución del razonamiento paso a paso
+    description: Ejecución del razonamiento paso a paso con Mitosis JIT
     operations:
     - Recorrer inference_steps del modo activo
     - En cada paso, seleccionar primitiva con mayor activation * relevance
     - Aplicar isomorfismos para traducir entre dominios
     - Acumular resultados intermedios en working memory
-    - Assert SIGKILL_State_Purge on dead-end
+    - En caso de Dead-End (ausencia de isomorfismo), NO abortar ciegamente:
+    - Bifurcar [L16] Τ6 · MITOSIS JIT -> Subagente Flash para forjar Isomorfismo Temporal (Stub) empíricamente comprobable.
+    - Si el Stub empírico compila, agregarlo al tensor de isomorfismos en memoria y continuar.
+    - Si el Stub falla tras 1 iteración, ASSERT SIGKILL_State_Purge.
     - Verificar coherencia lógica entre pasos
     output: reasoning_trace + intermediate_results
   stage_5_output_synthesis:
