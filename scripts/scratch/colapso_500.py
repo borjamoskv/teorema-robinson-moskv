@@ -7,12 +7,10 @@ DB_PATH = "/Users/borjafernandezangulo/30_BABYLON-60/cortex/ontology/isomorfismo
 MD_PATH = "/Users/borjafernandezangulo/30_BABYLON-60/cortex/ontology/isomorfismos_estructurales_500.md"
 
 def extract_entropy():
-    # R10: Concurrencia Confiable de DB
     conn = sqlite3.connect(DB_PATH, timeout=5000)
     conn.execute("PRAGMA journal_mode=WAL;")
     conn.execute("PRAGMA synchronous=NORMAL;")
     
-    # Init strict schema
     conn.execute("""
         CREATE TABLE IF NOT EXISTS structural_primitives (
             id INTEGER PRIMARY KEY,
@@ -29,28 +27,31 @@ def extract_entropy():
     with open(MD_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Parse sections
-    # Regex to match: 1. **Clase:** categoría básica de objetos.
-    pattern = re.compile(r"^(\d+)\.\s+\*\*([^\*]+):\*\*\s+(.*)$", re.MULTILINE)
+    # Regex to match:
+    # 1. **Name:** description
+    # 251. **Name.**
+    pattern = re.compile(r"^(\d+)\.\s+\*\*([^\*]+)\*\*(?:\s+(.*))?$", re.MULTILINE)
     matches = pattern.findall(content)
 
     if not matches:
-        print("SIGKILL_STATE_PURGE: No matches found. Regex failure or empty markdown.")
+        print("SIGKILL_STATE_PURGE: No matches found. Regex failure.")
         return
 
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM structural_primitives") # Reset for purity
+    cursor.execute("DELETE FROM structural_primitives") 
 
-    # Categorize based on ID (1-250 Primitives, 251-500 Invariants)
     count = 0
     for match in matches:
         uid = int(match[0])
         name = match[1].strip()
-        desc = match[2].strip()
+        # Clean up name if it ends with colon or period
+        if name.endswith(':') or name.endswith('.'):
+            name = name[:-1].strip()
+
+        desc = match[2].strip() if match[2] else "N/A"
         
         node_type = "PRIMITIVE" if uid <= 250 else "INVARIANT"
         
-        # Domain resolution based on UID ranges (hardcoded from standard)
         domain = "UNKNOWN"
         if 1 <= uid <= 25: domain = "Sustrato_Tipado"
         elif 26 <= uid <= 50: domain = "Relaciones_Incidencia"
@@ -73,7 +74,6 @@ def extract_entropy():
         elif 451 <= uid <= 475: domain = "Pesos_Medidas_Espectros"
         elif 476 <= uid <= 500: domain = "Logica_Conteos_Completitud"
 
-        # Taint tracking (Ω11)
         sig = f"{uid}|{node_type}|{domain}|{name}|{desc}"
         causal_hash = hashlib.blake2s(sig.encode()).hexdigest()
 
@@ -88,12 +88,10 @@ def extract_entropy():
 
     conn.commit()
     
-    # Verify exact match
     cursor.execute("SELECT COUNT(*) FROM structural_primitives")
     final_count = cursor.fetchone()[0]
     
     print(f"C5-REAL_COLLAPSE_SUCCESS: {final_count}/500 entidades transducidas a SQLite WAL.")
-    
     conn.close()
 
 if __name__ == "__main__":
