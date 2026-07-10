@@ -7,7 +7,7 @@ import json
 import hashlib
 import math
 from collections import Counter
-from scientific_engine import compute_asymmetric_trust_isomorphism
+from scientific_engine import compute_asymmetric_trust_isomorphism, compute_shannon_entropy
 
 # CONFIGURACIÓN
 _BASE = os.path.dirname(os.path.abspath(__file__))
@@ -126,13 +126,7 @@ class CortexInferenceEngine:
         
         # Calculate entropy of primitive nodes to feed isomorphism
         node_names = [p["name"] for p in primitives]
-        total = len(node_names)
-        entropy = 0.0
-        if total > 0:
-            counts = Counter(node_names)
-            for c in counts.values():
-                p_val = c / total
-                entropy -= p_val * math.log2(p_val)
+        entropy = compute_shannon_entropy(node_names)["entropy"]
                 
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             has_hash = "hash" in query.lower() or "isomorfismo" in query.lower()
