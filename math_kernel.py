@@ -1,5 +1,5 @@
 import sqlite3
-import hashlib
+import babylon60
 import time
 from typing import Final, Tuple
 from dataclasses import dataclass
@@ -40,9 +40,9 @@ def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
     exergy = (tokens * 100) / temperature
     lamport_t = int(time.time() * 1000)
     
-    # Hash causal de procedencia
-    raw_causal = f"{tokens}|{temperature}|{exergy}|{lamport_t}".encode('utf-8')
-    causal_hash = hashlib.blake2b(raw_causal, digest_size=16).hexdigest()
+    # Hash causal de procedencia (FFI ring)
+    raw_causal = f"{tokens}|{temperature}|{exergy}|{lamport_t}"
+    causal_hash = babylon60.blake2b_hash(raw_causal)
     
     node = ExergyNode(
         tokens=tokens,

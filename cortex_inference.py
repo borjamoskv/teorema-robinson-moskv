@@ -4,7 +4,7 @@ import re
 import os
 import sys
 import json
-import hashlib
+import babylon60
 from scientific_engine import (
     compute_asymmetric_trust_isomorphism,
     compute_shannon_entropy,
@@ -150,7 +150,7 @@ class CortexInferenceEngine:
 
     def execute_inference(self, query):
         normalized_query = query.strip().lower()
-        query_hash = hashlib.sha256(normalized_query.encode("utf-8")).hexdigest()
+        query_hash = babylon60.sha256_hash(normalized_query)
         
         # L3 Memoization Cache Bypass (Zero-Anergy return)
         cursor = self.db.cursor()
@@ -196,7 +196,7 @@ class CortexInferenceEngine:
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             has_hash = "hash" in query.lower() or "isomorfismo" in query.lower()
             has_test = "test" in query.lower() or "verificar" in query.lower()
-            query_hash = hashlib.sha256(query.encode("utf-8")).hexdigest()
+            query_hash = babylon60.sha256_hash(query)
             trust_metric = compute_asymmetric_trust_isomorphism(
                 query_hash if has_hash else None, has_test, entropy
             )

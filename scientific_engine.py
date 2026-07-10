@@ -9,6 +9,7 @@ import math
 import zlib
 from collections import Counter
 from decimal import Decimal
+import babylon60
 
 __all__ = [
     "compute_shannon_entropy",
@@ -20,166 +21,43 @@ __all__ = [
 
 
 def compute_shannon_entropy(data: list | str) -> dict:
-    """
-    Computes Shannon Entropy of a list of items or string.
-    H(X) = -sum(P(x) * log2(P(x)))
-    """
-    if not data:
-        return {
-            "entropy": Decimal("0.0"),
-            "max_entropy": Decimal("0.0"),
-            "efficiency": Decimal("1.0"),
-        }
-
-    # If input is a list of numbers or objects, count frequencies.
-    # If string, count char frequencies.
-    total = len(data)
-    counts = Counter(data)
-
-    entropy = Decimal("0.0")
-    terms = []
-    for count in counts.values():
-        p = Decimal(count) / Decimal(total)
-        terms.append(-p * Decimal(str(math.log2(float(p)))))
-
-    entropy = sum(terms, Decimal("0.0"))
-
+    if isinstance(data, list):
+        data = "".join(str(x) for x in data)
+    res = babylon60.compute_shannon_entropy(data)
+    import json
+    d = json.loads(res)
     return {
-        "entropy": entropy,
-        "max_entropy": Decimal(str(math.log2(total))) if total > 1 else Decimal("0.0"),
-        "efficiency": (entropy / Decimal(str(math.log2(total))))
-        if total > 1 and entropy > Decimal("0.0")
-        else Decimal("1.0"),
+        "entropy": Decimal(str(d["entropy"])),
+        "max_entropy": Decimal(str(d["max_entropy"])),
+        "efficiency": Decimal(str(d["efficiency"])),
     }
 
 
 def compute_fisher_information(time_series: list[Decimal]) -> dict:
-    """
-    Computes Fisher Information metric for a time-series vector.
-    For a sequence of values v_t, we compute:
-    I_F = sum( ((v_{t+1} - v_t) / dt)^2 / v_t )
-    """
-    if not time_series or len(time_series) < 2:
+    series_f64 = [float(x) for x in time_series]
+    res = babylon60.compute_fisher_information(series_f64)
+    import json
+    d = json.loads(res)
+    if d.get("status") == "insufficient_data":
         return {"fisher_information": Decimal("0.0"), "status": "insufficient_data"}
-
-    # Filter out zero or negative values to prevent domain error and division by zero
-    epsilon = Decimal("1e-10")
-    series = [Decimal(str(v)) if Decimal(str(v)) > epsilon else epsilon for v in time_series]
-
-    fisher_sum = Decimal("0.0")
-    terms = []
-    for i in range(len(series) - 1):
-        diff = series[i + 1] - series[i]
-        terms.append((diff**2) / series[i])
-
-    fisher_sum = sum(terms, Decimal("0.0"))
-    
-    # O(N) single-pass variance calculation
-    n = Decimal(len(series))
-    mean = sum(series, Decimal("0.0")) / n
-    variance = sum(((x - mean) ** 2 for x in series), Decimal("0.0")) / n
-
     return {
-        "fisher_information": fisher_sum,
-        "mean": mean,
-        "variance": variance,
+        "fisher_information": Decimal(str(d["fisher_information"])),
+        "mean": Decimal(str(d["mean"])),
+        "variance": Decimal(str(d["variance"])),
     }
 
 
 def solve_d_separation(
     nodes: list[str], edges: list[list[str]], x_node: str, y_node: str, z_set: list[str]
 ) -> dict:
-    """
-    Determines if x_node and y_node are d-separated given z_set in a DAG.
-    nodes: list of node names
-    edges: list of [source, target] pairs
-    x_node: start node string
-    y_node: end node string
-    z_set: list of conditioning node strings
-    """
-    # 1. Build adjacency list representation of DAG
-    adj_out = {n: set() for n in nodes}
-    adj_in = {n: set() for n in nodes}
-    for u, v in edges:
-        if u in adj_out:
-            adj_out[u].add(v)
-        if v in adj_in:
-            adj_in[v].add(u)
-
-    z_set = set(z_set)
-    
-    # 2. Strict DAG Validation (Cycle Detection via DFS)
-    visited = set()
-    rec_stack = set()
-    
-    def is_cyclic(node):
-        visited.add(node)
-        rec_stack.add(node)
-        for neighbor in adj_out.get(node, []):
-            if neighbor not in visited:
-                if is_cyclic(neighbor): return True
-            elif neighbor in rec_stack:
-                return True
-        rec_stack.remove(node)
-        return False
-
-    for node in nodes:
-        if node not in visited:
-            if is_cyclic(node):
-                # [L12] K1 FAIL-FAST: Cycles injected.
-                print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Cyclic Topology Detected. D-Separation requires a strict DAG.", file=sys.stderr)
-                sys.exit(1)
-
-    # 3. Bayes-Ball / Active Trail DFS Algorithm O(V+E)
-    # Track states as (node, direction) where direction is 'up' (from child) or 'down' (from parent).
-    # Initially we start at x_node going 'up' (as if from a child).
-    
-    # Ancestors of Z
-    anc_z = set(z_set)
-    queue = list(z_set)
-    while queue:
-        curr = queue.pop(0)
-        for parent in adj_in.get(curr, []):
-            if parent not in anc_z:
-                anc_z.add(parent)
-                queue.append(parent)
-                
-    visited_states = set()
-    queue = [(x_node, 'up')]
-    
-    reachable = set()
-    
-    while queue:
-        curr, direction = queue.pop(0)
-        
-        if (curr, direction) in visited_states:
-            continue
-        visited_states.add((curr, direction))
-        
-        if curr not in z_set:
-            reachable.add(curr)
-            
-        if direction == 'up' and curr not in z_set:
-            for parent in adj_in.get(curr, []):
-                queue.append((parent, 'up'))
-            for child in adj_out.get(curr, []):
-                queue.append((child, 'down'))
-        elif direction == 'down':
-            if curr not in z_set:
-                for child in adj_out.get(curr, []):
-                    queue.append((child, 'down'))
-            if curr in anc_z:
-                for parent in adj_in.get(curr, []):
-                    queue.append((parent, 'up'))
-
-    d_separated = y_node not in reachable
-
-    return {
-        "d_separated": d_separated,
-        "active_paths": [], # Removed O(V!) path generation
-        "total_paths": 0,
-        "conditioning_set": list(z_set),
-    }
+    res = babylon60.solve_d_separation(nodes, edges, x_node, y_node, z_set)
+    import json
+    import sys
+    d = json.loads(res)
+    if "error" in d:
+        print(f"[1;31m[CORTEX APOPTOSIS][0m {d['error']}", file=sys.stderr)
+        sys.exit(1)
+    return d
 
 
 def compute_kolmogorov_approximation(text_data: str) -> dict:
