@@ -1,0 +1,2018 @@
+SIESAS_ONTOLOGY:
+  Metadata:
+    Title: "S\xEDntesis de Isomorfismos Estructurales sin Analog\xEDa Superficial"
+    Total_Elements: 500
+    Levels:
+    - Estructura
+    - "Colisi\xF3n"
+    - Invariantes
+    - "Transducci\xF3n"
+    - Antipatrones
+    - Axiomas
+  Elements:
+    Primitivas_Estructura:
+    - ID: STR-001-63FD2C32
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-002-1B5CEB7F
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-003-BDD1999B
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-004-EC9D1F6A
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-005-B5F22CCF
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-006-5416507C
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-007-B0F29178
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-008-48308259
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-009-68DC7819
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-010-B368EFC8
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-011-65D5BAD5
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-012-B78200FA
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-013-78C77CE3
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-014-03BCC913
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-015-5C17DC05
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-016-C4730E74
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-017-DAB22CC0
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-018-F24B0C62
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-019-B71CA79C
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-020-DA31A99C
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-021-C3AE26EB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-022-441B5B87
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-023-D85404C4
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-024-255F4B8F
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-025-9C076D96
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-026-2F8FAA6A
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-027-08D2B942
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-028-2018B067
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-029-ED32B495
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-030-8F08C160
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-031-C84CA43E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-032-28E652D1
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-033-D97AB244
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-034-485D425D
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-035-80679C2A
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-036-DF62CA84
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-037-E9B6DA80
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-038-C2E7AAAF
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-039-D7665F8B
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-040-FDB1CD6D
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-041-96379D2E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-042-84A7290A
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-043-99BBB9ED
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-044-6206307E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-045-7EFC8DAB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-046-B63087F3
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-047-ED0CDA91
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-048-E3DD77BE
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-049-1AA9592D
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-050-B74AA9DA
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-051-442CE554
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-052-92A01168
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-053-84BA72C1
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-054-A6C2E6D7
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-055-AEF4D298
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-056-68EEAC43
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-057-F8124AF3
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-058-87B4531F
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-059-A060ED62
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-060-0CE2972E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-061-907FFE85
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-062-FB7429F0
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-063-4F7EBFE3
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-064-6537152F
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-065-45405CC5
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-066-897A2BF7
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-067-B0B69B10
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-068-5A9F7626
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-069-58C080A1
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-070-52BEC85D
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-071-DCCB59BF
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-072-5B714DCD
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-073-88FA49E4
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-074-2175E6A7
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-075-6F290FB6
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-076-13F6B5BB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-077-5F11E495
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-078-F4B4D7AB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-079-1B6C496A
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-080-FB6A5399
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-081-617972A1
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-082-A4E7A77E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-083-38AC3E47
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-084-7B6FD4B5
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-085-E8A71771
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-086-C02F2FB4
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-087-4871AD4E
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-088-A0E6F4EB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-089-0401A2B4
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-090-EA4020F0
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-091-BC825410
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-092-960C6F7F
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-093-0534CBB7
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-094-F3AE7CD6
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-095-4A46E4AB
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    - ID: STR-096-38EC8DFD
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo BFT para aislamiento de estado."
+      Valence: 2
+    - ID: STR-097-41AE13FC
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo AST para aislamiento de estado."
+      Valence: 3
+    - ID: STR-098-D36A6DB3
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo TSR para aislamiento de estado."
+      Valence: 4
+    - ID: STR-099-894AE259
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo VEC para aislamiento de estado."
+      Valence: 5
+    - ID: STR-100-F8DF2922
+      Type: Structure
+      Definition: "Nodo de anclaje topol\xF3gico tipo DAG para aislamiento de estado."
+      Valence: 1
+    Primitivas_Colision:
+    - ID: COL-001-77D40B8A
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-002-C45215C7
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-003-005C1412
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-004-A27D9957
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-005-691C5623
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-006-5D2AC5DD
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-007-5BC5150B
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-008-C42119F8
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-009-8597CF6D
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-010-F78A4A05
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-011-33E000B5
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-012-5E874F15
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-013-D3ADCF8E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-014-CFE573EB
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-015-100A8FA1
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-016-D01F5287
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-017-3D56D947
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-018-C11028B2
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-019-8CAAFDBD
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-020-5AA7AF8A
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-021-948DDFE9
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-022-581912F3
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-023-17ED8457
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-024-CC4A8AEB
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-025-3BECDFF4
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-026-4CEB18A1
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-027-4AEE9675
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-028-F56B37C1
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-029-CDDDE6E3
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-030-DA8B2AC1
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-031-8A844B66
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-032-0851FC4D
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-033-992EC303
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-034-ECD5A0A9
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-035-69B0DE7C
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-036-8000C899
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-037-A0E2820E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-038-9FD5CF8E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-039-D178F00E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-040-77AA10BF
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-041-89CF968E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-042-0AB084E7
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-043-793C2ABA
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-044-F10ED6AF
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-045-FB6905EC
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-046-A641AC36
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-047-3F0FE753
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-048-ACA4A483
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-049-2466DE19
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-050-864D1005
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-051-7DC71A77
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-052-2F3466FD
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-053-FAA745E2
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-054-E40D8FC4
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-055-C204990E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-056-0C2C803A
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-057-83D24756
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-058-1477AED4
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-059-54D366C9
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-060-C5C46FF7
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-061-7FB41615
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-062-88A81C8B
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-063-04BC7664
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-064-E97BD4FD
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-065-32F6FDA5
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-066-AC3D98EB
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-067-81E74470
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-068-0F086774
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-069-AF47DABD
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-070-A040DC3D
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-071-30CEE6DB
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-072-BC872883
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-073-1D1A8FF7
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-074-E697C4CE
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-075-34708264
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-076-90C055B8
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-077-A102D01D
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-078-A5C68A9E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-079-0A005931
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-080-11A81A83
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-081-CC0C2B20
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-082-1C378A4F
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-083-A9501493
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-084-96B3E250
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-085-FE453783
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-086-2C6B9A7F
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-087-F7C2C4C0
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-088-B1551109
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-089-B952373B
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-090-2A3807A2
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-091-B34F183C
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-092-B67A5BB6
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-093-6FF73D63
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-094-87AD62EC
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-095-ADDABCA1
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-096-B67BD511
+      Type: Collision
+      Definition: "Vector de fricci\xF3n RACE_COND en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-097-4DE1EC17
+      Type: Collision
+      Definition: "Vector de fricci\xF3n JETSAM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-098-4289410E
+      Type: Collision
+      Definition: "Vector de fricci\xF3n OOM en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-099-5D4F8512
+      Type: Collision
+      Definition: "Vector de fricci\xF3n BYZANTINE en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    - ID: COL-100-A061B252
+      Type: Collision
+      Definition: "Vector de fricci\xF3n DEADLOCK en la frontera termo-l\xF3gica."
+      Resolution: SIGKILL_State_Purge
+    Invariantes:
+    - ID: INV-001-32F1251A
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-002-0996721F
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-003-89748B6E
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-004-EED60997
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-005-D0D4B2BA
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-006-CF604AA8
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-007-2DFF1770
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-008-187C61FB
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-009-82228D30
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-010-8DCC1A52
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-011-C0B23A8A
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-012-BD6CFF66
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-013-4D8EE154
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-014-C01C901F
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-015-8585A96E
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-016-6EA02164
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-017-815EA599
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-018-CCA15A52
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-019-1F737762
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-020-BD6513CA
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-021-92C1A0AC
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-022-A2F70E09
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-023-22D9A861
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-024-3ACAE526
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-025-78AF1321
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-026-5FFEE1E9
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-027-4329E9B4
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-028-EAB603B9
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-029-371982EF
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-030-EDCD09C7
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-031-7C8A0417
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-032-71D6842C
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-033-9FE37E9E
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-034-E03343C8
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-035-A82C666B
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-036-6B785E70
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-037-A2E3438A
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-038-47F2CF33
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-039-1FDB06DE
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-040-6A3E1A82
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-041-016449F9
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-042-F9C67A29
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-043-B9E0BCFD
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-044-55E2AB21
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-045-BA48CC84
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-046-97D79BC3
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-047-8071E04E
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-048-36218E80
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-049-FD4D20A0
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-050-DF5E9871
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-051-CBC08D4F
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-052-DDE6D493
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-053-FC68389C
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-054-E23D1E57
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-055-D27AFDE7
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-056-0046EFD9
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-057-BD31EE1D
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-058-2B35FC93
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-059-D87BC68E
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-060-E8D348BF
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-061-FB904B4E
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-062-B77006A3
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-063-06BDC4D9
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-064-FFE2C1CD
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-065-E60AA1FB
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-066-D2638C64
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-067-6DF92A6B
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-068-434D829D
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-069-346678C5
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-070-E2493689
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-071-C1A7C377
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-072-54CC2022
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-073-D82D429D
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-074-28990AB7
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-075-81A90571
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-076-B7AB0C14
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-077-D3496C1E
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-078-B59E6043
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-079-92ABA560
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-080-27D7ED78
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-081-E753C180
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-082-5BD697CF
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-083-8D12871C
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-084-8B6D26B9
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-085-BFF6E732
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-086-71DD9CDD
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-087-D3160A7B
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-088-E1145AD3
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-089-44FF4EB4
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-090-DAE887FC
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-091-7FE14DFF
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-092-D8E257AB
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-093-8097DEDF
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-094-4BD56318
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-095-630A043A
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-096-8AB2A107
+      Type: Invariant
+      Definition: Cota inferior determinista PAXOS para consenso de red.
+      Strictness: Absolute
+    - ID: INV-097-1F35AF6B
+      Type: Invariant
+      Definition: Cota inferior determinista RAFT para consenso de red.
+      Strictness: Absolute
+    - ID: INV-098-17C19E3C
+      Type: Invariant
+      Definition: Cota inferior determinista MERKLE para consenso de red.
+      Strictness: Absolute
+    - ID: INV-099-373DCB6F
+      Type: Invariant
+      Definition: Cota inferior determinista ZKP para consenso de red.
+      Strictness: Absolute
+    - ID: INV-100-08D8F21F
+      Type: Invariant
+      Definition: Cota inferior determinista LAMPORT para consenso de red.
+      Strictness: Absolute
+    Vectores_Transduccion:
+    - ID: TRN-001-934EBCE4
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-002-1CBDFE14
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-003-2EEF45F1
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-004-E8C54ECA
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-005-A02920D8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-006-44F18201
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-007-49A887F2
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-008-78FD56DA
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-009-6E7EF45A
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-010-69C9CF81
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-011-DC3B4B66
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-012-029D7E21
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-013-2D1B6027
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-014-161F5B1F
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-015-FDB2B22E
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-016-8F6C8363
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-017-A65B256D
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-018-850464C1
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-019-87D99A75
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-020-3D857442
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-021-A9F39875
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-022-FD8FDB30
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-023-8341DF75
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-024-1EFC683A
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-025-CB213814
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-026-7AD45CB4
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-027-22A0DF18
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-028-F9F7D5D8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-029-DAD12B25
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-030-93FF8A91
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-031-0543C569
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-032-1FC59164
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-033-035E2F94
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-034-8DA267A7
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-035-12CF88CC
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-036-EB9D063D
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-037-B3821073
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-038-57D5F051
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-039-BD99DE47
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-040-60E2BD7A
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-041-41ECACE8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-042-8CDEEB86
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-043-2A5C01B5
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-044-E9C7A1D9
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-045-F2F2E402
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-046-70B39490
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-047-97232935
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-048-5B6E7FDE
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-049-4B5BA952
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-050-8E1A90C7
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-051-0B32EFAB
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-052-CD89E93F
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-053-02AA9209
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-054-C5D2C3AD
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-055-83A69A2B
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-056-339D4AEA
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-057-FE1A0380
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-058-B8F28DCC
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-059-A5E97AF9
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-060-5B3D5553
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-061-88B9F65A
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-062-E1EE0E4B
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-063-4636CA94
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-064-0A71F1B5
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-065-B4F953B7
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-066-C1A9FF66
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-067-81D0F781
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-068-ACFCDC31
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-069-C54ABBBB
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-070-DEB10862
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-071-28725EFA
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-072-BCA8ED71
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-073-394EC1E6
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-074-78F5D2A3
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-075-F06007E4
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-076-F2BAE343
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-077-30EC001D
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-078-ADE20692
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-079-E69D04E2
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-080-C9227743
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-081-81CB00A8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-082-2FB5ECC6
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-083-CBAAF156
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-084-62F198B4
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-085-96D66E2B
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-086-935F68AC
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-087-BDA70A22
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-088-2402A4C8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-089-6EF9034F
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-090-9B17D760
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    - ID: TRN-091-8F60207C
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 20ms
+    - ID: TRN-092-6BC43EBB
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 30ms
+    - ID: TRN-093-AF971AF9
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 40ms
+    - ID: TRN-094-66A0E41C
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 50ms
+    - ID: TRN-095-BE47EAE6
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 60ms
+    - ID: TRN-096-C860D420
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico WAL_COMMIT de AST a disco."
+      Latency_Bound: 70ms
+    - ID: TRN-097-F13F73C3
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico SYSCALL de AST a disco."
+      Latency_Bound: 80ms
+    - ID: TRN-098-551A6F13
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico FFI_BIND de AST a disco."
+      Latency_Bound: 90ms
+    - ID: TRN-099-59750FB2
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico DOM_MUT de AST a disco."
+      Latency_Bound: 100ms
+    - ID: TRN-100-A2B1CEA8
+      Type: Transduction
+      Definition: "Puente de colapso f\xEDsico IO_FLUSH de AST a disco."
+      Latency_Bound: 10ms
+    Antipatrones:
+    - ID: ANT-001-1D6C49BB
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: LLM_SLOP. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-002-8200C900
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: TRY_EXCEPT_PASS. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-003-1A11C8BD
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: NULL_POINTER_IGNORE. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-004-A02E9E96
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: SILENT_FAIL. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-005-54BD6469
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: GREEN_THEATER. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-006-6A166F27
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: LLM_SLOP. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-007-59197979
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: TRY_EXCEPT_PASS. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-008-CEF14208
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: NULL_POINTER_IGNORE. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-009-33EF549A
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: SILENT_FAIL. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-010-AE5E28F8
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: GREEN_THEATER. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-011-B8A6BD4E
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: LLM_SLOP. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-012-D45C2B07
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: TRY_EXCEPT_PASS. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-013-C4B6A565
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: NULL_POINTER_IGNORE. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-014-D9AC6692
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: SILENT_FAIL. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-015-0179A66E
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: GREEN_THEATER. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-016-BDF9510B
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: LLM_SLOP. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-017-073A2194
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: TRY_EXCEPT_PASS. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-018-387E0E03
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: NULL_POINTER_IGNORE. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-019-3C1ABFB8
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: SILENT_FAIL. Falsa resiliencia."
+      Penalty: Context_Termination
+    - ID: ANT-020-0D6A4BBC
+      Type: Anti-Pattern
+      Definition: "Anerg\xEDa detectada: GREEN_THEATER. Falsa resiliencia."
+      Penalty: Context_Termination
+    Axiomas_Ruptura:
+    - ID: AXM-001-EE9CEC5C
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-002-1A670C31
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-003-DBA15ABD
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-004-DE1DBD6C
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-005-B815B684
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-006-55CD4C6B
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-007-010BCC85
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-008-F755BA46
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-009-702A24C3
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-010-394691EF
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-011-4D947918
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-012-E84D93EE
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-013-38D4D387
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-014-B232C16F
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-015-76FC1710
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-016-278C70EF
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-017-E6666804
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-018-42BDF60D
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-019-8B7177F3
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-020-A14E58A5
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-021-D3AC6272
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-022-D941587D
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-023-D53FDD07
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-024-44A94561
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-025-D04EE471
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-026-F2EC3631
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-027-A4D7B1DF
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-028-0AF316F0
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-029-47674057
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-030-AB0EADE4
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-031-2C53E951
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-032-ADC19D76
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-033-F69F89B5
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-034-07851B28
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-035-6C1D18B4
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-036-A8424DE7
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-037-D8C24489
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-038-74626609
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-039-9E24F06B
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-040-19E38409
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-041-82259DF7
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-042-E40F6789
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-043-4245FAE8
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-044-75C7EA72
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-045-FBBF6D47
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-046-455B884C
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-047-2B7D7250
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-048-11ED7A27
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-049-7DE81D41
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-050-2DB73678
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-051-15EDCF2E
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-052-BAE3284E
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-053-29C97922
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-054-16D78685
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-055-7A712020
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-056-5DF84B36
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-057-7A9EFE68
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-058-E018661B
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-059-01A1FB23
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-060-19F5401E
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-061-57648189
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-062-91076D4D
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-063-73D8E250
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-064-12C1DCC1
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-065-C76AF56A
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-066-01337D60
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-067-F2DEC687
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-068-B33D925A
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-069-D13F93DE
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-070-CADE0E64
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-071-8B4E8DC2
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-072-92770CCB
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-073-7381C188
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-074-0FD6910F
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-075-8E06BB0D
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-076-36C69A27
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico G\xD6DEL aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-077-C9DDB423
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico LANDAUER aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-078-26DE95A8
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico SHANNON aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-079-4D60F9AE
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico RAYO aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
+    - ID: AXM-080-8843C5AA
+      Type: Axiom
+      Definition: "L\xEDmite te\xF3rico HALTING aplicado a computaci\xF3n local."
+      Domain: Complexity_Theory
