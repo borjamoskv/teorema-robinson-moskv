@@ -685,7 +685,13 @@ function connectWS() {
                 if (data.log) {
                     addLogEntry(data.log.module, data.log.text, data.log.type, data.log.metric);
                 }
-                updateDOM();
+                if (!window._cortexRenderPending) {
+                    window._cortexRenderPending = true;
+                    requestAnimationFrame(() => {
+                        updateDOM();
+                        window._cortexRenderPending = false;
+                    });
+                }
             } else if (data.type === 'audit_entry') {
                 exergyState.auditLedger.unshift(data);
                 if (exergyState.auditLedger.length > 50) exergyState.auditLedger.pop();

@@ -17,6 +17,10 @@ ENGINE_YAML_PATH = os.path.join(_BASE, "cortex_inference_engine.yaml")
 
 
 # Carga estática de configuración para evitar I/O redundante
+if not os.path.exists(ENGINE_YAML_PATH):
+    print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Essential Config Missing: {ENGINE_YAML_PATH}. C5-REAL Fail-Fast.", file=sys.stderr)
+    sys.exit(1)
+
 with open(ENGINE_YAML_PATH, "r", encoding="utf-8") as f:
     ENGINE_CONFIG = yaml.safe_load(f)
 

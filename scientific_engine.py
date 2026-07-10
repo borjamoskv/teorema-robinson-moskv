@@ -263,7 +263,8 @@ def main():
         entropy = payload.get("entropy", 1.0)
         res = compute_asymmetric_trust_isomorphism(provenance, test_passed, entropy)
     else:
-        res = {"error": f"Unknown action: {action}"}
+        print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Unknown action: {action}. C5-REAL Fail-Fast.", file=sys.stderr)
+        sys.exit(1)
 
     print(json.dumps(res, indent=2))
 
