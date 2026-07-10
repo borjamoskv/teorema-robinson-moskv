@@ -65,7 +65,7 @@ def compute_fisher_information(time_series: list[float]) -> dict:
         "variance": sum((x - (sum(series) / len(series)))**2 for x in series) / len(series)
     }
 
-def solve_d_separation(nodes, edges, x_node, y_node, z_set):
+def solve_d_separation(nodes: list[str], edges: list[list[str]], x_node: str, y_node: str, z_set: list[str]) -> dict:
     """
     Determines if x_node and y_node are d-separated given z_set in a DAG.
     nodes: list of node names
