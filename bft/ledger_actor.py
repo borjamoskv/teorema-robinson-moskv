@@ -79,6 +79,57 @@ class BFTLedgerActor:
         self._queue.put_nowait((event, future))
         return future
 
+    async def verify_chain(self) -> bool:
+        """
+        Recalculates and verifies the cryptographic SHA-256 hash chain of all entries.
+        """
+        async with aiosqlite.connect(self._db_path) as db:
+            cursor = await db.execute("SELECT * FROM ledger_entries ORDER BY seq ASC")
+            rows = await cursor.fetchall()
+            
+            prev_hash = ZERO_HASH
+            expected_seq = 1
+            last_lamport = 0
+            
+            for row in rows:
+                seq = row[0]
+                event_id = row[1]
+                stream = row[2]
+                entity_id = row[3]
+                event_type = row[4]
+                payload_json = row[5]
+                source_db = row[6]
+                source_table = row[7]
+                source_pk = row[8]
+                cortex_taint = row[9]
+                lamport_t = row[10]
+                row_prev_hash = row[11]
+                entry_hash = row[12]
+                created_at = row[13]
+                
+                if seq != expected_seq:
+                    return False
+                if lamport_t <= last_lamport:
+                    return False
+                if row_prev_hash != prev_hash:
+                    return False
+                    
+                computed_hash = _compute_entry_hash(
+                    event_id=event_id, stream=stream, entity_id=entity_id,
+                    event_type=event_type, payload_json=payload_json, source_db=source_db,
+                    source_table=source_table, source_pk=source_pk,
+                    cortex_taint=cortex_taint, lamport_t=lamport_t, prev_hash=row_prev_hash, created_at=created_at
+                )
+                
+                if entry_hash != computed_hash:
+                    return False
+                    
+                prev_hash = entry_hash
+                last_lamport = lamport_t
+                expected_seq += 1
+                
+            return True
+
     async def _worker(self) -> None:
         async with aiosqlite.connect(self._db_path, isolation_level=None) as db:
             await db.execute("PRAGMA journal_mode=WAL")

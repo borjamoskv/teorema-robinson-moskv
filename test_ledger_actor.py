@@ -321,3 +321,43 @@ async def test_zombie_actor_prevention():
 
     finally:
         await actor.stop()
+
+@pytest.mark.asyncio
+async def test_ledger_verify_chain_valid():
+    actor = BFTLedgerActor(DB_PATH)
+    await actor.start()
+    try:
+        event = LedgerEvent(
+            stream="stream-1", entity_id="entity-A", event_type="test.created",
+            payload={"value": 42}, cortex_taint="test_verify_valid",
+            source_db="test_db", source_table="test_table", source_pk="pk-1"
+        )
+        await actor.append(event)
+        assert await actor.verify_chain() is True
+    finally:
+        await actor.stop()
+
+@pytest.mark.asyncio
+async def test_direct_sql_forged_hash_detected():
+    actor = BFTLedgerActor(DB_PATH)
+    await actor.start()
+    try:
+        event = LedgerEvent(
+            stream="stream-1", entity_id="entity-A", event_type="test.created",
+            payload={"value": 42}, cortex_taint="test_verify_tampered",
+            source_db="test_db", source_table="test_table", source_pk="pk-1"
+        )
+        await actor.append(event)
+        assert await actor.verify_chain() is True
+        
+        # Manually alter database bypassing the triggers by updating without triggering them (disable triggers is not possible without DDL, but we can do it via a direct connection or temporarily dropping/altering triggers, or simply using SQL since the trigger is on UPDATE of ledger_entries. Wait, update trigger raises ABORT, so we can't update.
+        # But we can drop triggers in SQLite and update, simulating a direct SQL injection attacker!
+        with sqlite3.connect(DB_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DROP TRIGGER trg_ledger_immutable_update")
+            cursor.execute("UPDATE ledger_entries SET payload_json = '{\"value\": 99}' WHERE seq = 1")
+            conn.commit()
+            
+        assert await actor.verify_chain() is False
+    finally:
+        await actor.stop()
