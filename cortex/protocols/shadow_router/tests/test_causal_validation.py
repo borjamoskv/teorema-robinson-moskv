@@ -1,24 +1,40 @@
 import numpy as np
 import pytest
-from cortex.protocols.shadow_router.causal_estimation import estimate_ate_shadow
+from cortex.protocols.shadow_router.proxy_evaluation.paired_difference import estimate_shadow_proxy_difference
+from cortex.protocols.shadow_router.proxy_evaluation.sampled_set_regret import calculate_observed_proxy_regret
 
-def test_causal_estimation_ate():
-    """Valida el cálculo del ATE usando Inverse Propensity Scoring (IPS) con Bootstrap CI."""
-    primary = np.array([0.8, 0.9, 0.7, 0.85, 0.95])
-    shadow = np.array([0.7, 0.8, 0.65, 0.8, 0.9])
-    propensities = np.array([0.1, 0.2, 0.1, 0.5, 0.2])
+def test_paired_proxy_difference_estimation():
+    diffs = np.array([120, -50, 200, 10, 80])  # basis points
+    indicators = np.array([1, 1, 1, 1, 1])
+    propensities = np.array([200, 500, 200, 1000, 500])  # basis points (q_i)
     
-    # Run estimation (using few replicates for speed in test)
-    estimate = estimate_ate_shadow(primary, shadow, propensities, bootstrap_replicates=100)
+    estimate = estimate_shadow_proxy_difference(
+        paired_differences_basis_points=diffs,
+        shadow_inclusion_indicators=indicators,
+        shadow_inclusion_propensities_basis_points=propensities,
+        bootstrap_replicates=100
+    )
     
-    assert estimate.estimator == "ips_weighted_difference"
+    assert estimate.estimand == "mean_paired_proxy_difference"
     assert estimate.sample_size == 5
-    assert estimate.ci_lower <= estimate.ci_upper
-    
-    # ATE > 0 indicates primary outperformed shadow in this mock data
-    assert estimate.ate > 0
-    assert "ignorability_given_propensity" in estimate.assumptions
+    assert estimate.confidence_interval.lower_basis_points <= estimate.confidence_interval.upper_basis_points
 
-def test_causal_estimation_requires_equal_length():
-    with pytest.raises(ValueError, match="misma longitud"):
-        estimate_ate_shadow(np.array([1.0]), np.array([1.0, 0.5]), np.array([0.5]))
+def test_observed_proxy_regret_nonnegative():
+    regret = calculate_observed_proxy_regret(
+        primary_route_id="gemini-flash",
+        primary_utility_basis_points=8000,
+        shadow_utilities_basis_points={"claude-sonnet": 8500},
+        utility_spec_hash="sha256:util",
+        evaluator_hash="sha256:eval"
+    )
+    assert regret.observed_proxy_regret_basis_points == 500
+    
+    # Primary is best
+    regret_best = calculate_observed_proxy_regret(
+        primary_route_id="gemini-flash",
+        primary_utility_basis_points=9000,
+        shadow_utilities_basis_points={"claude-sonnet": 8500},
+        utility_spec_hash="sha256:util",
+        evaluator_hash="sha256:eval"
+    )
+    assert regret_best.observed_proxy_regret_basis_points == 0
