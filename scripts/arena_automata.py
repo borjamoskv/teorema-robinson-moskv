@@ -1,6 +1,7 @@
 import sqlite3
-import time
+import math
 import os
+import hashlib
 from playwright.sync_api import sync_playwright
 
 DB_PATH = "$CORTEX_ROOT/.babylon60/arena_alpha_ledger.db"
@@ -28,44 +29,59 @@ def init_db():
             response_a TEXT,
             response_b TEXT,
             winner TEXT,
+            entropy_a REAL,
+            entropy_b REAL,
             cortex_taint_hash TEXT UNIQUE
         )
     ''')
     conn.commit()
     return conn
 
-def calculate_exergy(text):
+def shannon_entropy(data: str) -> float:
+    """Calcula la entropía de Shannon pura del token-stream (Anergía vs Exergía)."""
+    if not data:
+        return 0.0
+    freq = {}
+    for c in data:
+        freq[c] = freq.get(c, 0) + 1
+    entropy = 0.0
+    for count in freq.values():
+        p = count / len(data)
+        entropy -= p * math.log2(p)
+    return entropy
+
+def calculate_exergy(text: str) -> tuple[float, float]:
     """
-    Heurística determinista para evaluar la entropía y el valor de la respuesta (Alpha).
-    Penaliza el 'Green Theater' y premia la densidad de código y vocabulario técnico.
+    Heurística determinista (Exergía y Entropía).
+    Retorna (Exergy_Score, Shannon_Entropy).
     """
+    entropy = shannon_entropy(text)
     score = len(text)
     
-    # Penalizaciones (Anergía / Green Theater)
+    # Penalizaciones (Green Theater)
     slop_words = ["I cannot", "As an AI", "I'm sorry", "However", "important to note", "delve"]
     for w in slop_words:
         if w.lower() in text.lower():
             score -= 1000
             
-    # Bonificaciones (Exergía / C5-REAL)
-    alpha_words = ["def ", "fn ", "class ", "```", "struct ", "impl ", "import ", "math", "tensor"]
+    # Bonificaciones (C5-REAL)
+    alpha_words = ["def ", "fn ", "class ", "```", "struct ", "impl ", "import ", "math", "tensor", "zkproof", "bft"]
     for w in alpha_words:
         score += text.lower().count(w) * 500
         
-    return score
+    return score, entropy
 
 def run_automata():
     conn = init_db()
-    print("🚀 [MOSKV-1 APEX] Iniciando Secuencia de Extracción de Alpha en arena.ai")
+    print("🚀 [MOSKV-1 APEX] Ignition: Secuencia C5-REAL de Extracción Alpha")
     
     with sync_playwright() as p:
         try:
-            print("🔗 Intentando conectar al CDP de Chrome (puerto 9222)...")
+            print("🔗 Intentando enlazar a CDP físico (puerto 9222)...")
             browser = p.chromium.connect_over_cdp("http://localhost:9222")
             context = browser.contexts[0]
-            print("✅ Conectado al estado logueado existente vía CDP.")
-        except Exception as e:
-            print(f"⚠️ Fallo CDP: {e}. Iniciando contexto persistente aislado...")
+        except Exception:
+            print("⚠️ Fallo CDP. Mitosis JIT: Instanciando Vesícula V8 Aislada...")
             context = p.chromium.launch_persistent_context(
                 user_data_dir="$CORTEX_ROOT/.babylon60/arena_chrome_profile",
                 headless=False,
@@ -74,84 +90,89 @@ def run_automata():
         
         page = context.new_page()
         page.goto("https://arena.ai/text", wait_until="domcontentloaded")
-        time.sleep(3)
         
-        # Validar y forzar BATTLEMODE
-        try:
-            battle_mode_btn = page.get_by_text("Battle Mode", exact=True).first
-            if battle_mode_btn.is_visible():
-                battle_mode_btn.click()
-                time.sleep(1)
-        except Exception:
-            pass
+        # Validar y forzar BATTLEMODE de forma determinista
+        battle_mode_btn = page.get_by_text("Battle Mode", exact=True).first
+        if battle_mode_btn.is_visible():
+            battle_mode_btn.click()
+            # Wait for mode switch
+            page.locator("textarea").first.wait_for(state="visible")
 
         for i, prompt in enumerate(PROMPTS):
-            print(f"\n⚡ [ROUND {i+1}/{len(PROMPTS)}] Inyectando Alpha-Prompt...")
+            print(f"\n⚡ [ROUND {i+1}/{len(PROMPTS)}] Inyección Causal: {prompt[:40]}...")
             
-            # Encontrar el input
-            textarea = page.locator("textarea, [contenteditable='true']").first
+            # Localizar input (Determinista)
+            textarea = page.locator("textarea, [placeholder*='Ask anything'], [contenteditable='true']").first
+            textarea.wait_for(state="visible", timeout=15000)
             textarea.fill(prompt)
             textarea.press("Enter")
             
-            print("⏳ Esperando colapso de onda (Generación de respuestas)...")
-            # Esperar a que desaparezca el botón de stop o aparezcan los botones de votación
-            # Dependiendo del DOM de arena.ai
-            page.wait_for_timeout(10000) # Espera estática temporal; ideal esperar a network idle
+            print("⏳ FSM DOM: Aguardando colapso de la respuesta (Zero Stochastic Delay)...")
             
-            # Localizar respuestas A y B (asumiendo split en pantalla)
+            # El evento que marca el final de la generación es la habilitación del botón de Voto A/B
+            btn_vote_a = page.get_by_text("👈", exact=False).first
+            btn_vote_b = page.get_by_text("👉", exact=False).first
+            
+            try:
+                # Wait for the voting button to appear (generation complete)
+                btn_vote_a.wait_for(state="visible", timeout=90000) 
+            except Exception as e:
+                print(f"❌ [CRASH CAUSAL] Timeout de inferencia en arena.ai. {e}")
+                continue
+            
+            # Localizar respuestas. En Chatbot Arena, son las 2 últimas cajas de texto enriquecido.
             responses = page.locator(".prose, .markdown-body, div[dir='auto']").all()
             if len(responses) >= 2:
                 resp_a = responses[-2].inner_text()
                 resp_b = responses[-1].inner_text()
             else:
-                print("❌ No se pudieron leer ambas respuestas. Saltando ronda.")
+                print("❌ FSM Desincronizado: No se localizaron los tensores A y B.")
                 continue
                 
-            score_a = calculate_exergy(resp_a)
-            score_b = calculate_exergy(resp_b)
+            score_a, ent_a = calculate_exergy(resp_a)
+            score_b, ent_b = calculate_exergy(resp_b)
             
             winner = "A" if score_a > score_b else "B"
-            print(f"⚖️ Evaluación Terminada: A({score_a}) vs B({score_b}). Ganador: {winner}")
+            print(f"⚖️ Colapso: A(S:{score_a}, E:{ent_a:.2f}) vs B(S:{score_b}, E:{ent_b:.2f}). Vencedor: {winner}")
             
-            # Votar
-            try:
-                if winner == "A":
-                    page.get_by_text("👈", exact=False).first.click()
-                else:
-                    page.get_by_text("👉", exact=False).first.click()
-                    
-                time.sleep(2)
-            except Exception as e:
-                print(f"⚠️ Error al votar: {e}")
+            # Votar y forzar mutación DOM
+            if winner == "A":
+                btn_vote_a.click()
+            else:
+                btn_vote_b.click()
                 
-            # Extraer nombres revelados
-            # Normalmente aparecen como headers arriba
+            # Esperar a que los nombres de los modelos sean revelados (Normalmente el H2/H3 se actualiza)
+            page.wait_for_timeout(1500) # Small UI transition allowance post-click
             models = page.locator("h2, h3, .text-xl, .font-bold").all_inner_texts()
+            
+            # Filtro simple para extraer los strings que se parezcan a nombres de modelos
+            # O asumiendo que los dos primeros títulos en la zona de respuesta son los modelos
             model_a = models[0] if len(models) > 0 else "Unknown"
             model_b = models[1] if len(models) > 1 else "Unknown"
             
-            print(f"👁️ Modelos Revelados: {model_a} vs {model_b}")
+            print(f"👁️ Identidades Extraídas: {model_a} vs {model_b}")
             
-            # Persistir ledger
-            import hashlib
-            raw_data = f"{prompt}{model_a}{model_b}{time.time()}".encode()
+            # Taint Hash Cryptográfico
+            raw_data = f"{prompt}{model_a}{model_b}{score_a}{score_b}".encode()
             taint_hash = hashlib.sha256(raw_data).hexdigest()
             
             conn.execute('''
-                INSERT INTO alpha_ledger (prompt, model_a, model_b, response_a, response_b, winner, cortex_taint_hash)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (prompt, model_a, model_b, resp_a, resp_b, winner, taint_hash))
+                INSERT INTO alpha_ledger (prompt, model_a, model_b, response_a, response_b, winner, entropy_a, entropy_b, cortex_taint_hash)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (prompt, model_a, model_b, resp_a, resp_b, winner, ent_a, ent_b, taint_hash))
             conn.commit()
             
-            # Siguiente ronda (refrescar o clickar en new battle)
-            try:
-                page.get_by_text("New Chat", exact=False).first.click()
-                time.sleep(2)
-            except Exception:
-                page.reload()
-                time.sleep(3)
+            # Nueva Iteración: Clickar New Round
+            new_round_btn = page.get_by_text("New Chat", exact=False).first
+            if new_round_btn.is_visible():
+                new_round_btn.click()
+            else:
+                page.reload(wait_until="domcontentloaded")
+            
+            # Ensure textarea is ready again
+            textarea.wait_for(state="visible", timeout=15000)
 
-        print("🏁 [MOSKV-1 APEX] Extracción de Alpha Finalizada.")
+        print("🏁 [MOSKV-1 APEX] BFT-Loop Completado. Ledger Sincronizado.")
         conn.close()
 
 if __name__ == "__main__":
