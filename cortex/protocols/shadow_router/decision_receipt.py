@@ -34,7 +34,7 @@ class DecisionReceipt:
             "shadow_routes": self.selected_shadow_routes,
             "shadow_allowed": self.shadow_allowed,
             "timestamp": self.timestamp
-        }, sort_keys=True)
+        }, separators=(',', ':'), sort_keys=True, ensure_ascii=False)
         self.signature = hashlib.sha256(f"{router_key}:{payload}".encode()).hexdigest()
 
     def verify(self, router_key: str) -> bool:
@@ -48,6 +48,6 @@ class DecisionReceipt:
             "shadow_routes": self.selected_shadow_routes,
             "shadow_allowed": self.shadow_allowed,
             "timestamp": self.timestamp
-        }, sort_keys=True)
+        }, separators=(',', ':'), sort_keys=True, ensure_ascii=False)
         expected = hashlib.sha256(f"{router_key}:{payload}".encode()).hexdigest()
         return self.signature == expected

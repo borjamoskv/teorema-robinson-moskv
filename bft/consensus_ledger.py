@@ -39,7 +39,7 @@ class BFT_Ledger:
         required_votes = (3 * f) + 1
         valid_votes = 0
         
-        mutation_hash = hashlib.sha256(json.dumps(mutation.payload).encode()).hexdigest()
+        mutation_hash = hashlib.sha256(json.dumps(mutation.payload, separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
         # Verificación criptográfica del enjambre (Stub de validación estricta)
         for node_id, sig in swarm_signatures.items():
@@ -53,7 +53,7 @@ class BFT_Ledger:
         # Commit físico al Master Ledger
         self.conn.execute(
             "INSERT INTO state_log (mutation_hash, agent_id, payload, ts) VALUES (?, ?, ?, ?)",
-            (mutation_hash, mutation.agent_id, json.dumps(mutation.payload), mutation.timestamp)
+            (mutation_hash, mutation.agent_id, json.dumps(mutation.payload, separators=(',', ':'), sort_keys=True, ensure_ascii=False), mutation.timestamp)
         )
         return True
 

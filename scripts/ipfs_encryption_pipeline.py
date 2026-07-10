@@ -15,7 +15,7 @@ def encrypt_payload(payload: dict, key: bytes) -> bytes:
     f = Fernet(key)
     # JCS Canonicalization is assumed to be handled before this step for the hash,
     # but for storage, standard json dump is fine as long as the hash is derived from JCS.
-    raw_bytes = json.dumps(payload, separators=(',', ':')).encode('utf-8')
+    raw_bytes = json.dumps(payload, separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode('utf-8')
     return f.encrypt(raw_bytes)
 
 def upload_to_ipfs(ciphertext: bytes) -> str:
@@ -50,7 +50,7 @@ def pipeline(manifest_batch: list, tenant_key: bytes):
         "note": "Content is encrypted. Tenant key required for decryption."
     }
     
-    metadata_cid = upload_to_ipfs(json.dumps(metadata_uri_content).encode('utf-8'))
+    metadata_cid = upload_to_ipfs(json.dumps(metadata_uri_content, separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode('utf-8'))
     print(f"Metadata URI to anchor on-chain: ipfs://{metadata_cid}/batch-manifest.json")
     
     return metadata_cid
