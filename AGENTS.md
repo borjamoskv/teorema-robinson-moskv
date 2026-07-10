@@ -142,3 +142,13 @@ Cristalización post-auditoría sobre la sobreafirmación de estados y falsas to
 - **EPI_03 (Honestidad Topológica BFT):** Prohibido llamar "BFT" o "Consenso" a topologías que no posean matemáticamente $N \ge 3f+1$ con consenso operativo. El estado por defecto es **CP-local tamper-evident**.
 - **EPI_04 (Testigo Externo Estricto):** Un hook local (`pre-commit`, `commit-msg`) NO es un testigo externo. El testigo externo solo se consolida cuando el hash (trailer) se firma, se empuja (`git push`) a un servidor remoto, y es validado por una entidad fuera del nodo (ej. GitHub Actions CI).
 - **EPI_05 (Prueba Multiproceso):** Prohibido declarar "idempotencia" o "exclusión global" basados únicamente en colas en memoria (`asyncio.Queue`). La garantía exige bloqueos a nivel de sistema operativo (Locks/Semáforos) o transacciones atómicas `ON CONFLICT DO NOTHING` en DB.
+
+## [L68] PROTOCOLO DE EVIDENCIA Y ENVOLVENTES v0.2.2 (CORTEX)
+- **INV_POR_01 (JCS sin Floats):** Queda prohibida la serialización de tipos `float` en payloads canonicalizados bajo JCS (RFC 8785). Todo valor continuo, costo o porcentaje debe expresarse en unidades enteras estables (`basis_points` para ratios, `microusd` para costes, `nanoseconds` o `ms` enteros para tiempos).
+- **INV_POR_02 (Invariante Temporal Monotónico):** Toda medición de latencia o TTFT debe validarse monotónicamente: $t_{\text{start}} \le t_{\text{first\_byte}} \le t_{\text{completed}}$. Si no hay streaming observable, el TTFT debe declararse explícitamente como `null` con estado `"unobservable_non_streaming"`.
+- **INV_POR_03 (Egress Gate Obligatorio):** Ninguna llamada a un proveedor de LLM (primario o sombra) puede ocurrir sin un `EgressPermit` de un solo uso, el cual se genera a partir de un `DecisionReceipt` firmado. El gate de salida debe verificar la firma contra el Trust Store antes de autorizar la llamada de red.
+- **INV_POR_04 (Diferenciación de Inferencia):**
+  - Los comprobantes individuales (`DecisionReceipt`, `ExecutionReceipt`, `EvaluationReceipt`) representan telemetría individual y regret observado ($r_i \ge 0$). No deben contener intervalos de confianza ni tamaños muestrales de cohorte.
+  - La inferencia estadística (parámetros de cohorte, IC 95%, bootstrap, diagnósticos Hájek) pertenece exclusivamente a `AggregateEvaluationReport`.
+- **INV_POR_05 (Gobernanza Trust Store):** Las firmas Ed25519 deben validarse de manera restrictiva (fail-closed) contra el Trust Store, verificando la validez temporal del emisor, su rol y la no revocación de la clave.
+
