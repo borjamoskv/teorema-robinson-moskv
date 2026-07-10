@@ -1,48 +1,64 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ProofOfRouteReceiptSchemaV02_EvidenceCalibrated",
+  "title": "ProofOfRouteReceiptSchemaV02_1_EvidenceCalibrated",
   "type": "object",
   "properties": {
     "decision_receipt": {
       "type": "object",
       "properties": {
         "request_id": {"type": "string"},
-        "prompt_commitment": {"type": "string"},
-        "shadow_allowed": {"type": "boolean"}
-      },
-      "required": ["request_id", "prompt_commitment"]
+        "routing_policy": {
+          "type": "object",
+          "properties": {
+            "selected_route": {"type": "string"},
+            "selection_propensity": {"type": "number"}
+          }
+        },
+        "shadow_policy": {
+          "type": "object",
+          "properties": {
+            "eligible": {"type": "boolean"},
+            "inclusion_probability": {"type": "number"}
+          }
+        }
+      }
     },
     "execution_receipt": {
       "type": "object",
       "properties": {
-        "ttft_ms_p50": {"type": "number"},
-        "total_time_ms": {"type": "number"},
-        "tokens_in": {"type": "integer"},
-        "tokens_out": {"type": "integer"}
+        "measurement_source": {"type": "string"},
+        "streaming_enabled": {"type": "boolean"},
+        "ttft_ms": {"type": "number"},
+        "total_latency_ms": {"type": "number"}
       }
     },
     "evaluation_receipt": {
       "type": "object",
       "properties": {
-        "observed_proxy_regret": {"type": "number"},
-        "uncertainty": {
-          "type": "object",
-          "properties": {
-            "confidence_calibrated": {"type": "number"},
-            "confidence_type": {"type": "string"},
-            "margin": {"type": "number"},
-            "sample_size": {"type": "integer"},
-            "period": {"type": "string"},
-            "calibration_method": {"type": "string"}
-          }
+        "quality_proxy_basis_points": {"type": "integer"},
+        "utility_basis_points": {"type": "integer"},
+        "observed_proxy_regret_basis_points": {"type": "integer"},
+        "evaluator_hash": {"type": "string"},
+        "utility_spec_hash": {"type": "string"}
+      },
+      "required": ["observed_proxy_regret_basis_points"]
+    },
+    "aggregate_evaluation_report": {
+      "type": "object",
+      "properties": {
+        "cohort_id": {"type": "string"},
+        "metric": {"type": "string"},
+        "estimate_basis_points": {"type": "number"},
+        "confidence_interval_95_basis_points": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2
         },
-        "causal_claim": {
-          "type": "object",
-          "properties": {
-            "intervention": {"type": "string"},
-            "estimator": {"type": "string"}
-          }
-        }
+        "sample_size": {"type": "integer"},
+        "estimator": {"type": "string"},
+        "period_start": {"type": "string"},
+        "period_end": {"type": "string"}
       }
     }
   }
