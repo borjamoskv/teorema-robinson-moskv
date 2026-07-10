@@ -13,8 +13,10 @@ from decimal import Decimal
 
 # CONFIGURACIÓN
 _BASE = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(_BASE, "cortex_memory.db")
 ENGINE_YAML_PATH = os.path.join(_BASE, "cortex_inference_engine.yaml")
+VAULT_PATH = os.environ.get("BABYLON_VAULT", os.path.expanduser("~/.babylon60"))
+DB_PATH = os.path.join(VAULT_PATH, "cortex_memory.db")
+CACHE_DB_PATH = os.path.join(VAULT_PATH, "nexus_cache.db")
 
 
 # Carga estática de configuración para evitar I/O redundante
@@ -51,12 +53,33 @@ class CortexInferenceEngine:
         ),
     }
 
-    def __init__(self, db_path=None):
+    def __init__(self, db_path=None, cache_db_path=None):
         self.config = ENGINE_CONFIG
-        self.db = sqlite3.connect(db_path or DB_PATH, timeout=5.0)
-        self.db.execute("PRAGMA journal_mode = WAL;")
-        self.db.execute("PRAGMA busy_timeout = 5000;")
+        
+        # Conexión principal en modo Solo-Lectura (Membrana C5-REAL)
+        target_db = db_path or DB_PATH
+        db_uri = f"file:{target_db}?mode=ro"
+        self.db = sqlite3.connect(db_uri, uri=True, timeout=5.0)
         self.db.row_factory = sqlite3.Row
+        
+        # Conexión secundaria para caché L3 (Sidecar Transductor)
+        target_cache = cache_db_path or CACHE_DB_PATH
+        self.cache_db = sqlite3.connect(target_cache, timeout=5.0)
+        self.cache_db.execute("PRAGMA journal_mode = WAL;")
+        self.cache_db.execute("PRAGMA busy_timeout = 5000;")
+        self.cache_db.row_factory = sqlite3.Row
+        
+        self.cache_db.execute("""
+            CREATE TABLE IF NOT EXISTS L3_inference_cache (
+                query_hash TEXT PRIMARY KEY,
+                active_mode TEXT,
+                retrieved_nodes TEXT,
+                applied_isomorphisms TEXT,
+                trace_payload TEXT,
+                hits INTEGER DEFAULT 0
+            )
+        """)
+        self.cache_db.commit()
 
     def __enter__(self):
         return self
@@ -67,6 +90,8 @@ class CortexInferenceEngine:
     def close(self):
         if hasattr(self, "db") and self.db:
             self.db.close()
+        if hasattr(self, "cache_db") and self.cache_db:
+            self.cache_db.close()
 
     def parse_query(self, query):
 
@@ -153,9 +178,9 @@ class CortexInferenceEngine:
         query_hash = babylon60.sha256_hash(normalized_query)
         
         # L3 Memoization Cache Bypass (Zero-Anergy return)
-        cursor = self.db.cursor()
-        cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
-        cached = cursor.fetchone()
+        cache_cursor = self.cache_db.cursor()
+        cache_cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
+        cached = cache_cursor.fetchone()
         if cached:
             # Removed Write-on-Read contention (hits = hits + 1) to preserve Thermodynamic Compute.
             return json.loads(cached["trace_payload"])
@@ -231,7 +256,7 @@ class CortexInferenceEngine:
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             trace["epistemic_trust_metric"] = trust_metric
 
-        cursor.execute(
+        cache_cursor.execute(
             """
             INSERT INTO L3_inference_cache 
             (query_hash, active_mode, retrieved_nodes, applied_isomorphisms, trace_payload, hits)
@@ -250,7 +275,7 @@ class CortexInferenceEngine:
                 json.dumps(trace, ensure_ascii=False)
             )
         )
-        self.db.commit()
+        self.cache_db.commit()
 
         return trace
 
