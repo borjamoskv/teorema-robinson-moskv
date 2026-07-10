@@ -1,0 +1,14 @@
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/deps/pyo3_build_config-bd935daac2da7936.d: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config-file.txt $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config.txt
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/deps/libpyo3_build_config-bd935daac2da7936.rlib: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config-file.txt $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config.txt
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/deps/libpyo3_build_config-bd935daac2da7936.rmeta: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config-file.txt $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config.txt
+
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/lib.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/errors.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.20.3/src/impl_.rs:
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config-file.txt:
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out/pyo3-build-config.txt:
+
+# env-dep:CARGO_PKG_VERSION=0.20.3
+# env-dep:OUT_DIR=$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/strike_rs/target/release/build/pyo3-build-config-47c61714d0ff4db2/out

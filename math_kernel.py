@@ -52,7 +52,7 @@ def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
         lamport_t=lamport_t
     )
     
-    # Persistencia BFT-Simulada en Master Ledger
+    # Persistencia BFT en Master Ledger
     with sqlite3.connect(DB_PATH, timeout=5.0) as conn:
         conn.execute('''
             INSERT INTO ultrathink_ledger (causal_hash, tokens, temperature, exergy, lamport_t)

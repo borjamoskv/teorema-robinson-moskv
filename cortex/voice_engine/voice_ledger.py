@@ -26,8 +26,7 @@ class VoiceLedger:
             with self._get_conn() as conn:
                 conn.executescript(schema)
                 conn.commit()
-        except FileNotFoundError:
-            pass
+
 
     def start_session(self) -> str:
         session_id = f"sess_{hashlib.blake2b(str(time.time()).encode()).hexdigest()[:12]}"

@@ -2,8 +2,7 @@ node_modules/
 npm-debug.log
 .DS_Store
 
-telemetry.db
-telemetry.db-*
+shards.json
 *.db
 
 __pycache__/

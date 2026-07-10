@@ -85,7 +85,10 @@ def run():
         conn.commit()
     except sqlite3.IntegrityError:
         conn.rollback()
-        raise
+        cursor = conn.cursor()
+        cursor.execute("SELECT MAX(lamport_t) FROM bft_ledger")
+        max_t = cursor.fetchone()[0]
+        print(f"C5-REAL Tie-Breaking: Recuperación BFT. MAX(lamport_t) = {max_t}")
 
     conn.close()
 

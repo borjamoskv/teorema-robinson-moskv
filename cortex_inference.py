@@ -69,7 +69,7 @@ class CortexInferenceEngine:
             self.db.close()
 
     def parse_query(self, query):
-        # STAGE 1: Query Parsing -> Activation Vector 6D
+
         # Verbos causales, modales, de proceso, etc.
         scores = {k: Decimal("0.0") for k in self.TRIGGERS.keys()}
         for key, pattern in self.TRIGGERS.items():
@@ -79,7 +79,7 @@ class CortexInferenceEngine:
         return scores
 
     def retrieve_primitives(self, mode, scores, query=""):
-        # STAGE 2: Primitive Retrieval
+
         cursor = self.db.cursor()
 
         # Mapeo de modos a pools de teoría
@@ -119,7 +119,7 @@ class CortexInferenceEngine:
 
         theories = theory_map.get(mode, ["CAUSAL-ONTOLOGY"])
 
-        # O(1) Fetch with SQL ORDER BY and LIMIT
+
         placeholders = ", ".join("?" for _ in theories)
         cursor.execute(
             f"""
@@ -182,7 +182,7 @@ class CortexInferenceEngine:
 
         primitives, isomorphisms = self.retrieve_primitives(active_mode, scores, query)
 
-        # Simular pipeline de inferencia
+
         if active_mode not in self.config["inference_modes"]:
             print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m YAML Key missing for mode {active_mode}. C5-REAL Fail-Fast.", file=sys.stderr)
             sys.exit(1)

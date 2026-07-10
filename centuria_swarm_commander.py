@@ -14,7 +14,7 @@ def generate_100_vectors():
     vectors = []
     
     # 1. AST Scanning for Python Files
-    py_files = glob.glob(f"{WORKSPACE}/*.py")
+    py_files = glob.glob(f"{WORKSPACE}/**/*.py", recursive=True)
     for fpath in py_files:
         try:
             with open(fpath, "r", encoding="utf-8") as f:
@@ -33,8 +33,8 @@ def generate_100_vectors():
                         "target": f"{os.path.basename(fpath)}::{node.name}",
                         "directive": "Audit memory footprint and state mutability."
                     })
-        except (SyntaxError, FileNotFoundError) as e:
-            print(f"Error parsing {fpath}: {e}")
+        except (SyntaxError, FileNotFoundError):
+            raise
             
     # 2. Add structural boundaries (Database, Networking, State)
     vectors.extend([
