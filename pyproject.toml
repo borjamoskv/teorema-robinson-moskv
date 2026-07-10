@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "babylon-60"
-version = "0.1.0"
+version = "100.100.103"
 authors = [
   { name="Borja Moskv", email="borjamoskv@users.noreply.github.com" },
 ]
