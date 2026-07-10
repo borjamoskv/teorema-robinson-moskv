@@ -16,9 +16,9 @@ DB_PATH = os.path.join(_BASE, "cortex_memory.db")
 ENGINE_YAML_PATH = os.path.join(_BASE, "cortex_inference_engine.yaml")
 
 
-def load_engine_config():
-    with open(ENGINE_YAML_PATH, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+# Carga estática de configuración para evitar I/O redundante
+with open(ENGINE_YAML_PATH, "r", encoding="utf-8") as f:
+    ENGINE_CONFIG = yaml.safe_load(f)
 
 
 class CortexInferenceEngine:
@@ -47,7 +47,7 @@ class CortexInferenceEngine:
     }
 
     def __init__(self, db_path=None):
-        self.config = load_engine_config()
+        self.config = ENGINE_CONFIG
         self.db = sqlite3.connect(db_path or DB_PATH, timeout=5.0)
         self.db.execute("PRAGMA journal_mode = WAL;")
         self.db.execute("PRAGMA busy_timeout = 5000;")
