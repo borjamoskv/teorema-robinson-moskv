@@ -12,3 +12,5 @@ cortex_memory.db-wal
 *.db-shm
 *.db-wal
 
+
+cortex_surface_map.db*
