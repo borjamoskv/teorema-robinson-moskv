@@ -27,8 +27,8 @@ def run_tests():
     except AssertionError as e:
         print(f"FALLO DE ASERCIÓN: {e}", file=sys.stderr)
         sys.exit(1)
-    except Exception as e:
-        print(f"ERROR ESTRUCTURAL: {e}", file=sys.stderr)
+    except sqlite3.Error as e:
+        print(f"ERROR ESTRUCTURAL DB: {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":
