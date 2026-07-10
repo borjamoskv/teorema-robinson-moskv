@@ -64,7 +64,7 @@ class ConcertaInjector:
         proof = {
             "Claim": "SIGKILL_STATE_PURGE",
             "Proof": {
-                "Base": hashlib.sha256(json.dumps(analysis).encode()).hexdigest()[:12],
+                "Base": hashlib.sha256(json.dumps(analysis, separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12],
                 "Range": [0, self.threshold],
                 "Confidence": "C5-REAL",
                 "TDA_Matches": analysis["matches"],

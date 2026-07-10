@@ -69,7 +69,7 @@ class ZKMerkleLedgerDaemon:
         row = cursor.fetchone()
         
         prev_hash = row[1] if row else "GENESIS_BLOCK_0000000000000000"
-        payload_str = json.dumps(payload_dict, sort_keys=True)
+        payload_str = json.dumps(payload_dict, separators=(',', ':'), sort_keys=True, ensure_ascii=False)
         
         # Ω11: CORTEX-TAINT (Firma inmutable de causalidad OS/Agent)
         cortex_taint = f"PID:{os.getpid()}|TIME:{time.time()}|CALLER:{caller_id}"
