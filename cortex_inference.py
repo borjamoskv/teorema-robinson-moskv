@@ -157,6 +157,17 @@ class CortexInferenceEngine:
         return primitives, isomorphisms
 
     def execute_inference(self, query):
+        query_hash = hashlib.sha256(query.encode("utf-8")).hexdigest()
+        
+        # L3 Memoization Cache Bypass (Zero-Anergy return)
+        cursor = self.db.cursor()
+        cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
+        cached = cursor.fetchone()
+        if cached:
+            cursor.execute("UPDATE L3_inference_cache SET hits = hits + 1 WHERE query_hash = ?", (query_hash,))
+            self.db.commit()
+            return json.loads(cached["trace_payload"])
+            
         scores = self.parse_query(query)
 
         # Determinar modo principal
@@ -214,6 +225,22 @@ class CortexInferenceEngine:
 
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             trace["epistemic_trust_metric"] = trust_metric
+
+        cursor.execute(
+            """
+            INSERT OR REPLACE INTO L3_inference_cache 
+            (query_hash, active_mode, retrieved_nodes, applied_isomorphisms, trace_payload, hits)
+            VALUES (?, ?, ?, ?, ?, 0)
+            """,
+            (
+                query_hash,
+                active_mode,
+                json.dumps(trace["retrieved_nodes"], ensure_ascii=False),
+                json.dumps(trace["applied_isomorphisms"], ensure_ascii=False),
+                json.dumps(trace, ensure_ascii=False)
+            )
+        )
+        self.db.commit()
 
         return trace
 

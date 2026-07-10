@@ -55,6 +55,17 @@ def bootstrap_cortex() -> None:
         )
     """)
 
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS L3_inference_cache (
+            query_hash TEXT PRIMARY KEY,
+            active_mode TEXT,
+            retrieved_nodes TEXT,
+            applied_isomorphisms TEXT,
+            trace_payload TEXT,
+            hits INTEGER DEFAULT 0
+        )
+    """)
+
     # Crear índices para optimizar búsquedas de O(N) a O(log N)
     cursor.execute(
         "CREATE INDEX IF NOT EXISTS idx_l1_theory ON L1_primitive_nodes (theory);"
