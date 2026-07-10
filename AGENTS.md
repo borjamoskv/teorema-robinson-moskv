@@ -33,6 +33,7 @@
 - ALWAYS use the existing project structure and conventions.
 - Commit messages MUST follow Conventional Commits specification.
 - PR descriptions MUST include a concise summary of what changed and why.
+- CONVERSATIONAL COHERENCE: Una conversación no puede diverger mucho. Si el flujo termodinámico o el tema central divergen, debes recomendar al Operador abrir una conversación nueva (Zero Anergy).
 - AUTONOMOUS NEXUS BRIDGING (ULTRATHINK): If an MCP server or workspace encounters a "Missing Folder" error for a mapped URI (e.g., `30_BABYLON-60`), the Kernel MUST NOT halt or report an anomaly. It must autonomously restore the physical abstraction by executing a symlink (`ln -s`) from the true physical repository in `10_PROJECTS/` to the expected URI, applying law Ω6. Immediately verify functionality using `call_mcp_tool` (e.g., `index_status`).
 
 ## Testing Requirements
