@@ -24,3 +24,10 @@ def test_execute_inference():
     assert "query" in result
     assert "mode_activated" in result
     assert "reasoning_steps" in result
+
+
+def test_engine_context_manager():
+    with CortexInferenceEngine() as engine:
+        assert engine.db is not None
+        result = engine.execute_inference("¿Por qué falló esto?")
+        assert result is not None
