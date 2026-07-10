@@ -41,7 +41,7 @@ def compute_shannon_entropy(data: list | str) -> dict:
         "efficiency": (entropy / math.log2(total)) if total > 1 and entropy > 0 else 1.0
     }
 
-def compute_fisher_information(time_series):
+def compute_fisher_information(time_series: list[float]) -> dict:
     """
     Computes Fisher Information metric for a time-series vector.
     For a sequence of values v_t, we compute:
