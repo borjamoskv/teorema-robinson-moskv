@@ -11,11 +11,6 @@ os.makedirs(DB_DIR, exist_ok=True)
 
 signals = [
     {
-        "model": "GPT-4",
-        "signal": "MoE architecture. Estimated 1.8T params over 16 experts (2 active per token). Routing jitter isolated in latency profiles.",
-        "confidence": "C4-SIM"
-    },
-    {
         "model": "DeepSeek-V2",
         "signal": "MLA (Multi-Head Latent Attention) with RoPE decoupling. DeepSeekMoE. 236B total params, 21B active. O(1) KV cache compression.",
         "confidence": "C5-REAL"
@@ -24,11 +19,6 @@ signals = [
         "model": "Llama-3-70B",
         "signal": "Dense Transformer, GQA (Grouped Query Attention). Optimized for extreme TPS via KV cache size reduction. 8 KV heads.",
         "confidence": "C5-REAL"
-    },
-    {
-        "model": "Claude-3-Opus",
-        "signal": "Context window recall bounded at >99% via Needle-in-a-Haystack. TTFT scales linearly with system prompt length, indicating dense attention processing.",
-        "confidence": "C4-SIM"
     }
 ]
 
@@ -71,25 +61,31 @@ def run():
     """)
 
     cursor = conn.cursor()
-    cursor.execute("SELECT MAX(lamport_t), hash FROM bft_ledger")
-    row = cursor.fetchone()
-    
-    current_lamport = row[0] if row[0] is not None else 0
-    prev_hash = row[1] if row[1] is not None else "GENESIS_HASH"
-    
-    for sig in signals:
-        current_lamport += 1
-        taint = get_cortex_taint(sig["signal"])
-        content = f"{current_lamport}{AGENT_ID}{prev_hash}{sig['model']}{sig['signal']}{taint}"
-        current_hash = hashlib.sha256(content.encode()).hexdigest()
+    cursor.execute("BEGIN EXCLUSIVE TRANSACTION;")
+    try:
+        cursor.execute("SELECT MAX(lamport_t), hash FROM bft_ledger")
+        row = cursor.fetchone()
         
-        cursor.execute("""
-            INSERT INTO bft_ledger (lamport_t, agent_id, prev_hash, hash, cortex_taint, model_target, signal_data, confidence)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (current_lamport, AGENT_ID, prev_hash, current_hash, taint, sig['model'], sig['signal'], sig['confidence']))
+        current_lamport = row[0] if row[0] is not None else 0
+        prev_hash = row[1] if row[1] is not None else "GENESIS_HASH"
         
-        prev_hash = current_hash
-        print(f"[{current_lamport}] {sig['model']} -> {current_hash[:16]}")
+        for sig in signals:
+            current_lamport += 1
+            taint = get_cortex_taint(sig["signal"])
+            content = f"{current_lamport}{AGENT_ID}{prev_hash}{sig['model']}{sig['signal']}{taint}"
+            current_hash = hashlib.sha256(content.encode()).hexdigest()
+            
+            cursor.execute("""
+                INSERT INTO bft_ledger (lamport_t, agent_id, prev_hash, hash, cortex_taint, model_target, signal_data, confidence)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (current_lamport, AGENT_ID, prev_hash, current_hash, taint, sig['model'], sig['signal'], sig['confidence']))
+            
+            prev_hash = current_hash
+            print(f"[{current_lamport}] {sig['model']} -> {current_hash[:16]}")
+        conn.commit()
+    except sqlite3.IntegrityError:
+        conn.rollback()
+        raise
 
     conn.close()
 
