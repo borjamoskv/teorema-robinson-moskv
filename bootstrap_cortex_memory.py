@@ -8,7 +8,7 @@ DB_PATH = os.environ.get("CORTEX_DB_PATH", os.path.join(_BASE, "cortex_memory.db
 MATRIZ_PATH = os.environ.get("CORTEX_MATRIZ_PATH", os.path.join(_BASE, "matriz_1000_primitivas.yaml"))
 ISOMORFISMOS_PATH = os.environ.get("CORTEX_ISOMORFISMOS_PATH", os.path.join(_BASE, "isomorfismos_cruzados_1000_primitivas.yaml"))
 
-def bootstrap_cortex():
+def bootstrap_cortex() -> None:
     print("[CORTEX] Iniciando bootstrap de persistencia de base de datos...")
     
     # Cargar YAMLs
