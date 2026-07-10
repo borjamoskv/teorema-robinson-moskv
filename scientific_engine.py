@@ -17,7 +17,7 @@ __all__ = [
     "compute_asymmetric_trust_isomorphism",
 ]
 
-def compute_shannon_entropy(data):
+def compute_shannon_entropy(data: list | str) -> dict:
     """
     Computes Shannon Entropy of a list of items or string.
     H(X) = -sum(P(x) * log2(P(x)))
