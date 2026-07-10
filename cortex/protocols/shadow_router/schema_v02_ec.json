@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProofOfRouteReceiptSchemaV02_EvidenceCalibrated",
+  "type": "object",
+  "properties": {
+    "decision_receipt": {
+      "type": "object",
+      "properties": {
+        "request_id": {"type": "string"},
+        "prompt_commitment": {"type": "string"},
+        "shadow_allowed": {"type": "boolean"}
+      },
+      "required": ["request_id", "prompt_commitment"]
+    },
+    "execution_receipt": {
+      "type": "object",
+      "properties": {
+        "ttft_ms_p50": {"type": "number"},
+        "total_time_ms": {"type": "number"},
+        "tokens_in": {"type": "integer"},
+        "tokens_out": {"type": "integer"}
+      }
+    },
+    "evaluation_receipt": {
+      "type": "object",
+      "properties": {
+        "observed_proxy_regret": {"type": "number"},
+        "uncertainty": {
+          "type": "object",
+          "properties": {
+            "confidence_calibrated": {"type": "number"},
+            "confidence_type": {"type": "string"},
+            "margin": {"type": "number"},
+            "sample_size": {"type": "integer"},
+            "period": {"type": "string"},
+            "calibration_method": {"type": "string"}
+          }
+        },
+        "causal_claim": {
+          "type": "object",
+          "properties": {
+            "intervention": {"type": "string"},
+            "estimator": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}
