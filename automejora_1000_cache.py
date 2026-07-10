@@ -41,7 +41,8 @@ def main():
     engine.close()
     
     # 2. Verify Database Cache
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
+    conn.execute("PRAGMA journal_mode=WAL;")
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM L3_inference_cache")
     count = cursor.fetchone()[0]

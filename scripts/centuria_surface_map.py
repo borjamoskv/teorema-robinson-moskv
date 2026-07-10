@@ -23,7 +23,7 @@ IGNORED_EXTS = {".pyc", ".db", ".png", ".jpg", ".pdf", ".zip", ".tar", ".gz"}
 DB_PATH = "cortex_surface_map.db"
 
 def init_db():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA busy_timeout=5000")
     conn.execute('''
@@ -111,7 +111,7 @@ def worker_thread(filepath: Path):
         return None
     
     # R10: Concurrencia aislada SQLite
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA busy_timeout=5000")
     try:
