@@ -88,8 +88,10 @@ function initTelemetryWS(WS_PORT, db) {
         };
 
         try {
-            insertTelemetry.run(metricData);
-            deleteOldLogs.run();
+            db.transaction(() => {
+                insertTelemetry.run(metricData);
+                deleteOldLogs.run();
+            })();
         } catch (e) {
             console.error('\x1b[1;31m[CORTEX DB ERROR]\x1b[0m', e.message);
         }

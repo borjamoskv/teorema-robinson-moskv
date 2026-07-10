@@ -203,8 +203,7 @@ function renderLogs() {
         `;
         fragment.appendChild(el);
     });
-    DOM.logContainer.innerHTML = '';
-    DOM.logContainer.appendChild(fragment);
+    DOM.logContainer.replaceChildren(fragment);
 }
 
 // Canvas Drawing functions

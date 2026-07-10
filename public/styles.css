@@ -25,7 +25,7 @@ body {
     background-size: 100% 100%, 30px 30px, 30px 30px;
     background-position: 0 0, 15px 15px, 15px 15px;
     color: var(--text-primary);
-    font-family: 'Outfit', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", "Ubuntu", sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -76,6 +76,7 @@ body {
 
 .status-indicator {
     position: absolute;
+    z-index: 10;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -141,6 +142,7 @@ body {
 .panel::before {
     content: '';
     position: absolute;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
@@ -427,7 +429,7 @@ body {
     color: var(--text-primary);
     padding: 0.8rem;
     border-radius: 4px;
-    font-family: 'Outfit', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", "Ubuntu", sans-serif;
     font-size: 0.9rem;
     min-height: 80px;
     resize: vertical;
@@ -456,7 +458,7 @@ body {
     color: var(--text-primary);
     padding: 0.6rem;
     border-radius: 4px;
-    font-family: 'Outfit', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", "Ubuntu", sans-serif;
     font-size: 0.9rem;
     outline: none;
     width: 100%;
@@ -675,7 +677,7 @@ body {
 .audit-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Outfit', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", "Ubuntu", sans-serif;
     font-size: 0.85rem;
     text-align: left;
 }
