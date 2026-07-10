@@ -19,6 +19,16 @@ def load_engine_config():
         return yaml.safe_load(f)
 
 class CortexInferenceEngine:
+    TRIGGERS = {
+        "causal": re.compile(r"(causar|provocar|generar|hacer|por qué|efecto)", re.IGNORECASE),
+        "mereo": re.compile(r"(parte|sistema|estructura|composición|dividir)", re.IGNORECASE),
+        "process": re.compile(r"(cambiar|evolucionar|fluir|transitar|dinámica|tiempo)", re.IGNORECASE),
+        "modal": re.compile(r"(podría|debería|sería|quizás|posible|mundo)", re.IGNORECASE),
+        "info": re.compile(r"(mejorar|optimizar|aprender|entrenar|divergencia|entropía)", re.IGNORECASE),
+        "semiotic": re.compile(r"(significar|interpretar|leer|texto|signo|código)", re.IGNORECASE),
+        "epistemic": re.compile(r"(confianza|verdad|verificar|test|hash|isomorfismo)", re.IGNORECASE)
+    }
+
     def __init__(self, db_path=None):
         self.config = load_engine_config()
         self.db = sqlite3.connect(db_path or DB_PATH, timeout=5.0)
@@ -39,19 +49,9 @@ class CortexInferenceEngine:
     def parse_query(self, query):
         # STAGE 1: Query Parsing -> Activation Vector 6D
         # Verbos causales, modales, de proceso, etc.
-        triggers = {
-            "causal": r"(causar|provocar|generar|hacer|por qué|efecto)",
-            "mereo": r"(parte|sistema|estructura|composición|dividir)",
-            "process": r"(cambiar|evolucionar|fluir|transitar|dinámica|tiempo)",
-            "modal": r"(podría|debería|sería|quizás|posible|mundo)",
-            "info": r"(mejorar|optimizar|aprender|entrenar|divergencia|entropía)",
-            "semiotic": r"(significar|interpretar|leer|texto|signo|código)",
-            "epistemic": r"(confianza|verdad|verificar|test|hash|isomorfismo)"
-        }
-        
-        scores = {k: 0.0 for k in triggers.keys()}
-        for key, pattern in triggers.items():
-            matches = re.findall(pattern, query, re.IGNORECASE)
+        scores = {k: 0.0 for k in self.TRIGGERS.keys()}
+        for key, pattern in self.TRIGGERS.items():
+            matches = pattern.findall(query)
             scores[key] = len(matches) * 0.5
             
         return scores
