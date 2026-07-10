@@ -174,6 +174,7 @@ class BFTLedgerActor:
                     source_db, source_table, source_pk, cortex_taint,
                     lamport_t, prev_hash, entry_hash, created_at
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(event_id) DO NOTHING
                 RETURNING seq, entry_hash""",
                 (
                     event_id, event.stream, event.entity_id, event.event_type, payload_json,
@@ -183,32 +184,25 @@ class BFTLedgerActor:
             )
             db_row = await cursor.fetchone()
             if db_row is None:
-                raise RuntimeError("Insertion failed: event_id not persisted")
+                # Idempotencia: el event_id ya existe, colisión pacífica resuelta en DB.
+                cursor = await db.execute("SELECT seq, entry_hash FROM ledger_entries WHERE event_id = ?", (event_id,))
+                db_row = await cursor.fetchone()
+                if db_row is None:
+                    raise RuntimeError("Insertion failed: event_id not persisted and not found")
 
             await db.execute("COMMIT")
             future.set_result({"seq": db_row[0], "event_id": event_id, "entry_hash": db_row[1]})
         except aiosqlite.IntegrityError as exc:
-            # INV_BFT_05 (Idempotency Masking)
+            # Other constraints (lamport_t, entry_hash) failing will drop here
             try:
-                # Attempt rollback first
+                await db.execute("ROLLBACK")
+            except Exception as rollback_exc:
                 try:
-                    await db.execute("ROLLBACK")
-                except Exception as rollback_exc:
-                    # INV_BFT_06
-                    try:
-                        await db.close()
-                    except Exception:
-                        pass
-                    future.set_exception(exc)
-                    raise RuntimeError("Cascading Rollback Defense triggered: connection aborted during IntegrityError rollback") from rollback_exc
-
-                cursor = await db.execute("SELECT seq, entry_hash FROM ledger_entries WHERE event_id = ?", (event_id,))
-                row = await cursor.fetchone()
-                if row:
-                    future.set_result({"seq": row[0], "event_id": event_id, "entry_hash": row[1]})
-                    return
-            except Exception:
-                pass
+                    await db.close()
+                except Exception:
+                    pass
+                future.set_exception(exc)
+                raise RuntimeError("Cascading Rollback Defense triggered: connection aborted during IntegrityError rollback") from rollback_exc
             future.set_exception(exc)
         except Exception as exc:
             try:

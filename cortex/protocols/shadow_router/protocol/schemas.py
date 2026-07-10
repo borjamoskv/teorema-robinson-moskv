@@ -5,13 +5,13 @@ from datetime import datetime
 class SignatureBlock(BaseModel):
     model_config = ConfigDict(frozen=True)
     algorithm: Literal["Ed25519"]
-    key_id: str  # Fingerprint completo de did:key
-    value: str  # Firma en formato base64url
+    key_id: str  # did:key fingerprint completo
+    value: str  # base64url de la firma
     signed_at: datetime
     valid_until: Optional[datetime] = None
 
 class ReceiptEnvelope(BaseModel):
-    """Contenedor de seguridad criptográfica."""
+    """Envelope firmado universal que encapsula cualquier receipt."""
     model_config = ConfigDict(frozen=True)
     schema_version: str = "proof-of-route/envelope/v0.2.2"
     parent_signed_receipt_hash: Optional[str] = None  # Enlace único al envelope padre
@@ -19,11 +19,24 @@ class ReceiptEnvelope(BaseModel):
     signature: SignatureBlock
     payload: dict  # Contenido del receipt correspondiente
 
+class EgressPermit(BaseModel):
+    """Permiso de egress de un solo uso generado a partir de un DecisionReceipt."""
+    model_config = ConfigDict(frozen=True)
+    schema: str = "proof-of-route/egress-permit/v0.2.2"
+    issuer: str
+    decision_signed_receipt_hash: str
+    route_id: str
+    purpose: Literal["primary", "shadow"]
+    permit_id: str
+    issued_at: datetime
+    expires_at: datetime
+    single_use: bool
+
 # --- Decision Receipt (T0) ---
 class RoutingPolicy(BaseModel):
     model_config = ConfigDict(frozen=True)
     selected_route: str
-    selection_propensity: int  # En basis points (e.g. 9200 = 0.92)
+    selection_propensity_basis_points: int  # e.g. 9200 = 0.92
     candidate_set_hash: str
     policy_version: str
     features_hash: str
@@ -31,12 +44,12 @@ class RoutingPolicy(BaseModel):
 class ShadowRouteSelection(BaseModel):
     model_config = ConfigDict(frozen=True)
     route_id: str
-    conditional_inclusion_probability: int  # En basis points
+    conditional_inclusion_probability_basis_points: int
 
 class ShadowPolicy(BaseModel):
     model_config = ConfigDict(frozen=True)
     eligible: bool
-    inclusion_probability: int  # En basis points
+    inclusion_probability_basis_points: int
     selection_strategy: str
     selected_shadow_routes: List[ShadowRouteSelection]
 
@@ -60,7 +73,7 @@ class PrivacyEligibilityResult(BaseModel):
     blocked_reasons: List[str]
     data_classification: str
     region: str
-    privacy_decisions: Dict[str, PrivacyDecision]  # Decisión detallada por shadow provider
+    privacy_decisions: Dict[str, PrivacyDecision]
 
 class DecisionReceipt(BaseModel):
     model_config = ConfigDict(frozen=True)
@@ -93,13 +106,13 @@ class TelemetrySource(BaseModel):
     measurement_source: Literal["client_observed", "provider_attested"]
     provider_internal_telemetry_available: bool
     provider_attestation_hash: Optional[str] = None
-    internal_components: Optional[Dict[str, int]] = None  # En ms si está atestado
+    internal_components: Optional[Dict[str, int]] = None
 
 class ExecutionMetrics(BaseModel):
     model_config = ConfigDict(frozen=True)
     tokens_in: int
     tokens_out: int
-    cost_microusd: int  # En micro USD
+    cost_microusd: int
     model_id: str
     provider: str
     region: str
@@ -115,7 +128,7 @@ class ExecutionReceipt(BaseModel):
     ttft_measurement: TTFTMeasurement
     telemetry_source: TelemetrySource
     execution_metrics: ExecutionMetrics
-    response_commitment: str  # Hash SHA-256 segregado del response
+    response_commitment: str  # SHA-256 segregado del response
 
 # --- Evaluation Receipt (T2) ---
 class ObservedProxyRegret(BaseModel):
@@ -131,7 +144,7 @@ class ObservedProxyRegret(BaseModel):
 class EvaluationReceipt(BaseModel):
     model_config = ConfigDict(frozen=True)
     receipt_type: Literal["evaluation_receipt"] = "evaluation_receipt"
-    dependencies: List[Dict[str, str]]  # Enlaces tipados a execution receipts de primary y shadows
+    dependencies: List[Dict[str, str]]  # Enlaces tipados a envelopes de execution receipts
     observed_proxy_regret: ObservedProxyRegret
     evaluation_completed_at_unix: int
 
@@ -146,7 +159,7 @@ class CohortDefinition(BaseModel):
 
 class ConfidenceInterval(BaseModel):
     model_config = ConfigDict(frozen=True)
-    level_basis_points: int  # e.g. 9500 = 95%
+    level_basis_points: int
     lower_basis_points: int
     upper_basis_points: int
     method: str
@@ -160,10 +173,10 @@ class AggregateMetric(BaseModel):
 
 class ProxyDifferenceEstimate(BaseModel):
     model_config = ConfigDict(frozen=True)
-    estimand: str  # "mean_paired_proxy_difference"
+    estimand: str
     estimate_basis_points: int
     confidence_interval: ConfidenceInterval
-    estimator: str  # "hajek_weighted_paired_difference"
+    estimator: str
     assumptions: List[str]
     sample_size: int
     effective_sample_size: int
