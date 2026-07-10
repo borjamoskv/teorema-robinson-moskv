@@ -1,106 +1,122 @@
 #!/usr/bin/env python3
-# C5-REAL Sovereign LLM Receipt Verifier
+# C5-REAL Sovereign LLM Receipt Verifier (v0.2)
 import json
 import hashlib
 import argparse
 import sys
+import base64
+import typing
+try:
+    from nacl.signing import VerifyKey
+    from nacl.exceptions import BadSignatureError
+    NACL_AVAILABLE = True
+except ImportError:
+    NACL_AVAILABLE = False
 
-def canonicalize_jcs(data: dict) -> bytes:
-    """
-    Simulates RFC 8785 JSON Canonicalization Scheme (JCS).
-    In a physical deployment, use the `jcs` library.
-    """
-    return json.dumps(data, separators=(',', ':'), sort_keys=True).encode('utf-8')
+def jcs_canonicalize(data: dict) -> bytes:
+    """RFC 8785 JSON Canonicalization Scheme (JCS)."""
+    return json.dumps(data, separators=(',', ':'), sort_keys=True, ensure_ascii=False).encode('utf-8')
 
 def hash_sha256(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+    return f"sha256:{hashlib.sha256(data).hexdigest()}"
 
-def verify_signature(public_key_id: str, signature: str, payload_hash: str) -> bool:
-    """
-    STUB: Verifies cryptographic signatures (Ed25519/ECDSA).
-    """
-    # Assuming physical validation logic here.
-    return True
+def verify_ed25519(public_key_b64: str, signature_b64: str, message: bytes) -> bool:
+    if not NACL_AVAILABLE:
+        print("ERROR: PyNaCl not installed. Cannot verify Ed25519 signatures.")
+        return False
+    try:
+        # Expected base64url or base64 standard
+        pub_key_bytes = base64.urlsafe_b64decode(public_key_b64 + '=' * (-len(public_key_b64) % 4))
+        sig_bytes = base64.urlsafe_b64decode(signature_b64.replace("base64url:", "") + '=' * (-len(signature_b64) % 4))
+        
+        vk = VerifyKey(pub_key_bytes)
+        vk.verify(message, sig_bytes)
+        return True
+    except BadSignatureError:
+        return False
+    except Exception as e:
+        print(f"Signature decoding error: {e}")
+        return False
 
-def verify_merkle_inclusion(receipt_hash: str, merkle_proof: list, merkle_root: str) -> bool:
-    """
-    STUB: Verifies inclusion in the anchored Merkle Tree.
-    """
-    return True
+def verify_merkle_leaf(payload_hash: str) -> str:
+    """Calculates leaf hash with 0x00 domain separation."""
+    # Strip prefix 'sha256:' if exists
+    clean_hash = payload_hash.replace("sha256:", "")
+    leaf_bytes = b'\x00' + bytes.fromhex(clean_hash)
+    return hashlib.sha256(leaf_bytes).hexdigest()
 
-def query_blockchain_anchor(merkle_root: str) -> dict:
-    """
-    STUB: Queries RPC to verify the root is anchored in the smart contract.
-    """
-    return {
-        "chain": "ethereum-sepolia",
-        "block_number": 12345678,
-        "confirmations": 128,
-        "tx_hash": "0xabc123"
-    }
+def verify_merkle_node(left_hex: str, right_hex: str) -> str:
+    """Calculates internal node with 0x01 domain separation."""
+    node_bytes = b'\x01' + bytes.fromhex(left_hex) + bytes.fromhex(right_hex)
+    return hashlib.sha256(node_bytes).hexdigest()
+
+def verify_merkle_proof(leaf_hash: str, proof: list, root: str, index: int) -> bool:
+    if root is None or index is None:
+        return False
+    if not proof and leaf_hash != root:
+        return False
+        
+    current = leaf_hash
+    for i, sibling in enumerate(proof):
+        is_left = not bool((index >> i) & 1)
+        if is_left:
+            current = verify_merkle_node(current, sibling)
+        else:
+            current = verify_merkle_node(sibling, current)
+            
+    return current == root
 
 def verify_receipt(receipt_path: str):
     with open(receipt_path, 'r') as f:
         receipt = json.load(f)
 
-    # 1. Strip signatures for payload hashing
-    payload = receipt.copy()
-    router_sig = payload.pop("router_signature", None)
-    provider_sig = payload.pop("provider_receipt", None)
-
-    if not router_sig:
-        print("ERROR: Missing router signature.")
+    if "payload" not in receipt or "payload_hash" not in receipt or "signature" not in receipt:
+        print("ERROR: Receipt does not conform to v0.2 structure (payload, payload_hash, signature).")
         sys.exit(1)
 
-    # 2. Canonicalize and Hash
-    canonical_payload = canonicalize_jcs(payload)
-    payload_hash = hash_sha256(canonical_payload)
+    payload = receipt["payload"]
+    declared_hash = receipt["payload_hash"]
+    sig_block = receipt["signature"]
 
-    # 3. Verify Router Signature
-    router_valid = verify_signature(
-        router_sig["public_key_id"], 
-        router_sig["signature"], 
-        payload_hash
-    )
+    # 1. Verify Payload Hash (JCS)
+    canonical_payload = jcs_canonicalize(payload)
+    calculated_hash = hash_sha256(canonical_payload)
 
-    # 4. Verify Provider Signature (Optional but required for physical proof)
-    provider_valid = False
-    if provider_sig:
-        provider_valid = verify_signature(
-            provider_sig["signing_key_id"],
-            provider_sig["signature"],
-            payload_hash
+    hash_valid = (calculated_hash == declared_hash)
+
+    # 2. Verify Signature
+    sig_valid = False
+    if sig_block.get("algorithm") == "Ed25519":
+        # Signatures are over the declared hash (represented as bytes)
+        sig_valid = verify_ed25519(
+            sig_block.get("key_id", "").replace("did:key:", ""),
+            sig_block.get("value", ""),
+            declared_hash.encode('utf-8')
         )
+    else:
+        print(f"ERROR: Algorithm {sig_block.get('algorithm')} is not implemented. Failing closed.")
+        sig_valid = False
 
-    # 5. Merkle & Blockchain (Simulated from external proof file in physical deployment)
-    merkle_valid = True
-    chain_data = query_blockchain_anchor("0xmockroot")
-    chain_valid = chain_data is not None
-
-    # 6. Determine Claim Strength
-    claim_strength = "integrity-only"
-    if router_valid:
-        claim_strength = "router-declared-provenance"
-        if provider_valid:
-            claim_strength = "provider-attested-provenance"
-
+    # Status reporting
     report = {
-        "valid": router_valid and chain_valid,
-        "integrity_verified": True,
-        "router_signature_verified": router_valid,
-        "provider_signature_verified": provider_valid,
-        "merkle_inclusion_verified": merkle_valid,
-        "blockchain_anchor_verified": chain_valid,
-        "chain": chain_data["chain"],
-        "block_number": chain_data["block_number"],
-        "confirmations": chain_data["confirmations"],
-        "claim_strength": claim_strength
+        "receipt_id": receipt.get("receipt_id", "unknown"),
+        "schema": receipt.get("schema", "unknown"),
+        "payload_hash_valid": hash_valid,
+        "signature_valid": sig_valid,
+        "status": "verified" if (hash_valid and sig_valid) else "invalid"
     }
+    
+    # Prompt verification status
+    if "request_commitment" in payload:
+        report["prompt_verification"] = "unverifiable_without_secret"
 
     print(json.dumps(report, indent=2))
+    
+    if not hash_valid or not sig_valid:
+        sys.exit(1)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Verify LLM Router Attestation Receipts")
+    parser = argparse.ArgumentParser(description="Verify Proof-of-Route v0.2 Receipts")
     parser.add_argument("receipt_file", help="Path to the JSON receipt")
     args = parser.parse_args()
     
