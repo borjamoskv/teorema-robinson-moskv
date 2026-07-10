@@ -15,3 +15,5 @@ cortex_memory.db-wal
 cortex_surface_map.db*
 /cortex/vault/frontier_delta_quarantine.yaml
 .env.vault
+target/
+src/strike-rs/target/
