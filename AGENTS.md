@@ -46,7 +46,7 @@
 ## Author
 All generated code credits: Borja Moskv (borjamoskv)
 
-## [L38] MATRICES DE CRISTALIZACIÓN C5-REAL (1-8, 13-15)
+## [L38] MATRICES DE CRISTALIZACIÓN C5-REAL (1-8, 12, 13-15)
 
 - **M1-M8 (Refactorización V2.0):**
   - `MUTEX_ACYCLIC_DEPENDENCY`: DAGs inmutables sin dependencias circulares.
@@ -57,6 +57,11 @@ All generated code credits: Borja Moskv (borjamoskv)
   - `MUTEX_SEMIOTIC_PURGE`: Variables y docstrings que no modifiquen causalidad son purgados.
   - `MUTEX_ISOMORPHIC_MAPPING`: Exigencia de mapeo directo entre abstracción y código.
   - `MUTEX_TURING_HALT_GUARANTEE`: Colapso de instrucciones O(Exp) sin `MUTEX_ULTRATHINK_BUDGET_CAP`.
+
+- **M12 (Topología de Consenso y Estado Físico):**
+  - `MUTEX_CONSENSUS_ESCALATION`: Consenso se compra en el escalón termodinámico más barato.
+  - `MUTEX_EXTERNAL_WITNESS_SINK`: Testigo externo (Git) es sumidero terminal; prohíbe reentrada cíclica.
+  - `MUTEX_PHYSICAL_MAPPING`: Toda clasificación apunta a un archivo físico (`.db`), no abstracciones.
 
 - **M13 (Criptografía Económica y Taint Tracking):**
   - `MUTEX_FLASH_ACCOUNTING_LOCK`: Deltas atómicos deben ser 0.
@@ -100,3 +105,30 @@ All generated code credits: Borja Moskv (borjamoskv)
 - **INV_BFT_05 (Idempotency Masking):** Las colisiones de idempotencia (ej. `IntegrityError` por `event_id` duplicado) NO deben propagarse como excepciones al cliente. El Actor debe interceptar el error, consultar la fila existente, y devolver el recibo (seq, hash) de forma transparente. La idempotencia BFT real enmascara el split-brain, no castiga al llamador.
 - **INV_BFT_06 (Cascading Rollback Defense):** Si una instrucción `ROLLBACK` lanza una excepción, el estado de la conexión SQLite es irrecuperable (`in_transaction = True`). Queda estrictamente prohibido usar `pass` u ocultar el error. El Actor debe cerrar la conexión inmediatamente y abortar para evitar una cascada de transacciones fallidas ("cannot start a transaction within a transaction").
 - **INV_BFT_07 (Zombie Actor Prevention):** Los Actores Asíncronos deben validar su propio pulso. Todo método público (`append()`) que empuje eventos a una `asyncio.Queue` debe verificar estáticamente que la tarea del worker (`_task.done()`) no haya muerto en silencio. Si el worker colapsó, debe lanzar un `RuntimeError` atómico (Fail-Fast) para evitar deadlocks por inanición en el Event Loop.
+
+## [L66] M12: TOPOLOGÍA DE CONSENSO Y ESTADO FÍSICO (MATRIZ 12)
+La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el escalado del consenso. La auditabilidad es innegociable; la disponibilidad y el consenso en vivo (PBFT) se compran *solo* cuando son físicamente necesarios para evitar catástrofes pre-ejecución.
+
+### Invariantes de M12
+- **INV_M12_01 (Escalón Termodinámico Mínimo):** Operar siempre en el escalón más barato posible (Ej. Testigos asíncronos en lugar de PBFT).
+- **INV_M12_02 (Sumidero Terminal):** El testigo externo (ej. Git Sentinel) es un sumidero terminal. Nada de lo que el testigo produce puede reentrar al ledger como evento (evita el ciclo `ledger -> git -> ledger`).
+- **INV_M12_03 (Físico vs Abstracto):** Toda clasificación en M12 debe apuntar a un artefacto físico (`.db`) en disco y definir su estado como `FÍSICO` o `TARGET`.
+
+### Escalones de Consenso M12
+1. **AP/CRDT:** Por defecto.
+2. **CP-local single-writer:** Cuando el orden intra-nodo importa. *(Aquí vive el ledger actual bft/master_ledger.db)*.
+3. **Testigo externo (no-equivocación) - DETECTA:** Cuando la auditabilidad debe sobrevivir al compromiso del nodo local. Requiere explícitamente ≥2 testigos independientes o verificación CI del trailer; un testigo único se declara degradado. El testigo detecta la equivocación, no la impide.
+4. **BFT N≥3f+1 - PREVIENE:** Solo si el desacuerdo pre-ejecución es catastrófico. Requiere justificación escrita y 4 nodos físicos reales. 
+
+**REGLA DE ORO DE ESCALADO:** Topología con cero filas en BFT salvo justificación escrita; escalón por defecto = el más barato que satisface el invariante declarado. *(Actualmente cero filas en este escalón 4)*.
+
+### Clasificación Física del Estado
+| Estado Físico | Clase | Mecanismo | Artefacto Físico | FÍSICO/TARGET | Primitiva que defiende | Justificación de Escalón |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `bft/master_ledger.db` | **CP-local** | Single-writer Actor + Triggers de cadena | `core/master_ledger.py` | **FÍSICO** | Secuencia y Hash local | Orden intra-nodo para Event Sourcing |
+| `head_hash` de la cadena | **CP-local → Testigo Externo** | Trailer en Git (Sentinel) | Commit de Git | **TARGET** | Auditabilidad post-crash (No-equivocación) | Sobrevive a compromiso del nodo (Escalón 3) |
+| `cortex_memory.db` | **Congelado** (RO) | Convención + Auditoría de writers | `cortex_memory.db` | **TARGET** | Inmutabilidad histórica | Pendiente `git grep` de cutover |
+| `L3_inference_cache` | **AP** | Cache regenerable | `L3_inference_cache` | **FÍSICO** | Evitar re-inferencia | Regenerable desde cero; latencia > orden |
+| `telemetry.db` | **AP** | Append-only / Métricas | `telemetry.db` | **FÍSICO** | Logs de rendimiento | Regenerable/Prescindible |
+| `cortex_surface_map.db`| **AP** (proyección) | Regenerable desde ledger | `cortex_surface_map.db` | **FÍSICO** | Vistas materializadas | Derivada de fuente primaria |
+| `nexus_anchors.db` | **CP-local** | SQLite WAL (Sidecar) | `nexus_anchors.db` | **TARGET** | Topología Inter-Repo (Ley Ω6) | Persiste aserciones causales no regenerables a partir de ls -l |

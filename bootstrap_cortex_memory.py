@@ -32,6 +32,12 @@ def bootstrap_cortex() -> None:
         print("\033[1;31m[CORTEX APOPTOSIS]\033[0m CORTEX_VAULT_KEY is missing. C5-REAL Fail-Fast.", file=sys.stderr)
         sys.exit(1)
 
+    # [L66] FREEZE LOCK: Prevent rewriting history if master_ledger exists
+    master_ledger = os.path.join(_BASE, "bft", "master_ledger.db")
+    if os.path.exists(master_ledger) or os.path.exists(DB_PATH):
+        print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Freezing Lock: Ledger {master_ledger} or {DB_PATH} already exists. Cannot mutate historical RO state.", file=sys.stderr)
+        sys.exit(1)
+
     for path in [MATRIZ_PATH, ISOMORFISMOS_PATH]:
         if not os.path.exists(path):
             print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Essential Config Missing: {path}. C5-REAL Fail-Fast.", file=sys.stderr)
