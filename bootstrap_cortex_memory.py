@@ -3,15 +3,24 @@ import yaml
 
 import sys
 import os
+from cryptography.fernet import Fernet
 
 _BASE = os.path.dirname(os.path.abspath(__file__))
+try:
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(_BASE, '.env.vault'))
+except ImportError:
+    pass
+
+VAULT_DIR = "$CORTEX_ROOT/20_VAULT"
+VAULT_KEY = os.environ.get("CORTEX_VAULT_KEY")
 DB_PATH = os.environ.get("CORTEX_DB_PATH", os.path.join(_BASE, "cortex_memory.db"))
 MATRIZ_PATH = os.environ.get(
-    "CORTEX_MATRIZ_PATH", os.path.join(_BASE, "matriz_1000_primitivas.yaml")
+    "CORTEX_MATRIZ_PATH", os.path.join(VAULT_DIR, "matriz_1000_primitivas.yaml.enc")
 )
 ISOMORFISMOS_PATH = os.environ.get(
     "CORTEX_ISOMORFISMOS_PATH",
-    os.path.join(_BASE, "isomorfismos_cruzados_1000_primitivas.yaml"),
+    os.path.join(VAULT_DIR, "isomorfismos_cruzados_1000_primitivas.yaml.enc"),
 )
 
 
@@ -19,17 +28,25 @@ def bootstrap_cortex() -> None:
     print("[CORTEX] Iniciando bootstrap de persistencia de base de datos...")
 
     # [L12] K1 FAIL-FAST: Verify Physical Assets
+    if not VAULT_KEY:
+        print("\033[1;31m[CORTEX APOPTOSIS]\033[0m CORTEX_VAULT_KEY is missing. C5-REAL Fail-Fast.", file=sys.stderr)
+        sys.exit(1)
+
     for path in [MATRIZ_PATH, ISOMORFISMOS_PATH]:
         if not os.path.exists(path):
             print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Essential Config Missing: {path}. C5-REAL Fail-Fast.", file=sys.stderr)
             sys.exit(1)
 
-    # Cargar YAMLs
-    with open(MATRIZ_PATH, "r", encoding="utf-8") as f:
-        matriz = yaml.safe_load(f)
+    # Cargar YAMLs encriptados en RAM
+    fernet = Fernet(VAULT_KEY)
+    
+    with open(MATRIZ_PATH, "rb") as f:
+        matriz_enc = f.read()
+    matriz = yaml.safe_load(fernet.decrypt(matriz_enc))
 
-    with open(ISOMORFISMOS_PATH, "r", encoding="utf-8") as f:
-        isomorfismos = yaml.safe_load(f)
+    with open(ISOMORFISMOS_PATH, "rb") as f:
+        isomorfismos_enc = f.read()
+    isomorfismos = yaml.safe_load(fernet.decrypt(isomorfismos_enc))
 
     # Conexión SQLite con WAL y busy_timeout según reglas de la sesión
     conn = sqlite3.connect(DB_PATH, timeout=5.0)
