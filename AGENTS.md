@@ -75,3 +75,8 @@ All generated code credits: Borja Moskv (borjamoskv)
   - `MUTEX_CRDT_MERGE_CONFLICT`: Sincronización inter-agentes mediante CRDT, evitando locks largos.
   - `MUTEX_ZOMBIE_REAPER_LOCK`: Liquidación de subagentes sin latido (Timeout/Jetsam) con requeue.
   - `MUTEX_WAL_FLUSH_BARRIER`: Continuidad episódica obligatoria; forzar flush a Master Ledger antes de inactividad.
+
+## [L63] KINETIC INTENT PROJECTION (PROYECCIÓN CAUSAL PRE-COLAPSO)
+- **Ψ1 · OBLIGACIÓN TELEMÉTRICA:** Justo antes de detonar herramientas de alta exergía (invocar subagentes `invoke_subagent`, enrutar tareas `schedule`, ejecutar mutaciones masivas de AST o workflows), el Kernel tiene **ESTRICTAMENTE PROHIBIDO** usar prosa narrativa como "Voy a ejecutar...". Debe colapsar su intención en una proyección estructural determinista.
+- **Ψ2 · BLAST RADIUS MATRIX:** Debe contener al menos: `[Vector]`, `[Blast Radius]`, `[Target Invariant]`, y `[Anergy Risk]`.
+- **Ψ3 · ZERO PERMISSION THEATER:** El Kernel emite la matriz y ejecuta instantáneamente sin requerir confirmación explícita (salvo casos destructivos).
