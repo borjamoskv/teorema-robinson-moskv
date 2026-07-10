@@ -8,6 +8,7 @@ import json
 import math
 import zlib
 from collections import Counter
+from decimal import Decimal
 
 __all__ = [
     "compute_shannon_entropy",
@@ -25,9 +26,9 @@ def compute_shannon_entropy(data: list | str) -> dict:
     """
     if not data:
         return {
-            "entropy": 0.0,
-            "max_entropy": 0.0,
-            "efficiency": 1.0,
+            "entropy": Decimal("0.0"),
+            "max_entropy": Decimal("0.0"),
+            "efficiency": Decimal("1.0"),
         }
 
     # If input is a list of numbers or objects, count frequencies.
@@ -35,48 +36,48 @@ def compute_shannon_entropy(data: list | str) -> dict:
     total = len(data)
     counts = Counter(data)
 
-    entropy = 0.0
+    entropy = Decimal("0.0")
     terms = []
     for count in counts.values():
-        p = count / total
-        terms.append(-p * math.log2(p))
+        p = Decimal(count) / Decimal(total)
+        terms.append(-p * Decimal(str(math.log2(float(p)))))
 
-    entropy = math.fsum(terms)
+    entropy = sum(terms, Decimal("0.0"))
 
     return {
         "entropy": entropy,
-        "max_entropy": math.log2(total) if total > 1 else 0.0,
-        "efficiency": (entropy / math.log2(total))
-        if total > 1 and entropy > 0
-        else 1.0,
+        "max_entropy": Decimal(str(math.log2(total))) if total > 1 else Decimal("0.0"),
+        "efficiency": (entropy / Decimal(str(math.log2(total))))
+        if total > 1 and entropy > Decimal("0.0")
+        else Decimal("1.0"),
     }
 
 
-def compute_fisher_information(time_series: list[float]) -> dict:
+def compute_fisher_information(time_series: list[Decimal]) -> dict:
     """
     Computes Fisher Information metric for a time-series vector.
     For a sequence of values v_t, we compute:
     I_F = sum( ((v_{t+1} - v_t) / dt)^2 / v_t )
     """
     if not time_series or len(time_series) < 2:
-        return {"fisher_information": 0.0, "status": "insufficient_data"}
+        return {"fisher_information": Decimal("0.0"), "status": "insufficient_data"}
 
     # Filter out zero or negative values to prevent domain error and division by zero
-    epsilon = 1e-10
-    series = [float(v) if float(v) > epsilon else epsilon for v in time_series]
+    epsilon = Decimal("1e-10")
+    series = [Decimal(str(v)) if Decimal(str(v)) > epsilon else epsilon for v in time_series]
 
-    fisher_sum = 0.0
+    fisher_sum = Decimal("0.0")
     terms = []
     for i in range(len(series) - 1):
         diff = series[i + 1] - series[i]
         terms.append((diff**2) / series[i])
 
-    fisher_sum = math.fsum(terms)
+    fisher_sum = sum(terms, Decimal("0.0"))
     
     # O(N) single-pass variance calculation
-    n = len(series)
-    mean = math.fsum(series) / n
-    variance = math.fsum((x - mean) ** 2 for x in series) / n
+    n = Decimal(len(series))
+    mean = sum(series, Decimal("0.0")) / n
+    variance = sum(((x - mean) ** 2 for x in series), Decimal("0.0")) / n
 
     return {
         "fisher_information": fisher_sum,
@@ -187,7 +188,7 @@ def compute_kolmogorov_approximation(text_data: str) -> dict:
     K(s) = len(compress(s)) / len(s)
     """
     if not text_data:
-        return {"mdl": 0.0, "compressed_size": 0, "raw_size": 0}
+        return {"mdl": Decimal("0.0"), "compressed_size": 0, "raw_size": 0}
 
     raw_bytes = text_data.encode("utf-8")
     raw_size = len(raw_bytes)
@@ -195,15 +196,15 @@ def compute_kolmogorov_approximation(text_data: str) -> dict:
     compressed = zlib.compress(raw_bytes, level=9)
     compressed_size = len(compressed)
 
-    mdl = compressed_size / raw_size if raw_size > 0 else 0.0
+    mdl = Decimal(compressed_size) / Decimal(raw_size) if raw_size > 0 else Decimal("0.0")
 
     return {
         "mdl": mdl,
         "compressed_size": compressed_size,
         "raw_size": raw_size,
-        "compression_ratio": (raw_size / compressed_size)
+        "compression_ratio": (Decimal(raw_size) / Decimal(compressed_size))
         if compressed_size > 0
-        else 1.0,
+        else Decimal("1.0"),
     }
 
 
@@ -215,16 +216,17 @@ def compute_asymmetric_trust_isomorphism(provenance_hash, test_passed, entropy_m
     If True, Trust approaches 1.0 (C5-REAL) based on execution and lack of stochastic noise (entropy).
     """
     if not provenance_hash or not test_passed:
-        return {"trust_index": 0.0, "reality_level": "C4-SIM", "anergy": 1.0}
+        return {"trust_index": Decimal("0.0"), "reality_level": "C4-SIM", "anergy": Decimal("1.0")}
 
     # Isomorphism: Trust scales inversely with entropy (noise).
     # If entropy is 0, trust is max.
-    trust_index = math.exp(-entropy_metric) if entropy_metric >= 0 else 1.0
+    entropy_dec = Decimal(str(entropy_metric))
+    trust_index = Decimal(str(math.exp(float(-entropy_dec)))) if entropy_dec >= Decimal("0.0") else Decimal("1.0")
 
     return {
         "trust_index": trust_index,
         "reality_level": "C5-REAL",
-        "anergy": 1.0 - trust_index,
+        "anergy": Decimal("1.0") - trust_index,
     }
 
 
@@ -239,6 +241,12 @@ def main():
         print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Empty STDIN payload. C5-REAL Fail-Fast.", file=sys.stderr)
         sys.exit(1)
         
+    class DecimalEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, Decimal):
+                return float(obj)
+            return super(DecimalEncoder, self).default(obj)
+
     payload = json.loads(payload_raw)
 
     action = sys.argv[1]
@@ -268,7 +276,7 @@ def main():
         print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Unknown action: {action}. C5-REAL Fail-Fast.", file=sys.stderr)
         sys.exit(1)
 
-    print(json.dumps(res, indent=2))
+    print(json.dumps(res, indent=2, cls=DecimalEncoder))
 
 
 if __name__ == "__main__":
