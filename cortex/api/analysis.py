@@ -10,7 +10,9 @@ from fastapi.staticfiles import StaticFiles
 # Config C5-REAL
 JWT_SECRET = os.environ.get("CORTEX_JWT_SECRET")
 if not JWT_SECRET:
-    raise ValueError("[CORTEX SAGA-0] CORTEX_JWT_SECRET environment variable is missing. Halting execution to prevent C4-SIM entropy.")
+    raise ValueError(
+        "[CORTEX SAGA-0] CORTEX_JWT_SECRET environment variable is missing. Halting execution to prevent C4-SIM entropy."
+    )
 JWT_ALGORITHM = "HS256"
 
 app = FastAPI(docs_url=None)  # Override default docs
@@ -20,14 +22,18 @@ app.mount("/static", StaticFiles(directory="cortex/api"), name="static")
 
 security = HTTPBearer()
 
+
 def verify_jwt(credentials: HTTPAuthorizationCredentials = Security(security)):
     try:
-        payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        payload = jwt.decode(
+            credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM]
+        )
         return payload
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=401, detail="Token expirado")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Token inválido")
+
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
@@ -35,31 +41,38 @@ async def custom_swagger_ui_html():
         openapi_url=app.openapi_url,
         title=app.title + " - CORTEX API",
         oauth2_redirect_url=app.swagger_ui_oauth2_redirect_url,
-        swagger_css_url="/static/swagger_theme.css"
+        swagger_css_url="/static/swagger_theme.css",
     )
+
 
 @app.get("/token")
 def generate_dev_token():
     # Dev token for local testing
-    token = jwt.encode({"sub": "operator", "role": "admin"}, JWT_SECRET, algorithm=JWT_ALGORITHM)
+    token = jwt.encode(
+        {"sub": "operator", "role": "admin"}, JWT_SECRET, algorithm=JWT_ALGORITHM
+    )
     return {"access_token": token}
+
 
 @app.get("/health")
 def health_check():
     return {"status": "C5-REAL", "bft_consensus": True, "layer": "L5-Manifold"}
 
+
 @app.get("/audit")
 def get_audit_artifact(token: dict = Depends(verify_jwt)):
-    default_path = os.path.expanduser("~/.gemini/antigravity/brain/be4de698-23dc-4438-b538-6f84d8e1955d/cortex_mythos_audit.md")
+    default_path = os.path.expanduser(
+        "~/.gemini/antigravity/brain/be4de698-23dc-4438-b538-6f84d8e1955d/cortex_mythos_audit.md"
+    )
     audit_path = os.environ.get("CORTEX_AUDIT_PATH", default_path)
     if not os.path.exists(audit_path):
         raise HTTPException(status_code=404, detail="Artifact no encontrado.")
-    
+
     # Simple extraction of the first YAML block for EXERGY metrics
     try:
         with open(audit_path, "r") as f:
             content = f.read()
-        
+
         # Split by ```yaml and take the second part, then split by ```
         if "```yaml" in content:
             yaml_content = content.split("```yaml")[1].split("```")[0].strip()
@@ -71,21 +84,24 @@ def get_audit_artifact(token: dict = Depends(verify_jwt)):
         # Fail-fast bubble up
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/facts")
 def query_facts(query: str, token: dict = Depends(verify_jwt)):
     # Fallback to cortex_memory.db
     db_path = "cortex_memory.db"
     if not os.path.exists(db_path):
         return {"query": query, "results": [], "warning": "No local DB found"}
-    
+
     try:
         conn = sqlite3.connect(db_path, timeout=5.0)
         conn.execute("PRAGMA journal_mode = WAL;")
         conn.execute("PRAGMA busy_timeout = 5000;")
         cursor = conn.cursor()
-        
+
         # Since we don't know the exact query format, we attempt a naive search over L1 nodes if it exists
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='L1_primitive_nodes'")
+        cursor.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='L1_primitive_nodes'"
+        )
         if cursor.fetchone():
             cursor.execute("SELECT * FROM L1_primitive_nodes LIMIT 10")
             rows = cursor.fetchall()
@@ -95,5 +111,5 @@ def query_facts(query: str, token: dict = Depends(verify_jwt)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
     finally:
-        if 'conn' in locals():
+        if "conn" in locals():
             conn.close()
