@@ -2,6 +2,8 @@
 
 > **Propiedad fundamental:** No hay soluciones. Todo antipatrón es un movimiento automático frente a un problema reflexivo (donde tú eres parte del problema) que indefectiblemente agrava el estado del sistema. La única acción posible en el Nivel 4 es *no ejecutar el antipatrón*.
 
+> **Condición de Victoria Absoluta:** La victoria es ejecutar el menor número posible de antipatrones el máximo tiempo posible.
+
 ## Matriz Operativa de Antimovimientos (C5-REAL)
 
 | # | Antipatrón | Mecánica Estructural | Señal Típica | Antimovimiento Mínimo (Freno Causal) |
