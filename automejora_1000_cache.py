@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # [C5-REAL]
-import random
+
 import sqlite3
 import sys
 
@@ -29,8 +29,9 @@ def main():
     
     # We want exactly 1000 unique queries to guarantee 1000 cache entries
     while len(unique_queries) < 1000:
-        length = random.randint(3, 8)
-        query = " ".join(random.sample(VOCAB, length))
+        length = (len(unique_queries) % 6) + 3
+        query_words = [VOCAB[(len(unique_queries) + i * 7) % len(VOCAB)] for i in range(length)]
+        query = " ".join(query_words)
         unique_queries.add(query)
         
     print("Pre-computing and caching 1000 isomorphic traces...")

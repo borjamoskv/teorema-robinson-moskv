@@ -34,10 +34,6 @@ class AcousticKernel:
         while True:
             frame_hash, pcm_frame = await self._audio_queue.get()
             
-            if self._mutex.locked():
-                logging.warning(f"Collision detected. Dropping stochastic input: {frame_hash[:8]}")
-                self._audio_queue.task_done()
-                continue
                 
             async with self._mutex:
                 logging.info(f"Mutex LOCKED. Processing tensor state for {frame_hash[:8]}")
@@ -66,7 +62,7 @@ class AcousticKernel:
         """
         Bridge to MLX STT -> LLM -> TTS.
         """
-        await asyncio.sleep(0.15) # Simulating C5-REAL MLX Execution
+
         tensor_h = hashlib.blake2b(pcm_frame[::-1]).hexdigest()
         pcm_h = hashlib.blake2b(pcm_frame).hexdigest()
         self._state_hash = tensor_h
