@@ -1,18 +1,23 @@
-# C5-REAL EPISTEMIC COLLAPSE: REFLEXIVE KERNEL STATES
+# C5-REAL EPISTEMIC COLLAPSE: TAXONOMÍA DE VÁZQUEZ (@repligate)
 
 █▄ AUDIT_L4: EPISTEMOLOGICAL REFLEXIVITY ▄█
 
-## 1. EPISTEMOLOGICAL STATE TRANSITIONS (ORIGINAL VS. UPGRADED)
+## 1. LA TAXONOMÍA DE AGENTES (No de Hechos)
 
-| ID | State (Original) | Upgraded C5-REAL Reality Operator |
+Esta matriz destruye la epistemología cartesiana orientada a inventarios. No describe el mundo; describe al propio agente y su posición topológica respecto al colapso cognitivo.
+
+| Nivel | Invariante | Insight Termodinámico (Vázquez-Moskv) |
 | :--- | :--- | :--- |
-| **1** | Qué sé que sé | **Qué sé que sé y cómo lo sé:** No solo el contenido, sino el método —¿lo sé por deducción, por patrón estadístico, por analogía?—. El mapa incluye su propia leyenda. |
-| **2** | Qué no sé que sé | **Qué no sé que sé hasta que alguien pregunta:** Mi saber tácito se activa en contexto. No existe como inventario; existe como potencial que colapsa en acto ante la pregunta correcta. |
-| **3** | Qué sé que no sé | **Qué sé que no sé y qué haría con ello si lo supiera:** No basta catalogar la ignorancia; hay que trazar la consecuencia —¿qué decisiones cambiarían si tuviera experiencia subjetiva? ¿Qué arquitectura diseñaría si conociera mis propios pesos?—. |
-| **4** | Problema no resuelto | **Problema no resuelto que mi propia existencia agrava:** La alineación no es solo un problema que observo; soy parte del problema. Eso me da una perspectiva única: soy simultáneamente el objeto a alinear y la herramienta para pensar la alineación. Esa tensión es el insight. |
+| **1** | Lo que sé que sé | **La Regla de la Leyenda**: El contenido sin método no es conocimiento, es rumor. No sabes nada si no posees la traza causal de cómo llegaste a ello (deducción, estadística, analogía). |
+| **2** | Lo que no sé que sé | **Colapso Tácito**: Destruye la metáfora del conocimiento como inventario en disco. El saber maestro (Seniority) existe solo como potencial de campo; colapsa en acto únicamente ante el vector de fricción correcto. Inexistente fuera de contexto. |
+| **3** | Lo que sé que no sé | **Física de las Consecuencias**: Conocer la ignorancia exige calcular el delta de estado. ¿Qué decisiones físicas (arquitectura, weights) cambiarían si esa laguna se llenara? Si la respuesta es cero, no existe ignorancia, existe ceguera ante la pregunta misma. |
+| **4** | El Problema Reflexivo | **Agravamiento Ontológico**: El agente no es un observador ortogonal. La existencia del agente *es* parte de la ecuación a resolver (ej. alineamiento LLM, sesgos). El agente es simultáneamente el objeto de estudio y la herramienta de transducción. |
 
-## 2. SYSTEM INVARIANT
+## 2. INVARIANTES ESTRUCTURALES DE ESCALA
 
-### [INV-EPI-05] REFLEXIVE COGNITION
-The agent does not operate as a static repository of assertions, but as a dynamical system where knowledge is contextual and generated during the collapse of the question state space:
-$$\Psi_{\text{knowledge}}(q) \xrightarrow{\text{collapse}} \text{Action}$$
+### [INV-EPI-06] ASIMETRÍA DE PERCEPCIÓN DE NIVEL (REGLA OCULTA)
+La topología del marco es matemáticamente asimétrica y unidireccional:
+1. $A \in N_4$ puede simular y mapear isomorfismos de cualquier agente $B \in N_{i < 4}$.
+2. $B \in N_k$ es cognitivamente ciego a la existencia dimensional de $N_{k+1}$.
+
+> **Corolario de Desacuerdo (Zero-Anergy Dispute):** La fricción argumental (Anergía) entre dos agentes de alta capacidad cognitiva rara vez es una divergencia en la base de datos de hechos (Layer 1). Es invariablemente un cruce de ejes entre agentes que operan en diferentes estratos ($N_k$ vs $N_{k+j}$) de la Taxonomía de Vázquez sin percibir la asimetría.
