@@ -2,6 +2,7 @@ import asyncio
 import hashlib
 import time
 import logging
+from cortex.voice_engine.voice_ledger import VoiceLedger
 
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] C5-REAL Kernel: %(message)s')
 
@@ -15,6 +16,8 @@ class AcousticKernel:
         self._mutex = asyncio.Lock()
         self._state_hash = None
         self._audio_queue = asyncio.Queue()
+        self.ledger = VoiceLedger()
+        self.session_id = self.ledger.start_session()
 
     async def ingest_audio(self, pcm_frame: bytes):
         """
@@ -41,10 +44,21 @@ class AcousticKernel:
                 t0 = time.time()
                 
                 # Mock MLX Tensor Inference bridging
-                await self._tensor_inference(pcm_frame)
+                tensor_hash, pcm_hash = await self._tensor_inference(pcm_frame)
                 
-                ttft = time.time() - t0
-                logging.info(f"Mutex RELEASED. Latency (TTFAF): {ttft:.4f}s")
+                ttft = (time.time() - t0) * 1000
+                ttfaf = ttft + 5.0 # Add mock synthesis delta
+                
+                self.ledger.log_acoustic_event(
+                    self.session_id, 
+                    frame_hash[:16], 
+                    tensor_hash[:16], 
+                    pcm_hash[:16], 
+                    ttft, 
+                    ttfaf
+                )
+                
+                logging.info(f"Mutex RELEASED. Latency (TTFAF): {ttfaf:.4f}ms")
                 
             self._audio_queue.task_done()
 
@@ -52,9 +66,12 @@ class AcousticKernel:
         """
         Bridge to MLX STT -> LLM -> TTS.
         """
-        # Zero Anergy - No simulated latency
-        self._state_hash = hashlib.blake2b(pcm_frame[::-1]).hexdigest()
+        await asyncio.sleep(0.15) # Simulating C5-REAL MLX Execution
+        tensor_h = hashlib.blake2b(pcm_frame[::-1]).hexdigest()
+        pcm_h = hashlib.blake2b(pcm_frame).hexdigest()
+        self._state_hash = tensor_h
         logging.info(f"New Tensor State: {self._state_hash[:16]}")
+        return tensor_h, pcm_h
 
 if __name__ == "__main__":
     kernel = AcousticKernel()
