@@ -3,14 +3,14 @@ import hashlib
 import sqlite3
 import dataclasses
 from typing import Final, Callable, TypeVar, Any
-
+from decimal import Decimal
 DB_PATH: Final[str] = "nexus_anchors.db"
 T = TypeVar('T')
 
 @dataclasses.dataclass(frozen=True)
 class OuroborosState:
     cycle_id: int
-    exergy_net: float
+    exergy_net: Decimal
     falsified: bool
     causal_hash: str
 
@@ -26,7 +26,7 @@ def init_ouroboros_ledger() -> None:
             )
         ''')
 
-def execute_apex_100(optimization_fn: Callable[[], float], falsification_fn: Callable[[float], bool]) -> OuroborosState:
+def execute_apex_100(optimization_fn: Callable[[], Decimal], falsification_fn: Callable[[Decimal], bool]) -> OuroborosState:
     """
     APEX-100: Singularidad Ouroboros — Convergencia Final.
     Integra recursivamente auto-optimización, auto-auditoría y auto-falsificación.
@@ -41,7 +41,7 @@ def execute_apex_100(optimization_fn: Callable[[], float], falsification_fn: Cal
     is_falsified = falsification_fn(exergy)
     
     if is_falsified:
-        exergy_net = 0.0 # Colapso a cero anergía
+        exergy_net = Decimal("0.0") # Colapso a cero anergía
     else:
         exergy_net = exergy
         
@@ -61,20 +61,20 @@ def execute_apex_100(optimization_fn: Callable[[], float], falsification_fn: Cal
         conn.execute('''
             INSERT INTO ouroboros_100 (causal_hash, cycle_id, exergy_net, falsified)
             VALUES (?, ?, ?, ?)
-        ''', (state.causal_hash, state.cycle_id, state.exergy_net, state.falsified))
+        ''', (state.causal_hash, state.cycle_id, float(state.exergy_net), state.falsified))
         
     return state
 
 if __name__ == "__main__":
     # Simulación física del colapso 100-100
-    def mock_optimize() -> float:
+    def mock_optimize() -> Decimal:
         # Base matemática de convergencia (exergía teórica = 100 * 100)
-        return 10000.0
+        return Decimal("10000.0")
         
-    def mock_falsify(val: float) -> bool:
+    def mock_falsify(val: Decimal) -> bool:
         # Falsificamos la hipótesis de que la convergencia es infinita
         # Sólo valores verificables físicamente sobreviven
-        return val < 0.0 # No falsificable en este caso, la optimización es pura
+        return val < Decimal("0.0") # No falsificable en este caso, la optimización es pura
 
     final_state = execute_apex_100(mock_optimize, mock_falsify)
     print(f"APEX-100 COLAPSO: Exergía Neta={final_state.exergy_net}, Falsificado={final_state.falsified}, Hash={final_state.causal_hash}")

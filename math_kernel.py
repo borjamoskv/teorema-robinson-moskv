@@ -3,14 +3,14 @@ import hashlib
 import time
 from typing import Final, Tuple
 from dataclasses import dataclass
-
+from decimal import Decimal
 DB_PATH: Final[str] = "nexus_anchors.db"
 
 @dataclass(frozen=True)
 class ExergyNode:
     tokens: int
-    temperature: float
-    exergy: float
+    temperature: Decimal
+    exergy: Decimal
     causal_hash: str
     lamport_t: int
 
@@ -29,12 +29,12 @@ def init_ledger() -> None:
             )
         ''')
 
-def calculate_exergy(tokens: int, temperature: float) -> ExergyNode:
+def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
     """
     Colapso termodinámico de la exergía con anclaje criptográfico.
     La exergía decrece dividiendo la base entrópica por la temperatura.
     """
-    if temperature <= 0.0:
+    if temperature <= Decimal("0.0"):
         raise ValueError("Violación Termodinámica: Temperatura debe ser > 0.")
         
     exergy = (tokens * 100) / temperature
@@ -57,7 +57,7 @@ def calculate_exergy(tokens: int, temperature: float) -> ExergyNode:
         conn.execute('''
             INSERT INTO ultrathink_ledger (causal_hash, tokens, temperature, exergy, lamport_t)
             VALUES (?, ?, ?, ?, ?)
-        ''', (node.causal_hash, node.tokens, node.temperature, node.exergy, node.lamport_t))
+        ''', (node.causal_hash, node.tokens, float(node.temperature), float(node.exergy), node.lamport_t))
         
     return node
 

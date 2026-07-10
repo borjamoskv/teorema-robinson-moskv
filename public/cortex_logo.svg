@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+    <defs>
+        <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2B3BE5" stop-opacity="1" />
+            <stop offset="100%" stop-color="#141c7a" stop-opacity="1" />
+        </linearGradient>
+        <linearGradient id="greenPulse" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#2BE594" stop-opacity="1" />
+            <stop offset="100%" stop-color="#15754b" stop-opacity="1" />
+        </linearGradient>
+        <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Base Void -->
+    <rect width="800" height="800" fill="#0A0A0A" />
+
+    <!-- Grid Substructure (Industrial scaffolding) -->
+    <g stroke="#111111" stroke-width="2">
+        <line x1="100" y1="0" x2="100" y2="800" />
+        <line x1="200" y1="0" x2="200" y2="800" />
+        <line x1="300" y1="0" x2="300" y2="800" />
+        <line x1="500" y1="0" x2="500" y2="800" />
+        <line x1="600" y1="0" x2="600" y2="800" />
+        <line x1="700" y1="0" x2="700" y2="800" />
+        
+        <line x1="0" y1="200" x2="800" y2="200" />
+        <line x1="0" y1="400" x2="800" y2="400" />
+        <line x1="0" y1="600" x2="800" y2="600" />
+    </g>
+
+    <!-- CORTEX Outer Monolith Structure -->
+    <path d="M400 150 L616.5 275 L616.5 525 L400 650 L183.5 525 L183.5 275 Z" 
+          fill="none" stroke="#222222" stroke-width="12" />
+          
+    <path d="M400 170 L599.2 285 L599.2 515 L400 630 L200.8 515 L200.8 285 Z" 
+          fill="none" stroke="url(#blueGlow)" stroke-width="4" filter="url(#neon)" />
+
+    <!-- Central Causal Core (C5-REAL Point) -->
+    <circle cx="400" cy="400" r="45" fill="url(#greenPulse)" filter="url(#neon)" />
+    
+    <!-- YInMn Blue Thermodynamic Heat Sinks (Data lines) -->
+    <g stroke="url(#blueGlow)" stroke-width="8" stroke-linecap="square">
+        <!-- Top left to center -->
+        <line x1="220" y1="310" x2="350" y2="385" />
+        <!-- Bottom left to center -->
+        <line x1="220" y1="490" x2="350" y2="415" />
+        <!-- Right side strict horizontal input -->
+        <line x1="580" y1="400" x2="455" y2="400" />
+    </g>
+
+    <!-- Anergy Purgation Line (Vertical slice through entropy) -->
+    <line x1="400" y1="180" x2="400" y2="350" stroke="#FFFFFF" stroke-width="3" />
+    <line x1="400" y1="450" x2="400" y2="620" stroke="#FFFFFF" stroke-width="3" />
+
+    <!-- Text Typography Block (Bottom right engineering stamp) -->
+    <g font-family="monospace" font-size="14" fill="#A0A0A0" letter-spacing="4">
+        <text x="616.5" y="730" text-anchor="end">CORTEX C5-REAL</text>
+        <text x="616.5" y="750" text-anchor="end" fill="#2B3BE5">MOSKV-1 APEX KERNEL</text>
+    </g>
+
+    <!-- Top left reality anchor -->
+    <text x="183.5" y="100" font-family="monospace" font-size="12" fill="#2BE594" letter-spacing="2">YIELD: 1.0x</text>
+
+</svg>

@@ -12,6 +12,7 @@ import json
 import logging
 import argparse
 from pathlib import Path
+from decimal import Decimal
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -39,18 +40,18 @@ def init_db():
     conn.commit()
     conn.close()
 
-def calculate_shannon_entropy(text: str) -> float:
+def calculate_shannon_entropy(text: str) -> Decimal:
     if not text:
-        return 0.0
+        return Decimal("0.0")
     frequencies = {}
     for char in text:
         frequencies[char] = frequencies.get(char, 0) + 1
-    total_len = len(text)
-    entropy = 0.0
+    total_len = Decimal(len(text))
+    entropy = Decimal("0.0")
     for count in frequencies.values():
-        p = count / total_len
-        entropy -= p * math.log2(p)
-    return round(entropy, 4)
+        p = Decimal(count) / total_len
+        entropy -= p * Decimal(str(math.log2(float(p))))
+    return Decimal(str(round(float(entropy), 4)))
 
 def extract_python_primitives(content: str):
     classes = []
@@ -119,7 +120,7 @@ def worker_thread(filepath: Path):
             (file_path, extension, entropy, lines, classes, functions, imports)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         ''', (
-            data["file_path"], data["extension"], data["entropy"],
+            data["file_path"], data["extension"], float(data["entropy"]),
             data["lines"], data["classes"], data["functions"], data["imports"]
         ))
         conn.commit()

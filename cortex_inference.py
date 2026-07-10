@@ -9,6 +9,7 @@ from scientific_engine import (
     compute_asymmetric_trust_isomorphism,
     compute_shannon_entropy,
 )
+from decimal import Decimal
 
 # CONFIGURACIÓN
 _BASE = os.path.dirname(os.path.abspath(__file__))
@@ -70,10 +71,10 @@ class CortexInferenceEngine:
     def parse_query(self, query):
         # STAGE 1: Query Parsing -> Activation Vector 6D
         # Verbos causales, modales, de proceso, etc.
-        scores = {k: 0.0 for k in self.TRIGGERS.keys()}
+        scores = {k: Decimal("0.0") for k in self.TRIGGERS.keys()}
         for key, pattern in self.TRIGGERS.items():
             matches = pattern.findall(query)
-            scores[key] = len(matches) * 0.5
+            scores[key] = Decimal(len(matches)) * Decimal("0.5")
 
         return scores
 
@@ -176,7 +177,7 @@ class CortexInferenceEngine:
         }
 
         active_mode = mode_mapping.get(max_category, "MODE-01-CAUSAL-DEDUCTION")
-        if scores[max_category] == 0.0:
+        if scores[max_category] == Decimal("0.0"):
             active_mode = "MODE-01-CAUSAL-DEDUCTION"  # Default
 
         primitives, isomorphisms = self.retrieve_primitives(active_mode, scores, query)
@@ -203,7 +204,16 @@ class CortexInferenceEngine:
         else:
             confidence = "C5-REAL" if len(primitives) > 3 else "C4-SIM"
 
-        # Sintetizar traza
+        # Decimal encoding for trace output
+        def decimal_to_str(obj):
+            if isinstance(obj, dict):
+                return {k: decimal_to_str(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [decimal_to_str(x) for x in obj]
+            elif isinstance(obj, Decimal):
+                return float(obj)
+            return obj
+
         trace = {
             "claim": f"Resolución de inferencia en modo {active_mode}",
             "proof": {
@@ -212,7 +222,7 @@ class CortexInferenceEngine:
             },
             "query": query,
             "mode_activated": active_mode,
-            "activation_vector": scores,
+            "activation_vector": decimal_to_str(scores),
             "retrieved_nodes": [p["id"] for p in primitives],
             "applied_isomorphisms": [i["id"] for i in isomorphisms],
             "reasoning_steps": steps,
