@@ -1,0 +1,508 @@
+{
+  "Titan-1": [
+    {
+      "type": "AST_Function",
+      "target": "test_cortex_inference.py::test_engine_initialization",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_cortex_inference.py::test_parse_query",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_cortex_inference.py::test_retrieve_primitives",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_cortex_inference.py::test_execute_inference",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_cortex_inference.py::test_engine_context_manager",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "automejora_1000_cache.py::main",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_scientific_engine.py::test_compute_shannon_entropy",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_scientific_engine.py::test_compute_fisher_information",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_scientific_engine.py::test_solve_d_separation",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "test_scientific_engine.py::test_compute_kolmogorov_approximation",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "bootstrap_cortex_memory.py::bootstrap_cortex",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "centuria_swarm_commander.py::generate_100_vectors",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Class",
+      "target": "cortex_inference.py::CortexInferenceEngine",
+      "directive": "Audit memory footprint and state mutability."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::__init__",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::__enter__",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::__exit__",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::close",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::parse_query",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::retrieve_primitives",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "cortex_inference.py::execute_inference",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::compute_shannon_entropy",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::compute_fisher_information",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::solve_d_separation",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::compute_kolmogorov_approximation",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::compute_asymmetric_trust_isomorphism",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::main",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::get_descendants",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "AST_Function",
+      "target": "scientific_engine.py::find_all_paths",
+      "directive": "Audit cyclomatic complexity and deterministic closure."
+    },
+    {
+      "type": "DB_Schema",
+      "target": "L1_primitive_nodes",
+      "directive": "Verify indexing and constraint rigor."
+    },
+    {
+      "type": "DB_Schema",
+      "target": "L2_isomorphism_edges",
+      "directive": "Verify foreign key simulation and cascade."
+    },
+    {
+      "type": "DB_Schema",
+      "target": "L3_inference_cache",
+      "directive": "Verify hit/miss distribution and entropy."
+    },
+    {
+      "type": "Network",
+      "target": "server.js",
+      "directive": "Audit async event loop blocking and IPC overhead."
+    },
+    {
+      "type": "YAML_Config",
+      "target": "cortex_inference_engine.yaml",
+      "directive": "Audit structural integrity of trigger definitions."
+    }
+  ],
+  "Titan-2": [
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V0",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V1",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V2",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V3",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V4",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V5",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V6",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V7",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V8",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V9",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V10",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V11",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V12",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V13",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V14",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V15",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V16",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V17",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V18",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V19",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V20",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V21",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V22",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V23",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V24",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V25",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V26",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V27",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V28",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V29",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V30",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V31",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V32",
+      "directive": "Stress test thermodynamic failure point."
+    }
+  ],
+  "Titan-3": [
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V33",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V34",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V35",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V36",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V37",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V38",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V39",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V40",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V41",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V42",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V43",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V44",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V45",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V46",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V47",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V48",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V49",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V50",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V51",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V52",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V53",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V54",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V55",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V56",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V57",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V58",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V59",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V60",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V61",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V62",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V63",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V64",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V65",
+      "directive": "Stress test thermodynamic failure point."
+    },
+    {
+      "type": "Synthetic_Load",
+      "target": "Virtual_Node_V66",
+      "directive": "Stress test thermodynamic failure point."
+    }
+  ]
+}
