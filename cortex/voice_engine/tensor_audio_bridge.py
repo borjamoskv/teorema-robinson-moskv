@@ -37,10 +37,24 @@ class TensorAudioBridge:
             text_ast = text_ast.replace(f" {f} ", " ")
             
         if self.modality == VoiceModality.ULTRATHINK_COMPRESSED:
-            # Further compress by removing all adjectives
             pass
             
         return text_ast.strip()
+
+    def apply_kinetic_modifiers(self, clean_ast: str) -> str:
+        """
+        Inyecta modificadores de Cinética Acústica (Rhythm, Pitch, Velocity).
+        Traduce el texto en secuencias de marcado de voz macOS.
+        """
+        if self.modality == VoiceModality.BRUTALIST_DICTATOR:
+            # Alta velocidad, pitch bajo, sin pausas
+            return f"[[rate 220]] [[pitch 40]] {clean_ast}"
+        elif self.modality == VoiceModality.ULTRATHINK_COMPRESSED:
+            # Velocidad extrema
+            return f"[[rate 300]] [[pitch 55]] {clean_ast}"
+        else: # INDUSTRIAL_NOIR
+            # Modulación dinámica para destacar el contraste fonético
+            return f"[[rate 175]] [[pitch 48]] [[volm 0.9]] {clean_ast}"
 
     def synthesize_pcm(self, tensor_state_hash: str, text_ast: str) -> memoryview:
         """
@@ -49,9 +63,10 @@ class TensorAudioBridge:
         Utilizes memoryview for zero-copy exergy optimization.
         """
         clean_ast = self.filter_acoustic_theater(text_ast)
+        kinetic_ast = self.apply_kinetic_modifiers(clean_ast)
         
         pcm_metadata = f"[MODALITY: {self.modality.name}] ".encode('utf-8')
-        raw_bytes = bytearray(pcm_metadata + clean_ast.encode('utf-8'))
+        raw_bytes = bytearray(pcm_metadata + kinetic_ast.encode('utf-8'))
         
         # Zero-copy hashing
         mem_view = memoryview(raw_bytes)
