@@ -11,11 +11,12 @@ def extract_entropy():
     conn.execute("PRAGMA journal_mode=WAL;")
     conn.execute("PRAGMA synchronous=NORMAL;")
     
+    conn.execute("DROP TABLE IF EXISTS structural_primitives")
     conn.execute("""
-        CREATE TABLE IF NOT EXISTS structural_primitives (
+        CREATE TABLE structural_primitives (
             id INTEGER PRIMARY KEY,
             domain TEXT NOT NULL,
-            name TEXT NOT NULL UNIQUE,
+            name TEXT NOT NULL,
             description TEXT NOT NULL,
             type TEXT NOT NULL,
             lamport_t INTEGER DEFAULT 0,
@@ -27,10 +28,13 @@ def extract_entropy():
     with open(MD_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
+    # Split to ignore the Protocolo section at the end
+    content = content.split("## Protocolo para evitar")[0]
+
     # Regex to match:
     # 1. **Name:** description
     # 251. **Name.**
-    pattern = re.compile(r"^(\d+)\.\s+\*\*([^\*]+)\*\*(?:\s+(.*))?$", re.MULTILINE)
+    pattern = re.compile(r"^(\d+)\.\s+\*\*([^\*]+)\*\*(?:[ \t]+(.*))?$", re.MULTILINE)
     matches = pattern.findall(content)
 
     if not matches:
@@ -83,8 +87,8 @@ def extract_entropy():
                 (uid, domain, name, desc, node_type, causal_hash)
             )
             count += 1
-        except sqlite3.IntegrityError:
-            pass
+        except sqlite3.IntegrityError as e:
+            print(f"Error on {uid} ({name}): {e}")
 
     conn.commit()
     
