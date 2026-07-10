@@ -166,7 +166,7 @@ def solve_d_separation(nodes: list[str], edges: list[list[str]], x_node: str, y_
         "conditioning_set": list(z_set)
     }
 
-def compute_kolmogorov_approximation(text_data):
+def compute_kolmogorov_approximation(text_data: str) -> dict:
     """
     Approximates Kolmogorov Complexity using zlib compression ratio.
     K(s) = len(compress(s)) / len(s)
