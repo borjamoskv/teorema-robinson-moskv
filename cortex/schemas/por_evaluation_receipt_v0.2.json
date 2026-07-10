@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cortex.moskv/schemas/proof-of-route/evaluation/v0.2.json",
+  "title": "Proof-of-Route Evaluation Receipt",
+  "description": "T2: Cryptographic proof of off-policy counterfactual evaluation and real-world outcomes.",
+  "type": "object",
+  "required": ["schema", "receipt_id", "execution_receipt_hash", "payload", "payload_hash", "signature"],
+  "properties": {
+    "schema": { "type": "string", "const": "proof-of-route/evaluation/v0.2" },
+    "receipt_id": { "type": "string" },
+    "execution_receipt_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "payload": {
+      "type": "object",
+      "required": ["utility_spec_hash", "evaluator_id", "evaluator_hash", "quality_basis_points", "task_completed"],
+      "properties": {
+        "utility_spec_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "evaluator_id": { "type": "string" },
+        "evaluator_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "quality_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "task_completed": { "type": "boolean" },
+        "counterfactual": {
+          "type": "object",
+          "required": ["shadow_executed", "selected_utility_basis_points"],
+          "properties": {
+            "shadow_executed": { "type": "boolean" },
+            "best_observed_route_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+            "selected_utility_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+            "best_observed_utility_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+            "regret_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+            "overconfidence_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 }
+          }
+        }
+      }
+    },
+    "payload_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "signature": {
+      "type": "object",
+      "required": ["algorithm", "key_id", "value"],
+      "properties": {
+        "algorithm": { "type": "string", "enum": ["Ed25519"] },
+        "key_id": { "type": "string" },
+        "value": { "type": "string", "pattern": "^base64url:[A-Za-z0-9_-]+={0,2}$" }
+      }
+    }
+  }
+}

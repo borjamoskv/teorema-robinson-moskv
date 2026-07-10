@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cortex.moskv/schemas/proof-of-route/decision/v0.2.json",
+  "title": "Proof-of-Route Decision Receipt",
+  "description": "T0: Crytographic proof of the routing decision before execution.",
+  "type": "object",
+  "required": ["schema", "receipt_id", "issued_at", "payload", "payload_hash", "signature"],
+  "properties": {
+    "schema": { "type": "string", "const": "proof-of-route/decision/v0.2" },
+    "receipt_id": { "type": "string" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "payload": {
+      "type": "object",
+      "required": ["request_commitment", "policy_id", "policy_hash", "candidate_set_hash", "selected_route", "predictions", "selection_propensity_basis_points", "route_confidence_basis_points", "shadow_eligible"],
+      "properties": {
+        "request_commitment": { "type": "string", "pattern": "^hmac-sha256:[a-f0-9]{64}$" },
+        "policy_id": { "type": "string" },
+        "policy_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "candidate_set_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "selected_route": {
+          "type": "object",
+          "required": ["provider", "model_alias", "model_version", "region"],
+          "properties": {
+            "provider": { "type": "string" },
+            "model_alias": { "type": "string" },
+            "model_version": { "type": "string", "description": "Immutable deployment ID or exact model version" },
+            "region": { "type": "string" }
+          }
+        },
+        "predictions": {
+          "type": "object",
+          "required": ["quality_lcb_basis_points", "ttft_p95_ms", "expected_cost_microusd", "failure_probability_basis_points"],
+          "properties": {
+            "quality_lcb_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+            "ttft_p95_ms": { "type": "integer" },
+            "expected_cost_microusd": { "type": "integer" },
+            "failure_probability_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 }
+          }
+        },
+        "selection_propensity_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "route_confidence_basis_points": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "shadow_eligible": { "type": "boolean" }
+      }
+    },
+    "payload_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "signature": {
+      "type": "object",
+      "required": ["algorithm", "key_id", "value"],
+      "properties": {
+        "algorithm": { "type": "string", "enum": ["Ed25519"] },
+        "key_id": { "type": "string" },
+        "value": { "type": "string", "pattern": "^base64url:[A-Za-z0-9_-]+={0,2}$" }
+      }
+    }
+  }
+}
