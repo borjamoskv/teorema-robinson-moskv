@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cortex.moskv/schemas/proof-of-route/utility-spec/v1.json",
+  "title": "Proof-of-Route Utility Specification",
+  "description": "Defines the exact parameters for utility and regret calculation, ensuring reproducibility.",
+  "type": "object",
+  "required": [
+    "utility_id",
+    "quality_evaluator",
+    "quality_scale_basis_points",
+    "latency_transform",
+    "cost_transform",
+    "failure_penalty_basis_points",
+    "privacy_penalty_basis_points",
+    "missing_data_policy"
+  ],
+  "properties": {
+    "utility_id": { "type": "string" },
+    "utility_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "quality_evaluator": { "type": "string", "description": "e.g., 'judge-calibrated-v5' or 'unit-tests-v3'" },
+    "quality_scale_basis_points": { "type": "integer", "const": 10000 },
+    "latency_transform": {
+      "type": "object",
+      "required": ["weight", "type"],
+      "properties": {
+        "weight": { "type": "number", "description": "Lambda multiplier for latency penalization." },
+        "type": { "type": "string", "enum": ["linear", "exponential", "step"] }
+      }
+    },
+    "cost_transform": {
+      "type": "object",
+      "required": ["weight", "type"],
+      "properties": {
+        "weight": { "type": "number", "description": "Mu multiplier for cost penalization." },
+        "type": { "type": "string", "enum": ["linear", "logarithmic"] }
+      }
+    },
+    "failure_penalty_basis_points": { "type": "integer", "description": "Absolute deduction for circuit break or fallback." },
+    "privacy_penalty_basis_points": { "type": "integer", "description": "Absolute deduction for violating privacy bounds." },
+    "missing_data_policy": {
+      "type": "string",
+      "enum": ["impute_mean", "assume_worst", "exclude_from_regret"],
+      "description": "How to handle missing TTFT or cost data."
+    }
+  }
+}
