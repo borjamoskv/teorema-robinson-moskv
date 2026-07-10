@@ -24,7 +24,11 @@ def compute_shannon_entropy(data: list | str) -> dict:
     H(X) = -sum(P(x) * log2(P(x)))
     """
     if not data:
-        return 0.0
+        return {
+            "entropy": 0.0,
+            "max_entropy": 0.0,
+            "efficiency": 1.0,
+        }
 
     # If input is a list of numbers or objects, count frequencies.
     # If string, count char frequencies.
