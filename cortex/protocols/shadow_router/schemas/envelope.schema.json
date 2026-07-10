@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Proof-of-Route Universal Envelope",
+  "description": "Envoltorio inmutable C5-REAL para recibos y decisiones firmadas.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": ["proof-of-route/envelope/v0.2.2"]
+    },
+    "issuer": {
+      "type": "string",
+      "description": "DID Web o Key ID autorizado en el Trust Store."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Documento interno a firmar."
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Hash SHA-256 del payload canonicalizado vía RFC 8785."
+    },
+    "signature": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": ["Ed25519"]
+        },
+        "value": {
+          "type": "string",
+          "description": "Firma en Base64url."
+        }
+      },
+      "required": ["algorithm", "value"]
+    }
+  },
+  "required": ["schema", "issuer", "payload", "payload_hash", "signature"],
+  "additionalProperties": false
+}

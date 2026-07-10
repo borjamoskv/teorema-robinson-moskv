@@ -1,40 +1,35 @@
-from typing import Dict, Any, Optional
-from datetime import datetime
-from cortex.protocols.shadow_router.protocol.schemas import ReceiptEnvelope
-from cortex.protocols.shadow_router.signing.ed25519 import verify_envelope
-
 class TrustStore:
-    def __init__(self, trusted_keys: Dict[str, Dict[str, Any]]):
-        """
-        trusted_keys maps did_key -> {
-            "public_key_hex": str,
-            "roles": List[str],
-            "valid_from": datetime,
-            "valid_until": datetime,
-            "revoked": bool
-        }
-        """
-        self.trusted_keys = trusted_keys
+    """
+    C5-REAL Trust Store.
+    Repositorio inmutable de identidades de la federación.
+    MUTEX_ORACLE_QUORUM_WAIT exige que las entidades estén registradas antes de ser aceptadas.
+    """
+    
+    def __init__(self):
+        # Mapeo de issuer_id -> public_key_hex
+        self._authorized_keys = {}
+        self._revoked_keys = set()
+        
+    def register_issuer(self, issuer_id: str, public_key_hex: str):
+        """Registra un emisor y su clave pública."""
+        if issuer_id in self._revoked_keys:
+            raise ValueError(f"CRITICAL: Issuer {issuer_id} is revoked.")
+        self._authorized_keys[issuer_id] = public_key_hex
+        
+    def revoke_issuer(self, issuer_id: str):
+        """Revoca permanentemente un emisor (SIGKILL_STATE_PURGE)."""
+        self._revoked_keys.add(issuer_id)
+        if issuer_id in self._authorized_keys:
+            del self._authorized_keys[issuer_id]
+            
+    def get_public_key(self, issuer_id: str) -> str:
+        """Devuelve la clave pública. Falla ruidosamente si no existe (Fail-Fast)."""
+        if issuer_id in self._revoked_keys:
+            raise PermissionError(f"Issuer {issuer_id} is revoked.")
+        if issuer_id not in self._authorized_keys:
+            raise KeyError(f"Issuer {issuer_id} not found in Trust Store.")
+            
+        return self._authorized_keys[issuer_id]
 
-    def verify_envelope_trust(self, envelope: ReceiptEnvelope, required_role: str) -> bool:
-        key_id = envelope.signature.key_id
-        if key_id not in self.trusted_keys:
-            return False
-            
-        key_info = self.trusted_keys[key_id]
-        if key_info.get("revoked", False):
-            return False
-            
-        now = datetime.now()
-        if not (key_info["valid_from"] <= now <= key_info["valid_until"]):
-            return False
-            
-        if required_role not in key_info.get("roles", []):
-            return False
-            
-        # Verify signature
-        return verify_envelope(
-            payload=envelope.payload,
-            signature_b64url=envelope.signature.value,
-            public_key_hex=key_info["public_key_hex"]
-        )
+    def is_authorized(self, issuer_id: str) -> bool:
+        return issuer_id in self._authorized_keys and issuer_id not in self._revoked_keys
