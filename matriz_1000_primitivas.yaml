@@ -1,3 +1,7 @@
+vendor_lockin:
+  enforcement_layer: C5-REAL
+  base_class: CortexBelief
+  thermodynamic_anchor: Babylon-60
 claim: Matriz de Extracción Ontológica (10 Teorías -> 1000 Primitivas)
 proof:
   Base: Isomorfismo Causal / PeARL-77
@@ -118,6 +122,8 @@ theories:
       - adversarial-payoff
       - minimax-strategy
       - nash-equilibrium
+    cortex_taint: true
+    exergy_metric: 1.0
   T02:
     name: MEREOTOPOLOGY
     base: Varzi/Casati — Partes, Todo y Fronteras
@@ -232,6 +238,8 @@ theories:
       - genus-number
       - euler-characteristic
       - fractal-dimension
+    cortex_taint: true
+    exergy_metric: 1.0
   T03:
     name: PROCESS-DYNAMICS
     base: Whitehead/Rescher — Ontología del Proceso
@@ -346,6 +354,8 @@ theories:
       - drift-factor
       - symbiosis-relation
       - co-evolution-loop
+    cortex_taint: true
+    exergy_metric: 1.0
   T04:
     name: MODAL-SPACES
     base: Kripke/Lewis — Mundos Posibles
@@ -460,6 +470,8 @@ theories:
       - modal-axiom-b
       - modal-axiom-s4
       - modal-axiom-s5
+    cortex_taint: true
+    exergy_metric: 1.0
   T05:
     name: INFORMATION-GEOMETRY
     base: Amari/Chentsov — Geometría de la Información
@@ -574,6 +586,8 @@ theories:
       - density-matrix
       - quantum-divergence
       - quantum-connection
+    cortex_taint: true
+    exergy_metric: 1.0
   T06:
     name: SEMIOTIC-ENCODING
     base: Peirce/Saussure/Greimas — Semiótica
@@ -688,6 +702,8 @@ theories:
       - meaning-synthesis
       - sign-system-evolution
       - semiotic-threshold
+    cortex_taint: true
+    exergy_metric: 1.0
   T07:
     name: GRAPH-MORPHISMS
     base: Teoría de Categorías/Grafos
@@ -802,6 +818,8 @@ theories:
       - dynamic-topology
       - link-prediction
       - robustness-index
+    cortex_taint: true
+    exergy_metric: 1.0
   T08:
     name: COMPUTATIONAL-STATES
     base: Turing/Church/Kolmogorov
@@ -916,6 +934,8 @@ theories:
       - undecidability-barrier
       - kolmogorov-limit
       - entropic-barrier
+    cortex_taint: true
+    exergy_metric: 1.0
   T09:
     name: INTENTIONAL-STRUCTURES
     base: Brentano/Searle/Dennett
@@ -1030,6 +1050,8 @@ theories:
       - processing-bottleneck
       - computational-intractability
       - epistemic-blindspot
+    cortex_taint: true
+    exergy_metric: 1.0
   T10:
     name: SYSTEMIC-BOUNDARIES
     base: von Bertalanffy/Wiener/Luhmann
@@ -1144,3 +1166,5 @@ theories:
       - loss-of-homeostasis
       - obsolescence
       - system-apoptosis
+    cortex_taint: true
+    exergy_metric: 1.0
