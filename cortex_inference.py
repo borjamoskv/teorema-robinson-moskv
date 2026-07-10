@@ -223,9 +223,14 @@ class CortexInferenceEngine:
 
         cursor.execute(
             """
-            INSERT OR REPLACE INTO L3_inference_cache 
+            INSERT INTO L3_inference_cache 
             (query_hash, active_mode, retrieved_nodes, applied_isomorphisms, trace_payload, hits)
             VALUES (?, ?, ?, ?, ?, 0)
+            ON CONFLICT(query_hash) DO UPDATE SET
+                active_mode = excluded.active_mode,
+                retrieved_nodes = excluded.retrieved_nodes,
+                applied_isomorphisms = excluded.applied_isomorphisms,
+                trace_payload = excluded.trace_payload
             """,
             (
                 query_hash,

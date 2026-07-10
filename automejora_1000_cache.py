@@ -2,9 +2,7 @@
 # [C5-REAL]
 import random
 import sqlite3
-import hashlib
 import sys
-import os
 
 sys.path.append("$CORTEX_ROOT/30_BABYLON-60")
 
