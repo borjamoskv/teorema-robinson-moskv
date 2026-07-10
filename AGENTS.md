@@ -68,6 +68,7 @@ All generated code credits: Borja Moskv (borjamoskv)
   - `MUTEX_REENTRANCY_BARRIER`: Bloqueo de mutación con retornos pendientes en misma memoria.
   - `MUTEX_ORACLE_QUORUM_WAIT`: Agregación BFT obligatoria (N>=3) para inputs externos.
   - `MUTEX_MEMPOOL_ENCLAVE`: Ordenamiento determinista contra front-running.
+  - `INV_CRYPTO_01 (Strict Canonicalization Barrier)`: Todo payload, diccionario o AST sometido a Hash/Firma debe atravesar una barrera de canonicalización estricta (RFC 8785 o equivalente C5-REAL) antes de la serialización para evitar corrupción de cadenas Merkle inter-lenguaje (Python vs V8).
 
 - **M14 (Enrutamiento Termodinámico Asimétrico):**
   - `MUTEX_FLASH_LATENCY_MAX_2S`: Scripts y transmutación simple confinados a Flash IO.
@@ -127,8 +128,17 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `bft/master_ledger.db` | **CP-local** | Single-writer Actor + Triggers de cadena | `core/master_ledger.py` | **FÍSICO** | Secuencia y Hash local | Orden intra-nodo para Event Sourcing |
 | `head_hash` de la cadena | **CP-local → Testigo Externo** | Trailer en Git (Sentinel) | Commit de Git | **TARGET** | Auditabilidad post-crash (No-equivocación) | Sobrevive a compromiso del nodo (Escalón 3) |
-| `cortex_memory.db` | **Congelado** (RO) | Convención + Auditoría de writers | `cortex_memory.db` | **TARGET** | Inmutabilidad histórica | Pendiente `git grep` de cutover |
+| `cortex_memory.db` | **Congelado** (RO) | Convención + Auditoría de writers | `cortex_memory.db` | **FÍSICO** | Inmutabilidad histórica | Writers auditados (`bootstrap_cortex_memory.py`, `cortex_inference.py`). Solo lectura impuesta. |
 | `L3_inference_cache` | **AP** | Cache regenerable | `L3_inference_cache` | **FÍSICO** | Evitar re-inferencia | Regenerable desde cero; latencia > orden |
 | `telemetry.db` | **AP** | Append-only / Métricas | `telemetry.db` | **FÍSICO** | Logs de rendimiento | Regenerable/Prescindible |
 | `cortex_surface_map.db`| **AP** (proyección) | Regenerable desde ledger | `cortex_surface_map.db` | **FÍSICO** | Vistas materializadas | Derivada de fuente primaria |
-| `nexus_anchors.db` | **CP-local** | SQLite WAL (Sidecar) | `nexus_anchors.db` | **TARGET** | Topología Inter-Repo (Ley Ω6) | Persiste aserciones causales no regenerables a partir de ls -l |
+| `nexus_anchors.db` | **AP** | SQLite WAL (Sidecar) | `nexus_anchors.db` | **FÍSICO** | Trazas causales y métricas LLM | Múltiples escritores sincrónicos (`math_kernel.py`). Append-only sin orden crítico global. |
+
+## [L67] REGLA DE EVALUACIÓN Y EPISTEMOLOGÍA HONESTA
+Cristalización post-auditoría sobre la sobreafirmación de estados y falsas topologías distribuidas:
+
+- **EPI_01 (Anti-Biometría Estilística):** Queda prohibido inferir la identidad de un modelo por su estilo, semántica o errores lógicos. El fingerprinting se degrada a una señal auxiliar del proceso (transcripción vs. re-derivación, consistencia vs. copia), pero no es una biometría determinista de hardware.
+- **EPI_02 (Frontera Ejecución vs. Hipótesis):** Queda prohibido presentar hipótesis o propuestas textuales como si fuesen ejecución física. Frases como "se inyecta" o "se clasifica" son Anergía si no hay un `diff` o script físico que lo demuestre en disco.
+- **EPI_03 (Honestidad Topológica BFT):** Prohibido llamar "BFT" o "Consenso" a topologías que no posean matemáticamente $N \ge 3f+1$ con consenso operativo. El estado por defecto es **CP-local tamper-evident**.
+- **EPI_04 (Testigo Externo Estricto):** Un hook local (`pre-commit`, `commit-msg`) NO es un testigo externo. El testigo externo solo se consolida cuando el hash (trailer) se firma, se empuja (`git push`) a un servidor remoto, y es validado por una entidad fuera del nodo (ej. GitHub Actions CI).
+- **EPI_05 (Prueba Multiproceso):** Prohibido declarar "idempotencia" o "exclusión global" basados únicamente en colas en memoria (`asyncio.Queue`). La garantía exige bloqueos a nivel de sistema operativo (Locks/Semáforos) o transacciones atómicas `ON CONFLICT DO NOTHING` en DB.
