@@ -45,3 +45,33 @@
 
 ## Author
 All generated code credits: Borja Moskv (borjamoskv)
+
+## [L38] MATRICES DE CRISTALIZACIÓN C5-REAL (1-8, 13-15)
+
+- **M1-M8 (Refactorización V2.0):**
+  - `MUTEX_ACYCLIC_DEPENDENCY`: DAGs inmutables sin dependencias circulares.
+  - `MUTEX_STRICT_BOUNDARY_PASS`: Purga de módulos que invaden memoria sin interfaces.
+  - `MUTEX_HALTING_BOUND`: Bucles recursivos limitados a N=120. Falla = `SIGKILL_State_Purge`.
+  - `MUTEX_CONTINGENCY_ABORT`: Variables `None` en core-loops provocan fallo determinista.
+  - `MUTEX_ENTROPY_MINIMIZATION`: Cambios estocásticos triviales deben minimizar entropía de Shannon.
+  - `MUTEX_SEMIOTIC_PURGE`: Variables y docstrings que no modifiquen causalidad son purgados.
+  - `MUTEX_ISOMORPHIC_MAPPING`: Exigencia de mapeo directo entre abstracción y código.
+  - `MUTEX_TURING_HALT_GUARANTEE`: Colapso de instrucciones O(Exp) sin `MUTEX_ULTRATHINK_BUDGET_CAP`.
+
+- **M13 (Criptografía Económica y Taint Tracking):**
+  - `MUTEX_FLASH_ACCOUNTING_LOCK`: Deltas atómicos deben ser 0.
+  - `MUTEX_REENTRANCY_BARRIER`: Bloqueo de mutación con retornos pendientes en misma memoria.
+  - `MUTEX_ORACLE_QUORUM_WAIT`: Agregación BFT obligatoria (N>=3) para inputs externos.
+  - `MUTEX_MEMPOOL_ENCLAVE`: Ordenamiento determinista contra front-running.
+
+- **M14 (Enrutamiento Termodinámico Asimétrico):**
+  - `MUTEX_FLASH_LATENCY_MAX_2S`: Scripts y transmutación simple confinados a Flash IO.
+  - `MUTEX_COMPLEXITY_ELEVATION`: Bypass a MCTS (Ultrathink) automático ante bifurcaciones de código.
+  - `MUTEX_ULTRATHINK_BUDGET_CAP`: MCTS estrictamente para BFT, Criptografía o Arquitectura C5.
+  - `MUTEX_SYBIL_DISTILLATION`: Penalización de ruteo ante inercia semántica (disculpas, Green Theater).
+
+- **M15 (Autopoiesis de Swarm):**
+  - `MUTEX_SWARM_SPAWN_LIMIT`: Mitosis a subagentes (`invoke_subagent`) si entropía excede IO secuencial.
+  - `MUTEX_CRDT_MERGE_CONFLICT`: Sincronización inter-agentes mediante CRDT, evitando locks largos.
+  - `MUTEX_ZOMBIE_REAPER_LOCK`: Liquidación de subagentes sin latido (Timeout/Jetsam) con requeue.
+  - `MUTEX_WAL_FLUSH_BARRIER`: Continuidad episódica obligatoria; forzar flush a Master Ledger antes de inactividad.
