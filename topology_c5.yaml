@@ -1,0 +1,49 @@
+Claim: Topology extraction completed
+Proof: { Base: ast_parse, Range: [0, 1], Confidence: C5 }
+█▄
+CORTEX_REF: cortex_inference.py
+  CortexInferenceEngine:
+    inherits: []
+    methods:
+      - __init__(self, db_path)
+      - __enter__(self)
+      - __exit__(self, exc_type, exc_val, exc_tb)
+      - close(self)
+      - parse_query(self, query)
+      - retrieve_primitives(self, mode, scores, query)
+      - execute_inference(self, query)
+█▄
+CORTEX_REF: math_kernel.py
+  ExergyNode:
+    inherits: []
+    methods: []
+█▄
+CORTEX_REF: scientific_engine.py
+  DecimalEncoder:
+    inherits: [json.JSONEncoder]
+    methods:
+      - default(self, obj)
+█▄
+CORTEX_REF: cortex/engine/ouroboros_singularity.py
+  OuroborosState:
+    inherits: []
+    methods: []
+█▄
+CORTEX_REF: cortex/voice_engine/tensor_audio_bridge.py
+  TensorAudioBridge:
+    inherits: []
+    methods:
+      - __init__(self)
+      - _ensure_hardware_asymmetry(self)
+      - filter_acoustic_theater(self, text_ast)
+      - synthesize_pcm(self, tensor_state_hash, text_ast)
+█▄
+CORTEX_REF: cortex/voice_engine/acoustic_kernel.py
+  AcousticKernel:
+    inherits: []
+    methods:
+      - __init__(self)
+      - ingest_audio(self, pcm_frame)
+      - process_loop(self)
+      - _tensor_inference(self, pcm_frame)
+█▄
