@@ -1,6 +1,7 @@
 import sqlite3
 import yaml
 
+import sys
 import os
 
 _BASE = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +18,12 @@ ISOMORFISMOS_PATH = os.environ.get(
 def bootstrap_cortex() -> None:
     print("[CORTEX] Iniciando bootstrap de persistencia de base de datos...")
 
+    # [L12] K1 FAIL-FAST: Verify Physical Assets
+    for path in [MATRIZ_PATH, ISOMORFISMOS_PATH]:
+        if not os.path.exists(path):
+            print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Essential Config Missing: {path}. C5-REAL Fail-Fast.", file=sys.stderr)
+            sys.exit(1)
+
     # Cargar YAMLs
     with open(MATRIZ_PATH, "r", encoding="utf-8") as f:
         matriz = yaml.safe_load(f)
@@ -25,7 +32,7 @@ def bootstrap_cortex() -> None:
         isomorfismos = yaml.safe_load(f)
 
     # Conexión SQLite con WAL y busy_timeout según reglas de la sesión
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
     conn.execute("PRAGMA journal_mode = WAL;")
     conn.execute("PRAGMA busy_timeout = 5000;")
     cursor = conn.cursor()

@@ -1,7 +1,6 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 const Database = require('better-sqlite3');
 const { spawn } = require('child_process');
 const crypto = require('crypto');
@@ -31,6 +30,8 @@ db.exec(`
         log_text TEXT,
         log_type TEXT
     );
+
+    CREATE INDEX IF NOT EXISTS idx_telemetry_timestamp ON telemetry_logs(timestamp);
 
     CREATE TABLE IF NOT EXISTS audit_ledger (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,13 +80,15 @@ const MIME_TYPES = {
     '.svg': 'image/svg+xml'
 };
 
+// Perform sync validation exactly once at boot time (Fail-Fast)
+const venvPython = path.join(__dirname, '.venv', 'bin', 'python3');
+if (!fs.existsSync(venvPython)) {
+    console.error('\x1b[1;31m[CORTEX APOPTOSIS]\x1b[0m .venv/bin/python3 missing. Crashing to prevent global env contamination.');
+    process.exit(1);
+}
+
 function runPython(script, args, inputData) {
     return new Promise((resolve, reject) => {
-        const venvPython = path.join(__dirname, '.venv', 'bin', 'python3');
-        if (!fs.existsSync(venvPython)) {
-            console.error('\x1b[1;31m[CORTEX APOPTOSIS]\x1b[0m .venv/bin/python3 missing. Crashing to prevent global env contamination.');
-            process.exit(1);
-        }
         
         const child = spawn(venvPython, [path.join(__dirname, script), ...args], { cwd: __dirname });
         let stdout = '';
@@ -104,14 +107,22 @@ function runPython(script, args, inputData) {
             stderr += data.toString();
         });
         
+        
+        // [C5-REAL] Thermodynamic Timeout Apoptosis
+        const timeoutId = setTimeout(() => {
+            child.kill('SIGKILL');
+            reject(new Error(`Python script ${script} exceeded execution timeout bounds.`));
+        }, 15000);
+        
         child.on('close', code => {
+            clearTimeout(timeoutId);
             if (code !== 0) {
                 reject(new Error(`Python script ${script} exited with code ${code}. Stderr: ${stderr}`));
             } else {
                 try {
                     resolve(JSON.parse(stdout));
                 } catch (e) {
-                    resolve({ raw: stdout });
+                    reject(new Error(`[L12] K1 FAIL-FAST: Invalid JSON output from ${script}. Raw: ${stdout}`));
                 }
             }
         });
@@ -123,6 +134,9 @@ const server = http.createServer((req, res) => {
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();
+            if (body.length > 1048576) { // 1MB payload boundary
+                req.connection.destroy();
+            }
         });
         req.on('end', () => {
             try {
@@ -143,6 +157,9 @@ const server = http.createServer((req, res) => {
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();
+            if (body.length > 5242880) { // 5MB payload boundary for scientific
+                req.connection.destroy();
+            }
         });
         req.on('end', async () => {
             try {
@@ -221,8 +238,13 @@ const server = http.createServer((req, res) => {
     const normalizedUrl = path.normalize(req.url);
     let filePath = path.join(PUBLIC_DIR, normalizedUrl === '/' || normalizedUrl === '\\' ? 'index.html' : normalizedUrl);
 
-    const safePrefix = PUBLIC_DIR.endsWith(path.sep) ? PUBLIC_DIR : PUBLIC_DIR + path.sep;
-    if (!filePath.startsWith(safePrefix) && filePath !== PUBLIC_DIR) {
+    try {
+        const realPath = fs.realpathSync(filePath);
+        if (!realPath.startsWith(fs.realpathSync(PUBLIC_DIR))) {
+            throw new Error("Path traversal violation");
+        }
+        filePath = realPath;
+    } catch (e) {
         res.writeHead(403, { 'Content-Type': 'text/html' });
         return res.end('<h1>403 Forbidden - Vector Adversarial Bloqueado</h1>', 'utf-8');
     }
@@ -230,21 +252,21 @@ const server = http.createServer((req, res) => {
     let extname = path.extname(filePath);
     let contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if (error.code == 'ENOENT') {
-                res.writeHead(404, { 'Content-Type': 'text/html' });
-                res.end('<h1>404 Not Found - Entropy Error</h1>', 'utf-8');
-            } else {
-                console.error('\x1b[1;31m[CORTEX FS ERROR]\x1b[0m', error.message);
-                res.writeHead(500);
-                res.end(`Server Error: ${error.code}`);
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
+    // [C5-REAL] Optimal streaming replacing Buffered readFile
+    const stat = fs.statSync(filePath, { throwIfNoEntry: false });
+    if (!stat) {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        return res.end('<h1>404 Not Found - Entropy Error</h1>', 'utf-8');
+    }
+
+    res.writeHead(200, { 'Content-Type': contentType, 'Content-Length': stat.size });
+    const stream = fs.createReadStream(filePath);
+    stream.on('error', error => {
+        console.error('\x1b[1;31m[CORTEX FS STREAM ERROR]\x1b[0m', error.message);
+        res.writeHead(500);
+        res.end(`Server Error: ${error.code}`);
     });
+    stream.pipe(res);
 });
 
 // Start HTTP Server
@@ -258,6 +280,10 @@ const shutdown = () => {
     console.log('\x1b[1;33m[CORTEX]\x1b[0m Shutting down servers...');
     telemetryServer.shutdown();
     db.close();
+    
+    // Attempt graceful disconnect
+    if (server.closeAllConnections) server.closeAllConnections();
+    
     server.close(() => {
         console.log('\x1b[1;32m[CORTEX]\x1b[0m Server terminated cleanly.');
         process.exit(0);

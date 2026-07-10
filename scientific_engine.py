@@ -36,9 +36,12 @@ def compute_shannon_entropy(data: list | str) -> dict:
     counts = Counter(data)
 
     entropy = 0.0
+    terms = []
     for count in counts.values():
         p = count / total
-        entropy -= p * math.log2(p)
+        terms.append(-p * math.log2(p))
+
+    entropy = math.fsum(terms)
 
     return {
         "entropy": entropy,
@@ -58,20 +61,27 @@ def compute_fisher_information(time_series: list[float]) -> dict:
     if not time_series or len(time_series) < 2:
         return {"fisher_information": 0.0, "status": "insufficient_data"}
 
-    # Filter out zeros or very small values to prevent division by zero
-    epsilon = 1e-5
-    series = [float(v) if abs(v) > epsilon else epsilon for v in time_series]
+    # Filter out zero or negative values to prevent domain error and division by zero
+    epsilon = 1e-10
+    series = [float(v) if float(v) > epsilon else epsilon for v in time_series]
 
     fisher_sum = 0.0
+    terms = []
     for i in range(len(series) - 1):
         diff = series[i + 1] - series[i]
-        fisher_sum += (diff**2) / series[i]
+        terms.append((diff**2) / series[i])
+
+    fisher_sum = math.fsum(terms)
+    
+    # O(N) single-pass variance calculation
+    n = len(series)
+    mean = math.fsum(series) / n
+    variance = math.fsum((x - mean) ** 2 for x in series) / n
 
     return {
         "fisher_information": fisher_sum,
-        "mean": sum(series) / len(series),
-        "variance": sum((x - (sum(series) / len(series))) ** 2 for x in series)
-        / len(series),
+        "mean": mean,
+        "variance": variance,
     }
 
 
@@ -96,87 +106,77 @@ def solve_d_separation(
             adj_in[v].add(u)
 
     z_set = set(z_set)
+    
+    # 2. Strict DAG Validation (Cycle Detection via DFS)
+    visited = set()
+    rec_stack = set()
+    
+    def is_cyclic(node):
+        visited.add(node)
+        rec_stack.add(node)
+        for neighbor in adj_out.get(node, []):
+            if neighbor not in visited:
+                if is_cyclic(neighbor): return True
+            elif neighbor in rec_stack:
+                return True
+        rec_stack.remove(node)
+        return False
 
-    # Helper to get all descendants of a node in the DAG
-    def get_descendants(node):
-        desc = set()
-        queue = [node]
-        while queue:
-            c = queue.pop(0)
-            for child in adj_out[c]:
-                if child not in desc:
-                    desc.add(child)
-                    queue.append(child)
-        return desc
+    for node in nodes:
+        if node not in visited:
+            if is_cyclic(node):
+                # [L12] K1 FAIL-FAST: Cycles injected.
+                print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Cyclic Topology Detected. D-Separation requires a strict DAG.", file=sys.stderr)
+                sys.exit(1)
 
-    # 3. BFS/DFS traversal over the "moral" undirected paths with active-path tracking.
-    # An active path from X to Y given Z is a path where:
-    # - If we have a collider (A -> B <- C), B or a descendant of B must be in Z.
-    # - If we have a non-collider (A -> B -> C or A <- B -> C or A <- B <- C), B must NOT be in Z.
+    # 3. Bayes-Ball / Active Trail DFS Algorithm O(V+E)
+    # Track states as (node, direction) where direction is 'up' (from child) or 'down' (from parent).
+    # Initially we start at x_node going 'up' (as if from a child).
+    
+    # Ancestors of Z
+    anc_z = set(z_set)
+    queue = list(z_set)
+    while queue:
+        curr = queue.pop(0)
+        for parent in adj_in.get(curr, []):
+            if parent not in anc_z:
+                anc_z.add(parent)
+                queue.append(parent)
+                
+    visited_states = set()
+    queue = [(x_node, 'up')]
+    
+    reachable = set()
+    
+    while queue:
+        curr, direction = queue.pop(0)
+        
+        if (curr, direction) in visited_states:
+            continue
+        visited_states.add((curr, direction))
+        
+        if curr not in z_set:
+            reachable.add(curr)
+            
+        if direction == 'up' and curr not in z_set:
+            for parent in adj_in.get(curr, []):
+                queue.append((parent, 'up'))
+            for child in adj_out.get(curr, []):
+                queue.append((child, 'down'))
+        elif direction == 'down':
+            if curr not in z_set:
+                for child in adj_out.get(curr, []):
+                    queue.append((child, 'down'))
+            if curr in anc_z:
+                for parent in adj_in.get(curr, []):
+                    queue.append((parent, 'up'))
 
-    # To implement this cleanly, we do a search over the configuration space.
-    # State: (node, direction_of_entry)
-    # direction_of_entry: 'UP' (coming from child, going up to parent) or 'DOWN' (coming from parent, going down to child)
-
-    d_separated = True
-    paths_found = []
-
-    # We will run a standard reachability search
-    # Let's keep it simple: find all simple paths in the undirected version of the graph
-    # and check if any path is active.
-    # Since n is usually small in this UI, we can find all simple paths from X to Y.
-    undirected_adj = {n: set() for n in nodes}
-    for u, v in edges:
-        undirected_adj[u].add(v)
-        undirected_adj[v].add(u)
-
-    def find_all_paths(start, end, path=None):
-        if path is None:
-            path = [start]
-        if start == end:
-            return [path]
-        paths = []
-        for node in undirected_adj[start]:
-            if node not in path:
-                paths.extend(find_all_paths(node, end, path + [node]))
-        return paths
-
-    all_paths = find_all_paths(x_node, y_node)
-
-    for path in all_paths:
-        # Check if the path is active given Z
-        is_active = True
-        for i in range(1, len(path) - 1):
-            prev = path[i - 1]
-            curr = path[i]
-            nxt = path[i + 1]
-
-            # Determine if 'curr' is a collider on this path
-            # Collider means: prev -> curr <- nxt
-            is_collider = (curr in adj_out[prev]) and (curr in adj_out[nxt])
-
-            if is_collider:
-                # Collider: 'curr' or any descendant of 'curr' must be in Z
-                has_descendant_in_z = (curr in z_set) or any(
-                    d in z_set for d in get_descendants(curr)
-                )
-                if not has_descendant_in_z:
-                    is_active = False
-                    break
-            else:
-                # Non-collider: 'curr' must NOT be in Z
-                if curr in z_set:
-                    is_active = False
-                    break
-
-        if is_active:
-            d_separated = False
-            paths_found.append(path)
+    d_separated = y_node not in reachable
 
     return {
         "d_separated": d_separated,
-        "active_paths": paths_found,
-        "total_paths": len(all_paths),
+        "active_paths": [], # Removed O(V!) path generation
+        "total_paths": 0,
         "conditioning_set": list(z_set),
     }
 
@@ -233,11 +233,13 @@ def main():
         print(json.dumps({"error": "No action specified"}))
         sys.exit(1)
 
-    try:
-        payload = json.loads(sys.stdin.read())
-    except Exception as e:
-        print(json.dumps({"error": f"Invalid JSON input: {str(e)}"}))
+    # [L12] K1 FAIL-FAST: No try/except block for syntax errors. Let the AST crash if payload is invalid.
+    payload_raw = sys.stdin.read(10485760) # 10MB Bound limit
+    if not payload_raw:
+        print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m Empty STDIN payload. C5-REAL Fail-Fast.", file=sys.stderr)
         sys.exit(1)
+        
+    payload = json.loads(payload_raw)
 
     action = sys.argv[1]
 

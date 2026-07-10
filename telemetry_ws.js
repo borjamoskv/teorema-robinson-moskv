@@ -8,6 +8,10 @@ function initTelemetryWS(WS_PORT, db) {
 
     wss.on('connection', (ws) => {
         console.log('\x1b[1;36m[CORTEX WS]\x1b[0m New UI agent linked. Commencing physical telemetry feed.');
+        
+        // [C5-REAL] Heartbeat State
+        ws.isAlive = true;
+        ws.on('pong', () => { ws.isAlive = true; });
 
         ws.on('message', (message) => {
             const payloadStr = message.toString();
@@ -18,6 +22,9 @@ function initTelemetryWS(WS_PORT, db) {
                 }
             } catch (wsParseErr) {
                 console.error('\x1b[1;31m[CORTEX WS PARSE ERROR]\x1b[0m', wsParseErr.message);
+                // [L12] K1 FAIL-FAST: Purge anergy (malformed JSON) immediately.
+                ws.close(1003, 'Anergy Detected: Malformed JSON');
+                return;
             }
 
             wss.clients.forEach((client) => {
@@ -35,6 +42,15 @@ function initTelemetryWS(WS_PORT, db) {
             console.log('\x1b[1;33m[CORTEX WS]\x1b[0m UI agent unlinked.');
         });
     });
+
+    // [C5-REAL] Ping/Pong Loop (Zombie Connection Pruning)
+    const pingInterval = setInterval(() => {
+        wss.clients.forEach((ws) => {
+            if (ws.isAlive === false) return ws.terminate();
+            ws.isAlive = false;
+            ws.ping();
+        });
+    }, 30000);
 
     const insertTelemetry = db.prepare(`
         INSERT INTO telemetry_logs (exergy, anergy, yield, mccabe, nesting, deadcode, entropy, log_module, log_text, log_type)
@@ -93,10 +109,11 @@ function initTelemetryWS(WS_PORT, db) {
     }, 1500);
 
     function broadcast(payload) {
+        const payloadStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
         wss.clients.forEach(client => {
             if (client.readyState === WebSocket.OPEN) {
                 try {
-                    client.send(typeof payload === 'string' ? payload : JSON.stringify(payload));
+                    client.send(payloadStr);
                 } catch (e) {
                     console.error('\x1b[1;31m[CORTEX WS BROADCAST ERROR]\x1b[0m', e.message);
                 }
@@ -109,6 +126,7 @@ function initTelemetryWS(WS_PORT, db) {
         broadcast,
         shutdown: () => {
             clearInterval(intervalId);
+            clearInterval(pingInterval);
             wss.close();
         }
     };

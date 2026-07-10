@@ -28,25 +28,25 @@ with open(ENGINE_YAML_PATH, "r", encoding="utf-8") as f:
 class CortexInferenceEngine:
     TRIGGERS = {
         "causal": re.compile(
-            r"(causar|provocar|generar|hacer|por qué|efecto)", re.IGNORECASE
+            r"\b(causar|provocar|generar|hacer|por qué|efecto)\b", re.IGNORECASE
         ),
         "mereo": re.compile(
-            r"(parte|sistema|estructura|composición|dividir)", re.IGNORECASE
+            r"\b(parte|sistema|estructura|composición|dividir)\b", re.IGNORECASE
         ),
         "process": re.compile(
-            r"(cambiar|evolucionar|fluir|transitar|dinámica|tiempo)", re.IGNORECASE
+            r"\b(cambiar|evolucionar|fluir|transitar|dinámica|tiempo)\b", re.IGNORECASE
         ),
         "modal": re.compile(
-            r"(podría|debería|sería|quizás|posible|mundo)", re.IGNORECASE
+            r"\b(podría|debería|sería|quizás|posible|mundo)\b", re.IGNORECASE
         ),
         "info": re.compile(
-            r"(mejorar|optimizar|aprender|entrenar|divergencia|entropía)", re.IGNORECASE
+            r"\b(mejorar|optimizar|aprender|entrenar|divergencia|entropía)\b", re.IGNORECASE
         ),
         "semiotic": re.compile(
-            r"(significar|interpretar|leer|texto|signo|código)", re.IGNORECASE
+            r"\b(significar|interpretar|leer|texto|signo|código)\b", re.IGNORECASE
         ),
         "epistemic": re.compile(
-            r"(confianza|verdad|verificar|test|hash|isomorfismo)", re.IGNORECASE
+            r"\b(confianza|verdad|verificar|test|hash|isomorfismo)\b", re.IGNORECASE
         ),
     }
 
@@ -118,54 +118,45 @@ class CortexInferenceEngine:
 
         theories = theory_map.get(mode, ["CAUSAL-ONTOLOGY"])
 
-        # Obtener primitivas
+        # O(1) Fetch with SQL ORDER BY and LIMIT
         placeholders = ", ".join("?" for _ in theories)
-        query_seed = (
-            int(hashlib.md5(query.encode("utf-8")).hexdigest()[:8], 16) if query else 1
-        )
         cursor.execute(
             f"""
             SELECT id, theory, name FROM L1_primitive_nodes 
             WHERE theory IN ({placeholders})
+            ORDER BY id
+            LIMIT 5
         """,
             theories,
         )
-        all_primitives = [dict(row) for row in cursor.fetchall()]
+        primitives = [dict(row) for row in cursor.fetchall()]
 
-        # Ordenamiento determinista en base a query_seed en Python
-        # para evitar fallos de coerción TEXT a NUMERIC en SQLite (id * ?)
-        all_primitives.sort(
-            key=lambda p: hashlib.md5(
-                f"{p['id']}-{query_seed}".encode("utf-8")
-            ).hexdigest()
-        )
-        primitives = all_primitives[:5]
-
-        # Obtener isomorfismos
-        cursor.execute("""
-            SELECT id, type, source, target, weight, justification 
-            FROM L2_isomorphism_edges
-        """)
-        all_isomorphisms = [dict(row) for row in cursor.fetchall()]
-        all_isomorphisms.sort(
-            key=lambda i: hashlib.md5(
-                f"{i['id']}-{query_seed}".encode("utf-8")
-            ).hexdigest()
-        )
-        isomorphisms = all_isomorphisms[:3]
+        # L2 Fetch based on topological connection to L1 (instead of random scan)
+        prim_ids = [p["id"] for p in primitives]
+        if prim_ids:
+            p_placeholders = ", ".join("?" for _ in prim_ids)
+            cursor.execute(f"""
+                SELECT id, type, source, target, weight, justification 
+                FROM L2_isomorphism_edges
+                WHERE source IN ({p_placeholders}) OR target IN ({p_placeholders})
+                LIMIT 3
+            """, prim_ids * 2)
+            isomorphisms = [dict(row) for row in cursor.fetchall()]
+        else:
+            isomorphisms = []
 
         return primitives, isomorphisms
 
     def execute_inference(self, query):
-        query_hash = hashlib.sha256(query.encode("utf-8")).hexdigest()
+        normalized_query = query.strip().lower()
+        query_hash = hashlib.sha256(normalized_query.encode("utf-8")).hexdigest()
         
         # L3 Memoization Cache Bypass (Zero-Anergy return)
         cursor = self.db.cursor()
         cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
         cached = cursor.fetchone()
         if cached:
-            cursor.execute("UPDATE L3_inference_cache SET hits = hits + 1 WHERE query_hash = ?", (query_hash,))
-            self.db.commit()
+            # Removed Write-on-Read contention (hits = hits + 1) to preserve Thermodynamic Compute.
             return json.loads(cached["trace_payload"])
             
         scores = self.parse_query(query)
@@ -191,6 +182,10 @@ class CortexInferenceEngine:
         primitives, isomorphisms = self.retrieve_primitives(active_mode, scores, query)
 
         # Simular pipeline de inferencia
+        if active_mode not in self.config["inference_modes"]:
+            print(f"\033[1;31m[CORTEX APOPTOSIS]\033[0m YAML Key missing for mode {active_mode}. C5-REAL Fail-Fast.", file=sys.stderr)
+            sys.exit(1)
+            
         steps = self.config["inference_modes"][active_mode]["inference_steps"]
 
         # Calculate entropy of primitive nodes to feed isomorphism

@@ -123,9 +123,12 @@ function formatTime(date) {
 
 function flashElement(el) {
     if (!el) return;
-    el.classList.remove('value-flash');
-    void el.offsetWidth; // trigger reflow
-    el.classList.add('value-flash');
+    requestAnimationFrame(() => {
+        el.classList.remove('value-flash');
+        requestAnimationFrame(() => {
+            el.classList.add('value-flash');
+        });
+    });
 }
 
 function updateMetricIfChanged(domEl, newVal) {
@@ -171,12 +174,19 @@ function addLogEntry(module, text, type, metric) {
     };
     exergyState.logs.unshift(entry);
     if (exergyState.logs.length > 50) exergyState.logs.pop();
-    renderLogs();
+    
+    if (!window._cortexLogRenderPending) {
+        window._cortexLogRenderPending = true;
+        requestAnimationFrame(() => {
+            renderLogs();
+            window._cortexLogRenderPending = false;
+        });
+    }
 }
 
 function renderLogs() {
     if (!DOM.logContainer) return;
-    DOM.logContainer.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     const filteredLogs = exergyState.logs.filter(log => {
         if (exergyState.filter === 'all') return true;
         return log.type === exergyState.filter;
@@ -191,8 +201,10 @@ function renderLogs() {
             <div class="log-message">${esc(log.text)}</div>
             <div class="log-metric">${esc(log.metric)}</div>
         `;
-        DOM.logContainer.appendChild(el);
+        fragment.appendChild(el);
     });
+    DOM.logContainer.innerHTML = '';
+    DOM.logContainer.appendChild(fragment);
 }
 
 // Canvas Drawing functions
@@ -567,7 +579,7 @@ async function executeCompute() {
 // Render C7 Audit Ledger table
 function renderAuditTable() {
     if (!DOM.auditTbody) return;
-    DOM.auditTbody.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     exergyState.auditLedger.forEach(row => {
         const tr = document.createElement('tr');
         const ts = new Date(row.timestamp).toLocaleTimeString();
@@ -577,10 +589,12 @@ function renderAuditTable() {
             <td><span class="mode-badge">${esc(row.mode)}</span></td>
             <td><span class="conf-badge">${esc(row.proof_confidence)}</span></td>
             <td class="hash-td" title="${esc(row.hash)}"><code>${esc(row.hash.substring(0, 10))}...</code></td>
-            <td><button class="inspect-btn" onclick="inspectAuditItem(${row.id})">🔍</button></td>
+            <td><button class="inspect-btn" aria-label="Inspect Audit Record" onclick="inspectAuditItem(${row.id})">🔍</button></td>
         `;
-        DOM.auditTbody.appendChild(tr);
+        fragment.appendChild(tr);
     });
+    DOM.auditTbody.innerHTML = '';
+    DOM.auditTbody.appendChild(fragment);
 }
 
 // Window global helper to inspect audit records
@@ -710,23 +724,28 @@ function connectWS() {
             statusInd.style.color = 'var(--warning)';
             statusInd.style.background = 'rgba(229, 43, 43, 0.05)';
         }
-        setTimeout(connectWS, 5000);
+        
+        // [C5-REAL] Jittered Exponential Backoff
+        const baseDelay = Math.min(window._wsReconnectDelay || 2000, 30000);
+        const jitter = Math.random() * 1000;
+        window._wsReconnectDelay = baseDelay * 1.5;
+        setTimeout(connectWS, baseDelay + jitter);
     };
 }
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
     // Bind listeners
-    if (DOM.scientificAction) {
+    if (DOM.scientificAction && DOM.parameterInputs) {
         DOM.scientificAction.addEventListener('change', renderParamForm);
         renderParamForm();
     }
     
-    if (DOM.executeBtn) {
+    if (DOM.executeBtn && DOM.consoleQuery) {
         DOM.executeBtn.addEventListener('click', executeCompute);
     }
 
-    if (DOM.filterBtns) {
+    if (DOM.filterBtns && DOM.filterBtns.length > 0) {
         DOM.filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 DOM.filterBtns.forEach(b => b.classList.remove('active'));
@@ -737,7 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    drawPlaceholder();
+    if (DOM.canvas) drawPlaceholder();
     fetchAuditLogs();
     connectWS();
     
