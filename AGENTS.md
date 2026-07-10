@@ -152,3 +152,7 @@ Cristalización post-auditoría sobre la sobreafirmación de estados y falsas to
   - La inferencia estadística (parámetros de cohorte, IC 95%, bootstrap, diagnósticos Hájek) pertenece exclusivamente a `AggregateEvaluationReport`.
 - **INV_POR_05 (Gobernanza Trust Store):** Las firmas Ed25519 deben validarse de manera restrictiva (fail-closed) contra el Trust Store, verificando la validez temporal del emisor, su rol y la no revocación de la clave.
 
+## [L69] EPISTEMOLOGÍA CAUSAL Y TESTS DE VIOLACIÓN (SHADOW ROUTING & INFERENCIA)
+- **Ψ1 · DOCUMENTAR SUPUESTOS**: Todo diseño de enrutamiento multi-modelo (Shadow Routing), A/B testing o inferencia causal debe estar acompañado de un archivo físico (ej. `inference_assumptions.md`) que exponga claramente los axiomas (SUTVA, Ignorabilidad, Positividad).
+- **Ψ2 · DISEÑAR TESTS DE VIOLACIÓN (Fail-Fast)**: Queda terminantemente prohibido validar protocolos estadísticos o de ruteo exclusivamente con tests de "camino feliz". El Autómata DEBE escribir tests de violación (`test_violations.py`) que demuestren empíricamente el colapso (SIGKILL_State_Purge) y aseguren que la infraestructura levanta excepciones (ej. `SUTVAViolationError`) al vulnerar las premisas.
+- **Ψ3 · RESTRICCIÓN DE COTAS UNIVERSALES**: Queda estrictamente prohibido derivar, extrapolar o afirmar "cotas teóricas globales" a partir de ecuaciones propuestas localmente (ej. TTFT, entropía). Toda fórmula es transitoria y no universal hasta que exista justificación termodinámica física a gran escala.
