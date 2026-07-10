@@ -5,8 +5,6 @@ import os
 import sys
 import json
 import hashlib
-import math
-from collections import Counter
 from scientific_engine import compute_asymmetric_trust_isomorphism, compute_shannon_entropy
 
 # CONFIGURACIÓN
