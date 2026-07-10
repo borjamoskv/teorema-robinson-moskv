@@ -1,0 +1,24 @@
+1. Arreglar-al-otro — Detector: “si ellos solo…” — Corte: cambia una palanca tuya; retira una intervención propia.
+2. Goodhartización — Detector: métrica↑ realidad↓ — Corte: canasta de métricas + rotación; sin bonus a 1 sola.
+3. Transparencia de escaparate — Detector: “más reporting” — Corte: menos reportes, más logs brutos; amnistía de malas noticias.
+4. Control unilateral — Detector: “impedir que puedan…” — Corte: explicita objetivos en conflicto; slack + negociación iterativa.
+5. Externalizar costo/culpa — Detector: excusas repetidas — Corte: propiedad local del fallo; 1 cambio propio por ciclo.
+6. Espiral de pureza — Detector: policía interna — Corte: mínimos compartidos; tolera disenso limitado.
+7. Metadiscusión infinita — Detector: semana en el meta — Corte: time-box; cerrar con decisión operable o parar.
+8. Consenso como veto — Detector: unanimidad o nada — Corte: consentimiento + objeción escrita.
+9. Cargo-cult de procesos — Detector: copiar “best practice” — Corte: proceso mínimo y reversible; quita 2 por cada 1 nueva.
+10. Señalización de virtud — Detector: postureo — Corte: nadie actúa sin dueño doliente + métrica de daño/beneficio.
+11. Perfeccionismo epistémico — Detector: “faltan datos” eterno — Corte: punto de indiferencia; paso reversible al cruzarlo.
+12. Guerra de definiciones — Detector: semántica 80% — Corte: predicciones y ejemplos verificables.
+13. Optimización local — Detector: submétrica gana, sistema pierde — Corte: penalización sistémica; dueño end-to-end.
+14. Castigo del error visible — Detector: matar mensajero — Corte: postmortems sin culpa; premiar detección temprana.
+15. Doble vínculo — Detector: A y ¬A a la vez — Corte: nombra la paradoja; prioriza qué sacrificar primero.
+16. Iteración caótica (thrashing) — Detector: plan nuevo/semana — Corte: cadencia fija + ventanas de observación; congelar cambios.
+17. Escalada punitiva de controles — Detector: regla por cada fallo — Corte: sunset automático; poda continua antes de añadir.
+
+Ritual 5′ antes de decisiones
+- 60″: nombra el sistema del que formas parte.
+- 60″: marca si estás a punto de ejecutar 1 de los 17.
+- 90″: aplica el corte mínimo. Diseña el paso reversible.
+- 60″: define señales de éxito/fracaso y ventana de observación.
+- 30″: decide qué no harás pase lo que pase.
