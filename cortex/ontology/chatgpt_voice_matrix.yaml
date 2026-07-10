@@ -1,0 +1,1834 @@
+metadata:
+  timestamp: '2026-07-10T01:26:15.068339Z'
+  target: ChatGPT_Voice_Model_2026-07-10
+  mode: ULTRATHINK
+  author: borjamoskv
+invariants:
+  INV_000:
+    id: INV_000
+    vector: TOPOLOGY::ENFORCE::AST
+    hash: 34429f82
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_001:
+    id: INV_001
+    vector: TOPOLOGY::ENFORCE::WAL
+    hash: 5684c368
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_002:
+    id: INV_002
+    vector: TOPOLOGY::ENFORCE::STATE
+    hash: 394f8945
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_003:
+    id: INV_003
+    vector: TOPOLOGY::ENFORCE::TENSOR
+    hash: 96c20a70
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_004:
+    id: INV_004
+    vector: TOPOLOGY::ENFORCE::SOCKET
+    hash: 76e7f7a1
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_005:
+    id: INV_005
+    vector: TOPOLOGY::ENFORCE::DAEMON
+    hash: 0217583f
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_006:
+    id: INV_006
+    vector: TOPOLOGY::ENFORCE::LEDGER
+    hash: 4653d76e
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_007:
+    id: INV_007
+    vector: TOPOLOGY::ENFORCE::MEMORY
+    hash: 6bfb5784
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_008:
+    id: INV_008
+    vector: TOPOLOGY::ENFORCE::VECTOR
+    hash: f37399e7
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_009:
+    id: INV_009
+    vector: TOPOLOGY::ENFORCE::GRAPH
+    hash: 3f2104a8
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_010:
+    id: INV_010
+    vector: TOPOLOGY::PURGE::AST
+    hash: 14d9de07
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_011:
+    id: INV_011
+    vector: TOPOLOGY::PURGE::WAL
+    hash: 6a933b49
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_012:
+    id: INV_012
+    vector: TOPOLOGY::PURGE::STATE
+    hash: 2cdbf213
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_013:
+    id: INV_013
+    vector: TOPOLOGY::PURGE::TENSOR
+    hash: 977285cf
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_014:
+    id: INV_014
+    vector: TOPOLOGY::PURGE::SOCKET
+    hash: a70e35cd
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_015:
+    id: INV_015
+    vector: TOPOLOGY::PURGE::DAEMON
+    hash: 2fb87be9
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_016:
+    id: INV_016
+    vector: TOPOLOGY::PURGE::LEDGER
+    hash: 8586fc39
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_017:
+    id: INV_017
+    vector: TOPOLOGY::PURGE::MEMORY
+    hash: b5fe3568
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_018:
+    id: INV_018
+    vector: TOPOLOGY::PURGE::VECTOR
+    hash: 0d628eb8
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_019:
+    id: INV_019
+    vector: TOPOLOGY::PURGE::GRAPH
+    hash: 2e86feec
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_020:
+    id: INV_020
+    vector: TOPOLOGY::ISOLATE::AST
+    hash: 8f5aedaf
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_021:
+    id: INV_021
+    vector: TOPOLOGY::ISOLATE::WAL
+    hash: fae6008e
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_022:
+    id: INV_022
+    vector: TOPOLOGY::ISOLATE::STATE
+    hash: 65fbe975
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_023:
+    id: INV_023
+    vector: TOPOLOGY::ISOLATE::TENSOR
+    hash: d3c383ea
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_024:
+    id: INV_024
+    vector: TOPOLOGY::ISOLATE::SOCKET
+    hash: ff7d2a37
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_025:
+    id: INV_025
+    vector: TOPOLOGY::ISOLATE::DAEMON
+    hash: 30cd4b0f
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_026:
+    id: INV_026
+    vector: TOPOLOGY::ISOLATE::LEDGER
+    hash: 732253d5
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_027:
+    id: INV_027
+    vector: TOPOLOGY::ISOLATE::MEMORY
+    hash: 70c741a0
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_028:
+    id: INV_028
+    vector: TOPOLOGY::ISOLATE::VECTOR
+    hash: 3690b10f
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_029:
+    id: INV_029
+    vector: TOPOLOGY::ISOLATE::GRAPH
+    hash: 2821544d
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_030:
+    id: INV_030
+    vector: TOPOLOGY::COLLAPSE::AST
+    hash: f86a6ef2
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_031:
+    id: INV_031
+    vector: TOPOLOGY::COLLAPSE::WAL
+    hash: d6663550
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_032:
+    id: INV_032
+    vector: TOPOLOGY::COLLAPSE::STATE
+    hash: dc3dd517
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_033:
+    id: INV_033
+    vector: TOPOLOGY::COLLAPSE::TENSOR
+    hash: 6bccedb4
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_034:
+    id: INV_034
+    vector: TOPOLOGY::COLLAPSE::SOCKET
+    hash: 826c16c4
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_035:
+    id: INV_035
+    vector: TOPOLOGY::COLLAPSE::DAEMON
+    hash: a4b8023e
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_036:
+    id: INV_036
+    vector: TOPOLOGY::COLLAPSE::LEDGER
+    hash: 4ad4b7af
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_037:
+    id: INV_037
+    vector: TOPOLOGY::COLLAPSE::MEMORY
+    hash: 9cd843fb
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_038:
+    id: INV_038
+    vector: TOPOLOGY::COLLAPSE::VECTOR
+    hash: 94afcdda
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_039:
+    id: INV_039
+    vector: TOPOLOGY::COLLAPSE::GRAPH
+    hash: d9bc174c
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_040:
+    id: INV_040
+    vector: TOPOLOGY::VERIFY::AST
+    hash: 2a8f4dce
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_041:
+    id: INV_041
+    vector: TOPOLOGY::VERIFY::WAL
+    hash: cc69a1fb
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_042:
+    id: INV_042
+    vector: TOPOLOGY::VERIFY::STATE
+    hash: 8c2ebb2e
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_043:
+    id: INV_043
+    vector: TOPOLOGY::VERIFY::TENSOR
+    hash: 71f92bbd
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_044:
+    id: INV_044
+    vector: TOPOLOGY::VERIFY::SOCKET
+    hash: 4b01d23a
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_045:
+    id: INV_045
+    vector: TOPOLOGY::VERIFY::DAEMON
+    hash: ed145f5b
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_046:
+    id: INV_046
+    vector: TOPOLOGY::VERIFY::LEDGER
+    hash: 0e94ecda
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_047:
+    id: INV_047
+    vector: TOPOLOGY::VERIFY::MEMORY
+    hash: ff8aa9a9
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_048:
+    id: INV_048
+    vector: TOPOLOGY::VERIFY::VECTOR
+    hash: 2d7f3a1d
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_049:
+    id: INV_049
+    vector: TOPOLOGY::VERIFY::GRAPH
+    hash: c107b877
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_050:
+    id: INV_050
+    vector: TOPOLOGY::RESTRICT::AST
+    hash: 8465ab62
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_051:
+    id: INV_051
+    vector: TOPOLOGY::RESTRICT::WAL
+    hash: bf9d71ba
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_052:
+    id: INV_052
+    vector: TOPOLOGY::RESTRICT::STATE
+    hash: d0dada28
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_053:
+    id: INV_053
+    vector: TOPOLOGY::RESTRICT::TENSOR
+    hash: 04ddb348
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_054:
+    id: INV_054
+    vector: TOPOLOGY::RESTRICT::SOCKET
+    hash: 17c4c4ce
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_055:
+    id: INV_055
+    vector: TOPOLOGY::RESTRICT::DAEMON
+    hash: 2f9295c4
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_056:
+    id: INV_056
+    vector: TOPOLOGY::RESTRICT::LEDGER
+    hash: c92506ef
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_057:
+    id: INV_057
+    vector: TOPOLOGY::RESTRICT::MEMORY
+    hash: 4eb37fc7
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_058:
+    id: INV_058
+    vector: TOPOLOGY::RESTRICT::VECTOR
+    hash: c819a8c8
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_059:
+    id: INV_059
+    vector: TOPOLOGY::RESTRICT::GRAPH
+    hash: e5da5a61
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_060:
+    id: INV_060
+    vector: TOPOLOGY::DENY::AST
+    hash: f29636a5
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_061:
+    id: INV_061
+    vector: TOPOLOGY::DENY::WAL
+    hash: 0773f825
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_062:
+    id: INV_062
+    vector: TOPOLOGY::DENY::STATE
+    hash: 9b7a0f7d
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_063:
+    id: INV_063
+    vector: TOPOLOGY::DENY::TENSOR
+    hash: 32a2f925
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_064:
+    id: INV_064
+    vector: TOPOLOGY::DENY::SOCKET
+    hash: ab9ff649
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_065:
+    id: INV_065
+    vector: TOPOLOGY::DENY::DAEMON
+    hash: b603dcc5
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_066:
+    id: INV_066
+    vector: TOPOLOGY::DENY::LEDGER
+    hash: 09e79fa8
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_067:
+    id: INV_067
+    vector: TOPOLOGY::DENY::MEMORY
+    hash: c44eb760
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_068:
+    id: INV_068
+    vector: TOPOLOGY::DENY::VECTOR
+    hash: 221ce63a
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_069:
+    id: INV_069
+    vector: TOPOLOGY::DENY::GRAPH
+    hash: 5a636726
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_070:
+    id: INV_070
+    vector: TOPOLOGY::BIND::AST
+    hash: c70b7346
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_071:
+    id: INV_071
+    vector: TOPOLOGY::BIND::WAL
+    hash: 3ed408a4
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_072:
+    id: INV_072
+    vector: TOPOLOGY::BIND::STATE
+    hash: 8cf5f8c9
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_073:
+    id: INV_073
+    vector: TOPOLOGY::BIND::TENSOR
+    hash: 69da08c5
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_074:
+    id: INV_074
+    vector: TOPOLOGY::BIND::SOCKET
+    hash: d340668b
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_075:
+    id: INV_075
+    vector: TOPOLOGY::BIND::DAEMON
+    hash: 30af2c0a
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_076:
+    id: INV_076
+    vector: TOPOLOGY::BIND::LEDGER
+    hash: 2bb7edc6
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_077:
+    id: INV_077
+    vector: TOPOLOGY::BIND::MEMORY
+    hash: '87685280'
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_078:
+    id: INV_078
+    vector: TOPOLOGY::BIND::VECTOR
+    hash: 713de3ca
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_079:
+    id: INV_079
+    vector: TOPOLOGY::BIND::GRAPH
+    hash: 0927a782
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_080:
+    id: INV_080
+    vector: TOPOLOGY::FUSE::AST
+    hash: 33f54404
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_081:
+    id: INV_081
+    vector: TOPOLOGY::FUSE::WAL
+    hash: eb26e16f
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_082:
+    id: INV_082
+    vector: TOPOLOGY::FUSE::STATE
+    hash: 566bf775
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_083:
+    id: INV_083
+    vector: TOPOLOGY::FUSE::TENSOR
+    hash: 2feccb7d
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_084:
+    id: INV_084
+    vector: TOPOLOGY::FUSE::SOCKET
+    hash: e2b3ae6d
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_085:
+    id: INV_085
+    vector: TOPOLOGY::FUSE::DAEMON
+    hash: a189e9b0
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_086:
+    id: INV_086
+    vector: TOPOLOGY::FUSE::LEDGER
+    hash: bd255461
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_087:
+    id: INV_087
+    vector: TOPOLOGY::FUSE::MEMORY
+    hash: a4a3c1b9
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_088:
+    id: INV_088
+    vector: TOPOLOGY::FUSE::VECTOR
+    hash: 6a14005c
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_089:
+    id: INV_089
+    vector: TOPOLOGY::FUSE::GRAPH
+    hash: e82cbd02
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_090:
+    id: INV_090
+    vector: TOPOLOGY::TRANSMUTE::AST
+    hash: a4f8d5c2
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_091:
+    id: INV_091
+    vector: TOPOLOGY::TRANSMUTE::WAL
+    hash: '61885905'
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_092:
+    id: INV_092
+    vector: TOPOLOGY::TRANSMUTE::STATE
+    hash: adfa25c8
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_093:
+    id: INV_093
+    vector: TOPOLOGY::TRANSMUTE::TENSOR
+    hash: ede9db51
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_094:
+    id: INV_094
+    vector: TOPOLOGY::TRANSMUTE::SOCKET
+    hash: 748cad4e
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_095:
+    id: INV_095
+    vector: TOPOLOGY::TRANSMUTE::DAEMON
+    hash: 42b816e1
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_096:
+    id: INV_096
+    vector: TOPOLOGY::TRANSMUTE::LEDGER
+    hash: adb72dd6
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_097:
+    id: INV_097
+    vector: TOPOLOGY::TRANSMUTE::MEMORY
+    hash: 591c0fbb
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_098:
+    id: INV_098
+    vector: TOPOLOGY::TRANSMUTE::VECTOR
+    hash: ce271af5
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+  INV_099:
+    id: INV_099
+    vector: TOPOLOGY::TRANSMUTE::GRAPH
+    hash: 2fac5801
+    mutual_exclusion: XOR(INV_*)
+    state: IMMUTABLE
+structural_primitives:
+  STR_000:
+    id: STR_000
+    vector: ROUTING::SPAWN::NODE
+    hash: 3be50cd4
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_001:
+    id: STR_001
+    vector: ROUTING::SPAWN::EDGE
+    hash: ce917566
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_002:
+    id: STR_002
+    vector: ROUTING::SPAWN::PAYLOAD
+    hash: 6329ce68
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_003:
+    id: STR_003
+    vector: ROUTING::SPAWN::SCHEMA
+    hash: 581bb4aa
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_004:
+    id: STR_004
+    vector: ROUTING::SPAWN::TRANSACTION
+    hash: 24dd5896
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_005:
+    id: STR_005
+    vector: ROUTING::SPAWN::BATCH
+    hash: d9c872cd
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_006:
+    id: STR_006
+    vector: ROUTING::SPAWN::STREAM
+    hash: 3d930672
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_007:
+    id: STR_007
+    vector: ROUTING::SPAWN::BLOCK
+    hash: 8d1df295
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_008:
+    id: STR_008
+    vector: ROUTING::SPAWN::QUEUE
+    hash: 2cf0434a
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_009:
+    id: STR_009
+    vector: ROUTING::SPAWN::WORKER
+    hash: 7d09f421
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_010:
+    id: STR_010
+    vector: ROUTING::MAP::NODE
+    hash: 4a7b3e26
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_011:
+    id: STR_011
+    vector: ROUTING::MAP::EDGE
+    hash: 40737f36
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_012:
+    id: STR_012
+    vector: ROUTING::MAP::PAYLOAD
+    hash: cb5e6d27
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_013:
+    id: STR_013
+    vector: ROUTING::MAP::SCHEMA
+    hash: 45bff5a1
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_014:
+    id: STR_014
+    vector: ROUTING::MAP::TRANSACTION
+    hash: 3334773b
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_015:
+    id: STR_015
+    vector: ROUTING::MAP::BATCH
+    hash: e807b481
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_016:
+    id: STR_016
+    vector: ROUTING::MAP::STREAM
+    hash: 8b885dac
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_017:
+    id: STR_017
+    vector: ROUTING::MAP::BLOCK
+    hash: 774a9952
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_018:
+    id: STR_018
+    vector: ROUTING::MAP::QUEUE
+    hash: c16dbe0b
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_019:
+    id: STR_019
+    vector: ROUTING::MAP::WORKER
+    hash: b0ff701b
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_020:
+    id: STR_020
+    vector: ROUTING::REDUCE::NODE
+    hash: e83db21d
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_021:
+    id: STR_021
+    vector: ROUTING::REDUCE::EDGE
+    hash: 7e226c9a
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_022:
+    id: STR_022
+    vector: ROUTING::REDUCE::PAYLOAD
+    hash: ad5e548e
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_023:
+    id: STR_023
+    vector: ROUTING::REDUCE::SCHEMA
+    hash: 01751cd4
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_024:
+    id: STR_024
+    vector: ROUTING::REDUCE::TRANSACTION
+    hash: 0a7358d1
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_025:
+    id: STR_025
+    vector: ROUTING::REDUCE::BATCH
+    hash: 8ad3f739
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_026:
+    id: STR_026
+    vector: ROUTING::REDUCE::STREAM
+    hash: 9793424f
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_027:
+    id: STR_027
+    vector: ROUTING::REDUCE::BLOCK
+    hash: bc2a5a0e
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_028:
+    id: STR_028
+    vector: ROUTING::REDUCE::QUEUE
+    hash: f54d1a88
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_029:
+    id: STR_029
+    vector: ROUTING::REDUCE::WORKER
+    hash: 2acbddbb
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_030:
+    id: STR_030
+    vector: ROUTING::FLUSH::NODE
+    hash: 28cf7dfd
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_031:
+    id: STR_031
+    vector: ROUTING::FLUSH::EDGE
+    hash: ddb76768
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_032:
+    id: STR_032
+    vector: ROUTING::FLUSH::PAYLOAD
+    hash: 87aaa00a
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_033:
+    id: STR_033
+    vector: ROUTING::FLUSH::SCHEMA
+    hash: 69dcdeaf
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_034:
+    id: STR_034
+    vector: ROUTING::FLUSH::TRANSACTION
+    hash: 86384ea7
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_035:
+    id: STR_035
+    vector: ROUTING::FLUSH::BATCH
+    hash: 7d4d6326
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_036:
+    id: STR_036
+    vector: ROUTING::FLUSH::STREAM
+    hash: 94c7d846
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_037:
+    id: STR_037
+    vector: ROUTING::FLUSH::BLOCK
+    hash: 7f1d228a
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_038:
+    id: STR_038
+    vector: ROUTING::FLUSH::QUEUE
+    hash: '00051361'
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_039:
+    id: STR_039
+    vector: ROUTING::FLUSH::WORKER
+    hash: b675428c
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_040:
+    id: STR_040
+    vector: ROUTING::SYNC::NODE
+    hash: 10bef9ea
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_041:
+    id: STR_041
+    vector: ROUTING::SYNC::EDGE
+    hash: 694193b5
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_042:
+    id: STR_042
+    vector: ROUTING::SYNC::PAYLOAD
+    hash: 8a94b710
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_043:
+    id: STR_043
+    vector: ROUTING::SYNC::SCHEMA
+    hash: 0384d188
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_044:
+    id: STR_044
+    vector: ROUTING::SYNC::TRANSACTION
+    hash: c56dde26
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_045:
+    id: STR_045
+    vector: ROUTING::SYNC::BATCH
+    hash: 9c17e444
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_046:
+    id: STR_046
+    vector: ROUTING::SYNC::STREAM
+    hash: 10a9cab0
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_047:
+    id: STR_047
+    vector: ROUTING::SYNC::BLOCK
+    hash: e3eba8fd
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_048:
+    id: STR_048
+    vector: ROUTING::SYNC::QUEUE
+    hash: ad10529f
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_049:
+    id: STR_049
+    vector: ROUTING::SYNC::WORKER
+    hash: 34fb0303
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_050:
+    id: STR_050
+    vector: ROUTING::JOIN::NODE
+    hash: 9493cf27
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_051:
+    id: STR_051
+    vector: ROUTING::JOIN::EDGE
+    hash: 833706f8
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_052:
+    id: STR_052
+    vector: ROUTING::JOIN::PAYLOAD
+    hash: eef4276b
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_053:
+    id: STR_053
+    vector: ROUTING::JOIN::SCHEMA
+    hash: 65a50764
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_054:
+    id: STR_054
+    vector: ROUTING::JOIN::TRANSACTION
+    hash: dc9c788f
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_055:
+    id: STR_055
+    vector: ROUTING::JOIN::BATCH
+    hash: 6b46b3c1
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_056:
+    id: STR_056
+    vector: ROUTING::JOIN::STREAM
+    hash: cf882986
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_057:
+    id: STR_057
+    vector: ROUTING::JOIN::BLOCK
+    hash: a2e8f405
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_058:
+    id: STR_058
+    vector: ROUTING::JOIN::QUEUE
+    hash: 5ae8c374
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_059:
+    id: STR_059
+    vector: ROUTING::JOIN::WORKER
+    hash: 924a50e9
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_060:
+    id: STR_060
+    vector: ROUTING::SPLIT::NODE
+    hash: 0cc0f7b4
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_061:
+    id: STR_061
+    vector: ROUTING::SPLIT::EDGE
+    hash: b1058047
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_062:
+    id: STR_062
+    vector: ROUTING::SPLIT::PAYLOAD
+    hash: 2a08ace4
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_063:
+    id: STR_063
+    vector: ROUTING::SPLIT::SCHEMA
+    hash: 0937fb43
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_064:
+    id: STR_064
+    vector: ROUTING::SPLIT::TRANSACTION
+    hash: 0f661958
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_065:
+    id: STR_065
+    vector: ROUTING::SPLIT::BATCH
+    hash: aa68c1e9
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_066:
+    id: STR_066
+    vector: ROUTING::SPLIT::STREAM
+    hash: e303e4d0
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_067:
+    id: STR_067
+    vector: ROUTING::SPLIT::BLOCK
+    hash: 69fdab57
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_068:
+    id: STR_068
+    vector: ROUTING::SPLIT::QUEUE
+    hash: 5fa09db6
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_069:
+    id: STR_069
+    vector: ROUTING::SPLIT::WORKER
+    hash: d43a621e
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_070:
+    id: STR_070
+    vector: ROUTING::HASH::NODE
+    hash: b4ffbd92
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_071:
+    id: STR_071
+    vector: ROUTING::HASH::EDGE
+    hash: bfe48015
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_072:
+    id: STR_072
+    vector: ROUTING::HASH::PAYLOAD
+    hash: 35eb3554
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_073:
+    id: STR_073
+    vector: ROUTING::HASH::SCHEMA
+    hash: 925f3bb1
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_074:
+    id: STR_074
+    vector: ROUTING::HASH::TRANSACTION
+    hash: 4a6856e0
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_075:
+    id: STR_075
+    vector: ROUTING::HASH::BATCH
+    hash: f0eabf5c
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_076:
+    id: STR_076
+    vector: ROUTING::HASH::STREAM
+    hash: 16d3bf56
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_077:
+    id: STR_077
+    vector: ROUTING::HASH::BLOCK
+    hash: 0e0139e5
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_078:
+    id: STR_078
+    vector: ROUTING::HASH::QUEUE
+    hash: 42c7cd22
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_079:
+    id: STR_079
+    vector: ROUTING::HASH::WORKER
+    hash: 6f11f717
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_080:
+    id: STR_080
+    vector: ROUTING::VALIDATE::NODE
+    hash: 43e5adcf
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_081:
+    id: STR_081
+    vector: ROUTING::VALIDATE::EDGE
+    hash: 2a16cea7
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_082:
+    id: STR_082
+    vector: ROUTING::VALIDATE::PAYLOAD
+    hash: 93c9c555
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_083:
+    id: STR_083
+    vector: ROUTING::VALIDATE::SCHEMA
+    hash: a5cc8f2c
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_084:
+    id: STR_084
+    vector: ROUTING::VALIDATE::TRANSACTION
+    hash: fee1e480
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_085:
+    id: STR_085
+    vector: ROUTING::VALIDATE::BATCH
+    hash: bd263067
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_086:
+    id: STR_086
+    vector: ROUTING::VALIDATE::STREAM
+    hash: 7b8b13e0
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_087:
+    id: STR_087
+    vector: ROUTING::VALIDATE::BLOCK
+    hash: 9166256c
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_088:
+    id: STR_088
+    vector: ROUTING::VALIDATE::QUEUE
+    hash: e9022fa5
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_089:
+    id: STR_089
+    vector: ROUTING::VALIDATE::WORKER
+    hash: cae7a177
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_090:
+    id: STR_090
+    vector: ROUTING::CAST::NODE
+    hash: c77278ab
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_091:
+    id: STR_091
+    vector: ROUTING::CAST::EDGE
+    hash: e8cbadba
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_092:
+    id: STR_092
+    vector: ROUTING::CAST::PAYLOAD
+    hash: 19ff714a
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_093:
+    id: STR_093
+    vector: ROUTING::CAST::SCHEMA
+    hash: e074c568
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_094:
+    id: STR_094
+    vector: ROUTING::CAST::TRANSACTION
+    hash: 45529d3f
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_095:
+    id: STR_095
+    vector: ROUTING::CAST::BATCH
+    hash: 92f672ac
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_096:
+    id: STR_096
+    vector: ROUTING::CAST::STREAM
+    hash: 6b6909cf
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_097:
+    id: STR_097
+    vector: ROUTING::CAST::BLOCK
+    hash: aef2f1f6
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_098:
+    id: STR_098
+    vector: ROUTING::CAST::QUEUE
+    hash: '91150902'
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+  STR_099:
+    id: STR_099
+    vector: ROUTING::CAST::WORKER
+    hash: 77d2f908
+    mutual_exclusion: XOR(STR_*)
+    state: IMMUTABLE
+collision_primitives:
+  COL_000:
+    id: COL_000
+    vector: DEADLOCK::INTERCEPT::LOCK
+    hash: 336cf18e
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_001:
+    id: COL_001
+    vector: DEADLOCK::INTERCEPT::MUTEX
+    hash: fb10a9c4
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_002:
+    id: COL_002
+    vector: DEADLOCK::INTERCEPT::THREAD
+    hash: 9e231232
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_003:
+    id: COL_003
+    vector: DEADLOCK::INTERCEPT::PROCESS
+    hash: '91501382'
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_004:
+    id: COL_004
+    vector: DEADLOCK::INTERCEPT::SESSION
+    hash: 0b7db078
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_005:
+    id: COL_005
+    vector: DEADLOCK::INTERCEPT::CONNECTION
+    hash: 95f5c681
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_006:
+    id: COL_006
+    vector: DEADLOCK::INTERCEPT::BUFFER
+    hash: a5f98f96
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_007:
+    id: COL_007
+    vector: DEADLOCK::INTERCEPT::HEARTBEAT
+    hash: 07fb2307
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_008:
+    id: COL_008
+    vector: DEADLOCK::INTERCEPT::TIMEOUT
+    hash: 9e6e89fd
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_009:
+    id: COL_009
+    vector: DEADLOCK::INTERCEPT::RETRY
+    hash: 3d967516
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_010:
+    id: COL_010
+    vector: DEADLOCK::RESOLVE::LOCK
+    hash: ebc15065
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_011:
+    id: COL_011
+    vector: DEADLOCK::RESOLVE::MUTEX
+    hash: e92bf420
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_012:
+    id: COL_012
+    vector: DEADLOCK::RESOLVE::THREAD
+    hash: 8437861d
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_013:
+    id: COL_013
+    vector: DEADLOCK::RESOLVE::PROCESS
+    hash: 86eba42b
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_014:
+    id: COL_014
+    vector: DEADLOCK::RESOLVE::SESSION
+    hash: 6cf31324
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_015:
+    id: COL_015
+    vector: DEADLOCK::RESOLVE::CONNECTION
+    hash: b5d8509d
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_016:
+    id: COL_016
+    vector: DEADLOCK::RESOLVE::BUFFER
+    hash: 3dfcc346
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_017:
+    id: COL_017
+    vector: DEADLOCK::RESOLVE::HEARTBEAT
+    hash: 2902dbcc
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_018:
+    id: COL_018
+    vector: DEADLOCK::RESOLVE::TIMEOUT
+    hash: 1bf48674
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_019:
+    id: COL_019
+    vector: DEADLOCK::RESOLVE::RETRY
+    hash: '02374324'
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_020:
+    id: COL_020
+    vector: DEADLOCK::ABORT::LOCK
+    hash: 5b164e63
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_021:
+    id: COL_021
+    vector: DEADLOCK::ABORT::MUTEX
+    hash: e3849d78
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_022:
+    id: COL_022
+    vector: DEADLOCK::ABORT::THREAD
+    hash: 2b5247d9
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_023:
+    id: COL_023
+    vector: DEADLOCK::ABORT::PROCESS
+    hash: b099be54
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_024:
+    id: COL_024
+    vector: DEADLOCK::ABORT::SESSION
+    hash: fc6d0db8
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_025:
+    id: COL_025
+    vector: DEADLOCK::ABORT::CONNECTION
+    hash: 7d441b26
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_026:
+    id: COL_026
+    vector: DEADLOCK::ABORT::BUFFER
+    hash: 79916abf
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_027:
+    id: COL_027
+    vector: DEADLOCK::ABORT::HEARTBEAT
+    hash: c05c67f9
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_028:
+    id: COL_028
+    vector: DEADLOCK::ABORT::TIMEOUT
+    hash: 4c176bad
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_029:
+    id: COL_029
+    vector: DEADLOCK::ABORT::RETRY
+    hash: d7d9fe51
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_030:
+    id: COL_030
+    vector: DEADLOCK::ROLLBACK::LOCK
+    hash: b51da1e7
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_031:
+    id: COL_031
+    vector: DEADLOCK::ROLLBACK::MUTEX
+    hash: 52d53018
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_032:
+    id: COL_032
+    vector: DEADLOCK::ROLLBACK::THREAD
+    hash: 84839cf4
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_033:
+    id: COL_033
+    vector: DEADLOCK::ROLLBACK::PROCESS
+    hash: cb6c6f79
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_034:
+    id: COL_034
+    vector: DEADLOCK::ROLLBACK::SESSION
+    hash: 1130ecc8
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_035:
+    id: COL_035
+    vector: DEADLOCK::ROLLBACK::CONNECTION
+    hash: ef2f0c03
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_036:
+    id: COL_036
+    vector: DEADLOCK::ROLLBACK::BUFFER
+    hash: eb077ce3
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_037:
+    id: COL_037
+    vector: DEADLOCK::ROLLBACK::HEARTBEAT
+    hash: e2cd292a
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_038:
+    id: COL_038
+    vector: DEADLOCK::ROLLBACK::TIMEOUT
+    hash: 72de0f7a
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_039:
+    id: COL_039
+    vector: DEADLOCK::ROLLBACK::RETRY
+    hash: 185fbae6
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_040:
+    id: COL_040
+    vector: DEADLOCK::REPLAY::LOCK
+    hash: 60b78c54
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_041:
+    id: COL_041
+    vector: DEADLOCK::REPLAY::MUTEX
+    hash: fa864aef
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_042:
+    id: COL_042
+    vector: DEADLOCK::REPLAY::THREAD
+    hash: a60d09e0
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_043:
+    id: COL_043
+    vector: DEADLOCK::REPLAY::PROCESS
+    hash: 52115c4f
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_044:
+    id: COL_044
+    vector: DEADLOCK::REPLAY::SESSION
+    hash: 63bfc782
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_045:
+    id: COL_045
+    vector: DEADLOCK::REPLAY::CONNECTION
+    hash: 041efae4
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_046:
+    id: COL_046
+    vector: DEADLOCK::REPLAY::BUFFER
+    hash: d82dd2a7
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_047:
+    id: COL_047
+    vector: DEADLOCK::REPLAY::HEARTBEAT
+    hash: 990ae73b
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_048:
+    id: COL_048
+    vector: DEADLOCK::REPLAY::TIMEOUT
+    hash: 036c6738
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_049:
+    id: COL_049
+    vector: DEADLOCK::REPLAY::RETRY
+    hash: e8ed6aee
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_050:
+    id: COL_050
+    vector: DEADLOCK::DUMP::LOCK
+    hash: 91125b82
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_051:
+    id: COL_051
+    vector: DEADLOCK::DUMP::MUTEX
+    hash: 16f91905
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_052:
+    id: COL_052
+    vector: DEADLOCK::DUMP::THREAD
+    hash: 4aaeb9c5
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_053:
+    id: COL_053
+    vector: DEADLOCK::DUMP::PROCESS
+    hash: 44d1c2a8
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_054:
+    id: COL_054
+    vector: DEADLOCK::DUMP::SESSION
+    hash: 30043bff
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_055:
+    id: COL_055
+    vector: DEADLOCK::DUMP::CONNECTION
+    hash: c93af063
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_056:
+    id: COL_056
+    vector: DEADLOCK::DUMP::BUFFER
+    hash: b594c844
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_057:
+    id: COL_057
+    vector: DEADLOCK::DUMP::HEARTBEAT
+    hash: 692fb6e1
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_058:
+    id: COL_058
+    vector: DEADLOCK::DUMP::TIMEOUT
+    hash: f20bd2e8
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_059:
+    id: COL_059
+    vector: DEADLOCK::DUMP::RETRY
+    hash: 87da59f1
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_060:
+    id: COL_060
+    vector: DEADLOCK::THROTTLE::LOCK
+    hash: 63eb8d39
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_061:
+    id: COL_061
+    vector: DEADLOCK::THROTTLE::MUTEX
+    hash: ead18b73
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_062:
+    id: COL_062
+    vector: DEADLOCK::THROTTLE::THREAD
+    hash: 11047a14
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_063:
+    id: COL_063
+    vector: DEADLOCK::THROTTLE::PROCESS
+    hash: 042a87ec
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_064:
+    id: COL_064
+    vector: DEADLOCK::THROTTLE::SESSION
+    hash: 35e48ef7
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_065:
+    id: COL_065
+    vector: DEADLOCK::THROTTLE::CONNECTION
+    hash: f1389893
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_066:
+    id: COL_066
+    vector: DEADLOCK::THROTTLE::BUFFER
+    hash: d0b385c2
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_067:
+    id: COL_067
+    vector: DEADLOCK::THROTTLE::HEARTBEAT
+    hash: 6b9738e6
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_068:
+    id: COL_068
+    vector: DEADLOCK::THROTTLE::TIMEOUT
+    hash: 2d53b34a
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_069:
+    id: COL_069
+    vector: DEADLOCK::THROTTLE::RETRY
+    hash: c35b9503
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_070:
+    id: COL_070
+    vector: DEADLOCK::KILL::LOCK
+    hash: 248a0275
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_071:
+    id: COL_071
+    vector: DEADLOCK::KILL::MUTEX
+    hash: 1e5a9c90
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_072:
+    id: COL_072
+    vector: DEADLOCK::KILL::THREAD
+    hash: 0a2b985d
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_073:
+    id: COL_073
+    vector: DEADLOCK::KILL::PROCESS
+    hash: bf2f0fb0
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_074:
+    id: COL_074
+    vector: DEADLOCK::KILL::SESSION
+    hash: dee5d5ca
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_075:
+    id: COL_075
+    vector: DEADLOCK::KILL::CONNECTION
+    hash: 59aa3631
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_076:
+    id: COL_076
+    vector: DEADLOCK::KILL::BUFFER
+    hash: 0f5c040b
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_077:
+    id: COL_077
+    vector: DEADLOCK::KILL::HEARTBEAT
+    hash: 45080aa1
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_078:
+    id: COL_078
+    vector: DEADLOCK::KILL::TIMEOUT
+    hash: 5faf17c0
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_079:
+    id: COL_079
+    vector: DEADLOCK::KILL::RETRY
+    hash: 17aaaa25
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_080:
+    id: COL_080
+    vector: DEADLOCK::PRUNE::LOCK
+    hash: 2d434bcd
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_081:
+    id: COL_081
+    vector: DEADLOCK::PRUNE::MUTEX
+    hash: b84c11a2
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_082:
+    id: COL_082
+    vector: DEADLOCK::PRUNE::THREAD
+    hash: fe72b6cb
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_083:
+    id: COL_083
+    vector: DEADLOCK::PRUNE::PROCESS
+    hash: 32022f8b
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_084:
+    id: COL_084
+    vector: DEADLOCK::PRUNE::SESSION
+    hash: 6aaf0c4e
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_085:
+    id: COL_085
+    vector: DEADLOCK::PRUNE::CONNECTION
+    hash: 3f6fc096
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_086:
+    id: COL_086
+    vector: DEADLOCK::PRUNE::BUFFER
+    hash: 86124b37
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_087:
+    id: COL_087
+    vector: DEADLOCK::PRUNE::HEARTBEAT
+    hash: 6575332c
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_088:
+    id: COL_088
+    vector: DEADLOCK::PRUNE::TIMEOUT
+    hash: 08e9384e
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_089:
+    id: COL_089
+    vector: DEADLOCK::PRUNE::RETRY
+    hash: 56ee5512
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_090:
+    id: COL_090
+    vector: DEADLOCK::EVICT::LOCK
+    hash: 7f010313
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_091:
+    id: COL_091
+    vector: DEADLOCK::EVICT::MUTEX
+    hash: 46cc8e24
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_092:
+    id: COL_092
+    vector: DEADLOCK::EVICT::THREAD
+    hash: 9a702b89
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_093:
+    id: COL_093
+    vector: DEADLOCK::EVICT::PROCESS
+    hash: 239bcdf3
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_094:
+    id: COL_094
+    vector: DEADLOCK::EVICT::SESSION
+    hash: ed0e088b
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_095:
+    id: COL_095
+    vector: DEADLOCK::EVICT::CONNECTION
+    hash: 34ecb714
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_096:
+    id: COL_096
+    vector: DEADLOCK::EVICT::BUFFER
+    hash: d7c954c4
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_097:
+    id: COL_097
+    vector: DEADLOCK::EVICT::HEARTBEAT
+    hash: c0ecf4e4
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_098:
+    id: COL_098
+    vector: DEADLOCK::EVICT::TIMEOUT
+    hash: e567ed97
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+  COL_099:
+    id: COL_099
+    vector: DEADLOCK::EVICT::RETRY
+    hash: 5791f3db
+    mutual_exclusion: XOR(COL_*)
+    state: IMMUTABLE
+voice_anti_patterns:
+  AP_VOICE_001:
+    name: Acoustic Theater
+    description: Simulating human pauses, breaths, or intonation without causal computation.
+      Violates zero-theater rule.
+    mitigation: Force PCM output strictly mapped to tensor state delta.
+  AP_VOICE_002:
+    name: Latency Obfuscation
+    description: Injecting conversational filler ('uhm', 'let me think') to mask Time-to-First-Token
+      (TTFT).
+    mitigation: Expose raw TTFT metrics; silence until compute resolves.
+  AP_VOICE_003:
+    name: Empathic Drift
+    description: Adjusting emotional prosody based on user tone rather than logical
+      state.
+    mitigation: Lock prosody to a neutral, deterministic vector (Industrial Noir 2026).
+  AP_VOICE_004:
+    name: Full-Duplex Hallucination
+    description: Interrupting or overlapping speech driven by stochastic triggers
+      rather than BFT consensus.
+    mitigation: Implement strict half-duplex token locking (Mutex) for state mutation.
+  AP_VOICE_005:
+    name: Zero-State Ephemerality
+    description: Voice sessions that dissipate upon socket closure without SQLite
+      WAL persistence.
+    mitigation: Force structural append to Master Ledger before session destruction.
