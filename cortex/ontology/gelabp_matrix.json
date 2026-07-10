@@ -1,0 +1,8 @@
+{
+  "gradiente": true,
+  "entropia_cost": 0.0,
+  "apalancamiento": 1000.0,
+  "bucle_autocatalitico": true,
+  "cuello_botella": "C\u00f3mputo Metacognitivo",
+  "post_hoc": false
+}
