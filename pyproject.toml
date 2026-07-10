@@ -23,3 +23,7 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://github.com/borjamoskv/BABYLON-60"
 "Bug Tracker" = "https://github.com/borjamoskv/BABYLON-60/issues"
+
+[tool.pytest.ini_options]
+norecursedirs = ["babylon60", "node_modules", ".venv"]
+
