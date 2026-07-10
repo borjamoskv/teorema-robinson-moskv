@@ -4,9 +4,10 @@
 import sqlite3
 import sys
 
-sys.path.append("$CORTEX_ROOT/30_BABYLON-60")
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from cortex_inference import CortexInferenceEngine, DB_PATH
+from cortex_inference import CortexInferenceEngine, CACHE_DB_PATH
 
 VOCAB = [
     "causar", "provocar", "generar", "hacer", "por qué", "efecto",
@@ -42,7 +43,7 @@ def main():
     engine.close()
     
     # 2. Verify Database Cache
-    conn = sqlite3.connect(DB_PATH, timeout=5.0)
+    conn = sqlite3.connect(CACHE_DB_PATH, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL;")
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM L3_inference_cache")

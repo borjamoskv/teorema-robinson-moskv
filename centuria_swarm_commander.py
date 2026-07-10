@@ -6,7 +6,7 @@ import os
 import glob
 from pathlib import Path
 
-WORKSPACE = "$CORTEX_ROOT/30_BABYLON-60"
+WORKSPACE = os.environ.get("BABYLON_WORKSPACE", os.path.dirname(os.path.abspath(__file__)))
 SHARDS_FILE = os.path.join(WORKSPACE, "shards.json")
 
 def generate_100_vectors():
