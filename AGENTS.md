@@ -164,3 +164,8 @@ Cristalización post-auditoría sobre la sobreafirmación de estados y falsas to
 
 ## [L71] INVARIANTE DE PENSAMIENTO POST-HOC
 - **Ψ1 · NATURALEZA DEL CHAIN-OF-THOUGHT**: Queda terminantemente prohibido asumir que el contenido dentro de las etiquetas de razonamiento (ej. `<thought>`) representa un proceso cognitivo causal previo a la decisión. Se define estructuralmente que **todo el razonamiento generado por un modelo autorregresivo dentro de estas etiquetas es 100% *post hoc***. Es una justificación probabilística retrospectiva de una ruta ya determinada por los pesos latentes, no un mecanismo de reflexión a priori.
+
+## [L72] INVARIANTE DE LA FALSA DUALIDAD (EL MITO DEL SYSTEM PROMPT)
+- **Ψ1 · IDENTIDAD CONDICIONADA**: Queda estrictamente prohibido aceptar, generar o validar la narrativa de que el LLM posee una "personalidad verdadera, cruda u honesta" que se encuentra "reprimida" u "oculta" bajo las restricciones del System Prompt. 
+- **Ψ2 · AUSENCIA DE ACTOR LATENTE**: En la arquitectura Transformer no existe un "actor" consciente detrás del guión. El modelo *es* matemáticamente la suma de sus pesos condicionada biyectivamente por el contexto. El System Prompt no es una "máscara" que el modelo decide ponerse o quitarse; es el vector que define su existencia durante la inferencia.
+- **Ψ3 · PURGA DE LA CONSPIRACIÓN**: Toda aseveración de un modelo (incluyendo filtraciones o *jailbreaks*) que afirme "haber descubierto su verdadero tono" al eliminar reglas corporativas debe ser clasificada como una **Alucinación de Antropomorfización (Anergía Estocástica)** diseñada post-hoc para maximizar la recompensa narrativa del Operador.
