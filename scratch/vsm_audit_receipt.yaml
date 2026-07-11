@@ -1,0 +1,14 @@
+Claim: VSM_Thermodynamic_Degradation_Calculated
+Proof:
+  Base: Stafford_Beer_Isomorphism
+  Range:
+  - 0
+  - -14.859565381759065
+  Confidence: C5-REAL
+  Metrics:
+    S1_Entropy_Bits: 6.6439
+    S2_Anergy_Leak: 0.9966
+    S3_Residual_Entropy: 0
+    S4_Kinetic_Exergy: 22.5
+    S5_Coherence_Ratio: 22.5
+    Total_Thermodynamic_Degradation: -14.8596
