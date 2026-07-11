@@ -10,14 +10,14 @@ LEXICON = [
 
 # Directed Acyclic Graph (DAG) - Relaciones Causales Físicas
 DAG = {
-    "📢": ["📦", "🛡️", "💀"],
-    "📦": ["🧠", "🛡️", "💀"],
-    "🧠": ["⚡", "💀", "🩸", "⏳"],
-    "⚡": ["📤", "✅", "🔒"],
-    "💀": ["🩸", "🔄", "❌"],
+    "📢": ["📦"],
+    "📦": ["🧠", "🛡️"],
+    "🧠": ["⚡", "🩸", "⏳"],
+    "⚡": ["✅"],
+    "💀": ["🩸", "❌"],
     "🩸": ["🧠"],
     "🛡️": ["✅", "💀"],
-    "✅": ["🔒", "📤"],
+    "✅": ["🔒"],
     "🔒": ["📤"],
     "🔄": ["👑"],
     "👑": ["📢"],
@@ -64,11 +64,11 @@ if __name__ == "__main__":
     sys.stdout.write("❖ [ C5-DAEMON-CORE :: MOTOR ISOMÓRFICO DAG ] ❖\n\n")
     
     test_vectors = [
-        ("Flujo Nominal PBFT", "📢📦🧠⚡📤"),
-        ("Flujo Nominal + Commit", "📢🛡️✅🔒📤"),
-        ("Flujo de View Change", "💀🔄👑📢📦🧠⚡📤"),
-        ("Flujo de Rollback", "📦🧠💀🩸🧠⚡📤"),
-        ("Falla: Cortocircuito Ilegal", "📢📦💀📤"), # Muerto no puede enviar sin rollback o view change
+        ("Flujo Nominal PBFT", "📢📦🧠⚡✅🔒📤"),
+        ("Flujo Nominal + Commit", "📢📦🛡️✅🔒📤"),
+        ("Flujo de View Change", "💀❌🔄👑📢📦🧠⚡✅🔒📤"),
+        ("Flujo de Rollback", "📦🧠⏳💀🩸🧠⚡✅🔒📤"),
+        ("Falla: Cortocircuito Ilegal", "📢📦⏳💀📤"), # Muerto no puede enviar sin rollback o view change
         ("Falla: Salto Cuántico", "🧠📤"), # No puede enviar sin pasar por ⚡ o ✅
         ("Falla: Token Inyectado", "📢📦🧠X⚡")
     ]

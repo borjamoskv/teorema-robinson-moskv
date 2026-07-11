@@ -1,0 +1,58 @@
+Entities:
+  ⏳: SYS_WAIT
+  ⚡: SYS_OK
+  ✅: COMMIT_ACK
+  ❌: NACK_REJECT
+  👑: NEW_VIEW
+  💀: SYS_FATAL
+  📢: PRE_PREPARE
+  📤: SYS_SEND
+  📦: SYS_RECV
+  🔄: VIEW_CHANGE
+  🔒: SYS_LOCK
+  🔓: SYS_UNLOCK
+  🛡️: PREPARE
+  🧠: SYS_PROCESS
+  🩸: SYS_ROLLBACK
+Ontology: ECB-1_PBFT_Matrix
+Transitions:
+  ⏳:
+  - 🧠
+  - 💀
+  ⚡:
+  - 📤
+  - ✅
+  - 📢
+  ✅:
+  - 📤
+  - 🧠
+  ❌:
+  - 💀
+  👑:
+  - 📢
+  💀:
+  - 🔄
+  - ❌
+  📢:
+  - 🛡️
+  - 📦
+  📤: []
+  📦:
+  - 🔒
+  🔄:
+  - 👑
+  - ⏳
+  🔒:
+  - 🔓
+  🔓:
+  - 🧠
+  🛡️:
+  - ✅
+  - ⏳
+  🧠:
+  - ⚡
+  - 🩸
+  - ⏳
+  🩸:
+  - 📦
+  - 🔄
