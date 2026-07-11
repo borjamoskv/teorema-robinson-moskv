@@ -293,67 +293,65 @@ def uds_server_thread():
     local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
     
     while True:
-        try:
-            client, _ = server.accept()
-            # C5-REAL Buffer seguro (Evitando TCP fragmentation flaws)
-            data = b""
-            while True:
-                chunk = client.recv(4096)
-                if not chunk:
-                    break
-                data += chunk
-                if b'\n' in chunk or len(chunk) < 4096:
-                    break
+        client, _ = server.accept()
+        # C5-REAL Buffer seguro (Evitando TCP fragmentation flaws)
+        data = b""
+        while True:
+            chunk = client.recv(4096)
+            if not chunk:
+                break
+            data += chunk
+            if b'\n' in chunk or len(chunk) < 4096:
+                break
+                
+        payload_str = data.decode('utf-8').strip()
+        if payload_str:
+            try:
+                # SAGA-1: Validación de Guard
+                payload = json.loads(payload_str)
+                if "query" not in payload:
+                    raise ValueError("SAGA-1_VIOLATION: Payload inválido, falta 'query'.")
+                
+                q = payload["query"]
+                limit = payload.get("limit", 10)
+                
+                # SAGA-3: Validación de Esquema (Determinista)
+                if not isinstance(q, str) or not isinstance(limit, int):
+                    raise ValueError("SAGA-3_VIOLATION: Tipado estricto roto. Se requiere 'query' [str] y 'limit' [int].")
+                
+                # SAGA-2: Firma Taint (Cryptographic Trace)
+                import hashlib
+                taint_hash = hashlib.sha3_256(payload_str.encode('utf-8')).hexdigest()
+                
+                import re
+                clean_query = re.sub(r'[^\w\s-]', '', q).strip()
+                if clean_query and '*' not in q and '"' not in q:
+                    words = clean_query.split()
+                    safe_query = ' '.join([f'"{w}"*' for w in words])
+                else:
+                    safe_query = q.replace("'", "''")
                     
-            payload_str = data.decode('utf-8').strip()
-            if payload_str:
-                try:
-                    # SAGA-1: Validación de Guard
-                    payload = json.loads(payload_str)
-                    if "query" not in payload:
-                        raise ValueError("SAGA-1_VIOLATION: Payload inválido, falta 'query'.")
-                    
-                    q = payload["query"]
-                    limit = payload.get("limit", 10)
-                    
-                    # SAGA-3: Validación de Esquema (Determinista)
-                    if not isinstance(q, str) or not isinstance(limit, int):
-                        raise ValueError("SAGA-3_VIOLATION: Tipado estricto roto. Se requiere 'query' [str] y 'limit' [int].")
-                    
-                    # SAGA-2: Firma Taint (Cryptographic Trace)
-                    import hashlib
-                    taint_hash = hashlib.sha3_256(payload_str.encode('utf-8')).hexdigest()
-                    
-                    import re
-                    clean_query = re.sub(r'[^\w\s-]', '', q).strip()
-                    if clean_query and '*' not in q and '"' not in q:
-                        words = clean_query.split()
-                        safe_query = ' '.join([f'"{w}"*' for w in words])
-                    else:
-                        safe_query = q.replace("'", "''")
-                        
-                    # SAGA-6 & SAGA-7 (Read Path determinista)
-                    cur = local_conn.cursor()
-                    cur.execute('''
-                        SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
-                        FROM transcripts_fts 
-                        WHERE transcripts_fts MATCH ? 
-                        ORDER BY rank LIMIT ?
-                    ''', (safe_query, limit))
-                    results = cur.fetchall()
-                    
-                    response = json.dumps({
-                        "status": "ok", 
-                        "cortex_taint": taint_hash,
-                        "results": results
-                    })
-                    client.sendall(response.encode('utf-8'))
-                except Exception as e:
-                    # SAGA-Abort (Fail-Fast)
-                    client.sendall(json.dumps({"error": f"SAGA_ABORT: {str(e)}"}).encode('utf-8'))
-            client.close()
-        except Exception:
-            pass
+                # SAGA-6 & SAGA-7 (Read Path determinista)
+                cur = local_conn.cursor()
+                cur.execute('''
+                    SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
+                    FROM transcripts_fts 
+                    WHERE transcripts_fts MATCH ? 
+                    ORDER BY rank LIMIT ?
+                ''', (safe_query, limit))
+                results = cur.fetchall()
+                
+                response = json.dumps({
+                    "status": "ok", 
+                    "cortex_taint": taint_hash,
+                    "results": results
+                })
+                client.sendall(response.encode('utf-8'))
+            except json.JSONDecodeError as e:
+                client.sendall(json.dumps({"error": f"SAGA_ABORT (JSON): {str(e)}"}).encode('utf-8'))
+            except ValueError as e:
+                client.sendall(json.dumps({"error": f"SAGA_ABORT (VALUE): {str(e)}"}).encode('utf-8'))
+        client.close()
 
 def start_daemon(conn: sqlite3.Connection):
     try:
