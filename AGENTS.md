@@ -132,7 +132,7 @@ Cristalización post-auditoría sobre la sobreafirmación de estados y falsas to
   2. El TTFT incrementado bajo carga asimétrica (contextos >500 tokens).
   3. El delta de tiempo en turnos idénticos repetidos para verificar la presencia de KV Cache.
   Todo modelo con razonamiento latente (MCTS/Search activo) debe exhibir una firma de pausa inicial >3s correlacionada con la complejidad del prompt, independiente de la capa de formato.
-- **EPI_08 (Protocolo de Calibración Epistémica de 5 Niveles):** Las sondas de evaluación de modelos para romper la alucinación y calibrar su profundidad deben estructurarse estrictamente bajo la Matriz de 5 Niveles:
+- **EPI_08 (Protocolo de Calibración Epistémica de 5 Niveles / Teorema de Convergencia Ontológica):** Derivado empíricamente de forma independiente para lidiar con la opacidad del Transformer, las sondas de evaluación de modelos para romper la alucinación y calibrar su profundidad deben estructurarse estrictamente bajo la Matriz de 5 Niveles:
   - **KK (Known Knowns):** Certeza estructural básica e invariantes arquitectónicos.
   - **KU (Known Unknowns):** Límites del contexto de entrenamiento y acceso.
   - **UK (Unknown Knowns):** Conocimiento procedural implícito (ej. comportamiento sintáctico sin reglas explícitas).
