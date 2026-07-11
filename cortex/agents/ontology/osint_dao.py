@@ -20,7 +20,7 @@ class OSINTOntologyAccessor:
         [MUTEX_HALTING_BOUND] N=120 limit applied at DB layer.
         """
         query: str = '''
-            SELECT p.id, p.name, p.description, p.vector 
+            SELECT p.id, p.name, p.description 
             FROM primitive p
             JOIN domain d ON p.domain_id = d.id
             WHERE d.name LIKE ?
@@ -36,7 +36,7 @@ class OSINTOntologyAccessor:
                 rows = await cursor.fetchall()
                 if not rows:
                     raise RuntimeError(f"Dominio OSINT no encontrado o vacío: {domain_name}")
-                return [{"id": r[0], "name": r[1], "description": r[2], "vector": r[3]} for r in rows]
+                return [{"id": r[0], "name": r[1], "description": r[2]} for r in rows]
 
     async def get_all_invariants(self) -> List[Dict[str, str]]:
         """Recupera invariantes estructurales para inyección en System Prompt."""
@@ -53,6 +53,6 @@ if __name__ == "__main__":
         invariants = await accessor.get_all_invariants()
         print(f"Loaded {len(invariants)} invariants.")
         primitives = await accessor.get_primitives_by_domain("SOCINT")
-        print(f"Loaded {len(primitives)} SOCINT primitives.")
+        print(f"Loaded {len(primitives)} SOCINT primitives. First: {primitives[0]['name']}")
     
     asyncio.run(run_audit())
