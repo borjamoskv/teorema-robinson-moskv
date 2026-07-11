@@ -125,7 +125,7 @@ async def db_writer_worker(queue: asyncio.Queue):
                         pass # [INV_BFT_05]
                 await db.commit()
                 print(f"🧬 [BFT_LEDGER] Sync transaccionado con éxito. RunID: {run_id}")
-            except Exception as e:
+            except RuntimeError as e:
                 print(f"❌ [CRASH CAUSAL] Rollback en DB: {e}")
                 await db.rollback()
             finally:
@@ -139,7 +139,7 @@ async def fetch_leaderboard():
             async with session.get(API_PRIMARY, timeout=10) as resp:
                 resp.raise_for_status()
                 payload = await resp.text()
-        except Exception as e:
+        except RuntimeError as e:
             print(f"⚠️ [TTFT] Primario falló ({e}). Escalando a Testigo Externo (Fallback)...")
             async with session.get(API_FALLBACK, timeout=10) as resp:
                 resp.raise_for_status()

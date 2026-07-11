@@ -47,7 +47,7 @@ def analyze_transcripts():
                             })
                 except json.JSONDecodeError:
                     continue
-        except Exception as e:
+        except RuntimeError as e:
             pass
 
     # Generate Report

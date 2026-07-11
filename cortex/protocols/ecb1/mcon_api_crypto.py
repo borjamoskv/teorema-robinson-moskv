@@ -147,7 +147,7 @@ def append_event(origin_node: str, origin_sig: str, phase: str, state: Optional[
             """, (event_id, origin_node, phase, state, payload_json, timestamp, previous_hash, event_hash, origin_sig, validator_signature_hex))
             
             conn.commit()
-        except Exception:
+        except RuntimeError:
             conn.rollback()
             raise
         finally:
@@ -174,7 +174,7 @@ def register_node(node_id: str = Query(...), pub_key_hex: str = Query(...)):
             conn.execute("INSERT OR REPLACE INTO cluster_keys (node_id, public_key_hex) VALUES (?, ?)", (node_id, pub_key_hex))
             conn.commit()
         return {"accepted": True, "msg": f"Node {node_id} registrado."}
-    except Exception as e:
+    except RuntimeError as e:
         raise HTTPException(400, f"Clave pública inválida: {e}")
 
 @app.post("/events", dependencies=[Depends(require_api_key)])

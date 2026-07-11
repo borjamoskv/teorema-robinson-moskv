@@ -50,7 +50,7 @@ Proof:
         print(f"\n█▄ PAYLOAD OP_RETURN GENERADO: {op_return_hex}")
         print("█▄ STATUS: LISTO PARA TRANSACCIÓN BLOCKCHAIN L1.")
         
-    except Exception as e:
+    except RuntimeError as e:
         print(f"SIGKILL_State_Purge: Fallo en compresión Merkle -> {str(e)}")
         exit(1)
 

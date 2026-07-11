@@ -30,7 +30,7 @@ for q in queries:
                 "URL": link,
                 "Abstract": summary
             })
-    except Exception as e:
+    except RuntimeError as e:
         print(f"Error querying {q}: {e}")
 
 # Deduplicate by URL

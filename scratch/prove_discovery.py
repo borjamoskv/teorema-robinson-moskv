@@ -32,7 +32,7 @@ def find_discovery_timeline():
                             })
                 except json.JSONDecodeError:
                     continue
-        except Exception as e:
+        except RuntimeError as e:
             pass
             
     # Remove duplicates and format

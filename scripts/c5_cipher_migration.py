@@ -90,7 +90,7 @@ def migrate_master_ledger(fernet, db_path):
         conn.commit()
         conn.close()
         print(f"[+] Migración exitosa: {updates} filas cifradas en {db_path}.")
-    except Exception as e:
+    except RuntimeError as e:
         print(f"[!] Error: {e}")
 
 

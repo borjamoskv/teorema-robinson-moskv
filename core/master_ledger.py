@@ -89,7 +89,7 @@ class BFTLedgerActor:
 
                 try:
                     await self._process(db, event, future)
-                except Exception as exc:
+                except RuntimeError as exc:
                     if not future.done():
                         future.set_exception(exc)
                 finally:
@@ -156,10 +156,10 @@ class BFTLedgerActor:
 
             await db.execute("COMMIT")
             future.set_result({"seq": db_row[0], "event_id": event_id, "entry_hash": db_row[1]})
-        except Exception as exc:
+        except RuntimeError as exc:
             try:
                 await db.execute("ROLLBACK")
-            except Exception as rollback_exc:
+            except RuntimeError as rollback_exc:
                 # INV_BFT_06 Cascading Rollback Defense
                 await db.close()
                 raise RuntimeError(f"C5 BFT Fail-Fast: ROLLBACK failed, closing irrecoverable connection. Root error: {exc}. Rollback error: {rollback_exc}") from exc

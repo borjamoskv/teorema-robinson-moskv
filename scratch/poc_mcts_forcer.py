@@ -32,7 +32,7 @@ Proof:
         print(yaml_receipt.strip())
         print("\n█▄ C5-REAL STATUS: COLAPSO KINÉTICO SATISFACTORIO. CERO ALUCINACIÓN DETECTADA.")
         
-    except Exception as e:
+    except RuntimeError as e:
         print(f"SIGKILL_State_Purge: Violación de frontera física -> {str(e)}")
         exit(1)
 

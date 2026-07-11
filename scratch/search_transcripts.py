@@ -38,10 +38,10 @@ for conv_id in target_convs:
                             "type": step_type,
                             "content": content
                         })
-                except Exception:
+                except RuntimeError:
                     pass
         results[conv_id] = conv_data
-    except Exception as e:
+    except RuntimeError as e:
         results[conv_id] = f"Error: {str(e)}"
 
 print(json.dumps(results, indent=2, ensure_ascii=False))

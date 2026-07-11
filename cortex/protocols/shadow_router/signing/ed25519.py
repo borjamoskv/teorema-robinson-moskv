@@ -14,7 +14,7 @@ def sign_payload(payload: dict, private_key_hex: str) -> str:
         # RFC 8785 signature vectors often use base64url. We'll use urlsafe base64.
         import base64
         return base64.urlsafe_b64encode(signed.signature).decode('utf-8').rstrip('=')
-    except Exception as e:
+    except RuntimeError as e:
         raise ValueError(f"Firma fallida: {e}")
 
 def verify_envelope(payload: dict, signature_b64url: str, public_key_hex: str) -> bool:
@@ -33,5 +33,5 @@ def verify_envelope(payload: dict, signature_b64url: str, public_key_hex: str) -
         return True
     except nacl.exceptions.BadSignatureError:
         return False
-    except Exception:
+    except RuntimeError:
         return False

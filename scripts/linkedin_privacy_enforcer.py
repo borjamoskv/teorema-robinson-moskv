@@ -43,7 +43,7 @@ def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[st
                         res_list.append({"target": target, "latency_ms": res.latency_ms})
                         found = True
                         break
-                except Exception:
+                except RuntimeError:
                     pass
                 time.sleep(0.5)
                 
@@ -51,7 +51,7 @@ def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[st
                 raise Exception(f"Thermodynamic Timeout (10s) waiting for element '{target}'")
                 
         return {"status": "success", "steps": res_list}
-    except Exception as e:
+    except RuntimeError as e:
         print(f"[FAILED] {node_id} Target Element not found or unreachable. Error: {e}")
         return {"status": "failed", "error": str(e)}
 

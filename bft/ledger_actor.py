@@ -58,7 +58,7 @@ class BFTLedgerActor:
             if not self._task.done():
                 try:
                     await self._queue.join()
-                except Exception:
+                except RuntimeError:
                     pass
                 self._task.cancel()
             try:
@@ -154,7 +154,7 @@ class BFTLedgerActor:
 
                 try:
                     await self._process(db, event, future)
-                except Exception as exc:
+                except RuntimeError as exc:
                     if not future.done():
                         future.set_exception(exc)
                     # If rollback failed, crash the worker loop (fail-fast)
@@ -264,22 +264,22 @@ class BFTLedgerActor:
             # Other constraints (lamport_t, entry_hash) failing will drop here
             try:
                 await db.execute("ROLLBACK")
-            except Exception as rollback_exc:
+            except RuntimeError as rollback_exc:
                 try:
                     await db.close()
-                except Exception:
+                except RuntimeError:
                     pass
                 future.set_exception(exc)
                 raise RuntimeError("Cascading Rollback Defense triggered: connection aborted during IntegrityError rollback") from rollback_exc
             future.set_exception(exc)
-        except Exception as exc:
+        except RuntimeError as exc:
             try:
                 await db.execute("ROLLBACK")
-            except Exception as rollback_exc:
+            except RuntimeError as rollback_exc:
                 # INV_BFT_06 (Cascading Rollback Defense)
                 try:
                     await db.close()
-                except Exception:
+                except RuntimeError:
                     pass
                 future.set_exception(exc)
                 raise RuntimeError("Cascading Rollback Defense triggered: connection aborted") from rollback_exc

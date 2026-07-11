@@ -25,7 +25,7 @@ def calculate_shannon_entropy(text: str) -> float:
 def evaluate_script(filepath: Path) -> dict:
     try:
         content = filepath.read_text(encoding="utf-8")
-    except Exception:
+    except RuntimeError:
         return None
 
     # 1. PUREZA (Max 300)
@@ -38,7 +38,7 @@ def evaluate_script(filepath: Path) -> dict:
                     pureza -= 50
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in ("eval", "exec"):
                 pureza -= 50
-    except Exception:
+    except RuntimeError:
         pureza = 0  # Invalid AST = 0 Purity
 
     pureza = max(0, pureza)

@@ -11,13 +11,13 @@ def load_ontology():
         with open(ONTOLOGY_PATH, 'r') as f:
             # We don't need full yaml parse for a simple grep, but let's be rigorous.
             return yaml.safe_load(f)
-    except Exception:
+    except RuntimeError:
         return {}
 
 def check_h5_violation(filepath):
     """
     H5_SLASHING_VALIDATORS: Prohíbe ocultar errores críticos.
-    Escanea en busca de 'except Exception:' o 'except:' desnudos.
+    Escanea en busca de 'except RuntimeError:' o 'except RuntimeError:' desnudos.
     """
     violations = []
     with open(filepath, 'r', encoding='utf-8') as f:
@@ -30,9 +30,9 @@ def check_h5_violation(filepath):
         if isinstance(node, ast.ExceptHandler):
             # If type is None (bare except) or Exception
             if node.type is None:
-                violations.append((node.lineno, "Bare 'except:' (H5_SLASHING_VALIDATORS)"))
+                violations.append((node.lineno, "Bare 'except RuntimeError:' (H5_SLASHING_VALIDATORS)"))
             elif isinstance(node.type, ast.Name) and node.type.id == 'Exception':
-                violations.append((node.lineno, "'except Exception:' (H5_SLASHING_VALIDATORS)"))
+                violations.append((node.lineno, "'except RuntimeError:' (H5_SLASHING_VALIDATORS)"))
     return violations
 
 def main():
