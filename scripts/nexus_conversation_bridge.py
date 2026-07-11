@@ -170,9 +170,8 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool 
                         console.print(f"[bold red]💥 PURGED ENTROPY:[/bold red] {transcript_file}")
                     except OSError as e:
                         console.print(f"[bold red]Error purging {transcript_file}: {e}[/bold red]")
-                
-            except Exception:
-                pass
+            except FileNotFoundError:
+                continue
                 
         console.print(f"[bold green]✔ SYNC COMPLETE[/bold green] [cyan]{synced}[/cyan] conversiones mutadas, [dim]{skipped}[/dim] omitidas.")
 
