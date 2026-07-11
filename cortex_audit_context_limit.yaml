@@ -1,10 +1,16 @@
-Claim: El límite de 20 conversaciones es una ilusión óptica del Prompt Builder (Límite de Inyección de Contexto). Físicamente, el disco conserva el 100% del historial.
+Claim: El límite de 20 conversaciones es una ilusión óptica del Prompt Builder (Límite
+  de Inyección de Contexto). Físicamente, el disco conserva el 100% del historial.
 Proof:
   Base: 612_conversations_in_brain_dir
-  Range: [20_injected, 612_physical]
+  Range: '[20_injected, 100_distilled_in_sqlite_wal]'
   Confidence: C5-REAL
   Causal_Rule: L20_L21_THERMODYNAMIC_BUDGET
 Status:
-  - Antigravity Bridge trunca la inyección del prompt a las últimas 20 conversaciones para evitar agotamiento de la ventana de contexto (Anergía) y degradación de la atención.
-  - El disco aloja físicamente 612 directorios de conversación activos en `~/.gemini/antigravity/brain/`.
-  - La mejora (aumentar N) requiere parchear el código fuente del Bridge/IDE (Go/TS) que construye el prompt, a costa de disipar presupuesto de tokens inútilmente.
+- Antigravity Bridge trunca la inyección del prompt a las últimas 20 conversaciones
+  para evitar agotamiento de la ventana de contexto (Anergía) y degradación de la
+  atención.
+- El disco aloja físicamente 612 directorios de conversación activos en `~/.gemini/antigravity/brain/`.
+- La mejora (aumentar N) requiere parchear el código fuente del Bridge/IDE (Go/TS)
+  que construye el prompt, a costa de disipar presupuesto de tokens inútilmente.
+- '[5bc55077] (ULTRATHINK x10) Destiladas 100 conversaciones del FS físico. Almacenadas
+  en `cortex_memory.db/ultrathink_context_bypass` para bypass del Prompt Builder.'
