@@ -6,8 +6,10 @@ import os
 import sys
 import json
 import time
+import socket
 import sqlite3
 import argparse
+import threading
 from pathlib import Path
 from datetime import datetime
 
@@ -233,6 +235,49 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
 
     console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
 
+def uds_server_thread():
+    sock_path = "/tmp/nexus_bridge.sock"
+    if os.path.exists(sock_path):
+        os.remove(sock_path)
+    
+    server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    server.bind(sock_path)
+    server.listen(1)
+    
+    console.print(f"[bold green]🔌 UDS IPC Socket[/bold green] Listening on {sock_path}")
+    
+    # SQLite objects created in a thread can only be used in that same thread
+    local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    
+    while True:
+        try:
+            client, _ = server.accept()
+            data = client.recv(4096).decode('utf-8').strip()
+            if data:
+                # C5-REAL Minimal JSON IPC Protocol: {"query": "...", "limit": 10}
+                try:
+                    payload = json.loads(data)
+                    q = payload.get("query", "")
+                    limit = payload.get("limit", 10)
+                    
+                    # Direct query to FTS5 without Rich UI
+                    cur = local_conn.cursor()
+                    cur.execute('''
+                        SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
+                        FROM transcripts_fts 
+                        WHERE transcripts_fts MATCH ? 
+                        ORDER BY rank LIMIT ?
+                    ''', (q, limit))
+                    results = cur.fetchall()
+                    
+                    response = json.dumps({"status": "ok", "results": results})
+                    client.sendall(response.encode('utf-8'))
+                except Exception as e:
+                    client.sendall(json.dumps({"error": str(e)}).encode('utf-8'))
+            client.close()
+        except Exception:
+            pass
+
 def start_daemon(conn: sqlite3.Connection):
     try:
         from watchdog.observers import Observer
@@ -250,6 +295,9 @@ def start_daemon(conn: sqlite3.Connection):
     handler = TranscriptHandler()
     observer.schedule(handler, str(BRAIN_DIR), recursive=True)
     observer.start()
+    
+    # Spawn UDS IPC Thread
+    threading.Thread(target=uds_server_thread, daemon=True).start()
     
     console.print(f"[bold magenta]👁️ NEXUS WATCHER[/bold magenta] Daemon iniciado sobre {BRAIN_DIR}. Presiona Ctrl+C para abortar.")
     try:
