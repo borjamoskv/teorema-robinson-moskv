@@ -1,112 +1,149 @@
 #!$CORTEX_ROOT/.venv/bin/python3
+# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V3 - SQLite FTS5)
+# Ingesta y búsqueda O(1) usando SQLite WAL + FTS5.
+
 import os
 import sys
 import json
+import sqlite3
 import argparse
-import re
 from pathlib import Path
-import concurrent.futures
-from typing import List, Dict, Any
+from datetime import datetime
 
 # Path to all conversation transcripts in the CORTEX environment
 BRAIN_DIR = Path.home() / ".gemini" / "antigravity" / "brain"
+DB_PATH = BRAIN_DIR.parent / "nexus_transcripts.db"
 
-def process_file(transcript_file: Path, query: str, is_regex: bool, context_lines: int) -> List[Dict[str, Any]]:
-    matches = []
-    conversation_id = transcript_file.parts[-4]
+def init_db() -> sqlite3.Connection:
+    conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
+    conn.execute("PRAGMA busy_timeout=5000")
     
-    try:
-        pattern = re.compile(query, re.IGNORECASE) if is_regex else None
-        query_lower = query.lower()
+    # Tabla FTS5 para búsquedas ultrarrápidas
+    conn.execute('''
+        CREATE VIRTUAL TABLE IF NOT EXISTS transcripts_fts USING fts5(
+            conversation_id UNINDEXED,
+            source UNINDEXED,
+            content,
+            timestamp UNINDEXED
+        )
+    ''')
+    
+    # Tabla de metadatos para Delta Sync
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS sync_metadata (
+            conversation_id TEXT PRIMARY KEY,
+            last_modified REAL
+        )
+    ''')
+    return conn
 
-        with open(transcript_file, "r", encoding="utf-8") as f:
-            lines = f.readlines()
+def sync_transcripts(conn: sqlite3.Connection, force: bool = False):
+    print("\x1b[1;36m[SYNC]\x1b[0m Ingestando matriz conversacional en SQLite FTS5...")
+    files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
+    
+    cursor = conn.cursor()
+    synced = 0
+    skipped = 0
+    
+    for transcript_file in files:
+        conv_id = transcript_file.parts[-4]
+        try:
+            mtime = transcript_file.stat().st_mtime
             
-        for i, line in enumerate(lines):
-            if (not is_regex and query_lower not in line.lower()) or (is_regex and not pattern.search(line)):
-                continue
-                
-            data = json.loads(line)
-            content_str = str(data.get("content", ""))
+            if not force:
+                cursor.execute("SELECT last_modified FROM sync_metadata WHERE conversation_id = ?", (conv_id,))
+                row = cursor.fetchone()
+                if row and row[0] >= mtime:
+                    skipped += 1
+                    continue
             
-            if not content_str:
-                continue
-                
-            content_lines = content_str.split('\n')
-            matched_line_indices = []
+            # Borrar datos viejos de esta conversación si existían
+            cursor.execute("DELETE FROM transcripts_fts WHERE conversation_id = ?", (conv_id,))
             
-            for idx, cl in enumerate(content_lines):
-                if (is_regex and pattern.search(cl)) or (not is_regex and query_lower in cl.lower()):
-                    matched_line_indices.append(idx)
-                    
-            if not matched_line_indices:
-                matched_line_indices = [0]
-                
-            first_match = matched_line_indices[0]
-            last_match = matched_line_indices[-1]
+            with open(transcript_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    data = json.loads(line)
+                    content = data.get("content", "")
+                    if content:
+                        source = data.get("source", "UNKNOWN")
+                        # Omitir planner response largo sin sentido para limpiar la base
+                        if len(content) > 100000:
+                            continue
+                        cursor.execute(
+                            "INSERT INTO transcripts_fts (conversation_id, source, content, timestamp) VALUES (?, ?, ?, ?)",
+                            (conv_id, source, str(content), mtime)
+                        )
             
-            start_line = max(0, first_match - context_lines)
-            end_line = min(len(content_lines), last_match + context_lines + 1)
+            cursor.execute(
+                "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
+                (conv_id, mtime)
+            )
+            synced += 1
             
-            context_snippet = '\n'.join(content_lines[start_line:end_line])
+        except Exception:
+            pass
             
-            matches.append({
-                "conversation_id": conversation_id,
-                "source": data.get("source", "UNKNOWN"),
-                "step": data.get("step_index", "N/A"),
-                "snippet": context_snippet
-            })
-    except Exception:
-        pass
-    return matches
+    print(f"\x1b[1;32m[SYNC COMPLETE]\x1b[0m {synced} conversaciones ingeridas, {skipped} omitidas (sin cambios).")
+
+def search_fts(conn: sqlite3.Connection, query: str, limit: int):
+    print(f"\x1b[1;34m[NEXUS FTS5]\x1b[0m Rastreando entropía: '{query}' (Límite: {limit})")
+    
+    cursor = conn.cursor()
+    # Usar sintaxis FTS5 o fallback simple
+    try:
+        cursor.execute('''
+            SELECT conversation_id, source, snippet(transcripts_fts, 2, '\x1b[1;31m', '\x1b[0m', '...', 64)
+            FROM transcripts_fts 
+            WHERE transcripts_fts MATCH ? 
+            ORDER BY rank 
+            LIMIT ?
+        ''', (query, limit))
+        rows = cursor.fetchall()
+    except sqlite3.OperationalError:
+        # Fallback si la query no es un FTS válido (ej. tiene caracteres especiales)
+        safe_query = query.replace('"', '""')
+        cursor.execute('''
+            SELECT conversation_id, source, snippet(transcripts_fts, 2, '\x1b[1;31m', '\x1b[0m', '...', 64)
+            FROM transcripts_fts 
+            WHERE transcripts_fts MATCH '"{safe_query}"'
+            ORDER BY rank 
+            LIMIT ?
+        ''')
+        rows = cursor.fetchall()
+        
+    if not rows:
+        print(f"\n\x1b[1;31m[ANERGÍA]\x1b[0m La entropía '{query}' no existe en ningún bloque de la red.")
+        return
+        
+    for i, (conv_id, source, snip) in enumerate(rows):
+        print(f"\n\x1b[1;32m[MATCH {i+1}]\x1b[0m Conv: {conv_id}")
+        print(f"  Fuente:  {source}")
+        print(f"  Payload: {snip.replace(chr(10), ' ')}")
+        
+    print(f"\n\x1b[1;36m[AUDIT COMPLETE]\x1b[0m Total inyecciones extraídas: {len(rows)}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL)")
-    parser.add_argument("--query", required=True, help="Keyword o Regex a auditar en el historial infinito.")
-    parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico de extracciones.")
-    parser.add_argument("--context", type=int, default=2, help="Líneas de contexto (N) arriba y abajo del match.")
-    parser.add_argument("--regex", action="store_true", help="Procesar query como Expresión Regular.")
-    parser.add_argument("--json", action="store_true", help="Salida en JSON puro para composabilidad de pipelines.")
-    parser.add_argument("--workers", type=int, default=4, help="Número de hilos concurrentes para aniquilación de latencia IO.")
+    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V3)")
+    parser.add_argument("--query", help="Keyword para buscar en FTS5.")
+    parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico.")
+    parser.add_argument("--sync", action="store_true", help="Forzar sincronización delta de logs a SQLite.")
+    parser.add_argument("--force-sync", action="store_true", help="Forzar purga y resincronización total.")
     args = parser.parse_args()
-
-    if not args.json:
-        mode = "Regex" if args.regex else "Keyword"
-        ctx_msg = f" (+ Contexto de {args.context} líneas)" if args.context > 0 else ""
-        print(f"\x1b[1;34m[NEXUS BRIDGE]\x1b[0m Rastreando el multiverso conversacional ({mode}). Entropía: '{args.query}' (Límite: {args.limit}){ctx_msg}")
     
-    if not BRAIN_DIR.exists():
-        if not args.json:
-            print(f"\x1b[1;31m[CRITICAL]\x1b[0m Brain Directory inalcanzable: {BRAIN_DIR}")
-        sys.exit(1)
-
-    files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
-    all_matches = []
+    conn = init_db()
     
-    with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = {executor.submit(process_file, f, args.query, args.regex, args.context): f for f in files}
+    # Auto-sync si la base está vacía
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM sync_metadata")
+    count = cursor.fetchone()[0]
+    
+    if count == 0 or args.sync or args.force_sync:
+        sync_transcripts(conn, force=args.force_sync)
         
-        for future in concurrent.futures.as_completed(futures):
-            res = future.result()
-            if res:
-                all_matches.extend(res)
-                if len(all_matches) >= args.limit:
-                    all_matches = all_matches[:args.limit]
-                    break
-    
-    if args.json:
-        print(json.dumps({"query": args.query, "matches": all_matches}, indent=2))
-        sys.exit(0)
-
-    for i, match in enumerate(all_matches):
-        print(f"\n\x1b[1;32m[MATCH {i+1}]\x1b[0m Conv: {match['conversation_id']} | Step: {match['step']}")
-        print(f"  Fuente:  {match['source']}")
-        print(f"  Contexto ({args.context} líneas):\n\x1b[36m{match['snippet']}\x1b[0m")
-    
-    if not all_matches:
-        print(f"\n\x1b[1;31m[ANERGÍA]\x1b[0m La entropía '{args.query}' no existe en ningún bloque de la red.")
-    else:
-        print(f"\n\x1b[1;36m[AUDIT COMPLETE]\x1b[0m Total inyecciones extraídas: {len(all_matches)}")
+    if args.query:
+        search_fts(conn, args.query, args.limit)
 
 if __name__ == "__main__":
     main()
