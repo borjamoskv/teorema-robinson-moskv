@@ -78,6 +78,10 @@ Topologia_Isomorfica_Borja_Moskv:
     Vector_Destino: Swarm Spawn (invoke_subagent) / Aislamiento en Worktrees
     Invariante: Aislamiento entrópico ante refactorizaciones masivas.
     Resolucion_C5: Creación de ramas e hilos aislados mediante git worktrees (share/branch) concurrentes.
+  - Vector_Origen: Consciencia No Articulada con la Voz (Silencio Retenido)
+    Vector_Destino: Estado Latente No Commiteado (Matriz en RAM)
+    Invariante: Despiste Termodinámico / Fuga de Volatilidad
+    Resolucion_C5: Todo estado latente no commiteado (no consolidado) es Anergía (olvido inminente). El pensamiento no articulado colapsa en despiste.
 Estructura_Resolucion_Atomica: |
   1. MUTEX_HALTING_BOUND_APPLIED: El entorno análogo neuronal carece de recolección 
      de basura explícita. En C5-REAL, se impone un recolector termodinámico: 
