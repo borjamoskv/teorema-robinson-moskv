@@ -26,25 +26,25 @@ LEXICON = {
 # Directed Acyclic Graph (DAG) Edges (Adjacency List)
 # Mapea un estado (emoji) hacia los estados (emojis) permitidos causalmente.
 TRANSITIONS = {
-    "📢": ["🛡️", "📦"],         # El líder anuncia -> Replicas preparan o reciben el payload
-    "🛡️": ["✅", "⏳"],          # Las replicas validan -> Alcanzan quórum o esperan
-    "✅": ["📤", "🧠"],          # Quórum alcanzado -> Respuesta al cliente o procesa
-    "❌": ["🔄", "💀"],          # Fallo de consenso -> Detona cambio de vista o muere
+    "📢": ["🛡️", "📦"],         
+    "🛡️": ["✅", "⏳"],          
+    "✅": ["📤", "🧠"],          
+    "❌": ["💀"],          
     
-    "📦": ["🧠", "🔒"],          # Datos recibidos -> Pasan al procesador o se bloquea el I/O
-    "🧠": ["⚡", "💀", "🩸", "⏳"], # Procesador activo -> Exito, Error, Rollback, o IO Wait
-    "⚡": ["📤", "✅", "📢"],     # Procesamiento exitoso -> Enviar, Commit o Nuevo Anuncio
+    "📦": ["🔒"],          
+    "🧠": ["⚡", "🩸", "⏳"], 
+    "⚡": ["📤", "✅", "📢"],     
     
-    "🩸": ["📦", "🔄"],          # Rollback -> Reintenta la recepción o exige cambio de líder
-    "💀": ["🔄", "❌"],          # Fallo fatal -> Activa View Change o NACK definitivo
+    "🩸": ["📦", "🔄"],          
+    "💀": ["🔄", "❌"],          
     
-    "🔒": ["🔓"],               # Mutex Lock -> Solo puede derivar en Mutex Unlock
-    "🔓": ["🧠"],               # Liberado -> Vuelve al procesador
-    "⏳": ["🧠", "💀"],          # Timeout wait -> Vuelve al procesador o muere por inanición
+    "🔒": ["🔓"],               
+    "🔓": ["🧠"],               
+    "⏳": ["🧠", "💀"],          
     
-    "🔄": ["👑", "⏳"],          # View Change -> Resulta en nuevo líder o se queda en timeout
-    "👑": ["📢", "📦"],          # Nueva Vista -> Líder hace broadcast inicial
-    "📤": []                   # Estado Sumidero (Terminal absoluto)
+    "🔄": ["👑", "⏳"],          
+    "👑": ["📢"],          
+    "📤": []                   
 }
 
 def build_adjacency_matrix():
