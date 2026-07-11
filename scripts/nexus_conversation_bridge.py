@@ -251,10 +251,7 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                     raw_content = raw_content[:2000] + "\n\n... [TRUNCADO TERMODINÁMICO: >2000 chars] ..."
                 
                 # Renderizamos con Markdown para evitar romper los saltos de línea (C5-REAL Isomorphism)
-                try:
-                    renderable = Markdown(raw_content)
-                except Exception:
-                    renderable = Text(raw_content)
+                renderable = Markdown(raw_content)
                 
                 import re
                 # V8: Semantic Taint (URLs and absolute paths extraction)
