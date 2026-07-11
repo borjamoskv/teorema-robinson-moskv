@@ -4,6 +4,7 @@ import re
 import os
 import sys
 import json
+from cryptography.fernet import Fernet
 import babylon60
 from scientific_engine import (
     compute_asymmetric_trust_isomorphism,
@@ -182,8 +183,14 @@ class CortexInferenceEngine:
         cache_cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
         cached = cache_cursor.fetchone()
         if cached:
+            trace_payload_raw = cached["trace_payload"]
+            vault_key = os.environ.get("CORTEX_VAULT_KEY")
+            if vault_key and trace_payload_raw.startswith("C5ENC:"):
+                fernet = Fernet(vault_key.encode("utf-8"))
+                trace_payload_raw = fernet.decrypt(trace_payload_raw[6:].encode("utf-8")).decode("utf-8")
+            
             # Removed Write-on-Read contention (hits = hits + 1) to preserve Thermodynamic Compute.
-            return json.loads(cached["trace_payload"])
+            return json.loads(trace_payload_raw)
             
         scores = self.parse_query(query)
 
@@ -256,6 +263,14 @@ class CortexInferenceEngine:
         if active_mode == "MODE-07-EPISTEMIC-TRUST":
             trace["epistemic_trust_metric"] = trust_metric
 
+        vault_key = os.environ.get("CORTEX_VAULT_KEY")
+        payload_raw = json.dumps(trace, ensure_ascii=False)
+        if vault_key:
+            fernet = Fernet(vault_key.encode("utf-8"))
+            stored_payload = f"C5ENC:{fernet.encrypt(payload_raw.encode('utf-8')).decode('utf-8')}"
+        else:
+            stored_payload = payload_raw
+
         cache_cursor.execute(
             """
             INSERT INTO L3_inference_cache 
@@ -272,7 +287,7 @@ class CortexInferenceEngine:
                 active_mode,
                 json.dumps(trace["retrieved_nodes"], ensure_ascii=False),
                 json.dumps(trace["applied_isomorphisms"], ensure_ascii=False),
-                json.dumps(trace, ensure_ascii=False)
+                stored_payload
             )
         )
         self.cache_db.commit()
