@@ -59,6 +59,17 @@ def init_db() -> sqlite3.Connection:
         )
     ''')
     
+    # V10: MLX-LM Vector Embeddings Hook Schema
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS transcripts_embeddings (
+            conversation_id TEXT,
+            step_index INTEGER,
+            model_name TEXT,
+            embedding BLOB,
+            PRIMARY KEY(conversation_id, step_index, model_name)
+        )
+    ''')
+    
     # Init Telemetry DB
     conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
     conn_tel.execute("PRAGMA journal_mode=WAL")
