@@ -8,10 +8,34 @@ C5_REAL_ENFORCEMENT_MATRIX:
     url: "https://www.linkedin.com/mypreferences/d/settings/notify-network-for-updates"
     target_element: "No"
   P203:
-    description: "Denegación de entrenamiento IA."
+    description: "Denegación de entrenamiento IA y recolección de Microsoft."
     url: "https://www.linkedin.com/mypreferences/d/settings/data-for-ai-models"
     target_element: "Desactivado"
   P204:
-    description: "Aislamiento de grafo de contactos."
+    description: "Aislamiento de grafo de contactos (Zero-Recon)."
     url: "https://www.linkedin.com/mypreferences/d/settings/connections-visibility"
     target_element: "Solo yo"
+  P214:
+    description: "Bloqueo de OSINT por búsqueda de Email."
+    url: "https://www.linkedin.com/mypreferences/d/settings/discoverability-by-email"
+    target_element: "Nadie"
+  P231:
+    description: "Bloqueo de OSINT por búsqueda de Teléfono."
+    url: "https://www.linkedin.com/mypreferences/d/settings/discoverability-by-phone"
+    target_element: "Nadie"
+  P217:
+    description: "Desactivación de latido y estado de conexión."
+    url: "https://www.linkedin.com/mypreferences/d/settings/manage-active-status"
+    target_element: "Nadie"
+  P208:
+    description: "Denegación de uso de datos para publicidad externa."
+    url: "https://www.linkedin.com/mypreferences/d/settings/ads-data-collection"
+    target_element: "Desactivado"
+  P210:
+    description: "Bloqueo de fuga de datos hacia aplicaciones de terceros."
+    url: "https://www.linkedin.com/mypreferences/d/settings/third-party-apps"
+    target_element: "Eliminar"
+  P209:
+    description: "Denegación de indexación en buscadores externos (Google/Bing)."
+    url: "https://www.linkedin.com/public-profile/settings"
+    target_element: "Desactivar"
