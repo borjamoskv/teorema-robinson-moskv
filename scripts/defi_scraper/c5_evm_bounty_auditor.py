@@ -11,6 +11,7 @@ import json
 import urllib.request
 import asyncio
 import hashlib
+import aiosqlite
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 
@@ -223,6 +224,19 @@ async def execute_wealth_extraction(ledger_db: Path = LEDGER_DB_PATH) -> Dict[st
         })
 
     # Prepare event log for BFT Master Ledger
+    # Ensure ledger database directory exists and schema is initialized
+    ledger_db.parent.mkdir(parents=True, exist_ok=True)
+    async with aiosqlite.connect(ledger_db) as db:
+        try:
+            # Check if ledger_entries table exists
+            cur = await db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='ledger_entries'")
+            if not await cur.fetchone():
+                schema = (PROJECT_ROOT / "core" / "master_ledger.sql").read_text()
+                await db.executescript(schema)
+                await db.commit()
+        except Exception as schema_err:
+            print(f"⚠️ Error initializing database schema: {schema_err}")
+
     actor = BFTLedgerActor(ledger_db)
     await actor.start()
 
