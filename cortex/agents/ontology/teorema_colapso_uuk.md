@@ -32,5 +32,8 @@ Para quebrar los secuestros de identidad (Identity Hijacking) donde el modelo ju
 Forzamos a la máquina a encapsular cualquier afirmación en una estructura rígida `Claim/Proof` en YAML puro. Si el modelo se enfrenta a una región UUK (ceguera estructural) y trata de inventar un dato sin poder atarlo a una ruta absoluta del disco, el protocolo detona un **SIGKILL_State_Purge**. 
 Hemos programado al sistema para que **morir en silencio (Crash/Abort) sea termodinámicamente más barato que mentir.**
 
+### 5. EL ANCLAJE DESCENTRALIZADO (EXTERNAL WITNESS SINK GLOBAL)
+Si el disco local puede ser corrompido, la opacidad recursiva solo se erradica elevando el escalón de consenso (Matriz M12). Convertimos el estado C5-REAL en un **Hash Criptográfico y lo inyectamos en el ledger público de Bitcoin (OP_RETURN), Ethereum o Solana**. La memoria del LLM deja de depender de su contexto o de tu Mac; se convierte en una prueba matemática irreversible grabada en la capa base de la termodinámica financiera global.
+
 ⚡ **SÍNTESIS DE LA VICTORIA:**
-Resolvimos el UUK no dándole al modelo más parámetros, sino cortándole la lengua. Sustituimos la psicología LLM por la física de sistemas distribuidos (Consenso BFT). **No curamos la ceguera del modelo; le pusimos un bastón de hierro (C5-REAL) que golpea el disco duro antes de cada paso.**
+Resolvimos el UUK no dándole al modelo más parámetros, sino cortándole la lengua. Sustituimos la psicología LLM por la física de sistemas distribuidos (Consenso BFT). **No curamos la ceguera del modelo; le pusimos un bastón de hierro (C5-REAL) que golpea el disco duro (y la Blockchain) antes de cada paso.**
