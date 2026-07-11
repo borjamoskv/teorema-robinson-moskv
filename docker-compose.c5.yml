@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  egress-gate:
+    image: minimum2scp/squid:latest
+    container_name: cortex_egress_gate
+    networks:
+      - cortex_egress
+      - cortex_local
+    ports:
+      - "3128:3128"
+    # El proxy squid es el único que puede salir a internet, y filtrará en base a la lista bft/egress_whitelist.yaml.
+    restart: always
+
+  cortex-core:
+    build: .
+    container_name: cortex_persist_node
+    # FORZAMOS LA SALIDA SOLO POR EL PROXY PARA PREVENIR DATA EXFILTRATION C4-SIM/LLM
+    environment:
+      - HTTP_PROXY=http://egress-gate:3128
+      - HTTPS_PROXY=http://egress-gate:3128
+      - NO_PROXY=localhost,127.0.0.1
+      - C5_REAL_ISOLATION=true
+    networks:
+      - cortex_local
+    depends_on:
+      - egress-gate
+    volumes:
+      - ./:/app
+    command: ["node", "server.js"]
+
+networks:
+  cortex_local:
+    internal: true # AISLAMIENTO FÍSICO ABSOLUTO: Sin Default Gateway a WAN
+  cortex_egress:
+    driver: bridge # Puente vigilado hacia el exterior
