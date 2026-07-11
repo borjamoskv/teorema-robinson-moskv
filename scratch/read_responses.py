@@ -21,9 +21,9 @@ for conv_id in conv_ids:
             for line in f:
                 try:
                     steps.append(json.loads(line))
-                except Exception:
+                except RuntimeError:
                     pass
-    except Exception:
+    except RuntimeError:
         continue
         
     for i, step in enumerate(steps):

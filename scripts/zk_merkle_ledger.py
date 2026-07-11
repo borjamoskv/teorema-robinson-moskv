@@ -102,7 +102,7 @@ class ZKMerkleLedgerDaemon:
                 # Transducción Síncrona Serializada
                 merkle_root = self._sync_insert(payload_dict, caller_id)
                 future.set_result(merkle_root)
-            except Exception as e:
+            except RuntimeError as e:
                 future.set_exception(e)
             finally:
                 self.write_queue.task_done()

@@ -46,7 +46,7 @@ def fetch_immunefi_radar_programs() -> List[Dict[str, Any]]:
                 return list(data.values())
             elif isinstance(data, list):
                 return data
-    except Exception as e:
+    except RuntimeError as e:
         # Fallback to local mock cache representing active EVM Uniswap v4 targets
         pass
 
@@ -234,7 +234,7 @@ async def execute_wealth_extraction(ledger_db: Path = LEDGER_DB_PATH) -> Dict[st
                 schema = (PROJECT_ROOT / "core" / "master_ledger.sql").read_text()
                 await db.executescript(schema)
                 await db.commit()
-        except Exception as schema_err:
+        except RuntimeError as schema_err:
             print(f"⚠️ Error initializing database schema: {schema_err}")
 
     actor = BFTLedgerActor(ledger_db)

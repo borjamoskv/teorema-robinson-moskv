@@ -58,7 +58,7 @@ async def db_writer_worker(db_queue: asyncio.Queue):
             ''', record)
         except sqlite3.IntegrityError:
             print("⚠️ [LEDGER] Hash duplicado evadido (Taint Check).")
-        except Exception as e:
+        except RuntimeError as e:
             print(f"❌ [CRASH CAUSAL] Falla en escritura Master Ledger: {e}")
         finally:
             db_queue.task_done()

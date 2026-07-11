@@ -17,7 +17,7 @@ async def worker(accessor: OSINTOntologyAccessor, worker_id: int) -> int:
     try:
         res = await accessor.get_primitives_by_domain("SOCINT")
         return len(res)
-    except Exception as e:
+    except RuntimeError as e:
         return 0
 
 async def stress_test() -> None:

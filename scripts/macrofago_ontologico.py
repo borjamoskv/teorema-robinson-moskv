@@ -32,7 +32,7 @@ def vacuum_db():
             conn.commit()
             conn.close()
             print("⚡ DB Optimizada. Anergía purgada.")
-        except Exception as e:
+        except RuntimeError as e:
             print(f"💀 Fallo en optimización: {e}")
     else:
         print(f"👁️ Base de datos {DB_PATH} no encontrada. Saltando VACUUM.")
@@ -64,7 +64,7 @@ def sweep_directory(directory: Path):
                 entropy = get_ast_entropy(content)
                 if loc > 10 and entropy < 4.0:  # Arbitrary threshold for anergy detection
                     anergic_files.append((path, entropy))
-        except Exception:
+        except RuntimeError:
             pass
 
     return total_loc, anergic_files

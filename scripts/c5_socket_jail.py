@@ -13,7 +13,7 @@ def load_whitelist():
         with open(whitelist_path, "r") as f:
             data = yaml.safe_load(f)
             return data.get("blocked_domains", []), data.get("allowed_domains", [])
-    except Exception:
+    except RuntimeError:
         # Fall-safe: si no hay archivo, al menos bloqueamos lo duro.
         return ["api.anthropic.com", "api.openai.com"], []
 

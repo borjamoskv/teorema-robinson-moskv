@@ -14,7 +14,7 @@ def main():
     # Extraer trailer del último commit
     try:
         commit_msg = subprocess.check_output(["git", "log", "-1", "--pretty=%B"], text=True)
-    except Exception as e:
+    except RuntimeError as e:
         print(f"[!] Error reading git log: {e}")
         return 1
 
@@ -50,7 +50,7 @@ def main():
         print(f"[*] Ledger-Head {git_head} verified successfully against DB.")
         return 0
         
-    except Exception as e:
+    except RuntimeError as e:
         print(f"[!] Error verifying DB: {e}")
         return 1
 

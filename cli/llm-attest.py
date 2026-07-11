@@ -34,7 +34,7 @@ def verify_ed25519(public_key_b64: str, signature_b64: str, message: bytes) -> b
         return True
     except BadSignatureError:
         return False
-    except Exception as e:
+    except RuntimeError as e:
         print(f"Signature decoding error: {e}")
         return False
 
