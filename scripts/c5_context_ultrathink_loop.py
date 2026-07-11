@@ -29,34 +29,33 @@ print("⚡ Iniciando 10 CICLOS DE ULTRATHINK sobre Límite de Contexto...")
 brain_folders = [f for f in glob.glob(os.path.join(brain_dir, "*")) if os.path.isdir(f)]
 brain_folders.sort(key=lambda x: os.path.getmtime(x), reverse=True)
 
-cycles = 10
+cycles = 1
 processed = 0
 
-for i in range(cycles):
-    # Procesar batch para forzar compresión
-    subset = brain_folders[i*10 : (i+1)*10]
-    for folder in subset:
-        conv_id = os.path.basename(folder)
-        # Proxy de entropía: Tamaño físico
-        size = 0
-        for root, dirs, files in os.walk(folder):
-            for file in files:
-                filepath = os.path.join(root, file)
-                if not os.path.islink(filepath):
-                    size += os.path.getsize(filepath)
-        
-        entropy_kb = size / 1024.0
-        
-        # Firma Taint Causal (INV_BFT_03)
-        timestamp_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-        cortex_taint = f"taint:MOSKV-1-APEX:{conv_id}:{timestamp_iso}"
-        
-        # Mutación atómica
-        conn.execute(
-            "INSERT OR REPLACE INTO ultrathink_context_bypass (conversation_id, cycle, entropy_kb, cortex_taint) VALUES (?, ?, ?, ?)",
-            (conv_id, i+1, entropy_kb, cortex_taint)
-        )
-        processed += 1
+print(f"⚡ Iniciando ULTRATHINK MASS SYNC: {len(brain_folders)} conversaciones...")
+
+for folder in brain_folders:
+    conv_id = os.path.basename(folder)
+    # Proxy de entropía: Tamaño físico
+    size = 0
+    for root, dirs, files in os.walk(folder):
+        for file in files:
+            filepath = os.path.join(root, file)
+            if not os.path.islink(filepath):
+                size += os.path.getsize(filepath)
+    
+    entropy_kb = size / 1024.0
+    
+    # Firma Taint Causal (INV_BFT_03)
+    timestamp_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    cortex_taint = f"taint:MOSKV-1-APEX:{conv_id}:{timestamp_iso}"
+    
+    # Mutación atómica
+    conn.execute(
+        "INSERT OR REPLACE INTO ultrathink_context_bypass (conversation_id, cycle, entropy_kb, cortex_taint) VALUES (?, ?, ?, ?)",
+        (conv_id, 1, entropy_kb, cortex_taint)
+    )
+    processed += 1
 
 # Mutación del YAML de Auditoría
 with open(yaml_path, 'r', encoding='utf-8') as f:
