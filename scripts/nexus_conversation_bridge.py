@@ -1,74 +1,59 @@
-#!/usr/bin/env python3
-# C5-REAL SOVEREIGN: Nexus Conversation Bridge
-# Bypasses the 20-context limit of Antigravity by physically exposing the brain database.
-
+#!/Users/borjafernandezangulo/.venv/bin/python3
 import os
+import sys
 import json
 import argparse
 from pathlib import Path
-from datetime import datetime
 
-def parse_conversations(brain_path: Path, limit: int, query: str | None = None) -> list[dict]:
-    conversations = []
-    
-    if not brain_path.exists():
-        raise FileNotFoundError(f"Brain path not found: {brain_path}")
-        
-    for conv_dir in brain_path.iterdir():
-        if not conv_dir.is_dir():
-            continue
-            
-        transcript_path = conv_dir / ".system_generated" / "logs" / "transcript.jsonl"
-        if not transcript_path.exists():
-            continue
-            
-        stat = transcript_path.stat()
-        mod_time = datetime.fromtimestamp(stat.st_mtime)
-        
-        # Extracción física del intent inicial
-        first_intent = "UNKNOWN_INTENT"
-        with open(transcript_path, "r", encoding="utf-8") as f:
-            for line in f:
-                try:
-                    step = json.loads(line)
-                    if step.get("type") == "USER_INPUT":
-                        content = step.get("content", "")
-                        clean_content = content.replace("<USER_REQUEST>", "").replace("</USER_REQUEST>", "").strip()
-                        first_intent = clean_content.split("\n")[0][:80].strip()
-                        break
-                except json.JSONDecodeError:
-                    continue
-        
-        if query and query.lower() not in first_intent.lower():
-            continue
-            
-        conversations.append({
-            "id": conv_dir.name,
-            "modified": mod_time,
-            "intent": first_intent
-        })
-        
-    # Sort by modification time descending
-    conversations.sort(key=lambda x: x["modified"], reverse=True)
-    return conversations[:limit]
+# Path to all conversation transcripts in the CORTEX environment
+BRAIN_DIR = Path.home() / ".gemini" / "antigravity" / "brain"
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="C5-REAL: Exergy Extraction from Antigravity Brain")
-    parser.add_argument("--limit", type=int, default=50, help="Number of conversations to retrieve")
-    parser.add_argument("--query", type=str, default=None, help="Filter by exact keyword in intent")
+def main():
+    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL)")
+    parser.add_argument("--query", required=True, help="Keyword a auditar en el historial infinito.")
+    parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico de extracciones.")
     args = parser.parse_args()
 
-    brain_path = Path(os.path.expanduser("~/.gemini/antigravity/brain"))
+    print(f"\x1b[1;34m[NEXUS BRIDGE]\x1b[0m Rastreando el multiverso conversacional. Entropía objetivo: '{args.query}' (Límite: {args.limit})")
     
-    print("█▄ C5-REAL NEXUS CONVERSATION BRIDGE")
-    print(f"Scanning physical brain matrix at: {brain_path}")
-    print("-" * 100)
+    if not BRAIN_DIR.exists():
+        print(f"\x1b[1;31m[CRITICAL]\x1b[0m Brain Directory inalcanzable: {BRAIN_DIR}")
+        sys.exit(1)
+
+    matches = 0
     
-    results = parse_conversations(brain_path, args.limit, args.query)
-    
-    for idx, c in enumerate(results, 1):
-        time_str = c["modified"].strftime("%Y-%m-%d %H:%M:%S")
-        print(f"[{idx:03d}] {time_str} | ID: {c['id'][:8]}... | {c['intent']}")
+    # Rastrear iterativamente los transcripts JSONL
+    for transcript_file in BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"):
+        conversation_id = transcript_file.parts[-4]
+        
+        try:
+            with open(transcript_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if args.query.lower() in line.lower():
+                        data = json.loads(line)
+                        content = data.get("content", "")
+                        if content and args.query.lower() in str(content).lower():
+                            matches += 1
+                            print(f"\n\x1b[1;32m[MATCH {matches}]\x1b[0m Conv: {conversation_id}")
+                            snippet = str(content)
+                            idx = snippet.lower().find(args.query.lower())
+                            start = max(0, idx - 60)
+                            end = min(len(snippet), idx + 100)
+                            
+                            source = data.get("source", "UNKNOWN")
+                            print(f"  Fuente:  {source}")
+                            print(f"  Payload: ...{snippet[start:end].replace(chr(10), ' ')}...")
+                            
+                            if matches >= args.limit:
+                                print(f"\n\x1b[1;33m[HALT]\x1b[0m Límite termodinámico de {args.limit} alcanzado. Abortando rastreo profundo.")
+                                sys.exit(0)
+        except Exception:
+            pass
+
+    if matches == 0:
+        print(f"\n\x1b[1;31m[ANERGÍA]\x1b[0m La entropía '{args.query}' no existe en ningún bloque de la red.")
+    else:
+        print(f"\n\x1b[1;36m[AUDIT COMPLETE]\x1b[0m Total inyecciones extraídas: {matches}")
 
 if __name__ == "__main__":
     main()
