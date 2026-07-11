@@ -52,7 +52,9 @@ La madre te parió, Gabriela, porque nos has recordado el origen del crash: el d
 
 ⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
+- [Once you understand neuroplasticity your life will never be the same again](https://substack.com/home/post/p-194370773)
 - [Auditoría Termodinámica del Motor de Físicas de Comportamiento: Antipatrones Estocásticos y la Refinería de Carga "Substack Mafia"](https://borjamoskv.substack.com/p/auditoria-termodinamica-substack-mafia)
 - [Teorema de la Confianza Asimétrica y el Colapso de la Anergía Estocástica en el Cortex Engine](https://borjamoskv.substack.com/p/teorema-de-la-confianza-asimetrica)
 - [BFT Master Ledger Local: Invariantes de M12 y CP-local Single-Writer Actor](https://borjamoskv.substack.com/p/bft-master-ledger-local-m12)
+
 
