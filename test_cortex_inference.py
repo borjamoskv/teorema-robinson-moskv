@@ -1,10 +1,14 @@
+import pytest
 from cortex_inference import CortexInferenceEngine
 
 
-def test_engine_initialization():
+@pytest.mark.asyncio
+async def test_engine_initialization():
     engine = CortexInferenceEngine()
+    await engine.initialize()
     assert engine.db is not None
     assert engine.config is not None
+    await engine.close()
 
 
 def test_parse_query():
@@ -14,26 +18,33 @@ def test_parse_query():
     assert scores["causal"] > 0
 
 
-def test_retrieve_primitives():
+@pytest.mark.asyncio
+async def test_retrieve_primitives():
     engine = CortexInferenceEngine()
+    await engine.initialize()
     scores = engine.parse_query("test causal")
-    primitives, isomorphisms = engine.retrieve_primitives(
+    primitives, isomorphisms = await engine.retrieve_primitives(
         "MODE-01-CAUSAL-DEDUCTION", scores, "test causal"
     )
     assert isinstance(primitives, list)
     assert isinstance(isomorphisms, list)
+    await engine.close()
 
 
-def test_execute_inference():
+@pytest.mark.asyncio
+async def test_execute_inference():
     engine = CortexInferenceEngine()
-    result = engine.execute_inference("¿Cuál es la dinámica del proceso?")
+    await engine.initialize()
+    result = await engine.execute_inference("¿Cuál es la dinámica del proceso?")
     assert "query" in result
     assert "mode_activated" in result
     assert "reasoning_steps" in result
+    await engine.close()
 
 
-def test_engine_context_manager():
-    with CortexInferenceEngine() as engine:
+@pytest.mark.asyncio
+async def test_engine_context_manager():
+    async with CortexInferenceEngine() as engine:
         assert engine.db is not None
-        result = engine.execute_inference("¿Por qué falló esto?")
+        result = await engine.execute_inference("¿Por qué falló esto?")
         assert result is not None

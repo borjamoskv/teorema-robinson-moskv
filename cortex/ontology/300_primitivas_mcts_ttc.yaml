@@ -1,7 +1,7 @@
 metadata:
   version: 5.0.0
   ontology: MCTS_TEST_TIME_COMPUTE_C5_REAL
-  timestamp: 1783812330
+  timestamp: 1783812677
   strict_rule: '[L35] REPORTE DE COLAPSO ULTRATHINK OBLIGATORIO'
   master_ledger: mcts_ttc_matrix.db (WAL Enforced)
 primitives:
