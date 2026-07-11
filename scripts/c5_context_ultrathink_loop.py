@@ -61,10 +61,19 @@ for folder in brain_folders:
     transcript_path = os.path.join(folder, ".system_generated", "logs", "transcript.jsonl")
     if os.path.exists(transcript_path):
         try:
-            # Leer las últimas 5 líneas para capturar el último estado/colapso de la conversación
+            import json
+            # Parseo termodinámico: Extraer solo el último output real del modelo (Reducción de Anergía)
             with open(transcript_path, 'r', encoding='utf-8') as tf:
-                lines = tf.readlines()[-10:]
-                semantic_payload = "".join(lines)
+                lines = tf.readlines()
+                for line in reversed(lines):
+                    if not line.strip(): continue
+                    try:
+                        step = json.loads(line)
+                        if step.get("source") == "MODEL" and step.get("content"):
+                            semantic_payload = step["content"].strip()
+                            break
+                    except json.JSONDecodeError:
+                        continue
         except Exception:
             pass
 

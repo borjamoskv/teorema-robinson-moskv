@@ -2,7 +2,7 @@ Claim: El límite de 20 conversaciones es una ilusión óptica del Prompt Builde
   de Inyección de Contexto). Físicamente, el disco conserva el 100% del historial.
 Proof:
   Base: 612_conversations_in_brain_dir
-  Range: '[20_injected, 614_distilled_in_sqlite_wal]'
+  Range: '[20_injected, 615_distilled_in_sqlite_wal]'
   Confidence: C5-REAL
   Causal_Rule: L20_L21_THERMODYNAMIC_BUDGET
 Status:
@@ -17,4 +17,6 @@ Status:
 - '[106176f9] (ULTRATHINK x10) Destiladas 614 conversaciones del FS físico. Almacenadas
   en `cortex_memory.db/ultrathink_context_bypass` para bypass del Prompt Builder.'
 - '[cbef8504] (ULTRATHINK x10) Destiladas 614 conversaciones del FS físico. Almacenadas
+  en `cortex_memory.db/ultrathink_context_bypass` para bypass del Prompt Builder.'
+- '[3ae250fc] (ULTRATHINK x10) Destiladas 615 conversaciones del FS físico. Almacenadas
   en `cortex_memory.db/ultrathink_context_bypass` para bypass del Prompt Builder.'
