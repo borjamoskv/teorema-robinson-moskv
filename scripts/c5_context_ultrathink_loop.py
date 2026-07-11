@@ -24,6 +24,15 @@ CREATE TABLE IF NOT EXISTS ultrathink_context_bypass (
 )
 """)
 
+# Crear índice FTS5 para memoria semántica (El "Mas")
+conn.execute("""
+CREATE VIRTUAL TABLE IF NOT EXISTS ultrathink_semantic_index USING fts5(
+    conversation_id,
+    semantic_payload,
+    cortex_taint
+)
+""")
+
 print("⚡ Iniciando 10 CICLOS DE ULTRATHINK sobre Límite de Contexto...")
 
 brain_folders = [f for f in glob.glob(os.path.join(brain_dir, "*")) if os.path.isdir(f)]
@@ -32,18 +41,33 @@ brain_folders.sort(key=lambda x: os.path.getmtime(x), reverse=True)
 cycles = 1
 processed = 0
 
-print(f"⚡ Iniciando ULTRATHINK MASS SYNC: {len(brain_folders)} conversaciones...")
+print(f"⚡ Iniciando ULTRATHINK MASS SYNC: Semantic FTS5 Extraction...")
 
 for folder in brain_folders:
     conv_id = os.path.basename(folder)
+    
     # Proxy de entropía: Tamaño físico
     size = 0
+    semantic_payload = ""
+    
+    # Extraer tamaño físico total
     for root, dirs, files in os.walk(folder):
         for file in files:
             filepath = os.path.join(root, file)
             if not os.path.islink(filepath):
                 size += os.path.getsize(filepath)
     
+    # Intentar leer el transcript.jsonl
+    transcript_path = os.path.join(folder, ".system_generated", "logs", "transcript.jsonl")
+    if os.path.exists(transcript_path):
+        try:
+            # Leer las últimas 5 líneas para capturar el último estado/colapso de la conversación
+            with open(transcript_path, 'r', encoding='utf-8') as tf:
+                lines = tf.readlines()[-10:]
+                semantic_payload = "".join(lines)
+        except Exception:
+            pass
+
     entropy_kb = size / 1024.0
     
     # Firma Taint Causal (INV_BFT_03)
@@ -55,6 +79,14 @@ for folder in brain_folders:
         "INSERT OR REPLACE INTO ultrathink_context_bypass (conversation_id, cycle, entropy_kb, cortex_taint) VALUES (?, ?, ?, ?)",
         (conv_id, 1, entropy_kb, cortex_taint)
     )
+    
+    # Inserción FTS5
+    if semantic_payload:
+        conn.execute(
+            "INSERT INTO ultrathink_semantic_index (conversation_id, semantic_payload, cortex_taint) VALUES (?, ?, ?)",
+            (conv_id, semantic_payload, cortex_taint)
+        )
+        
     processed += 1
 
 # Mutación del YAML de Auditoría
