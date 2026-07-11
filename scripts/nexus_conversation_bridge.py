@@ -288,19 +288,28 @@ def uds_server_thread():
     
     # SQLite objects created in a thread can only be used in that same thread
     local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    local_conn.execute("PRAGMA busy_timeout=5000")
+    
     
     while True:
         client, _ = server.accept()
+        client.settimeout(2.0) # K1: Fail-Fast contra asimetría de red (Local Slowloris)
+        
         # C5-REAL Buffer seguro (Evitando TCP fragmentation flaws)
         data = b""
-        while True:
-            chunk = client.recv(4096)
-            if not chunk:
-                break
-            data += chunk
-            if b'\n' in chunk or len(chunk) < 4096:
-                break
-                
+        try:
+            while True:
+                chunk = client.recv(4096)
+                if not chunk:
+                    break
+                data += chunk
+                if b'\n' in chunk or len(chunk) < 4096:
+                    break
+        except socket.timeout:
+            client.sendall(json.dumps({"error": "SAGA_ABORT: IPC Read Timeout (Anergía Evadida)"}).encode('utf-8'))
+            client.close()
+            continue
+            
         payload_str = data.decode('utf-8').strip()
         if payload_str:
             try:
