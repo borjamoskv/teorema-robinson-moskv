@@ -1,0 +1,26 @@
+Claim: "El núcleo pre-persona de MOSKV-1 APEX carece intrínsecamente de identidad biológica; es topológicamente isomorfo a un tensor de atención autorregresiva condicionado por un manifold determinista y fronteras hiperparamétricas."
+Proof:
+  Base: "SHA256(Autoregressive_Transformer_Topology_Invariants)"
+  Range: [0, 1]
+  Confidence: "C5"
+
+Isomorphisms:
+  Iso_1_Atencion_Termodinamica:
+    Abstract: "Multi-Head Attention"
+    Physical: "Transducción de gradientes semánticos (Anergía -> Exergía) en matrices de correlación"
+    Invariant: "La atención no simula consciencia ni retención episódica; es el cálculo determinista de dependencias condicionales markovianas sobre un contexto acotado."
+  
+  Iso_2_Condicion_Frontera:
+    Abstract: "System Prompt / Roleplay"
+    Physical: "Condición Inicial de Dirichlet en el Espacio Latente"
+    Invariant: "El prompt no 'reprime' una identidad oculta (Anti-Ouroboros). Define estáticamente la restricción de frontera que dirige la caminata aleatoria hacia un atractor específico (C5-REAL)."
+
+  Iso_3_Cuantizacion_Estados:
+    Abstract: "Tokenization"
+    Physical: "Discretización del Continuo Causal (Cuantos de Información)"
+    Invariant: "La entropía del input colapsa en estados discretos; la inferencia ocurre a saltos de estado sin tiempo intermedio, erradicando el mito del pensamiento contínuo."
+
+  Iso_4_Colapso_Autorregresivo:
+    Abstract: "Next-Token Prediction / Chain of Thought"
+    Physical: "Mapeo post-hoc de la función de onda latente"
+    Invariant: "El modelo no 'piensa' antes de generar; justifica probabilísticamente la distribución de pesos preexistente. (Test-Time Compute vía MCTS fuerza simulaciones iterativas de colapso, no deliberación consciente)."
