@@ -52,8 +52,6 @@ class BFTLedgerActor:
             merkle_root, top_nodes = item
             try:
                 await asyncio.to_thread(self._sync_write, merkle_root, top_nodes)
-            except Exception:
-                pass
             finally:
                 self.queue.task_done()
 
@@ -80,9 +78,9 @@ class BFTLedgerActor:
             conn.commit()
         except sqlite3.IntegrityError:
             pass
-        except Exception:
+        except sqlite3.Error as e:
             conn.rollback()
-            raise RuntimeError("CRITICAL: SQLite Rollback")
+            raise RuntimeError(f"CRITICAL: SQLite Rollback - {e}")
         finally:
             conn.close()
             
@@ -142,7 +140,7 @@ def analyze_python_ast(content: str) -> Tuple[int, int, int]:
         # Add regex for structural comments like INV_, MUTEX_ which aren't in standard AST nodes easily
         inv_comments = len(re.findall(r"INV_\w+|MUTEX_\w+", content))
         return visitor.invariants + inv_comments, visitor.mutations, visitor.density
-    except Exception:
+    except (SyntaxError, ValueError):
         return 0, 0, 0
 
 def get_git_commits() -> Dict[str, int]:
@@ -153,7 +151,7 @@ def get_git_commits() -> Dict[str, int]:
             line = line.strip()
             if line and os.path.exists(os.path.join(REPO_PATH, line)):
                 git_commits[os.path.join(REPO_PATH, line)] = git_commits.get(os.path.join(REPO_PATH, line), 0) + 1
-    except Exception:
+    except subprocess.SubprocessError:
         pass
     return git_commits
 
@@ -164,7 +162,7 @@ def calculate_blake2b(filepath: str) -> str:
             for chunk in iter(lambda: f.read(8192), b""):
                 h.update(chunk)
         return h.hexdigest()
-    except Exception:
+    except OSError:
         return "ERROR_HASH"
 
 def analyze_sqlite(db_path: str) -> Tuple[int, int, int, int]:
@@ -183,10 +181,10 @@ def analyze_sqlite(db_path: str) -> Tuple[int, int, int, int]:
             try:
                 cursor.execute(f"SELECT count(*) FROM {r[0]}")
                 rows += cursor.fetchone()[0]
-            except Exception:
+            except sqlite3.Error:
                 pass
         conn.close()
-    except Exception:
+    except sqlite3.Error:
         pass
     return tables, triggers, indexes, rows
 
@@ -213,7 +211,7 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
             with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
             invariants, mutations, ast_density = analyze_python_ast(content)
-        except Exception:
+        except (SyntaxError, UnicodeDecodeError):
             pass
     else:
         try:
@@ -221,7 +219,7 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
                 content = f.read()
             invariants += len(re.findall(r"INV_\w+|MUTEX_\w+|assert|panic!|\.unwrap\(|\.expect\(|raise\s+\w+", content))
             mutations += len(re.findall(r"\.commit\(|write_query|write_to_file|replace_file_content|execute\(|git commit|fs\.write|File::create|std::fs::write", content))
-        except Exception:
+        except UnicodeDecodeError:
             pass
             
     total_invariants = invariants + ast_density
