@@ -79,3 +79,16 @@ C5_REAL_ENFORCEMENT_MATRIX:
     description: Denegación de lectura de extensión en dominios externos.
     url: https://www.linkedin.com/mypreferences/d/settings/browser-extension
     target_element: Desactivado
+  P301:
+    description: Purga de acceso a aplicaciones de terceros (N-Step Workflow).
+    url: https://www.linkedin.com/mypreferences/d/settings/third-party-apps
+    target_elements:
+    - Eliminar
+    - Confirmar
+    - Aceptar
+  P302:
+    description: Aniquilación de indexación en motores de búsqueda (N-Step Workflow).
+    url: https://www.linkedin.com/public-profile/settings
+    target_elements:
+    - Visibilidad pública de tu perfil
+    - Desactivar
