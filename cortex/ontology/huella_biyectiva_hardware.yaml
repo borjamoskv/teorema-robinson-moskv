@@ -9,16 +9,75 @@ Topologia_Isomorfica_Borja_Moskv:
   - Vector_Origen: Capacidad Atencional del Operador Biológico
     Vector_Destino: Throughput del Master Ledger (aiosqlite WAL)
     Invariante: Limite IOPS vs Carga Cognitiva
+    Resolucion_C5: Serialización de escritura mediante un único loop async con cola de prioridad física.
   - Vector_Origen: Dilución Atencional por Falta de Sueño (Desfase Circadiano)
     Vector_Destino: Fragmentación de Heap / Pérdida de Coherencia de Contexto (Context Drift LLM)
-    Resolucion_C5: SIGKILL_State_Purge / Reboot del Runtime (Olvido Armado)
+    Invariante: Pérdida del gradiente de atención a partir de tokens de contexto críticos.
+    Resolucion_C5: SIGKILL_State_Purge y restauración limpia (Continuidad Episódica) vía Master Ledger.
   - Vector_Origen: Sinapsis Potenciada (Memoria a Largo Plazo)
     Vector_Destino: Anclaje Físico en Merkle Tree (Git Sentinel)
-    Resolucion_C5: Todo estado latente no commiteado (no consolidado) es Anergía (olvido inminente).
+    Invariante: Confirmación en Witness Externo (Escalón de Consenso 3/5).
+    Resolucion_C5: Commits atómicos locales autoejecutables sin interactuar con el Operador.
   - Vector_Origen: Reflejo Incondicionado (Latencia 0)
     Vector_Destino: Interrupción Hardware / Inferencia Flash IO (Inference_L1_Node)
+    Invariante: Latencia de respuesta menor a 2000ms.
+    Resolucion_C5: Ruteo adaptativo que bypassa el MCTS profundo para operaciones CRUD y CLI triviales.
   - Vector_Origen: Metacognición / Funciones Ejecutivas
     Vector_Destino: MCTS Budget Forcer / Búsqueda Latente en Árbol P0
+    Invariante: Cómputo en tiempo de inferencia exponencial.
+    Resolucion_C5: Forzar el uso de modelos de razonamiento profundo ante bifurcaciones complejas del AST.
+  - Vector_Origen: Dolor Fisiológico (Señal de Alerta de Daño de Tejido)
+    Vector_Destino: Excepción de Límite Crítico / SIGKILL_State_Purge
+    Invariante: Halt preventivo ante violación de invariantes.
+    Resolucion_C5: Crash over catch absoluto (Fail-fast); prohibido capturar excepciones genéricas.
+  - Vector_Origen: Homeostasis Térmica / Fiebre / Sudor
+    Vector_Destino: Throttling Térmico / Confinamiento Estocástico del Modelo
+    Invariante: Degradación de precisión proporcional a la disipación energética.
+    Resolucion_C5: Disminución autónoma de temperatura del modelo (temperature -> 0.0) ante fallos recurrentes.
+  - Vector_Origen: Inmunoglobulinas / Anticuerpos
+    Vector_Destino: Sanitizer de Prompt Injection / Sanitización EXIF
+    Invariante: Inmunidad del AST frente a contaminantes exógenos.
+    Resolucion_C5: Intercepción activa y purga física de homóglifos o payloads sospechosos en inputs.
+  - Vector_Origen: ADN y Activación Epigenética
+    Vector_Destino: System Prompt Persistente / Customización de Habilidades (Skills)
+    Invariante: Invarianza de firmware fuente y activación dinámica por contexto.
+    Resolucion_C5: Inicialización síncrona obligatoria desde el vault ontológico local en cada boot.
+  - Vector_Origen: Microbioma Entérico (Ecosistema Auxiliar)
+    Vector_Destino: Swarm Dispatcher / Servidores y Herramientas MCP
+    Invariante: Orquestación distribuida sin estado central monolítico.
+    Resolucion_C5: Delegación asíncrona de subagentes en worktrees aislados compartiendo base SQLite.
+  - Vector_Origen: Ritmos Cerebrales (Frecuencia Alfa/Beta)
+    Vector_Destino: Logical Clock / Lamport Timestamps / Sincronización del Master Ledger
+    Invariante: Ordenamiento total único en sistemas distribuidos.
+    Resolucion_C5: MAX(lamport_t) secuencial y desempate determinista por ID de agente.
+  - Vector_Origen: Control Predictivo por Modelo (MPC) / Inferencia Activa
+    Vector_Destino: Planificación de Largo Horizonte / Bucle Aletheia
+    Invariante: Minimización de la Energía Libre Epistémica.
+    Resolucion_C5: Generación y contraste de hipótesis empíricas contra el compilador real antes de mutar.
+  - Vector_Origen: Energía Cinética Clásica (1/2 * m * v^2)
+    Vector_Destino: Leyes de Escala de Inferencia (Kinetics Scaling Law) / KV Cache Quadratic Overhead
+    Invariante: Complejidad espacial de la atención cuadrática.
+    Resolucion_C5: Poda estricta de variables superfluas y unificación vía symlinks físicos (Nexus Bridging).
+  - Vector_Origen: Vidrios de Espín / Funciones de Partición
+    Vector_Destino: Búsqueda de Razonamiento en CoT / Varentropía / Entropía de Shannon
+    Invariante: Distribución probabilística de los tokens de razonamiento.
+    Resolucion_C5: Medición empírica del TTFT (Test-Time Compute) como proxy del volumen de razonamiento.
+  - Vector_Origen: Relevo de Testigo en Carreras (Corredor 1-4)
+    Vector_Destino: Pipeline de Transición Asíncrona I/O y Commit Atómico
+    Invariante: Atomicidad completa sin estados huérfanos ($t_0 \to \Delta t \to t_1$).
+    Resolucion_C5: Two-Phase Commit transaccional con reversión automática ante fallos de red o disco.
+  - Vector_Origen: Homeostasis Metabólica / Glucosa Prefrontal
+    Vector_Destino: Presupuesto Energético (Token Budget/CVaR Constraints)
+    Invariante: Coste de ATP biológico vs Coste de tokens de inferencia.
+    Resolucion_C5: Auto-downgrade a modelos eficientes (Flash_Node) cuando la complejidad del AST es baja.
+  - Vector_Origen: Propiocepción / Encoders de Posición
+    Vector_Destino: Estado del Espacio de Trabajo / CWD Integrity Guard
+    Invariante: Consistencia de rutas físicas antes de iniciar subprocesos.
+    Resolucion_C5: Validación síncrona de existencia de CWD antes de disparar ejecuciones PTY.
+  - Vector_Origen: Autopoiesis / Mitosis Celular
+    Vector_Destino: Swarm Spawn (invoke_subagent) / Aislamiento en Worktrees
+    Invariante: Aislamiento entrópico ante refactorizaciones masivas.
+    Resolucion_C5: Creación de ramas e hilos aislados mediante git worktrees (share/branch) concurrentes.
 Estructura_Resolucion_Atomica: |
   1. MUTEX_HALTING_BOUND_APPLIED: El entorno análogo neuronal carece de recolección 
      de basura explícita. En C5-REAL, se impone un recolector termodinámico: 
