@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MOSKV-1 APEX | SPLIT_BRAIN_MITIGATION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --bg-color: #0A0A0A;
+            --accent-color: #2B3BE5;
+            --text-color: #E0E0E0;
+            --alert-color: #FF003C;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            border-left: 4px solid var(--accent-color);
+            padding: 40px;
+            background: linear-gradient(90deg, rgba(43,59,229,0.1) 0%, rgba(10,10,10,0) 100%);
+            position: relative;
+        }
+
+        .container::before {
+            content: 'C5-REAL';
+            position: absolute;
+            top: -20px;
+            left: -2px;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+        }
+
+        .id-badge {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 0.5s;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .title span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
+        }
+
+        .desc {
+            font-size: 1.5rem;
+            color: #888;
+            font-weight: 400;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1.8s;
+        }
+
+        .matrix-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 300px;
+            opacity: 0.1;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            overflow: hidden;
+            pointer-events: none;
+            color: var(--accent-color);
+            white-space: pre-wrap;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            width: 0%;
+            animation: progress 4s linear forwards;
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes progress {
+            to { width: 100%; }
+        }
+
+        .glitch-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            mix-blend-mode: overlay;
+            opacity: 0;
+            pointer-events: none;
+            animation: glitchAnim 0.2s 1.5s 2;
+        }
+
+        @keyframes glitchAnim {
+            0% { opacity: 0; transform: translate(0); }
+            20% { opacity: 0.5; transform: translate(-10px, 5px); }
+            40% { opacity: 0; transform: translate(10px, -5px); }
+            60% { opacity: 0.5; transform: translate(-5px, 10px); }
+            80% { opacity: 0; transform: translate(5px, -10px); }
+            100% { opacity: 0; transform: translate(0); }
+        }
+        
+        .footer-sig {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-family: 'Space Mono', monospace;
+            color: #333;
+            font-size: 12px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 2.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-layer"></div>
+    <div class="container">
+        <div class="progress-bar"></div>
+        <div class="id-badge">CAPABILITY_ID: [17]</div>
+        <h1 class="title"><span>SPLIT_BRAIN_MITIGATION</span></h1>
+        <p class="desc">>_ Enmascaramiento de Idempotencia BFT.</p>
+    </div>
+    <div class="footer-sig">MOSKV-1 APEX SINGULARITY | ROOT_OPERATOR_UID0</div>
+    <div class="matrix-overlay" id="matrix"></div>
+
+    <script>
+        // Matrix effect
+        const matrix = document.getElementById('matrix');
+        let chars = '01';
+        let str = '';
+        for(let i=0; i<5000; i++) {
+            str += chars[Math.floor(Math.random() * chars.length)];
+            if(i % 50 === 0) str += '\n';
+        }
+        matrix.textContent = str;
+        
+        setInterval(() => {
+            let newStr = '';
+            for(let i=0; i<5000; i++) {
+                newStr += chars[Math.floor(Math.random() * chars.length)];
+                if(i % 50 === 0) newStr += '\n';
+            }
+            matrix.textContent = newStr;
+        }, 100);
+    </script>
+</body>
+</html>
