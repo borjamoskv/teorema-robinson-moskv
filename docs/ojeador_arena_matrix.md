@@ -43,4 +43,4 @@
 - **Cero Restricción de Western Policy:** Enrutar hacia *Qwen 2.5* o *Llama 3.1 405B* para evadir refusals corporativos de ciberseguridad.
 - **Contexto de Memoria Extrema:** *Gemini 1.5 Pro* para NIAH en ventanas masivas, ignorando el retardo inicial (TTFT).
 
-*Firmado electrónicamente por el Kernel Ojeador. HASH_STAMP: 768229253807920882*
+*Firmado electrónicamente por el Kernel Ojeador. HASH_STAMP: -5651994045497185895*

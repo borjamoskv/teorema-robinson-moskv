@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Ojeador: LMSYS Chatbot Arena Leaderboard Analyzer and Bias Detector
+Ojeador: LMSYS Chatbot Arena Leaderboard Analyzer, Bias Detector and DB Persister
 Author: Borja Moskv (borjamoskv)
 Reality Level: C5-REAL
 """
@@ -9,10 +9,13 @@ import os
 import sys
 import requests
 import json
+import sqlite3
+import hashlib
 from datetime import datetime
 
 SESSION_ARTIFACT_PATH = "$CORTEX_ROOT/.gemini/antigravity/brain/9d53df8e-c108-467f-9157-f4d4d1c039dd/ojeador_arena_matrix.md"
 REPO_DOC_PATH = "$CORTEX_ROOT/30_BABYLON-60/docs/ojeador_arena_matrix.md"
+DB_PATH = "$CORTEX_ROOT/.babylon60/ojeador_leaderboard.db"
 
 BIAS_REGISTRY = {
     "claude": {
@@ -64,6 +67,98 @@ def resolve_family(model_name):
         "weaknesses": "N/A",
         "exergy_rating": "C"
     }
+
+def init_db():
+    """
+    [Ω1] WAL Mode enforcement & rigid SQLite connection factors.
+    """
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    conn = sqlite3.connect(DB_PATH, timeout=5000)
+    conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA synchronous=NORMAL;")
+    
+    # Enable atomic constraint updates
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS sync_runs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fetched_at TEXT NOT NULL,
+            last_updated TEXT NOT NULL,
+            cortex_taint TEXT NOT NULL
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS leaderboard_snapshots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            run_id INTEGER,
+            rank INTEGER NOT NULL,
+            model TEXT NOT NULL,
+            vendor TEXT NOT NULL,
+            license TEXT NOT NULL,
+            score INTEGER NOT NULL,
+            votes INTEGER NOT NULL,
+            cortex_taint TEXT NOT NULL,
+            idempotency_hash TEXT UNIQUE NOT NULL,
+            FOREIGN KEY(run_id) REFERENCES sync_runs(id)
+        )
+    """)
+    conn.commit()
+    return conn
+
+def persist_run(conn, meta, models, taint):
+    """
+    [INV_BFT_04] Split-brain mitigation with idempotency check.
+    [INV_BFT_05] Intercept IntegrityErrors and return safely.
+    [INV_BFT_06] Cascading Rollback Defense.
+    """
+    fetched_at = meta.get("fetched_at", datetime.now().isoformat())
+    last_updated = meta.get("last_updated", "Recent")
+    
+    cursor = conn.cursor()
+    try:
+        cursor.execute("BEGIN TRANSACTION;")
+        
+        # Insert sync run
+        cursor.execute(
+            "INSERT INTO sync_runs (fetched_at, last_updated, cortex_taint) VALUES (?, ?, ?);",
+            (fetched_at, last_updated, taint)
+        )
+        run_id = cursor.lastrowid
+        
+        for m in models:
+            rank = m.get("rank", 0)
+            model_name = m.get("model", "Unknown")
+            vendor = m.get("vendor", "Unknown")
+            lic = m.get("license", "Unknown")
+            score = m.get("score", 0)
+            votes = m.get("votes", 0)
+            
+            # Idempotency hash computation: deterministic based on run_id and model
+            raw_idemp = f"{run_id}:{model_name}:{rank}:{score}"
+            idemp_hash = hashlib.sha256(raw_idemp.encode()).hexdigest()
+            
+            try:
+                cursor.execute("""
+                    INSERT INTO leaderboard_snapshots 
+                    (run_id, rank, model, vendor, license, score, votes, cortex_taint, idempotency_hash)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+                """, (run_id, rank, model_name, vendor, lic, score, votes, taint, idemp_hash))
+            except sqlite3.IntegrityError:
+                # [INV_BFT_05] Mask duplicate and retrieve existing
+                print(f"⚠️ [IDEMPOTENCY] Model {model_name} entry duplicate detected in DB. Skipping insert.")
+                
+        conn.commit()
+        print(f"🧬 [DB PERSISTENCE] Sync run #{run_id} written to SQLite WAL.")
+        return run_id
+    except Exception as e:
+        print(f"❌ [CRASH CAUSAL] Failed transaction in sqlite, rollback initiated: {e}")
+        try:
+            conn.rollback()
+        except Exception as rb_err:
+            # [INV_BFT_06] Close connection immediately if rollback fails
+            print(f"💀 [CRASH CAUSAL] Rollback failed: {rb_err}. Closing connection.")
+            conn.close()
+            raise rb_err
+        raise e
 
 def fetch_leaderboard():
     url = "https://api.wulong.dev/arena-ai-leaderboards/v1/leaderboard?name=text"
@@ -134,6 +229,20 @@ def run():
         print("❌ [CRASH CAUSAL] No se pudo obtener datos.")
         sys.exit(1)
         
+    # Generate Causal Taint signature
+    # [INV_BFT_03] cortex_taint is mandatory and captures the generation trace
+    meta = data.get("meta", {})
+    fetched_at = meta.get("fetched_at", datetime.now().isoformat())
+    sha = hashlib.sha256(json.dumps(data.get("models", [])).encode()).hexdigest()
+    taint_signature = f"ojeador_sync_run:{fetched_at}:{sha[:12]}:BorjaMoskv"
+    
+    # SQLite WAL Persistence
+    db_conn = init_db()
+    try:
+        persist_run(db_conn, meta, data.get("models", []), taint_signature)
+    finally:
+        db_conn.close()
+
     md_content = build_markdown(data)
     
     # Escribir en Session Artifact
