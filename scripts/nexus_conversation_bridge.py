@@ -1,6 +1,6 @@
 #!$CORTEX_ROOT/.venv/bin/python3
-# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V6 - UI Brutalist + Telemetría TTFT)
-# Ingesta y búsqueda O(1) usando SQLite WAL + FTS5 con extracción causal forense.
+# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V14 - FINAL APEX COMPILATION)
+# Motor Asíncrono de Ingesta, Búsqueda O(1) FTS5 Fuzzy, Taint Semántico y UDS IPC.
 
 import os
 import sys
