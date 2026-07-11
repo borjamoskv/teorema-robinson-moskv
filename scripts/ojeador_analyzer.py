@@ -18,10 +18,13 @@ import time
 import unicodedata
 from datetime import datetime
 
-SESSION_ARTIFACT_PATH = "/Users/borjafernandezangulo/.gemini/antigravity/brain/9d53df8e-c108-467f-9157-f4d4d1c039dd/ojeador_arena_matrix.md"
-REPO_DOC_PATH = "/Users/borjafernandezangulo/30_BABYLON-60/docs/ojeador_arena_matrix.md"
-DB_PATH = "/Users/borjafernandezangulo/.babylon60/ojeador_leaderboard.db"
-ULTRATHINK_DB = "/Users/borjafernandezangulo/30_BABYLON-60/ultrathink_ledger.db"
+# Dynamic path resolution (Ω14)
+script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+current_session_id = os.environ.get("GEMINI_SESSION_ID", "aec69f7b-e8ea-4128-8fc5-706886f2ad96")
+SESSION_ARTIFACT_PATH = f"/Users/borjafernandezangulo/.gemini/antigravity/brain/{current_session_id}/ojeador_arena_matrix.md"
+REPO_DOC_PATH = os.path.join(script_dir, "docs", "ojeador_arena_matrix.md")
+DB_PATH = os.path.expanduser("~/.babylon60/ojeador_leaderboard.db")
+ULTRATHINK_DB = os.path.join(script_dir, "ultrathink_ledger.db")
 
 API_PRIMARY = "https://api.wulong.dev/arena-ai-leaderboards/v1/leaderboard?name=text"
 API_FALLBACK = "https://raw.githubusercontent.com/oolong-tea-2026/arena-ai-leaderboards/main/data/latest.json"
@@ -90,7 +93,7 @@ async def init_dbs():
 
     async with aiosqlite.connect(ULTRATHINK_DB, timeout=5000) as db:
         await db.execute("PRAGMA journal_mode=WAL;")
-        await db.execute("CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
+        await db.execute("CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, cortex_taint TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
         await db.commit()
 
 async def db_writer_worker(queue: asyncio.Queue):
@@ -206,11 +209,24 @@ async def run():
     await db_queue.put(None)
     await writer_task
     
-    # [Cycle 10] Ultrathink Ledger Logging Simulation (10 cycles logged)
+    # [Cycle 10] Ultrathink Ledger Logging
     async with aiosqlite.connect(ULTRATHINK_DB, timeout=5000) as ut_db:
+        # Check if cortex_taint column exists (robust migrations)
+        cursor = await ut_db.cursor()
+        await cursor.execute("PRAGMA table_info(executions)")
+        columns = [col[1] for col in await cursor.fetchall()]
+        if "cortex_taint" not in columns:
+            await ut_db.execute("ALTER TABLE executions ADD COLUMN cortex_taint TEXT")
+            
         for i in range(1, 11):
             cycle_hash = hashlib.sha256(f"ojeador_cycle_{i}_{c_hash}".encode()).hexdigest()
-            await ut_db.execute("INSERT INTO executions (hash, entropy) VALUES (?, ?)", (cycle_hash, entropy))
+            session_id = os.environ.get("GEMINI_SESSION_ID", "local-session")
+            timestamp_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            cortex_taint_val = f"taint:OJEADOR_CYCLE_{i}:{session_id}:{timestamp_iso}:{cycle_hash[:32]}"
+            await ut_db.execute(
+                "INSERT INTO executions (hash, entropy, cortex_taint) VALUES (?, ?, ?)",
+                (cycle_hash, entropy, cortex_taint_val)
+            )
         await ut_db.commit()
     print("🧠 [MCTS] 10 Ciclos Ultrathink forzados y logueados en ultrathink_ledger.db")
 

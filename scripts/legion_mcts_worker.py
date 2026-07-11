@@ -9,8 +9,23 @@ import hashlib
 import time
 import sys
 import random
+import os
+import math
+import collections
 
-ULTRATHINK_DB = "/Users/borjafernandezangulo/30_BABYLON-60/ultrathink_ledger.db"
+script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ULTRATHINK_DB = os.path.join(script_dir, "ultrathink_ledger.db")
+
+def calculate_shannon_entropy_bytes(data: bytes) -> float:
+    if not data:
+        return 0.0
+    len_data = len(data)
+    frequencies = collections.Counter(data)
+    entropy = 0.0
+    for count in frequencies.values():
+        p = count / len_data
+        entropy -= p * math.log2(p)
+    return entropy
 
 async def legion_mcts_worker(worker_id: str, cycles: int = 125):
     print(f"🧬 [LEGION] Worker {worker_id} iniciando {cycles} ciclos de Ultrathink Físico...")
@@ -19,16 +34,26 @@ async def legion_mcts_worker(worker_id: str, cycles: int = 125):
     async with aiosqlite.connect(ULTRATHINK_DB, timeout=10000) as db:
         await db.execute("PRAGMA journal_mode=WAL;")
         
+        # Ensure schema correctness
+        await db.execute(
+            "CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, cortex_taint TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)"
+        )
+        
         # Simulamos entropía cruzada y búsqueda BFT
         for cycle in range(1, cycles + 1):
             seed_data = f"legion_mcts_{worker_id}_{cycle}_{time.time_ns()}".encode()
             state_hash = hashlib.blake2b(seed_data).hexdigest()
-            entropy = random.uniform(0.70, 0.99)
+            entropy = calculate_shannon_entropy_bytes(seed_data)
+            
+            # Causal Taint signature mapping (Ω11 & INV_BFT_03)
+            session_id = os.environ.get("GEMINI_SESSION_ID", "local-session")
+            timestamp_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            cortex_taint = f"taint:LEGION_{worker_id}:{session_id}:{timestamp_iso}:{state_hash[:32]}"
             
             # Persistencia determinista en el Master Ledger
             await db.execute(
-                "INSERT INTO executions (hash, entropy, timestamp) VALUES (?, ?, CURRENT_TIMESTAMP)",
-                (state_hash, entropy)
+                "INSERT INTO executions (hash, entropy, cortex_taint, timestamp) VALUES (?, ?, ?, CURRENT_TIMESTAMP)",
+                (state_hash, entropy, cortex_taint)
             )
             # Yield al event loop para no bloquear otros workers físicos (Ω1)
             await asyncio.sleep(0.001)
@@ -42,3 +67,4 @@ if __name__ == "__main__":
     worker_id = sys.argv[1] if len(sys.argv) > 1 else "ALPHA"
     cycles = int(sys.argv[2]) if len(sys.argv) > 2 else 125
     asyncio.run(legion_mcts_worker(worker_id, cycles))
+
