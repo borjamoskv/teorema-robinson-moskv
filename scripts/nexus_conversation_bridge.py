@@ -134,7 +134,14 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool 
                 
                 with open(transcript_file, "r", encoding="utf-8") as f:
                     for idx, line in enumerate(f):
-                        data = json.loads(line)
+                        if not line.strip():
+                            continue
+                        try:
+                            data = json.loads(line)
+                        except json.JSONDecodeError as e:
+                            console.print(f"[bold red]ANERGÍA DETECTADA (Corrupted JSONL):[/bold red] {e} in {transcript_file}")
+                            continue
+                            
                         content = data.get("content", "")
                         if content:
                             source = data.get("source", "UNKNOWN")
@@ -194,22 +201,22 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
     start_time = time.perf_counter()
     cursor = conn.cursor()
     try:
-        cursor.execute('''
-            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[[HIGHLIGHT]]', '[[ENDHIGHLIGHT]]', '...', 64)
-            FROM transcripts_fts 
-            WHERE transcripts_fts MATCH ? 
-            ORDER BY rank 
-            LIMIT ?
-        ''', (safe_query, limit))
+        cursor.execute(f'''
+            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)
+            FROM transcripts_fts t
+            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
+            WHERE transcripts_fts MATCH '{safe_query}' 
+            ORDER BY rank LIMIT ?
+        ''', (limit,))
         rows = cursor.fetchall()
     except sqlite3.OperationalError:
         safe_query = query.replace('"', '""')
-        cursor.execute('''
-            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[[HIGHLIGHT]]', '[[ENDHIGHLIGHT]]', '...', 64)
-            FROM transcripts_fts 
-            WHERE transcripts_fts MATCH '"{safe_query}"'
-            ORDER BY rank 
-            LIMIT ?
+        cursor.execute(f'''
+            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)
+            FROM transcripts_fts t
+            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
+            WHERE transcripts_fts MATCH '{safe_query}' 
+            ORDER BY rank LIMIT ?
         ''', (limit,))
         rows = cursor.fetchall()
         
@@ -220,11 +227,12 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
         console.print(f"\n[bold red]💀 ANERGÍA:[/bold red] La entropía '{query}' no existe en ningún bloque de la red.")
         return
         
-    for i, (conv_id, step_idx, source, snip) in enumerate(rows):
+    for i, (conv_id, step_idx, source, c_hash, snip) in enumerate(rows):
         clean_snip = snip.replace(chr(10), ' ')
-        clean_snip = clean_snip.replace('[[HIGHLIGHT]]', '[bold red]').replace('[[ENDHIGHLIGHT]]', '[/bold red]')
+        clean_snip = clean_snip.replace('[bold yellow]', '[bold red]').replace('[/bold yellow]', '[/bold red]')
         
-        console.print(Panel(f"[bold yellow]MATCH {i+1}[/bold yellow] | Conv: [dim]{conv_id}[/dim] | Step: {step_idx} | Source: [cyan]{source}[/cyan]\n{clean_snip}", border_style="magenta"))
+        merkle_str = f" | [magenta]Merkle: {c_hash[:8]}[/magenta]" if c_hash else ""
+        console.print(Panel(f"[bold yellow]MATCH {i+1}[/bold yellow] | Conv: [dim]{conv_id}[/dim] | Step: {step_idx} | Source: [cyan]{source}[/cyan]{merkle_str}\n{clean_snip}", border_style="magenta"))
         
         if context_window > 0:
             try:
@@ -233,14 +241,15 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                 s_idx = 0
                 
             cursor.execute('''
-                SELECT step_index, source, content
-                FROM transcripts_fts
-                WHERE conversation_id = ? AND CAST(step_index AS INTEGER) BETWEEN ? AND ?
-                ORDER BY CAST(step_index AS INTEGER) ASC
+                SELECT t.step_index, t.source, t.content, m.content_hash
+                FROM transcripts_fts t
+                LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
+                WHERE t.conversation_id = ? AND CAST(t.step_index AS INTEGER) BETWEEN ? AND ?
+                ORDER BY CAST(t.step_index AS INTEGER) ASC
             ''', (conv_id, s_idx - context_window, s_idx + context_window))
             
             ctx_rows = cursor.fetchall()
-            for (c_idx, c_source, c_content) in ctx_rows:
+            for (c_idx, c_source, c_content, c_hash) in ctx_rows:
                 is_target = str(c_idx) == str(step_idx)
                 prefix = ">>" if is_target else "  "
                 style = "bold red" if is_target else "dim"
@@ -266,7 +275,9 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                     if hash_val:
                         sentinel_str += f" | [bold green]🛡️ SENTINEL {hash_val[:7]}[/bold green]"
                 
-                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}[/{style}]{sentinel_str}", border_style=border, padding=(0, 2)))
+                merkle_str = f" | [magenta]Merkle: {c_hash[:8]}[/magenta]" if c_hash else ""
+                
+                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}{merkle_str}[/{style}]{sentinel_str}", border_style=border, padding=(0, 2)))
 
     console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
     
@@ -340,8 +351,9 @@ def uds_server_thread():
                 # SAGA-6 & SAGA-7 (Read Path determinista)
                 cur = local_conn.cursor()
                 cur.execute('''
-                    SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
-                    FROM transcripts_fts 
+                    SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
+                    FROM transcripts_fts t
+                    LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
                     WHERE transcripts_fts MATCH ? 
                     ORDER BY rank LIMIT ?
                 ''', (safe_query, limit))
