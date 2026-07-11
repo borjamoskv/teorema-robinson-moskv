@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
+import os
+from cryptography.fernet import Fernet
 
 import aiosqlite
 
@@ -113,6 +115,11 @@ class BFTLedgerActor:
                     return False
                 if row_prev_hash != prev_hash:
                     return False
+
+                vault_key = os.environ.get("CORTEX_VAULT_KEY")
+                if vault_key and payload_json.startswith("C5ENC:"):
+                    fernet = Fernet(vault_key.encode("utf-8"))
+                    payload_json = fernet.decrypt(payload_json[6:].encode("utf-8")).decode("utf-8")
                     
                 computed_hash = _compute_entry_hash(
                     event_id=event_id, stream=stream, entity_id=entity_id,
@@ -219,6 +226,16 @@ class BFTLedgerActor:
                 cortex_taint=event.cortex_taint, lamport_t=lamport_t, prev_hash=prev_hash, created_at=created_at
             )
 
+            # C5-REAL Encryption 
+            vault_key = os.environ.get("CORTEX_VAULT_KEY")
+            if vault_key:
+                fernet = Fernet(vault_key.encode("utf-8"))
+                stored_payload = fernet.encrypt(payload_json.encode("utf-8")).decode("utf-8")
+                # Prefix to distinguish encrypted payloads if needed
+                stored_payload = f"C5ENC:{stored_payload}"
+            else:
+                stored_payload = payload_json
+
             cursor = await db.execute(
                 """INSERT INTO ledger_entries (
                     event_id, stream, entity_id, event_type, payload_json,
@@ -228,7 +245,7 @@ class BFTLedgerActor:
                 ON CONFLICT(event_id) DO NOTHING
                 RETURNING seq, entry_hash""",
                 (
-                    event_id, event.stream, event.entity_id, event.event_type, payload_json,
+                    event_id, event.stream, event.entity_id, event.event_type, stored_payload,
                     event.source_db, event.source_table, event.source_pk, event.cortex_taint,
                     lamport_t, prev_hash, entry_hash, created_at
                 )
