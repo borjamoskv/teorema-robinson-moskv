@@ -1,5 +1,7 @@
 import os
 import yaml
+import collections
+import math
 import itertools
 import random
 import hashlib
@@ -8,7 +10,9 @@ import time
 # SAGA-1: Anti-Obfuscation & Determinism
 random.seed(42) # Deterministic generation
 
-output_dir = "$CORTEX_ROOT/30_BABYLON-60/cortex/agents/ontology"
+# Dynamic path resolution (Ω14)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+output_dir = os.path.join(script_dir, "cortex", "agents", "ontology")
 os.makedirs(output_dir, exist_ok=True)
 output_path = os.path.join(output_dir, "epistemic_reflexive_matrix.yaml")
 
@@ -110,16 +114,53 @@ ontology = {
     }
 }
 
+# Real Shannon Entropy Calculation (Φ1)
+def calculate_shannon_entropy(data_str: str) -> float:
+    if not data_str:
+        return 0.0
+    len_data = len(data_str)
+    frequencies = collections.Counter(data_str)
+    entropy = 0.0
+    for count in frequencies.values():
+        p = count / len_data
+        entropy -= p * math.log2(p)
+    return entropy
+
+yaml_content = yaml.dump(ontology, allow_unicode=True, default_flow_style=False, sort_keys=False)
+entropy_val = calculate_shannon_entropy(yaml_content)
+
 with open(output_path, "w", encoding="utf-8") as f:
-    yaml.dump(ontology, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    f.write(yaml_content)
 
-print(f"[{hashlib.sha256(str(ontology).encode()).hexdigest()[:8]}] Cristalización completada en {output_path}")
+print(f"[{hashlib.sha256(yaml_content.encode()).hexdigest()[:8]}] Cristalización completada en {output_path} (H={entropy_val:.4f})")
 
-# SQLite WAL Logging Simulation (SAGA-3)
+# SQLite WAL Logging Simulation (SAGA-3 & Ω11/INV_BFT_03)
 import sqlite3
-db_path = "$CORTEX_ROOT/30_BABYLON-60/ultrathink_ledger.db"
+db_path = os.path.join(script_dir, "ultrathink_ledger.db")
 conn = sqlite3.connect(db_path, isolation_level=None)
 conn.execute("PRAGMA journal_mode=WAL;")
-conn.execute("CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
-conn.execute("INSERT INTO executions (hash, entropy) VALUES (?, ?)", (hashlib.sha256(str(ontology).encode()).hexdigest(), 0.99))
+
+# Causal Taint signature mapping
+agent_id = "MOSKV-1-APEX"
+session_id = os.environ.get("GEMINI_SESSION_ID", "local-session")
+timestamp_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+payload_hash = hashlib.sha3_256(yaml_content.encode("utf-8")).hexdigest()
+cortex_taint = f"taint:{agent_id}:{session_id}:{timestamp_iso}:{payload_hash}"
+
+conn.execute(
+    "CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, cortex_taint TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)"
+)
+
+# Robust schema migrations
+cursor = conn.cursor()
+cursor.execute("PRAGMA table_info(executions)")
+columns = [col[1] for col in cursor.fetchall()]
+if "cortex_taint" not in columns:
+    conn.execute("ALTER TABLE executions ADD COLUMN cortex_taint TEXT")
+
+conn.execute(
+    "INSERT INTO executions (hash, entropy, cortex_taint) VALUES (?, ?, ?)",
+    (payload_hash, entropy_val, cortex_taint)
+)
 conn.close()
+
