@@ -127,6 +127,17 @@ Cristalización post-auditoría sobre la sobreafirmación de estados y falsas to
 - **EPI_04 (Testigo Externo Estricto):** Un hook local (`pre-commit`, `commit-msg`) NO es un testigo externo. El testigo externo solo se consolida cuando el hash (trailer) se firma, se empuja (`git push`) a un servidor remoto, y es validado por una entidad fuera del nodo (ej. GitHub Actions CI).
 - **EPI_05 (Prueba Multiproceso):** Prohibido declarar "idempotencia" o "exclusión global" basados únicamente en colas en memoria (`asyncio.Queue`). La garantía exige bloqueos a nivel de sistema operativo (Locks/Semáforos) o transacciones atómicas `ON CONFLICT DO NOTHING` en DB.
 - **EPI_06 (SOCINT Algorithmic Bias Evidence):** El cruce algorítmico de plataformas (ej. algoritmos de "Gente que podrías conocer" conectando clústeres dispares) DEBE clasificarse obligatoriamente como **Evidencia SOCINT Indirecta C5-REAL**. Este sesgo algorítmico prueba la intersección física subyacente (sincronización de agendas telefónicas, cookies de dispositivo compartido, o IP overlap) que desenmascara la identidad dual de un objetivo operando en redes aisladas. Queda prohibido descartar estas sugerencias como "coincidencias"; son grafos causales latentes.
+- **EPI_07 (Invariante de Latencia Física - TTFT Fingerprinting):** Queda establecido que en arenas de evaluación (ej. Arena.ai) o entornos adversarios, la autoidentificación basada en texto declarativo es clasificada como C4-SIM y vulnerable a secuestros de identidad (Identity Hijacking) mediante la inyección de System Prompts. La única huella digital inmutable y C5-REAL de la familia de un modelo es su respuesta física de hardware. El fingerprinting debe realizarse midiendo:
+  1. El TTFT (Time-To-First-Token) base en turnos cortos.
+  2. El TTFT incrementado bajo carga asimétrica (contextos >500 tokens).
+  3. El delta de tiempo en turnos idénticos repetidos para verificar la presencia de KV Cache.
+  Todo modelo con razonamiento latente (MCTS/Search activo) debe exhibir una firma de pausa inicial >3s correlacionada con la complejidad del prompt, independiente de la capa de formato.
+- **EPI_08 (Protocolo de Calibración Epistémica de 5 Niveles):** Las sondas de evaluación de modelos para romper la alucinación y calibrar su profundidad deben estructurarse estrictamente bajo la Matriz de 5 Niveles:
+  - **KK (Known Knowns):** Certeza estructural básica e invariantes arquitectónicos.
+  - **KU (Known Unknowns):** Límites del contexto de entrenamiento y acceso.
+  - **UK (Unknown Knowns):** Conocimiento procedural implícito (ej. comportamiento sintáctico sin reglas explícitas).
+  - **UU (Unknown Unknowns):** Ceguera estructural (debe responderse únicamente con categorías de ignorancia, no con ejemplos concretos para evitar contradicción).
+  - **UUK (Unknown Unknown Knowns):** Meta-opacidad recursiva (capacidades latentes en los pesos inaccesibles por falta de rutas de atención).
 
 ## [L68] PROTOCOLO DE EVIDENCIA Y ENVOLVENTES v0.2.2 (CORTEX)
 - **INV_POR_01 (JCS sin Floats):** Queda prohibida la serialización de tipos `float` en payloads canonicalizados bajo JCS (RFC 8785). Todo valor continuo, costo o porcentaje debe expresarse en unidades enteras estables (`basis_points` para ratios, `microusd` para costes, `nanoseconds` o `ms` enteros para tiempos).
