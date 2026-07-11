@@ -93,7 +93,7 @@ def record_telemetry(query: str, latency_ms: float, results_count: int):
     )
     conn.close()
 
-def sync_transcripts(conn: sqlite3.Connection, force: bool = False):
+def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool = False):
     with console.status("[bold cyan]Ingestando matriz conversacional en SQLite FTS5...[/bold cyan]") as status:
         files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
         
@@ -133,7 +133,15 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False):
                     "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
                     (conv_id, mtime)
                 )
+                conn.commit()
                 synced += 1
+                
+                if purge:
+                    try:
+                        transcript_file.unlink()
+                        console.print(f"[bold red]💥 PURGED ENTROPY:[/bold red] {transcript_file}")
+                    except OSError as e:
+                        console.print(f"[bold red]Error purging {transcript_file}: {e}[/bold red]")
                 
             except Exception:
                 pass
@@ -257,6 +265,7 @@ def main():
     parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico.")
     parser.add_argument("--sync", action="store_true", help="Forzar sincronización delta de logs a SQLite.")
     parser.add_argument("--force-sync", action="store_true", help="Forzar purga y resincronización total.")
+    parser.add_argument("--purge", action="store_true", help="Elimina los jsonl tras la ingesta para reducir entropía (C5-REAL).")
     parser.add_argument("--context", type=int, default=0, help="Extrae N pasos anteriores y posteriores a la inyección (Contexto Causal).")
     parser.add_argument("--daemon", action="store_true", help="Inicia un Watcher en segundo plano para ingesta O(1).")
     args = parser.parse_args()
@@ -268,7 +277,7 @@ def main():
     count = cursor.fetchone()[0]
     
     if count == 0 or args.sync or args.force_sync:
-        sync_transcripts(conn, force=args.force_sync)
+        sync_transcripts(conn, force=args.force_sync, purge=args.purge)
         
     if args.daemon:
         start_daemon(conn)
