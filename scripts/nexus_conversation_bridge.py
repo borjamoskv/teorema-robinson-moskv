@@ -150,8 +150,21 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool 
                 
         console.print(f"[bold green]✔ SYNC COMPLETE[/bold green] [cyan]{synced}[/cyan] conversiones mutadas, [dim]{skipped}[/dim] omitidas.")
 
-def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window: int):
-    console.print(Panel(f"Rastreando entropía: [bold red]'{query}'[/bold red] (Límite: {limit}) | Contexto ±{context_window}", title="[bold cyan]NEXUS FTS5 BRUTALIST[/bold cyan]", border_style="cyan"))
+def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window: int = 0):
+    start_t = time.time()
+    
+    # V13: Búsqueda Fuzzy Estructural (FTS5 Prefix Match)
+    import re
+    # Remove special chars and append * to each word unless it already has it
+    clean_query = re.sub(r'[^\w\s-]', '', query).strip()
+    if clean_query and '*' not in query and '"' not in query:
+        words = clean_query.split()
+        fuzzy_query = ' '.join([f'"{w}"*' for w in words])
+        safe_query = fuzzy_query
+    else:
+        safe_query = query.replace("'", "''")
+
+    console.print(Panel(f"Rastreando entropía: [bold yellow]'{safe_query}'[/bold yellow] (Límite: {limit}) | Contexto ±{context_window}", title="NEXUS FTS5 BRUTALIST", border_style="cyan"))
     
     start_time = time.perf_counter()
     cursor = conn.cursor()
@@ -162,7 +175,7 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
             WHERE transcripts_fts MATCH ? 
             ORDER BY rank 
             LIMIT ?
-        ''', (query, limit))
+        ''', (safe_query, limit))
         rows = cursor.fetchall()
     except sqlite3.OperationalError:
         safe_query = query.replace('"', '""')
@@ -260,6 +273,14 @@ def uds_server_thread():
                     q = payload.get("query", "")
                     limit = payload.get("limit", 10)
                     
+                    import re
+                    clean_query = re.sub(r'[^\w\s-]', '', q).strip()
+                    if clean_query and '*' not in q and '"' not in q:
+                        words = clean_query.split()
+                        safe_query = ' '.join([f'"{w}"*' for w in words])
+                    else:
+                        safe_query = q.replace("'", "''")
+                        
                     # Direct query to FTS5 without Rich UI
                     cur = local_conn.cursor()
                     cur.execute('''
@@ -267,7 +288,7 @@ def uds_server_thread():
                         FROM transcripts_fts 
                         WHERE transcripts_fts MATCH ? 
                         ORDER BY rank LIMIT ?
-                    ''', (q, limit))
+                    ''', (safe_query, limit))
                     results = cur.fetchall()
                     
                     response = json.dumps({"status": "ok", "results": results})
