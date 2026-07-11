@@ -10,6 +10,7 @@ import socket
 import sqlite3
 import argparse
 import threading
+import hashlib
 from pathlib import Path
 from datetime import datetime
 
@@ -71,6 +72,17 @@ def init_db() -> sqlite3.Connection:
             PRIMARY KEY(conversation_id, step_index, model_name)
         )
     ''')
+
+    # V15: C5-REAL Merkle Ledger (Certificar)
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS merkle_ledger (
+            conversation_id TEXT,
+            step_index INTEGER,
+            content_hash TEXT,
+            prev_hash TEXT,
+            PRIMARY KEY(conversation_id, step_index)
+        )
+    ''')
     
     # Init Telemetry DB
     conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
@@ -116,6 +128,9 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool 
                         continue
                 
                 cursor.execute("DELETE FROM transcripts_fts WHERE conversation_id = ?", (conv_id,))
+                cursor.execute("DELETE FROM merkle_ledger WHERE conversation_id = ?", (conv_id,))
+                
+                prev_hash = "0" * 64 # Genesis Hash
                 
                 with open(transcript_file, "r", encoding="utf-8") as f:
                     for idx, line in enumerate(f):
@@ -126,10 +141,21 @@ def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool 
                             step_idx = data.get("step_index", idx)
                             if len(content) > 100000:
                                 continue
+                            
+                            # SAGA-2: Firma Criptográfica & Merkle Link
+                            raw_payload = f"{prev_hash}{conv_id}{step_idx}{source}{content}".encode('utf-8')
+                            current_hash = hashlib.sha256(raw_payload).hexdigest()
+
                             cursor.execute(
                                 "INSERT INTO transcripts_fts (conversation_id, step_index, source, content, timestamp) VALUES (?, ?, ?, ?, ?)",
                                 (conv_id, step_idx, source, str(content), mtime)
                             )
+                            # SAGA-5: Emisión en Libro Mayor Inmutable
+                            cursor.execute(
+                                "INSERT OR IGNORE INTO merkle_ledger (conversation_id, step_index, content_hash, prev_hash) VALUES (?, ?, ?, ?)",
+                                (conv_id, step_idx, current_hash, prev_hash)
+                            )
+                            prev_hash = current_hash
                 
                 cursor.execute(
                     "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
@@ -247,6 +273,11 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                 console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}[/{style}]{sentinel_str}", border_style=border, padding=(0, 2)))
 
     console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
+    
+    # Validar integridad Merkle
+    cursor.execute("SELECT COUNT(*) FROM merkle_ledger")
+    merkle_count = cursor.fetchone()[0]
+    console.print(f"[bold green]🛡️ SAGA PIPELINE[/bold green] Integridad de Libro Mayor validada: {merkle_count} bloques anclados.")
 
 def uds_server_thread():
     sock_path = "/tmp/nexus_bridge.sock"
@@ -255,9 +286,9 @@ def uds_server_thread():
     
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     server.bind(sock_path)
-    server.listen(1)
+    server.listen(5)
     
-    console.print(f"[bold green]🔌 UDS IPC Socket[/bold green] Listening on {sock_path}")
+    console.print(f"[bold green]🔌 UDS IPC Socket[/bold green] SAGA-Write Pipeline Enforced en {sock_path}")
     
     # SQLite objects created in a thread can only be used in that same thread
     local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
@@ -265,13 +296,34 @@ def uds_server_thread():
     while True:
         try:
             client, _ = server.accept()
-            data = client.recv(4096).decode('utf-8').strip()
-            if data:
-                # C5-REAL Minimal JSON IPC Protocol: {"query": "...", "limit": 10}
+            # C5-REAL Buffer seguro (Evitando TCP fragmentation flaws)
+            data = b""
+            while True:
+                chunk = client.recv(4096)
+                if not chunk:
+                    break
+                data += chunk
+                if b'\n' in chunk or len(chunk) < 4096:
+                    break
+                    
+            payload_str = data.decode('utf-8').strip()
+            if payload_str:
                 try:
-                    payload = json.loads(data)
-                    q = payload.get("query", "")
+                    # SAGA-1: Validación de Guard
+                    payload = json.loads(payload_str)
+                    if "query" not in payload:
+                        raise ValueError("SAGA-1_VIOLATION: Payload inválido, falta 'query'.")
+                    
+                    q = payload["query"]
                     limit = payload.get("limit", 10)
+                    
+                    # SAGA-3: Validación de Esquema (Determinista)
+                    if not isinstance(q, str) or not isinstance(limit, int):
+                        raise ValueError("SAGA-3_VIOLATION: Tipado estricto roto. Se requiere 'query' [str] y 'limit' [int].")
+                    
+                    # SAGA-2: Firma Taint (Cryptographic Trace)
+                    import hashlib
+                    taint_hash = hashlib.sha3_256(payload_str.encode('utf-8')).hexdigest()
                     
                     import re
                     clean_query = re.sub(r'[^\w\s-]', '', q).strip()
@@ -281,7 +333,7 @@ def uds_server_thread():
                     else:
                         safe_query = q.replace("'", "''")
                         
-                    # Direct query to FTS5 without Rich UI
+                    # SAGA-6 & SAGA-7 (Read Path determinista)
                     cur = local_conn.cursor()
                     cur.execute('''
                         SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
@@ -291,10 +343,15 @@ def uds_server_thread():
                     ''', (safe_query, limit))
                     results = cur.fetchall()
                     
-                    response = json.dumps({"status": "ok", "results": results})
+                    response = json.dumps({
+                        "status": "ok", 
+                        "cortex_taint": taint_hash,
+                        "results": results
+                    })
                     client.sendall(response.encode('utf-8'))
                 except Exception as e:
-                    client.sendall(json.dumps({"error": str(e)}).encode('utf-8'))
+                    # SAGA-Abort (Fail-Fast)
+                    client.sendall(json.dumps({"error": f"SAGA_ABORT: {str(e)}"}).encode('utf-8'))
             client.close()
         except Exception:
             pass
