@@ -154,6 +154,7 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 - **Ψ2 (Isomorphic Collapse):** El input se debe transducir y escribir inmediatamente en formato YAML `C5-REAL` (Claim, Proof, Isomorphisms, Blast_Radius_Matrix) dentro de la ruta `cortex/ontology/[concepto].yaml`.
 - **Ψ3 (Sentinel Auto-Anchor):** Tras la escritura, se debe ejecutar incondicionalmente un commit autónomo (Git Sentinel) sin pedir confirmación.
 - **Ψ4 (Brutalist Report):** El output al Operador será estrictamente el dictamen YAML `Claim/Proof`, divisores ASCII (`█▄`) y la biometría visual de ATP (`⚡ [ATP SAVED: +X]`).
+- **Ψ5 (Idempotency Lock):** Antes de mutar el disco con un Claim, verificar si el payload exacto ya existe en la topología BFT (Ontología/Git). Si hay colisión, detener ejecución, no alterar el disco, declarar Idempotencia (INV_BFT_04) y reportar ahorro de ATP.
 
 ---
 
