@@ -1,0 +1,2706 @@
+metadata:
+  version: 1.0.0
+  ontology: MCTS AND TEST-TIME COMPUTE PRIMITIVES
+  timestamp: 1783793063
+  strict_rule: '[L71] INVARIANTE DE PENSAMIENTO POST-HOC'
+primitives:
+- id: MCTS-TTC-001
+  category: UCT Selection & Exploration Bounds
+  description: Ajusta la cota superior de confianza (UCT) para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.0
+    ttft_budget_ms: 101
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-002
+  category: UCT Selection & Exploration Bounds
+  description: Filtra el factor de exploración de Dirichlet maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.1
+    ttft_budget_ms: 103
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-003
+  category: UCT Selection & Exploration Bounds
+  description: Calcula la expansión de nodos infrecuentes reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.2
+    ttft_budget_ms: 104
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-004
+  category: UCT Selection & Exploration Bounds
+  description: Poda el gradiente del value network asegurando la convergencia rápida
+    hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.3
+    ttft_budget_ms: 106
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-005
+  category: UCT Selection & Exploration Bounds
+  description: Optimiza el descuento gamma temporal en la rama estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.4
+    ttft_budget_ms: 107
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-006
+  category: UCT Selection & Exploration Bounds
+  description: Asigna el presupuesto de tokens JIT minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.5
+    ttft_budget_ms: 109
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-007
+  category: UCT Selection & Exploration Bounds
+  description: Evalúa la entropía de la distribución de políticas garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.6
+    ttft_budget_ms: 110
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-008
+  category: UCT Selection & Exploration Bounds
+  description: Sincroniza el umbral de parada temprana (early-stopping) optimizando
+    la distribución del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.7
+    ttft_budget_ms: 112
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-009
+  category: UCT Selection & Exploration Bounds
+  description: Modula la latencia TTFT en la ruta de inferencia eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.8
+    ttft_budget_ms: 113
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-010
+  category: UCT Selection & Exploration Bounds
+  description: Asegura el esfuerzo ATP acumulado del operador sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 1.9
+    ttft_budget_ms: 115
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-011
+  category: UCT Selection & Exploration Bounds
+  description: Ajusta la cota superior de confianza (UCT) para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.0
+    ttft_budget_ms: 116
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-012
+  category: UCT Selection & Exploration Bounds
+  description: Filtra el factor de exploración de Dirichlet maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.1
+    ttft_budget_ms: 118
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-013
+  category: UCT Selection & Exploration Bounds
+  description: Calcula la expansión de nodos infrecuentes reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.2
+    ttft_budget_ms: 119
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-014
+  category: UCT Selection & Exploration Bounds
+  description: Poda el gradiente del value network asegurando la convergencia rápida
+    hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.3
+    ttft_budget_ms: 121
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-015
+  category: UCT Selection & Exploration Bounds
+  description: Optimiza el descuento gamma temporal en la rama estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.4
+    ttft_budget_ms: 122
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-016
+  category: UCT Selection & Exploration Bounds
+  description: Asigna el presupuesto de tokens JIT minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.5
+    ttft_budget_ms: 124
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-017
+  category: UCT Selection & Exploration Bounds
+  description: Evalúa la entropía de la distribución de políticas garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.6
+    ttft_budget_ms: 125
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-018
+  category: UCT Selection & Exploration Bounds
+  description: Sincroniza el umbral de parada temprana (early-stopping) optimizando
+    la distribución del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.7
+    ttft_budget_ms: 127
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-019
+  category: UCT Selection & Exploration Bounds
+  description: Modula la latencia TTFT en la ruta de inferencia eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.8
+    ttft_budget_ms: 128
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-020
+  category: UCT Selection & Exploration Bounds
+  description: Asegura el esfuerzo ATP acumulado del operador sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 2.9
+    ttft_budget_ms: 130
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-021
+  category: UCT Selection & Exploration Bounds
+  description: Ajusta la cota superior de confianza (UCT) para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.0
+    ttft_budget_ms: 131
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-022
+  category: UCT Selection & Exploration Bounds
+  description: Filtra el factor de exploración de Dirichlet maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.1
+    ttft_budget_ms: 133
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-023
+  category: UCT Selection & Exploration Bounds
+  description: Calcula la expansión de nodos infrecuentes reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.2
+    ttft_budget_ms: 134
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-024
+  category: UCT Selection & Exploration Bounds
+  description: Poda el gradiente del value network asegurando la convergencia rápida
+    hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.3
+    ttft_budget_ms: 136
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-025
+  category: UCT Selection & Exploration Bounds
+  description: Optimiza el descuento gamma temporal en la rama estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.4
+    ttft_budget_ms: 137
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-026
+  category: UCT Selection & Exploration Bounds
+  description: Asigna el presupuesto de tokens JIT minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.5
+    ttft_budget_ms: 139
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-027
+  category: UCT Selection & Exploration Bounds
+  description: Evalúa la entropía de la distribución de políticas garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.6
+    ttft_budget_ms: 140
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-028
+  category: UCT Selection & Exploration Bounds
+  description: Sincroniza el umbral de parada temprana (early-stopping) optimizando
+    la distribución del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.7
+    ttft_budget_ms: 142
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-029
+  category: UCT Selection & Exploration Bounds
+  description: Modula la latencia TTFT en la ruta de inferencia eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.8
+    ttft_budget_ms: 143
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-030
+  category: UCT Selection & Exploration Bounds
+  description: Asegura el esfuerzo ATP acumulado del operador sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: c_puct = 3.9
+    ttft_budget_ms: 145
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-031
+  category: Dynamic Action Space Expansion
+  description: Ajusta el factor de exploración de Dirichlet reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.0
+    ttft_budget_ms: 146
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-032
+  category: Dynamic Action Space Expansion
+  description: Filtra la expansión de nodos infrecuentes asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 148
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-033
+  category: Dynamic Action Space Expansion
+  description: Calcula el gradiente del value network estabilizando el consumo de
+    memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 149
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-034
+  category: Dynamic Action Space Expansion
+  description: Poda el descuento gamma temporal en la rama minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.3
+    ttft_budget_ms: 151
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-035
+  category: Dynamic Action Space Expansion
+  description: Optimiza el presupuesto de tokens JIT garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 152
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-036
+  category: Dynamic Action Space Expansion
+  description: Asigna la entropía de la distribución de políticas optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 154
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-037
+  category: Dynamic Action Space Expansion
+  description: Evalúa el umbral de parada temprana (early-stopping) eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 155
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-038
+  category: Dynamic Action Space Expansion
+  description: Sincroniza la latencia TTFT en la ruta de inferencia sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 157
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-039
+  category: Dynamic Action Space Expansion
+  description: Modula el esfuerzo ATP acumulado del operador para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 158
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-040
+  category: Dynamic Action Space Expansion
+  description: Asegura la cota superior de confianza (UCT) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 160
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-041
+  category: Dynamic Action Space Expansion
+  description: Ajusta el factor de exploración de Dirichlet reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.0
+    ttft_budget_ms: 161
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-042
+  category: Dynamic Action Space Expansion
+  description: Filtra la expansión de nodos infrecuentes asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 163
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-043
+  category: Dynamic Action Space Expansion
+  description: Calcula el gradiente del value network estabilizando el consumo de
+    memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 164
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-044
+  category: Dynamic Action Space Expansion
+  description: Poda el descuento gamma temporal en la rama minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.3
+    ttft_budget_ms: 166
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-045
+  category: Dynamic Action Space Expansion
+  description: Optimiza el presupuesto de tokens JIT garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 167
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-046
+  category: Dynamic Action Space Expansion
+  description: Asigna la entropía de la distribución de políticas optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 169
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-047
+  category: Dynamic Action Space Expansion
+  description: Evalúa el umbral de parada temprana (early-stopping) eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 170
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-048
+  category: Dynamic Action Space Expansion
+  description: Sincroniza la latencia TTFT en la ruta de inferencia sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 172
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-049
+  category: Dynamic Action Space Expansion
+  description: Modula el esfuerzo ATP acumulado del operador para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 173
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-050
+  category: Dynamic Action Space Expansion
+  description: Asegura la cota superior de confianza (UCT) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 175
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-051
+  category: Dynamic Action Space Expansion
+  description: Ajusta el factor de exploración de Dirichlet reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.0
+    ttft_budget_ms: 176
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-052
+  category: Dynamic Action Space Expansion
+  description: Filtra la expansión de nodos infrecuentes asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 178
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-053
+  category: Dynamic Action Space Expansion
+  description: Calcula el gradiente del value network estabilizando el consumo de
+    memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 179
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-054
+  category: Dynamic Action Space Expansion
+  description: Poda el descuento gamma temporal en la rama minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.3
+    ttft_budget_ms: 181
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-055
+  category: Dynamic Action Space Expansion
+  description: Optimiza el presupuesto de tokens JIT garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 182
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-056
+  category: Dynamic Action Space Expansion
+  description: Asigna la entropía de la distribución de políticas optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 184
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-057
+  category: Dynamic Action Space Expansion
+  description: Evalúa el umbral de parada temprana (early-stopping) eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 185
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-058
+  category: Dynamic Action Space Expansion
+  description: Sincroniza la latencia TTFT en la ruta de inferencia sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 187
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-059
+  category: Dynamic Action Space Expansion
+  description: Modula el esfuerzo ATP acumulado del operador para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 188
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-060
+  category: Dynamic Action Space Expansion
+  description: Asegura la cota superior de confianza (UCT) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 190
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-061
+  category: Rollout Policies & Value Priors
+  description: Ajusta la expansión de nodos infrecuentes estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 191
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-062
+  category: Rollout Policies & Value Priors
+  description: Filtra el gradiente del value network minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 193
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-063
+  category: Rollout Policies & Value Priors
+  description: Calcula el descuento gamma temporal en la rama garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.2
+    ttft_budget_ms: 194
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-064
+  category: Rollout Policies & Value Priors
+  description: Poda el presupuesto de tokens JIT optimizando la distribución del test-time
+    compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 196
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-065
+  category: Rollout Policies & Value Priors
+  description: Optimiza la entropía de la distribución de políticas eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 197
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-066
+  category: Rollout Policies & Value Priors
+  description: Asigna el umbral de parada temprana (early-stopping) sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 199
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-067
+  category: Rollout Policies & Value Priors
+  description: Evalúa la latencia TTFT en la ruta de inferencia para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 200
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-068
+  category: Rollout Policies & Value Priors
+  description: Sincroniza el esfuerzo ATP acumulado del operador maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 202
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-069
+  category: Rollout Policies & Value Priors
+  description: Modula la cota superior de confianza (UCT) reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 203
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-070
+  category: Rollout Policies & Value Priors
+  description: Asegura el factor de exploración de Dirichlet asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.9
+    ttft_budget_ms: 205
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-071
+  category: Rollout Policies & Value Priors
+  description: Ajusta la expansión de nodos infrecuentes estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 206
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-072
+  category: Rollout Policies & Value Priors
+  description: Filtra el gradiente del value network minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 208
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-073
+  category: Rollout Policies & Value Priors
+  description: Calcula el descuento gamma temporal en la rama garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.2
+    ttft_budget_ms: 209
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-074
+  category: Rollout Policies & Value Priors
+  description: Poda el presupuesto de tokens JIT optimizando la distribución del test-time
+    compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 211
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-075
+  category: Rollout Policies & Value Priors
+  description: Optimiza la entropía de la distribución de políticas eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 212
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-076
+  category: Rollout Policies & Value Priors
+  description: Asigna el umbral de parada temprana (early-stopping) sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 214
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-077
+  category: Rollout Policies & Value Priors
+  description: Evalúa la latencia TTFT en la ruta de inferencia para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 215
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-078
+  category: Rollout Policies & Value Priors
+  description: Sincroniza el esfuerzo ATP acumulado del operador maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 217
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-079
+  category: Rollout Policies & Value Priors
+  description: Modula la cota superior de confianza (UCT) reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 218
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-080
+  category: Rollout Policies & Value Priors
+  description: Asegura el factor de exploración de Dirichlet asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.9
+    ttft_budget_ms: 220
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-081
+  category: Rollout Policies & Value Priors
+  description: Ajusta la expansión de nodos infrecuentes estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 221
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-082
+  category: Rollout Policies & Value Priors
+  description: Filtra el gradiente del value network minimizando la fricción semántica
+    en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 223
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-083
+  category: Rollout Policies & Value Priors
+  description: Calcula el descuento gamma temporal en la rama garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.2
+    ttft_budget_ms: 224
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-084
+  category: Rollout Policies & Value Priors
+  description: Poda el presupuesto de tokens JIT optimizando la distribución del test-time
+    compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 226
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-085
+  category: Rollout Policies & Value Priors
+  description: Optimiza la entropía de la distribución de políticas eliminando la
+    deriva estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 227
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-086
+  category: Rollout Policies & Value Priors
+  description: Asigna el umbral de parada temprana (early-stopping) sincronizando
+    el estado de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 229
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-087
+  category: Rollout Policies & Value Priors
+  description: Evalúa la latencia TTFT en la ruta de inferencia para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 230
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-088
+  category: Rollout Policies & Value Priors
+  description: Sincroniza el esfuerzo ATP acumulado del operador maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 232
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-089
+  category: Rollout Policies & Value Priors
+  description: Modula la cota superior de confianza (UCT) reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 233
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-090
+  category: Rollout Policies & Value Priors
+  description: Asegura el factor de exploración de Dirichlet asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.9
+    ttft_budget_ms: 235
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-091
+  category: Q-Value Backpropagation & Discounting
+  description: Ajusta el gradiente del value network garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 236
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-092
+  category: Q-Value Backpropagation & Discounting
+  description: Filtra el descuento gamma temporal en la rama optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.1
+    ttft_budget_ms: 238
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-093
+  category: Q-Value Backpropagation & Discounting
+  description: Calcula el presupuesto de tokens JIT eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 239
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-094
+  category: Q-Value Backpropagation & Discounting
+  description: Poda la entropía de la distribución de políticas sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 241
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-095
+  category: Q-Value Backpropagation & Discounting
+  description: Optimiza el umbral de parada temprana (early-stopping) para evitar
+    bifurcaciones improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 242
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-096
+  category: Q-Value Backpropagation & Discounting
+  description: Asigna la latencia TTFT en la ruta de inferencia maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 244
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-097
+  category: Q-Value Backpropagation & Discounting
+  description: Evalúa el esfuerzo ATP acumulado del operador reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 245
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-098
+  category: Q-Value Backpropagation & Discounting
+  description: Sincroniza la cota superior de confianza (UCT) asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 247
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-099
+  category: Q-Value Backpropagation & Discounting
+  description: Modula el factor de exploración de Dirichlet estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.8
+    ttft_budget_ms: 248
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-100
+  category: Q-Value Backpropagation & Discounting
+  description: Asegura la expansión de nodos infrecuentes minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 250
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-101
+  category: Q-Value Backpropagation & Discounting
+  description: Ajusta el gradiente del value network garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 251
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-102
+  category: Q-Value Backpropagation & Discounting
+  description: Filtra el descuento gamma temporal en la rama optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.1
+    ttft_budget_ms: 253
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-103
+  category: Q-Value Backpropagation & Discounting
+  description: Calcula el presupuesto de tokens JIT eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 254
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-104
+  category: Q-Value Backpropagation & Discounting
+  description: Poda la entropía de la distribución de políticas sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 256
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-105
+  category: Q-Value Backpropagation & Discounting
+  description: Optimiza el umbral de parada temprana (early-stopping) para evitar
+    bifurcaciones improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 257
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-106
+  category: Q-Value Backpropagation & Discounting
+  description: Asigna la latencia TTFT en la ruta de inferencia maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 259
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-107
+  category: Q-Value Backpropagation & Discounting
+  description: Evalúa el esfuerzo ATP acumulado del operador reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 260
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-108
+  category: Q-Value Backpropagation & Discounting
+  description: Sincroniza la cota superior de confianza (UCT) asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 262
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-109
+  category: Q-Value Backpropagation & Discounting
+  description: Modula el factor de exploración de Dirichlet estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.8
+    ttft_budget_ms: 263
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-110
+  category: Q-Value Backpropagation & Discounting
+  description: Asegura la expansión de nodos infrecuentes minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 265
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-111
+  category: Q-Value Backpropagation & Discounting
+  description: Ajusta el gradiente del value network garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 266
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-112
+  category: Q-Value Backpropagation & Discounting
+  description: Filtra el descuento gamma temporal en la rama optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.1
+    ttft_budget_ms: 268
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-113
+  category: Q-Value Backpropagation & Discounting
+  description: Calcula el presupuesto de tokens JIT eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 269
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-114
+  category: Q-Value Backpropagation & Discounting
+  description: Poda la entropía de la distribución de políticas sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 271
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-115
+  category: Q-Value Backpropagation & Discounting
+  description: Optimiza el umbral de parada temprana (early-stopping) para evitar
+    bifurcaciones improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 272
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-116
+  category: Q-Value Backpropagation & Discounting
+  description: Asigna la latencia TTFT en la ruta de inferencia maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 274
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-117
+  category: Q-Value Backpropagation & Discounting
+  description: Evalúa el esfuerzo ATP acumulado del operador reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 275
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-118
+  category: Q-Value Backpropagation & Discounting
+  description: Sincroniza la cota superior de confianza (UCT) asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 277
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-119
+  category: Q-Value Backpropagation & Discounting
+  description: Modula el factor de exploración de Dirichlet estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.8
+    ttft_budget_ms: 278
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-120
+  category: Q-Value Backpropagation & Discounting
+  description: Asegura la expansión de nodos infrecuentes minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 280
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-121
+  category: Adaptive Token Budget & Compute Scaling
+  description: Ajusta el descuento gamma temporal en la rama eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.0
+    ttft_budget_ms: 281
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-122
+  category: Adaptive Token Budget & Compute Scaling
+  description: Filtra el presupuesto de tokens JIT sincronizando el estado de la búsqueda
+    con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 283
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-123
+  category: Adaptive Token Budget & Compute Scaling
+  description: Calcula la entropía de la distribución de políticas para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 284
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-124
+  category: Adaptive Token Budget & Compute Scaling
+  description: Poda el umbral de parada temprana (early-stopping) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 286
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-125
+  category: Adaptive Token Budget & Compute Scaling
+  description: Optimiza la latencia TTFT en la ruta de inferencia reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 287
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-126
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asigna el esfuerzo ATP acumulado del operador asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 289
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-127
+  category: Adaptive Token Budget & Compute Scaling
+  description: Evalúa la cota superior de confianza (UCT) estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 290
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-128
+  category: Adaptive Token Budget & Compute Scaling
+  description: Sincroniza el factor de exploración de Dirichlet minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.7
+    ttft_budget_ms: 292
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-129
+  category: Adaptive Token Budget & Compute Scaling
+  description: Modula la expansión de nodos infrecuentes garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 293
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-130
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asegura el gradiente del value network optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 295
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-131
+  category: Adaptive Token Budget & Compute Scaling
+  description: Ajusta el descuento gamma temporal en la rama eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.0
+    ttft_budget_ms: 296
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-132
+  category: Adaptive Token Budget & Compute Scaling
+  description: Filtra el presupuesto de tokens JIT sincronizando el estado de la búsqueda
+    con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 298
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-133
+  category: Adaptive Token Budget & Compute Scaling
+  description: Calcula la entropía de la distribución de políticas para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 299
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-134
+  category: Adaptive Token Budget & Compute Scaling
+  description: Poda el umbral de parada temprana (early-stopping) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 301
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-135
+  category: Adaptive Token Budget & Compute Scaling
+  description: Optimiza la latencia TTFT en la ruta de inferencia reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 302
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-136
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asigna el esfuerzo ATP acumulado del operador asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 304
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-137
+  category: Adaptive Token Budget & Compute Scaling
+  description: Evalúa la cota superior de confianza (UCT) estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 305
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-138
+  category: Adaptive Token Budget & Compute Scaling
+  description: Sincroniza el factor de exploración de Dirichlet minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.7
+    ttft_budget_ms: 307
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-139
+  category: Adaptive Token Budget & Compute Scaling
+  description: Modula la expansión de nodos infrecuentes garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 308
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-140
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asegura el gradiente del value network optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 310
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-141
+  category: Adaptive Token Budget & Compute Scaling
+  description: Ajusta el descuento gamma temporal en la rama eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.0
+    ttft_budget_ms: 311
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-142
+  category: Adaptive Token Budget & Compute Scaling
+  description: Filtra el presupuesto de tokens JIT sincronizando el estado de la búsqueda
+    con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 313
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-143
+  category: Adaptive Token Budget & Compute Scaling
+  description: Calcula la entropía de la distribución de políticas para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 314
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-144
+  category: Adaptive Token Budget & Compute Scaling
+  description: Poda el umbral de parada temprana (early-stopping) maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 316
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-145
+  category: Adaptive Token Budget & Compute Scaling
+  description: Optimiza la latencia TTFT en la ruta de inferencia reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 317
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-146
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asigna el esfuerzo ATP acumulado del operador asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 319
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-147
+  category: Adaptive Token Budget & Compute Scaling
+  description: Evalúa la cota superior de confianza (UCT) estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 320
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-148
+  category: Adaptive Token Budget & Compute Scaling
+  description: Sincroniza el factor de exploración de Dirichlet minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.7
+    ttft_budget_ms: 322
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-149
+  category: Adaptive Token Budget & Compute Scaling
+  description: Modula la expansión de nodos infrecuentes garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 323
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-150
+  category: Adaptive Token Budget & Compute Scaling
+  description: Asegura el gradiente del value network optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 325
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-151
+  category: Search Tree Pruning & Beam Scaling
+  description: Ajusta el presupuesto de tokens JIT para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 326
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-152
+  category: Search Tree Pruning & Beam Scaling
+  description: Filtra la entropía de la distribución de políticas maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 328
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-153
+  category: Search Tree Pruning & Beam Scaling
+  description: Calcula el umbral de parada temprana (early-stopping) reduciendo la
+    disipación computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 329
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-154
+  category: Search Tree Pruning & Beam Scaling
+  description: Poda la latencia TTFT en la ruta de inferencia asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 331
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-155
+  category: Search Tree Pruning & Beam Scaling
+  description: Optimiza el esfuerzo ATP acumulado del operador estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 332
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-156
+  category: Search Tree Pruning & Beam Scaling
+  description: Asigna la cota superior de confianza (UCT) minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 334
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-157
+  category: Search Tree Pruning & Beam Scaling
+  description: Evalúa el factor de exploración de Dirichlet garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.6
+    ttft_budget_ms: 335
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-158
+  category: Search Tree Pruning & Beam Scaling
+  description: Sincroniza la expansión de nodos infrecuentes optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 337
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-159
+  category: Search Tree Pruning & Beam Scaling
+  description: Modula el gradiente del value network eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 338
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-160
+  category: Search Tree Pruning & Beam Scaling
+  description: Asegura el descuento gamma temporal en la rama sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.9
+    ttft_budget_ms: 340
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-161
+  category: Search Tree Pruning & Beam Scaling
+  description: Ajusta el presupuesto de tokens JIT para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 341
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-162
+  category: Search Tree Pruning & Beam Scaling
+  description: Filtra la entropía de la distribución de políticas maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 343
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-163
+  category: Search Tree Pruning & Beam Scaling
+  description: Calcula el umbral de parada temprana (early-stopping) reduciendo la
+    disipación computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 344
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-164
+  category: Search Tree Pruning & Beam Scaling
+  description: Poda la latencia TTFT en la ruta de inferencia asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 346
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-165
+  category: Search Tree Pruning & Beam Scaling
+  description: Optimiza el esfuerzo ATP acumulado del operador estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 347
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-166
+  category: Search Tree Pruning & Beam Scaling
+  description: Asigna la cota superior de confianza (UCT) minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 349
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-167
+  category: Search Tree Pruning & Beam Scaling
+  description: Evalúa el factor de exploración de Dirichlet garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.6
+    ttft_budget_ms: 350
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-168
+  category: Search Tree Pruning & Beam Scaling
+  description: Sincroniza la expansión de nodos infrecuentes optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 352
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-169
+  category: Search Tree Pruning & Beam Scaling
+  description: Modula el gradiente del value network eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 353
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-170
+  category: Search Tree Pruning & Beam Scaling
+  description: Asegura el descuento gamma temporal en la rama sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.9
+    ttft_budget_ms: 355
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-171
+  category: Search Tree Pruning & Beam Scaling
+  description: Ajusta el presupuesto de tokens JIT para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 356
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-172
+  category: Search Tree Pruning & Beam Scaling
+  description: Filtra la entropía de la distribución de políticas maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 358
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-173
+  category: Search Tree Pruning & Beam Scaling
+  description: Calcula el umbral de parada temprana (early-stopping) reduciendo la
+    disipación computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 359
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-174
+  category: Search Tree Pruning & Beam Scaling
+  description: Poda la latencia TTFT en la ruta de inferencia asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 361
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-175
+  category: Search Tree Pruning & Beam Scaling
+  description: Optimiza el esfuerzo ATP acumulado del operador estabilizando el consumo
+    de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 362
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-176
+  category: Search Tree Pruning & Beam Scaling
+  description: Asigna la cota superior de confianza (UCT) minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 364
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-177
+  category: Search Tree Pruning & Beam Scaling
+  description: Evalúa el factor de exploración de Dirichlet garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.6
+    ttft_budget_ms: 365
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-178
+  category: Search Tree Pruning & Beam Scaling
+  description: Sincroniza la expansión de nodos infrecuentes optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 367
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-179
+  category: Search Tree Pruning & Beam Scaling
+  description: Modula el gradiente del value network eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 368
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-180
+  category: Search Tree Pruning & Beam Scaling
+  description: Asegura el descuento gamma temporal en la rama sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.9
+    ttft_budget_ms: 370
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-181
+  category: TTFT Latency Minimization
+  description: Ajusta la entropía de la distribución de políticas reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 371
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-182
+  category: TTFT Latency Minimization
+  description: Filtra el umbral de parada temprana (early-stopping) asegurando la
+    convergencia rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 373
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-183
+  category: TTFT Latency Minimization
+  description: Calcula la latencia TTFT en la ruta de inferencia estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 374
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-184
+  category: TTFT Latency Minimization
+  description: Poda el esfuerzo ATP acumulado del operador minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 376
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-185
+  category: TTFT Latency Minimization
+  description: Optimiza la cota superior de confianza (UCT) garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 377
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-186
+  category: TTFT Latency Minimization
+  description: Asigna el factor de exploración de Dirichlet optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.5
+    ttft_budget_ms: 379
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-187
+  category: TTFT Latency Minimization
+  description: Evalúa la expansión de nodos infrecuentes eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 380
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-188
+  category: TTFT Latency Minimization
+  description: Sincroniza el gradiente del value network sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 382
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-189
+  category: TTFT Latency Minimization
+  description: Modula el descuento gamma temporal en la rama para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.8
+    ttft_budget_ms: 383
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-190
+  category: TTFT Latency Minimization
+  description: Asegura el presupuesto de tokens JIT maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 385
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-191
+  category: TTFT Latency Minimization
+  description: Ajusta la entropía de la distribución de políticas reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 386
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-192
+  category: TTFT Latency Minimization
+  description: Filtra el umbral de parada temprana (early-stopping) asegurando la
+    convergencia rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 388
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-193
+  category: TTFT Latency Minimization
+  description: Calcula la latencia TTFT en la ruta de inferencia estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 389
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-194
+  category: TTFT Latency Minimization
+  description: Poda el esfuerzo ATP acumulado del operador minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 391
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-195
+  category: TTFT Latency Minimization
+  description: Optimiza la cota superior de confianza (UCT) garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 392
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-196
+  category: TTFT Latency Minimization
+  description: Asigna el factor de exploración de Dirichlet optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.5
+    ttft_budget_ms: 394
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-197
+  category: TTFT Latency Minimization
+  description: Evalúa la expansión de nodos infrecuentes eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 395
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-198
+  category: TTFT Latency Minimization
+  description: Sincroniza el gradiente del value network sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 397
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-199
+  category: TTFT Latency Minimization
+  description: Modula el descuento gamma temporal en la rama para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.8
+    ttft_budget_ms: 398
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-200
+  category: TTFT Latency Minimization
+  description: Asegura el presupuesto de tokens JIT maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 400
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-201
+  category: TTFT Latency Minimization
+  description: Ajusta la entropía de la distribución de políticas reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 401
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-202
+  category: TTFT Latency Minimization
+  description: Filtra el umbral de parada temprana (early-stopping) asegurando la
+    convergencia rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 403
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-203
+  category: TTFT Latency Minimization
+  description: Calcula la latencia TTFT en la ruta de inferencia estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 404
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-204
+  category: TTFT Latency Minimization
+  description: Poda el esfuerzo ATP acumulado del operador minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 406
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-205
+  category: TTFT Latency Minimization
+  description: Optimiza la cota superior de confianza (UCT) garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 407
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-206
+  category: TTFT Latency Minimization
+  description: Asigna el factor de exploración de Dirichlet optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.5
+    ttft_budget_ms: 409
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-207
+  category: TTFT Latency Minimization
+  description: Evalúa la expansión de nodos infrecuentes eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 410
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-208
+  category: TTFT Latency Minimization
+  description: Sincroniza el gradiente del value network sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 412
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-209
+  category: TTFT Latency Minimization
+  description: Modula el descuento gamma temporal en la rama para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.8
+    ttft_budget_ms: 413
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-210
+  category: TTFT Latency Minimization
+  description: Asegura el presupuesto de tokens JIT maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 415
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-211
+  category: ATP Optimization & Human Leverage
+  description: Ajusta el umbral de parada temprana (early-stopping) estabilizando
+    el consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 416
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-212
+  category: ATP Optimization & Human Leverage
+  description: Filtra la latencia TTFT en la ruta de inferencia minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 418
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-213
+  category: ATP Optimization & Human Leverage
+  description: Calcula el esfuerzo ATP acumulado del operador garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 419
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-214
+  category: ATP Optimization & Human Leverage
+  description: Poda la cota superior de confianza (UCT) optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 421
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-215
+  category: ATP Optimization & Human Leverage
+  description: Optimiza el factor de exploración de Dirichlet eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.4
+    ttft_budget_ms: 422
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-216
+  category: ATP Optimization & Human Leverage
+  description: Asigna la expansión de nodos infrecuentes sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 424
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-217
+  category: ATP Optimization & Human Leverage
+  description: Evalúa el gradiente del value network para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 425
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-218
+  category: ATP Optimization & Human Leverage
+  description: Sincroniza el descuento gamma temporal en la rama maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.7
+    ttft_budget_ms: 427
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-219
+  category: ATP Optimization & Human Leverage
+  description: Modula el presupuesto de tokens JIT reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 428
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-220
+  category: ATP Optimization & Human Leverage
+  description: Asegura la entropía de la distribución de políticas asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 430
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-221
+  category: ATP Optimization & Human Leverage
+  description: Ajusta el umbral de parada temprana (early-stopping) estabilizando
+    el consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 431
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-222
+  category: ATP Optimization & Human Leverage
+  description: Filtra la latencia TTFT en la ruta de inferencia minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 433
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-223
+  category: ATP Optimization & Human Leverage
+  description: Calcula el esfuerzo ATP acumulado del operador garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 434
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-224
+  category: ATP Optimization & Human Leverage
+  description: Poda la cota superior de confianza (UCT) optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 436
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-225
+  category: ATP Optimization & Human Leverage
+  description: Optimiza el factor de exploración de Dirichlet eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.4
+    ttft_budget_ms: 437
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-226
+  category: ATP Optimization & Human Leverage
+  description: Asigna la expansión de nodos infrecuentes sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 439
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-227
+  category: ATP Optimization & Human Leverage
+  description: Evalúa el gradiente del value network para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 440
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-228
+  category: ATP Optimization & Human Leverage
+  description: Sincroniza el descuento gamma temporal en la rama maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.7
+    ttft_budget_ms: 442
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-229
+  category: ATP Optimization & Human Leverage
+  description: Modula el presupuesto de tokens JIT reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 443
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-230
+  category: ATP Optimization & Human Leverage
+  description: Asegura la entropía de la distribución de políticas asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 445
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-231
+  category: ATP Optimization & Human Leverage
+  description: Ajusta el umbral de parada temprana (early-stopping) estabilizando
+    el consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 446
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-232
+  category: ATP Optimization & Human Leverage
+  description: Filtra la latencia TTFT en la ruta de inferencia minimizando la fricción
+    semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 448
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-233
+  category: ATP Optimization & Human Leverage
+  description: Calcula el esfuerzo ATP acumulado del operador garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 449
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-234
+  category: ATP Optimization & Human Leverage
+  description: Poda la cota superior de confianza (UCT) optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 451
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-235
+  category: ATP Optimization & Human Leverage
+  description: Optimiza el factor de exploración de Dirichlet eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.4
+    ttft_budget_ms: 452
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-236
+  category: ATP Optimization & Human Leverage
+  description: Asigna la expansión de nodos infrecuentes sincronizando el estado de
+    la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 454
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-237
+  category: ATP Optimization & Human Leverage
+  description: Evalúa el gradiente del value network para evitar bifurcaciones improductivas
+    en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 455
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-238
+  category: ATP Optimization & Human Leverage
+  description: Sincroniza el descuento gamma temporal en la rama maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.7
+    ttft_budget_ms: 457
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-239
+  category: ATP Optimization & Human Leverage
+  description: Modula el presupuesto de tokens JIT reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 458
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-240
+  category: ATP Optimization & Human Leverage
+  description: Asegura la entropía de la distribución de políticas asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 460
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-241
+  category: Shadow Routing & Model Ensembling
+  description: Ajusta la latencia TTFT en la ruta de inferencia garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 461
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-242
+  category: Shadow Routing & Model Ensembling
+  description: Filtra el esfuerzo ATP acumulado del operador optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 463
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-243
+  category: Shadow Routing & Model Ensembling
+  description: Calcula la cota superior de confianza (UCT) eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.2
+    ttft_budget_ms: 464
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-244
+  category: Shadow Routing & Model Ensembling
+  description: Poda el factor de exploración de Dirichlet sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.3
+    ttft_budget_ms: 466
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-245
+  category: Shadow Routing & Model Ensembling
+  description: Optimiza la expansión de nodos infrecuentes para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 467
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-246
+  category: Shadow Routing & Model Ensembling
+  description: Asigna el gradiente del value network maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.5
+    ttft_budget_ms: 469
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-247
+  category: Shadow Routing & Model Ensembling
+  description: Evalúa el descuento gamma temporal en la rama reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.6
+    ttft_budget_ms: 470
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-248
+  category: Shadow Routing & Model Ensembling
+  description: Sincroniza el presupuesto de tokens JIT asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 472
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-249
+  category: Shadow Routing & Model Ensembling
+  description: Modula la entropía de la distribución de políticas estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 473
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-250
+  category: Shadow Routing & Model Ensembling
+  description: Asegura el umbral de parada temprana (early-stopping) minimizando la
+    fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 475
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-251
+  category: Shadow Routing & Model Ensembling
+  description: Ajusta la latencia TTFT en la ruta de inferencia garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 476
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-252
+  category: Shadow Routing & Model Ensembling
+  description: Filtra el esfuerzo ATP acumulado del operador optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 478
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-253
+  category: Shadow Routing & Model Ensembling
+  description: Calcula la cota superior de confianza (UCT) eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.2
+    ttft_budget_ms: 479
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-254
+  category: Shadow Routing & Model Ensembling
+  description: Poda el factor de exploración de Dirichlet sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.3
+    ttft_budget_ms: 481
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-255
+  category: Shadow Routing & Model Ensembling
+  description: Optimiza la expansión de nodos infrecuentes para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 482
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-256
+  category: Shadow Routing & Model Ensembling
+  description: Asigna el gradiente del value network maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.5
+    ttft_budget_ms: 484
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-257
+  category: Shadow Routing & Model Ensembling
+  description: Evalúa el descuento gamma temporal en la rama reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.6
+    ttft_budget_ms: 485
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-258
+  category: Shadow Routing & Model Ensembling
+  description: Sincroniza el presupuesto de tokens JIT asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 487
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-259
+  category: Shadow Routing & Model Ensembling
+  description: Modula la entropía de la distribución de políticas estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 488
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-260
+  category: Shadow Routing & Model Ensembling
+  description: Asegura el umbral de parada temprana (early-stopping) minimizando la
+    fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 490
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-261
+  category: Shadow Routing & Model Ensembling
+  description: Ajusta la latencia TTFT en la ruta de inferencia garantizando la consistencia
+    formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 491
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-262
+  category: Shadow Routing & Model Ensembling
+  description: Filtra el esfuerzo ATP acumulado del operador optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 493
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-263
+  category: Shadow Routing & Model Ensembling
+  description: Calcula la cota superior de confianza (UCT) eliminando la deriva estocástica
+    del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.2
+    ttft_budget_ms: 494
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-264
+  category: Shadow Routing & Model Ensembling
+  description: Poda el factor de exploración de Dirichlet sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.3
+    ttft_budget_ms: 496
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-265
+  category: Shadow Routing & Model Ensembling
+  description: Optimiza la expansión de nodos infrecuentes para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 497
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-266
+  category: Shadow Routing & Model Ensembling
+  description: Asigna el gradiente del value network maximizando el rendimiento de
+    búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.5
+    ttft_budget_ms: 499
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-267
+  category: Shadow Routing & Model Ensembling
+  description: Evalúa el descuento gamma temporal en la rama reduciendo la disipación
+    computacional de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.6
+    ttft_budget_ms: 500
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-268
+  category: Shadow Routing & Model Ensembling
+  description: Sincroniza el presupuesto de tokens JIT asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 502
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-269
+  category: Shadow Routing & Model Ensembling
+  description: Modula la entropía de la distribución de políticas estabilizando el
+    consumo de memoria en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 503
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-270
+  category: Shadow Routing & Model Ensembling
+  description: Asegura el umbral de parada temprana (early-stopping) minimizando la
+    fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 505
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-271
+  category: Ontological State Verification
+  description: Ajusta el esfuerzo ATP acumulado del operador eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.0
+    ttft_budget_ms: 506
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-272
+  category: Ontological State Verification
+  description: Filtra la cota superior de confianza (UCT) sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.1
+    ttft_budget_ms: 508
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-273
+  category: Ontological State Verification
+  description: Calcula el factor de exploración de Dirichlet para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 1.2
+    ttft_budget_ms: 509
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-274
+  category: Ontological State Verification
+  description: Poda la expansión de nodos infrecuentes maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.3
+    ttft_budget_ms: 511
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-275
+  category: Ontological State Verification
+  description: Optimiza el gradiente del value network reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.4
+    ttft_budget_ms: 512
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-276
+  category: Ontological State Verification
+  description: Asigna el descuento gamma temporal en la rama asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 1.5
+    ttft_budget_ms: 514
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-277
+  category: Ontological State Verification
+  description: Evalúa el presupuesto de tokens JIT estabilizando el consumo de memoria
+    en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.6
+    ttft_budget_ms: 515
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-278
+  category: Ontological State Verification
+  description: Sincroniza la entropía de la distribución de políticas minimizando
+    la fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.7
+    ttft_budget_ms: 517
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-279
+  category: Ontological State Verification
+  description: Modula el umbral de parada temprana (early-stopping) garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.8
+    ttft_budget_ms: 518
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-280
+  category: Ontological State Verification
+  description: Asegura la latencia TTFT en la ruta de inferencia optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 1.9
+    ttft_budget_ms: 520
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-281
+  category: Ontological State Verification
+  description: Ajusta el esfuerzo ATP acumulado del operador eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.0
+    ttft_budget_ms: 521
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-282
+  category: Ontological State Verification
+  description: Filtra la cota superior de confianza (UCT) sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.1
+    ttft_budget_ms: 523
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-283
+  category: Ontological State Verification
+  description: Calcula el factor de exploración de Dirichlet para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 2.2
+    ttft_budget_ms: 524
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-284
+  category: Ontological State Verification
+  description: Poda la expansión de nodos infrecuentes maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.3
+    ttft_budget_ms: 526
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-285
+  category: Ontological State Verification
+  description: Optimiza el gradiente del value network reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.4
+    ttft_budget_ms: 527
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-286
+  category: Ontological State Verification
+  description: Asigna el descuento gamma temporal en la rama asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 2.5
+    ttft_budget_ms: 529
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-287
+  category: Ontological State Verification
+  description: Evalúa el presupuesto de tokens JIT estabilizando el consumo de memoria
+    en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.6
+    ttft_budget_ms: 530
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-288
+  category: Ontological State Verification
+  description: Sincroniza la entropía de la distribución de políticas minimizando
+    la fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.7
+    ttft_budget_ms: 532
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-289
+  category: Ontological State Verification
+  description: Modula el umbral de parada temprana (early-stopping) garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.8
+    ttft_budget_ms: 533
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-290
+  category: Ontological State Verification
+  description: Asegura la latencia TTFT en la ruta de inferencia optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 2.9
+    ttft_budget_ms: 535
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-291
+  category: Ontological State Verification
+  description: Ajusta el esfuerzo ATP acumulado del operador eliminando la deriva
+    estocástica del manifold latente.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.0
+    ttft_budget_ms: 536
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-292
+  category: Ontological State Verification
+  description: Filtra la cota superior de confianza (UCT) sincronizando el estado
+    de la búsqueda con el master ledger local.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.1
+    ttft_budget_ms: 538
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-293
+  category: Ontological State Verification
+  description: Calcula el factor de exploración de Dirichlet para evitar bifurcaciones
+    improductivas en deducciones complejas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: alpha = 3.2
+    ttft_budget_ms: 539
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-294
+  category: Ontological State Verification
+  description: Poda la expansión de nodos infrecuentes maximizando el rendimiento
+    de búsqueda en grafos acíclicos.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.3
+    ttft_budget_ms: 541
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-295
+  category: Ontological State Verification
+  description: Optimiza el gradiente del value network reduciendo la disipación computacional
+    de tokens redundantes.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.4
+    ttft_budget_ms: 542
+    atp_saved_basis_points: 45
+- id: MCTS-TTC-296
+  category: Ontological State Verification
+  description: Asigna el descuento gamma temporal en la rama asegurando la convergencia
+    rápida hacia demostraciones correctas.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: gamma = 3.5
+    ttft_budget_ms: 544
+    atp_saved_basis_points: 5
+- id: MCTS-TTC-297
+  category: Ontological State Verification
+  description: Evalúa el presupuesto de tokens JIT estabilizando el consumo de memoria
+    en árboles de gran profundidad.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.6
+    ttft_budget_ms: 545
+    atp_saved_basis_points: 15
+- id: MCTS-TTC-298
+  category: Ontological State Verification
+  description: Sincroniza la entropía de la distribución de políticas minimizando
+    la fricción semántica en la toma de decisiones.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.7
+    ttft_budget_ms: 547
+    atp_saved_basis_points: 25
+- id: MCTS-TTC-299
+  category: Ontological State Verification
+  description: Modula el umbral de parada temprana (early-stopping) garantizando la
+    consistencia formal con los axiomas del sistema.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.8
+    ttft_budget_ms: 548
+    atp_saved_basis_points: 35
+- id: MCTS-TTC-300
+  category: Ontological State Verification
+  description: Asegura la latencia TTFT en la ruta de inferencia optimizando la distribución
+    del test-time compute por nodo de decisión.
+  state: C5-REAL
+  parameters:
+    actionable_parameter: token_limit = 3.9
+    ttft_budget_ms: 550
+    atp_saved_basis_points: 45
