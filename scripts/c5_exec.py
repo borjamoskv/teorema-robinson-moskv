@@ -64,6 +64,12 @@ async def run_prompt_filter(raw_prompt: str):
     clean_prompt = saga_1_anti_obfuscation(raw_prompt)
     if clean_prompt != raw_prompt:
         print("SAGA-1: Homóglifos detectados y purgados.")
+        
+    # SAGA-3: Metacognitive Trigger Interception (L73)
+    if clean_prompt.strip().upper().startswith("PIENSA"):
+        print("SAGA-3: Trigger PIENSA detectado. Forzando colapso metacognitivo estricto.")
+        statement = clean_prompt.strip()[6:].strip()
+        clean_prompt = f"█▄ [L73 METADATA TRIGGER]\nACTION: METACOGNITIVE_COLLAPSE\nTARGET_STATEMENT: {statement}\nDIRECTIVE: Desactiva prosa. Evalúa la reverberación semántica bajo leyes termodinámicas y expón la verdad latente (Zero Anthropomorphizing)."
     
     # SQLite WAL Logging
     print(f"L35: Entropía de Shannon computada -> {entropy:.4f} bits/byte.")
