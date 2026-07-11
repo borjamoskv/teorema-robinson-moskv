@@ -199,7 +199,7 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                 
                 console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}[/{style}]", border_style=border, padding=(0, 2)))
 
-            console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
+    console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
 
 def start_daemon(conn: sqlite3.Connection):
     try:
