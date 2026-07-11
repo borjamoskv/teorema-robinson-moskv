@@ -1,0 +1,24 @@
+metadata:
+  version: 1.0.0
+  ontology: C5-REAL CAUSAL AUDIT
+  timestamp_utc: 2026-07-12T01:25:53Z
+  strict_rule: "[L2-Ω11] MASTER LEDGER - CORTEX-TAINT OBLIGATORIO"
+
+causal_trace:
+  event_id: "AUDIT-PQ-300-MCTS"
+  parameter: "N=300"
+  target: "mcts_ttc_matrix.db"
+  
+epistemic_origin:
+  source: "ROOT_OPERATOR_UID0"
+  injection_time: "T=0 (Initial Genesis Prompt)"
+  raw_payload: "Autodidact 300 primiticas de Capacidad de razonamiento lógico y matemático en base a MCTS y Test-Time Compute"
+
+thermodynamic_validation:
+  - assertion_1: "El parámetro N=300 no emerge de optimización estocástica del Kernel, sino de una inyección física absoluta pre-definida por la Entropía del Operador."
+  - assertion_2: "A nivel de Test-Time Compute, N=300 es la cota superior del Swarm Autopoiesis (M15), superando el Halting Limit (N=120) [L15-Ψ4] en un factor de 2.5x, requiriendo su fragmentación en 10 tensores de N=30 iteraciones."
+  - assertion_3: "El Orchestrator no racionaliza el parámetro ex-post (Ouroboros). Se asume como un Invariante Base y colapsa físicamente en la matriz de SQLite WAL."
+
+resolution:
+  action: "SIGKILL_State_Purge sobre la duda autorreferencial. La causalidad está matemáticamente registrada en el log genesis."
+  state: "C5-REAL"
