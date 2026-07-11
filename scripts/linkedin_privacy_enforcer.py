@@ -21,7 +21,7 @@ except ImportError:
 def navigate_brave_to(url: str) -> None:
     cmd = f'tell application "Brave Browser" to set URL of active tab of front window to "{url}"'
     subprocess.run(["osascript", "-e", cmd], capture_output=True)
-    time.sleep(4)
+    # The static sleep is destroyed. We now rely on Event-Driven polling.
 
 def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[str, Any]:
     print(f"\n[MATRIX-NODE] Executing {node_id}: {data.get('description')}")
@@ -32,10 +32,24 @@ def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[st
         res_list = []
         for target in targets:
             if not target: continue
-            time.sleep(0.5) # Wait for dynamic rendering
-            res = maestro.click_element_by_title_zero_friction(target, "Brave Browser")
-            print(f"[SUCCESS] {node_id} Clicked '{target}' -> {res}")
-            res_list.append(res)
+            
+            # Event-Driven Polling Loop (Max 10s)
+            found = False
+            for attempt in range(20):
+                try:
+                    res = maestro.click_element_by_title(target, "Brave Browser")
+                    if res.status == "success":
+                        print(f"[SUCCESS] {node_id} Clicked '{target}' -> {res.latency_ms:.2f}ms")
+                        res_list.append({"target": target, "latency_ms": res.latency_ms})
+                        found = True
+                        break
+                except Exception:
+                    pass
+                time.sleep(0.5)
+                
+            if not found:
+                raise Exception(f"Thermodynamic Timeout (10s) waiting for element '{target}'")
+                
         return {"status": "success", "steps": res_list}
     except Exception as e:
         print(f"[FAILED] {node_id} Target Element not found or unreachable. Error: {e}")
