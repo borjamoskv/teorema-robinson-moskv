@@ -62,7 +62,7 @@ def build_adjacency_matrix():
     return emojis, matrix
 
 def print_matrix(emojis, matrix):
-    sys.stdout.write("❖ [ C5-DAEMON-CORE :: MATRIZ DE ADYACENCIA EMOJI (ULTRATHINK) ] ❖\n\n")
+    sys.stdout.write("❖ [ C5-DAEMON-CORE :: MATRIZ DE ADYACENCIA EMOJI (EXERGY) ] ❖\n\n")
     
     # Header
     sys.stdout.write("    | " + " | ".join(emojis) + " |\n")

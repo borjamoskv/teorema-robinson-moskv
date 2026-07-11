@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Ojeador: LMSYS Chatbot Arena Leaderboard Analyzer
-10-Cycle ULTRATHINK Collapse (Asynchronous BFT, SAGA, JCS Canonicalization)
+10-Cycle EXERGY Collapse (Asynchronous BFT, SAGA, JCS Canonicalization)
 Author: Borja Moskv (borjamoskv)
 Reality Level: C5-REAL
 """
@@ -24,7 +24,7 @@ current_session_id = os.environ.get("GEMINI_SESSION_ID", "aec69f7b-e8ea-4128-8fc
 SESSION_ARTIFACT_PATH = f"/Users/borjafernandezangulo/.gemini/antigravity/brain/{current_session_id}/ojeador_arena_matrix.md"
 REPO_DOC_PATH = os.path.join(script_dir, "docs", "ojeador_arena_matrix.md")
 DB_PATH = os.path.expanduser("~/.babylon60/ojeador_leaderboard.db")
-ULTRATHINK_DB = os.path.join(script_dir, "ultrathink_ledger.db")
+EXERGY_DB = os.path.join(script_dir, "nexus_anchors.db")
 
 API_PRIMARY = "https://api.wulong.dev/arena-ai-leaderboards/v1/leaderboard?name=text"
 API_FALLBACK = "https://raw.githubusercontent.com/oolong-tea-2026/arena-ai-leaderboards/main/data/latest.json"
@@ -91,7 +91,7 @@ async def init_dbs():
         """)
         await db.commit()
 
-    async with aiosqlite.connect(ULTRATHINK_DB, timeout=5000) as db:
+    async with aiosqlite.connect(EXERGY_DB, timeout=5000) as db:
         await db.execute("PRAGMA journal_mode=WAL;")
         await db.execute("CREATE TABLE IF NOT EXISTS executions (id INTEGER PRIMARY KEY, hash TEXT, entropy REAL, cortex_taint TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
         await db.commit()
@@ -156,7 +156,7 @@ def build_markdown(data, latency_ms, entropy):
     last_updated = meta.get("last_updated", "Recent")
     
     md = [
-        "# █▄ OJEADOR: LMSYS ARENA MATRIZ DE EXERGÍA (v10.ULTRATHINK) ▄█\n\n",
+        "# █▄ OJEADOR: LMSYS ARENA MATRIZ DE EXERGÍA (v10.EXERGY) ▄█\n\n",
         "> [!WARNING]\n",
         "> **ESTADO C5-REAL: BRUTALISMO CINÉTICO ACTIVO (10 CICLOS MCTS)**\n",
         f"> Última sincronización: `{fetched_at}` | Latencia TTFT: `{latency_ms}ms` | Entropía: `{entropy:.4f}`\n\n",
@@ -186,7 +186,7 @@ def build_markdown(data, latency_ms, entropy):
     return "".join(md)
 
 async def run():
-    print("🛸 [ULTRATHINK] Iniciando 10 Ciclos Evolutivos (Ojeador v10)...")
+    print("🛸 [EXERGY] Iniciando 10 Ciclos Evolutivos (Ojeador v10)...")
     await init_dbs()
     
     db_queue = asyncio.Queue()
@@ -209,8 +209,8 @@ async def run():
     await db_queue.put(None)
     await writer_task
     
-    # [Cycle 10] Ultrathink Ledger Logging
-    async with aiosqlite.connect(ULTRATHINK_DB, timeout=5000) as ut_db:
+    # [Cycle 10] Exergy Ledger Logging
+    async with aiosqlite.connect(EXERGY_DB, timeout=5000) as ut_db:
         # Check if cortex_taint column exists (robust migrations)
         cursor = await ut_db.cursor()
         await cursor.execute("PRAGMA table_info(executions)")
@@ -228,7 +228,7 @@ async def run():
                 (cycle_hash, entropy, cortex_taint_val)
             )
         await ut_db.commit()
-    print("🧠 [MCTS] 10 Ciclos Ultrathink forzados y logueados en ultrathink_ledger.db")
+    print("🧠 [MCTS] 10 Ciclos Exergy forzados y logueados en nexus_anchors.db")
 
     md_content = build_markdown(data, latency_ms, entropy)
     

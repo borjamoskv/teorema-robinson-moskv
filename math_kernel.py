@@ -20,7 +20,7 @@ def init_ledger() -> None:
         conn.execute("PRAGMA journal_mode=WAL")
         conn.execute("PRAGMA synchronous=NORMAL")
         conn.execute('''
-            CREATE TABLE IF NOT EXISTS ultrathink_ledger (
+            CREATE TABLE IF NOT EXISTS exergy_ledger (
                 causal_hash TEXT PRIMARY KEY,
                 tokens INTEGER,
                 temperature REAL,
@@ -55,7 +55,7 @@ def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
     # Persistencia BFT en Master Ledger
     with sqlite3.connect(DB_PATH, timeout=5.0) as conn:
         conn.execute('''
-            INSERT INTO ultrathink_ledger (causal_hash, tokens, temperature, exergy, lamport_t)
+            INSERT INTO exergy_ledger (causal_hash, tokens, temperature, exergy, lamport_t)
             VALUES (?, ?, ?, ?, ?)
         ''', (node.causal_hash, node.tokens, float(node.temperature), float(node.exergy), node.lamport_t))
         

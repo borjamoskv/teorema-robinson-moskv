@@ -22,7 +22,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from core.master_ledger import BFTLedgerActor, LedgerEvent
 
 # Default Database Path for the BFT Master Ledger
-LEDGER_DB_PATH = PROJECT_ROOT / "cortex" / "ultrathink_ledger.db"
+LEDGER_DB_PATH = PROJECT_ROOT / "cortex" / "nexus_anchors.db"
 
 # ---------------------------------------------------------
 # C5-REAL IMMUNEFI RADAR FEED INTEGRATION

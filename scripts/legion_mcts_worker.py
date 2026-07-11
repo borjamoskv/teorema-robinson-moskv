@@ -14,10 +14,10 @@ import math
 import collections
 
 script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ULTRATHINK_DB = os.path.join(script_dir, "ultrathink_ledger.db")
+EXERGY_DB = os.path.join(script_dir, "nexus_anchors.db")
 
 sys.path.insert(0, script_dir)
-from cortex.ultrathink.budget_forcer import UltraThinkBudgetForcer, ApoptosisException
+from cortex.exergy.budget_forcer import UltraThinkBudgetForcer, ApoptosisException
 
 def calculate_shannon_entropy_bytes(data: bytes) -> float:
     if not data:
@@ -31,13 +31,13 @@ def calculate_shannon_entropy_bytes(data: bytes) -> float:
     return entropy
 
 async def legion_mcts_worker(worker_id: str, cycles: int = 125):
-    print(f"🧬 [LEGION] Worker {worker_id} iniciando {cycles} ciclos de Ultrathink Físico...")
+    print(f"🧬 [LEGION] Worker {worker_id} iniciando {cycles} ciclos de Exergy Físico...")
     t_start = time.perf_counter()
     
     # INV_HALT_01: Límite absoluto de iteraciones (N=120).
     budget_forcer = UltraThinkBudgetForcer(max_iterations=120, max_tokens=10000)
     
-    async with aiosqlite.connect(ULTRATHINK_DB, timeout=10000) as db:
+    async with aiosqlite.connect(EXERGY_DB, timeout=10000) as db:
         await db.execute("PRAGMA journal_mode=WAL;")
         
         # Ensure schema correctness

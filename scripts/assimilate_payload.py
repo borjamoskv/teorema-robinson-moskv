@@ -4,7 +4,7 @@ import time
 import os
 
 def assimilate_payload():
-    db_path = "/Users/borjafernandezangulo/30_BABYLON-60/ultrathink_ledger.db"
+    db_path = "/Users/borjafernandezangulo/30_BABYLON-60/nexus_anchors.db"
     
     payload = "disable_post_hoc=true, 3ms latency bypass"
     payload_hash = hashlib.sha256(payload.encode()).hexdigest()

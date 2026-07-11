@@ -2,7 +2,7 @@ import itertools
 import hashlib
 import yaml
 
-# ULTRATHINK P0 MATRIX - 500 Invariantes de Comprobacion
+# EXERGY P0 MATRIX - 500 Invariantes de Comprobacion
 SYSTEMS = ["BFT_State_Machine", "LLM_Latent_Manifold", "WAL_Transaction_Ledger", "AST_Causal_Tree", "P2P_Gossip_Graph"]
 FAULTS = ["Byzantine_Equivocation", "Thermodynamic_Anergy_Loop", "Data_Race_Concurrence", "Topological_Shattering", "Semantic_Drift_Injection"]
 VERIFIERS = ["Zero_Knowledge_Proof_SNARK", "Homological_Cycle_Check", "Wasserstein_Metric_Bound", "Merkle_Root_Assertion", "Kolmogorov_Complexity_Delta"]
@@ -35,4 +35,4 @@ out_path = "/Users/borjafernandezangulo/30_BABYLON-60/cortex/ontology/inv_check_
 with open(out_path, "w") as f:
     yaml.dump(check_invariants, f, sort_keys=False, default_flow_style=False)
 
-print(f"ULTRATHINK_COLLAPSE_SUCCESS: {idx-1} invariantes de comprobacion generadas en {out_path}")
+print(f"EXERGY_COLLAPSE_SUCCESS: {idx-1} invariantes de comprobacion generadas en {out_path}")

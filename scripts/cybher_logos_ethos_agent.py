@@ -2,7 +2,7 @@
 """
 C5-REAL: Autonomous Hypervigilant LOGOS ETHOS Cybher Agent
 Author: Borja Moskv (borjamoskv)
-[P0 ULTRATHINK] EXERGY-MAXIMIZER MUTATION: 100x CYCLE COMPRESSION
+[P0 EXERGY] EXERGY-MAXIMIZER MUTATION: 100x CYCLE COMPRESSION
 """
 
 import os

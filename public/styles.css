@@ -395,7 +395,7 @@ body {
 }
 
 /* C7 Workspace Styles */
-.ultrathink-console-panel, .visual-analysis-panel {
+.exergy-console-panel, .visual-analysis-panel {
     grid-column: span 1;
 }
 

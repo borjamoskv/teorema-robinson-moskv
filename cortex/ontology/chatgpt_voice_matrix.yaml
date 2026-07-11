@@ -1,7 +1,7 @@
 metadata:
   timestamp: '2026-07-10T01:26:15.068339Z'
   target: ChatGPT_Voice_Model_2026-07-10
-  mode: ULTRATHINK
+  mode: EXERGY
   author: borjamoskv
 invariants:
   INV_000:

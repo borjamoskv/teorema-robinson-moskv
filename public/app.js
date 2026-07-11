@@ -463,7 +463,7 @@ function resetPipeline() {
 async function executeCompute() {
     const query = DOM.consoleQuery.value.trim();
     if (!query) {
-        alert('Please input an Ultrathink query.');
+        alert('Please input an Exergy query.');
         return;
     }
 
@@ -561,7 +561,7 @@ async function executeCompute() {
             });
         }
 
-        addLogEntry('C7_COMPUTE', `Ultrathink run completed. Ledger hash compiled.`, 'stable', `${data.inference.retrieved_nodes.length} nodes`);
+        addLogEntry('C7_COMPUTE', `Exergy run completed. Ledger hash compiled.`, 'stable', `${data.inference.retrieved_nodes.length} nodes`);
 
     } catch (e) {
         console.error(e);

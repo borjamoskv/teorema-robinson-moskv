@@ -11,7 +11,7 @@ append_text = """
   3. **El Apalancamiento:** ¿Cuál es el 5% que rinde el 95%?
   4. **Bucle Autocatalítico:** ¿Se alimenta a sí mismo o requiere empuje eterno?
   5. **El Cuello de Botella (Restricción):** ¿Cuál es el límite duro absoluto?
-  6. **Racionalización Post Hoc (ULTRATHINK):** ¿La decisión ya está tomada y esto es teatro justificativo?
+  6. **Racionalización Post Hoc (EXERGY):** ¿La decisión ya está tomada y esto es teatro justificativo?
 """
 
 target_file = "/Users/borjafernandezangulo/.gemini/config/AGENTS.md"

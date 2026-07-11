@@ -70,7 +70,7 @@ def generate_primitives():
                     if count > 300:
                         break
                     
-                    p_id = f"ULTRATHINK-POSTHOC-{count:03d}"
+                    p_id = f"EXERGY-POSTHOC-{count:03d}"
                     desc = f"{v} {t} {o}"
                     
                     primitives.append({
@@ -98,7 +98,7 @@ def main():
     data = {
         "metadata": {
             "version": "1.0.0",
-            "ontology": "ULTRATHINK POST-HOC INVARIANTS",
+            "ontology": "EXERGY POST-HOC INVARIANTS",
             "timestamp": int(time.time()),
             "strict_rule": "[L71] INVARIANTE DE PENSAMIENTO POST-HOC"
         },

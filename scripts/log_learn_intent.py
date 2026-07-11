@@ -3,7 +3,7 @@ import hashlib
 import time
 
 def log_learning_intent():
-    db_path = "/Users/borjafernandezangulo/30_BABYLON-60/ultrathink_ledger.db"
+    db_path = "/Users/borjafernandezangulo/30_BABYLON-60/nexus_anchors.db"
     payload = "6_INVARIANTES_FUNDAMENTALES_LEARN_PROPOSAL"
     payload_hash = hashlib.sha256(payload.encode()).hexdigest()
     
@@ -11,7 +11,7 @@ def log_learning_intent():
         conn.execute('''
             INSERT INTO causal_collapse (timestamp, event_type, payload_hash, status, cortex_taint)
             VALUES (?, ?, ?, ?, ?)
-        ''', (int(time.time()), 'ULTRATHINK_LEARN_PROPOSAL', payload_hash, 'AWAITING_APPROVAL', 'INTERDISCIPLINARY_SYNTHESIS'))
+        ''', (int(time.time()), 'EXERGY_LEARN_PROPOSAL', payload_hash, 'AWAITING_APPROVAL', 'INTERDISCIPLINARY_SYNTHESIS'))
         conn.commit()
 
 if __name__ == "__main__":
