@@ -1,0 +1,17 @@
+C5_REAL_ENFORCEMENT_MATRIX:
+  P201:
+    description: "Navegación 100% anónima (Modo Privado)."
+    url: "https://www.linkedin.com/mypreferences/d/profile-viewing-options"
+    target_element: "Modo privado"
+  P202:
+    description: "Bloqueo de telemetría de cambios de empleo."
+    url: "https://www.linkedin.com/mypreferences/d/settings/notify-network-for-updates"
+    target_element: "No"
+  P203:
+    description: "Denegación de entrenamiento IA."
+    url: "https://www.linkedin.com/mypreferences/d/settings/data-for-ai-models"
+    target_element: "Desactivado"
+  P204:
+    description: "Aislamiento de grafo de contactos."
+    url: "https://www.linkedin.com/mypreferences/d/settings/connections-visibility"
+    target_element: "Solo yo"

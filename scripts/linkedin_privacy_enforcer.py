@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
 LinkedIn Privacy Enforcer (Zero-Friction C5-REAL)
-Uses the upgraded Darwin_CGEvent_Injector to programmatically enforce privacy settings
-in the background without stealing user focus.
+Matrix-Driven Architecture. Transmutes semantic privacy primitives into physical execution.
 """
 
 import sys
+import os
 import time
 import subprocess
+import yaml
 from typing import Dict, Any
 
-# Append the skill scripts path
 sys.path.append("$CORTEX_ROOT/.gemini/config/skills/Darwin_CGEvent_Injector/scripts")
 try:
     from ui_maestro import UIMaestro
@@ -19,42 +19,39 @@ except ImportError:
     sys.exit(1)
 
 def navigate_brave_to(url: str) -> None:
-    """Uses AppleScript to navigate Brave's active tab to the target settings page."""
     cmd = f'tell application "Brave Browser" to set URL of active tab of front window to "{url}"'
     subprocess.run(["osascript", "-e", cmd], capture_output=True)
-    time.sleep(4) # Allow page load
+    time.sleep(4)
 
-def enforce_setting(url: str, element_title: str) -> Dict[str, Any]:
-    """Navigates and clicks the element using zero-friction coordinate mapping."""
-    print(f"[PRIVACY-ENFORCER] Targeting: {element_title} at {url}")
-    navigate_brave_to(url)
+def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[str, Any]:
+    print(f"\n[MATRIX-NODE] Executing {node_id}: {data.get('description')}")
+    navigate_brave_to(data['url'])
     
-    maestro = UIMaestro()
     try:
-        # Perform logical finding and physical click injection O(1)
-        res = maestro.click_element_by_title_zero_friction(element_title, "Brave Browser")
-        print(f"[PRIVACY-ENFORCER] Success: {res}")
+        res = maestro.click_element_by_title_zero_friction(data['target_element'], "Brave Browser")
+        print(f"[SUCCESS] {node_id} Enforced -> {res}")
         return res
     except Exception as e:
-        print(f"[PRIVACY-ENFORCER] Failed to toggle {element_title}: {e}")
+        print(f"[FAILED] {node_id} Target Element '{data['target_element']}' not found or unreachable. Error: {e}")
         return {"status": "failed", "error": str(e)}
 
 def main():
-    print("=== STARTING ZERO-FRICTION PRIVACY ENFORCEMENT ===")
+    print("=== STARTING MATRIX-DRIVEN ZERO-FRICTION ENFORCEMENT ===")
     
-    # 1. Enforce "Modo privado" (anonymity visiting profiles)
-    enforce_setting(
-        "https://www.linkedin.com/mypreferences/d/profile-viewing-options",
-        "Modo privado"
-    )
+    matrix_path = "scripts/privacy_matrix.yaml"
+    if not os.path.exists(matrix_path):
+        matrix_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "privacy_matrix.yaml")
+        
+    with open(matrix_path, "r") as f:
+        matrix = yaml.safe_load(f)
+        
+    maestro = UIMaestro()
+    nodes = matrix.get("C5_REAL_ENFORCEMENT_MATRIX", {})
     
-    # 2. Enforce "Difundir cambios de actividad" (don't alert network of updates)
-    enforce_setting(
-        "https://www.linkedin.com/mypreferences/d/settings/notify-network-for-updates",
-        "No" # Usually toggles a switch to "No"
-    )
-    
-    print("=== PRIVACY ENFORCEMENT RUN COMPLETE ===")
+    for node_id, data in nodes.items():
+        enforce_matrix_node(node_id, data, maestro)
+        
+    print("\n=== PRIVACY ENFORCEMENT RUN COMPLETE ===")
 
 if __name__ == "__main__":
     main()
