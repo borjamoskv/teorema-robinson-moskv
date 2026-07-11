@@ -15,6 +15,9 @@ try:
     from rich.console import Console
     from rich.table import Table
     from rich.panel import Panel
+    from rich.markdown import Markdown
+    from rich.syntax import Syntax
+    from rich.text import Text
     console = Console()
 except ImportError:
     print("FATAL: 'rich' no instalado. Usa: pip install rich")
@@ -171,7 +174,7 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                 s_idx = 0
                 
             cursor.execute('''
-                SELECT step_index, source, substr(content, 1, 150)
+                SELECT step_index, source, content
                 FROM transcripts_fts
                 WHERE conversation_id = ? AND CAST(step_index AS INTEGER) BETWEEN ? AND ?
                 ORDER BY CAST(step_index AS INTEGER) ASC
@@ -179,19 +182,59 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
             
             ctx_rows = cursor.fetchall()
             for (c_idx, c_source, c_content) in ctx_rows:
-                prefix = ">>" if str(c_idx) == str(step_idx) else "  "
-                clean_content = str(c_content).replace(chr(10), ' ')[:100]
-                console.print(f"    [dim]{prefix} [{c_idx}][/dim] [cyan]{c_source}[/cyan]: {clean_content}...")
+                is_target = str(c_idx) == str(step_idx)
+                prefix = ">>" if is_target else "  "
+                style = "bold red" if is_target else "dim"
+                border = "red" if is_target else "cyan"
+                
+                raw_content = str(c_content)
+                if len(raw_content) > 2000 and not is_target:
+                    raw_content = raw_content[:2000] + "\n\n... [TRUNCADO TERMODINÁMICO: >2000 chars] ..."
+                
+                # Renderizamos con Markdown para evitar romper los saltos de línea (C5-REAL Isomorphism)
+                try:
+                    renderable = Markdown(raw_content)
+                except Exception:
+                    renderable = Text(raw_content)
+                
+                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}[/{style}]", border_style=border, padding=(0, 2)))
+
+            console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
+
+def start_daemon(conn: sqlite3.Connection):
+    try:
+        from watchdog.observers import Observer
+        from watchdog.events import FileSystemEventHandler
+    except ImportError:
+        console.print("[bold red]FATAL:[/bold red] 'watchdog' no instalado. Usa: pip install watchdog")
+        sys.exit(1)
         
-    console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
+    class TranscriptHandler(FileSystemEventHandler):
+        def on_modified(self, event):
+            if not event.is_directory and event.src_path.endswith("transcript.jsonl"):
+                sync_transcripts(conn, force=False)
+                
+    observer = Observer()
+    handler = TranscriptHandler()
+    observer.schedule(handler, str(BRAIN_DIR), recursive=True)
+    observer.start()
+    
+    console.print(f"[bold magenta]👁️ NEXUS WATCHER[/bold magenta] Daemon iniciado sobre {BRAIN_DIR}. Presiona Ctrl+C para abortar.")
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
 
 def main():
-    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V6)")
+    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V7)")
     parser.add_argument("--query", help="Keyword para buscar en FTS5.")
     parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico.")
     parser.add_argument("--sync", action="store_true", help="Forzar sincronización delta de logs a SQLite.")
     parser.add_argument("--force-sync", action="store_true", help="Forzar purga y resincronización total.")
     parser.add_argument("--context", type=int, default=0, help="Extrae N pasos anteriores y posteriores a la inyección (Contexto Causal).")
+    parser.add_argument("--daemon", action="store_true", help="Inicia un Watcher en segundo plano para ingesta O(1).")
     args = parser.parse_args()
     
     conn = init_db()
@@ -203,7 +246,9 @@ def main():
     if count == 0 or args.sync or args.force_sync:
         sync_transcripts(conn, force=args.force_sync)
         
-    if args.query:
+    if args.daemon:
+        start_daemon(conn)
+    elif args.query:
         search_fts(conn, args.query, args.limit, args.context)
 
 if __name__ == "__main__":
