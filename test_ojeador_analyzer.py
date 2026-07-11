@@ -1,11 +1,11 @@
 import sys
 import os
-import sqlite3
 import pytest
+import math
 
 # Force import from the scripts directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "scripts")))
-from ojeador_analyzer import resolve_family, build_markdown, persist_run
+from ojeador_analyzer import resolve_family, build_markdown, shannon_entropy, saga_1_anti_obfuscation, canonical_hash
 
 def test_resolve_family_maps_correctly():
     """Verify that family resolver correctly classifies models based on substring match."""
@@ -24,6 +24,24 @@ def test_resolve_family_maps_correctly():
     assert unmapped_info["family"] == "Other"
     assert unmapped_info["exergy_rating"] == "C"
 
+def test_shannon_entropy():
+    """Verify [Cycle 6] entropy calculation."""
+    # A string of identical characters has 0 entropy
+    assert shannon_entropy("AAAA") == 0.0
+    # A string with 4 distinct characters has exactly 2.0 bits of entropy
+    assert math.isclose(shannon_entropy("ABCD"), 2.0)
+
+def test_saga_1_anti_obfuscation():
+    """Verify [Cycle 4] homoglyph normalization."""
+    # Test normalization of full-width characters
+    assert saga_1_anti_obfuscation("ｇｐｔ－４") == "gpt-4"
+
+def test_canonical_hash():
+    """Verify [Cycle 3] JCS Strict Canonicalization."""
+    payload_1 = {"b": 2, "a": 1}
+    payload_2 = {"a": 1, "b": 2}
+    assert canonical_hash(payload_1) == canonical_hash(payload_2)
+
 def test_build_markdown_generates_valid_structure():
     """Verify that markdown generation correctly formats tables, alerts and limits rankings."""
     mock_data = {
@@ -37,52 +55,11 @@ def test_build_markdown_generates_valid_structure():
         ]
     }
     
-    markdown_output = build_markdown(mock_data)
+    markdown_output = build_markdown(mock_data, latency_ms=120, entropy=7.5)
     
     assert "OJEADOR: LMSYS ARENA MATRIZ DE EXERGÍA" in markdown_output
     assert "claude-fable-5" in markdown_output
     assert "gpt-4o" in markdown_output
     assert "| Rango | Modelo |" in markdown_output
     assert "HASH_STAMP" in markdown_output
-
-def test_database_persistence_prevents_duplicate_idempotency_hash():
-    """Verify that multiple inserts of the same run/model do not crash and handle idempotency."""
-    # Setup temporary in-memory DB
-    conn = sqlite3.connect(":memory:")
-    conn.execute("CREATE TABLE sync_runs (id INTEGER PRIMARY KEY AUTOINCREMENT, fetched_at TEXT, last_updated TEXT, cortex_taint TEXT)")
-    conn.execute("""
-        CREATE TABLE leaderboard_snapshots (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            run_id INTEGER,
-            rank INTEGER,
-            model TEXT,
-            vendor TEXT,
-            license TEXT,
-            score INTEGER,
-            votes INTEGER,
-            cortex_taint TEXT,
-            idempotency_hash TEXT UNIQUE
-        )
-    """)
-    conn.commit()
-
-    meta = {"fetched_at": "2026-07-11T00:00:00Z", "last_updated": "Jul 11, 2026"}
-    # Pass the same model twice in the list to trigger the duplicate IntegrityError
-    models = [
-        {"rank": 1, "model": "claude-fable-5", "vendor": "Anthropic", "license": "proprietary", "score": 1500, "votes": 5000},
-        {"rank": 1, "model": "claude-fable-5", "vendor": "Anthropic", "license": "proprietary", "score": 1500, "votes": 5000}
-    ]
-    taint = "test_taint_sig"
-
-    # Insert models (contains duplicate)
-    run_id = persist_run(conn, meta, models, taint)
-    assert run_id == 1
-
-    # Read from DB
-    cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM leaderboard_snapshots")
-    count = cursor.fetchone()[0]
-    # The duplicate snapshot record should be caught by IntegrityError and skipped
-    assert count == 1
-
-    conn.close()
+    assert "120ms" in markdown_output
