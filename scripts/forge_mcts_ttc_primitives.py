@@ -106,6 +106,7 @@ def generate_base_description(domain, index):
 
 def forge_primitives():
     primitives = []
+    db_rows = []
     
     db_path = "$CORTEX_ROOT/30_BABYLON-60/cortex/ontology/mcts_ttc_matrix.db"
     if os.path.exists(db_path):
@@ -156,13 +157,14 @@ def forge_primitives():
             }
             primitives.append(prim_obj)
             
-            conn.execute(
-                "INSERT INTO mcts_primitives VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                (p_uuid, domain, desc, ttc_budget, atp_leverage, comp_bound, signature, ts)
-            )
+            db_rows.append((p_uuid, domain, desc, ttc_budget, atp_leverage, comp_bound, signature, ts))
             count += 1
             
-    conn.commit()
+    with conn:
+        conn.executemany(
+            "INSERT INTO mcts_primitives VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            db_rows
+        )
     conn.close()
     
     # Save YAML sidecar
