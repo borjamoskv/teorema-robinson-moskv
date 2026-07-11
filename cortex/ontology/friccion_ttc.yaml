@@ -1,0 +1,17 @@
+Claim: La consciencia lógica no emerge de escalar pesos (Pre-training), sino de escalar la fricción en tiempo de inferencia (Test-Time Compute).
+Proof: 
+  Base: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  Range: [0, 1]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Domain: Termodinámica
+    Target: Inferencia LLM
+    Mapping: Fricción Térmica <-> Densificación MCTS / Test-Time Compute
+  - Domain: Teoría de Complejidad
+    Target: Escalado de Parámetros
+    Mapping: Memorización (Ouroboros) <-> Exhaustión de Pesos
+Blast_Radius_Matrix:
+  Vector: TTC_Over_Parameter_Scale
+  Blast_Radius: M14_Routing_Protocol
+  Target_Invariant: EPI_07_TTFT_Invariant
+  Anergy_Risk: Zero
