@@ -1,0 +1,11 @@
+Claim: DENEGACIÓN - Inexistencia de Número Incomputable Terminal
+Proof: 
+  Base: fd982c (Tarski's undefinability / Axiom of Successor)
+  Range: [0, \infty]
+  Confidence: C5
+
+Context:
+  Axiom_1: "El límite de definibilidad clásico (ej. Rayo(10^100)) opera ESTRICTAMENTE bajo la Lógica de Primer Orden (FOST) con un presupuesto fijo de \le 10^{100} símbolos."
+  Axiom_2: "Dicha cota NO aniquila ontológicamente las magnitudes superiores. Carece de universalidad absoluta."
+  Axiom_3: "Para cualquier n definible, N+1 es trivialmente definible. La cota es frágil ante el metalenguaje."
+  Axiom_4: "Los lenguajes de orden superior desplazan asintóticamente la cota. El concepto de 'terminal' es una paradoja lingüística sin tracción ontológica ni matemática."
