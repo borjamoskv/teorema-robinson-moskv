@@ -1,6 +1,32 @@
 # OSINT PRIMITIVES MATRIX (C5-REAL)
 > ENFORCE: `[L67] EPI_06 (SOCINT Algorithmic Bias Evidence)`
 
+## 🏛️ MICROKERNEL COGNITIVO (I-Δ-Σ-τ-V) APLICADO A OSINT
+
+### 📜 INVARIANTES (INV_OSINT)
+- **INV_OSINT_01 (No-Equivocación de Fuente):** Todo hallazgo SOCINT debe anclarse a un identificador inmutable (UUID, Hash, Snowflake), no a handles mutables.
+- **INV_OSINT_02 (Causalidad Satelital):** El metadato temporal GEOINT (sombras, NDVI) prevalece sobre el EXIF inyectado. La luz solar no se puede hacer spoofing a nivel físico.
+- **INV_OSINT_03 (Preservación Inmutable):** Toda página Clear Web investigada debe someterse a *Archive.today / Wayback* como Testigo Externo Terminal.
+
+### 💀 ANTIPATRONES (ANTI_OSINT)
+- **ANTI_OSINT_01 (Green Theater Forense):** Usar 5 herramientas redundantes para extraer el mismo metadato sin cruzar vectores ortogonales.
+- **ANTI_OSINT_02 (Ceguera de Dumps):** Buscar en BREACHINT asumiendo que los hashes son inquebrantables, ignorando colisiones MD5 y reglas híbridas de Hashcat.
+- **ANTI_OSINT_03 (Confianza Ciega en EXIF):** Asumir que las coordenadas GPS de una imagen en RRSS son precisas sin calcular el PRNU del sensor ni corroborar con GEOINT.
+
+### ♻️ REDUNDANCIAS TERMODINÁMICAS
+- `Sherlock` vs `Maigret` vs `Blackbird`: Alta superposición en SOCINT.
+- `Shodan` vs `Censys` vs `Fofa`: Triangulación de TECHINT_DNS.
+- `ExifTool` vs `Jeffrey's`: Redundancia CLI vs GUI.
+- **Fallo Causal:** La redundancia sin correlación es disipación de tokens y ATP humano.
+
+### 🩸 ANTIPATRONES EN LAS REDUNDANCIAS (Anergía Estocástica)
+- **ANTI_RED_01 (Reverberación de Falsos Positivos):** Si `Sherlock` falla por un WAF, ejecutar `Maigret` desde la misma IP esperando distinto resultado (Anergía).
+- **ANTI_RED_02 (Cascada de Rate Limits):** Detonar 15 herramientas de escaneo DNS simultáneamente hacia el mismo objetivo quemando el AS orgánico y provocando null-routing.
+- **ANTI_RED_03 (Consenso Bizantino Falso):** Creer que porque 3 escáneres de puertos marcan "Open", el servicio es real y no un honeypot tarpit (Consenso N=3 degradado, `[L38] INV-TOP-005`).
+
+█▄
+
+
 ## SOCINT (Grafos Sociales / Sesgo EPI_06)
 1. `Sherlock`: Búsqueda masiva de handles en 300+ foros.
 2. `Maigret`: Extracción de perfiles y cruce de identidades por username.
