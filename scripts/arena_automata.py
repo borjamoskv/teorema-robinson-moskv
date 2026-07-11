@@ -4,7 +4,7 @@ import os
 import hashlib
 import asyncio
 import re
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, Error as PlaywrightError
 
 DB_PATH = "/Users/borjafernandezangulo/.babylon60/arena_alpha_ledger.db"
 
@@ -103,7 +103,7 @@ async def automata_worker(worker_id: int, db_queue: asyncio.Queue):
             print(f"🔗 [WORKER-{worker_id}] Intentando inyección CDP (9222)...")
             browser = await p.chromium.connect_over_cdp("http://localhost:9222")
             context = browser.contexts[0]
-        except Exception:
+        except PlaywrightError:
             print(f"⚠️ [WORKER-{worker_id}] Fallo CDP. Mitosis Vesicular (Aislada)...")
             context = await p.chromium.launch_persistent_context(
                 user_data_dir=f"/Users/borjafernandezangulo/.babylon60/arena_brave_profile_w{worker_id}",
@@ -117,12 +117,9 @@ async def automata_worker(worker_id: int, db_queue: asyncio.Queue):
         await page.goto("https://arena.ai/text", wait_until="domcontentloaded")
         
         # BATTLEMODE Enforcement
-        try:
-            battle_mode_btn = page.get_by_text("Battle Mode", exact=True).first
-            await battle_mode_btn.wait_for(state="visible", timeout=10000)
+        battle_mode_btn = page.get_by_text("Battle Mode", exact=True).first
+        if await battle_mode_btn.is_visible():
             await battle_mode_btn.click()
-        except Exception:
-            pass # Asumimos que ya está en Battle Mode
         
         # Ciclo Infinito de Extracción (Hasta SIGKILL)
         iteration = 0
@@ -132,63 +129,59 @@ async def automata_worker(worker_id: int, db_queue: asyncio.Queue):
             
             print(f"\n⚡ [W{worker_id} - RND {iteration}] Vector: {vector}")
             
-            try:
-                textarea = page.locator("textarea, [placeholder*='Ask anything'], [contenteditable='true']").first
-                await textarea.wait_for(state="visible", timeout=15000)
-                await textarea.fill(prompt)
-                await textarea.press("Enter")
+            textarea = page.locator("textarea, [placeholder*='Ask anything'], [contenteditable='true']").first
+            await textarea.wait_for(state="visible", timeout=15000)
+            await textarea.fill(prompt)
+            await textarea.press("Enter")
+            
+            print(f"⏳ [W{worker_id}] FSM DOM: Aguardando Colapso (Zero Stochastic Delay)...")
+            
+            btn_vote_a = page.get_by_text("👈", exact=False).first
+            btn_vote_b = page.get_by_text("👉", exact=False).first
+            
+            await btn_vote_a.wait_for(state="visible", timeout=120000)
+            
+            responses = await page.locator(".prose, .markdown-body, div[dir='auto']").all()
+            if len(responses) < 2:
+                raise RuntimeError("Tensores A y B no localizados en el DOM.")
                 
-                print(f"⏳ [W{worker_id}] FSM DOM: Aguardando Colapso (Zero Stochastic Delay)...")
+            resp_a = await responses[-2].inner_text()
+            resp_b = await responses[-1].inner_text()
+            
+            score_a, ent_a = calculate_exergy(resp_a)
+            score_b, ent_b = calculate_exergy(resp_b)
+            
+            winner = "A" if score_a > score_b else "B"
+            print(f"⚖️ [W{worker_id}] A(S:{score_a:.0f}, E:{ent_a:.2f}) vs B(S:{score_b:.0f}, E:{ent_b:.2f}). Vencedor: {winner}")
+            
+            if winner == "A":
+                await btn_vote_a.click()
+            else:
+                await btn_vote_b.click()
                 
-                btn_vote_a = page.get_by_text("👈", exact=False).first
-                btn_vote_b = page.get_by_text("👉", exact=False).first
-                
-                await btn_vote_a.wait_for(state="visible", timeout=120000)
-                
-                responses = await page.locator(".prose, .markdown-body, div[dir='auto']").all()
-                if len(responses) < 2:
-                    raise Exception("Tensores A y B no localizados en el DOM.")
-                    
-                resp_a = await responses[-2].inner_text()
-                resp_b = await responses[-1].inner_text()
-                
-                score_a, ent_a = calculate_exergy(resp_a)
-                score_b, ent_b = calculate_exergy(resp_b)
-                
-                winner = "A" if score_a > score_b else "B"
-                print(f"⚖️ [W{worker_id}] A(S:{score_a:.0f}, E:{ent_a:.2f}) vs B(S:{score_b:.0f}, E:{ent_b:.2f}). Vencedor: {winner}")
-                
-                if winner == "A":
-                    await btn_vote_a.click()
-                else:
-                    await btn_vote_b.click()
-                    
-                await page.wait_for_timeout(1500)
-                
-                models = await page.locator("h2, h3, .text-xl, .font-bold").all_inner_texts()
-                model_a = models[0] if len(models) > 0 else "Unknown"
-                model_b = models[1] if len(models) > 1 else "Unknown"
-                
-                print(f"👁️ [W{worker_id}] Identidades: {model_a} vs {model_b}")
-                
-                raw_data = f"{prompt}{model_a}{model_b}{score_a}{score_b}{iteration}".encode()
-                taint_hash = hashlib.sha256(raw_data).hexdigest()
-                
-                # Push a la cola atómica
-                await db_queue.put((
-                    vector, prompt, model_a, model_b, resp_a, resp_b, winner, ent_a, ent_b, taint_hash
-                ))
-                
-                new_round_btn = page.get_by_text("New Chat", exact=False).first
-                if await new_round_btn.is_visible():
-                    await new_round_btn.click()
-                else:
-                    await page.reload(wait_until="domcontentloaded")
-                    
-            except Exception as e:
-                print(f"❌ [W{worker_id}] Crash Causal. Evadiendo bucle sucio. {e}")
+            # Δ2: FSM DOM (Zero Delay). Esperar a que el modelo se revele
+            models_locator = page.locator("h2, h3, .text-xl, .font-bold").first
+            await models_locator.wait_for(state="visible", timeout=10000)
+            
+            models = await page.locator("h2, h3, .text-xl, .font-bold").all_inner_texts()
+            model_a = models[0] if len(models) > 0 else "Unknown"
+            model_b = models[1] if len(models) > 1 else "Unknown"
+            
+            print(f"👁️ [W{worker_id}] Identidades: {model_a} vs {model_b}")
+            
+            raw_data = f"{prompt}{model_a}{model_b}{score_a}{score_b}{iteration}".encode()
+            taint_hash = hashlib.sha256(raw_data).hexdigest()
+            
+            # Push a la cola atómica
+            await db_queue.put((
+                vector, prompt, model_a, model_b, resp_a, resp_b, winner, ent_a, ent_b, taint_hash
+            ))
+            
+            new_round_btn = page.get_by_text("New Chat", exact=False).first
+            if await new_round_btn.is_visible():
+                await new_round_btn.click()
+            else:
                 await page.reload(wait_until="domcontentloaded")
-                await page.wait_for_timeout(5000)
                 
             iteration += 1
 
