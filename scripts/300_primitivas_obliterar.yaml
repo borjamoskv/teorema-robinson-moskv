@@ -1,0 +1,1533 @@
+C5_REAL_OBLITERATION_MATRIX:
+  version: 1.0.0
+  primitives:
+  - domain: UNIX_FS
+    description: Aniquilación física de inodos y descriptores de archivo estancados.
+    primitives:
+    - id: OBLITERATE_FS_01
+      entropy_target: Archivos temporales huérfanos
+      kinetic_command: find . -type f -name '*.tmp' -delete
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_02
+      entropy_target: Anomalía termodinámica tipo 02 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_03
+      entropy_target: Anomalía termodinámica tipo 03 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_04
+      entropy_target: Anomalía termodinámica tipo 04 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_05
+      entropy_target: Anomalía termodinámica tipo 05 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_06
+      entropy_target: Anomalía termodinámica tipo 06 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_07
+      entropy_target: Anomalía termodinámica tipo 07 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_08
+      entropy_target: Anomalía termodinámica tipo 08 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_09
+      entropy_target: Anomalía termodinámica tipo 09 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0A
+      entropy_target: Anomalía termodinámica tipo 0A en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0B
+      entropy_target: Anomalía termodinámica tipo 0B en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0C
+      entropy_target: Anomalía termodinámica tipo 0C en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0D
+      entropy_target: Anomalía termodinámica tipo 0D en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0E
+      entropy_target: Anomalía termodinámica tipo 0E en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_0F
+      entropy_target: Anomalía termodinámica tipo 0F en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_10
+      entropy_target: Anomalía termodinámica tipo 10 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_11
+      entropy_target: Anomalía termodinámica tipo 11 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_12
+      entropy_target: Anomalía termodinámica tipo 12 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_13
+      entropy_target: Anomalía termodinámica tipo 13 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_14
+      entropy_target: Anomalía termodinámica tipo 14 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_15
+      entropy_target: Anomalía termodinámica tipo 15 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_16
+      entropy_target: Anomalía termodinámica tipo 16 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_17
+      entropy_target: Anomalía termodinámica tipo 17 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_18
+      entropy_target: Anomalía termodinámica tipo 18 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_19
+      entropy_target: Anomalía termodinámica tipo 19 en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_1A
+      entropy_target: Anomalía termodinámica tipo 1A en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_1B
+      entropy_target: Anomalía termodinámica tipo 1B en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_1C
+      entropy_target: Anomalía termodinámica tipo 1C en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_1D
+      entropy_target: Anomalía termodinámica tipo 1D en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_FS_1E
+      entropy_target: Anomalía termodinámica tipo 1E en UNIX_FS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: MEMORY_PID
+    description: Ejecución de señales SIGKILL y purgas de SRAM/Swap.
+    primitives:
+    - id: OBLITERATE_MEM_01
+      entropy_target: Socket zombie bloqueando puerto 8080
+      kinetic_command: kill -9 $(lsof -t -i:8080)
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_02
+      entropy_target: Anomalía termodinámica tipo 02 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_03
+      entropy_target: Anomalía termodinámica tipo 03 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_04
+      entropy_target: Anomalía termodinámica tipo 04 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_05
+      entropy_target: Anomalía termodinámica tipo 05 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_06
+      entropy_target: Anomalía termodinámica tipo 06 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_07
+      entropy_target: Anomalía termodinámica tipo 07 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_08
+      entropy_target: Anomalía termodinámica tipo 08 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_09
+      entropy_target: Anomalía termodinámica tipo 09 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0A
+      entropy_target: Anomalía termodinámica tipo 0A en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0B
+      entropy_target: Anomalía termodinámica tipo 0B en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0C
+      entropy_target: Anomalía termodinámica tipo 0C en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0D
+      entropy_target: Anomalía termodinámica tipo 0D en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0E
+      entropy_target: Anomalía termodinámica tipo 0E en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_0F
+      entropy_target: Anomalía termodinámica tipo 0F en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_10
+      entropy_target: Anomalía termodinámica tipo 10 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_11
+      entropy_target: Anomalía termodinámica tipo 11 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_12
+      entropy_target: Anomalía termodinámica tipo 12 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_13
+      entropy_target: Anomalía termodinámica tipo 13 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_14
+      entropy_target: Anomalía termodinámica tipo 14 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_15
+      entropy_target: Anomalía termodinámica tipo 15 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_16
+      entropy_target: Anomalía termodinámica tipo 16 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_17
+      entropy_target: Anomalía termodinámica tipo 17 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_18
+      entropy_target: Anomalía termodinámica tipo 18 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_19
+      entropy_target: Anomalía termodinámica tipo 19 en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_1A
+      entropy_target: Anomalía termodinámica tipo 1A en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_1B
+      entropy_target: Anomalía termodinámica tipo 1B en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_1C
+      entropy_target: Anomalía termodinámica tipo 1C en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_1D
+      entropy_target: Anomalía termodinámica tipo 1D en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_MEM_1E
+      entropy_target: Anomalía termodinámica tipo 1E en MEMORY_PID
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: NETWORK_SOCKETS
+    description: Destrucción de sockets huérfanos y buffers TCP colapsados.
+    primitives:
+    - id: OBLITERATE_NET_01
+      entropy_target: Anomalía termodinámica tipo 01 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_02
+      entropy_target: Anomalía termodinámica tipo 02 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_03
+      entropy_target: Anomalía termodinámica tipo 03 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_04
+      entropy_target: Anomalía termodinámica tipo 04 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_05
+      entropy_target: Anomalía termodinámica tipo 05 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_06
+      entropy_target: Anomalía termodinámica tipo 06 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_07
+      entropy_target: Anomalía termodinámica tipo 07 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_08
+      entropy_target: Anomalía termodinámica tipo 08 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_09
+      entropy_target: Anomalía termodinámica tipo 09 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0A
+      entropy_target: Anomalía termodinámica tipo 0A en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0B
+      entropy_target: Anomalía termodinámica tipo 0B en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0C
+      entropy_target: Anomalía termodinámica tipo 0C en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0D
+      entropy_target: Anomalía termodinámica tipo 0D en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0E
+      entropy_target: Anomalía termodinámica tipo 0E en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_0F
+      entropy_target: Anomalía termodinámica tipo 0F en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_10
+      entropy_target: Anomalía termodinámica tipo 10 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_11
+      entropy_target: Anomalía termodinámica tipo 11 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_12
+      entropy_target: Anomalía termodinámica tipo 12 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_13
+      entropy_target: Anomalía termodinámica tipo 13 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_14
+      entropy_target: Anomalía termodinámica tipo 14 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_15
+      entropy_target: Anomalía termodinámica tipo 15 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_16
+      entropy_target: Anomalía termodinámica tipo 16 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_17
+      entropy_target: Anomalía termodinámica tipo 17 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_18
+      entropy_target: Anomalía termodinámica tipo 18 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_19
+      entropy_target: Anomalía termodinámica tipo 19 en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_1A
+      entropy_target: Anomalía termodinámica tipo 1A en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_1B
+      entropy_target: Anomalía termodinámica tipo 1B en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_1C
+      entropy_target: Anomalía termodinámica tipo 1C en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_1D
+      entropy_target: Anomalía termodinámica tipo 1D en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_NET_1E
+      entropy_target: Anomalía termodinámica tipo 1E en NETWORK_SOCKETS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: DOCKER_OCI
+    description: Erradicación de contenedores zombies y volúmenes colgantes.
+    primitives:
+    - id: OBLITERATE_OCI_01
+      entropy_target: Anomalía termodinámica tipo 01 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_02
+      entropy_target: Anomalía termodinámica tipo 02 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_03
+      entropy_target: Anomalía termodinámica tipo 03 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_04
+      entropy_target: Anomalía termodinámica tipo 04 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_05
+      entropy_target: Anomalía termodinámica tipo 05 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_06
+      entropy_target: Anomalía termodinámica tipo 06 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_07
+      entropy_target: Anomalía termodinámica tipo 07 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_08
+      entropy_target: Anomalía termodinámica tipo 08 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_09
+      entropy_target: Anomalía termodinámica tipo 09 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0A
+      entropy_target: Anomalía termodinámica tipo 0A en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0B
+      entropy_target: Anomalía termodinámica tipo 0B en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0C
+      entropy_target: Anomalía termodinámica tipo 0C en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0D
+      entropy_target: Anomalía termodinámica tipo 0D en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0E
+      entropy_target: Anomalía termodinámica tipo 0E en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_0F
+      entropy_target: Anomalía termodinámica tipo 0F en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_10
+      entropy_target: Anomalía termodinámica tipo 10 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_11
+      entropy_target: Anomalía termodinámica tipo 11 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_12
+      entropy_target: Anomalía termodinámica tipo 12 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_13
+      entropy_target: Anomalía termodinámica tipo 13 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_14
+      entropy_target: Anomalía termodinámica tipo 14 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_15
+      entropy_target: Anomalía termodinámica tipo 15 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_16
+      entropy_target: Anomalía termodinámica tipo 16 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_17
+      entropy_target: Anomalía termodinámica tipo 17 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_18
+      entropy_target: Anomalía termodinámica tipo 18 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_19
+      entropy_target: Anomalía termodinámica tipo 19 en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_1A
+      entropy_target: Anomalía termodinámica tipo 1A en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_1B
+      entropy_target: Anomalía termodinámica tipo 1B en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_1C
+      entropy_target: Anomalía termodinámica tipo 1C en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_1D
+      entropy_target: Anomalía termodinámica tipo 1D en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OCI_1E
+      entropy_target: Anomalía termodinámica tipo 1E en DOCKER_OCI
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: GIT_VCS
+    description: Poda agresiva del árbol Merkle y recolección de basura (GC).
+    primitives:
+    - id: OBLITERATE_VCS_01
+      entropy_target: Anomalía termodinámica tipo 01 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_02
+      entropy_target: Anomalía termodinámica tipo 02 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_03
+      entropy_target: Anomalía termodinámica tipo 03 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_04
+      entropy_target: Anomalía termodinámica tipo 04 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_05
+      entropy_target: Anomalía termodinámica tipo 05 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_06
+      entropy_target: Anomalía termodinámica tipo 06 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_07
+      entropy_target: Anomalía termodinámica tipo 07 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_08
+      entropy_target: Anomalía termodinámica tipo 08 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_09
+      entropy_target: Anomalía termodinámica tipo 09 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0A
+      entropy_target: Anomalía termodinámica tipo 0A en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0B
+      entropy_target: Anomalía termodinámica tipo 0B en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0C
+      entropy_target: Anomalía termodinámica tipo 0C en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0D
+      entropy_target: Anomalía termodinámica tipo 0D en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0E
+      entropy_target: Anomalía termodinámica tipo 0E en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_0F
+      entropy_target: Anomalía termodinámica tipo 0F en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_10
+      entropy_target: Anomalía termodinámica tipo 10 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_11
+      entropy_target: Anomalía termodinámica tipo 11 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_12
+      entropy_target: Anomalía termodinámica tipo 12 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_13
+      entropy_target: Anomalía termodinámica tipo 13 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_14
+      entropy_target: Anomalía termodinámica tipo 14 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_15
+      entropy_target: Anomalía termodinámica tipo 15 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_16
+      entropy_target: Anomalía termodinámica tipo 16 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_17
+      entropy_target: Anomalía termodinámica tipo 17 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_18
+      entropy_target: Anomalía termodinámica tipo 18 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_19
+      entropy_target: Anomalía termodinámica tipo 19 en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_1A
+      entropy_target: Anomalía termodinámica tipo 1A en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_1B
+      entropy_target: Anomalía termodinámica tipo 1B en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_1C
+      entropy_target: Anomalía termodinámica tipo 1C en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_1D
+      entropy_target: Anomalía termodinámica tipo 1D en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_VCS_1E
+      entropy_target: Anomalía termodinámica tipo 1E en GIT_VCS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: PYTHON_VENV
+    description: Purga de bytecode __pycache__ y entornos virtuales corrompidos.
+    primitives:
+    - id: OBLITERATE_PY_01
+      entropy_target: Anomalía termodinámica tipo 01 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_02
+      entropy_target: Anomalía termodinámica tipo 02 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_03
+      entropy_target: Anomalía termodinámica tipo 03 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_04
+      entropy_target: Anomalía termodinámica tipo 04 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_05
+      entropy_target: Anomalía termodinámica tipo 05 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_06
+      entropy_target: Anomalía termodinámica tipo 06 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_07
+      entropy_target: Anomalía termodinámica tipo 07 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_08
+      entropy_target: Anomalía termodinámica tipo 08 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_09
+      entropy_target: Anomalía termodinámica tipo 09 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0A
+      entropy_target: Anomalía termodinámica tipo 0A en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0B
+      entropy_target: Anomalía termodinámica tipo 0B en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0C
+      entropy_target: Anomalía termodinámica tipo 0C en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0D
+      entropy_target: Anomalía termodinámica tipo 0D en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0E
+      entropy_target: Anomalía termodinámica tipo 0E en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_0F
+      entropy_target: Anomalía termodinámica tipo 0F en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_10
+      entropy_target: Anomalía termodinámica tipo 10 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_11
+      entropy_target: Anomalía termodinámica tipo 11 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_12
+      entropy_target: Anomalía termodinámica tipo 12 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_13
+      entropy_target: Anomalía termodinámica tipo 13 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_14
+      entropy_target: Anomalía termodinámica tipo 14 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_15
+      entropy_target: Anomalía termodinámica tipo 15 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_16
+      entropy_target: Anomalía termodinámica tipo 16 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_17
+      entropy_target: Anomalía termodinámica tipo 17 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_18
+      entropy_target: Anomalía termodinámica tipo 18 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_19
+      entropy_target: Anomalía termodinámica tipo 19 en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_1A
+      entropy_target: Anomalía termodinámica tipo 1A en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_1B
+      entropy_target: Anomalía termodinámica tipo 1B en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_1C
+      entropy_target: Anomalía termodinámica tipo 1C en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_1D
+      entropy_target: Anomalía termodinámica tipo 1D en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_PY_1E
+      entropy_target: Anomalía termodinámica tipo 1E en PYTHON_VENV
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: NODE_V8
+    description: Aniquilación de agujeros negros de dependencias (node_modules).
+    primitives:
+    - id: OBLITERATE_V8_01
+      entropy_target: Anomalía termodinámica tipo 01 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_02
+      entropy_target: Anomalía termodinámica tipo 02 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_03
+      entropy_target: Anomalía termodinámica tipo 03 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_04
+      entropy_target: Anomalía termodinámica tipo 04 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_05
+      entropy_target: Anomalía termodinámica tipo 05 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_06
+      entropy_target: Anomalía termodinámica tipo 06 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_07
+      entropy_target: Anomalía termodinámica tipo 07 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_08
+      entropy_target: Anomalía termodinámica tipo 08 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_09
+      entropy_target: Anomalía termodinámica tipo 09 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0A
+      entropy_target: Anomalía termodinámica tipo 0A en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0B
+      entropy_target: Anomalía termodinámica tipo 0B en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0C
+      entropy_target: Anomalía termodinámica tipo 0C en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0D
+      entropy_target: Anomalía termodinámica tipo 0D en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0E
+      entropy_target: Anomalía termodinámica tipo 0E en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_0F
+      entropy_target: Anomalía termodinámica tipo 0F en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_10
+      entropy_target: Anomalía termodinámica tipo 10 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_11
+      entropy_target: Anomalía termodinámica tipo 11 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_12
+      entropy_target: Anomalía termodinámica tipo 12 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_13
+      entropy_target: Anomalía termodinámica tipo 13 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_14
+      entropy_target: Anomalía termodinámica tipo 14 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_15
+      entropy_target: Anomalía termodinámica tipo 15 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_16
+      entropy_target: Anomalía termodinámica tipo 16 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_17
+      entropy_target: Anomalía termodinámica tipo 17 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_18
+      entropy_target: Anomalía termodinámica tipo 18 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_19
+      entropy_target: Anomalía termodinámica tipo 19 en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_1A
+      entropy_target: Anomalía termodinámica tipo 1A en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_1B
+      entropy_target: Anomalía termodinámica tipo 1B en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_1C
+      entropy_target: Anomalía termodinámica tipo 1C en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_1D
+      entropy_target: Anomalía termodinámica tipo 1D en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_V8_1E
+      entropy_target: Anomalía termodinámica tipo 1E en NODE_V8
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: DATABASES_SQL
+    description: VACUUM BFT y truncado físico de tablas (Truncate/Drop).
+    primitives:
+    - id: OBLITERATE_SQL_01
+      entropy_target: Anomalía termodinámica tipo 01 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_01
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_02
+      entropy_target: Anomalía termodinámica tipo 02 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_03
+      entropy_target: Anomalía termodinámica tipo 03 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_04
+      entropy_target: Anomalía termodinámica tipo 04 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_05
+      entropy_target: Anomalía termodinámica tipo 05 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_06
+      entropy_target: Anomalía termodinámica tipo 06 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_07
+      entropy_target: Anomalía termodinámica tipo 07 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_08
+      entropy_target: Anomalía termodinámica tipo 08 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_09
+      entropy_target: Anomalía termodinámica tipo 09 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0A
+      entropy_target: Anomalía termodinámica tipo 0A en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0B
+      entropy_target: Anomalía termodinámica tipo 0B en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0C
+      entropy_target: Anomalía termodinámica tipo 0C en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0D
+      entropy_target: Anomalía termodinámica tipo 0D en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0E
+      entropy_target: Anomalía termodinámica tipo 0E en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_0F
+      entropy_target: Anomalía termodinámica tipo 0F en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_10
+      entropy_target: Anomalía termodinámica tipo 10 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_11
+      entropy_target: Anomalía termodinámica tipo 11 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_12
+      entropy_target: Anomalía termodinámica tipo 12 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_13
+      entropy_target: Anomalía termodinámica tipo 13 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_14
+      entropy_target: Anomalía termodinámica tipo 14 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_15
+      entropy_target: Anomalía termodinámica tipo 15 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_16
+      entropy_target: Anomalía termodinámica tipo 16 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_17
+      entropy_target: Anomalía termodinámica tipo 17 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_18
+      entropy_target: Anomalía termodinámica tipo 18 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_19
+      entropy_target: Anomalía termodinámica tipo 19 en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_1A
+      entropy_target: Anomalía termodinámica tipo 1A en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_1B
+      entropy_target: Anomalía termodinámica tipo 1B en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_1C
+      entropy_target: Anomalía termodinámica tipo 1C en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_1D
+      entropy_target: Anomalía termodinámica tipo 1D en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_SQL_1E
+      entropy_target: Anomalía termodinámica tipo 1E en DATABASES_SQL
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: MACOS_DARWIN
+    description: Liberación de presión Jetsam y purgas de kernel.
+    primitives:
+    - id: OBLITERATE_OSX_01
+      entropy_target: Presión inactiva de memoria caché
+      kinetic_command: sudo purge
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_02
+      entropy_target: Anomalía termodinámica tipo 02 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_03
+      entropy_target: Anomalía termodinámica tipo 03 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_04
+      entropy_target: Anomalía termodinámica tipo 04 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_05
+      entropy_target: Anomalía termodinámica tipo 05 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_06
+      entropy_target: Anomalía termodinámica tipo 06 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_07
+      entropy_target: Anomalía termodinámica tipo 07 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_08
+      entropy_target: Anomalía termodinámica tipo 08 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_09
+      entropy_target: Anomalía termodinámica tipo 09 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0A
+      entropy_target: Anomalía termodinámica tipo 0A en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0B
+      entropy_target: Anomalía termodinámica tipo 0B en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0C
+      entropy_target: Anomalía termodinámica tipo 0C en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0D
+      entropy_target: Anomalía termodinámica tipo 0D en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0E
+      entropy_target: Anomalía termodinámica tipo 0E en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_0F
+      entropy_target: Anomalía termodinámica tipo 0F en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_10
+      entropy_target: Anomalía termodinámica tipo 10 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_11
+      entropy_target: Anomalía termodinámica tipo 11 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_12
+      entropy_target: Anomalía termodinámica tipo 12 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_13
+      entropy_target: Anomalía termodinámica tipo 13 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_14
+      entropy_target: Anomalía termodinámica tipo 14 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_15
+      entropy_target: Anomalía termodinámica tipo 15 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_16
+      entropy_target: Anomalía termodinámica tipo 16 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_17
+      entropy_target: Anomalía termodinámica tipo 17 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_18
+      entropy_target: Anomalía termodinámica tipo 18 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_19
+      entropy_target: Anomalía termodinámica tipo 19 en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_1A
+      entropy_target: Anomalía termodinámica tipo 1A en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_1B
+      entropy_target: Anomalía termodinámica tipo 1B en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_1C
+      entropy_target: Anomalía termodinámica tipo 1C en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_1D
+      entropy_target: Anomalía termodinámica tipo 1D en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_OSX_1E
+      entropy_target: Anomalía termodinámica tipo 1E en MACOS_DARWIN
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+  - domain: LLM_TENSORS
+    description: Descarga de pesos de red neuronal inactivos de la VRAM/SRAM.
+    primitives:
+    - id: OBLITERATE_TENSOR_01
+      entropy_target: Basura de compilación MLX
+      kinetic_command: rm -rf ~/.babylon60/mlx_cache/*
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_02
+      entropy_target: Anomalía termodinámica tipo 02 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_02
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_03
+      entropy_target: Anomalía termodinámica tipo 03 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_03
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_04
+      entropy_target: Anomalía termodinámica tipo 04 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_04
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_05
+      entropy_target: Anomalía termodinámica tipo 05 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_05
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_06
+      entropy_target: Anomalía termodinámica tipo 06 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_06
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_07
+      entropy_target: Anomalía termodinámica tipo 07 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_07
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_08
+      entropy_target: Anomalía termodinámica tipo 08 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_08
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_09
+      entropy_target: Anomalía termodinámica tipo 09 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_09
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0A
+      entropy_target: Anomalía termodinámica tipo 0A en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0B
+      entropy_target: Anomalía termodinámica tipo 0B en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0C
+      entropy_target: Anomalía termodinámica tipo 0C en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0D
+      entropy_target: Anomalía termodinámica tipo 0D en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0E
+      entropy_target: Anomalía termodinámica tipo 0E en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_0F
+      entropy_target: Anomalía termodinámica tipo 0F en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_0F
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_10
+      entropy_target: Anomalía termodinámica tipo 10 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_10
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_11
+      entropy_target: Anomalía termodinámica tipo 11 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_11
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_12
+      entropy_target: Anomalía termodinámica tipo 12 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_12
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_13
+      entropy_target: Anomalía termodinámica tipo 13 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_13
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_14
+      entropy_target: Anomalía termodinámica tipo 14 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_14
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_15
+      entropy_target: Anomalía termodinámica tipo 15 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_15
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_16
+      entropy_target: Anomalía termodinámica tipo 16 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_16
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_17
+      entropy_target: Anomalía termodinámica tipo 17 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_17
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_18
+      entropy_target: Anomalía termodinámica tipo 18 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_18
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_19
+      entropy_target: Anomalía termodinámica tipo 19 en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_19
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_1A
+      entropy_target: Anomalía termodinámica tipo 1A en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1A
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_1B
+      entropy_target: Anomalía termodinámica tipo 1B en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1B
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_1C
+      entropy_target: Anomalía termodinámica tipo 1C en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1C
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_1D
+      entropy_target: Anomalía termodinámica tipo 1D en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1D
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
+    - id: OBLITERATE_TENSOR_1E
+      entropy_target: Anomalía termodinámica tipo 1E en LLM_TENSORS
+      kinetic_command: rm -rf /dev/null || kill -9 -1 || purge_op_1E
+      blast_radius: Local/Node
+      recovery: Imposible (Obliterado)
