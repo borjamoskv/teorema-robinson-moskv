@@ -198,10 +198,19 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
                     renderable = Text(raw_content)
                 
                 import re
+                # V8: Semantic Taint (URLs and absolute paths extraction)
                 urls = re.findall(r'(https?://[^\s]+|file://[^\s]+|/[a-zA-Z0-9_/-]+\.[a-zA-Z0-9]+)', raw_content)
                 taint_str = f" | 🔗 {len(urls)} refs" if urls else ""
                 
-                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}[/{style}]", border_style=border, padding=(0, 2)))
+                # V9: Git Sentinel Inverted Extraction
+                sentinel_hashes = re.findall(r'\[[a-zA-Z0-9_/-]+\s([a-f0-9]{7,40})\]|([a-f0-9]{7,40})\s(?:feat|fix|refactor|docs|chore|test)', raw_content)
+                sentinel_str = ""
+                for group in sentinel_hashes:
+                    hash_val = group[0] or group[1]
+                    if hash_val:
+                        sentinel_str += f" | [bold green]🛡️ SENTINEL {hash_val[:7]}[/bold green]"
+                
+                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}[/{style}]{sentinel_str}", border_style=border, padding=(0, 2)))
 
     console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
 
