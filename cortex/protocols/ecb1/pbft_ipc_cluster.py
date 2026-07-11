@@ -1,6 +1,7 @@
 import sys
 import multiprocessing
 import time
+import queue
 import sqlite3
 import os
 import hashlib
@@ -52,7 +53,6 @@ def run_node(node_id, queues, is_byzantine=False):
     
     if node_id == 0:
         # LÍDER: Iniciar consenso
-        time.sleep(0.5) # Wait for cluster to be ready
         payload = "📦🧠⚡"
         msg = f"{L_PRE}{payload}"
         log_to_ledger(node_id, "PRE-PREPARE", msg)
@@ -64,15 +64,13 @@ def run_node(node_id, queues, is_byzantine=False):
             sys.stdout.flush()
             
     # BUCLE DE EVENTOS IPC
-    timeout_counter = 0
-    while timeout_counter < 15: # Timeout de ~1.5 segundos
-        if my_queue.empty():
-            time.sleep(0.1)
-            timeout_counter += 1
-            continue
-            
-        sender, msg = my_queue.get()
-        timeout_counter = 0 # Reset timeout on message
+    while True:
+        try:
+            # Bloqueo a nivel OS (Kernel Sleep) en lugar de busy-wait estocástico
+            sender, msg = my_queue.get(timeout=1.5)
+        except queue.Empty:
+            break # Timeout excedido
+        
         
         payload = msg[1:]
         phase = msg[0]
