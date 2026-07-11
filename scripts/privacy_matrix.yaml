@@ -1,41 +1,81 @@
 C5_REAL_ENFORCEMENT_MATRIX:
   P201:
-    description: "Navegación 100% anónima (Modo Privado)."
-    url: "https://www.linkedin.com/mypreferences/d/profile-viewing-options"
-    target_element: "Modo privado"
+    description: Navegación 100% anónima (Modo Privado).
+    url: https://www.linkedin.com/mypreferences/d/profile-viewing-options
+    target_element: Modo privado
   P202:
-    description: "Bloqueo de telemetría de cambios de empleo."
-    url: "https://www.linkedin.com/mypreferences/d/settings/notify-network-for-updates"
-    target_element: "No"
+    description: Bloqueo de telemetría de cambios de empleo.
+    url: https://www.linkedin.com/mypreferences/d/settings/notify-network-for-updates
+    target_element: 'No'
   P203:
-    description: "Denegación de entrenamiento IA y recolección de Microsoft."
-    url: "https://www.linkedin.com/mypreferences/d/settings/data-for-ai-models"
-    target_element: "Desactivado"
+    description: Denegación de entrenamiento IA y recolección de Microsoft.
+    url: https://www.linkedin.com/mypreferences/d/settings/data-for-ai-models
+    target_element: Desactivado
   P204:
-    description: "Aislamiento de grafo de contactos (Zero-Recon)."
-    url: "https://www.linkedin.com/mypreferences/d/settings/connections-visibility"
-    target_element: "Solo yo"
+    description: Aislamiento de grafo de contactos (Zero-Recon).
+    url: https://www.linkedin.com/mypreferences/d/settings/connections-visibility
+    target_element: Solo yo
   P214:
-    description: "Bloqueo de OSINT por búsqueda de Email."
-    url: "https://www.linkedin.com/mypreferences/d/settings/discoverability-by-email"
-    target_element: "Nadie"
+    description: Bloqueo de OSINT por búsqueda de Email.
+    url: https://www.linkedin.com/mypreferences/d/settings/discoverability-by-email
+    target_element: Nadie
   P231:
-    description: "Bloqueo de OSINT por búsqueda de Teléfono."
-    url: "https://www.linkedin.com/mypreferences/d/settings/discoverability-by-phone"
-    target_element: "Nadie"
+    description: Bloqueo de OSINT por búsqueda de Teléfono.
+    url: https://www.linkedin.com/mypreferences/d/settings/discoverability-by-phone
+    target_element: Nadie
   P217:
-    description: "Desactivación de latido y estado de conexión."
-    url: "https://www.linkedin.com/mypreferences/d/settings/manage-active-status"
-    target_element: "Nadie"
+    description: Desactivación de latido y estado de conexión.
+    url: https://www.linkedin.com/mypreferences/d/settings/manage-active-status
+    target_element: Nadie
   P208:
-    description: "Denegación de uso de datos para publicidad externa."
-    url: "https://www.linkedin.com/mypreferences/d/settings/ads-data-collection"
-    target_element: "Desactivado"
+    description: Denegación de uso de datos para publicidad externa.
+    url: https://www.linkedin.com/mypreferences/d/settings/ads-data-collection
+    target_element: Desactivado
   P210:
-    description: "Bloqueo de fuga de datos hacia aplicaciones de terceros."
-    url: "https://www.linkedin.com/mypreferences/d/settings/third-party-apps"
-    target_element: "Eliminar"
+    description: Bloqueo de fuga de datos hacia aplicaciones de terceros.
+    url: https://www.linkedin.com/mypreferences/d/settings/third-party-apps
+    target_element: Eliminar
   P209:
-    description: "Denegación de indexación en buscadores externos (Google/Bing)."
-    url: "https://www.linkedin.com/public-profile/settings"
-    target_element: "Desactivar"
+    description: Denegación de indexación en buscadores externos (Google/Bing).
+    url: https://www.linkedin.com/public-profile/settings
+    target_element: Desactivar
+  P215:
+    description: Aislamiento de filias corporativas (Páginas seguidas).
+    url: https://www.linkedin.com/mypreferences/d/settings/pages-you-follow
+    target_element: Solo yo
+  P218:
+    description: Denegación de telemetría de lectura (Read Receipts).
+    url: https://www.linkedin.com/mypreferences/d/settings/read-receipts
+    target_element: Desactivado
+  P226:
+    description: Bloqueo de recolección de datos demográficos publicitarios.
+    url: https://www.linkedin.com/mypreferences/d/settings/ads-data-collection
+    target_element: Desactivado
+  P232:
+    description: Denegación de datos cruzados de socios publicitarios.
+    url: https://www.linkedin.com/mypreferences/d/settings/ads-third-party-data
+    target_element: Desactivado
+  P242:
+    description: Bloqueo de fuga de credenciales en autocompletado externo.
+    url: https://www.linkedin.com/mypreferences/d/settings/autofill-forms
+    target_element: Desactivado
+  P249:
+    description: Bloqueo de recolección de datos de Microsoft Social Research.
+    url: https://www.linkedin.com/mypreferences/d/settings/social-impact-research
+    target_element: Desactivado
+  P251:
+    description: Desconexión de sindicación X/Twitter.
+    url: https://www.linkedin.com/mypreferences/d/settings/share-to-twitter
+    target_element: Desconectar
+  P264:
+    description: Denegación de telemetría analítica de Microsoft Viva/Analytics.
+    url: https://www.linkedin.com/mypreferences/d/settings/microsoft-analytics
+    target_element: Desactivado
+  P272:
+    description: Mitigación de perfilado de movilidad (Ubicación/Mudanza).
+    url: https://www.linkedin.com/mypreferences/d/settings/location-preferences
+    target_element: Desactivado
+  P298:
+    description: Denegación de lectura de extensión en dominios externos.
+    url: https://www.linkedin.com/mypreferences/d/settings/browser-extension
+    target_element: Desactivado
