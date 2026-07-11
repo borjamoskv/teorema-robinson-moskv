@@ -15,7 +15,7 @@ class Ed25519Signer:
 class ShadowRouter:
     def __init__(self, signer: Ed25519Signer):
         self.signer = signer
-        self.shadow_queue = asyncio.Queue()
+        self.shadow_queue: asyncio.Queue[Dict[str, Any]] = asyncio.Queue()
 
     def _jcs_hash(self, payload: dict) -> str:
         canonical = json.dumps(payload, separators=(',', ':'), sort_keys=True).encode('utf-8')
