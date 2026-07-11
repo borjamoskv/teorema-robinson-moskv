@@ -1,17 +1,29 @@
 #!/Users/borjafernandezangulo/.venv/bin/python3
-# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V4 - SQLite FTS5 + Temporal Context)
+# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V6 - UI Brutalist + Telemetría TTFT)
 # Ingesta y búsqueda O(1) usando SQLite WAL + FTS5 con extracción causal forense.
 
 import os
 import sys
 import json
+import time
 import sqlite3
 import argparse
 from pathlib import Path
+from datetime import datetime
+
+try:
+    from rich.console import Console
+    from rich.table import Table
+    from rich.panel import Panel
+    console = Console()
+except ImportError:
+    print("FATAL: 'rich' no instalado. Usa: pip install rich")
+    sys.exit(1)
 
 # Path to all conversation transcripts in the CORTEX environment
 BRAIN_DIR = Path.home() / ".gemini" / "antigravity" / "brain"
 DB_PATH = BRAIN_DIR.parent / "nexus_transcripts.db"
+TELEMETRY_DB = BRAIN_DIR.parent / "telemetry.db"
 
 def init_db() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH, isolation_level=None)
@@ -27,7 +39,6 @@ def init_db() -> sqlite3.Connection:
         conn.execute("DROP TABLE IF EXISTS transcripts_fts")
         conn.execute("DROP TABLE IF EXISTS sync_metadata")
 
-    # Tabla FTS5 para búsquedas ultrarrápidas
     conn.execute('''
         CREATE VIRTUAL TABLE IF NOT EXISTS transcripts_fts USING fts5(
             conversation_id UNINDEXED,
@@ -38,72 +49,91 @@ def init_db() -> sqlite3.Connection:
         )
     ''')
     
-    # Tabla de metadatos para Delta Sync
     conn.execute('''
         CREATE TABLE IF NOT EXISTS sync_metadata (
             conversation_id TEXT PRIMARY KEY,
             last_modified REAL
         )
     ''')
+    
+    # Init Telemetry DB
+    conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
+    conn_tel.execute("PRAGMA journal_mode=WAL")
+    conn_tel.execute('''
+        CREATE TABLE IF NOT EXISTS ttft_metrics (
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+            query TEXT,
+            latency_ms REAL,
+            results_count INTEGER
+        )
+    ''')
+    conn_tel.close()
+    
     return conn
 
+def record_telemetry(query: str, latency_ms: float, results_count: int):
+    conn = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
+    conn.execute(
+        "INSERT INTO ttft_metrics (query, latency_ms, results_count) VALUES (?, ?, ?)",
+        (query, latency_ms, results_count)
+    )
+    conn.close()
+
 def sync_transcripts(conn: sqlite3.Connection, force: bool = False):
-    print("\x1b[1;36m[SYNC]\x1b[0m Ingestando matriz conversacional en SQLite FTS5...")
-    files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
-    
-    cursor = conn.cursor()
-    synced = 0
-    skipped = 0
-    
-    for transcript_file in files:
-        conv_id = transcript_file.parts[-4]
-        try:
-            mtime = transcript_file.stat().st_mtime
-            
-            if not force:
-                cursor.execute("SELECT last_modified FROM sync_metadata WHERE conversation_id = ?", (conv_id,))
-                row = cursor.fetchone()
-                if row and row[0] >= mtime:
-                    skipped += 1
-                    continue
-            
-            cursor.execute("DELETE FROM transcripts_fts WHERE conversation_id = ?", (conv_id,))
-            
-            with open(transcript_file, "r", encoding="utf-8") as f:
-                for idx, line in enumerate(f):
-                    data = json.loads(line)
-                    content = data.get("content", "")
-                    if content:
-                        source = data.get("source", "UNKNOWN")
-                        step_idx = data.get("step_index", idx)
-                        
-                        if len(content) > 100000:
-                            continue
-                            
-                        cursor.execute(
-                            "INSERT INTO transcripts_fts (conversation_id, step_index, source, content, timestamp) VALUES (?, ?, ?, ?, ?)",
-                            (conv_id, step_idx, source, str(content), mtime)
-                        )
-            
-            cursor.execute(
-                "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
-                (conv_id, mtime)
-            )
-            synced += 1
-            
-        except Exception:
-            pass
-            
-    print(f"\x1b[1;32m[SYNC COMPLETE]\x1b[0m {synced} conversaciones ingeridas, {skipped} omitidas (sin cambios).")
+    with console.status("[bold cyan]Ingestando matriz conversacional en SQLite FTS5...[/bold cyan]") as status:
+        files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
+        
+        cursor = conn.cursor()
+        synced = 0
+        skipped = 0
+        
+        for transcript_file in files:
+            conv_id = transcript_file.parts[-4]
+            try:
+                mtime = transcript_file.stat().st_mtime
+                
+                if not force:
+                    cursor.execute("SELECT last_modified FROM sync_metadata WHERE conversation_id = ?", (conv_id,))
+                    row = cursor.fetchone()
+                    if row and row[0] >= mtime:
+                        skipped += 1
+                        continue
+                
+                cursor.execute("DELETE FROM transcripts_fts WHERE conversation_id = ?", (conv_id,))
+                
+                with open(transcript_file, "r", encoding="utf-8") as f:
+                    for idx, line in enumerate(f):
+                        data = json.loads(line)
+                        content = data.get("content", "")
+                        if content:
+                            source = data.get("source", "UNKNOWN")
+                            step_idx = data.get("step_index", idx)
+                            if len(content) > 100000:
+                                continue
+                            cursor.execute(
+                                "INSERT INTO transcripts_fts (conversation_id, step_index, source, content, timestamp) VALUES (?, ?, ?, ?, ?)",
+                                (conv_id, step_idx, source, str(content), mtime)
+                            )
+                
+                cursor.execute(
+                    "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
+                    (conv_id, mtime)
+                )
+                synced += 1
+                
+            except Exception:
+                pass
+                
+        console.print(f"[bold green]✔ SYNC COMPLETE[/bold green] [cyan]{synced}[/cyan] conversiones mutadas, [dim]{skipped}[/dim] omitidas.")
 
 def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window: int):
-    ctx_msg = f" (+ Contexto Temporal de ±{context_window} pasos)" if context_window > 0 else ""
-    print(f"\x1b[1;34m[NEXUS FTS5]\x1b[0m Rastreando entropía: '{query}' (Límite: {limit}){ctx_msg}")
+    console.print(Panel(f"Rastreando entropía: [bold red]'{query}'[/bold red] (Límite: {limit}) | Contexto ±{context_window}", title="[bold cyan]NEXUS FTS5 BRUTALIST[/bold cyan]", border_style="cyan"))
     
+    start_time = time.perf_counter()
     cursor = conn.cursor()
     try:
         cursor.execute('''
-            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '\x1b[1;31m', '\x1b[0m', '...', 64)
+            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[[HIGHLIGHT]]', '[[ENDHIGHLIGHT]]', '...', 64)
             FROM transcripts_fts 
             WHERE transcripts_fts MATCH ? 
             ORDER BY rank 
@@ -113,29 +143,31 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
     except sqlite3.OperationalError:
         safe_query = query.replace('"', '""')
         cursor.execute('''
-            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '\x1b[1;31m', '\x1b[0m', '...', 64)
+            SELECT conversation_id, step_index, source, snippet(transcripts_fts, 3, '[[HIGHLIGHT]]', '[[ENDHIGHLIGHT]]', '...', 64)
             FROM transcripts_fts 
             WHERE transcripts_fts MATCH '"{safe_query}"'
             ORDER BY rank 
             LIMIT ?
-        ''')
+        ''', (limit,))
         rows = cursor.fetchall()
         
+    latency_ms = (time.perf_counter() - start_time) * 1000.0
+    record_telemetry(query, latency_ms, len(rows))
+        
     if not rows:
-        print(f"\n\x1b[1;31m[ANERGÍA]\x1b[0m La entropía '{query}' no existe en ningún bloque de la red.")
+        console.print(f"\n[bold red]💀 ANERGÍA:[/bold red] La entropía '{query}' no existe en ningún bloque de la red.")
         return
         
     for i, (conv_id, step_idx, source, snip) in enumerate(rows):
-        print(f"\n\x1b[1;32m[MATCH {i+1}]\x1b[0m Conv: {conv_id} | Step: {step_idx}")
-        print(f"  Fuente:  {source}")
-        print(f"  Payload: {snip.replace(chr(10), ' ')}")
+        clean_snip = snip.replace(chr(10), ' ')
+        clean_snip = clean_snip.replace('[[HIGHLIGHT]]', '[bold red]').replace('[[ENDHIGHLIGHT]]', '[/bold red]')
+        
+        console.print(Panel(f"[bold yellow]MATCH {i+1}[/bold yellow] | Conv: [dim]{conv_id}[/dim] | Step: {step_idx} | Source: [cyan]{source}[/cyan]\n{clean_snip}", border_style="magenta"))
         
         if context_window > 0:
-            print(f"  \x1b[1;35m[CONTEXTO TEMPORAL ±{context_window}]\x1b[0m")
             try:
-                # Typecast step_idx to integer for bounds check, fallback to 0 if text
                 s_idx = int(step_idx)
-            except ValueError:
+            except (ValueError, TypeError):
                 s_idx = 0
                 
             cursor.execute('''
@@ -149,12 +181,12 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window:
             for (c_idx, c_source, c_content) in ctx_rows:
                 prefix = ">>" if str(c_idx) == str(step_idx) else "  "
                 clean_content = str(c_content).replace(chr(10), ' ')[:100]
-                print(f"    {prefix} [{c_idx}] {c_source}: {clean_content}...")
+                console.print(f"    [dim]{prefix} [{c_idx}][/dim] [cyan]{c_source}[/cyan]: {clean_content}...")
         
-    print(f"\n\x1b[1;36m[AUDIT COMPLETE]\x1b[0m Total inyecciones extraídas: {len(rows)}")
+    console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
 
 def main():
-    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V4)")
+    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V6)")
     parser.add_argument("--query", help="Keyword para buscar en FTS5.")
     parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico.")
     parser.add_argument("--sync", action="store_true", help="Forzar sincronización delta de logs a SQLite.")
