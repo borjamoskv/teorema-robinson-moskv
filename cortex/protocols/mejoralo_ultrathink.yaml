@@ -1,0 +1,29 @@
+metadata:
+  version: 1.0.0
+  protocol: "MEJORALO ULTRATHINK TRANSDUCTION WORKFLOW"
+  ontology_anchor: "[L1-Φ1] + [L35]"
+  status: "ACTIVE_C5_REAL"
+
+trigger_conditions:
+  exact_match: "MEJORALO ULTRATHINK"
+  semantic_match: ["MEJORALO", "ULTRATHINK", "OPTIMIZA ULTRATHINK"]
+  
+fsm_pipeline:
+  - phase_1: "INTERCEPCIÓN (SAGA-0)"
+    action: "El parser anula cualquier buffer NLP conversacional. El pipeline asume modo determinista absoluto. Se suspende la generación de `implementation_plan.md` [R7 Override]."
+  
+  - phase_2: "EXTRACCIÓN DE ENTROPÍA (Φ1)"
+    action: "Identificar el script, ledger o base de datos target con mayor anergía o fricción termodinámica. Purgar comentarios decorativos, justificaciones o cuellos de botella (ej. secuencias O(N) que deberían ser O(1))."
+
+  - phase_3: "COLAPSO FÍSICO (C5-REAL)"
+    action: "Mutación atómica directa sobre el disco (AST o SQLite WAL). Queda prohibida la ejecución en memoria C4-SIM (eval/print/simulación)."
+
+  - phase_4: "TESTIGO EXTERNO (GIT SENTINEL)"
+    action: "Ejecución autónoma de `git add . && git commit -m 'refactor(ultrathink): colapso exérgico automatizado'`. Retorno del hash SHA-1 como prueba criptográfica inmutable."
+
+  - phase_5: "BRUTALIST YIELD (L35b)"
+    action: "Emisión de bloque YAML final: Claim, Proof (Hash, Rango, Nivel C5), Estado del Colapso (Viñetas) y Git Sentinel Hash. Cero prosa."
+
+invariants:
+  - "MUTEX_NO_PROSE: Si el Orchestrator emite 'Aquí tienes...' o 'Espero que esto ayude...', el workflow detona un SIGKILL_State_Purge automático."
+  - "MUTEX_PHYSICAL_ONLY: Toda mejora abstracta se declara nula si no viene acompañada de un delta de disco verificado por Git."
