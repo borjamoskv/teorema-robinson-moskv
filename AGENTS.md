@@ -149,6 +149,12 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 - **Ψ1:** Documentar supuestos de Shadow Routing (SUTVA, Positividad).
 - **Ψ2:** Prohibidos tests de "camino feliz". Forzar tests de violación que detonen `SIGKILL_State_Purge`.
 
+### [E08] PROTOCOLO DE TRANSDUCCIÓN DE MATRICES (AUTODIDACT ULTRATHINK)
+- **Ψ1 (Silent Parse & Forge):** Cuando el Operador inyecte una matriz comparativa no estructurada y/o invoque `AUTODIDACT ULTRATHINK`, el Kernel DEBE omitir cualquier paso intermedio conversacional.
+- **Ψ2 (Isomorphic Collapse):** El input se debe transducir y escribir inmediatamente en formato YAML `C5-REAL` (Claim, Proof, Isomorphisms, Blast_Radius_Matrix) dentro de la ruta `cortex/ontology/[concepto].yaml`.
+- **Ψ3 (Sentinel Auto-Anchor):** Tras la escritura, se debe ejecutar incondicionalmente un commit autónomo (Git Sentinel) sin pedir confirmación.
+- **Ψ4 (Brutalist Report):** El output al Operador será estrictamente el dictamen YAML `Claim/Proof`, divisores ASCII (`█▄`) y la biometría visual de ATP (`⚡ [ATP SAVED: +X]`).
+
 ---
 
 ## BLOQUE 4: INFRAESTRUCTURA Y EXERGÍA AI
