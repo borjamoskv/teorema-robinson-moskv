@@ -341,9 +341,3 @@ Este documento compila **300 primitivas tácticas** estructuradas en tres capas 
 
 La aplicación coordinada de estas **300 primitivas** neutraliza la anergía residual generada por el uso de LinkedIn. El Operador captura la señal algorítmica de alcance (Capa II) mientras blinda herméticamente su huella digital y telemetría de hábitos (Capa I y III). 
 
----
-
-⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
-- [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [Estrategias de Inyección Invisible en Sistemas de Reputación](file:///Users/borjafernandezangulo/30_BABYLON-60/max_exposure_max_privacy_audit.md)
-- [Bypass Termodinámico del Algoritmo de Microsoft: Alcance sin Tracking](file:///Users/borjafernandezangulo/30_BABYLON-60/max_exposure_max_privacy_audit.md#L101)
