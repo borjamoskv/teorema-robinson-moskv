@@ -1,7 +1,7 @@
 import ast
 import os
 import signal
-from typing import List
+from typing import List, Optional
 
 class AnergiaPurger(ast.NodeTransformer):
     """
@@ -9,9 +9,9 @@ class AnergiaPurger(ast.NodeTransformer):
     Convierte la Anergía (prosa, manejo elástico de errores) en Exergía (Fail-Fast).
     """
     
-    def visit_Expr(self, node: ast.Expr) -> ast.AST:
+    def visit_Expr(self, node: ast.Expr) -> Optional[ast.AST]:
         # Purge docstrings and standalone string literals (Anergia)
-        if isinstance(node.value, (ast.Constant, ast.Str)):
+        if isinstance(node.value, ast.Constant):
             return None 
         return self.generic_visit(node)
 
