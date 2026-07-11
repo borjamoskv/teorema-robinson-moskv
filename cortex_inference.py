@@ -1,4 +1,5 @@
-import sqlite3
+import asyncio
+import aiosqlite
 import yaml
 import re
 import os
@@ -6,6 +7,7 @@ import sys
 import json
 from cryptography.fernet import Fernet
 import babylon60
+from babylon60.ledger import SovereignLedger
 from scientific_engine import (
     compute_asymmetric_trust_isomorphism,
     compute_shannon_entropy,
@@ -56,21 +58,31 @@ class CortexInferenceEngine:
 
     def __init__(self, db_path=None, cache_db_path=None):
         self.config = ENGINE_CONFIG
-        
+        self.target_db = db_path or DB_PATH
+        self.target_cache = cache_db_path or CACHE_DB_PATH
+        self.db = None
+        self.cache_db = None
+        self.ledger = None
+
+    async def initialize(self):
         # Conexión principal en modo Solo-Lectura (Membrana C5-REAL)
-        target_db = db_path or DB_PATH
-        db_uri = f"file:{target_db}?mode=ro"
-        self.db = sqlite3.connect(db_uri, uri=True, timeout=5.0)
-        self.db.row_factory = sqlite3.Row
+        db_uri = f"file:{self.target_db}?mode=ro"
+        self.db = await aiosqlite.connect(db_uri, uri=True, timeout=5.0)
+        self.db.row_factory = aiosqlite.Row
         
+        # Configurar esquema de SovereignLedger sincrónicamente para evitar 'no such table: transactions'
+        import sqlite3
+        sync_conn = sqlite3.connect(self.target_cache, timeout=5.0)
+        _ = SovereignLedger(sync_conn)
+        sync_conn.close()
+
         # Conexión secundaria para caché L3 (Sidecar Transductor)
-        target_cache = cache_db_path or CACHE_DB_PATH
-        self.cache_db = sqlite3.connect(target_cache, timeout=5.0)
-        self.cache_db.execute("PRAGMA journal_mode = WAL;")
-        self.cache_db.execute("PRAGMA busy_timeout = 5000;")
-        self.cache_db.row_factory = sqlite3.Row
+        self.cache_db = await aiosqlite.connect(self.target_cache, timeout=5.0)
+        await self.cache_db.execute("PRAGMA journal_mode = WAL;")
+        await self.cache_db.execute("PRAGMA busy_timeout = 5000;")
+        self.cache_db.row_factory = aiosqlite.Row
         
-        self.cache_db.execute("""
+        await self.cache_db.execute("""
             CREATE TABLE IF NOT EXISTS L3_inference_cache (
                 query_hash TEXT PRIMARY KEY,
                 active_mode TEXT,
@@ -80,19 +92,23 @@ class CortexInferenceEngine:
                 hits INTEGER DEFAULT 0
             )
         """)
-        self.cache_db.commit()
+        await self.cache_db.commit()
 
-    def __enter__(self):
+        # Configurar SovereignLedger para rastro Causal Taint BFT
+        self.ledger = SovereignLedger(self.cache_db)
+
+    async def __aenter__(self):
+        await self.initialize()
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.close()
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.close()
 
-    def close(self):
-        if hasattr(self, "db") and self.db:
-            self.db.close()
-        if hasattr(self, "cache_db") and self.cache_db:
-            self.cache_db.close()
+    async def close(self):
+        if self.db:
+            await self.db.close()
+        if self.cache_db:
+            await self.cache_db.close()
 
     def parse_query(self, query):
 
@@ -104,9 +120,7 @@ class CortexInferenceEngine:
 
         return scores
 
-    def retrieve_primitives(self, mode, scores, query=""):
-
-        cursor = self.db.cursor()
+    async def retrieve_primitives(self, mode, scores, query=""):
 
         # Mapeo de modos a pools de teoría
         theory_map = {
@@ -147,7 +161,7 @@ class CortexInferenceEngine:
 
 
         placeholders = ", ".join("?" for _ in theories)
-        cursor.execute(
+        async with self.db.execute(
             f"""
             SELECT id, theory, name FROM L1_primitive_nodes 
             WHERE theory IN ({placeholders})
@@ -155,33 +169,33 @@ class CortexInferenceEngine:
             LIMIT 5
         """,
             theories,
-        )
-        primitives = [dict(row) for row in cursor.fetchall()]
+        ) as cursor:
+            primitives = [dict(row) for row in await cursor.fetchall()]
 
         # L2 Fetch based on topological connection to L1 (instead of random scan)
         prim_ids = [p["id"] for p in primitives]
         if prim_ids:
             p_placeholders = ", ".join("?" for _ in prim_ids)
-            cursor.execute(f"""
+            async with self.db.execute(f"""
                 SELECT id, type, source, target, weight, justification 
                 FROM L2_isomorphism_edges
                 WHERE source IN ({p_placeholders}) OR target IN ({p_placeholders})
                 LIMIT 3
-            """, prim_ids * 2)
-            isomorphisms = [dict(row) for row in cursor.fetchall()]
+            """, prim_ids * 2) as cursor:
+                isomorphisms = [dict(row) for row in await cursor.fetchall()]
         else:
             isomorphisms = []
 
         return primitives, isomorphisms
 
-    def execute_inference(self, query):
+    async def execute_inference(self, query):
         normalized_query = query.strip().lower()
         query_hash = babylon60.sha256_hash(normalized_query)
         
         # L3 Memoization Cache Bypass (Zero-Anergy return)
-        cache_cursor = self.cache_db.cursor()
-        cache_cursor.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,))
-        cached = cache_cursor.fetchone()
+        async with self.cache_db.execute("SELECT trace_payload FROM L3_inference_cache WHERE query_hash = ?", (query_hash,)) as cache_cursor:
+            cached = await cache_cursor.fetchone()
+
         if cached:
             trace_payload_raw = cached["trace_payload"]
             vault_key = os.environ.get("CORTEX_VAULT_KEY")
@@ -189,8 +203,15 @@ class CortexInferenceEngine:
                 fernet = Fernet(vault_key.encode("utf-8"))
                 trace_payload_raw = fernet.decrypt(trace_payload_raw[6:].encode("utf-8")).decode("utf-8")
             
-            # Removed Write-on-Read contention (hits = hits + 1) to preserve Thermodynamic Compute.
-            return json.loads(trace_payload_raw)
+            trace_data = json.loads(trace_payload_raw)
+            # Causal Taint BFT
+            await self.ledger.record_transaction_async(
+                project="CORTEX_INFERENCE_L3",
+                action="CACHE_HIT_BYPASS",
+                detail={"query_hash": query_hash},
+                tenant_id="inference_engine"
+            )
+            return trace_data
             
         scores = self.parse_query(query)
 
@@ -212,7 +233,7 @@ class CortexInferenceEngine:
         if scores[max_category] == Decimal("0.0"):
             active_mode = "MODE-01-CAUSAL-DEDUCTION"  # Default
 
-        primitives, isomorphisms = self.retrieve_primitives(active_mode, scores, query)
+        primitives, isomorphisms = await self.retrieve_primitives(active_mode, scores, query)
 
 
         if active_mode not in self.config["inference_modes"]:
@@ -271,7 +292,7 @@ class CortexInferenceEngine:
         else:
             stored_payload = payload_raw
 
-        cache_cursor.execute(
+        await self.cache_db.execute(
             """
             INSERT INTO L3_inference_cache 
             (query_hash, active_mode, retrieved_nodes, applied_isomorphisms, trace_payload, hits)
@@ -290,12 +311,20 @@ class CortexInferenceEngine:
                 stored_payload
             )
         )
-        self.cache_db.commit()
+        await self.cache_db.commit()
+
+        # Causal Taint BFT Record
+        await self.ledger.record_transaction_async(
+            project="CORTEX_INFERENCE",
+            action="CACHE_MISS_EVALUATED",
+            detail={"query_hash": query_hash, "mode_activated": active_mode},
+            tenant_id="inference_engine"
+        )
 
         return trace
 
 
-if __name__ == "__main__":
+async def main():
     is_json = False
     args = sys.argv[1:]
     if args and args[0] == "--json":
@@ -307,10 +336,13 @@ if __name__ == "__main__":
     else:
         query = " ".join(args)
 
-    engine = CortexInferenceEngine()
-    result = engine.execute_inference(query)
+    async with CortexInferenceEngine() as engine:
+        result = await engine.execute_inference(query)
+        if is_json:
+            print(json.dumps(result, ensure_ascii=False))
+        else:
+            print(yaml.dump(result, allow_unicode=True, sort_keys=False))
 
-    if is_json:
-        print(json.dumps(result, ensure_ascii=False))
-    else:
-        print(yaml.dump(result, allow_unicode=True, sort_keys=False))
+
+if __name__ == "__main__":
+    asyncio.run(main())

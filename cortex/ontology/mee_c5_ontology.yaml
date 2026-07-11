@@ -1,0 +1,10 @@
+entities:
+- id: ENT-001
+  name: BFT_STATE_LOOP
+  type: invariant
+- id: ENT-002
+  name: ZERO-ANERGY
+  type: primitive
+- id: ENT-003
+  name: C5-REAL
+  type: level
