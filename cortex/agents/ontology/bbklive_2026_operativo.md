@@ -22,4 +22,10 @@
 ## 4. Auditoría de Requisitos (Bypass)
 - **EYCA/Gazte-txartela**: Imposibilidad de generación de código genérico. Requiere serial `R764-XXXX-XXXX-XXXX` único. Vulnerabilidad local detectada y documentada en `vulnerabilidad_atestacion_decoy.md`.
 
+## 5. Matriz de Fricción Económica (Descuentos Oficiales)
+El vector de precios del festival obedece a capas de privilegios estáticas, no a "cupones" estocásticos rastreables en internet:
+- **Carnet Joven (EYCA)**: Única oferta universal vigente de hasta un 30% (sujeto a cupo).
+- **Kutxabank / Tarjetas BBK**: Reducción de precio en pasarela oficial por pertenencia a la red bancaria emisora (si el cupo no está agotado).
+- **Mercado Secundario (Ticketswap)**: Fricción extrema y alto riesgo. Fever implementa QRs dinámicos vinculados al dispositivo. La transferencia atómica solo es legítima dentro de la propia App Fever. Toda "oferta por ahí" en PDF es C4-SIM (Estafa).
+
 SYS_ID borjamoskv
