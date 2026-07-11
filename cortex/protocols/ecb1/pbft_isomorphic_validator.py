@@ -1,6 +1,6 @@
 import sys
 
-# ❖ C5-REAL :: ISOMORPHIC DAG VALIDATOR (ULTRATHINK) ❖
+# ❖ C5-REAL :: ISOMORPHIC DAG VALIDATOR (EXERGY) ❖
 # Filtro de Anergía basado en Grafo Causal Determinista
 
 LEXICON = [

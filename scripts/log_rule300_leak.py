@@ -3,7 +3,7 @@ import hashlib
 import time
 
 def log_leak():
-    db_path = "$CORTEX_ROOT/30_BABYLON-60/ultrathink_ledger.db"
+    db_path = "$CORTEX_ROOT/30_BABYLON-60/nexus_anchors.db"
     
     # Asegurar que la tabla exista (modo WAL se asume configurado)
     with sqlite3.connect(db_path) as conn:
@@ -20,7 +20,7 @@ def log_leak():
         
         payload = "LEAK_RULE_300_BYTEDANCE_TTFT_2.9MS"
         payload_hash = hashlib.sha256(payload.encode()).hexdigest()
-        cortex_taint = "ULTRATHINK_POSTHOC_INVARIANT_L71"
+        cortex_taint = "EXERGY_POSTHOC_INVARIANT_L71"
         
         conn.execute('''
             INSERT INTO causal_collapse (timestamp, event_type, payload_hash, status, cortex_taint)

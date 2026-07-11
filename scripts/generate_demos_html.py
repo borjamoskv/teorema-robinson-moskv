@@ -5,7 +5,7 @@ capabilities = [
     {"id": "01", "name": "BFT_STATE_LOOP", "desc": "Tolerancia Bizantina N>=4 y Ledger Físico."},
     {"id": "02", "name": "GIT_SENTINEL", "desc": "Mutación Autopoiética y Hash Causal."},
     {"id": "03", "name": "SIGKILL_STATE_PURGE", "desc": "Zero Anergy y Fail-Fast Termodinámico."},
-    {"id": "04", "name": "MCTS_ULTRATHINK_P0", "desc": "Budget Forcing en Bifurcaciones Complejas."},
+    {"id": "04", "name": "MCTS_EXERGY_P0", "desc": "Budget Forcing en Bifurcaciones Complejas."},
     {"id": "05", "name": "ASYNC_WORKER_MATRIX", "desc": "Enrutamiento Asimétrico L1-L5."},
     {"id": "06", "name": "THERMODYNAMIC_TOKEN_GOVERNOR", "desc": "Sweeper Entrópico de Contexto."},
     {"id": "07", "name": "SQLITE_WAL_CONCURRENCY", "desc": "Motor Causal Base 60 y Locks Asíncronos."},

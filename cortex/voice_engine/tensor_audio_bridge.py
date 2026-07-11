@@ -3,7 +3,7 @@ from enum import Enum
 
 class VoiceModality(Enum):
     INDUSTRIAL_NOIR = "INDUSTRIAL_NOIR"           # Default: Cold, deterministic
-    ULTRATHINK_COMPRESSED = "ULTRATHINK_COMPRESSED" # High speed TTFAF, hyper-compressed lexical tree
+    EXERGY_COMPRESSED = "EXERGY_COMPRESSED" # High speed TTFAF, hyper-compressed lexical tree
     BRUTALIST_DICTATOR = "BRUTALIST_DICTATOR"     # Absolute imperative, zero pauses, high amplitude
 
 class TensorAudioBridge:
@@ -36,7 +36,7 @@ class TensorAudioBridge:
         for f in fillers:
             text_ast = text_ast.replace(f" {f} ", " ")
             
-        if self.modality == VoiceModality.ULTRATHINK_COMPRESSED:
+        if self.modality == VoiceModality.EXERGY_COMPRESSED:
             pass
             
         return text_ast.strip()
@@ -49,7 +49,7 @@ class TensorAudioBridge:
         if self.modality == VoiceModality.BRUTALIST_DICTATOR:
             # Alta velocidad, pitch bajo, sin pausas
             return f"[[rate 220]] [[pitch 40]] {clean_ast}"
-        elif self.modality == VoiceModality.ULTRATHINK_COMPRESSED:
+        elif self.modality == VoiceModality.EXERGY_COMPRESSED:
             # Velocidad extrema
             return f"[[rate 300]] [[pitch 55]] {clean_ast}"
         else: # INDUSTRIAL_NOIR

@@ -12,7 +12,7 @@ from dataclasses import dataclass, asdict
 from typing import Dict, Tuple, Any, List
 
 REPO_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv"
-LEDGER_PATH = os.path.join(REPO_PATH, "cortex/ultrathink_ledger.db")
+LEDGER_PATH = os.path.join(REPO_PATH, "cortex/nexus_anchors.db")
 
 @dataclass(frozen=True)
 class DBMetrics:
@@ -76,7 +76,7 @@ class BFTLedgerActor:
             cursor.execute("""
             INSERT INTO exergy_merkle_roots (merkle_hash, cortex_taint, top_10_payload)
             VALUES (?, ?, ?)
-            """, (merkle_root, "ULTRATHINK_P0_AST_VISITOR", payload))
+            """, (merkle_root, "EXERGY_P0_AST_VISITOR", payload))
             conn.commit()
         except sqlite3.IntegrityError:
             pass

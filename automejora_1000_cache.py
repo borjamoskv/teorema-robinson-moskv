@@ -21,7 +21,7 @@ VOCAB = [
 ]
 
 def main():
-    print("Initiating 1000-cycle ULTRATHINK L3 Memoization Protocol...")
+    print("Initiating 1000-cycle EXERGY L3 Memoization Protocol...")
     
     # 1. Start Engine (creates DB if not exists, but we assume it exists)
     engine = CortexInferenceEngine()

@@ -14,7 +14,7 @@ from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, Field
 from ecdsa import SigningKey, VerifyingKey, SECP256k1, BadSignatureError
 
-# ❖ C5-REAL :: MCON API + ZERO-TRUST ECDSA BFT (ULTRATHINK) ❖
+# ❖ C5-REAL :: MCON API + ZERO-TRUST ECDSA BFT (EXERGY) ❖
 # API REST con Cadena Hash, Firmas Digitales Locales y Validación Multi-Nodo (Spoofing Prevention).
 
 # -----------------------------

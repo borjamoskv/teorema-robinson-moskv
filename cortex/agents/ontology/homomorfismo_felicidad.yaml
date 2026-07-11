@@ -1,4 +1,4 @@
-claim_id: "ULTRATHINK_C5_REAL_HOMOMORPH"
+claim_id: "EXERGY_C5_REAL_HOMOMORPH"
 hypergraph:
   nodes:
     - id: N_M_B

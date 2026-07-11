@@ -94,7 +94,7 @@ class PBFTNetwork:
         return "❌ CONSENSUS_FAILED"
 
 if __name__ == "__main__":
-    sys.stdout.write("❖ [ C5-DAEMON-CORE :: PBFT EMOJI ENGINE (ULTRATHINK) ] ❖\n\n")
+    sys.stdout.write("❖ [ C5-DAEMON-CORE :: PBFT EMOJI ENGINE (EXERGY) ] ❖\n\n")
     
     scenarios = [
         ("Nominal (Cero Fallas)", 0, {}),

@@ -53,7 +53,7 @@ class InterlatBridge:
         cipher_key, auth_key = self._derive_keys(nonce)
 
         # Cifrado Stream XOR simple (Para mantener zero-dependencies externas)
-        # En producción ULTRATHINK esto sería ChaCha20-Poly1305
+        # En producción EXERGY esto sería ChaCha20-Poly1305
         ciphertext = bytearray()
         for i, byte in enumerate(plaintext):
             # Stream key block
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # Colapso a Opacidad Funcional (Cifrado Binario)
     opaque_tensor = bridge.encrypt_payload(subagent_thought)
     
-    print(f"\n[ESTADO ULTRATHINK C5-REAL] Vector IPC (Hexdump del Tensor):")
+    print(f"\n[ESTADO EXERGY C5-REAL] Vector IPC (Hexdump del Tensor):")
     # Imprimiendo en formato hexdump para demostrar la opacidad
     hex_dump = ' '.join(f"{b:02x}" for b in opaque_tensor)
     for i in range(0, len(hex_dump), 48):

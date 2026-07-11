@@ -18,7 +18,7 @@ def run_tests():
         # Auditoría del Master Ledger
         with sqlite3.connect(DB_PATH, timeout=5.0) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT COUNT(*) FROM ultrathink_ledger WHERE causal_hash IN (?, ?)", 
+            cursor.execute("SELECT COUNT(*) FROM exergy_ledger WHERE causal_hash IN (?, ?)", 
                            (node1.causal_hash, node2.causal_hash))
             count = cursor.fetchone()[0]
             assert count == 2, "Violación de persistencia: Nodos no registrados en WAL."
