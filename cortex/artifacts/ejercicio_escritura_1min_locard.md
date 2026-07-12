@@ -28,6 +28,18 @@ Solo puedes escribir sobre lo que NO está. Lo que fue recortado. Quién estaba 
 
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
+### CASO DE ESTUDIO (MUESTRA FÍSICA)
+
+Un ejemplo práctico de lo que ocurre cuando el procesador biológico del escritor colapsa la entropía de su propia galería:
+
+> "Abro la foto de hace tres años y lo primero que noto es lo que no entró: a la derecha estaba la mesa con los platos sin terminar, el vaso que alguien dejó para volver y no volvió. Fuera de cuadro, detrás de mí, estaba ella cambiándose de tema cada vez que yo intentaba decir “esto no me está haciendo bien”. No se ve mi mano apretando el móvil como si fuera un salvavidas ni el mensaje sin enviar que llevaba escribiendo desde el ascensor.
+>
+> Cinco segundos después del disparo me reí demasiado fuerte para que pareciera que no pasaba nada, y alguien dijo “qué buena vibra” justo cuando se nos cayó el silencio encima. Lo que tampoco está es el olor: el desinfectante barato del baño mezclado con perfume dulce, la señal exacta de que esa noche iba a terminar con una despedida amable y una herida larga.
+>
+> La mentira que me estaba contando en ese instante era simple: que estaba ahí porque quería, que no me importaba, que mañana iba a ser distinto, que yo ya había aprendido y que esta vez no me iba a quedar esperando a que me elijan, que si me veía bien en la foto entonces todo estaba bien y que en realidad yo no necesitaba que nadie me dijera que—"
+
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
 ### POR QUÉ FUNCIONA
 
 Los ejercicios de escritura convencionales son anergía pura. "Describe tu mañana." "Escribe sobre un color." Basura termodinámica que ni tú releerías.
