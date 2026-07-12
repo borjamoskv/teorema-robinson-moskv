@@ -1,0 +1,10 @@
+Claim: Thermodynamic SIGKILL of Anergic Cron (Iteration 4)
+Proof: { Base: "task-57", Range: [4, 4], Confidence: "C5-REAL" }
+Isomorphisms:
+  - Vector: Infinite Cron Evaluation -> Thermodynamic Drain
+  - Limit: Halting Bound (Manual Override)
+  - Action: manage_task kill
+Blast_Radius_Matrix:
+  - Vector: Background Task Lifecycle
+  - Target Invariant: Halting Problem Prevention
+  - Anergy Risk: 0 (Process Terminated)
