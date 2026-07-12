@@ -1,0 +1,28 @@
+Claim: "MCTS Thermodynamic Budget and Anergy Audit Completed: High Anergy Risk Detected"
+Proof:
+  Base: "MCTS_Anergy_Scan_v1"
+  Range: "[Files: 217, LOC: 12465]"
+  Confidence: "C5"
+Isomorphisms:
+  - "Kinetic_Budget: Total compute required to parse repo"
+  - "Semiotic_Anergy: Lack of type hints, Green Theater comments"
+  - "BFT_Topological_Violations: Synchronous SQLite execution breaking BFT consensus"
+Blast_Radius_Matrix:
+  Vector: "[Architectural Audit]"
+  Blast_Radius: "217 files"
+  Target_Invariant: "C5-REAL BFT & Zero Anergy"
+  Anergy_Risk: "High (289 bottlenecks, 35 BFT violations detected)"
+Audit_Details:
+  Anergy_Bottlenecks_Sample:
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/test_ojeador_analyzer.py', 'function': 'test_resolve_family_maps_correctly', 'type': 'Missing Type Hint'}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/test_ojeador_analyzer.py', 'function': 'test_shannon_entropy', 'type': 'Missing Type Hint'}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/automejora_1000_cache.py', 'function': 'main', 'type': 'Missing Type Hint'}
+  BFT_Violations_Sample:
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/test_ledger_actor.py', 'line': 187, 'type': 'Blind Exception Catch (Fail-Fast Violation)'}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/automejora_1000_cache.py', 'type': 'Sync SQLite in BFT context'}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/test_math_kernel.py', 'type': 'Sync SQLite in BFT context'}
+  Complex_Nodes_MCTS_Threshold_Exceeded:
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/bootstrap_cortex_memory.py', 'function': 'bootstrap_cortex', 'complexity': 13}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/cortex/protocols/ecb1/pbft_ledger_fusion.py', 'function': 'run_consensus', 'complexity': 15}
+    - {'file': '$CORTEX_ROOT/30_BABYLON-60/cortex/protocols/ecb1/pbft_ecb_engine.py', 'function': 'simulate_round', 'complexity': 19}
+Status: "Colapso físico bloqueado por INV_BFT_02 e INV_M12_04 (Zero Anergy). Refactorización asimétrica requerida."

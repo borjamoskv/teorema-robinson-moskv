@@ -2,29 +2,39 @@ import pytest
 import os
 from cortex.agents.ontology.osint_dao import OSINTOntologyAccessor, DB_PATH
 
+
 @pytest.mark.asyncio
 async def test_dao_initialization():
-    assert os.path.exists(DB_PATH), 'La base de datos física no existe, fallo en [INV_STATE_02].'
+    assert os.path.exists(DB_PATH), (
+        "La base de datos física no existe, fallo en [INV_STATE_02]."
+    )
     accessor = OSINTOntologyAccessor()
     assert accessor.db_path == DB_PATH
+
 
 @pytest.mark.asyncio
 async def test_get_all_invariants():
     accessor = OSINTOntologyAccessor()
     invariants = await accessor.get_all_invariants()
-    assert len(invariants) >= 3, 'El ledger debe contener al menos 3 Invariantes OSINT BFT.'
-    assert any(('INV_OSINT_01' in inv['code'] for inv in invariants)), 'Falta invariante core INV_OSINT_01.'
+    assert len(invariants) >= 3, (
+        "El ledger debe contener al menos 3 Invariantes OSINT BFT."
+    )
+    assert any(("INV_OSINT_01" in inv["code"] for inv in invariants)), (
+        "Falta invariante core INV_OSINT_01."
+    )
+
 
 @pytest.mark.asyncio
 async def test_get_primitives_by_domain_socint():
     accessor = OSINTOntologyAccessor()
-    primitives = await accessor.get_primitives_by_domain('SOCINT')
-    assert len(primitives) > 0, 'No se encontraron primitivas SOCINT.'
-    assert len(primitives) <= 120, 'El Halting Bound N=120 ha sido vulnerado.'
+    primitives = await accessor.get_primitives_by_domain("SOCINT")
+    assert len(primitives) > 0, "No se encontraron primitivas SOCINT."
+    assert len(primitives) <= 120, "El Halting Bound N=120 ha sido vulnerado."
+
 
 @pytest.mark.asyncio
 async def test_fail_fast_unknown_domain():
     accessor = OSINTOntologyAccessor()
     with pytest.raises(RuntimeError) as exc_info:
-        await accessor.get_primitives_by_domain('DOMINIO_INEXISTENTE_C4_SIM')
-    assert 'Dominio OSINT no encontrado o vacío' in str(exc_info.value)
+        await accessor.get_primitives_by_domain("DOMINIO_INEXISTENTE_C4_SIM")
+    assert "Dominio OSINT no encontrado o vacío" in str(exc_info.value)

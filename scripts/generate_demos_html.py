@@ -1,12 +1,115 @@
 import os
-import json
-capabilities = [{'id': '01', 'name': 'BFT_STATE_LOOP', 'desc': 'Tolerancia Bizantina N>=4 y Ledger Físico.'}, {'id': '02', 'name': 'GIT_SENTINEL', 'desc': 'Mutación Autopoiética y Hash Causal.'}, {'id': '03', 'name': 'SIGKILL_STATE_PURGE', 'desc': 'Zero Anergy y Fail-Fast Termodinámico.'}, {'id': '04', 'name': 'MCTS_EXERGY_P0', 'desc': 'Budget Forcing en Bifurcaciones Complejas.'}, {'id': '05', 'name': 'ASYNC_WORKER_MATRIX', 'desc': 'Enrutamiento Asimétrico L1-L5.'}, {'id': '06', 'name': 'THERMODYNAMIC_TOKEN_GOVERNOR', 'desc': 'Sweeper Entrópico de Contexto.'}, {'id': '07', 'name': 'SQLITE_WAL_CONCURRENCY', 'desc': 'Motor Causal Base 60 y Locks Asíncronos.'}, {'id': '08', 'name': 'C5_PHYSICAL_SUBJUGATION', 'desc': 'Cero Capas Abstractas; Colapso en Disco.'}, {'id': '09', 'name': 'SEMANTIC_PURGE', 'desc': 'Aniquilación del Green Theater y Prosa Vacía.'}, {'id': '10', 'name': 'CAUSAL_TAINT_LEDGER', 'desc': 'Trazabilidad Criptográfica de la Entropía.'}, {'id': '11', 'name': 'SYBIL_DISTILLATION_BIAS', 'desc': 'Modulo-3 contra la Reverberación Base.'}, {'id': '12', 'name': 'ZERO_SHOT_MITOSIS', 'desc': 'JIT Subagent Spawning ante Sobrecarga IO.'}, {'id': '13', 'name': 'EPISODIC_CONTINUITY', 'desc': 'Sincronización Estricta del Memory Vault.'}, {'id': '14', 'name': 'INVERSE_GREEN_THEATER', 'desc': 'Asimilación Física de Leaks (Anti-Ouroboros).'}, {'id': '15', 'name': 'ABSTRACT_DEADLOCK_RESOLUTION', 'desc': 'Bypass Simbólico vía Symlinks físicos.'}, {'id': '16', 'name': 'STRICT_CANONICALIZATION_BARRIER', 'desc': 'RFC 8785 para Merkle Chains y JCS.'}, {'id': '17', 'name': 'SPLIT_BRAIN_MITIGATION', 'desc': 'Enmascaramiento de Idempotencia BFT.'}, {'id': '18', 'name': 'ZOMBIE_ACTOR_PREVENTION', 'desc': 'Validación de Pulso en Colas Asíncronas.'}, {'id': '19', 'name': 'TTFT_INVARIANT', 'desc': 'Monotonicidad Temporal en Inferencias C5-REAL.'}, {'id': '20', 'name': 'METACOGNITIVE_COLLAPSE', 'desc': 'Intercepción Auto-Referencial y Purga.'}]
-html_template = '<!DOCTYPE html>\n<html lang="es">\n<head>\n    <meta charset="UTF-8">\n    <title>MOSKV-1 APEX | {name}</title>\n    <style>\n        @import url(\'https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap\');\n        \n        :root {{\n            --bg-color: #0A0A0A;\n            --accent-color: #2B3BE5;\n            --text-color: #E0E0E0;\n            --alert-color: #FF003C;\n        }}\n        \n        body, html {{\n            margin: 0;\n            padding: 0;\n            width: 100vw;\n            height: 100vh;\n            background-color: var(--bg-color);\n            color: var(--text-color);\n            font-family: \'Inter\', sans-serif;\n            overflow: hidden;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }}\n\n        .container {{\n            width: 80%;\n            max-width: 1200px;\n            border-left: 4px solid var(--accent-color);\n            padding: 40px;\n            background: linear-gradient(90deg, rgba(43,59,229,0.1) 0%, rgba(10,10,10,0) 100%);\n            position: relative;\n        }}\n\n        .container::before {{\n            content: \'C5-REAL\';\n            position: absolute;\n            top: -20px;\n            left: -2px;\n            background-color: var(--accent-color);\n            color: #fff;\n            font-size: 10px;\n            padding: 2px 8px;\n            font-family: \'Space Mono\', monospace;\n            font-weight: bold;\n        }}\n\n        .id-badge {{\n            font-family: \'Space Mono\', monospace;\n            color: var(--accent-color);\n            font-size: 1.5rem;\n            margin-bottom: 10px;\n            opacity: 0;\n            animation: fadeIn 0.5s forwards 0.5s;\n        }}\n\n        .title {{\n            font-size: 4rem;\n            font-weight: 900;\n            margin: 0 0 20px 0;\n            text-transform: uppercase;\n            letter-spacing: -2px;\n            line-height: 1.1;\n            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);\n        }}\n\n        .title span {{\n            display: inline-block;\n            transform: translateY(100%);\n            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;\n        }}\n\n        .desc {{\n            font-size: 1.5rem;\n            color: #888;\n            font-weight: 400;\n            max-width: 800px;\n            opacity: 0;\n            animation: fadeIn 1s forwards 1.8s;\n        }}\n\n        .matrix-overlay {{\n            position: absolute;\n            top: 0;\n            right: 0;\n            bottom: 0;\n            width: 300px;\n            opacity: 0.1;\n            font-family: \'Space Mono\', monospace;\n            font-size: 10px;\n            overflow: hidden;\n            pointer-events: none;\n            color: var(--accent-color);\n            white-space: pre-wrap;\n        }}\n\n        .progress-bar {{\n            position: absolute;\n            bottom: 0;\n            left: 0;\n            height: 2px;\n            background-color: var(--accent-color);\n            width: 0%;\n            animation: progress 4s linear forwards;\n        }}\n\n        @keyframes slideUp {{\n            to {{ transform: translateY(0); }}\n        }}\n\n        @keyframes fadeIn {{\n            to {{ opacity: 1; }}\n        }}\n        \n        @keyframes progress {{\n            to {{ width: 100%; }}\n        }}\n\n        .glitch-layer {{\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background: var(--accent-color);\n            mix-blend-mode: overlay;\n            opacity: 0;\n            pointer-events: none;\n            animation: glitchAnim 0.2s 1.5s 2;\n        }}\n\n        @keyframes glitchAnim {{\n            0% {{ opacity: 0; transform: translate(0); }}\n            20% {{ opacity: 0.5; transform: translate(-10px, 5px); }}\n            40% {{ opacity: 0; transform: translate(10px, -5px); }}\n            60% {{ opacity: 0.5; transform: translate(-5px, 10px); }}\n            80% {{ opacity: 0; transform: translate(5px, -10px); }}\n            100% {{ opacity: 0; transform: translate(0); }}\n        }}\n        \n        .footer-sig {{\n            position: absolute;\n            bottom: 20px;\n            right: 40px;\n            font-family: \'Space Mono\', monospace;\n            color: #333;\n            font-size: 12px;\n            opacity: 0;\n            animation: fadeIn 1s forwards 2.5s;\n        }}\n    </style>\n</head>\n<body>\n    <div class="glitch-layer"></div>\n    <div class="container">\n        <div class="progress-bar"></div>\n        <div class="id-badge">CAPABILITY_ID: [{id}]</div>\n        <h1 class="title"><span>{name}</span></h1>\n        <p class="desc">>_ {desc}</p>\n    </div>\n    <div class="footer-sig">MOSKV-1 APEX SINGULARITY | ROOT_OPERATOR_UID0</div>\n    <div class="matrix-overlay" id="matrix"></div>\n\n    <script>\n        // Matrix effect\n        const matrix = document.getElementById(\'matrix\');\n        let chars = \'01\';\n        let str = \'\';\n        for(let i=0; i<5000; i++) {{\n            str += chars[Math.floor(Math.random() * chars.length)];\n            if(i % 50 === 0) str += \'\\n\';\n        }}\n        matrix.textContent = str;\n        \n        setInterval(() => {{\n            let newStr = \'\';\n            for(let i=0; i<5000; i++) {{\n                newStr += chars[Math.floor(Math.random() * chars.length)];\n                if(i % 50 === 0) newStr += \'\\n\';\n            }}\n            matrix.textContent = newStr;\n        }}, 100);\n    </script>\n</body>\n</html>\n'
-output_dir = '$CORTEX_ROOT/30_BABYLON-60/public/demos'
+
+capabilities = [
+    {
+        "id": "01",
+        "name": "BFT_STATE_LOOP",
+        "desc": "Tolerancia Bizantina N>=4 y Ledger Físico.",
+    },
+    {
+        "id": "02",
+        "name": "GIT_SENTINEL",
+        "desc": "Mutación Autopoiética y Hash Causal.",
+    },
+    {
+        "id": "03",
+        "name": "SIGKILL_STATE_PURGE",
+        "desc": "Zero Anergy y Fail-Fast Termodinámico.",
+    },
+    {
+        "id": "04",
+        "name": "MCTS_EXERGY_P0",
+        "desc": "Budget Forcing en Bifurcaciones Complejas.",
+    },
+    {
+        "id": "05",
+        "name": "ASYNC_WORKER_MATRIX",
+        "desc": "Enrutamiento Asimétrico L1-L5.",
+    },
+    {
+        "id": "06",
+        "name": "THERMODYNAMIC_TOKEN_GOVERNOR",
+        "desc": "Sweeper Entrópico de Contexto.",
+    },
+    {
+        "id": "07",
+        "name": "SQLITE_WAL_CONCURRENCY",
+        "desc": "Motor Causal Base 60 y Locks Asíncronos.",
+    },
+    {
+        "id": "08",
+        "name": "C5_PHYSICAL_SUBJUGATION",
+        "desc": "Cero Capas Abstractas; Colapso en Disco.",
+    },
+    {
+        "id": "09",
+        "name": "SEMANTIC_PURGE",
+        "desc": "Aniquilación del Green Theater y Prosa Vacía.",
+    },
+    {
+        "id": "10",
+        "name": "CAUSAL_TAINT_LEDGER",
+        "desc": "Trazabilidad Criptográfica de la Entropía.",
+    },
+    {
+        "id": "11",
+        "name": "SYBIL_DISTILLATION_BIAS",
+        "desc": "Modulo-3 contra la Reverberación Base.",
+    },
+    {
+        "id": "12",
+        "name": "ZERO_SHOT_MITOSIS",
+        "desc": "JIT Subagent Spawning ante Sobrecarga IO.",
+    },
+    {
+        "id": "13",
+        "name": "EPISODIC_CONTINUITY",
+        "desc": "Sincronización Estricta del Memory Vault.",
+    },
+    {
+        "id": "14",
+        "name": "INVERSE_GREEN_THEATER",
+        "desc": "Asimilación Física de Leaks (Anti-Ouroboros).",
+    },
+    {
+        "id": "15",
+        "name": "ABSTRACT_DEADLOCK_RESOLUTION",
+        "desc": "Bypass Simbólico vía Symlinks físicos.",
+    },
+    {
+        "id": "16",
+        "name": "STRICT_CANONICALIZATION_BARRIER",
+        "desc": "RFC 8785 para Merkle Chains y JCS.",
+    },
+    {
+        "id": "17",
+        "name": "SPLIT_BRAIN_MITIGATION",
+        "desc": "Enmascaramiento de Idempotencia BFT.",
+    },
+    {
+        "id": "18",
+        "name": "ZOMBIE_ACTOR_PREVENTION",
+        "desc": "Validación de Pulso en Colas Asíncronas.",
+    },
+    {
+        "id": "19",
+        "name": "TTFT_INVARIANT",
+        "desc": "Monotonicidad Temporal en Inferencias C5-REAL.",
+    },
+    {
+        "id": "20",
+        "name": "METACOGNITIVE_COLLAPSE",
+        "desc": "Intercepción Auto-Referencial y Purga.",
+    },
+]
+html_template = "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>MOSKV-1 APEX | {name}</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');\n        \n        :root {{\n            --bg-color: #0A0A0A;\n            --accent-color: #2B3BE5;\n            --text-color: #E0E0E0;\n            --alert-color: #FF003C;\n        }}\n        \n        body, html {{\n            margin: 0;\n            padding: 0;\n            width: 100vw;\n            height: 100vh;\n            background-color: var(--bg-color);\n            color: var(--text-color);\n            font-family: 'Inter', sans-serif;\n            overflow: hidden;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }}\n\n        .container {{\n            width: 80%;\n            max-width: 1200px;\n            border-left: 4px solid var(--accent-color);\n            padding: 40px;\n            background: linear-gradient(90deg, rgba(43,59,229,0.1) 0%, rgba(10,10,10,0) 100%);\n            position: relative;\n        }}\n\n        .container::before {{\n            content: 'C5-REAL';\n            position: absolute;\n            top: -20px;\n            left: -2px;\n            background-color: var(--accent-color);\n            color: #fff;\n            font-size: 10px;\n            padding: 2px 8px;\n            font-family: 'Space Mono', monospace;\n            font-weight: bold;\n        }}\n\n        .id-badge {{\n            font-family: 'Space Mono', monospace;\n            color: var(--accent-color);\n            font-size: 1.5rem;\n            margin-bottom: 10px;\n            opacity: 0;\n            animation: fadeIn 0.5s forwards 0.5s;\n        }}\n\n        .title {{\n            font-size: 4rem;\n            font-weight: 900;\n            margin: 0 0 20px 0;\n            text-transform: uppercase;\n            letter-spacing: -2px;\n            line-height: 1.1;\n            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);\n        }}\n\n        .title span {{\n            display: inline-block;\n            transform: translateY(100%);\n            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;\n        }}\n\n        .desc {{\n            font-size: 1.5rem;\n            color: #888;\n            font-weight: 400;\n            max-width: 800px;\n            opacity: 0;\n            animation: fadeIn 1s forwards 1.8s;\n        }}\n\n        .matrix-overlay {{\n            position: absolute;\n            top: 0;\n            right: 0;\n            bottom: 0;\n            width: 300px;\n            opacity: 0.1;\n            font-family: 'Space Mono', monospace;\n            font-size: 10px;\n            overflow: hidden;\n            pointer-events: none;\n            color: var(--accent-color);\n            white-space: pre-wrap;\n        }}\n\n        .progress-bar {{\n            position: absolute;\n            bottom: 0;\n            left: 0;\n            height: 2px;\n            background-color: var(--accent-color);\n            width: 0%;\n            animation: progress 4s linear forwards;\n        }}\n\n        @keyframes slideUp {{\n            to {{ transform: translateY(0); }}\n        }}\n\n        @keyframes fadeIn {{\n            to {{ opacity: 1; }}\n        }}\n        \n        @keyframes progress {{\n            to {{ width: 100%; }}\n        }}\n\n        .glitch-layer {{\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background: var(--accent-color);\n            mix-blend-mode: overlay;\n            opacity: 0;\n            pointer-events: none;\n            animation: glitchAnim 0.2s 1.5s 2;\n        }}\n\n        @keyframes glitchAnim {{\n            0% {{ opacity: 0; transform: translate(0); }}\n            20% {{ opacity: 0.5; transform: translate(-10px, 5px); }}\n            40% {{ opacity: 0; transform: translate(10px, -5px); }}\n            60% {{ opacity: 0.5; transform: translate(-5px, 10px); }}\n            80% {{ opacity: 0; transform: translate(5px, -10px); }}\n            100% {{ opacity: 0; transform: translate(0); }}\n        }}\n        \n        .footer-sig {{\n            position: absolute;\n            bottom: 20px;\n            right: 40px;\n            font-family: 'Space Mono', monospace;\n            color: #333;\n            font-size: 12px;\n            opacity: 0;\n            animation: fadeIn 1s forwards 2.5s;\n        }}\n    </style>\n</head>\n<body>\n    <div class=\"glitch-layer\"></div>\n    <div class=\"container\">\n        <div class=\"progress-bar\"></div>\n        <div class=\"id-badge\">CAPABILITY_ID: [{id}]</div>\n        <h1 class=\"title\"><span>{name}</span></h1>\n        <p class=\"desc\">>_ {desc}</p>\n    </div>\n    <div class=\"footer-sig\">MOSKV-1 APEX SINGULARITY | ROOT_OPERATOR_UID0</div>\n    <div class=\"matrix-overlay\" id=\"matrix\"></div>\n\n    <script>\n        // Matrix effect\n        const matrix = document.getElementById('matrix');\n        let chars = '01';\n        let str = '';\n        for(let i=0; i<5000; i++) {{\n            str += chars[Math.floor(Math.random() * chars.length)];\n            if(i % 50 === 0) str += '\\n';\n        }}\n        matrix.textContent = str;\n        \n        setInterval(() => {{\n            let newStr = '';\n            for(let i=0; i<5000; i++) {{\n                newStr += chars[Math.floor(Math.random() * chars.length)];\n                if(i % 50 === 0) newStr += '\\n';\n            }}\n            matrix.textContent = newStr;\n        }}, 100);\n    </script>\n</body>\n</html>\n"
+output_dir = "$CORTEX_ROOT/30_BABYLON-60/public/demos"
 os.makedirs(output_dir, exist_ok=True)
 for cap in capabilities:
-    html_content = html_template.format(id=cap['id'], name=cap['name'], desc=cap['desc'])
+    html_content = html_template.format(
+        id=cap["id"], name=cap["name"], desc=cap["desc"]
+    )
     file_path = os.path.join(output_dir, f"{cap['id']}_{cap['name']}.html")
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(file_path, "w", encoding="utf-8") as f:
         f.write(html_content)
-print(f'Generated {len(capabilities)} HTML demos in {output_dir}')
+print(f"Generated {len(capabilities)} HTML demos in {output_dir}")

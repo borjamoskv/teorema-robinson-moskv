@@ -1,10 +1,8 @@
 import ast
-import os
-import signal
-from typing import List, Optional
+from typing import Optional
+
 
 class AnergiaPurger(ast.NodeTransformer):
-
     def visit_Expr(self, node: ast.Expr) -> Optional[ast.AST]:
         if isinstance(node.value, ast.Constant):
             return None
@@ -12,16 +10,44 @@ class AnergiaPurger(ast.NodeTransformer):
 
     def visit_Try(self, node: ast.Try) -> ast.AST:
         for i, handler in enumerate(node.handlers):
-            if handler.type is None or (isinstance(handler.type, ast.Name) and handler.type.id == 'Exception'):
-                kill_node = ast.Expr(value=ast.Call(func=ast.Attribute(value=ast.Name(id='os', ctx=ast.Load()), attr='kill', ctx=ast.Load()), args=[ast.Call(func=ast.Attribute(value=ast.Name(id='os', ctx=ast.Load()), attr='getpid', ctx=ast.Load()), args=[], keywords=[]), ast.Attribute(value=ast.Name(id='signal', ctx=ast.Load()), attr='SIGKILL', ctx=ast.Load())], keywords=[]))
+            if handler.type is None or (
+                isinstance(handler.type, ast.Name) and handler.type.id == "Exception"
+            ):
+                kill_node = ast.Expr(
+                    value=ast.Call(
+                        func=ast.Attribute(
+                            value=ast.Name(id="os", ctx=ast.Load()),
+                            attr="kill",
+                            ctx=ast.Load(),
+                        ),
+                        args=[
+                            ast.Call(
+                                func=ast.Attribute(
+                                    value=ast.Name(id="os", ctx=ast.Load()),
+                                    attr="getpid",
+                                    ctx=ast.Load(),
+                                ),
+                                args=[],
+                                keywords=[],
+                            ),
+                            ast.Attribute(
+                                value=ast.Name(id="signal", ctx=ast.Load()),
+                                attr="SIGKILL",
+                                ctx=ast.Load(),
+                            ),
+                        ],
+                        keywords=[],
+                    )
+                )
                 node.handlers[i].body = [kill_node]
         return self.generic_visit(node)
 
+
 def transmute_file(filepath: str) -> None:
-    with open(filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, "r", encoding="utf-8") as f:
         tree = ast.parse(f.read())
     purger = AnergiaPurger()
     mutated_tree = purger.visit(tree)
     ast.fix_missing_locations(mutated_tree)
-    with open(filepath, 'w', encoding='utf-8') as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(ast.unparse(mutated_tree))

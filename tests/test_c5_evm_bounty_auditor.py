@@ -1,44 +1,52 @@
-import asyncio
 import pytest
 from pathlib import Path
 import aiosqlite
-from scripts.defi_scraper.c5_evm_bounty_auditor import SolidityHookAuditor, execute_wealth_extraction, PROJECT_ROOT
+from scripts.defi_scraper.c5_evm_bounty_auditor import (
+    SolidityHookAuditor,
+    execute_wealth_extraction,
+    PROJECT_ROOT,
+)
+
 
 @pytest.fixture
 def temp_ledger(tmp_path: Path) -> Path:
-    return tmp_path / 'temp_bft_ledger.db'
+    return tmp_path / "temp_bft_ledger.db"
+
 
 @pytest.mark.asyncio
 async def test_solidity_hook_auditor_invariants():
-    malicious_path = PROJECT_ROOT / 'contracts/test/MaliciousHook.sol'
+    malicious_path = PROJECT_ROOT / "contracts/test/MaliciousHook.sol"
     res_malicious = SolidityHookAuditor.audit_contract_file(str(malicious_path))
-    assert res_malicious['is_vulnerable'] is True
-    violations = [v['invariant'] for v in res_malicious['violations']]
-    assert 'INV-01' in violations
-    assert 'INV-02' in violations
-    assert 'INV-03' in violations
-    secure_path = PROJECT_ROOT / 'contracts/test/SecureHook.sol'
+    assert res_malicious["is_vulnerable"] is True
+    violations = [v["invariant"] for v in res_malicious["violations"]]
+    assert "INV-01" in violations
+    assert "INV-02" in violations
+    assert "INV-03" in violations
+    secure_path = PROJECT_ROOT / "contracts/test/SecureHook.sol"
     res_secure = SolidityHookAuditor.audit_contract_file(str(secure_path))
-    assert res_secure['is_vulnerable'] is False
-    assert len(res_secure['violations']) == 0
+    assert res_secure["is_vulnerable"] is False
+    assert len(res_secure["violations"]) == 0
+
 
 @pytest.mark.asyncio
 async def test_wealth_extraction_ledger_persistence(temp_ledger):
     async with aiosqlite.connect(temp_ledger) as db:
-        schema = Path('core/master_ledger.sql').read_text()
+        schema = Path("core/master_ledger.sql").read_text()
         await db.executescript(schema)
         await db.commit()
     res = await execute_wealth_extraction(ledger_db=temp_ledger)
-    assert res['status'] == 'COMPLETED'
-    extractions = res['extractions']
+    assert res["status"] == "COMPLETED"
+    extractions = res["extractions"]
     assert len(extractions) > 0
-    vulnerable_strikes = [e for e in extractions if e.get('vulnerable')]
+    vulnerable_strikes = [e for e in extractions if e.get("vulnerable")]
     assert len(vulnerable_strikes) > 0
     for strike in vulnerable_strikes:
-        assert 'ledger_receipt' in strike
-        assert strike['ledger_receipt']['seq'] > 0
-        assert 'entry_hash' in strike['ledger_receipt']
+        assert "ledger_receipt" in strike
+        assert strike["ledger_receipt"]["seq"] > 0
+        assert "entry_hash" in strike["ledger_receipt"]
     async with aiosqlite.connect(temp_ledger) as db:
-        cur = await db.execute("SELECT COUNT(*) FROM ledger_entries WHERE stream = 'wealth_extraction'")
+        cur = await db.execute(
+            "SELECT COUNT(*) FROM ledger_entries WHERE stream = 'wealth_extraction'"
+        )
         row = await cur.fetchone()
         assert row[0] == len(vulnerable_strikes)

@@ -9,9 +9,11 @@ import ast
 import asyncio
 import concurrent.futures
 from dataclasses import dataclass, asdict
-from typing import Dict, Tuple, Any, List
-REPO_PATH = '$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv'
-LEDGER_PATH = os.path.join(REPO_PATH, 'cortex/nexus_anchors.db')
+from typing import Dict, Tuple, List
+
+REPO_PATH = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv"
+LEDGER_PATH = os.path.join(REPO_PATH, "cortex/nexus_anchors.db")
+
 
 @dataclass(frozen=True)
 class DBMetrics:
@@ -19,6 +21,7 @@ class DBMetrics:
     triggers: int
     indexes: int
     rows: int
+
 
 @dataclass(frozen=True)
 class ExergyNode:
@@ -33,8 +36,8 @@ class ExergyNode:
     exergy: float
     m12_class: str
 
-class BFTLedgerActor:
 
+class BFTLedgerActor:
     def __init__(self, db_path: str):
         self.db_path = db_path
         self.queue = asyncio.Queue()
@@ -55,33 +58,38 @@ class BFTLedgerActor:
     def _sync_write(self, merkle_root: str, top_nodes: List[ExergyNode]):
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         conn = sqlite3.connect(self.db_path)
-        conn.execute('PRAGMA journal_mode=WAL')
-        conn.execute('PRAGMA busy_timeout=5000')
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=5000")
         try:
             cursor = conn.cursor()
-            cursor.execute('\n            CREATE TABLE IF NOT EXISTS exergy_merkle_roots (\n                merkle_hash TEXT PRIMARY KEY,\n                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n                cortex_taint TEXT NOT NULL,\n                top_10_payload TEXT NOT NULL\n            )\n            ')
+            cursor.execute(
+                "\n            CREATE TABLE IF NOT EXISTS exergy_merkle_roots (\n                merkle_hash TEXT PRIMARY KEY,\n                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n                cortex_taint TEXT NOT NULL,\n                top_10_payload TEXT NOT NULL\n            )\n            "
+            )
             payload = json.dumps([asdict(n) for n in top_nodes])
-            cursor.execute('\n            INSERT INTO exergy_merkle_roots (merkle_hash, cortex_taint, top_10_payload)\n            VALUES (?, ?, ?)\n            ', (merkle_root, 'EXERGY_P0_AST_VISITOR', payload))
+            cursor.execute(
+                "\n            INSERT INTO exergy_merkle_roots (merkle_hash, cortex_taint, top_10_payload)\n            VALUES (?, ?, ?)\n            ",
+                (merkle_root, "EXERGY_P0_AST_VISITOR", payload),
+            )
             conn.commit()
         except sqlite3.IntegrityError:
             pass
         except sqlite3.Error as e:
             conn.rollback()
-            raise RuntimeError(f'CRITICAL: SQLite Rollback - {e}')
+            raise RuntimeError(f"CRITICAL: SQLite Rollback - {e}")
         finally:
             conn.close()
 
     async def append(self, merkle_root: str, top_nodes: List[ExergyNode]):
         if self._worker_task.done():
-            raise RuntimeError('Fail-Fast: BFT Writer Actor is dead')
+            raise RuntimeError("Fail-Fast: BFT Writer Actor is dead")
         await self.queue.put((merkle_root, top_nodes))
 
     async def shutdown(self):
         await self.queue.put(None)
         await self._worker_task
 
-class StrictExergyVisitor(ast.NodeVisitor):
 
+class StrictExergyVisitor(ast.NodeVisitor):
     def __init__(self):
         self.invariants = 0
         self.mutations = 0
@@ -98,10 +106,10 @@ class StrictExergyVisitor(ast.NodeVisitor):
     def visit_Call(self, node):
         self.density += 1
         if isinstance(node.func, ast.Attribute):
-            if node.func.attr in ('commit', 'execute', 'write', 'rollback'):
+            if node.func.attr in ("commit", "execute", "write", "rollback"):
                 self.mutations += 2
         elif isinstance(node.func, ast.Name):
-            if node.func.id in ('write_to_file', 'replace_file_content'):
+            if node.func.id in ("write_to_file", "replace_file_content"):
                 self.mutations += 2
         self.generic_visit(node)
 
@@ -117,55 +125,68 @@ class StrictExergyVisitor(ast.NodeVisitor):
         self.density += 5
         self.generic_visit(node)
 
+
 def analyze_python_ast(content: str) -> Tuple[int, int, int]:
     try:
         tree = ast.parse(content)
         visitor = StrictExergyVisitor()
         visitor.visit(tree)
-        inv_comments = len(re.findall('INV_\\w+|MUTEX_\\w+', content))
+        inv_comments = len(re.findall("INV_\\w+|MUTEX_\\w+", content))
         return (visitor.invariants + inv_comments, visitor.mutations, visitor.density)
     except (SyntaxError, ValueError):
         return (0, 0, 0)
 
+
 def get_git_commits() -> Dict[str, int]:
     git_commits = {}
     try:
-        res = subprocess.run(['git', 'log', '--pretty=format:', '--name-only'], cwd=REPO_PATH, capture_output=True, text=True)
+        res = subprocess.run(
+            ["git", "log", "--pretty=format:", "--name-only"],
+            cwd=REPO_PATH,
+            capture_output=True,
+            text=True,
+        )
         for line in res.stdout.splitlines():
             line = line.strip()
             if line and os.path.exists(os.path.join(REPO_PATH, line)):
-                git_commits[os.path.join(REPO_PATH, line)] = git_commits.get(os.path.join(REPO_PATH, line), 0) + 1
+                git_commits[os.path.join(REPO_PATH, line)] = (
+                    git_commits.get(os.path.join(REPO_PATH, line), 0) + 1
+                )
     except subprocess.SubprocessError:
         pass
     return git_commits
 
+
 def calculate_blake2b(filepath: str) -> str:
     h = hashlib.blake2b()
     try:
-        with open(filepath, 'rb') as f:
-            for chunk in iter(lambda: f.read(8192), b''):
+        with open(filepath, "rb") as f:
+            for chunk in iter(lambda: f.read(8192), b""):
                 h.update(chunk)
         return h.hexdigest()
     except OSError:
-        return 'ERROR_HASH'
+        return "ERROR_HASH"
+
 
 def analyze_sqlite(db_path: str) -> Tuple[int, int, int, int]:
     tables, triggers, indexes, rows = (0, 0, 0, 0)
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
-        cursor.execute('SELECT type, count(*) FROM sqlite_master GROUP BY type')
+        cursor.execute("SELECT type, count(*) FROM sqlite_master GROUP BY type")
         for r_type, count in cursor.fetchall():
-            if r_type == 'table':
+            if r_type == "table":
                 tables = count
-            elif r_type == 'trigger':
+            elif r_type == "trigger":
                 triggers = count
-            elif r_type == 'index':
+            elif r_type == "index":
                 indexes = count
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+        cursor.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"
+        )
         for r in cursor.fetchall():
             try:
-                cursor.execute(f'SELECT count(*) FROM {r[0]}')
+                cursor.execute(f"SELECT count(*) FROM {r[0]}")
                 rows += cursor.fetchone()[0]
             except sqlite3.Error:
                 pass
@@ -173,6 +194,7 @@ def analyze_sqlite(db_path: str) -> Tuple[int, int, int, int]:
     except sqlite3.Error:
         pass
     return (tables, triggers, indexes, rows)
+
 
 def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | None:
     rel_path = os.path.relpath(full_path, repo_path)
@@ -183,26 +205,36 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
     file_hash = calculate_blake2b(full_path)
     invariants, mutations, ast_density = (0, 0, 0)
     db_metrics = None
-    if full_path.endswith('.db'):
+    if full_path.endswith(".db"):
         tables, triggers, indexes, rows = analyze_sqlite(full_path)
         db_metrics = DBMetrics(tables, triggers, indexes, rows)
         invariants = tables * 5 + triggers * 15 + indexes * 2
         mutations = math.ceil(rows / 100)
-    elif full_path.endswith('.safetensors'):
+    elif full_path.endswith(".safetensors"):
         invariants = 1500
-    elif full_path.endswith('.py'):
+    elif full_path.endswith(".py"):
         try:
-            with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+            with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
             invariants, mutations, ast_density = analyze_python_ast(content)
         except (SyntaxError, UnicodeDecodeError):
             pass
     else:
         try:
-            with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+            with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
-            invariants += len(re.findall('INV_\\w+|MUTEX_\\w+|assert|panic!|\\.unwrap\\(|\\.expect\\(|raise\\s+\\w+', content))
-            mutations += len(re.findall('\\.commit\\(|write_query|write_to_file|replace_file_content|execute\\(|git commit|fs\\.write|File::create|std::fs::write', content))
+            invariants += len(
+                re.findall(
+                    "INV_\\w+|MUTEX_\\w+|assert|panic!|\\.unwrap\\(|\\.expect\\(|raise\\s+\\w+",
+                    content,
+                )
+            )
+            mutations += len(
+                re.findall(
+                    "\\.commit\\(|write_query|write_to_file|replace_file_content|execute\\(|git commit|fs\\.write|File::create|std::fs::write",
+                    content,
+                )
+            )
         except UnicodeDecodeError:
             pass
     total_invariants = invariants + ast_density
@@ -211,48 +243,88 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
     invariants_term = total_invariants * 4.0
     mutations_term = mutations * 3.0
     exergy_score = size_term + commits_term + invariants_term + mutations_term
-    m12_class = 'AP'
-    if 'master_ledger' in rel_path or 'ledger' in rel_path:
-        m12_class = 'CP-local (Single-writer)'
-    elif rel_path == 'cortex_memory.db':
-        m12_class = 'Congelado (RO)'
-    elif 'safetensors' in rel_path:
-        m12_class = 'Reglas (R)'
-    elif 'ontology' in rel_path:
-        m12_class = 'Axiomas (A)'
-    return ExergyNode(path=rel_path, blake2b_hash=file_hash, size=size, commits=commits, invariants=total_invariants, mutations=mutations, ast_density=ast_density, db_metrics=db_metrics, exergy=round(exergy_score, 2), m12_class=m12_class)
+    m12_class = "AP"
+    if "master_ledger" in rel_path or "ledger" in rel_path:
+        m12_class = "CP-local (Single-writer)"
+    elif rel_path == "cortex_memory.db":
+        m12_class = "Congelado (RO)"
+    elif "safetensors" in rel_path:
+        m12_class = "Reglas (R)"
+    elif "ontology" in rel_path:
+        m12_class = "Axiomas (A)"
+    return ExergyNode(
+        path=rel_path,
+        blake2b_hash=file_hash,
+        size=size,
+        commits=commits,
+        invariants=total_invariants,
+        mutations=mutations,
+        ast_density=ast_density,
+        db_metrics=db_metrics,
+        exergy=round(exergy_score, 2),
+        m12_class=m12_class,
+    )
+
 
 def execute_git_sentinel():
-    subprocess.run(['git', 'add', 'scripts/c5_exergy_auditor.py'], cwd=REPO_PATH)
-    subprocess.run(['git', 'commit', '--no-verify', '-m', 'refactor(audit): inyecta C5-REAL StrictExergyVisitor (AST parsing nativo) para erradicación de heurística regex'], cwd=REPO_PATH)
-    res = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=REPO_PATH, capture_output=True, text=True)
+    subprocess.run(["git", "add", "scripts/c5_exergy_auditor.py"], cwd=REPO_PATH)
+    subprocess.run(
+        [
+            "git",
+            "commit",
+            "--no-verify",
+            "-m",
+            "refactor(audit): inyecta C5-REAL StrictExergyVisitor (AST parsing nativo) para erradicación de heurística regex",
+        ],
+        cwd=REPO_PATH,
+    )
+    res = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=REPO_PATH, capture_output=True, text=True
+    )
     return res.stdout.strip()
+
 
 async def async_main():
     git_commits = get_git_commits()
-    exclude_dirs = {'.venv', 'node_modules', '.git', 'target'}
+    exclude_dirs = {".venv", "node_modules", ".git", "target"}
     target_files = []
     for root, dirs, files in os.walk(REPO_PATH):
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for file in files:
-            target_files.append((os.path.join(root, file), git_commits.get(os.path.join(root, file), 0), REPO_PATH))
+            target_files.append(
+                (
+                    os.path.join(root, file),
+                    git_commits.get(os.path.join(root, file), 0),
+                    REPO_PATH,
+                )
+            )
     files_data = []
     loop = asyncio.get_running_loop()
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        tasks = [loop.run_in_executor(executor, process_file, fp, c, rp) for fp, c, rp in target_files]
+        tasks = [
+            loop.run_in_executor(executor, process_file, fp, c, rp)
+            for fp, c, rp in target_files
+        ]
         results = await asyncio.gather(*tasks)
         for res in results:
             if res:
                 files_data.append(res)
     files_data.sort(key=lambda x: x.exergy, reverse=True)
     all_hashes = sorted([n.blake2b_hash for n in files_data])
-    merkle_root = hashlib.blake2b(''.join(all_hashes).encode()).hexdigest()
+    merkle_root = hashlib.blake2b("".join(all_hashes).encode()).hexdigest()
     top_10 = files_data[:10]
     actor = BFTLedgerActor(LEDGER_PATH)
     await actor.append(merkle_root, top_10)
     await actor.shutdown()
     git_hash = execute_git_sentinel()
-    output = {'merkle_root_blake2b': merkle_root, 'git_sentinel_hash': git_hash, 'bft_actor_status': 'SIGKILL_AST_VISITOR_ACTIVE', 'top_10': [asdict(n) for n in top_10]}
+    output = {
+        "merkle_root_blake2b": merkle_root,
+        "git_sentinel_hash": git_hash,
+        "bft_actor_status": "SIGKILL_AST_VISITOR_ACTIVE",
+        "top_10": [asdict(n) for n in top_10],
+    }
     print(json.dumps(output, indent=2))
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     asyncio.run(async_main())

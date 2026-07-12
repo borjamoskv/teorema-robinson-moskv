@@ -1,15 +1,18 @@
 import asyncio
 import time
 import sys
-sys.path.append('$CORTEX_ROOT/30_BABYLON-60')
+
+sys.path.append("$CORTEX_ROOT/30_BABYLON-60")
 from cortex.agents.ontology.osint_dao import OSINTOntologyAccessor
+
 
 async def worker(accessor: OSINTOntologyAccessor, worker_id: int) -> int:
     try:
-        res = await accessor.get_primitives_by_domain('SOCINT')
+        res = await accessor.get_primitives_by_domain("SOCINT")
         return len(res)
-    except RuntimeError as e:
+    except RuntimeError:
         return 0
+
 
 async def stress_test() -> None:
     accessor = OSINTOntologyAccessor()
@@ -23,12 +26,14 @@ async def stress_test() -> None:
     end_time = time.time()
     elapsed = end_time - start_time
     failures = 10000 - total_successes
-    print('STRESS_TEST_COLLAPSE')
-    print('Total_Requests: 10000')
-    print(f'Success: {total_successes}')
-    print(f'Failures: {failures}')
-    print(f'Elapsed_Time: {elapsed:.3f}s')
-    print(f'Throughput: {10000 / elapsed:.2f}_req/s')
-    assert total_successes == 10000, 'Fallo termodinámico en stress test (Anergía).'
-if __name__ == '__main__':
+    print("STRESS_TEST_COLLAPSE")
+    print("Total_Requests: 10000")
+    print(f"Success: {total_successes}")
+    print(f"Failures: {failures}")
+    print(f"Elapsed_Time: {elapsed:.3f}s")
+    print(f"Throughput: {10000 / elapsed:.2f}_req/s")
+    assert total_successes == 10000, "Fallo termodinámico en stress test (Anergía)."
+
+
+if __name__ == "__main__":
     asyncio.run(stress_test())

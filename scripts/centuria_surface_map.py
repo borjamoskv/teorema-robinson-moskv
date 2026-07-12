@@ -9,31 +9,46 @@ import argparse
 from pathlib import Path
 from decimal import Decimal
 from concurrent.futures import ThreadPoolExecutor, as_completed
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
-IGNORED_DIRS = {'.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.next', 'dist', 'build'}
-IGNORED_EXTS = {'.pyc', '.db', '.png', '.jpg', '.pdf', '.zip', '.tar', '.gz'}
-DB_PATH = 'cortex_surface_map.db'
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+IGNORED_DIRS = {
+    ".git",
+    ".venv",
+    "node_modules",
+    "__pycache__",
+    ".pytest_cache",
+    ".next",
+    "dist",
+    "build",
+}
+IGNORED_EXTS = {".pyc", ".db", ".png", ".jpg", ".pdf", ".zip", ".tar", ".gz"}
+DB_PATH = "cortex_surface_map.db"
+
 
 def init_db():
     conn = sqlite3.connect(DB_PATH, timeout=5.0)
-    conn.execute('PRAGMA journal_mode=WAL')
-    conn.execute('PRAGMA busy_timeout=5000')
-    conn.execute('\n        CREATE TABLE IF NOT EXISTS surface_map (\n            file_path TEXT PRIMARY KEY,\n            extension TEXT,\n            entropy REAL,\n            lines INTEGER,\n            classes TEXT,\n            functions TEXT,\n            imports TEXT\n        )\n    ')
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA busy_timeout=5000")
+    conn.execute(
+        "\n        CREATE TABLE IF NOT EXISTS surface_map (\n            file_path TEXT PRIMARY KEY,\n            extension TEXT,\n            entropy REAL,\n            lines INTEGER,\n            classes TEXT,\n            functions TEXT,\n            imports TEXT\n        )\n    "
+    )
     conn.commit()
     conn.close()
 
+
 def calculate_shannon_entropy(text: str) -> Decimal:
     if not text:
-        return Decimal('0.0')
+        return Decimal("0.0")
     frequencies = {}
     for char in text:
         frequencies[char] = frequencies.get(char, 0) + 1
     total_len = Decimal(len(text))
-    entropy = Decimal('0.0')
+    entropy = Decimal("0.0")
     for count in frequencies.values():
         p = Decimal(count) / total_len
         entropy -= p * Decimal(str(math.log2(float(p))))
     return Decimal(str(round(float(entropy), 4)))
+
 
 def extract_python_primitives(content: str):
     classes = []
@@ -56,41 +71,66 @@ def extract_python_primitives(content: str):
         pass
     return (classes, functions, list(set(imports)))
 
+
 def extract_generic_primitives(content: str):
-    classes = re.findall('class\\s+([a-zA-Z0-9_]+)', content)
-    functions = re.findall('function\\s+([a-zA-Z0-9_]+)', content)
-    functions += re.findall('(?:const|let|var)\\s+([a-zA-Z0-9_]+)\\s*=\\s*(?:function|\\()', content)
-    imports = re.findall('(?:import|require)\\s*\\(?[\'\\"]([^\'\\"]+)[\'\\"]', content)
+    classes = re.findall("class\\s+([a-zA-Z0-9_]+)", content)
+    functions = re.findall("function\\s+([a-zA-Z0-9_]+)", content)
+    functions += re.findall(
+        "(?:const|let|var)\\s+([a-zA-Z0-9_]+)\\s*=\\s*(?:function|\\()", content
+    )
+    imports = re.findall("(?:import|require)\\s*\\(?['\\\"]([^'\\\"]+)['\\\"]", content)
     return (list(set(classes)), list(set(functions)), list(set(imports)))
+
 
 def analyze_file(filepath: Path):
     try:
-        content = filepath.read_text(encoding='utf-8')
+        content = filepath.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
         return None
     entropy = calculate_shannon_entropy(content)
     lines = len(content.splitlines())
-    if filepath.suffix == '.py':
+    if filepath.suffix == ".py":
         classes, functions, imports = extract_python_primitives(content)
     else:
         classes, functions, imports = extract_generic_primitives(content)
-    return {'file_path': str(filepath), 'extension': filepath.suffix, 'entropy': entropy, 'lines': lines, 'classes': json.dumps(classes), 'functions': json.dumps(functions), 'imports': json.dumps(imports)}
+    return {
+        "file_path": str(filepath),
+        "extension": filepath.suffix,
+        "entropy": entropy,
+        "lines": lines,
+        "classes": json.dumps(classes),
+        "functions": json.dumps(functions),
+        "imports": json.dumps(imports),
+    }
+
 
 def worker_thread(filepath: Path):
     data = analyze_file(filepath)
     if not data:
         return None
     conn = sqlite3.connect(DB_PATH, timeout=5.0)
-    conn.execute('PRAGMA journal_mode=WAL')
-    conn.execute('PRAGMA busy_timeout=5000')
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA busy_timeout=5000")
     try:
-        conn.execute('\n            INSERT OR REPLACE INTO surface_map \n            (file_path, extension, entropy, lines, classes, functions, imports)\n            VALUES (?, ?, ?, ?, ?, ?, ?)\n        ', (data['file_path'], data['extension'], float(data['entropy']), data['lines'], data['classes'], data['functions'], data['imports']))
+        conn.execute(
+            "\n            INSERT OR REPLACE INTO surface_map \n            (file_path, extension, entropy, lines, classes, functions, imports)\n            VALUES (?, ?, ?, ?, ?, ?, ?)\n        ",
+            (
+                data["file_path"],
+                data["extension"],
+                float(data["entropy"]),
+                data["lines"],
+                data["classes"],
+                data["functions"],
+                data["imports"],
+            ),
+        )
         conn.commit()
     except sqlite3.Error as e:
-        logging.error(f'DB Error on {filepath}: {e}')
+        logging.error(f"DB Error on {filepath}: {e}")
     finally:
         conn.close()
     return filepath
+
 
 def get_target_files(root_dir: Path):
     files = []
@@ -102,15 +142,16 @@ def get_target_files(root_dir: Path):
                 files.append(path)
     return files
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Centuria Forge Surface Mapping')
-    parser.add_argument('--dir', default='.', help='Target directory')
+    parser = argparse.ArgumentParser(description="Centuria Forge Surface Mapping")
+    parser.add_argument("--dir", default=".", help="Target directory")
     args = parser.parse_args()
     target_dir = Path(args.dir).resolve()
-    logging.info(f'Initiating Centuria Forge (100 cycles) on {target_dir}')
+    logging.info(f"Initiating Centuria Forge (100 cycles) on {target_dir}")
     init_db()
     files = get_target_files(target_dir)
-    logging.info(f'Discovered {len(files)} target files for surface mapping.')
+    logging.info(f"Discovered {len(files)} target files for surface mapping.")
     success_count = 0
     with ThreadPoolExecutor(max_workers=100) as executor:
         futures = {executor.submit(worker_thread, f): f for f in files}
@@ -118,7 +159,11 @@ def main():
             res = future.result()
             if res:
                 success_count += 1
-    logging.info(f'Surface Mapping Complete. Successfully mapped {success_count} / {len(files)} files.')
-    logging.info(f'Results crystallized in {DB_PATH}')
-if __name__ == '__main__':
+    logging.info(
+        f"Surface Mapping Complete. Successfully mapped {success_count} / {len(files)} files."
+    )
+    logging.info(f"Results crystallized in {DB_PATH}")
+
+
+if __name__ == "__main__":
     main()
