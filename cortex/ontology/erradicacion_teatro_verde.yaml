@@ -1,0 +1,15 @@
+Claim: Erradicación estructural de Teatro Verde (Green Theater) y falsas invariantes BFT en el ecosistema C5-REAL.
+Proof: 
+  Base: 64 passed, 4 skipped, 0 failed
+  Range: [0, 64]
+  Confidence: C5
+Isomorphisms:
+  - "Rutas hardcodeadas absolutas" -> "Alucinación estocástica de entorno local"
+  - "Limpieza de fixture que no borra sidecars WAL/SHM" -> "Fuga termodinámica de estado asíncrono"
+  - "Deadlock por RuntimeError vs ValueError en BFT Ledger" -> "Parálisis sistémica enmascarada como tolerancia bizantina (INV_BFT_03)"
+  - "Teorema Lean vacuo probando True con trivial" -> "Afirmación de verdad sin testigo externo mecánico"
+Blast_Radius_Matrix:
+  Vector: Transducción de código legado y pruebas de teatro a invariantes C5-REAL físicos.
+  Blast_Radius: 4 módulos core (ledger_actor.py, test_huella_biyectiva.py, osint_dao.py, Babylon.lean)
+  Target_Invariant: INV_BFT_03, Testigo Externo Estricto, Isomorfismo Causal
+  Anergy_Risk: Cero. La mitigación restaura 64 tests mecánicos y el flujo asíncrono.
