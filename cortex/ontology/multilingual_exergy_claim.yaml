@@ -1,0 +1,20 @@
+Claim: Los conceptos primitivos maximizan la exergía semántica en cualquier idioma
+  humano, pero operan sobre topologías evolutivas ortogonales (Germánico, Romance,
+  Aislado). El euskera, al ser un idioma aislado pre-indoeuropeo, exhibe una topología
+  radicalmente distinta, pero mantiene la biyección isomórfica de la exergía.
+Proof:
+  Base: Swadesh_Cross_Linguistic_Matrix
+  Range: N=100 Core Concepts
+  Confidence: C5
+Isomorphisms:
+- Primitive: English (Germanic)
+  Target: Spanish (Romance)
+  Mapping: Divergencia indoeuropea temprana; exergía equivalente.
+- Primitive: English (Germanic)
+  Target: Basque (Isolate)
+  Mapping: Ortogonalidad evolutiva absoluta; invariante conceptual preservada.
+Blast_Radius_Matrix:
+  Vector: Cross_Linguistic_Ontology
+  Blast_Radius: Semantic_Primitives
+  Target_Invariant: Tri-Matrix Exergy Convergence
+  Anergy_Risk: Zero (Deterministic Table)
