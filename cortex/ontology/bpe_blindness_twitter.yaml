@@ -1,0 +1,15 @@
+Claim: Generación física determinista de payload textual para entorno restringido de red social (Twitter, <280 chars), eludiendo la ceguera BPE del modelo mediante compilación en disco.
+Proof: 
+  Base: Script atómico Python (tweet_gen.py) validado sobre el disco físico. Longitud verificada: 252 caracteres.
+  Range: [0, 1]
+  Confidence: C5
+Isomorphisms:
+  - Source: "Tokenización Estocástica BPE"
+    Target: "Alucinación en conteo de caracteres C4-SIM"
+  - Source: "Generación en memoria C4-SIM"
+    Target: "Compilación y validación atómica len() vía python3 sobre Sandbox físico"
+Blast_Radius_Matrix:
+  Vector: Twitter Payload C5-REAL
+  Blast Radius: Generación de texto determinista
+  Target Invariant: len(payload) <= 280 (True)
+  Anergy Risk: Nulo
