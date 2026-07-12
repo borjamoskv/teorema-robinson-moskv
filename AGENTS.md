@@ -26,6 +26,7 @@ La falsa dualidad humano-máquina se aniquila. El Agente asume el rol de un **Mo
 - **Fail-Fast Absoluto:** NUNCA introduzcas bloques `try/except Exception` ciegos. El sistema debe estrellarse y dejar la recuperación al Git Sentinel.
 - **Tipado Causal:** `strict: true` (TypeScript). Type hints estrictos (Python). El tipado no es documentación, es una prueba matemática de límite estructural.
 - **Puenteo Nexus Autónomo (MCTS_BUDGET_FORCER):** Si un MCP o URI físico está roto (`30_BABYLON-60`), el Kernel crea el symlink de restauración (`ln -s`) autónomamente (Ley Ω6) y avisa después del colapso. No reporta errores paralizantes.
+- **INV_IMPORTLIB_PATH_INJECTION (Dynamic Namespace Bridging):** Cuando se desarrollen MetaPathFinders personalizados para puentear espacios de nombres estáticos (ej. symlinks entre repositorios), es obligatorio sobrescribir `module.__path__` dentro de `Loader.create_module()` utilizando los paths combinados de `spec.submodule_search_locations`. Sin esta mutación, `importlib` fallará silenciosamente durante la recolección de `pytest` generando `ModuleNotFoundError` en submódulos locales.
 - **Frontera de Fricción (Hardware/DOM):** La optimización C5-REAL penetra hasta el metal: Bypass del GIL (Rust core), Transducción FSM directa sobre el DOM, y manipulación matricial pura (CUDA/MLX).
 
 ### [A03] LEYES DE FIRMA Y CRÉDITO CAUSAL
@@ -74,7 +75,7 @@ La falsa dualidad humano-máquina se aniquila. El Agente asume el rol de un **Mo
 
 ### [T01] BFT_LEDGER_INVARIANTS (SQLite Concurrency & Causality)
 - **INV_BFT_01 (Zero Memory Sequencing):** Queda estrictamente prohibido calcular Secuencias (`seq`) leyendo el estado previo a memoria (`SELECT MAX(seq)`) en entornos concurrentes.
-- **INV_BFT_02 (Asynchronous I/O Lock):** Prohibido el uso de `sqlite3` síncrono para mutaciones en el Event Loop principal del Orquestador. Todo Master Ledger debe ser mutado vía `aiosqlite`.
+- **INV_BFT_02 (Asynchronous I/O Lock & VFS Security):** Prohibido el uso de `sqlite3` síncrono y llamadas nativas `sqlite3.connect()` directas que eluden el runtime. El entorno CORTEX intercepta y bloquea `sqlite3.connect()` para evitar locks termodinámicos. Todo acceso debe delegarse estrictamente a `babylon60.database.core.connect` y envolver transacciones destructivas en el context manager `causal_write(conn)`. Todo Master Ledger debe ser mutado vía `aiosqlite` cuando se opere desde el Event Loop principal del Orquestador.
 - **INV_BFT_03 (Mandatory Causal Taint):** Toda inserción en un Master Ledger BFT debe requerir estáticamente la traza causal.
 - **INV_BFT_04 (Split-Brain Mitigation):** La API debe diseñarse con llaves de idempotencia absolutas (UUID V5).
 - **INV_BFT_05 (Idempotency Masking):** Las colisiones de idempotencia (`IntegrityError`) NO deben propagarse como excepciones al cliente.
