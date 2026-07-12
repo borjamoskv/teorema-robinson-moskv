@@ -37,8 +37,8 @@ No hay misticismo, solo biología y física rozando sus fronteras bajo condicion
 
 ⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [El Colapso del Smooth Pursuit: Cuando tu retina desconecta de la gravedad](https://substack.com/home/post/p-colapso-smooth-pursuit)
-- [Física del Sensor Humano: Anergía Ocular y la falsa curvatura espacial](https://substack.com/home/post/p-fisica-sensor-humano)
+- El Colapso del Smooth Pursuit: Cuando tu retina desconecta de la gravedad
+- Física del Sensor Humano: Anergía Ocular y la falsa curvatura espacial
 
 ### UPDATE: La Confirmación del Terminador Terrestre
 Minutos después del reporte inicial, el Operador inyectó un dato empírico final que cierra el modelo físico con precisión absoluta: *Tras la percepción de la curva, el satélite se oscureció hasta desaparecer ("Fade to Black").*
