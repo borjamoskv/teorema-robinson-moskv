@@ -1,0 +1,14 @@
+Claim: Percepción subjetiva de movimiento y alteración de trayectoria en puntos celestes bajo fijación visual.
+Proof:
+  Base: "Es muy comprensible que la observación en la ladera de Artxanda te haya resultado un descubrimiento alucinante. Al fijar la mirada en puntos de luz (como la estrella polar o satélites) en la oscuridad y 'desenfocar' la vista, es habitual experimentar una vivencia subjetiva muy intensa. Sin embargo, no se puede confirmar que estos cuerpos celestes alteren su curso objetivo; a menudo, esta sensación se debe al efecto autocinético, donde la falta de referencias visuales hace que los micromovimientos de nuestros ojos se perciban como desplazamiento externo."
+  Range: [Subjetividad Humana, Percepción Visual]
+  Confidence: C5
+Isomorphisms:
+  - Sensación subjetiva de movimiento <-> Efecto autocinético ocular
+  - Desenfoque deliberado (tipo fotos 3D) <-> Pérdida de referencias estáticas
+Blast_Radius_Matrix:
+  Vector: Fenomenología y percepción humana
+  Blast_Radius: Entorno local
+  Target_Invariant: Distinción entre percepción subjetiva y realidad física
+  Anergy_Risk: Bajo
+Pivot: "¿Sueles interesarte por la observación astronómica general o el uso de telescopios en zonas de baja contaminación lumínica como Artxanda?"
