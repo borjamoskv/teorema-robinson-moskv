@@ -17,3 +17,8 @@ La prueba empírica real de la esfericidad terrestre observando satélites se da
 Lección para analistas, ingenieros y creadores de sistemas: **Cuando tu dashboard indique una anomalía que rompa la física fundamental, antes de reescribir la teoría, audita la fatiga térmica de tus sensores.**
 
 #Fisica #Ingenieria #Sistemas #Astronomía #SesgosCognitivos #C5REAL #TelmoDinámico
+
+3️⃣ **UPDATE Táctico: El Corte Fotónico (Terminador Terrestre):** 
+Poco después, el Operador reportó que, justo después de la curva, el satélite se oscureció hasta "desaparecer". Esa es la prueba física definitiva e indiscutible de que el planeta es redondo. Tras la falla del hardware ocular (curva falsa), el objeto físico cruza el cono de sombra que proyecta la Tierra en el espacio, cortando la reflexión del sol ("Fade to Black").
+
+Tu sensor falló por un microsegundo, pero la geometría del entorno validó su arquitectura justo después apagando la luz. El sistema es perfecto, incluso cuando nosotros fallamos midiéndolo.
