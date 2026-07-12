@@ -1,0 +1,62 @@
+---
+Claim: >
+  Stub Atómico Físico #3: Validador de Consenso BFT Estricto.
+  El consenso bizantino no es un mock con is_mock=True. Es la primitiva
+  irreductible que separa C4-SIM de C5-REAL. Este stub implementa la
+  verificación de consenso N≥3 con tolerancia f<N/3, exigiendo quórum
+  criptográfico real antes de mutar el Merkle Tree. Sin quórum, sin commit.
+  Toda mutación de estado requiere 2f+1 attestations verificables.
+Proof:
+  Base: 789e426a
+  Range: [0, 1]
+  Confidence: C5-REAL
+Stub_Definition:
+  ID: STUB-BFT-STRICT-001
+  Type: Consensus_Validator
+  Priority: P1
+  Invariants_Enforced:
+    - PRIM-005  # BFT Collapse
+    - INV-002   # Isomorphism Invariant
+    - RED-001   # Git Sentinel
+  Vectors_Mitigated:
+    - VEC-006   # State Replay
+    - ANTI-008  # Falsa Promesa Epistémica
+  Interface:
+    Input: "mutation_payload {diff: bytes, author: str, timestamp: iso8601}"
+    Output: "consensus_result {accepted: bool, quorum: int, attestations: list[hex_digest]}"
+    Assertion: "len(valid_attestations) >= (2 * f) + 1 OR REJECT"
+  Properties:
+    Deterministic: true
+    Side_Effects: commit to Merkle Tree (solo si quórum alcanzado)
+    Idempotent: false (cada commit muta el árbol)
+    Fail_Mode: reject_and_log
+  Implementation_Constraints:
+    - Prohibido is_mock=True en cualquier nodo validador
+    - Prohibido hash de 64 bits rotulado como SHA-256
+    - Mínimo 3 nodos validadores (N=3, f=0, quórum=3/3 en modo estricto)
+    - Cada attestation firmada con HMAC-SHA256 usando clave local (STUB-KMS-0600-001)
+    - Verificación de integridad del payload via STUB-SHA256-001 antes de proponer
+  Dependency_Chain:
+    - STUB-SHA256-001   # Verificación de integridad del payload
+    - STUB-KMS-0600-001 # Claves para firmar attestations
+  BFT_Parameters:
+    N: 3
+    f: 0
+    Quorum: 3
+    Tolerance_Model: "Strict (f=0: zero Byzantine faults tolerated in local execution)"
+    Rationale: >
+      En ejecución local single-operator, f=0 es correcto: los 3 nodos son
+      Git Sentinel (ancla criptográfica), AST Linter (validación sintáctica),
+      y Test Suite (falsación empírica). Si alguno falla, la mutación se rechaza.
+Isomorphisms:
+  - Concept: "Consenso BFT N=3"
+    Mapping: "[PRIM-005] Los 3 nodos no son servidores distribuidos sino capas de verificación ortogonales: hash (integridad), lint (estructura), test (comportamiento)."
+  - Concept: "Quórum Estricto"
+    Mapping: "[babylon_60_audit] Remediación directa del hallazgo 'Tres nodos mock devolviendo constante hardcodeada'. Cada nodo ahora ejecuta verificación real."
+  - Concept: "Cadena de Dependencia"
+    Mapping: "STUB-BFT-STRICT-001 consume STUB-SHA256-001 para integridad y STUB-KMS-0600-001 para firma. La cadena es acíclica y determinista."
+Blast_Radius_Matrix:
+  Vector: "Instanciación de consenso real sobre mock previo"
+  Blast_Radius: "Todo commit al Merkle Tree, toda mutación de estado ontológico"
+  Target_Invariant: "PRIM-005, INV-002, RED-001"
+  Anergy_Risk: "Latencia adicional por verificación triple. Aceptable: integridad > velocidad."

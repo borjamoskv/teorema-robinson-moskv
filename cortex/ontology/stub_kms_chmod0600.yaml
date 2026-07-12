@@ -1,0 +1,51 @@
+---
+Claim: >
+  Stub Atómico Físico #2: Enforcer de Permisos KMS (CHMOD 0600 estricto).
+  Todo material criptográfico (claves privadas, tokens, secrets) persistido
+  en disco debe tener permisos 0600 (owner read/write, zero para group/others).
+  La violación de este invariante es un vector adversarial directo (VEC-002:
+  Environment Poisoning). El stub audita y corrige permisos en tiempo de
+  boot y post-commit, sin intervención del operador biológico.
+Proof:
+  Base: 789e426a
+  Range: [0, 1]
+  Confidence: C5-REAL
+Stub_Definition:
+  ID: STUB-KMS-0600-001
+  Type: Permission_Enforcer
+  Priority: P0
+  Invariants_Enforced:
+    - INV-011  # Ley de Inmutabilidad de la Realidad Base
+    - INV-010  # Singularidad Local (Sandbox)
+  Vectors_Mitigated:
+    - VEC-002  # Environment Poisoning
+    - VEC-005  # Exfiltración de secretos
+  Interface:
+    Input: "file_path (absolute path to key material)"
+    Output: "permission_state {compliant: bool, previous: octal, corrected: octal}"
+    Assertion: "stat.st_mode & 0o777 == 0o600 OR auto_correct + alert"
+  Properties:
+    Deterministic: true
+    Side_Effects: chmod syscall (correctivo, no destructivo)
+    Idempotent: true
+    Fail_Mode: crash_if_uncorrectable
+  Implementation_Constraints:
+    - Prohibido chmod 777 o chmod 755 en cualquier archivo bajo ~/.babylon60/keys/
+    - Prohibido almacenar claves fuera de directorios designados
+    - Auditoría recursiva en boot con os.stat(), no con subprocess
+    - Log inmutable de cada corrección (timestamp, path, old_mode, new_mode)
+  Scan_Targets:
+    - "~/.babylon60/keys/**"
+    - "~/.ssh/id_*"
+    - "$CORTEX_ROOT/.env"
+    - "$CORTEX_ROOT/cortex/**/*.pem"
+Isomorphisms:
+  - Concept: "CHMOD 0600"
+    Mapping: "[INV-011] El Host OS es inmutable por defecto. Los permisos de archivos criptográficos son invariantes físicas, no convenciones."
+  - Concept: "KMS Local"
+    Mapping: "Isomorfismo con HSM físico: el disco local bajo 0600 es el equivalente software del enclave seguro. Exposición de permisos = puerta abierta al adversario."
+Blast_Radius_Matrix:
+  Vector: "Hardening de permisos de material criptográfico"
+  Blast_Radius: "Claves privadas, tokens API, archivos .env, certificados PEM"
+  Target_Invariant: "INV-011, INV-010, VEC-002"
+  Anergy_Risk: "Mínimo — corrección idempotente, no destructiva"
