@@ -13,11 +13,17 @@ Sin un "mesh" de fondo para anclar la imagen, el cerebro pierde la métrica de a
 
 ### 2. Matriz de Auditoría Biológica
 
-| Parámetro | Mecánica Humana (Falla) | Mecánica Orbital (Verdad) |
-| :--- | :--- | :--- |
-| **Punto Estático (Polaris)** | Oscilación incesante por microtemblores. | Anclaje inmutable respecto al eje polar terrestre. |
-| **Carencia de Fondo (Mesh)** | Pérdida de coordenadas relativas. | Ausencia de paralaje medible a simple vista. |
-| **Consecuencia Estocástica** | Generación de ruido (Efecto Autocinético). | El satélite cruza impasible el terminador planetario. |
+**A. Punto Estático (Polaris)**
+- **Mecánica Humana (Falla):** Oscilación incesante por microtemblores.
+- **Mecánica Orbital (Verdad):** Anclaje inmutable respecto al eje polar terrestre.
+
+**B. Carencia de Fondo (Mesh)**
+- **Mecánica Humana (Falla):** Pérdida de coordenadas relativas.
+- **Mecánica Orbital (Verdad):** Ausencia de paralaje medible a simple vista.
+
+**C. Consecuencia Estocástica**
+- **Mecánica Humana (Falla):** Generación de ruido (Efecto Autocinético).
+- **Mecánica Orbital (Verdad):** El satélite cruza impasible el terminador planetario.
 
 ### 3. Veredicto C5-REAL
 Antes de reescribir las leyes de Newton basado en un avistamiento nocturno, asegúrate de que no estás midiendo simplemente la vibración de tu propia montura óptica. La física no hace curvas bruscas por capricho; tu cuerpo biológico sí.
@@ -26,4 +32,4 @@ Antes de reescribir las leyes de Newton basado en un avistamiento nocturno, aseg
 
 ⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [El Colapso del Smooth Pursuit: Cuando tu retina desconecta de la gravedad](https://substack.com/home/post/p-colapso-smooth-pursuit)
+- El Colapso del Smooth Pursuit: Cuando tu retina desconecta de la gravedad
