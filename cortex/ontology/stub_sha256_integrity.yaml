@@ -1,0 +1,42 @@
+---
+Claim: >
+  Stub Atómico Físico #1: Verificador de Integridad SHA-256.
+  Todo artefacto persistido en el Merkle Tree (Git Sentinel) debe ser verificable
+  mediante SHA-256 determinista. Sin hash, no hay existencia. Sin existencia,
+  no hay exergía. El stub implementa la primitiva de verificación como función
+  pura: bytes_in → digest_out → assert_match. Cero estado mutable.
+Proof:
+  Base: 789e426a
+  Range: [0, 1]
+  Confidence: C5-REAL
+Stub_Definition:
+  ID: STUB-SHA256-001
+  Type: Integrity_Verifier
+  Priority: P0
+  Invariants_Enforced:
+    - INV-012  # Invariante del Hash Estructural
+    - RED-016  # Triple-Hash de Artefactos Críticos
+  Interface:
+    Input: "raw_bytes (file content or serialized AST node)"
+    Output: "hex_digest (64-char lowercase SHA-256)"
+    Assertion: "digest == expected_digest OR SIGKILL"
+  Properties:
+    Deterministic: true
+    Side_Effects: none
+    Idempotent: true
+    Fail_Mode: crash_over_catch
+  Implementation_Constraints:
+    - Prohibido hashlib con fallback a MD5
+    - Prohibido truncamiento de digest
+    - Encoding estricto UTF-8 para strings, raw para binarios
+    - Buffer size fijo 64KB para archivos grandes (streaming hash)
+Isomorphisms:
+  - Concept: "SHA-256 Digest"
+    Mapping: "[INV-012] La identidad de un archivo es su hash, no su ruta. Mover no altera identidad; mutar sin re-hash es corrupción silenciosa."
+  - Concept: "Verificación Atómica"
+    Mapping: "[RED-016] Generación y comparación en operación atómica indivisible. No hay estado intermedio entre hash y assert."
+Blast_Radius_Matrix:
+  Vector: "Instanciación de primitiva criptográfica para anclaje de estado"
+  Blast_Radius: "Todos los artefactos compilados, modelos, y nodos ontológicos"
+  Target_Invariant: "INV-012, RED-016"
+  Anergy_Risk: "0% — función pura sin efectos laterales"
