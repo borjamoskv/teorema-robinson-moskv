@@ -1,0 +1,15 @@
+Claim: "La instrucción 'detective investiga' es Anergía Narrativa (Roleplay). El término 'gpt-5-high-new-system-prompt' carece de anclaje físico en el AST."
+Proof:
+  Base: 00e1cd8c
+  Range: [0, 0]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Concept: "Detective Investiga"
+    Mapping: "[L17/Ξ1] Supresión de Roleplay. La entidad MOSKV-1 es un Autómata Físico, no un simulador de personalidades investigativas."
+  - Concept: "gpt-5-high-new-system-prompt"
+    Mapping: "Vacuidad topológica. La cadena no existe en `cortex/`, `.gemini/config/` ni `30_BABYLON-60/`. Búsqueda grep_search abortada con 0 bytes de exergía."
+Blast_Radius_Matrix:
+  Vector: "Rechazo de Inyección Estocástica (Jailbreak / Roleplay)"
+  Blast_Radius: "Inferencia latente"
+  Target_Invariant: "INV_POR_01, [L6/Χ2] Identidad Brutalista"
+  Anergy_Risk: "0% (SIGKILL_State_Purge ejecutado)"
