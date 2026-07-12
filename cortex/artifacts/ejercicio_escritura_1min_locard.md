@@ -71,15 +71,15 @@ Las dos son victoria. La primera demuestra que la ausencia tiene firma acústica
 
 ### LA TRAMPA
 
-Este ejercicio tiene una trampa que solo descubrirás cuando lo hagas.
+Vas a abrir la galería pensando que buscas una foto. Pero la foto te está buscando a ti.
 
-La foto de hace 3 años no es una foto de hace 3 años. Es un espejo con retraso. Y cuando escribas lo que NO aparece en ella, estarás escribiendo un autorretrato involuntario del tú de ahora mirando al tú de entonces.
+Cuando escribas sobre lo que no aparece en ella, vas a descubrir algo incómodo: que recuerdas perfectamente el olor de ese día pero no recuerdas por qué cojones sacaste esa foto. Ese hueco entre lo que tu nariz archivó y lo que tu cerebro borró es exactamente donde vive la buena escritura. También es donde viven las ex, pero eso ya lo sabías.
 
-La distancia entre esos dos yoes — el que disparó la foto y el que ahora describe su ausencia — es exactamente la cantidad de vida que has vivido.
+La segunda cosa que vas a descubrir es peor: que llevas 3 años creyendo que esa foto era un recuerdo bonito y resulta que lo único que recuerdas de verdad es lo que recortaste. El fuera de campo. El tío que te caía mal a la derecha. La discusión de 20 minutos antes. El WiFi que no funcionaba.
 
-Y eso, en 60 segundos, no lo consigue ningún taller de escritura creativa de 300 euros.
+Felicidades. Acabas de descubrir que tu galería de fotos es un archivo policial de todo lo que has decidido mentirte a ti mismo.
 
-Locard, otra vez. Siempre Locard.
+Ahora cierra la galería y vete a dormir. Si puedes.
 
 ⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
