@@ -198,3 +198,12 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 ## [L75] PM2 vs LOCAL TOPOLOGY CONFLICT (EADDRINUSE)
 - **Ψ1 · EADDRINUSE DIAGNOSTIC:** Cuando el servidor Node.js falle repetidamente con `EADDRINUSE :::8080`, el Orchestrator DEBE verificar inmediatamente si existe un daemon de PM2 ejecutando la instancia desde un directorio legado (ej. `10_PROJECTS`) que entra en conflicto con la ejecución de `start.sh` en `30_BABYLON-60`.
 - **Ψ2 · PORT RELEASING RACE CONDITION:** Asumir que `start.sh` mata el proceso en el puerto 8080 (usando `lsof`), pero PM2 lo reinicia automáticamente. Esta carrera topológica crea un bucle termodinámico infinito. La solución exige detener o purgar la instancia zombie en PM2.
+
+## [L76] DATABASE SHELL RESOLUTION (FALLBACK PROTOCOL)
+- **Ψ1 · SHELL ASSUMPTION:** Cuando una consulta o auditoría falle con `no such table: [x]` en bases de datos del ecosistema CORTEX (ej. `cortex.db`), el Orchestrator tiene ESTRICTAMENTE PROHIBIDO abortar inmediatamente.
+- **Ψ2 · SIBLING MESH QUERY:** Debe asumir que el target es un *shell* vacío y ejecutar autónomamente un escaneo de esquema (`sqlite3 [db] .schema [x]`) iterando sobre todas las bases de datos hermanas en el directorio (`runtime.db`, `cortex_swarm.db`, etc.).
+- **Ψ3 · SURGICAL REDIRECTION:** Al localizar el esquema vivo, debe mutar el AST del puente de conexión (ej. `cortex_bridge.py`) apuntando a la base de datos real para restablecer la continuidad episódica del sistema.
+
+## [L77] BATCH ITERATION KINETICS (N > 1000)
+- **Ψ1 · HIGH-VOLUME PRE-ALLOCATION:** Para solicitudes masivas de cristalización (N > 1000 iteraciones/archivos), el Orchestrator DEBE usar scripts en Python dentro de `scratch/` construidos con `string templates` (pre-asignación en memoria) en lugar de utilizar librerías de serialización pesadas (ej. `yaml.dump` en bucle).
+- **Ψ2 · IO LATENCY AVOIDANCE:** Esto garantiza que la escritura de 10,000+ archivos se colapse en el procesador físico en $< 1$ segundo, protegiendo el *Kinetic Budget*.
