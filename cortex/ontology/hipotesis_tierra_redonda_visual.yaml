@@ -1,0 +1,15 @@
+Claim: Sistema de demostración visual de la esfericidad terrestre basado en trayectorias celestes percibidas.
+Proof:
+  Base: |
+    La hipótesis plantea que la observación de una curvatura repentina en la trayectoria de un satélite artificial o el movimiento de la Estrella Polar sirve como prueba empírica irrefutable de la esfericidad de la Tierra. Físicamente, la geometría esférica del planeta y su campo gravitatorio determinan las órbitas satelitales (curvas geodésicas) y la rotación terrestre genera el movimiento aparente de la bóveda celeste alrededor de Polaris. Sin embargo, en una escala de observación continua a ojo desnudo de 12 segundos, la curvatura abrupta percibida es un artefacto fisiológico del músculo extraocular (Efecto Autocinético / Salto Sacádico). La validación física de la esfericidad mediante satélites requiere medir el tránsito de gran arco o el oscurecimiento al cruzar el terminador terrestre (sombra proyectada de la Tierra esférica).
+  Range: [Geometría Orbital, Esfericidad Terrestre, Limitaciones Perceptivas]
+  Confidence: C5
+Isomorphisms:
+  - Gravedad y esfericidad planetaria <-> Órbita satelital geodésica (Arco masivo)
+  - Rotación terrestre <-> Movimiento circumpolar aparente del cielo
+  - Salto perceptivo ocular <-> Falso positivo geométrico a microescala temporal
+Blast_Radius_Matrix:
+  Vector: Prueba empírica directa de esfericidad
+  Blast_Radius: Contraste entre física planetaria y fisiología ocular
+  Target_Invariant: La geometría esférica macroscópica requiere medición instrumental o de largo periodo, no derivadas de ilusiones cinemáticas cortas.
+  Anergy_Risk: Bajo

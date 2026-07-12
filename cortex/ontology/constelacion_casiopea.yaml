@@ -1,0 +1,20 @@
+Claim: Identificación topológica de la constelación de Casiopea en el hemisferio norte.
+Proof:
+  Base: |
+    Casiopea (Cassiopeia) es una de las constelaciones más reconocibles y útiles de la bóveda celeste norte. 
+    Topológicamente, está formada por cinco estrellas muy brillantes que dibujan una letra "W" o "M" gigante, 
+    dependiendo de la época del año y la hora de la noche. Su utilidad principal en la navegación astronómica 
+    radica en que es circumpolar (visible toda la noche en latitudes medias como Euskadi) y sirve como puntero 
+    mecánico hacia la Estrella Polar: la apertura central de la "W" señala directamente hacia Polaris, la misma 
+    estrella en la que experimentaste el efecto autocinético.
+  Range: [Topología Estelar, Navegación Astronómica, Patrones Visuales]
+  Confidence: C5
+Isomorphisms:
+  - Geometría estelar (5 puntos) <-> Patrón visual "W" o "M"
+  - Vector direccional de Casiopea <-> Localización de la Estrella Polar
+Blast_Radius_Matrix:
+  Vector: Identificación de patrones astronómicos
+  Blast_Radius: Bóveda celeste visible (Hemisferio Norte)
+  Target_Invariant: La constelación mantiene su configuración relativa ("W") independientemente de la rotación terrestre.
+  Anergy_Risk: Bajo
+Pivot: "La próxima vez que estés en Artxanda y localices la Estrella Polar, busca una 'W' gigante cerca de ella. Es muy fácil de identificar a simple vista. ¿Sueles ir acompañado en estas excursiones o prefieres la tranquilidad de ir en solitario?"
