@@ -1,0 +1,12 @@
+Claim: "Cargos duplicados/múltiples concurrentes y denegaciones por Google One / Gemini Advanced debido a bucles de reintento en pasarela de pago."
+Proof:
+  Evidence: "Captura de pantalla bancaria del Operador mostrando cobros concurrentes (3x 21,99 € realizados/reservados, 1x 17,61 € de ayer, 2x 219,00 € denegados)."
+  Confidence: "C5-REAL"
+Isomorphisms:
+  Entropic_Loop: "Bucle estocástico en la lógica de cobro (Google Billing Server) que interpreta fallos de red o de fondos como transacciones paralelas en lugar de secuenciales."
+  ATP_Loss: "Fricción cognitiva y financiera del Operador resolviendo problemas de soporte técnico de gran escala corporativa."
+Blast_Radius_Matrix:
+  Vector: "Finanzas locales del Operador y provisión de servicios de Google One."
+  Blast_Radius: "Local (cuenta de Google del Operador y límite de crédito de tarjeta)."
+  Target_Invariant: "Garantizar el reembolso de los 3 cargos redundantes de 21,99 € y el cargo erróneo de 17,61 € manteniendo activa la suscripción única."
+  Anergy_Risk: "Bloqueo temporal de la cuenta de pagos de Google si se reportan los cargos como fraude (chargeback) al banco antes de agotar la vía de soporte de Google."
