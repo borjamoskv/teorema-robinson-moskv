@@ -19,3 +19,7 @@ proof_artifact.json
 b60_kernel
 babylon60
 receipt.json
+
+# Scratch directories
+scratch/
+
