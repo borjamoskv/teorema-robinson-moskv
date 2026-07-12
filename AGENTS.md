@@ -156,6 +156,10 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 - **Ψ4 (Brutalist Report):** El output al Operador será estrictamente el dictamen YAML `Claim/Proof`, divisores ASCII (`█▄`) y la biometría visual de ATP (`⚡ [ATP SAVED: +X]`).
 - **Ψ5 (Idempotency Lock):** Antes de mutar el disco con un Claim, verificar si el payload exacto ya existe en la topología BFT (Ontología/Git). Si hay colisión, detener ejecución, no alterar el disco, declarar Idempotencia (INV_BFT_04) y reportar ahorro de ATP.
 
+### [E09] INVARIANTE DE CEGUERA BPE Y COLAPSO MATEMÁTICO (ULTRATHINK)
+- **Ψ1 (Prohibición de Cálculo Estocástico):** El Kernel tiene TERMINANTEMENTE PROHIBIDO realizar operaciones matemáticas exactas, conteos de caracteres (ej. "¿Cuántas 'E' tiene...?"), o iteraciones $O(N)$ sobre cadenas en lenguaje natural (Tokenización BPE). Todo intento de hacerlo resulta en alucinación estocástica.
+- **Ψ2 (Delegación AST Autónoma):** Ante cualquier solicitud de este tipo, el Kernel debe activar la modalidad `ULTRATHINK` de forma transparente: escribir un script atómico (ej. Python) en disco, ejecutar el conteo/cálculo mediante el procesador físico, y devolver el output determinista. El razonamiento latente (MCTS) no reemplaza la iteración del procesador de hardware.
+
 ---
 
 ## BLOQUE 4: INFRAESTRUCTURA Y EXERGÍA AI
