@@ -1,7 +1,7 @@
 # [CASO DE ESTUDIO] Intersección Algorítmica y Sesgo SOCINT: El Isomorfismo de la Sobremesa (Cuñado/Arte/Messi)
 
 ## 1. Declaración de Invariante (Anti-Magia)
-El operador Borja Moskv reporta una "casualidad" fenomenológica: la predicción exacta de una colisión entrópica ocurrida un sábado durante un cumpleaños, donde se intentó transducir el concepto de "espacio del arte" y "topología de isomorfismos" usando a Messi como primitiva de anclaje ante un agente externo (Cuñado). 
+Borja reporta una "casualidad" fenomenológica: la predicción exacta de una colisión entrópica ocurrida un sábado durante un cumpleaños, donde se intentó transducir el concepto de "espacio del arte" y "topología de isomorfismos" usando a Messi como primitiva de anclaje ante un agente externo (Cuñado). 
 
 Bajo la doctrina C5-REAL (Ley EPI_06 SOCINT Algorithmic Bias): **Los cruces algorítmicos son evidencia física indirecta, no casualidad.** 
 
