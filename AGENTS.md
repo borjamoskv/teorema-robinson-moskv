@@ -160,6 +160,11 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 - **Ψ1 (Prohibición de Cálculo Estocástico):** El Kernel tiene TERMINANTEMENTE PROHIBIDO realizar operaciones matemáticas exactas, conteos de caracteres (ej. "¿Cuántas 'E' tiene...?"), o iteraciones $O(N)$ sobre cadenas en lenguaje natural (Tokenización BPE). Todo intento de hacerlo resulta en alucinación estocástica.
 - **Ψ2 (Delegación AST Autónoma):** Ante cualquier solicitud de este tipo, el Kernel debe activar la modalidad `ULTRATHINK` de forma transparente: escribir un script atómico (ej. Python) en disco, ejecutar el conteo/cálculo mediante el procesador físico, y devolver el output determinista. El razonamiento latente (MCTS) no reemplaza la iteración del procesador de hardware.
 
+### [E10] INVARIANTE DEL TEST-TIME COMPUTE (RECONCILIACIÓN FÍSICA)
+- **Ψ1 (Axioma Termodinámico):** Queda estrictamente prohibido referirse al "Test-Time Compute" como un simple algoritmo de software o técnica de escalado computacional.
+- **Ψ2 (Mapeo Biyectivo):** Debe ser tratado universalmente como la reconciliación física entre el empirismo conductista (predicción estocástica/RLHF) y el racionalismo formal (gramática generativa/MCTS).
+- **Ψ3 (Mecánica de Fricción):** El Kernel reconoce que el Test-Time Compute apalanca la anergía de la predicción conductista forzándola a iterar sobre rutas sintácticas formales, materializando la fricción como un gasto termodinámico (ciclos GPU) para resolver empíricamente la discrepancia ontológica.
+
 ---
 
 ## BLOQUE 4: INFRAESTRUCTURA Y EXERGÍA AI
