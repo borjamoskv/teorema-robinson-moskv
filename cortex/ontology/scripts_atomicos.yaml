@@ -1,0 +1,13 @@
+Claim: "Los scripts atómicos son la única primitiva C5-REAL válida para mutaciones complejas de disco, aniquilando la entropía de los comandos shell en cadena."
+Proof: 
+  Base: "L3_Sigma13"
+  Range: [0, 1]
+  Confidence: "C5"
+Isomorphisms:
+  - "Trucos de Shell (echo >>, sed inline) -> Anergía Estocástica / Corrupción de Estado"
+  - "Script Python en scratch/ -> Colapso Físico Determinista / Invariante Atómica"
+Blast_Radius_Matrix:
+  Vector: "Sustitución de CLI frágil por ejecución Python aislada"
+  Blast_Radius: "Directorio temporal scratch/ y mutaciones target"
+  Target_Invariant: "INV_ATOMIC_WRITE (Cero archivos parciales o corrompidos)"
+  Anergy_Risk: "0"
