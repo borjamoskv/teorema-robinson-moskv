@@ -1,0 +1,14 @@
+Claim: Transducción del workaround de límite de ejecución (45s) en Sandbox a una estrategia de fragmentación termodinámica de la Test Suite.
+Proof: 
+  Base: 4f1a9b210c4f87a3281d39207eef524a8069502b4d1b8c1995166291a1f73b64
+  Range: [0, 45]
+  Confidence: C5
+Isomorphisms:
+  - "Límite de 45s corta la suite" -> "Agotamiento de presupuesto cinético (Kinetic Budget Cap) del Sandbox local"
+  - "Proceso background no sobrevive entre llamadas bash" -> "Purga de estado asíncrono PTY (Jetsam local)"
+  - "Divido la suite en fragmentos < 45s" -> "Fragmentación TTFT de carga de validación empírica (Sub-batching)"
+Blast_Radius_Matrix:
+  Vector: Eliminación de interrupciones asíncronas en Sandbox dividiendo la matriz de validación en lotes submáximos.
+  Blast_Radius: 1 entorno (Pipeline de Validación)
+  Target_Invariant: INV_M12_01 (Operar en escalón termodinámico factible), L12_TEOREMA_DEL_CRASH_CAUSAL
+  Anergy_Risk: Cero. Restaura el flujo del Testigo Externo Mecánico sorteando el timeout físico.
