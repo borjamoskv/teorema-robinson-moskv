@@ -19,6 +19,8 @@ classifiers = [
 dependencies = [
     "pytest",
     "aiosqlite",
+    "pydantic",
+    "pynacl",
 ]
 
 [project.urls]

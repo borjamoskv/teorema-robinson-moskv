@@ -12,6 +12,8 @@ Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 Requires-Dist: pytest
 Requires-Dist: aiosqlite
+Requires-Dist: pydantic
+Requires-Dist: pynacl
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](LICENSE)

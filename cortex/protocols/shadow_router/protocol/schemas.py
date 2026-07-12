@@ -22,7 +22,7 @@ class ReceiptEnvelope(BaseModel):
 class EgressPermit(BaseModel):
     """Permiso de egress de un solo uso generado a partir de un DecisionReceipt."""
     model_config = ConfigDict(frozen=True)
-    schema: str = "proof-of-route/egress-permit/v0.2.2"
+    schema_version: str = Field(default="proof-of-route/egress-permit/v0.2.2", alias="schema")
     issuer: str
     decision_signed_receipt_hash: str
     route_id: str
