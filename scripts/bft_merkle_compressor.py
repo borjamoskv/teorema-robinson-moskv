@@ -2,36 +2,39 @@ import subprocess
 import hashlib
 import json
 import os
-import time
 
+def get_git_commits():
+    result = subprocess.run(['git', 'log', '-n', '10', '--format=%H'], capture_output=True, text=True, cwd='$CORTEX_ROOT/30_BABYLON-60')
+    return [line.strip() for line in result.stdout.strip().split('\n') if line.strip()]
 
-def compress_git_history() -> "Any":
-    result = subprocess.run(
-        ["git", "log", "--format=%H:%s"], capture_output=True, text=True
-    )
-    if result.returncode != 0:
-        raise RuntimeError("Failed to read git history")
-    commits = result.stdout.strip().split("\n")
-    h = hashlib.sha256()
-    for commit in commits:
-        h.update(commit.encode("utf-8"))
-    merkle_root = h.hexdigest()
+def compute_merkle_root(hashes):
+    combined = "".join(hashes).encode('utf-8')
+    return hashlib.sha256(combined).hexdigest()
+
+def main():
+    commits = get_git_commits()
+    if not commits:
+        print("No commits found.")
+        return
+        
+    merkle_root = compute_merkle_root(commits)
+    
+    sink_dir = "$CORTEX_ROOT/30_BABYLON-60/L1_sink"
+    os.makedirs(sink_dir, exist_ok=True)
+    
     payload = {
-        "op": "OP_RETURN",
-        "protocol": "CORTEX_L1_SINK",
+        "protocol": "BFT_MERKLE_L1_SINK",
         "merkle_root": merkle_root,
-        "timestamp": int(time.time()),
-        "cortex_taint": f"PID:{os.getpid()}|UID:0",
+        "tx_type": "OP_RETURN",
+        "payload_size_bytes": 32,
+        "leaves": commits
     }
-    payload_json = json.dumps(payload, separators=(",", ":"), sort_keys=True)
-    print("---")
-    print("Claim: L1 Merkle Compression & Metric Closure")
-    print(
-        f'Proof: {{ Base: "{merkle_root}", Range: [1, {len(commits)}], Confidence: "C5-REAL" }}'
-    )
-    print("---")
-    print(payload_json)
+    
+    filename = os.path.join(sink_dir, f"op_return_{merkle_root}.json")
+    with open(filename, 'w') as f:
+        json.dump(payload, f, indent=2)
+        
+    print(f"MERKLE_ROOT:{merkle_root}")
 
-
-if __name__ == "__main__":
-    compress_git_history()
+if __name__ == '__main__':
+    main()
