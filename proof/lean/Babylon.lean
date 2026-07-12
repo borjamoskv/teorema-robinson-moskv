@@ -12,8 +12,10 @@ namespace Babylon
 abbrev Timestamp := Nat
 
 /-- Relación causal: `a` precede causalmente a `b` sii su timestamp es ≤.
-    Isomorfo al `lamport_t` monótono del BFTLedgerActor. -/
-def Causal (a b : Timestamp) : Prop := a ≤ b
+    Isomorfo al `lamport_t` monótono del BFTLedgerActor.
+    `abbrev` (no `def`) para que sea reducible: así `decide` y la síntesis de
+    instancias despliegan `Causal` a `≤` y encuentran `Decidable`. -/
+abbrev Causal (a b : Timestamp) : Prop := a ≤ b
 
 /-- Reflexividad: todo evento es causalmente consistente consigo mismo. -/
 theorem causal_refl (a : Timestamp) : Causal a a :=
@@ -36,8 +38,9 @@ theorem causal_antisymm {a b : Timestamp}
     proposición demostrada por decisión, no un valor sin contenido. -/
 theorem causal_EV2_EV3 : Causal 2 3 := by decide
 
-/-- Estrictamente causal: precedencia sin igualdad (orden estricto). -/
-def CausalStrict (a b : Timestamp) : Prop := a < b
+/-- Estrictamente causal: precedencia sin igualdad (orden estricto).
+    `abbrev` por la misma razón de reducibilidad que `Causal`. -/
+abbrev CausalStrict (a b : Timestamp) : Prop := a < b
 
 /-- Un orden estricto implica el débil: si a→b estrictamente, entonces a→b. -/
 theorem causal_of_strict {a b : Timestamp} (h : CausalStrict a b) : Causal a b :=
