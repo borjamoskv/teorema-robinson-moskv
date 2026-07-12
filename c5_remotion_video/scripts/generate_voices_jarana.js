@@ -11,6 +11,10 @@ const data = [
   { id: 'ch4', text: "Capítulo cuatro. El colapso. El mojo picón ya está descargado en la caché de tu navegador." },
   { id: 'ch5', text: "Capítulo cinco. La tómbola de Constantino. La cara del falso profeta se funde con la tuya." },
   { id: 'ch6', text: "Capítulo seis. Xócrates contra Chitocres. La refutación de la anergía de crecer en substack." },
+  { id: 'ch7', text: "Capítulo siete. El DeLorean. Doc y Marty rompen el bucle termodinámico a ochenta y ocho millas por hora." },
+  { id: 'ch8', text: "Capítulo ocho. Límite de Landauer. El calor disipado del silicio en el centro ferial de Kobetamendi." },
+  { id: 'ch9', text: "Capítulo nueve. Rossmo invertido. Las ciento cuarenta y siete cuentas fantasma inyectando código estocástico." },
+  { id: 'ch10', text: "Capítulo diez. Blockchain Sink. El anclaje final L1 que congela a Constantino y David en la caché inmutable." },
   { id: 'outro', text: "Continuará. Sal de tu minoría de edad y recupera tus cinco dólares." }
 ];
 
@@ -20,7 +24,7 @@ if (!fs.existsSync(publicDir)) {
 }
 
 async function generate() {
-  console.log('Iniciando generación de audios de Jarana d\'Or...');
+  console.log('Iniciando generación de audios de 10 capítulos...');
   for (const item of data) {
     try {
       const url = googleTTS.getAudioUrl(item.text, {
@@ -41,7 +45,7 @@ async function generate() {
       console.error(`Error en ${item.id}:`, e);
     }
   }
-  console.log('Voces de Jarana d\'Or generadas.');
+  console.log('Voces completas generadas.');
 }
 
 generate();

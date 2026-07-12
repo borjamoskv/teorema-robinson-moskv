@@ -76,6 +76,42 @@ const data: SegmentData[] = [
     quote: "La refutación de la anergía de Crecer en Substack."
   },
   {
+    id: 'ch7',
+    title: "07. EL DELOREAN SINK",
+    subtitle: "Doc & Marty",
+    bg: '#0B1A1A',
+    textColor: '#00FFFF',
+    image: 'bttf.jpg',
+    quote: "Doc y Marty rompen el bucle termodinámico a ochenta y ocho millas por hora."
+  },
+  {
+    id: 'ch8',
+    title: "08. LÍMITE DE LANDAUER",
+    subtitle: "Fusión del silicio",
+    bg: '#1A120B',
+    textColor: '#FF9500',
+    image: 'pirri.jpg',
+    quote: "El calor disipado del silicio en el centro ferial de Kobetamendi."
+  },
+  {
+    id: 'ch9',
+    title: "09. ROSSMO INVERTIDO",
+    subtitle: "La firma latente",
+    bg: '#0F0F0F',
+    textColor: '#FFF',
+    image: null,
+    quote: "Las ciento cuarenta y siete cuentas fantasma inyectando código estocástico."
+  },
+  {
+    id: 'ch10',
+    title: "10. BLOCKCHAIN SINK",
+    subtitle: "Ledger L1 Inmutable",
+    bg: '#050505',
+    textColor: '#2B3BE5',
+    image: 'bttf.jpg',
+    quote: "El anclaje final L1 que congela a Constantino y David en la caché inmutable."
+  },
+  {
     id: 'outro',
     title: "TO BE CONTINUED...",
     subtitle: "Sapere Aude // Do It Yourself",
@@ -89,7 +125,7 @@ const data: SegmentData[] = [
 export const JaranaMovie: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const SEGMENT_DURATION = 240;
+  const SEGMENT_DURATION = 500; // 500 frames * 12 segments = 6000 frames total (200 seconds / 3m20s)
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#000', color: '#FFF', fontFamily: 'monospace' }}>
