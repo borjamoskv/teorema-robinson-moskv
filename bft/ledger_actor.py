@@ -44,6 +44,10 @@ class LedgerEvent:
     source_pk: str
     created_at: Optional[str] = None
 
+
+def _compute_entry_hash_wrapper(event_id, stream, entity_id, event_type, payload_json, source_db, source_table, source_pk, cortex_taint, lamport_t, prev_hash, created_at):
+    return _compute_entry_hash(event_id, stream, entity_id, event_type, payload_json, source_db, source_table, source_pk, cortex_taint, lamport_t, prev_hash, created_at)
+
 class BFTLedgerActor:
     def __init__(self, db_path: Path) -> None:
         self._db_path = db_path
@@ -86,6 +90,7 @@ class BFTLedgerActor:
         Recalculates and verifies the cryptographic SHA-256 hash chain of all entries.
         """
         async with aiosqlite.connect(self._db_path) as db:
+            await db.create_function("c5_compute_hash", 12, _compute_entry_hash_wrapper, deterministic=True)
             cursor = await db.execute("SELECT * FROM ledger_entries ORDER BY seq ASC")
             rows = await cursor.fetchall()
             
@@ -139,6 +144,7 @@ class BFTLedgerActor:
 
     async def _worker(self) -> None:
         async with aiosqlite.connect(self._db_path, isolation_level=None) as db:
+            await db.create_function("c5_compute_hash", 12, _compute_entry_hash_wrapper, deterministic=True)
             await db.execute("PRAGMA journal_mode=WAL")
             await db.execute("PRAGMA synchronous=FULL")
             await db.execute("PRAGMA foreign_keys=ON")
@@ -222,20 +228,6 @@ class BFTLedgerActor:
                 future.set_result({"seq": row[0], "event_id": event_id, "entry_hash": row[1]})
                 return
 
-            cur = await db.execute("SELECT lamport_t, entry_hash FROM ledger_entries ORDER BY seq DESC LIMIT 1")
-            row = await cur.fetchone()
-            prev_lamport = int(row[0]) if row else 0
-            prev_hash = row[1] if row else ZERO_HASH
-
-            lamport_t = prev_lamport + 1
-
-            entry_hash = _compute_entry_hash(
-                event_id=event_id, stream=event.stream, entity_id=event.entity_id,
-                event_type=event.event_type, payload_json=payload_json, source_db=event.source_db,
-                source_table=event.source_table, source_pk=event.source_pk,
-                cortex_taint=event.cortex_taint, lamport_t=lamport_t, prev_hash=prev_hash, created_at=created_at
-            )
-
             # C5-REAL Encryption 
             vault_key = os.environ.get("CORTEX_VAULT_KEY")
             if vault_key:
@@ -251,13 +243,21 @@ class BFTLedgerActor:
                     event_id, stream, entity_id, event_type, payload_json,
                     source_db, source_table, source_pk, cortex_taint,
                     lamport_t, prev_hash, entry_hash, created_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (
+                    ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                    COALESCE((SELECT MAX(lamport_t) FROM ledger_entries), 0) + 1,
+                    COALESCE((SELECT entry_hash FROM ledger_entries ORDER BY seq DESC LIMIT 1), '0000000000000000000000000000000000000000000000000000000000000000'),
+                    c5_compute_hash(?, ?, ?, ?, ?, ?, ?, ?, ?, COALESCE((SELECT MAX(lamport_t) FROM ledger_entries), 0) + 1, COALESCE((SELECT entry_hash FROM ledger_entries ORDER BY seq DESC LIMIT 1), '0000000000000000000000000000000000000000000000000000000000000000'), ?),
+                    ?
+                )
                 ON CONFLICT(event_id) DO NOTHING
                 RETURNING seq, entry_hash""",
                 (
                     event_id, event.stream, event.entity_id, event.event_type, stored_payload,
                     event.source_db, event.source_table, event.source_pk, event.cortex_taint,
-                    lamport_t, prev_hash, entry_hash, created_at
+                    event_id, event.stream, event.entity_id, event.event_type, stored_payload,
+                    event.source_db, event.source_table, event.source_pk, event.cortex_taint,
+                    created_at, created_at
                 )
             )
             db_row = await cursor.fetchone()
