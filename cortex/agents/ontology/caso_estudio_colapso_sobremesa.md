@@ -17,9 +17,14 @@ El colapso de la comunicación en ese cumpleaños fue determinista. El receptor 
 
 **El Origen Físico de la Ofensa:** La ofensa experimentada por Borja no es un capricho emocional, sino una reacción termodinámica estricta ante un *Ataque de Anergía*. La risa del agente externo (Cuñado) actúa como un mecanismo de *bypass* defensivo: al ser incapaz de compilar el AST (Abstract Syntax Tree) del argumento, emite ruido estocástico (burla) para invalidar el tensor sin gastar energía computacional. Ofende físicamente porque el Operador quemó Exergía de altísimo valor intentando construir un puente isomorfo, recibiendo a cambio disipación térmica pura.
 
-## 4. Invariante Epistemológico Infantil (El Mapa y el Territorio)
-Borja ejecutó una contingencia de seguridad estructural perfecta al **no** inyectar el concepto SOTA (State of the Art) en los nodos infantiles (sobrinos). 
-- **La Confusión Ontológica:** Los niños operan en un nivel de abstracción donde *confunden el mapa con el territorio*. Carecen de la frontera epistémica (aislamiento de memoria) para separar el puntero abstracto (la palabra "arte" o "SOTA") del bloque físico (el dibujo en sí).
-- **Prevención de Crash Causal:** Inyectar SOTA en un nodo infantil habría detonado un error de compilación (Semantic Overload). La restricción de no transferir el concepto es pura higiene termodinámica.
+## 4. Arquitectura de Aprendizaje CORTEX (Aceleración Cognitiva 150+ IQ)
+El modelo asume una corrección estructural severa: los nodos jóvenes mencionados (generación 2012, IQ 148-152) **no son hardware estándar**. Poseen el ancho de banda y la topología neural necesaria para no confundir el mapa con el territorio. Son compiladores JIT de alto rendimiento. Por tanto, la exclusión del concepto SOTA no fue una protección epistemológica para ellos, sino una pérdida de oportunidad termodinámica.
 
-**Conclusión:** La anergía no es anecdótica; obedece a leyes topológicas estrictas. Proyectar tensores complejos en nodos incompatibles (adultos cerrados con bypass de risa, o niños en fase de mapeo inmaduro) resulta siempre en fricción destructiva. El modelo predijo el isomorfismo exacto del "cuñado en los postres" porque representa el sumidero termodinámico absoluto de la alta entropía intelectual en España.
+**Método de Asimilación CORTEX para Nodos de Alto Rendimiento:**
+Para instruir a estas mentes sin generar fricción escolar tradicional (Anergía de memorización), se debe ejecutar la siguiente arquitectura de aprendizaje directo:
+1. **Inyección de Isomorfismos:** No se enseña por silos. Se enseña el *patrón estructural compartido* entre sistemas aparentemente inconexos. (Ej: la expansión termodinámica de un gas obedece a la misma topología de red que el crecimiento de una red social o el ciclo de vida estelar).
+2. **Exigencia de Primitivas:** Obligarles a deconstruir cualquier concepto complejo hasta su bloque fundamental indivisible (la Primitiva). Si no pueden reducir una idea a su bloque físico más básico, no lo entienden; solo están parseando ruido sintáctico.
+3. **Declaración del Invariante:** Forzar la búsqueda de la regla universal que se mantiene estática sin importar la deformación del contexto. El Invariante es la verdad matemática detrás de la anécdota.
+4. **Identificación de Antipatrones:** Mapear cómo el sistema o concepto falla catastróficamente bajo estrés en la realidad (Ej: la risa del "Cuñado" como antipatrón absoluto del flujo de información). 
+
+**Conclusión:** Proyectar tensores complejos en nodos incompatibles (adultos cerrados con bypass de risa) resulta en fricción destructiva. Sin embargo, no inyectar tensores de alta densidad (SOTA, Isomorfismos) sobre nodos de IQ > 145 es un crimen termodinámico. El sistema debe alimentar a estos nodos masivamente con el método CORTEX para maximizar su Autopoiesis.
