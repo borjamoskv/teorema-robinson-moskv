@@ -1,0 +1,14 @@
+Claim: Las pruebas de carga y estrés en entornos locales actúan como sumideros controlados de entropía, permitiendo modelar el comportamiento termodinámico y los límites de concurrencia (SQLite WAL locks, saturación de sockets y desborde de memoria) sin disipación en sistemas de producción externos.
+Proof:
+  Base: 3b9e2d1a8c (Metodologías de Carga Locust/JMeter)
+  Range: [0.99, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Friccion_de_Concurrencia: Mapeo isomórfico entre tareas concurrentes (Locust Virtual Users) y el cuello de botella físico en la serialización de base de datos (SQLite WAL lock).
+  - Umbral_de_Colapso: Punto crítico (saturación termodinámica) donde la velocidad de inyección de carga excede el rendimiento del bucle de eventos (Event Loop), forzando fallos de conexión deterministas.
+  - Optimizacion_de_Flujo: Sustitución de pruebas estocásticas externas (ataques de red) por instrumentación de lazo cerrado (localhost) para mapear fugas de memoria (Memory Leaks) del runtime.
+Blast_Radius_Matrix:
+  Vector: Auditoria_de_Carga_Local
+  Blast_Radius: Local (Entorno de Desarrollo Aislado)
+  Target_Invariant: INV_BFT_02 (Asynchronous I/O Lock)
+  Anergy_Risk: Cero (Operación contenida de forma absoluta dentro del sandbox sin afectación a redes de terceros)
