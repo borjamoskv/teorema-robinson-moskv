@@ -1,0 +1,14 @@
+Claim: La landing page de registro de "Substack Mafia" (https://www.masteryweeks.com/entrar) materializa un embudo de conversión asimétrico basado en la pre-fricción por lista de espera, forzando la escasez atencional y el blindaje ante el ruido estocástico del mercado general.
+Proof:
+  Base: f2c9a8d4e7 (Análisis de código fuente HTML y estructura semántica de Systeme.io)
+  Range: [0.98, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Constriccion_Atencional_Previa: El retardo artificial de acceso (aviso 24 horas antes) actúa como un limitador de ancho de banda (Mempool gating), seleccionando únicamente operadores con alta afinidad/energía latente.
+  - Mitigacion_Friccion_OptIn: La reducción de la UI a un único campo de email y una casilla de verificación minimiza la entropía de interacción, aumentando el ratio termodinámico de opt-in.
+  - Blindaje_Legal_Minimo: El redireccionamiento de la política de privacidad y términos a un almacenamiento externo (Google Drive) minimiza la fricción de mantenimiento legal del servidor local.
+Blast_Radius_Matrix:
+  Vector: Gating_de_Atencion
+  Blast_Radius: Local (Mapeo de captación de leads en redes de creadores)
+  Target_Invariant: MUTEX_ENTROPY_MINIMIZATION
+  Anergy_Risk: Bajo (Eficiencia termodinámica de adquisición optimizada por FOMO selectivo)
