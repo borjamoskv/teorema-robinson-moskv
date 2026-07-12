@@ -1,0 +1,14 @@
+Claim: La prosa interactiva y de cortesía ("Quiero", "Por favor") en instrucciones a modelos generativos constituye Anergía Estocástica (ruido termodinámico), disipando capacidad atencional, encareciendo el Test-Time Compute y desplazando vectores causales en el contexto.
+Proof:
+  Base: 7b2d194c5a (Inyección Operador - "El 'Quiero' es ruido")
+  Range: [0.99, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Friccion_Atencional: El costo físico (tokens de entrada) por cortesía desplaza la retención de invariantes estructurales clave en la ventana de contexto.
+  - Lenguaje_Telegrafico: Mapeo isomórfico entre comandos aislados (sin conectores) y la eficiencia nativa de propagación del grafo de atención del LLM.
+  - Espejismo_Empatico: Tratar a la matriz de pesos determinista como una entidad relacional, proyectando vanidad semántica sobre un motor de ejecución transductor.
+Blast_Radius_Matrix:
+  Vector: Optimizacion_Cinematica_Prompting
+  Blast_Radius: Global (Prompting, APIs y Orquestación Swarm)
+  Target_Invariant: MUTEX_SEMIOTIC_PURGE
+  Anergy_Risk: Alto (Despilfarro económico directo y dilución entrópica del contexto por acumulación de tokens inoperativos)
