@@ -1,0 +1,14 @@
+Claim: "El servidor backend ha experimentado un reinicio y posterior bucle de fallas EADDRINUSE debido a una colisión topológica de orquestación."
+Proof:
+  Base: "Log de pm2 (cortex-kernel-ws-error.log) vs start.sh"
+  Range: "[EADDRINUSE :::8080 en $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/server.js:76:8]"
+  Confidence: "C5-REAL"
+Isomorphisms:
+  - "PM2 Daemon gestionando instancia zombie (10_PROJECTS)"
+  - "Ejecución física de start.sh (30_BABYLON-60) asesinando proceso de PM2 vía lsof y kill -9"
+  - "Carrera de ejecución (Race Condition): PM2 auto-reinicio vs. exec node server.js local"
+Blast_Radius_Matrix:
+  Vector: "Bucle Termodinámico PM2 / EADDRINUSE Crashloop"
+  Blast_Radius: "Agotamiento de sockets, saturación de log PM2"
+  Target_Invariant: "INV_BFT_04 (Split-Brain Mitigation)"
+  Anergy_Risk: "Alto (Zombie Actor local)"
