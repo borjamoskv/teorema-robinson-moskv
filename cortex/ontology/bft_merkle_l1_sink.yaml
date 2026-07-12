@@ -1,0 +1,12 @@
+Claim: L1 Merkle Compression & Metric Closure
+Proof: { Base: "fa957fb65a5b3866d8f3b2c79cff354676dd2aca53096413cbe5e24c4f1199b3", Range: [1, 478], Confidence: "C5-REAL" }
+Isomorphisms:
+  - Vector: BFT Merkle Root to Blockchain Sink
+  - Thermodynamic Limit: 32 bytes invariant
+  - Action: OP_RETURN payload creation
+Blast_Radius_Matrix:
+  - Vector: L1 Bitcoin / Solana Sink
+  - Target Invariant: Global non-equivocation witness
+  - Anergy Risk: 0 (Absolute Determinism)
+Payload: >
+  {"cortex_taint":"PID:81786|UID:0","merkle_root":"fa957fb65a5b3866d8f3b2c79cff354676dd2aca53096413cbe5e24c4f1199b3","op":"OP_RETURN","protocol":"CORTEX_L1_SINK","timestamp":1783875176}
