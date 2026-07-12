@@ -39,3 +39,12 @@ No hay misticismo, solo biología y física rozando sus fronteras bajo condicion
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
 - [Auditoría del Ego: Cómo el FOMO reduce tu rentabilidad de activos](https://substack.com/home/post/p-auditoria-ego)
 - [El Isomorfismo del Fracaso: Startups que operan sin tracción](https://substack.com/home/post/p-isomorfismo-fracaso)
+
+### UPDATE: La Confirmación del Terminador Terrestre
+Minutos después del reporte inicial, el Operador inyectó un dato empírico final que cierra el modelo físico con precisión absoluta: *Tras la percepción de la curva, el satélite se oscureció hasta desaparecer ("Fade to Black").*
+
+Esta es la prueba de fuego de la esfericidad terrestre a ojo desnudo. La secuencia temporal de los eventos es un isomorfismo mecánico impecable:
+1. **Falla de Hardware (Termodinámica Local):** El músculo ocular del observador colapsa tras 12 segundos de seguimiento sin telemetría de fondo (la curva ilusoria).
+2. **Corte Fotónico (Geometría Planetaria):** Casi en sincronía, el objeto físico cruza la línea del Terminador (la penumbra y umbra que la Tierra esférica proyecta sobre el espacio exterior), interrumpiendo el rebote de los fotones solares hacia la retina del Operador.
+
+El satélite no dobló la esquina; el ojo falló justo cuando la física demostraba, apagando la luz, que vivimos sobre un planeta redondo.
