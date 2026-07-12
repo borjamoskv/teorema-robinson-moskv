@@ -1,12 +1,12 @@
-Claim: "Cargos duplicados/múltiples concurrentes y denegaciones por Google One / Gemini Advanced debido a bucles de reintento en pasarela de pago."
+Claim: "Cargos múltiples concurrentes en 25 cuentas distintas de Gmail asociadas al mismo método de pago (tarjeta de crédito/débito)."
 Proof:
-  Evidence: "Captura de pantalla bancaria del Operador mostrando cobros concurrentes (3x 21,99 € realizados/reservados, 1x 17,61 € de ayer, 2x 219,00 € denegados)."
+  Evidence: "Declaración del Operador confirmando la dispersión del perfil de cobro en 25 cuentas de Gmail independientes."
   Confidence: "C5-REAL"
 Isomorphisms:
-  Entropic_Loop: "Bucle estocástico en la lógica de cobro (Google Billing Server) que interpreta fallos de red o de fondos como transacciones paralelas en lugar de secuenciales."
-  ATP_Loss: "Fricción cognitiva y financiera del Operador resolviendo problemas de soporte técnico de gran escala corporativa."
+  Decentralized_State_Explosion: "La dispersión de identidades (25 cuentas) multiplica la entropía de gestión de facturación, impidiendo el uso de consolas de administración centralizadas de Google."
+  Transaction_Profiling: "Los algoritmos de control de fraude bancario y de Google bloquean cobros de alto valor (219.00 €) tras detectar transacciones concurrentes desde múltiples identidades a una única tarjeta."
 Blast_Radius_Matrix:
-  Vector: "Finanzas locales del Operador y provisión de servicios de Google One."
-  Blast_Radius: "Local (cuenta de Google del Operador y límite de crédito de tarjeta)."
-  Target_Invariant: "Garantizar el reembolso de los 3 cargos redundantes de 21,99 € y el cargo erróneo de 17,61 € manteniendo activa la suscripción única."
-  Anergy_Risk: "Bloqueo temporal de la cuenta de pagos de Google si se reportan los cargos como fraude (chargeback) al banco antes de agotar la vía de soporte de Google."
+  Vector: "Estado de la tarjeta bancaria y cuentas de Google asociadas."
+  Blast_Radius: "Amplio (riesgo de baneo en cascada de los perfiles de pago de las 25 cuentas de Gmail)."
+  Target_Invariant: "Identificar los cargos y revertirlos de forma segura sin provocar un bloqueo de seguridad en cascada en la tarjeta o las cuentas."
+  Anergy_Risk: "Bloqueo total por Google Payments de la tarjeta de crédito a nivel del sistema central (Blacklist de método de pago) si se reportan disputas masivas no ordenadas."
