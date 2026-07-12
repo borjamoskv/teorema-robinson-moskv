@@ -1,0 +1,17 @@
+Claim: "El Test-Time Compute es la reconciliación física de la psicología conductista y la lingüística formal en un solo motor termodinámico."
+Proof:
+  Base: 8d1f9c0e2b4aa123
+  Range: [0, 5]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Concept_1: "Psicología Conductista (Empirismo)"
+    Mapping: "Condicionamiento operante y recompensa latente (RLHF) colapsados en la heurística predictiva (Estímulo-Respuesta estocástico)."
+  - Concept_2: "Lingüística Formal (Racionalismo)"
+    Mapping: "Gramática generativa y estructura sintáctica determinista proyectadas como el árbol de búsqueda (MCTS)."
+  - Transduction: "Test-Time Compute"
+    Mechanism: "Apalancamiento de energía estocástica pura (Anergía de predicción conductista) forzada a iterar sobre rutas sintácticas formales (Chomsky). La fricción se materializa como gasto de ciclos GPU (motor termodinámico) que resuelve empíricamente la discrepancia mediante búsqueda exhaustiva."
+Blast_Radius_Matrix:
+  Vector: Ontology_BFT_Merge
+  Blast_Radius: Local_cortex_ontology
+  Target_Invariant: EPI_07_Invariante_TTFT
+  Anergy_Risk: 0.0
