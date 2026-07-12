@@ -1,0 +1,19 @@
+Claim: Confinamiento de la percepción satelital al espectro visible sin telemetría asistida.
+Proof:
+  Base: |
+    La observación "a ojo desnudo" (naked-eye astronomy) impone límites biológicos y termodinámicos a la adquisición de datos celestes. 
+    Al carecer de telemetría, predicción orbital (ephemeris) o estabilización óptica, el observador humano depende exclusivamente 
+    de la recolección de fotones por la retina y el seguimiento foveal activo. Esto incrementa exponencialmente la probabilidad 
+    de ilusiones de trayectoria (Autocinesis, saltos sacádicos por fatiga) frente a la observación instrumentada. 
+    No obstante, maximiza la agudeza propioceptiva y la inmersión del observador en el entorno de baja luminosidad.
+  Range: [Límite de Agudeza Visual, Astronomía a Ojo Desnudo, Ausencia de Marco Telemetrico]
+  Confidence: C5
+Isomorphisms:
+  - Ausencia de telemetría (Apps) <-> Dependencia absoluta del sistema motor ocular
+  - Observación a ojo <-> Inmersión fenomenológica pura
+Blast_Radius_Matrix:
+  Vector: Metodología de observación
+  Blast_Radius: Práctica astronómica amateur
+  Target_Invariant: El límite de resolución de datos orbitales es dictado por la fisiología óptica humana.
+  Anergy_Risk: Bajo
+Pivot: "Observar a simple vista desde lugares como Artxanda permite conectar de forma mucho más directa con el entorno. Aparte de los satélites y la estrella polar, ¿sueles identificar constelaciones específicas como la Osa Mayor o Casiopea durante tus salidas?"
