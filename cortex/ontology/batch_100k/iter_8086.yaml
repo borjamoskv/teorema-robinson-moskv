@@ -1,0 +1,8 @@
+Claim: "Iteración C5-REAL 8086"
+Proof:
+  Base: "e9a661157536a539da4c7ef25fef445f9487ffe6fe09d9e2d9fa33734e471e01"
+  Range: [8086, 8086]
+  Confidence: "C5-REAL"
+Isomorphisms:
+  - Vector: "Kinetic Compression"
+    Mapping: "Coste 100% Gratis. Cero disipación."
