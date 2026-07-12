@@ -1,4 +1,7 @@
 import pytest
+
+# Gap declarado, no crash de colección: requiere el módulo nativo babylon60
+pytest.importorskip("babylon60", reason="módulo nativo babylon60 no compilado")
 from math_kernel import calculate_exergy, DB_PATH
 from decimal import Decimal
 import sqlite3

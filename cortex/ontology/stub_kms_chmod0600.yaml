@@ -49,3 +49,16 @@ Blast_Radius_Matrix:
   Blast_Radius: "Claves privadas, tokens API, archivos .env, certificados PEM"
   Target_Invariant: "INV-011, INV-010, VEC-002"
   Anergy_Risk: "Mínimo — corrección idempotente, no destructiva"
+Materialization:
+  Status: C5-REAL (materializado en código físico)
+  Physical_Path: kernel/stub_kms.py
+  SHA256: fefada26dd323500650e2f17bb175d6093bc477cdfd750bf3074f9677a1b8e01
+  Self_Anchor: "Hash computado por STUB-SHA256-001 sobre el módulo KMS."
+  Verified_By: test_stubs_c5.py
+  Evidence:
+    - "store_key crea material con 0600 desde el nacimiento (dir contenedor 0700)."
+    - "enforce corrige 0644→0600 y escribe log append-only (auditoría inmutable)."
+    - "boot_scan recursivo corrige 0755 bajo keys/."
+    - "Idempotente: segunda pasada es no-op."
+    - "Rechaza path escape ('../..') fuera del directorio designado (ValueError)."
+  Test_Result: "18/18 passed (suite de falsación de los 3 stubs)."

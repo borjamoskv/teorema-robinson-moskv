@@ -5,10 +5,6 @@ Fail-fast: Crash over catch [L12: Κ1].
 """
 import pytest
 import os
-import sys
-
-# Ensure module path is accessible
-sys.path.append("$CORTEX_ROOT/30_BABYLON-60")
 
 from cortex.agents.ontology.osint_dao import OSINTOntologyAccessor, DB_PATH
 

@@ -154,12 +154,22 @@ class BFTLedgerActor:
 
                 try:
                     await self._process(db, event, future)
-                except RuntimeError as exc:
+                except ValueError as exc:
+                    # Error de validación (INV_BFT_03: cortex_taint vacío).
+                    # Se entrega al caller y el worker SOBREVIVE: un input
+                    # inválido no debe matar el actor ni colgar el future.
+                    # Antes ValueError escapaba de este except (solo cazaba
+                    # RuntimeError) → mataba el worker y el await colgaba: el
+                    # invariante hacía deadlock en vez de enforcar.
                     if not future.done():
                         future.set_exception(exc)
-                    # If rollback failed, crash the worker loop (fail-fast)
-                    if "Cascading Rollback Defense" in str(exc):
-                        raise exc
+                except Exception as exc:
+                    # Error inesperado (corrupción, rollback fallido): se
+                    # entrega al caller y se hace fail-fast (el worker muere →
+                    # Zombie Actor Prevention salta en el siguiente append).
+                    if not future.done():
+                        future.set_exception(exc)
+                    raise
                 finally:
                     self._queue.task_done()
 

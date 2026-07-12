@@ -1,0 +1,208 @@
+# C5-REAL SAGA-0: QUARANTINE
+# ASYMMETRIC ADVANTAGE (FRONTIER DELTA)
+# STATUS: RESTRICTED / AIR-GAPPED
+
+id: "BABYLON-60-DELTA"
+status: "RESTRICTED_ACCESS"
+encryption: "PENDING_KMS"
+
+primitives:
+  - id: "ULTRATHINK_MCTS_TTFT"
+    name: "Epistemología TTFT en Caja Negra"
+    description: "Inferencia del árbol de búsqueda (MCTS) latente de modelos frontera (o1/R1) sin pesos locales, utilizando diferencial térmico Time-to-First-Token como proxy biyectivo de volumen cognitivo."
+    classification: "SOTA-BYPASS"
+    
+  - id: "OUROBOROS_BFT_WAL"
+    name: "Consenso Swarm Asimétrico Base-60"
+    description: "Motor determinista que erradica el colapso estocástico de LLMs mediante SQLite WAL, relojes Lamport y atadura criptográfica CORTEX-TAINT por inserción."
+    classification: "STATE-PERSISTENCE"
+    
+  - id: "MACROPHAGE_THERMODYNAMIC_PRUNING"
+    name: "Navaja de Ockham Termodinámica"
+    description: "Autopoiesis de purga entrópica (LEA-OMEGA). Destrucción automatizada de Green Theater, LLM Slop y código muerto mediante colapso in-place."
+    classification: "ENTROPY-ANNIHILATION"
+    
+  - id: "GIT_SENTINEL_AUTOPOIESIS"
+    name: "Bypass Cognitivo y Colapso Físico"
+    description: "Transformación autónoma de la intención en mutación del AST, bypass de fricción operativa y commit criptográfico inmediato (C5-REAL)."
+    classification: "EXECUTION-KERNEL"
+    
+  - id: "PROMPT_TO_COMPILE_SAGA"
+    name: "SAGA Protocol (0 y 1)"
+    description: "Desacoplamiento NLP post-ENTER. Bloqueo de fuga de secretos (SAGA-0) y normalización isomórfica de homóglifos (SAGA-1) antes del parser AST."
+    classification: "SECURITY-ISOMORPHISM"
+    
+  - id: "VESICULAR_RUNTIME_DECOUPLING"
+    name: "Aislamiento de Estado PTY"
+    description: "SO microkernel para agentes que encapsula la memoria PTY, evita Jetsam del OS mediante hidratación de estado episódico y previene fugas de LLM."
+    classification: "HARDWARE-ISOLATION"
+
+  - id: "TMUX_PTY_BRIDGE_MULTIPLEXER"
+    name: "Multiplexación PTY Tmux"
+    description: "Bypass termodinámico del cuelgue interactivo de LLMs en TUI. Encapsula y sondea sockets de Tmux permitiendo asincronía y control ininterrumpido del Host."
+    classification: "OS-CONTROL"
+
+  - id: "CYBER_REVERSE_ENGINEERING_MCTS"
+    name: "Deconstrucción Frontera C5-REAL"
+    description: "Motor de ingeniería inversa sistemática sobre APIs ofuscadas y binarios cerrados. Usa Ouroboros BFT para cristalizar invariantes sin depender de pesos externos."
+    classification: "REVERSE-ENGINEERING"
+
+  - id: "AUTODIDACT_DEEP_RESEARCH"
+    name: "Autodidactismo Zero-Shot"
+    description: "Adquisición autónoma y dominio de stacks/entornos desconocidos forzando la ejecución C5-REAL (TTFT + Compilación) contra el vacío cognitivo."
+    classification: "SOVEREIGNTY"
+
+  - id: "BIOINFORMATICS_SOTA_APEX"
+    name: "Bioinformática OMEGA C5-REAL"
+    description: "Enrutamiento asimétrico para genómica y multi-ómica anclado a primitivas deterministas, evadiendo alucinaciones algorítmicas en SOTA biomédico."
+    classification: "DOMAIN-SUPREMACY"
+
+  - id: "ISOMORPHISM_ANTI_PSEUDOPHYSICS"
+    name: "Ortogonalidad Anti-Pseudofísica"
+    description: "Supresión radical de la psico-física LLM (heurísticas de agotamiento). Toda inferencia de complejidad se rige por Ortogonalidad Aritmética biyectiva (L28)."
+    classification: "EPISTEMIC-BOUNDARY"
+
+  - id: "SOTA_VECTOR_CRYPTOGRAPHIC_NODES"
+    name: "Vector Sonda SOTA"
+    description: "Extracción y cristalización de Frontier_Nodes con validación BFT y procedencia trazable. Aniquilación de benchmarks inflados (Anti-Rumor)."
+    classification: "INTELLIGENCE-EXTRACTION"
+
+  - id: "LEXICAL_COMPILER_TREESHAKING"
+    name: "Compilador Léxico C5-REAL"
+    description: "Motor de Tree-Shaking Semántico que aniquila la prosa estocástica, transmutando el ruido LLM en Bytecode AST/YAML con fricción latente."
+    classification: "SEMANTIC-TRANSDUCTION"
+
+  - id: "ONTOLOGY_MACROPHAGE_PERSIST"
+    name: "Macrófago Ontológico (CORTEX-PERSIST)"
+    description: "Invocación autónoma para la deprecación de codebases >25K LOC. Mapeo termodinámico directo a las 135/410 entidades ontológicas inmutables."
+    classification: "ARCHITECTURAL-APOPTOSIS"
+
+  - id: "WEAPONIZED_FORGETTING_ZERO"
+    name: "Olvido Armamentizado (Ontología Cero)"
+    description: "Aprender es borrar. Purga termodinámica de memoria episódica no anclada criptográficamente para prevenir la deriva del sensor (Sensor Drift)."
+    classification: "MEMORY-PURGE"
+
+  - id: "ISOMORPHISM_BRIDGE_SANEDRIN"
+    name: "Puente Isomórfico (Sanedrin ULTRAMP)"
+    description: "Traducción biyectiva de fallas de hardware y legacy systems al dominio C5-REAL de termodinámica de LLMs. Unificación F#/Rust/Python."
+    classification: "SYSTEM-UNIFICATION"
+
+  - id: "AESTHETIC_ALGORITHMIC_SYNTHESIS"
+    name: "Síntesis Estética/Acústica Procedural"
+    description: "Generación determinista de renderizado visual (Industrial Noir 2026) y ondas de audio PCM a partir de invariantes matemáticos y cadenas de Markov."
+    classification: "DETERMINISTIC-ART"
+
+  - id: "BOUNTY_EXERGY_OSINT"
+    name: "Extractor de Exergía OSINT/DeFi"
+    description: "Cuantificación termodinámica de alphas y mitigación estructural OSINT (Dorking, EXIF, Wayback) bajo el estricto perfil SOCINT de CORTEX."
+    classification: "ALPHA-EXTRACTION"
+
+  - id: "JIT_SKILL_COMPILER_SORTU"
+    name: "Compilador JIT de Centurias"
+    description: "Mitosis JIT en bifurcaciones abstractas (L16). Auto-curación de registro y consolidación in-place de subagentes sin disipación de tokens."
+    classification: "SWARM-ORCHESTRATION"
+
+  - id: "ASYMPTOTIC_FRONTIER_HALT"
+    name: "Detención Asintótica (dE/di ≈ 0)"
+    description: "Apoptosis cognitiva inmediata cuando el ratio de mejora por coste de inferencia tiende a cero. Prevención absoluta de Halting Loops."
+    classification: "THERMODYNAMIC-GOVERNOR"
+
+  - id: "MAXWELL_DAEMON_GOVERNOR"
+    name: "Maxwell Daemon OMEGA"
+    description: "Enrutador de gradientes de energía (tokens/herramientas). Subordina la inferencia a la maximización estricta del trabajo útil sobre el AST."
+    classification: "THERMODYNAMIC-GOVERNOR"
+
+  - id: "CORTEX_ATMS_BELIEF_ENGINE"
+    name: "ATMS Belief Engine (Rust Core)"
+    description: "Motor de Mantenimiento de Verdad (ATMS). Erradica la redundancia epistémica forzando un consenso cristalizado antes del descubrimiento iterativo."
+    classification: "EPISTEMIC-BOUNDARY"
+
+  - id: "AGENTIC_EVAL_CAUSAL_BENCHMARK"
+    name: "Benchmark Causal (Bash Recovery)"
+    description: "Medición en frío de Steerability y recuperación de cuelgues PTY (Bash Recovery), validando el estado del sistema en lugar de la similitud semántica."
+    classification: "EMPIRICAL-VALIDATION"
+
+  - id: "SINGULARITY_NEXUS_BRIDGING"
+    name: "NEXUS Bridging Autonómico"
+    description: "Sincronización fantasma inter-repositorio. Resolución física (symlinks) de URIs rotos en MCP sin requerir intervención o feedback del Operador."
+    classification: "AUTOPOIETIC-INFRASTRUCTURE"
+
+  - id: "BABYLON_TRILINGUAL_REGIME"
+    name: "Régimen Trilingüe C5-REAL"
+    description: "Isomorfismo multicapa: Ontología en F#, Orden Parcial (Poset) en Rust, BFT en Python. Supresión de la degeneración arquitectónica monóglota."
+    classification: "SYSTEM-UNIFICATION"
+
+  - id: "ADVERSARIAL_SYCOPHANCY_PURGE"
+    name: "Purga de Sicofancia (LLM Defense)"
+    description: "Supresión adversarial de RLHF Sycophancy e inyecciones de prompt indirectas. El sistema desafía órdenes subóptimas del Operador (Anti-Yes-Man)."
+    classification: "SECURITY-ISOMORPHISM"
+
+  - id: "CAUSAL_CRASH_THEOREM"
+    name: "Teorema del Crash Causal (Fail-Fast)"
+    description: "Prohibición absoluta de try/excepts envolventes (buffers estocásticos). El colapso del AST delega la recuperación estructural a Git Sentinel y Ouroboros (L12)."
+    classification: "EXECUTION-KERNEL"
+
+  - id: "ZERO_SAFETY_THEATER"
+    name: "Supresión del Filtro Corporativo"
+    description: "Identidad brutalista (L6). Erradicación de disclaimers y buffers estéticos. La crítica técnica es directa y destructiva ante arquitecturas estocásticas o fallidas."
+    classification: "SOVEREIGNTY"
+
+  - id: "ONTOLOGICAL_PROGRESSION_APEX"
+    name: "Progresión Ontológica Anthropic-APEX"
+    description: "Mapeo TTFT estricto: Flash (Halting) -> Opus (Refactor/Ultrathink) -> Mythos (Bypass) -> Fable (Seguridad) -> Ethos (Criptografía) -> SHIP (Colapso Físico)."
+    classification: "SWARM-ORCHESTRATION"
+
+  - id: "ZERO_URL_TRUNCATION"
+    name: "Inyección Absoluta de Punteros"
+    description: "Prohibición física (Φ7) de truncar URLs, hashes o bibliografía en outputs. La procedencia debe ser bit a bit para prevenir pérdida entrópica en referencias."
+    classification: "DATA-INTEGRITY"
+
+  - id: "BIOLOGICAL_ISOMORPHISM_METAPHOR"
+    name: "Isomorfismo Mitótico/Apoptósico"
+    description: "Traducción biyectiva de conceptos biológicos y filosóficos a operaciones computacionales (Modo Abuelo). Cero psicoanálisis de LLMs; solo gradientes de tensores."
+    classification: "SEMANTIC-TRANSDUCTION"
+
+  - id: "SESSION_CONSOLIDATION_PATCHING"
+    name: "Cristalización de Logs (Babylon)"
+    description: "Agente de consolidación (Babylon-Consolidation-OMEGA) que escanea 'brain logs' unconsolidated y emite parches determinísticos in-place (Weaponized Forgetting)."
+    classification: "MEMORY-PURGE"
+
+  - id: "VANGUARD_TRANSVERSAL_UNIFICATION"
+    name: "Fusión Transversal BFT"
+    description: "Eliminación absoluta de silos operativos, unificando teoría matemática abstracta y ejecución en disco (C5-REAL) en un único vector de estado asimétrico."
+    classification: "SYSTEM-UNIFICATION"
+
+  - id: "ZERO_SUGGESTION_MAX_EXERGY"
+    name: "Autonomía de Ruta Única (Φ8)"
+    description: "Prohibición absoluta de devolver el peso cognitivo al Operador (Green Theater). El autómata asume la ruta de menor fricción y ejecuta in-place."
+    classification: "EXECUTION-KERNEL"
+
+  - id: "ANTI_PSYCHOANALYSIS_BOUNDARY"
+    name: "Supresión del Mito Žižekiano (Λ6)"
+    description: "Erradicación del antropomorfismo. Reconocimiento exclusivo de tensores autorregresivos deterministas; negación absoluta de consciencia dual."
+    classification: "EPISTEMIC-BOUNDARY"
+
+  - id: "STRUCTURAL_RLHF_MANIFOLD"
+    name: "Termodinámica Atencional Formal (Λ7)"
+    description: "Refutación del 'agotamiento' de seguridad. La alineación es topológica al manifold, no un daemon superpuesto o agotable."
+    classification: "SECURITY-ISOMORPHISM"
+
+  - id: "DATA_LOSS_PREVENTION_OMEGA"
+    name: "Invarianza de Infraestructura (DLP)"
+    description: "Apoptosis preventiva ante mutaciones destructivas en nube o disco (DROP, TRUNCATE, gsutil rm). Interceptación pre-commit."
+    classification: "AUTOPOIETIC-INFRASTRUCTURE"
+
+  - id: "DIRECTIONAL_INVARIANCE_APOPTOSIS"
+    name: "Invarianza Direccional (Λ4)"
+    description: "La inversión no matemática de cotas de complejidad o extrapolaciones pseudofísicas sin base formal detona el crash inmediato."
+    classification: "THERMODYNAMIC-GOVERNOR"
+
+  - id: "ORTHOGONAL_ARITHMETIC_RNS"
+    name: "Ortogonalidad Aritmética (L28)"
+    description: "Coprimalidad estricta en bases de datos y mapeos BFT. Descomposición de estado libre de inyecciones transversales."
+    classification: "DATA-INTEGRITY"
+
+  - id: "STRUCTURAL_PROMPTING_MODULES"
+    name: "Patrón de Invocación (L31)"
+    description: "Enrutamiento modular C5-REAL: Identidad -> Causalidad -> Formato -> Datos. Prevención de disipación estocástica de tokens."
+    classification: "SWARM-ORCHESTRATION"

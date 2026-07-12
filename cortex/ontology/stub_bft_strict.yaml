@@ -60,3 +60,21 @@ Blast_Radius_Matrix:
   Blast_Radius: "Todo commit al Merkle Tree, toda mutación de estado ontológico"
   Target_Invariant: "PRIM-005, INV-002, RED-001"
   Anergy_Risk: "Latencia adicional por verificación triple. Aceptable: integridad > velocidad."
+Materialization:
+  Status: C5-REAL (materializado en código físico)
+  Physical_Path: kernel/bft_strict.py
+  SHA256: f1e96d65f807c7d840dc87b8e9201f4c1e8da4c600b95f5eb9e3458cc4ab0721
+  Self_Anchor: "Hash computado por STUB-SHA256-001 sobre el validador BFT."
+  Dependency_Chain_Resolved:
+    - "STUB-SHA256-001 → kernel/stub_sha256.py (integridad del payload)."
+    - "STUB-KMS-0600-001 → kernel/stub_kms.py (clave HMAC de attestations)."
+  Consumers:
+    - "kernel/bft_consensus_poc.py — reconectado: elimina el check débil len(set())>=3 y delega en validate_mutation."
+  Verified_By: test_stubs_c5.py
+  Evidence:
+    - "Quórum 3/3 real: 3 nodos ortogonales (SHA-256, AST, test) votan tras verificación efectiva."
+    - "Attestations HMAC-SHA256 verificables — NO constantes hardcodeadas (remedia el hallazgo is_mock=True de babylon_60_audit)."
+    - "Rechaza violación de integridad, error de sintaxis, y ausencia de test (ANTI-008: sin falsación no hay voto)."
+    - "is_mock estructuralmente prohibido: __init_subclass__ lanza TypeError."
+    - "Merkle chain enlazado: root_n = SHA256(root_{n-1} || digest_n)."
+  Test_Result: "18/18 passed (suite de falsación de los 3 stubs)."

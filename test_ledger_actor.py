@@ -7,19 +7,25 @@ from bft.ledger_actor import BFTLedgerActor, LedgerEvent, ZERO_HASH, _canonical_
 
 DB_PATH = Path("test_ledger.db")
 
+
+def _purge_db():
+    # Borra el .db Y sus sidecars WAL/SHM. Omitir -wal/-shm dejaba estado
+    # obsoleto que colgaba el siguiente run (SQLite abría un WAL bloqueado):
+    # una limpieza que no limpia es teatro.
+    for suffix in ("", "-wal", "-shm", "-journal"):
+        p = Path(str(DB_PATH) + suffix)
+        if p.exists():
+            try:
+                p.unlink()
+            except OSError:
+                pass
+
+
 @pytest.fixture(autouse=True)
 def cleanup():
-    if DB_PATH.exists():
-        try:
-            DB_PATH.unlink()
-        except OSError:
-            pass
+    _purge_db()
     yield
-    if DB_PATH.exists():
-        try:
-            DB_PATH.unlink()
-        except OSError:
-            pass
+    _purge_db()
 
 @pytest.mark.asyncio
 async def test_basic_append_and_chaining():

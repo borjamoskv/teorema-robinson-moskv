@@ -7,8 +7,11 @@ Fail-fast: Crash over catch [L12: K1].
 import os
 import yaml
 import pytest
+from pathlib import Path
 
-YAML_PATH = "$CORTEX_ROOT/30_BABYLON-60/cortex/ontology/huella_biyectiva_hardware.yaml"
+# Repo-relative: portable entre máquinas y CI (antes hardcodeado a 30_BABYLON-60).
+YAML_PATH = str(Path(__file__).resolve().parents[1]
+                / "cortex" / "ontology" / "huella_biyectiva_hardware.yaml")
 
 def test_yaml_exists():
     """Valida la existencia física del archivo de ontología."""

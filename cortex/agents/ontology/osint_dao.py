@@ -6,9 +6,13 @@ Fail-fast: Crash over catch [L12: Κ1].
 
 import asyncio
 import aiosqlite
+from pathlib import Path
 from typing import List, Dict, Any
 
-DB_PATH: str = "$CORTEX_ROOT/30_BABYLON-60/cortex/agents/ontology/osint_primitives.db"
+# Repo-relative: el .db vive junto a este módulo. Antes hardcodeado a
+# /30_BABYLON-60/... → en otro checkout aiosqlite abría un DB vacío y las
+# queries fallaban con "no such table". Path portable derivado de __file__.
+DB_PATH: str = str(Path(__file__).resolve().parent / "osint_primitives.db")
 
 class OSINTOntologyAccessor:
     def __init__(self, db_path: str = DB_PATH) -> None:

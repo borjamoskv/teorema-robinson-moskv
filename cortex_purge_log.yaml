@@ -1,0 +1,9 @@
+Action: Metacognitive Collapse
+Claim: SIGKILL_State_Purge
+Entropy_Purged: 'True'
+Proof:
+  Base: 869f4cc2
+  Confidence: C5
+  Range:
+  - 0
+  - 0

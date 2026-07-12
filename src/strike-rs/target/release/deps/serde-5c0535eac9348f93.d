@@ -1,0 +1,14 @@
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/serde-5c0535eac9348f93.d: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/serde-2da29a64f096ce27/out/private.rs
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/libserde-5c0535eac9348f93.rlib: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/serde-2da29a64f096ce27/out/private.rs
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/libserde-5c0535eac9348f93.rmeta: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs $CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/serde-2da29a64f096ce27/out/private.rs
+
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/serde-2da29a64f096ce27/out/private.rs:
+
+# env-dep:OUT_DIR=$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/serde-2da29a64f096ce27/out

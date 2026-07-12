@@ -1,0 +1,8 @@
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/crossbeam_deque-14f108c0c5e084ca.d: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/deque.rs
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/libcrossbeam_deque-14f108c0c5e084ca.rlib: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/deque.rs
+
+$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/deps/libcrossbeam_deque-14f108c0c5e084ca.rmeta: $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/lib.rs $CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/deque.rs
+
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/lib.rs:
+$CORTEX_ROOT/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crossbeam-deque-0.8.7/src/deque.rs:

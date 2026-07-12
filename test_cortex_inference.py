@@ -1,4 +1,8 @@
 import pytest
+
+# Gap declarado, no crash de colección: requiere el módulo nativo babylon60
+# (maturin develop -m src/strike-rs/Cargo.toml). Skip visible en el summary.
+pytest.importorskip("babylon60", reason="módulo nativo babylon60 no compilado")
 from cortex_inference import CortexInferenceEngine
 
 
