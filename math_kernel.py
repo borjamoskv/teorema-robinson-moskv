@@ -1,9 +1,10 @@
-import sqlite3
 import babylon60
 import time
 from typing import Final, Tuple
 from dataclasses import dataclass
 from decimal import Decimal
+from babylon60.database.core import connect, causal_write
+
 DB_PATH: Final[str] = "nexus_anchors.db"
 
 @dataclass(frozen=True)
@@ -16,9 +17,8 @@ class ExergyNode:
 
 def init_ledger() -> None:
     """Ignición determinista del Master Ledger con WAL y busy_timeout de 5000ms."""
-    with sqlite3.connect(DB_PATH, timeout=5.0) as conn:
-        conn.execute("PRAGMA journal_mode=WAL")
-        conn.execute("PRAGMA synchronous=NORMAL")
+    conn = connect(DB_PATH)
+    try:
         conn.execute('''
             CREATE TABLE IF NOT EXISTS exergy_ledger (
                 causal_hash TEXT PRIMARY KEY,
@@ -28,6 +28,8 @@ def init_ledger() -> None:
                 lamport_t INTEGER
             )
         ''')
+    finally:
+        conn.close()
 
 def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
     """
@@ -53,13 +55,18 @@ def calculate_exergy(tokens: int, temperature: Decimal) -> ExergyNode:
     )
     
     # Persistencia BFT en Master Ledger
-    with sqlite3.connect(DB_PATH, timeout=5.0) as conn:
-        conn.execute('''
-            INSERT INTO exergy_ledger (causal_hash, tokens, temperature, exergy, lamport_t)
-            VALUES (?, ?, ?, ?, ?)
-        ''', (node.causal_hash, node.tokens, float(node.temperature), float(node.exergy), node.lamport_t))
+    conn = connect(DB_PATH)
+    try:
+        with causal_write(conn), conn:
+            conn.execute('''
+                INSERT INTO exergy_ledger (causal_hash, tokens, temperature, exergy, lamport_t)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (node.causal_hash, node.tokens, float(node.temperature), float(node.exergy), node.lamport_t))
+    finally:
+        conn.close()
         
     return node
 
 # Inicialización síncrona en carga de módulo
 init_ledger()
+

@@ -8,6 +8,13 @@ import os
 
 from cortex.agents.ontology.osint_dao import OSINTOntologyAccessor, DB_PATH
 
+
+
+
+
+
+
+
 @pytest.mark.asyncio
 async def test_dao_initialization():
     """Valida la inyección de la ruta física."""
