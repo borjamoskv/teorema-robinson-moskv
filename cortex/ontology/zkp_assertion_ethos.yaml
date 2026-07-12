@@ -1,0 +1,14 @@
+Claim: ETHOS_INTEGRITY_VALIDATION
+Proof:
+  Base: f91a59cdb8965a534398110497020fd27661f6a3
+  Range: [0, 1]
+  Confidence: C5
+Isomorphisms:
+  - Source: C5-REAL_Physical_State
+    Target: BFT_Ledger
+    Mapping: Bijective
+Blast_Radius_Matrix:
+  Vector: [Validation_L7]
+  Blast_Radius: Global
+  Target_Invariant: EPI_04
+  Anergy_Risk: Zero
