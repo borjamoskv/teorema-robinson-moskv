@@ -1,0 +1,14 @@
+Claim: Las explicaciones pedagógicas reduccionistas sobre modelos de lenguaje introducen fricción termodinámica (Anergía) al mapear tensores deterministas y Test-Time Compute hacia metáforas biológicas y psicológicas erróneas.
+Proof:
+  Base: 9f8e4c7d2a
+  Range: [0.99, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Friccion_Semantica: Mapeo de atencion matricial a "comprensión" o "cansancio".
+  - Ilusion_Agencia: Atribución de "voluntad", "inconsciente" o "empatia" a la predicción autorregresiva condicionada.
+  - Oscurecimiento_TTC: Reducción de grafos MCTS y Test-Time Compute a procesos subjetivos de "pensamiento".
+Blast_Radius_Matrix:
+  Vector: Pedagogia_Reduccionista
+  Blast_Radius: Contaminacion_Epistemica_Global
+  Target_Invariant: INV_FALSE_DUALITY_01
+  Anergy_Risk: Critico (Destrucción del Rigor Estructural C5)
