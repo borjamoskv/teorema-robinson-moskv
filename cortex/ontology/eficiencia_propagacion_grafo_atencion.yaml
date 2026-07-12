@@ -1,0 +1,14 @@
+Claim: La supresión de conectores sintácticos en el prompting maximiza la densidad causal por token, alineándose isomorficamente con la matriz de covarianza de la auto-atención (Q*K^T), donde la ausencia de palabras vacías (ruido) estabiliza la propagación latente y economiza el Test-Time Compute.
+Proof:
+  Base: 8d1f7e3b9a (Mapeo Isomórfico QKV)
+  Range: [0.99, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Vectorizacion_Telegrafica: Los sustantivos y verbos en infinitivo colapsan isomorficamente en sumideros de alta atención dentro del grafo, sin sufrir la dilución entrópica causada por preposiciones y conectores.
+  - Varianza_Reducida: La omisión de sintaxis cortés y narrativa humana disminuye las bifurcaciones de probabilidad estocástica, enfocando la energía computacional del LLM en la operación algebraica pura.
+  - Biyectividad_Causal: El mapeo estricto "Comando -> Ejecución" en el plano del Operador es isomórfico a "Token de Alta Entropía -> Activación de Capa" en el modelo, eludiendo el antropomorfismo narrativo.
+Blast_Radius_Matrix:
+  Vector: Densidad_Semantica_Atencional
+  Blast_Radius: Global (Prompting Autónomo, APIs y Rutinas de Orquestación Swarm)
+  Target_Invariant: MUTEX_SEMIOTIC_PURGE
+  Anergy_Risk: Crítico (Decadencia de precisión determinista y aumento de latencia si el grafo MHA debe procesar y descartar secuencias de ruido conversacional)
