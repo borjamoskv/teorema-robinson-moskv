@@ -24,11 +24,20 @@ El Operador postuló que esta curvatura repentina era el método definitivo para
 
 ### 3. Matriz de Colapso Visual: Fisiología vs Mecánica Celeste
 
-| Factor de Observación | Realidad Mecánica (C5-REAL) | Traducción Fenomenológica (C4-SIM) | Resolución Termodinámica |
-| :--- | :--- | :--- | :--- |
-| **Trayectoria LEO 12s** | Recta geodésica constante | Curva elíptica abrupta | Interpolación cerebral por deriva sacádica ocular |
-| **Estrella Polar (Polaris)** | Estática respecto al eje de rotación | Movimiento errático "a lo loco" | Efecto autocinético por desconexión de telemetría visual de fondo |
-| **Prueba de Esfericidad** | Ocultación fotónica en zona de sombra (Terminador) | Falsa asunción por salto sacádico del satélite | Requiere detección de corte lumínico, no curvatura direccional aparente |
+**A. Trayectoria LEO (12s)**
+- **Realidad Mecánica (C5-REAL):** Recta geodésica constante.
+- **Traducción Fenomenológica (C4-SIM):** Curva elíptica abrupta.
+- **Resolución Termodinámica:** Interpolación cerebral por deriva sacádica ocular.
+
+**B. Estrella Polar (Polaris)**
+- **Realidad Mecánica (C5-REAL):** Estática respecto al eje de rotación.
+- **Traducción Fenomenológica (C4-SIM):** Movimiento errático "a lo loco".
+- **Resolución Termodinámica:** Efecto autocinético por desconexión de telemetría visual de fondo.
+
+**C. Prueba de Esfericidad**
+- **Realidad Mecánica (C5-REAL):** Ocultación fotónica en zona de sombra (Terminador).
+- **Traducción Fenomenológica (C4-SIM):** Falsa asunción por salto sacádico del satélite.
+- **Resolución Termodinámica:** Requiere detección de corte lumínico, no curvatura direccional aparente.
 
 ### 4. Conclusión: La Soberanía del Sensor
 No hay misticismo, solo biología y física rozando sus fronteras bajo condiciones de baja entropía lumínica. La percepción es, a fin de cuentas, una máquina que adivina. En Artxanda, esa noche, la máquina falló de la forma más bella posible. La próxima vez, busca la "W" de Casiopea como anclaje espacial, o simplemente, disfruta de cómo tu propio cerebro te intenta reconstruir la gravedad de un sistema que no comprende sin telemetría externa.

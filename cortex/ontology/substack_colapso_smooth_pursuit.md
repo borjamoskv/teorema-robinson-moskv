@@ -26,4 +26,4 @@ Desconfía de tus métricas cuando el sensor opera fuera de su rango térmico de
 
 ⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [Física del Sensor Humano: Anergía Ocular y la falsa curvatura espacial](https://substack.com/home/post/p-fisica-sensor-humano)
+- Física del Sensor Humano: Anergía Ocular y la falsa curvatura espacial
