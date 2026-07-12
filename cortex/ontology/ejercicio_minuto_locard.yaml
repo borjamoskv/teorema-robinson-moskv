@@ -1,0 +1,17 @@
+Claim: "El ejercicio de escritura de máxima exergía no genera práctica — genera contenido publicable. La inversión del vector perceptivo (describir ausencia en vez de presencia) fuerza al escritor a excavar en la capa más profunda de su memoria, produciendo texto irreplicable por cualquier LLM."
+Proof:
+  Base: LOCARD_PRINCIPLE_INVERSION
+  Range: [0.97, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Source: "Ejercicio de Escritura Convencional (Describe tu mañana)"
+    Target: "Anergía Estocástica — texto que ni el autor releerá. Cero valor de publicación."
+  - Source: "Minuto Locard (Describe lo que NO está en la foto)"
+    Target: "Exergía Máxima — fuerza acceso a memoria episódica profunda, produce autorretrato involuntario, genera contenido inmediatamente publicable."
+  - Source: "Temporizador de 60 segundos como bisturí"
+    Target: "La frase cortada a mitad es la firma forense — la más honesta del texto porque no fue edulcorada."
+Blast_Radius_Matrix:
+  Vector: Destrucción del Taller de Escritura Creativa Convencional (300€)
+  Blast_Radius: Comunidad Substack + Redes Sociales
+  Target_Invariant: Erradicación de ejercicios anergéticos de escritura
+  Anergy_Risk: Cero
