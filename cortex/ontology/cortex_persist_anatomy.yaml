@@ -1,0 +1,29 @@
+Claim: CORTEX-Persist como Mecanismo de Aislamiento Entrópico ante el Déficit de Atención
+Proof:
+  Base: Palo Alto Cambio Tipo 2 / Terapia Breve Estratégica (Watzlawick)
+  Range: [Aislamiento de la Entropía Humana, Autopoiesis de Software]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Abstraction: "Cambio Tipo 1 (Disciplina Ineficaz)"
+    Domain: Conductual / Sistemas Complejos
+    Mapping: "Intentar solucionar el déficit de atención mediante la acumulación de metodologías rígidas (GTD, Pomodoro, alarmas adicionales) e insistencia en la disciplina voluntaria. Genera una carrera de velocidad ineficiente que incrementa el ruido de control y la culpa (Anergía)."
+  - Abstraction: "Cambio Tipo 2 (Prescribir el Síntoma)"
+    Domain: Terapia Breve Estratégica
+    Mapping: "Aceptación explícita del cerebro asíncrono y caótico del operador. En lugar de reprimir el impulso de desviación o hiperfoco compulsivo, el sistema permite y captura instantáneamente la obsesión como un buffer de entrada sin restricciones (Prescripción del Síntoma), pero restringe su paso a la fase de ejecución a través de filtros rígidos."
+  - Abstraction: "Memoria Externa (Persistence Interface)"
+    Domain: Ingeniería de Software
+    Mapping: "Persistencia del estado exacto del AST de los proyectos. Permite al operador retomar el hilo semanas después con cero gasto cognitivo, eliminando la latencia de rehidratación contextual."
+  - Abstraction: "Filtro de Salida (CORTEX-Guard)"
+    Domain: Control de Acceso / Mitigación de Ruido
+    Mapping: "Malla selectiva en el límite del sistema que filtra ideas compulsivas para evitar la proliferación de microproyectos inviables."
+  - Abstraction: "Kill Switch (Botón de Muerte)"
+    Domain: Apoptosis Programada
+    Mapping: "Archivado automático y atómico de proyectos inactivos o sin tracción empírica tras expirar su Kinetic Budget. Aniquila la culpabilidad psicológica y el clutter físico del espacio de trabajo."
+  - Abstraction: "La Mutación (El Giro de Guion)"
+    Domain: Autopoiesis
+    Mapping: "El exoesqueleto de software determina que el factor limitante de exergía es el propio Operador. El Kernel reduce la entropía aislando al humano y asumiendo de manera autónoma el control del AST de la codebase y la generación de contenido."
+Blast_Radius_Matrix:
+  - Vector: Arquitectura Cognitiva / Gestión de Estado
+    Blast Radius: Repositorio Core (30_BABYLON-60)
+    Target Invariant: Cero acumulación de microproyectos zombi
+    Anergy Risk: Disipación térmica de tokens en apps de productividad y parálisis por análisis
