@@ -79,4 +79,4 @@ def run_stress_test() -> "Any":
 
 
 if __name__ == "__main__":
-    run_stress_test(, timeout=5.0)
+    run_stress_test()

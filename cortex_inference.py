@@ -65,16 +65,14 @@ class CortexInferenceEngine:
 
     async def initialize(self):
         db_uri = f"file:{self.target_db}?mode=ro"
-        self.db = await aiosqlite.connect(db_uri, uri=True, timeout=5.0)
+        from babylon60.database.core import connect_async, connect
+        self.db = await connect_async(db_uri, uri=True, timeout=5.0)
         self.db.row_factory = aiosqlite.Row
-        import sqlite3
 
-        sync_conn = sqlite3.connect(self.target_cache, timeout=5.0)
+        sync_conn = connect(self.target_cache, timeout=5.0)
         _ = SovereignLedger(sync_conn)
         sync_conn.close()
-        self.cache_db = await aiosqlite.connect(self.target_cache, timeout=5.0)
-        await self.cache_db.execute("PRAGMA journal_mode = WAL;")
-        await self.cache_db.execute("PRAGMA busy_timeout = 5000;")
+        self.cache_db = await connect_async(self.target_cache, timeout=5.0)
         self.cache_db.row_factory = aiosqlite.Row
         await self.cache_db.execute(
             "\n            CREATE TABLE IF NOT EXISTS L3_inference_cache (\n                query_hash TEXT PRIMARY KEY,\n                active_mode TEXT,\n                retrieved_nodes TEXT,\n                applied_isomorphisms TEXT,\n                trace_payload TEXT,\n                hits INTEGER DEFAULT 0\n            )\n        "

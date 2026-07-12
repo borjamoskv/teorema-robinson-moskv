@@ -1,7 +1,11 @@
 # C5-REAL: paquete Lake para verificación mecánica del teorema causal.
-# `lake build` compila Babylon.lean; si alguna prueba no cierra, falla (fail-fast).
+# `lake build` compila Babylon.lean y BabylonBridge.lean (puente semántico
+# Causal ↔ lamport_t del BFTLedgerActor); si alguna prueba no cierra, falla.
 name = "babylon-proof"
-defaultTargets = ["Babylon"]
+defaultTargets = ["Babylon", "BabylonBridge"]
 
 [[lean_lib]]
 name = "Babylon"
+
+[[lean_lib]]
+name = "BabylonBridge"

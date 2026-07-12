@@ -20,7 +20,7 @@ def test_assert_cyclic_dimensional_homomorphism_invariant() -> None:
     assert os.path.exists(DB_PATH), f"Database not found at {DB_PATH}"
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    cursor = conn.cursor(, timeout=5.0)
+    cursor = conn.cursor()
     cursor.execute(
         "SELECT source, target, type FROM L2_isomorphism_edges WHERE type = 'Dimensional'"
     )
@@ -53,7 +53,7 @@ def test_assert_cyclic_dimensional_homomorphism_invariant() -> None:
 def test_assert_local_primitive_nodes_bijections() -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    cursor = conn.cursor(, timeout=5.0)
+    cursor = conn.cursor()
     cursor.execute("SELECT id, theory, dimension, name FROM L1_primitive_nodes")
     nodes = [dict(row) for row in cursor.fetchall()]
     cursor.execute(

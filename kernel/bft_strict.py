@@ -105,7 +105,10 @@ class TestNode(ValidatorNode):
     def verify(self, payload: MutationPayload) -> bool:
         if payload.falsification is None:
             return False
-        return bool(payload.falsification())
+        try:
+            return bool(payload.falsification())
+        except Exception:
+            return False
 
 
 VALIDATORS: tuple[ValidatorNode, ...] = (IntegrityNode(), ASTLintNode(), TestNode())
