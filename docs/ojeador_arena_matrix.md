@@ -1,8 +1,8 @@
-# █▄ OJEADOR: LMSYS ARENA MATRIZ DE EXERGÍA (v10.ULTRATHINK) ▄█
+# █▄ OJEADOR: LMSYS ARENA MATRIZ DE EXERGÍA (v10.EXERGY) ▄█
 
 > [!WARNING]
 > **ESTADO C5-REAL: BRUTALISMO CINÉTICO ACTIVO (10 CICLOS MCTS)**
-> Última sincronización: `2026-07-11T04:46:20.979604+00:00` | Latencia TTFT: `155ms` | Entropía: `4.2158`
+> Última sincronización: `2026-07-11T04:46:20.979604+00:00` | Latencia TTFT: `464ms` | Entropía: `4.2158`
 
 ## 1. LÍDERES DE ARENA (DATOS EN TIEMPO REAL)
 | Rango | Modelo | Proveedor | Elo Score | Votos | Exergía | Sesgo de Alineación (RLHF) |
