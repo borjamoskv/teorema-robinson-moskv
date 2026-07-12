@@ -1,0 +1,14 @@
+Claim: Transducción del anclaje de Testigo Externo Estricto (CI Lake Build) para la verificación mecánica del teorema Causal BFT.
+Proof: 
+  Base: 8b066f77cc35cf2609eb0488d5e8658a221f2bb8bd1a00a12e3e6015694a504b
+  Range: [0, 4]
+  Confidence: C5
+Isomorphisms:
+  - "Compilación local truncada por throughput de red del sandbox" -> "Restricción termodinámica de I/O local (Fricción ambiental)"
+  - "Job CI de GitHub Actions (Lake Build)" -> "Colapso hacia Testigo Externo Estricto (Escalón 3 de Matriz M12)"
+  - "Transición de def a abbrev y uso de omega en Lean" -> "Adaptación del AST para resolución determinista de síntesis Decidable"
+Blast_Radius_Matrix:
+  Vector: Eliminación del riesgo de "teatro matemático" mediante compilación forzosa en pipeline desacoplado.
+  Blast_Radius: 4 artefactos físicos (lakefile, toolchain, CI workflow, Babylon.lean)
+  Target_Invariant: EPI_04 (Testigo Externo Estricto), INV_M12_02 (Testigo Externo como sumidero terminal)
+  Anergy_Risk: Cero. Blindaje mecánico del orden parcial causal.

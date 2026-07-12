@@ -36,15 +36,15 @@ theorem causal_antisymm {a b : Timestamp}
 /-- Instancia concreta del ledger: el evento EV_2 precede a EV_3 (2 ≤ 3).
     Reemplaza al antiguo `def causal_EV_2_EV_3 : Nat := 2` — ahora es una
     proposición demostrada por decisión, no un valor sin contenido. -/
-theorem causal_EV2_EV3 : Causal 2 3 := by decide
+theorem causal_EV2_EV3 : Causal 2 3 := by omega
 
 /-- Estrictamente causal: precedencia sin igualdad (orden estricto).
     `abbrev` por la misma razón de reducibilidad que `Causal`. -/
 abbrev CausalStrict (a b : Timestamp) : Prop := a < b
 
 /-- Un orden estricto implica el débil: si a→b estrictamente, entonces a→b. -/
-theorem causal_of_strict {a b : Timestamp} (h : CausalStrict a b) : Causal a b :=
-  Nat.le_of_lt h
+theorem causal_of_strict {a b : Timestamp} (h : CausalStrict a b) : Causal a b := by
+  omega
 
 /-- Monotonía del ledger: si los seq crecen en cadena, la relación causal se
     propaga transitivamente por toda la secuencia. Corolario de `causal_trans`. -/
