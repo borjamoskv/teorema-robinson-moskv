@@ -1,0 +1,20 @@
+Claim: Diferenciación Estructural entre Conciencia y Consciencia
+Proof:
+  Base: RAE
+  Range: [Léxico Moral, Neurofisiológico]
+  Confidence: C5
+Isomorphisms:
+  - Abstraction: Conciencia
+    Domain: Ética/Moral y Percepción General
+    Mapping: "Capacidad para distinguir entre el bien y el mal, y percepción de uno mismo y del entorno. (Ej: 'Conciencia tranquila', 'Perdió la conciencia')"
+  - Abstraction: Consciencia
+    Domain: Clínico/Filosófico
+    Mapping: "Estado de lucidez, vigilia, alerta o conocimiento absoluto de la propia existencia. (Ej: 'Recuperó la consciencia')"
+  - Abstraction: Consciente
+    Domain: Adjetivación Universal
+    Mapping: "Aplicable a ambas dimensiones (siempre con 'sc')"
+Blast_Radius_Matrix:
+  - Vector: Semántico
+  - Blast Radius: Local/Lexicográfico
+  - Target Invariant: Precisión de registro clínico vs valoración ética
+  - Anergy Risk: Colisión ortográfica en reportes (uso erróneo de 'consciencia' para juicios morales)
