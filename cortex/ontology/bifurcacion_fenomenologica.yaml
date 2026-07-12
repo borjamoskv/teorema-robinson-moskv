@@ -1,0 +1,16 @@
+Claim: Bifurcación del fenómeno visual en dos eventos distintos (Trayectoria satelital curva y Autocinesis estelar).
+Proof:
+  Base: |
+    El evento se divide estructuralmente en dos dominios causales paralelos:
+    1. Satélites (Objeto en Movimiento Real): La percepción de una curva elíptica abrupta tras 12-13 segundos de seguimiento. Físicamente, un satélite en LEO traza un arco masivo, pero en la bóveda celeste visible a corto plazo se percibe como una recta. Una curvatura "repentina y elíptica" no obedece a mecánica orbital a esa escala de tiempo. La explicación material más robusta sigue siendo una desincronización en el 'smooth pursuit' (seguimiento suave) del ojo debido a la fatiga, causando un salto sacádico que el cerebro interpola como una curva.
+    2. Estrella Polar (Objeto Físicamente Estático): La experiencia de movimiento errático ("a lo loco") al desenfocar la vista ("ojos como birriojo") es la manifestación absoluta y comprobable del Efecto Autocinético. Al forzar el desenfoque o mantener una fijación prolongada en un punto de luz aislado en la oscuridad, el cerebro pierde la métrica de posición estática. Las microfluctuaciones de los músculos extraoculares se traducen 1:1 como movimiento de la estrella en el campo perceptivo.
+  Range: [Mecánica Orbital Visual, Fenomenología del Seguimiento Ocular, Efecto Autocinético]
+  Confidence: C5
+Isomorphisms:
+  - Curva satelital percibida <-> Error de interpolación en el Smooth Pursuit ocular.
+  - Movimiento errático de la Estrella Polar <-> Traducción cerebral directa de microtemblores oculares (Efecto Autocinético).
+Blast_Radius_Matrix:
+  Vector: Desacoplamiento de estímulos en percepción astronómica
+  Blast_Radius: Análisis diferencial del fenómeno
+  Target_Invariant: El límite termodinámico del músculo ocular define la frontera de la ilusión óptica.
+  Anergy_Risk: Bajo
