@@ -5,31 +5,14 @@ import pytest
 from pathlib import Path
 from bft.ledger_actor import BFTLedgerActor, LedgerEvent, ZERO_HASH, _canonical_json, _compute_entry_hash
 
-DB_PATH = Path("test_ledger.db")
+@pytest.fixture
+def db_path(tmp_path: Path) -> Path:
+    return tmp_path / "test_ledger.db"
 
-
-def _purge_db():
-    # Borra el .db Y sus sidecars WAL/SHM. Omitir -wal/-shm dejaba estado
-    # obsoleto que colgaba el siguiente run (SQLite abría un WAL bloqueado):
-    # una limpieza que no limpia es teatro.
-    for suffix in ("", "-wal", "-shm", "-journal"):
-        p = Path(str(DB_PATH) + suffix)
-        if p.exists():
-            try:
-                p.unlink()
-            except OSError:
-                pass
-
-
-@pytest.fixture(autouse=True)
-def cleanup():
-    _purge_db()
-    yield
-    _purge_db()
 
 @pytest.mark.asyncio
-async def test_basic_append_and_chaining():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_basic_append_and_chaining(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -53,7 +36,7 @@ async def test_basic_append_and_chaining():
 
         # Read from database to verify values
         import aiosqlite
-        async with aiosqlite.connect(DB_PATH) as db:
+        async with aiosqlite.connect(db_path) as db:
             cur = await db.execute("SELECT * FROM ledger_entries WHERE seq = 1")
             row = await cur.fetchone()
             assert row is not None
@@ -84,7 +67,7 @@ async def test_basic_append_and_chaining():
         res2 = await actor.append(event2)
         assert res2["seq"] == 2
         
-        async with aiosqlite.connect(DB_PATH) as db:
+        async with aiosqlite.connect(db_path) as db:
             cur = await db.execute("SELECT * FROM ledger_entries WHERE seq = 2")
             row = await cur.fetchone()
             assert row is not None
@@ -96,8 +79,8 @@ async def test_basic_append_and_chaining():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_concurrent_appends():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_concurrent_appends(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -124,7 +107,7 @@ async def test_concurrent_appends():
 
         # Check cryptographic chain and lamport clock sequence
         import aiosqlite
-        async with aiosqlite.connect(DB_PATH) as db:
+        async with aiosqlite.connect(db_path) as db:
             cur = await db.execute("SELECT seq, lamport_t, prev_hash, entry_hash FROM ledger_entries ORDER BY seq ASC")
             rows = await cur.fetchall()
             assert len(rows) == 10
@@ -142,8 +125,8 @@ async def test_concurrent_appends():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_immutability_triggers():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_immutability_triggers(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -160,7 +143,7 @@ async def test_immutability_triggers():
         res = await actor.append(event)
         
         # Test manual update is blocked
-        with sqlite3.connect(DB_PATH) as conn:
+        with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
             with pytest.raises(sqlite3.IntegrityError) as excinfo:
                 cursor.execute("UPDATE ledger_entries SET stream = 'corrupt' WHERE seq = 1")
@@ -175,8 +158,8 @@ async def test_immutability_triggers():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_idempotent_retry_collapse():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_idempotent_retry_collapse(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -199,7 +182,7 @@ async def test_idempotent_retry_collapse():
         assert res1["entry_hash"] == res2["entry_hash"]
 
         import aiosqlite
-        async with aiosqlite.connect(DB_PATH) as db:
+        async with aiosqlite.connect(db_path) as db:
             cur = await db.execute("SELECT COUNT(*) FROM ledger_entries")
             count = await cur.fetchone()
             assert count[0] == 1
@@ -208,8 +191,8 @@ async def test_idempotent_retry_collapse():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_cortex_taint_check():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_cortex_taint_check(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -232,8 +215,8 @@ async def test_cortex_taint_check():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_idempotency_masking_on_integrity_error():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_idempotency_masking_on_integrity_error(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -281,8 +264,8 @@ async def test_idempotency_masking_on_integrity_error():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_zombie_actor_prevention():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_zombie_actor_prevention(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
 
     try:
@@ -329,8 +312,8 @@ async def test_zombie_actor_prevention():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_ledger_verify_chain_valid():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_ledger_verify_chain_valid(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
     try:
         event = LedgerEvent(
@@ -344,8 +327,8 @@ async def test_ledger_verify_chain_valid():
         await actor.stop()
 
 @pytest.mark.asyncio
-async def test_direct_sql_forged_hash_detected():
-    actor = BFTLedgerActor(DB_PATH)
+async def test_direct_sql_forged_hash_detected(db_path):
+    actor = BFTLedgerActor(db_path)
     await actor.start()
     try:
         event = LedgerEvent(
@@ -358,7 +341,7 @@ async def test_direct_sql_forged_hash_detected():
         
         # Manually alter database bypassing the triggers by updating without triggering them (disable triggers is not possible without DDL, but we can do it via a direct connection or temporarily dropping/altering triggers, or simply using SQL since the trigger is on UPDATE of ledger_entries. Wait, update trigger raises ABORT, so we can't update.
         # But we can drop triggers in SQLite and update, simulating a direct SQL injection attacker!
-        with sqlite3.connect(DB_PATH) as conn:
+        with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("DROP TRIGGER trg_ledger_immutable_update")
             cursor.execute("UPDATE ledger_entries SET payload_json = '{\"value\": 99}' WHERE seq = 1")
