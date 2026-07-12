@@ -1,0 +1,117 @@
+Claim: El idioma inglés se fundamenta termodinámicamente en un núcleo de vocabulario
+  de origen germánico (Old English), que constituye la exergía semántica de máxima
+  frecuencia y menor coste cognitivo.
+Proof:
+  Base: Zipf_Law_Swadesh_List
+  Range: '[1, 100]'
+  Confidence: C5
+Isomorphisms:
+- Primitive: Core_Vocabulary
+  Target: Semantic_Exergy
+  Mapping: Alta frecuencia = baja entropía informacional = menor coste ATP de procesamiento.
+Blast_Radius_Matrix:
+  Vector: Semantic_Foundations
+  Blast_Radius: Local_Vocabulary
+  Target_Invariant: Top-100-Frequency
+  Anergy_Risk: Low
+Primitives:
+- I
+- you
+- he
+- she
+- it
+- we
+- they
+- me
+- him
+- her
+- us
+- them
+- this
+- that
+- these
+- those
+- who
+- what
+- where
+- when
+- why
+- how
+- be
+- have
+- do
+- say
+- get
+- make
+- go
+- know
+- take
+- see
+- come
+- think
+- look
+- want
+- give
+- use
+- find
+- tell
+- ask
+- work
+- seem
+- feel
+- try
+- leave
+- call
+- keep
+- let
+- begin
+- help
+- show
+- time
+- person
+- year
+- way
+- day
+- thing
+- man
+- world
+- life
+- hand
+- part
+- child
+- eye
+- woman
+- place
+- week
+- case
+- point
+- company
+- number
+- good
+- new
+- first
+- last
+- long
+- great
+- little
+- own
+- other
+- old
+- right
+- big
+- high
+- different
+- small
+- large
+- next
+- early
+- young
+- bad
+- and
+- or
+- but
+- if
+- because
+- as
+- until
+- while
