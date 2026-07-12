@@ -300,8 +300,11 @@ async def test_zombie_actor_prevention(db_path):
         with pytest.raises(Exception):
             await fut
 
-        # Give the worker loop a brief moment to fail and terminate
-        await asyncio.sleep(0.1)
+        # Deterministic crash wait instead of stochastic sleep
+        try:
+            await actor._task
+        except Exception:
+            pass
 
         # Subsequent append must raise RuntimeError due to Zombie Actor Prevention (INV_BFT_07)
         with pytest.raises(RuntimeError) as excinfo:

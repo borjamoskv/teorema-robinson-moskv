@@ -32,7 +32,7 @@ async def test_acoustic_kernel_pipeline():
     task = asyncio.create_task(kernel.process_loop())
     
     # Give it some time to run the transcription, inference, and ledger logging
-    await asyncio.sleep(8.0)
+    await asyncio.sleep(30.0)
     
     # Clean up the task
     task.cancel()

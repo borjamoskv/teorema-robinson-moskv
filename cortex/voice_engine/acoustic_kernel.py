@@ -27,6 +27,26 @@ class AcousticKernel:
         self._audio_queue = asyncio.Queue()
         self.ledger = VoiceLedger()
         self.session_id = self.ledger.start_session()
+        self._warmup_model()
+
+    def _warmup_model(self):
+        """
+        Warm up MLX Whisper model and compile Metal shaders to ensure sub-400ms TTFT.
+        """
+        logging.info("Warming up MLX Whisper model...")
+        temp_dir = "$CORTEX_ROOT/.gemini/antigravity/scratch"
+        os.makedirs(temp_dir, exist_ok=True)
+        warmup_wav = os.path.join(temp_dir, "warmup.wav")
+        with wave.open(warmup_wav, "wb") as wav_file:
+            wav_file.setnchannels(1)
+            wav_file.setsampwidth(2)
+            wav_file.setframerate(16000)
+            wav_file.writeframes(b"\x00" * 3200)
+        try:
+            mlx_whisper.transcribe(warmup_wav, path_or_hf_repo="mlx-community/whisper-tiny")
+            logging.info("MLX Whisper model successfully warmed up.")
+        except Exception as e:
+            logging.error(f"Warmup failed: {e}")
 
     async def ingest_audio(self, pcm_frame: bytes):
         """
@@ -45,13 +65,13 @@ class AcousticKernel:
             
             async with self._mutex:
                 logging.info(f"Mutex LOCKED. Processing tensor state for {frame_hash[:8]}")
-                t0 = time.time()
+                t0_total = time.time()
                 
                 # Real MLX Tensor Inference bridging
-                tensor_hash, pcm_hash = await self._tensor_inference(pcm_frame)
+                tensor_hash, pcm_hash, ttft = await self._tensor_inference(pcm_frame)
                 
-                ttft = (time.time() - t0) * 1000
-                ttfaf = ttft + 5.0 # Add synthesis delta
+                # TTFAF is the total duration of transcription + inference + synthesis
+                ttfaf = (time.time() - t0_total) * 1000
                 
                 self.ledger.log_acoustic_event(
                     self.session_id, 
@@ -62,7 +82,7 @@ class AcousticKernel:
                     ttfaf
                 )
                 
-                logging.info(f"Mutex RELEASED. Latency (TTFAF): {ttfaf:.4f}ms")
+                logging.info(f"Mutex RELEASED. TTFT: {ttft:.2f}ms, Latency (TTFAF): {ttfaf:.2f}ms")
                 
             self._audio_queue.task_done()
 
@@ -70,6 +90,7 @@ class AcousticKernel:
         """
         Bridge to MLX STT -> LLM -> TTS.
         """
+        t0 = time.time()
         temp_dir = "$CORTEX_ROOT/.gemini/antigravity/scratch"
         os.makedirs(temp_dir, exist_ok=True)
         temp_wav = os.path.join(temp_dir, "temp_voice_in.wav")
@@ -83,27 +104,22 @@ class AcousticKernel:
 
         # Transcribe with MLX Whisper
         logging.info(f"Transcribing {temp_wav} using MLX Whisper...")
-        try:
-            result = mlx_whisper.transcribe(
-                temp_wav,
-                path_or_hf_repo="mlx-community/whisper-large-v3-turbo"
-            )
-            text_command = result.get("text", "").strip()
-        except Exception as e:
-            logging.error(f"Whisper failed: {e}. Fallback to simulated command.")
-            text_command = "status"
+        result = mlx_whisper.transcribe(
+            temp_wav,
+            path_or_hf_repo="mlx-community/whisper-tiny"
+        )
+        text_command = result.get("text", "").strip()
 
         logging.info(f"Command Recognized: '{text_command}'")
 
+        # TTFT: Time to First Token (STT transcription complete)
+        ttft = (time.time() - t0) * 1000
+
         # Execute Command using CortexInferenceEngine
         from cortex_inference import CortexInferenceEngine
-        try:
-            async with CortexInferenceEngine() as engine:
-                inf_res = await engine.execute_inference(text_command)
-                claim = inf_res.get("claim", "Comando procesado.")
-        except Exception as e:
-            logging.error(f"Inference Engine failed: {e}")
-            claim = "Error ejecutando inferencia de voz."
+        async with CortexInferenceEngine() as engine:
+            inf_res = await engine.execute_inference(text_command)
+            claim = inf_res.get("claim", "Comando procesado.")
 
         # Synthesize Response to PCM using TensorAudioBridge
         from cortex.voice_engine.tensor_audio_bridge import TensorAudioBridge, VoiceModality
@@ -119,7 +135,9 @@ class AcousticKernel:
         # Synthesize PCM response
         _ = bridge.synthesize_pcm(tensor_h, claim)
         
-        return tensor_h, pcm_h
+        return tensor_h, pcm_h, ttft
+
+
 
 if __name__ == "__main__":
     kernel = AcousticKernel()

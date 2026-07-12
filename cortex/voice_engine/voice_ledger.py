@@ -20,14 +20,11 @@ class VoiceLedger:
 
     def _init_db(self):
         schema_path = "cortex/voice_engine/voice_ledger.sql"
-        try:
-            with open(schema_path, "r") as f:
-                schema = f.read()
-            with self._get_conn() as conn:
-                conn.executescript(schema)
-                conn.commit()
-        except Exception as e:
-            logging.error(f"Error initializing DB schema: {e}")
+        with open(schema_path, "r") as f:
+            schema = f.read()
+        with self._get_conn() as conn:
+            conn.executescript(schema)
+            conn.commit()
 
 
     def start_session(self) -> str:

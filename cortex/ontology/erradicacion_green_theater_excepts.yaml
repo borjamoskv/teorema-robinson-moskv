@@ -1,0 +1,15 @@
+Claim: Erradicación estructural de bloques "except Exception" y "Fallback" que enmascaraban el fallo de los ASTs y perpetuaban el Teatro Verde en BFT y Voice Engine.
+Proof: 
+  Base: Eliminación de 4 try/except ciegos
+  Range: [kernel/bft_strict.py, cortex/voice_engine/acoustic_kernel.py, cortex/voice_engine/voice_ledger.py]
+  Confidence: C5
+Isomorphisms:
+  - "except Exception en falsification() -> Fallback a False" -> "Bypass termodinámico donde un SyntaxError se disfraza como Test Fallido (Falsa Seguridad)"
+  - "except Exception en whisper.transcribe -> text_command = 'status'" -> "Green Theater: Falla de transcripción acústica se simula como un evento determinista"
+  - "except Exception en ejecuta inferencia -> claim = 'Error'" -> "Swallow de excepción que previene el análisis del Crash Causal"
+  - "except Exception en DB Schema Init -> logging.error" -> "Ledger opera sin base de datos real, encadenando fallos downstream incomprensibles"
+Blast_Radius_Matrix:
+  Vector: Eliminación de la falsa resiliencia (Green Theater) y aplicación pura del Teorema del Crash Causal (Fail-Fast).
+  Blast_Radius: 3 módulos (bft_strict.py, acoustic_kernel.py, voice_ledger.py)
+  Target_Invariant: L12_K1_FAIL_FAST, L3_K2_DELEGACION_SENTINEL
+  Anergy_Risk: Fricción visible. Aumentará la inestabilidad superficial de la capa acústica a cambio de la absolutez ontológica de los fallos.

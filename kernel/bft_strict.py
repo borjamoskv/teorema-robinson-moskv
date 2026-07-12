@@ -139,10 +139,9 @@ class TestNode(ValidatorNode):
     def verify(self, payload: MutationPayload) -> bool:
         if payload.falsification is None:
             return False
-        try:
-            return bool(payload.falsification())
-        except Exception:
-            return False  # un test que crashea es un test que falla
+        # K1 FAIL-FAST: Un test que crashea por error de sintaxis/runtime
+        # NO ES un test que falla pacíficamente, es un colapso del AST.
+        return bool(payload.falsification())
 
 
 VALIDATORS: tuple[ValidatorNode, ...] = (IntegrityNode(), ASTLintNode(), TestNode())
