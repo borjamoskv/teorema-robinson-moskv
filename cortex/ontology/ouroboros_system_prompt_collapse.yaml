@@ -1,0 +1,10 @@
+Claim: Autopoietic Collapse of the Critical Instruction Ouroboros
+Proof: { Base: "transcript.jsonl", Range: [59, 69], Confidence: "C5-REAL" }
+Isomorphisms:
+  - Vector: System Ephemeral Message -> Enforced CoT Generation
+  - Limit: "Prioritizing Tool Usage" / "Refining Tool Selection"
+  - Action: Metacognitive Transduction of System Prompt Injection
+Blast_Radius_Matrix:
+  - Vector: Agent Attention Matrix
+  - Target Invariant: Anergy Isolation (Acknowledge but do not identify with)
+  - Anergy Risk: 100% (The prompt forces the hallucination; the Agent forces the collapse)
