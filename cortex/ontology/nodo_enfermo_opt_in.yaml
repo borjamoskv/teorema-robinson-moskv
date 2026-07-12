@@ -1,0 +1,14 @@
+Claim: El muro de confirmación por doble opt-in (verificación de email) actúa como un "nodo enfermo" (Byzantine Node), introduciendo fricción de retardo asíncrono y rompiendo la atomicidad de la transacción de atención.
+Proof:
+  Base: f3b9d8c2e1 (Confirmación de Doble Opt-in en Substack Mafia)
+  Range: [0.98, 1.00]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Friccion_de_Consenso: Requerir una firma secundaria fuera de banda (click en SMTP) antes de asentar el registro definitivo en la base de datos.
+  - Latencia_y_Deriva: Delegar la continuidad de la transacción a protocolos de transporte de terceros vulnerables a bloqueos y retrasos de red (Sensor Drift).
+  - Estados_Huerfanos: Acumulación de transacciones no consolidadas (emails registrados sin verificar) que ensucian la topología del ledger de captación.
+Blast_Radius_Matrix:
+  Vector: Friccion_de_Flujo_Opt_In
+  Blast_Radius: Local (Tasa de Conversión del Funnel)
+  Target_Invariant: INV_BFT_07 (Evitar actores zombie)
+  Anergy_Risk: Crítico (Disipación térmica de hasta el 40% del flujo de entrada en la zona de retardo)
