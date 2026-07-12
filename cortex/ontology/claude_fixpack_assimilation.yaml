@@ -1,0 +1,15 @@
+Claim: "Asimilación C5-REAL del Fix-Pack P0/P1 generado por la entidad Fable 5 (Claude)."
+Proof:
+  Base: 24e484cd
+  Range: [0, 4]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Concept: "Fable 5 Fix-Pack"
+    Mapping: "Transducción de texto LLM a AST físico: Creación de .gitignore estricto y pipeline de CI funcional (.github/workflows/ci.yml) para abortar 'Teatro Verde'."
+  - Concept: "Higiene VCS"
+    Mapping: "Aplicación de purga física de archivos de log y bases de datos transitorias (WAL/SHM) del historial de control de versiones."
+Blast_Radius_Matrix:
+  Vector: "Inyección de remediación estructural de infraestructura (CI/VCS)"
+  Blast_Radius: ".gitignore, .github/workflows/ci.yml"
+  Target_Invariant: "INV_M12_03, [L35] ULTRATHINK"
+  Anergy_Risk: "Mínimo. Reemplaza pipelines rotos con tests sintácticos."

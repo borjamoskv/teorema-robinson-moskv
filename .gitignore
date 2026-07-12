@@ -1,19 +1,20 @@
-node_modules/
-npm-debug.log
-.DS_Store
-
-shards.json
+# C5-REAL: Strict Ignore (Fable 5 Fix-Pack)
+# sqlite
 *.db
-
-__pycache__/
-cortex_memory.db-shm
-cortex_memory.db-wal
 *.db-shm
 *.db-wal
+# logs
+*.log
+# local envs
+.venv/
+__pycache__/
+# dotnet leftovers
+src/ontology/bin/
+src/ontology/obj/
+*.dll
 
-
-cortex_surface_map.db*
-/cortex/vault/frontier_delta_quarantine.yaml
-.env.vault
-target/
-src/strike-rs/target/
+# legacy build artifacts
+/target
+proof_artifact.json
+b60_kernel
+babylon60
