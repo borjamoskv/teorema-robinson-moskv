@@ -27,7 +27,11 @@ def get_cortex_taint(data: str) -> str:
 
 def run():
     conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
-    conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA busy_timeout = 5000;")
+    try:
+        conn.execute("PRAGMA journal_mode=WAL;")
+    except sqlite3.OperationalError:
+        pass
     conn.execute("PRAGMA synchronous=NORMAL;")
     
     conn.execute("""
