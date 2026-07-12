@@ -27,6 +27,8 @@ dependencies = [
     "descript-audio-codec>=1.0.0",
     "librosa>=0.11.0",
     "numba>=0.66.0",
+    "bitcoinlib>=0.6.14",
+    "requests>=2.31.0",
 ]
 
 [project.urls]

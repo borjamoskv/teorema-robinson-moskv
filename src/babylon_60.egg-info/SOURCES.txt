@@ -10,3 +10,4 @@ tests/test_c5_evm_bounty_auditor.py
 tests/test_huella_biyectiva.py
 tests/test_master_ledger.py
 tests/test_osint_dao.py
+tests/test_voice_control.py
