@@ -5,7 +5,7 @@ Proof:
     2. Modulación Química: Ingesta experimental de Concerta de liberación prolongada (2 x 18mg = 36mg Methylphenidate). Cataliza un bucle cerrado de limpieza profunda en la habitación usando un kit de aspiradora superior, generando un retraso temporal respecto a la planificación original.
     3. Restricción de Presupuesto Liquido: Saldo Bunq neto de 92€ (tras deducción de la suscripción recurrente de 8€). Conflicto logístico entre el coste de taxi y el presupuesto de consumo superior.
     4. Ruteo Espacial y Conectividad: Decisión de trasladar la zona cero de desarrollo a la huerta del abuelo. Condiciones: sin luz artificial, ambiente conmemorativo y conectividad móvil estable.
-    5. Desviación Moral Kantiana: Intercepción del padre en la salida. Redirección semántica para evitar la mentira directa ("esta tarde") sin revelar el destino espacial real, resolviendo la restricción moral clásica del imperativo categórico kantiano.
+    5. Desviación Moral Kantiana: Intercepción del padre en la salida ("¿ahora llegas?"). Redirección semántica para evitar la mentira directa ("no, ahora salgo") sin revelar el destino espacial real (la huerta), resolviendo la restricción moral clásica del imperativo categórico kantiano.
   Range: [Fricción de Sistema, Modulación Cognitiva, Logística Crítica, Kantian Redirection]
   Confidence: C5-REAL
 Isomorphisms:
@@ -17,7 +17,7 @@ Isomorphisms:
     Mapping: Liberación Prolongada <-> Bucle atómico de orden en el cuarto
   - Domain: Ética Formal (Kant)
     Target: Interfaz Social (Padre)
-    Mapping: Mentira Directa (Prohibida) <-> Redirección Semántica ("Esta tarde")
+    Mapping: Mentira Directa (Prohibida) <-> Redirección Semántica ("No, ahora salgo")
 Blast_Radius_Matrix:
   Vector: Desplazamiento Espacial de Cero Luz
   Blast_Radius: Localización Huerta
