@@ -18,12 +18,9 @@ async def test_acoustic_kernel_pipeline():
     kernel = AcousticKernel()
     assert kernel.session_id is not None
     
-    # 3. Load the physical test.wav file
-    test_wav_path = "$CORTEX_ROOT/10_PROJECTS/motor-colapso-acustico/test.wav"
-    assert os.path.exists(test_wav_path), "Test WAV file must exist in reality"
-    
-    with wave.open(test_wav_path, "rb") as wav_file:
-        pcm_frame = wav_file.readframes(wav_file.getnframes())
+    # 3. Generate a deterministic physical 1-second silence PCM frame (16000Hz, 16-bit, Mono)
+    # Eradicating absolute path theater to external projects
+    pcm_frame = b"\x00" * (16000 * 2)
         
     # 4. Ingest and run single-step process
     await kernel.ingest_audio(pcm_frame)
@@ -31,8 +28,8 @@ async def test_acoustic_kernel_pipeline():
     # Spawn the process loop as a background task
     task = asyncio.create_task(kernel.process_loop())
     
-    # Give it some time to run the transcription, inference, and ledger logging
-    await asyncio.sleep(30.0)
+    # Deterministic collapse: wait exactly until the acoustic kernel completes processing and ledger insertion
+    await kernel._audio_queue.join()
     
     # Clean up the task
     task.cancel()

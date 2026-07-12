@@ -35,4 +35,8 @@ dependencies = [
 
 [tool.pytest.ini_options]
 norecursedirs = ["babylon60", "node_modules", ".venv"]
+filterwarnings = [
+    "ignore:.*datetime.datetime.utcfromtimestamp.*:DeprecationWarning:google",
+    "ignore:.*torch.jit.script.*:DeprecationWarning:torch"
+]
 

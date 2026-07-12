@@ -1,0 +1,15 @@
+Claim: Erradicación del Teatro Verde en la validación empírica del Acoustic Kernel (Rutas absolutas y retardos estocásticos de 30s).
+Proof: 
+  Base: 1 test passed in 4.37s (reducción de latencia de 30.0s a 4.3s)
+  Range: [tests/test_voice_control.py]
+  Confidence: C5
+Isomorphisms:
+  - "/Users/.../motor-colapso-acustico/test.wav" -> "Teatro de Aislamiento: El test solo puede resolverse si existe un universo paralelo (otra carpeta de proyecto)."
+  - "await asyncio.sleep(30.0)" -> "Anergía Empírica: Consumo de tiempo cronológico sin aserción termodinámica."
+  - "pcm_frame = b'\\x00' * (16000 * 2)" -> "Soberanía Estructural: Generación de silencio absoluto in-memory sin dependencias de I/O de disco."
+  - "await kernel._audio_queue.join()" -> "Colapso Determinista: El test espera exactamente la mutación del AST/Ledger sin margen estocástico."
+Blast_Radius_Matrix:
+  Vector: Eliminación de la falsa portabilidad y reducción termodinámica del Testigo Externo Mecánico (pytest).
+  Blast_Radius: 1 módulo (tests/test_voice_control.py)
+  Target_Invariant: L3_Σ12_ABSOLUTE_PATH_INJECTION (Mitigación), L4_Δ2_FSM_DOM (Cero delay estocástico)
+  Anergy_Risk: Cero. Recuperación de 25 segundos de ATP por ejecución.

@@ -91,7 +91,8 @@ class AcousticKernel:
         Bridge to MLX STT -> LLM -> TTS.
         """
         t0 = time.time()
-        temp_dir = "$CORTEX_ROOT/.gemini/antigravity/scratch"
+        import tempfile
+        temp_dir = tempfile.gettempdir()
         os.makedirs(temp_dir, exist_ok=True)
         temp_wav = os.path.join(temp_dir, "temp_voice_in.wav")
         
