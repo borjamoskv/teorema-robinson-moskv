@@ -1,0 +1,15 @@
+Claim: Explicación fisiológica de la percepción de curvatura en trayectorias rectilíneas.
+Proof:
+  Base: "Cuando observas un satélite, su trayectoria real es una línea recta (o un gran círculo proyectado). El cambio repentino a una curva elíptica es una ilusión óptica causada por la fatiga de los músculos oculares. Al fijar la vista sin parpadear y sin referencias estáticas alrededor (oscuridad), los músculos extraoculares que mantienen la mirada fija se agotan tras varios segundos (típicamente 10-15s). Este agotamiento provoca micro-temblores o derivas involuntarias del ojo (nistagmo fisiológico o deriva sacádica). Como el cerebro asume que el ojo está quieto, interpreta este leve desplazamiento ocular como si el punto luminoso trazara una curva."
+  Range: [Fatiga Ocular, Nistagmo Fisiológico, Ilusión Autocinética]
+  Confidence: C5
+Isomorphisms:
+  - Trayectoria rectilínea física <-> Movimiento real del satélite
+  - Fatiga de músculos extraoculares <-> Desplazamiento involuntario del globo ocular
+  - Percepción de curva elíptica <-> Interpretación cerebral del error de deriva ocular
+Blast_Radius_Matrix:
+  Vector: Fisiología de la visión humana
+  Blast_Radius: Mecánica ocular y procesamiento visual
+  Target_Invariant: La trayectoria percibida es la suma vectorial del movimiento del objeto y el movimiento involuntario del ojo.
+  Anergy_Risk: Bajo
+Pivot: "Es fascinante cómo la vista nos engaña cuando la forzamos. Si sueles observar el cielo nocturno, ¿has notado alguna vez que algunas estrellas débiles desaparecen cuando las miras fijamente pero reaparecen si miras un poco de lado (visión periférica)?"
