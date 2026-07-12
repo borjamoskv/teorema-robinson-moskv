@@ -1,0 +1,9 @@
+/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/portable-atomic-a33a76cc07d6f6fe/build_script_build-a33a76cc07d6f6fe.d: /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/build.rs /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/version.rs /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/src/gen/build.rs
+
+/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/strike-rs/target/release/build/portable-atomic-a33a76cc07d6f6fe/build_script_build-a33a76cc07d6f6fe: /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/build.rs /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/version.rs /Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/src/gen/build.rs
+
+/Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/build.rs:
+/Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/version.rs:
+/Users/borjafernandezangulo/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/portable-atomic-1.13.1/src/gen/build.rs:
+
+# env-dep:CARGO_PKG_NAME=portable-atomic

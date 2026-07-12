@@ -15,8 +15,9 @@ import aiosqlite
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 
-# Absolute path resolution to prevent context issues
-PROJECT_ROOT = Path("/Users/borjafernandezangulo/30_BABYLON-60")
+# Repo-relative root: derivado de __file__, portable entre máquinas y CI.
+# (Antes hardcodeado a /Users/.../30_BABYLON-60 — teatro de portabilidad.)
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from core.master_ledger import BFTLedgerActor, LedgerEvent

@@ -40,3 +40,15 @@ Blast_Radius_Matrix:
   Blast_Radius: "Todos los artefactos compilados, modelos, y nodos ontológicos"
   Target_Invariant: "INV-012, RED-016"
   Anergy_Risk: "0% — función pura sin efectos laterales"
+Materialization:
+  Status: C5-REAL (materializado en código físico)
+  Physical_Path: kernel/stub_sha256.py
+  SHA256: b762da8c1a8fef5ec20971c2528ddec23719b1527a034d62b4cc4845602b03a5
+  Self_Anchor: "Hash computado por el propio STUB-SHA256-001 (dogfooding: la primitiva se ancla a sí misma)."
+  Verified_By: test_stubs_c5.py
+  Evidence:
+    - "Vectores NIST FIPS 180-4 (mensaje vacío y 'abc') verificados."
+    - "Streaming 64KB idéntico a one-shot sobre payload >64KB."
+    - "assert_match hace SystemExit ante digest incorrecto (crash_over_catch)."
+    - "sha256_bytes rechaza str (TypeError) — encoding UTF-8 estricto separado."
+  Test_Result: "18/18 passed (suite de falsación de los 3 stubs)."
