@@ -6,48 +6,25 @@ from cortex.voice_engine.acoustic_kernel import AcousticKernel
 from cortex.voice_engine.voice_ledger import VoiceLedger
 import cortex_strike
 
-# Verification Test for upgraded C5-REAL Voice Control
 @pytest.mark.asyncio
 async def test_acoustic_kernel_pipeline():
-    # 1. Verify Rust cortex_strike hashing is working in the environment
-    test_bytes = b"C5-REAL-VOICE-PAYLOAD"
+    test_bytes = b'C5-REAL-VOICE-PAYLOAD'
     hash_rs = cortex_strike.bft_hash(test_bytes)
-    assert len(hash_rs) == 64  # Blake3 hex hash length
-
-    # 2. Initialize the kernel
+    assert len(hash_rs) == 64
     kernel = AcousticKernel()
     assert kernel.session_id is not None
-    
-    # 3. Generate a deterministic physical 1-second silence PCM frame (16000Hz, 16-bit, Mono)
-    # Eradicating absolute path theater to external projects
-    pcm_frame = b"\x00" * (16000 * 2)
-        
-    # 4. Ingest and run single-step process
+    pcm_frame = b'\x00' * (16000 * 2)
     await kernel.ingest_audio(pcm_frame)
-    
-    # Spawn the process loop as a background task
     task = asyncio.create_task(kernel.process_loop())
-    
-    # Deterministic collapse: wait exactly until the acoustic kernel completes processing and ledger insertion
     await kernel._audio_queue.join()
-    
-    # Clean up the task
     task.cancel()
-    
-    # 5. Assertions on the DB Ledger to verify BFT consensus
     ledger = VoiceLedger()
     conn = ledger._get_conn()
     cursor = conn.cursor()
-    
-    # Verify the event was logged and latency is recorded
-    cursor.execute("SELECT * FROM acoustic_events WHERE session_id = ?", (kernel.session_id,))
+    cursor.execute('SELECT * FROM acoustic_events WHERE session_id = ?', (kernel.session_id,))
     events = cursor.fetchall()
-    
-    assert len(events) > 0, "Acoustic event should be recorded in the C5-REAL database ledger"
-    
+    assert len(events) > 0, 'Acoustic event should be recorded in the C5-REAL database ledger'
     event = events[0]
-    # event structure: event_id, session_id, input_hash, tensor_state_hash, output_pcm_hash, ttft_ms, ttfaf_ms
-    print(f"Verified logged event: {event}")
-    assert event[5] < 400.0, "TTFT must be below the 400ms hard thermal limit"
-    
+    print(f'Verified logged event: {event}')
+    assert event[5] < 400.0, 'TTFT must be below the 400ms hard thermal limit'
     conn.close()

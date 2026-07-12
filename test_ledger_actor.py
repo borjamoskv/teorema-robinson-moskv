@@ -7,74 +7,46 @@ from bft.ledger_actor import BFTLedgerActor, LedgerEvent, ZERO_HASH, _canonical_
 
 @pytest.fixture
 def db_path(tmp_path: Path) -> Path:
-    return tmp_path / "test_ledger.db"
-
+    return tmp_path / 'test_ledger.db'
 
 @pytest.mark.asyncio
 async def test_basic_append_and_chaining(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event1 = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="test_actor_basic",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
-        
+        event1 = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_actor_basic', source_db='test_db', source_table='test_table', source_pk='pk-1')
         fut1 = actor.append(event1)
         res1 = await fut1
-        
-        assert res1["seq"] == 1
-        assert "event_id" in res1
-        assert len(res1["entry_hash"]) == 64
-
-        # Read from database to verify values
+        assert res1['seq'] == 1
+        assert 'event_id' in res1
+        assert len(res1['entry_hash']) == 64
         import aiosqlite
         async with aiosqlite.connect(db_path) as db:
-            cur = await db.execute("SELECT * FROM ledger_entries WHERE seq = 1")
+            cur = await db.execute('SELECT * FROM ledger_entries WHERE seq = 1')
             row = await cur.fetchone()
             assert row is not None
-            assert row[1] == res1["event_id"]
-            assert row[2] == "stream-1"
-            assert row[3] == "entity-A"
-            assert row[4] == "test.created"
-            assert row[5] == _canonical_json({"value": 42})
-            assert row[6] == "test_db"
-            assert row[7] == "test_table"
-            assert row[8] == "pk-1"
-            assert row[9] == "test_actor_basic"
-            assert row[10] == 1  # lamport_t
+            assert row[1] == res1['event_id']
+            assert row[2] == 'stream-1'
+            assert row[3] == 'entity-A'
+            assert row[4] == 'test.created'
+            assert row[5] == _canonical_json({'value': 42})
+            assert row[6] == 'test_db'
+            assert row[7] == 'test_table'
+            assert row[8] == 'pk-1'
+            assert row[9] == 'test_actor_basic'
+            assert row[10] == 1
             assert row[11] == ZERO_HASH
-            assert row[12] == res1["entry_hash"]
-
-        # Append second event and verify chaining
-        event2 = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.updated",
-            payload={"value": 100},
-            cortex_taint="test_actor_basic",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-2"
-        )
+            assert row[12] == res1['entry_hash']
+        event2 = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.updated', payload={'value': 100}, cortex_taint='test_actor_basic', source_db='test_db', source_table='test_table', source_pk='pk-2')
         res2 = await actor.append(event2)
-        assert res2["seq"] == 2
-        
+        assert res2['seq'] == 2
         async with aiosqlite.connect(db_path) as db:
-            cur = await db.execute("SELECT * FROM ledger_entries WHERE seq = 2")
+            cur = await db.execute('SELECT * FROM ledger_entries WHERE seq = 2')
             row = await cur.fetchone()
             assert row is not None
-            assert row[10] == 2  # lamport_t
-            assert row[11] == res1["entry_hash"]
-            assert row[12] == res2["entry_hash"]
-
+            assert row[10] == 2
+            assert row[11] == res1['entry_hash']
+            assert row[12] == res2['entry_hash']
     finally:
         await actor.stop()
 
@@ -82,36 +54,18 @@ async def test_basic_append_and_chaining(db_path):
 async def test_concurrent_appends(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        events = [
-            LedgerEvent(
-                stream="stream-concurrency",
-                entity_id="entity-C",
-                event_type="test.concurrency",
-                payload={"index": i},
-                cortex_taint=f"test_concurrency_{i}",
-                source_db="test_db",
-                source_table="test_table",
-                source_pk=f"pk-con-{i}"
-            )
-            for i in range(10)
-        ]
-
+        events = [LedgerEvent(stream='stream-concurrency', entity_id='entity-C', event_type='test.concurrency', payload={'index': i}, cortex_taint=f'test_concurrency_{i}', source_db='test_db', source_table='test_table', source_pk=f'pk-con-{i}') for i in range(10)]
         futures = [actor.append(ev) for ev in events]
         results = await asyncio.gather(*futures)
-
         assert len(results) == 10
-        seqs = [r["seq"] for r in results]
+        seqs = [r['seq'] for r in results]
         assert sorted(seqs) == list(range(1, 11))
-
-        # Check cryptographic chain and lamport clock sequence
         import aiosqlite
         async with aiosqlite.connect(db_path) as db:
-            cur = await db.execute("SELECT seq, lamport_t, prev_hash, entry_hash FROM ledger_entries ORDER BY seq ASC")
+            cur = await db.execute('SELECT seq, lamport_t, prev_hash, entry_hash FROM ledger_entries ORDER BY seq ASC')
             rows = await cur.fetchall()
             assert len(rows) == 10
-            
             for idx, row in enumerate(rows):
                 seq, lamport_t, prev_hash, entry_hash = row
                 assert seq == idx + 1
@@ -120,7 +74,6 @@ async def test_concurrent_appends(db_path):
                     assert prev_hash == ZERO_HASH
                 else:
                     assert prev_hash == rows[idx - 1][3]
-
     finally:
         await actor.stop()
 
@@ -128,32 +81,17 @@ async def test_concurrent_appends(db_path):
 async def test_immutability_triggers(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="test_immutability",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_immutability', source_db='test_db', source_table='test_table', source_pk='pk-1')
         res = await actor.append(event)
-        
-        # Test manual update is blocked
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
             with pytest.raises(sqlite3.IntegrityError) as excinfo:
                 cursor.execute("UPDATE ledger_entries SET stream = 'corrupt' WHERE seq = 1")
-            assert "immutable master ledger" in str(excinfo.value)
-
-            # Test manual delete is blocked
+            assert 'immutable master ledger' in str(excinfo.value)
             with pytest.raises(sqlite3.IntegrityError) as excinfo:
-                cursor.execute("DELETE FROM ledger_entries WHERE seq = 1")
-            assert "immutable master ledger" in str(excinfo.value)
-
+                cursor.execute('DELETE FROM ledger_entries WHERE seq = 1')
+            assert 'immutable master ledger' in str(excinfo.value)
     finally:
         await actor.stop()
 
@@ -161,32 +99,18 @@ async def test_immutability_triggers(db_path):
 async def test_idempotent_retry_collapse(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="test_idempotency",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
-
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_idempotency', source_db='test_db', source_table='test_table', source_pk='pk-1')
         res1 = await actor.append(event)
         res2 = await actor.append(event)
-
-        assert res1["seq"] == res2["seq"]
-        assert res1["event_id"] == res2["event_id"]
-        assert res1["entry_hash"] == res2["entry_hash"]
-
+        assert res1['seq'] == res2['seq']
+        assert res1['event_id'] == res2['event_id']
+        assert res1['entry_hash'] == res2['entry_hash']
         import aiosqlite
         async with aiosqlite.connect(db_path) as db:
-            cur = await db.execute("SELECT COUNT(*) FROM ledger_entries")
+            cur = await db.execute('SELECT COUNT(*) FROM ledger_entries')
             count = await cur.fetchone()
             assert count[0] == 1
-
     finally:
         await actor.stop()
 
@@ -194,23 +118,11 @@ async def test_idempotent_retry_collapse(db_path):
 async def test_cortex_taint_check(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event_invalid = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
-        
+        event_invalid = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='', source_db='test_db', source_table='test_table', source_pk='pk-1')
         with pytest.raises(ValueError) as excinfo:
             await actor.append(event_invalid)
-        assert "cortex_taint" in str(excinfo.value)
-
+        assert 'cortex_taint' in str(excinfo.value)
     finally:
         await actor.stop()
 
@@ -218,48 +130,32 @@ async def test_cortex_taint_check(db_path):
 async def test_idempotency_masking_on_integrity_error(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="test_masking",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_masking', source_db='test_db', source_table='test_table', source_pk='pk-1')
         res1 = await actor.append(event)
-
-        # Mock the event_id check SELECT query to return None only ONCE
         original_process = actor._process
-        
         called = False
+
         async def mock_process(db, ev, fut):
             original_execute = db.execute
-            
+
             async def mock_execute(sql, *args, **kwargs):
                 nonlocal called
-                if "SELECT seq, entry_hash FROM ledger_entries WHERE event_id =" in sql and not called:
+                if 'SELECT seq, entry_hash FROM ledger_entries WHERE event_id =' in sql and (not called):
                     called = True
+
                     class MockCursor:
+
                         async def fetchone(self):
                             return None
                     return MockCursor()
                 return await original_execute(sql, *args, **kwargs)
-                
             db.execute = mock_execute
             await original_process(db, ev, fut)
-
         actor._process = mock_process
-
-        # This append should trigger IntegrityError but return successfully because of masking (INV_BFT_05)
         res2 = await actor.append(event)
-        
-        assert res1["seq"] == res2["seq"]
-        assert res1["entry_hash"] == res2["entry_hash"]
-
+        assert res1['seq'] == res2['seq']
+        assert res1['entry_hash'] == res2['entry_hash']
     finally:
         await actor.stop()
 
@@ -267,50 +163,32 @@ async def test_idempotency_masking_on_integrity_error(db_path):
 async def test_zombie_actor_prevention(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
-
     try:
-        event = LedgerEvent(
-            stream="stream-1",
-            entity_id="entity-A",
-            event_type="test.created",
-            payload={"value": 42},
-            cortex_taint="test_zombie",
-            source_db="test_db",
-            source_table="test_table",
-            source_pk="pk-1"
-        )
-        
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_zombie', source_db='test_db', source_table='test_table', source_pk='pk-1')
         original_process = actor._process
-        
+
         async def mock_process_fail(db, ev, fut):
             original_execute = db.execute
+
             async def mock_execute(sql, *args, **kwargs):
-                if sql == "ROLLBACK":
-                    raise sqlite3.Error("Mock Rollback Failure")
-                if "INSERT INTO ledger_entries" in sql:
-                    raise sqlite3.Error("Mock Insert Failure")
+                if sql == 'ROLLBACK':
+                    raise sqlite3.Error('Mock Rollback Failure')
+                if 'INSERT INTO ledger_entries' in sql:
+                    raise sqlite3.Error('Mock Insert Failure')
                 return await original_execute(sql, *args, **kwargs)
             db.execute = mock_execute
             await original_process(db, ev, fut)
-
         actor._process = mock_process_fail
-
-        # Append and expect the future to fail
         fut = actor.append(event)
         with pytest.raises(Exception):
             await fut
-
-        # Deterministic crash wait instead of stochastic sleep
         try:
             await actor._task
         except Exception:
             pass
-
-        # Subsequent append must raise RuntimeError due to Zombie Actor Prevention (INV_BFT_07)
         with pytest.raises(RuntimeError) as excinfo:
             actor.append(event)
-        assert "Zombie Actor Prevention" in str(excinfo.value)
-
+        assert 'Zombie Actor Prevention' in str(excinfo.value)
     finally:
         await actor.stop()
 
@@ -319,11 +197,7 @@ async def test_ledger_verify_chain_valid(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
     try:
-        event = LedgerEvent(
-            stream="stream-1", entity_id="entity-A", event_type="test.created",
-            payload={"value": 42}, cortex_taint="test_verify_valid",
-            source_db="test_db", source_table="test_table", source_pk="pk-1"
-        )
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_verify_valid', source_db='test_db', source_table='test_table', source_pk='pk-1')
         await actor.append(event)
         assert await actor.verify_chain() is True
     finally:
@@ -334,22 +208,14 @@ async def test_direct_sql_forged_hash_detected(db_path):
     actor = BFTLedgerActor(db_path)
     await actor.start()
     try:
-        event = LedgerEvent(
-            stream="stream-1", entity_id="entity-A", event_type="test.created",
-            payload={"value": 42}, cortex_taint="test_verify_tampered",
-            source_db="test_db", source_table="test_table", source_pk="pk-1"
-        )
+        event = LedgerEvent(stream='stream-1', entity_id='entity-A', event_type='test.created', payload={'value': 42}, cortex_taint='test_verify_tampered', source_db='test_db', source_table='test_table', source_pk='pk-1')
         await actor.append(event)
         assert await actor.verify_chain() is True
-        
-        # Manually alter database bypassing the triggers by updating without triggering them (disable triggers is not possible without DDL, but we can do it via a direct connection or temporarily dropping/altering triggers, or simply using SQL since the trigger is on UPDATE of ledger_entries. Wait, update trigger raises ABORT, so we can't update.
-        # But we can drop triggers in SQLite and update, simulating a direct SQL injection attacker!
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
-            cursor.execute("DROP TRIGGER trg_ledger_immutable_update")
-            cursor.execute("UPDATE ledger_entries SET payload_json = '{\"value\": 99}' WHERE seq = 1")
+            cursor.execute('DROP TRIGGER trg_ledger_immutable_update')
+            cursor.execute('UPDATE ledger_entries SET payload_json = \'{"value": 99}\' WHERE seq = 1')
             conn.commit()
-            
         assert await actor.verify_chain() is False
     finally:
         await actor.stop()

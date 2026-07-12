@@ -1,21 +1,11 @@
 import numpy as np
 from typing import List, Dict, Tuple
 
-# C5-REAL: Feature Spec for H-ED-01
-
 def compute_aggregate_entropy(route_probabilities: np.ndarray) -> float:
-    """
-    1. Diversidad agregada de rutas elegidas (H(R)).
-    route_probabilities: Probabilidad marginal de cada ruta P(R=r) en la ventana.
-    """
     route_probabilities = route_probabilities[route_probabilities > 0]
     return -np.sum(route_probabilities * np.log2(route_probabilities))
 
 def compute_predictive_entropy(prompt_propensities: List[np.ndarray]) -> float:
-    """
-    2. Incertidumbre predictiva del router por prompt E_x[H(pi(R|x))].
-    prompt_propensities: Lista de arrays, donde cada array es la distribución pi(R|x_i).
-    """
     entropies = []
     for props in prompt_propensities:
         props = props[props > 0]
@@ -24,13 +14,9 @@ def compute_predictive_entropy(prompt_propensities: List[np.ndarray]) -> float:
     return float(np.mean(entropies)) if entropies else 0.0
 
 def compute_distribution_divergence(p_t: np.ndarray, p_ref: np.ndarray) -> float:
-    """
-    3. Divergencia de distribución JS (D_JS(P_t(R) || P_ref(R))).
-    """
     m = 0.5 * (p_t + p_ref)
-    
+
     def kl_divergence(p, q):
         mask = (p > 0) & (q > 0)
         return np.sum(p[mask] * np.log2(p[mask] / q[mask]))
-        
     return 0.5 * kl_divergence(p_t, m) + 0.5 * kl_divergence(p_ref, m)

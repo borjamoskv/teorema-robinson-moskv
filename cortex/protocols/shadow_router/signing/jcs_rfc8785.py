@@ -1,7 +1,3 @@
-"""
-RFC 8785 JSON Canonicalization Scheme (JCS) Implementation.
-"""
-
 import json
 from typing import Any, Union
 import unicodedata
@@ -12,12 +8,17 @@ def _escape_unicode_char(char: str) -> str:
         return '\\"'
     elif char == '\\':
         return '\\\\'
-    elif code_point < 0x20:
-        if char == '\b': return '\\b'
-        if char == '\t': return '\\t'
-        if char == '\n': return '\\n'
-        if char == '\f': return '\\f'
-        if char == '\r': return '\\r'
+    elif code_point < 32:
+        if char == '\x08':
+            return '\\b'
+        if char == '\t':
+            return '\\t'
+        if char == '\n':
+            return '\\n'
+        if char == '\x0c':
+            return '\\f'
+        if char == '\r':
+            return '\\r'
         return f'\\u{code_point:04x}'
     else:
         return char
@@ -35,11 +36,10 @@ def _canonicalize_number(n: Union[int, float]) -> str:
     if isinstance(n, int):
         return str(n)
     if isinstance(n, float):
-        if n != n:  # NaN
-            raise ValueError("NaN is not allowed in canonical JSON")
+        if n != n:
+            raise ValueError('NaN is not allowed in canonical JSON')
         if n == float('inf') or n == float('-inf'):
-            raise ValueError("Infinity is not allowed in canonical JSON")
-        
+            raise ValueError('Infinity is not allowed in canonical JSON')
         s = repr(n)
         s = s.replace('E', 'e')
         if '.' in s and 'e' not in s:
@@ -47,7 +47,7 @@ def _canonicalize_number(n: Union[int, float]) -> str:
             if '.' not in s:
                 s += '.0'
         return s
-    raise TypeError(f"Unsupported number type: {type(n)}")
+    raise TypeError(f'Unsupported number type: {type(n)}')
 
 def _canonicalize_value(v: Any) -> str:
     if v is None:
@@ -59,10 +59,10 @@ def _canonicalize_value(v: Any) -> str:
     if isinstance(v, str):
         return _canonicalize_string(v)
     if isinstance(v, list):
-        return '[' + ','.join(_canonicalize_value(item) for item in v) + ']'
+        return '[' + ','.join((_canonicalize_value(item) for item in v)) + ']'
     if isinstance(v, dict):
         return _canonicalize_object(v)
-    raise TypeError(f"Unsupported type for canonicalization: {type(v)}")
+    raise TypeError(f'Unsupported type for canonicalization: {type(v)}')
 
 def _canonicalize_object(obj: dict) -> str:
     if not obj:
@@ -76,9 +76,6 @@ def _canonicalize_object(obj: dict) -> str:
     return '{' + ','.join(pairs) + '}'
 
 def canonicalize(obj: Any) -> str:
-    """
-    Canonicalize a Python object to RFC 8785 JCS string.
-    """
     return _canonicalize_value(obj)
 
 def canonical_hash(obj: Any) -> str:

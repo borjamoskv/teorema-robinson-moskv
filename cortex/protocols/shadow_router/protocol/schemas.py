@@ -4,39 +4,36 @@ from datetime import datetime
 
 class SignatureBlock(BaseModel):
     model_config = ConfigDict(frozen=True)
-    algorithm: Literal["Ed25519"]
-    key_id: str  # did:key fingerprint completo
-    value: str  # base64url de la firma
+    algorithm: Literal['Ed25519']
+    key_id: str
+    value: str
     signed_at: datetime
     valid_until: Optional[datetime] = None
 
 class ReceiptEnvelope(BaseModel):
-    """Envelope firmado universal que encapsula cualquier receipt."""
     model_config = ConfigDict(frozen=True)
-    schema_version: str = "proof-of-route/envelope/v0.2.2"
-    parent_signed_receipt_hash: Optional[str] = None  # Enlace único al envelope padre
-    payload_hash: str  # SHA-256 del payload canonicalizado en JCS
+    schema_version: str = 'proof-of-route/envelope/v0.2.2'
+    parent_signed_receipt_hash: Optional[str] = None
+    payload_hash: str
     signature: SignatureBlock
-    payload: dict  # Contenido del receipt correspondiente
+    payload: dict
 
 class EgressPermit(BaseModel):
-    """Permiso de egress de un solo uso generado a partir de un DecisionReceipt."""
     model_config = ConfigDict(frozen=True)
-    schema_version: str = Field(default="proof-of-route/egress-permit/v0.2.2", alias="schema")
+    schema_version: str = Field(default='proof-of-route/egress-permit/v0.2.2', alias='schema')
     issuer: str
     decision_signed_receipt_hash: str
     route_id: str
-    purpose: Literal["primary", "shadow"]
+    purpose: Literal['primary', 'shadow']
     permit_id: str
     issued_at: datetime
     expires_at: datetime
     single_use: bool
 
-# --- Decision Receipt (T0) ---
 class RoutingPolicy(BaseModel):
     model_config = ConfigDict(frozen=True)
     selected_route: str
-    selection_propensity_basis_points: int  # e.g. 9200 = 0.92
+    selection_propensity_basis_points: int
     candidate_set_hash: str
     policy_version: str
     features_hash: str
@@ -77,33 +74,32 @@ class PrivacyEligibilityResult(BaseModel):
 
 class DecisionReceipt(BaseModel):
     model_config = ConfigDict(frozen=True)
-    receipt_type: Literal["decision_receipt"] = "decision_receipt"
+    receipt_type: Literal['decision_receipt'] = 'decision_receipt'
     request_id: str
     routing_policy: RoutingPolicy
     shadow_policy: ShadowPolicy
     utility_predictions: UtilityPredictions
     privacy_eligibility: PrivacyEligibilityResult
-    prompt_commitment: str  # HMAC con clave rotativa o commitment con nonce encryptado
+    prompt_commitment: str
     config_hash: str
 
-# --- Execution Receipt (T1) ---
 class TTFTMeasurement(BaseModel):
     model_config = ConfigDict(frozen=True)
     request_started_at_ns: int
     first_byte_at_ns: int
-    first_content_token_at_ns: Optional[int] = None  # NULL en non-streaming
+    first_content_token_at_ns: Optional[int] = None
     completed_at_ns: int
     ttfb_ms: int
-    ttft_ms: Optional[int] = None  # NULL en non-streaming
+    ttft_ms: Optional[int] = None
     total_latency_ms: int
     streaming_enabled: bool
-    ttft_status: Literal["client_observed", "unobservable_non_streaming"]
-    clock_source: Literal["monotonic_ns"] = "monotonic_ns"
-    measurement_scope: Literal["client_end_to_end"] = "client_end_to_end"
+    ttft_status: Literal['client_observed', 'unobservable_non_streaming']
+    clock_source: Literal['monotonic_ns'] = 'monotonic_ns'
+    measurement_scope: Literal['client_end_to_end'] = 'client_end_to_end'
 
 class TelemetrySource(BaseModel):
     model_config = ConfigDict(frozen=True)
-    measurement_source: Literal["client_observed", "provider_attested"]
+    measurement_source: Literal['client_observed', 'provider_attested']
     provider_internal_telemetry_available: bool
     provider_attestation_hash: Optional[str] = None
     internal_components: Optional[Dict[str, int]] = None
@@ -123,32 +119,30 @@ class ExecutionMetrics(BaseModel):
 
 class ExecutionReceipt(BaseModel):
     model_config = ConfigDict(frozen=True)
-    receipt_type: Literal["execution_receipt"] = "execution_receipt"
+    receipt_type: Literal['execution_receipt'] = 'execution_receipt'
     decision_receipt_hash: str
     ttft_measurement: TTFTMeasurement
     telemetry_source: TelemetrySource
     execution_metrics: ExecutionMetrics
-    response_commitment: str  # SHA-256 segregado del response
+    response_commitment: str
 
-# --- Evaluation Receipt (T2) ---
 class ObservedProxyRegret(BaseModel):
     model_config = ConfigDict(frozen=True)
     selected_route_id: str
     best_observed_route_id: str
     selected_utility_basis_points: int
     best_observed_utility_basis_points: int
-    observed_proxy_regret_basis_points: int  # Debe ser >= 0
+    observed_proxy_regret_basis_points: int
     utility_spec_hash: str
     evaluator_hash: str
 
 class EvaluationReceipt(BaseModel):
     model_config = ConfigDict(frozen=True)
-    receipt_type: Literal["evaluation_receipt"] = "evaluation_receipt"
-    dependencies: List[Dict[str, str]]  # Enlaces tipados a envelopes de execution receipts
+    receipt_type: Literal['evaluation_receipt'] = 'evaluation_receipt'
+    dependencies: List[Dict[str, str]]
     observed_proxy_regret: ObservedProxyRegret
     evaluation_completed_at_unix: int
 
-# --- Aggregate Evaluation Report (T3) ---
 class CohortDefinition(BaseModel):
     model_config = ConfigDict(frozen=True)
     cohort_id: str
@@ -185,7 +179,7 @@ class ProxyDifferenceEstimate(BaseModel):
 
 class AggregateEvaluationReport(BaseModel):
     model_config = ConfigDict(frozen=True)
-    receipt_type: Literal["aggregate_evaluation_report"] = "aggregate_evaluation_report"
+    receipt_type: Literal['aggregate_evaluation_report'] = 'aggregate_evaluation_report'
     cohort: CohortDefinition
     period_start: str
     period_end: str

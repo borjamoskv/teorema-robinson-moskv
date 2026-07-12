@@ -1,20 +1,5 @@
-TRANSITIONS = {
-    "📢": ["🛡️", "📦"],
-    "🛡️": ["✅", "⏳"],
-    "✅": ["📤", "🧠"],
-    "❌": ["🔄", "💀"],
-    "📦": ["🧠", "🔒"],
-    "🧠": ["⚡", "💀", "🩸", "⏳"],
-    "⚡": ["📤", "✅", "📢"],
-    "🩸": ["📦", "🔄"],
-    "💀": ["🔄", "❌"],
-    "🔒": ["🔓"],
-    "🔓": ["🧠"],
-    "⏳": ["🧠", "💀"],
-    "🔄": ["👑", "⏳"],
-    "👑": ["📢", "📦"],
-    "📤": []
-}
+TRANSITIONS = {'📢': ['🛡️', '📦'], '🛡️': ['✅', '⏳'], '✅': ['📤', '🧠'], '❌': ['🔄', '💀'], '📦': ['🧠', '🔒'], '🧠': ['⚡', '💀', '🩸', '⏳'], '⚡': ['📤', '✅', '📢'], '🩸': ['📦', '🔄'], '💀': ['🔄', '❌'], '🔒': ['🔓'], '🔓': ['🧠'], '⏳': ['🧠', '💀'], '🔄': ['👑', '⏳'], '👑': ['📢', '📦'], '📤': []}
+
 def get_reachable(graph, start, exclude_direct=None):
     visited = set()
     queue = []
@@ -30,9 +15,8 @@ def get_reachable(graph, start, exclude_direct=None):
                 visited.add(child)
                 queue.append(child)
     return visited
-
 for node, children in TRANSITIONS.items():
     for child in children:
         reachable = get_reachable(TRANSITIONS, node, exclude_direct=child)
         if child in reachable:
-            print(f"{node} -> {child}")
+            print(f'{node} -> {child}')

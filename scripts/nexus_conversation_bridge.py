@@ -1,7 +1,3 @@
-#!$CORTEX_ROOT/.venv/bin/python3
-# C5-REAL SOVEREIGN: Nexus Conversation Bridge (V14 - FINAL APEX COMPILATION)
-# Motor Asíncrono de Ingesta, Búsqueda O(1) FTS5 Fuzzy, Taint Semántico y UDS IPC.
-
 import os
 import sys
 import json
@@ -13,7 +9,6 @@ import threading
 import hashlib
 from pathlib import Path
 from datetime import datetime
-
 try:
     from rich.console import Console
     from rich.table import Table
@@ -25,289 +20,164 @@ try:
 except ImportError:
     print("FATAL: 'rich' no instalado. Usa: pip install rich")
     sys.exit(1)
-
-# Path to all conversation transcripts in the CORTEX environment
-BRAIN_DIR = Path.home() / ".gemini" / "antigravity" / "brain"
-DB_PATH = BRAIN_DIR.parent / "nexus_transcripts.db"
-TELEMETRY_DB = BRAIN_DIR.parent / "telemetry.db"
+BRAIN_DIR = Path.home() / '.gemini' / 'antigravity' / 'brain'
+DB_PATH = BRAIN_DIR.parent / 'nexus_transcripts.db'
+TELEMETRY_DB = BRAIN_DIR.parent / 'telemetry.db'
 
 def init_db() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH, isolation_level=None)
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA synchronous=NORMAL")
-    conn.execute("PRAGMA busy_timeout=5000")
-    
-    # Check if we need to migrate schema (add step_index)
+    conn.execute('PRAGMA journal_mode=WAL')
+    conn.execute('PRAGMA synchronous=NORMAL')
+    conn.execute('PRAGMA busy_timeout=5000')
     try:
         cursor = conn.cursor()
-        cursor.execute("SELECT step_index FROM transcripts_fts LIMIT 1")
+        cursor.execute('SELECT step_index FROM transcripts_fts LIMIT 1')
     except sqlite3.OperationalError:
-        conn.execute("DROP TABLE IF EXISTS transcripts_fts")
-        conn.execute("DROP TABLE IF EXISTS sync_metadata")
-
-    conn.execute('''
-        CREATE VIRTUAL TABLE IF NOT EXISTS transcripts_fts USING fts5(
-            conversation_id UNINDEXED,
-            step_index UNINDEXED,
-            source UNINDEXED,
-            content,
-            timestamp UNINDEXED
-        )
-    ''')
-    
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS sync_metadata (
-            conversation_id TEXT PRIMARY KEY,
-            last_modified REAL
-        )
-    ''')
-    
-    # V10: MLX-LM Vector Embeddings Hook Schema
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS transcripts_embeddings (
-            conversation_id TEXT,
-            step_index INTEGER,
-            model_name TEXT,
-            embedding BLOB,
-            PRIMARY KEY(conversation_id, step_index, model_name)
-        )
-    ''')
-
-    # V15: C5-REAL Merkle Ledger (Certificar)
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS merkle_ledger (
-            conversation_id TEXT,
-            step_index INTEGER,
-            content_hash TEXT,
-            prev_hash TEXT,
-            PRIMARY KEY(conversation_id, step_index)
-        )
-    ''')
-    
-    # Init Telemetry DB
+        conn.execute('DROP TABLE IF EXISTS transcripts_fts')
+        conn.execute('DROP TABLE IF EXISTS sync_metadata')
+    conn.execute('\n        CREATE VIRTUAL TABLE IF NOT EXISTS transcripts_fts USING fts5(\n            conversation_id UNINDEXED,\n            step_index UNINDEXED,\n            source UNINDEXED,\n            content,\n            timestamp UNINDEXED\n        )\n    ')
+    conn.execute('\n        CREATE TABLE IF NOT EXISTS sync_metadata (\n            conversation_id TEXT PRIMARY KEY,\n            last_modified REAL\n        )\n    ')
+    conn.execute('\n        CREATE TABLE IF NOT EXISTS transcripts_embeddings (\n            conversation_id TEXT,\n            step_index INTEGER,\n            model_name TEXT,\n            embedding BLOB,\n            PRIMARY KEY(conversation_id, step_index, model_name)\n        )\n    ')
+    conn.execute('\n        CREATE TABLE IF NOT EXISTS merkle_ledger (\n            conversation_id TEXT,\n            step_index INTEGER,\n            content_hash TEXT,\n            prev_hash TEXT,\n            PRIMARY KEY(conversation_id, step_index)\n        )\n    ')
     conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
-    conn_tel.execute("PRAGMA journal_mode=WAL")
-    conn_tel.execute('''
-        CREATE TABLE IF NOT EXISTS ttft_metrics (
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            query TEXT,
-            latency_ms REAL,
-            results_count INTEGER
-        )
-    ''')
+    conn_tel.execute('PRAGMA journal_mode=WAL')
+    conn_tel.execute('\n        CREATE TABLE IF NOT EXISTS ttft_metrics (\n            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n            query TEXT,\n            latency_ms REAL,\n            results_count INTEGER\n        )\n    ')
     conn_tel.close()
-    
     return conn
 
 def record_telemetry(query: str, latency_ms: float, results_count: int):
     conn = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
-    conn.execute(
-        "INSERT INTO ttft_metrics (query, latency_ms, results_count) VALUES (?, ?, ?)",
-        (query, latency_ms, results_count)
-    )
+    conn.execute('INSERT INTO ttft_metrics (query, latency_ms, results_count) VALUES (?, ?, ?)', (query, latency_ms, results_count))
     conn.close()
 
-def sync_transcripts(conn: sqlite3.Connection, force: bool = False, purge: bool = False):
-    with console.status("[bold cyan]Ingestando matriz conversacional en SQLite FTS5...[/bold cyan]") as status:
-        files = list(BRAIN_DIR.glob("*/.system_generated/logs/transcript.jsonl"))
-        
+def sync_transcripts(conn: sqlite3.Connection, force: bool=False, purge: bool=False):
+    with console.status('[bold cyan]Ingestando matriz conversacional en SQLite FTS5...[/bold cyan]') as status:
+        files = list(BRAIN_DIR.glob('*/.system_generated/logs/transcript.jsonl'))
         cursor = conn.cursor()
         synced = 0
         skipped = 0
-        
         for transcript_file in files:
             conv_id = transcript_file.parts[-4]
             try:
                 mtime = transcript_file.stat().st_mtime
-                
                 if not force:
-                    cursor.execute("SELECT last_modified FROM sync_metadata WHERE conversation_id = ?", (conv_id,))
+                    cursor.execute('SELECT last_modified FROM sync_metadata WHERE conversation_id = ?', (conv_id,))
                     row = cursor.fetchone()
                     if row and row[0] >= mtime:
                         skipped += 1
                         continue
-                
-                cursor.execute("DELETE FROM transcripts_fts WHERE conversation_id = ?", (conv_id,))
-                cursor.execute("DELETE FROM merkle_ledger WHERE conversation_id = ?", (conv_id,))
-                
-                prev_hash = "0" * 64 # Genesis Hash
-                
-                with open(transcript_file, "r", encoding="utf-8") as f:
+                cursor.execute('DELETE FROM transcripts_fts WHERE conversation_id = ?', (conv_id,))
+                cursor.execute('DELETE FROM merkle_ledger WHERE conversation_id = ?', (conv_id,))
+                prev_hash = '0' * 64
+                with open(transcript_file, 'r', encoding='utf-8') as f:
                     for idx, line in enumerate(f):
                         if not line.strip():
                             continue
                         try:
                             data = json.loads(line)
                         except json.JSONDecodeError as e:
-                            console.print(f"[bold red]ANERGÍA DETECTADA (Corrupted JSONL):[/bold red] {e} in {transcript_file}")
+                            console.print(f'[bold red]ANERGÍA DETECTADA (Corrupted JSONL):[/bold red] {e} in {transcript_file}')
                             continue
-                            
-                        content = data.get("content", "")
+                        content = data.get('content', '')
                         if content:
-                            source = data.get("source", "UNKNOWN")
-                            step_idx = data.get("step_index", idx)
+                            source = data.get('source', 'UNKNOWN')
+                            step_idx = data.get('step_index', idx)
                             if len(content) > 100000:
                                 continue
-                            
-                            # SAGA-2: Firma Criptográfica & Merkle Link
-                            raw_payload = f"{prev_hash}{conv_id}{step_idx}{source}{content}".encode('utf-8')
+                            raw_payload = f'{prev_hash}{conv_id}{step_idx}{source}{content}'.encode('utf-8')
                             current_hash = hashlib.sha256(raw_payload).hexdigest()
-
-                            cursor.execute(
-                                "INSERT INTO transcripts_fts (conversation_id, step_index, source, content, timestamp) VALUES (?, ?, ?, ?, ?)",
-                                (conv_id, step_idx, source, str(content), mtime)
-                            )
-                            # SAGA-5: Emisión en Libro Mayor Inmutable
-                            cursor.execute(
-                                "INSERT OR IGNORE INTO merkle_ledger (conversation_id, step_index, content_hash, prev_hash) VALUES (?, ?, ?, ?)",
-                                (conv_id, step_idx, current_hash, prev_hash)
-                            )
+                            cursor.execute('INSERT INTO transcripts_fts (conversation_id, step_index, source, content, timestamp) VALUES (?, ?, ?, ?, ?)', (conv_id, step_idx, source, str(content), mtime))
+                            cursor.execute('INSERT OR IGNORE INTO merkle_ledger (conversation_id, step_index, content_hash, prev_hash) VALUES (?, ?, ?, ?)', (conv_id, step_idx, current_hash, prev_hash))
                             prev_hash = current_hash
-                
-                cursor.execute(
-                    "INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)",
-                    (conv_id, mtime)
-                )
+                cursor.execute('INSERT OR REPLACE INTO sync_metadata (conversation_id, last_modified) VALUES (?, ?)', (conv_id, mtime))
                 conn.commit()
                 synced += 1
-                
                 if purge:
                     try:
                         transcript_file.unlink()
-                        console.print(f"[bold red]💥 PURGED ENTROPY:[/bold red] {transcript_file}")
+                        console.print(f'[bold red]💥 PURGED ENTROPY:[/bold red] {transcript_file}')
                     except OSError as e:
-                        console.print(f"[bold red]Error purging {transcript_file}: {e}[/bold red]")
+                        console.print(f'[bold red]Error purging {transcript_file}: {e}[/bold red]')
             except FileNotFoundError:
                 continue
-                
-        console.print(f"[bold green]✔ SYNC COMPLETE[/bold green] [cyan]{synced}[/cyan] conversiones mutadas, [dim]{skipped}[/dim] omitidas.")
+        console.print(f'[bold green]✔ SYNC COMPLETE[/bold green] [cyan]{synced}[/cyan] conversiones mutadas, [dim]{skipped}[/dim] omitidas.')
 
-def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window: int = 0):
+def search_fts(conn: sqlite3.Connection, query: str, limit: int, context_window: int=0):
     start_t = time.time()
-    
-    # V13: Búsqueda Fuzzy Estructural (FTS5 Prefix Match)
     import re
-    # Remove special chars and append * to each word unless it already has it
-    clean_query = re.sub(r'[^\w\s-]', '', query).strip()
-    if clean_query and '*' not in query and '"' not in query:
+    clean_query = re.sub('[^\\w\\s-]', '', query).strip()
+    if clean_query and '*' not in query and ('"' not in query):
         words = clean_query.split()
         fuzzy_query = ' '.join([f'"{w}"*' for w in words])
         safe_query = fuzzy_query
     else:
         safe_query = query.replace("'", "''")
-
-    console.print(Panel(f"Rastreando entropía: [bold yellow]'{safe_query}'[/bold yellow] (Límite: {limit}) | Contexto ±{context_window}", title="NEXUS FTS5 BRUTALIST", border_style="cyan"))
-    
+    console.print(Panel(f"Rastreando entropía: [bold yellow]'{safe_query}'[/bold yellow] (Límite: {limit}) | Contexto ±{context_window}", title='NEXUS FTS5 BRUTALIST', border_style='cyan'))
     start_time = time.perf_counter()
     cursor = conn.cursor()
     try:
-        cursor.execute(f'''
-            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)
-            FROM transcripts_fts t
-            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
-            WHERE transcripts_fts MATCH '{safe_query}' 
-            ORDER BY rank LIMIT ?
-        ''', (limit,))
+        cursor.execute(f"\n            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)\n            FROM transcripts_fts t\n            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index\n            WHERE transcripts_fts MATCH '{safe_query}' \n            ORDER BY rank LIMIT ?\n        ", (limit,))
         rows = cursor.fetchall()
     except sqlite3.OperationalError:
         safe_query = query.replace('"', '""')
-        cursor.execute(f'''
-            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)
-            FROM transcripts_fts t
-            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
-            WHERE transcripts_fts MATCH '{safe_query}' 
-            ORDER BY rank LIMIT ?
-        ''', (limit,))
+        cursor.execute(f"\n            SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[bold yellow]', '[/bold yellow]', '...', 15)\n            FROM transcripts_fts t\n            LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index\n            WHERE transcripts_fts MATCH '{safe_query}' \n            ORDER BY rank LIMIT ?\n        ", (limit,))
         rows = cursor.fetchall()
-        
     latency_ms = (time.perf_counter() - start_time) * 1000.0
     record_telemetry(query, latency_ms, len(rows))
-        
     if not rows:
         console.print(f"\n[bold red]💀 ANERGÍA:[/bold red] La entropía '{query}' no existe en ningún bloque de la red.")
         return
-        
     for i, (conv_id, step_idx, source, c_hash, snip) in enumerate(rows):
         clean_snip = snip.replace(chr(10), ' ')
         clean_snip = clean_snip.replace('[bold yellow]', '[bold red]').replace('[/bold yellow]', '[/bold red]')
-        
-        merkle_str = f" | [magenta]Merkle: {c_hash[:8]}[/magenta]" if c_hash else ""
-        console.print(Panel(f"[bold yellow]MATCH {i+1}[/bold yellow] | Conv: [dim]{conv_id}[/dim] | Step: {step_idx} | Source: [cyan]{source}[/cyan]{merkle_str}\n{clean_snip}", border_style="magenta"))
-        
+        merkle_str = f' | [magenta]Merkle: {c_hash[:8]}[/magenta]' if c_hash else ''
+        console.print(Panel(f'[bold yellow]MATCH {i + 1}[/bold yellow] | Conv: [dim]{conv_id}[/dim] | Step: {step_idx} | Source: [cyan]{source}[/cyan]{merkle_str}\n{clean_snip}', border_style='magenta'))
         if context_window > 0:
             try:
                 s_idx = int(step_idx)
             except (ValueError, TypeError):
                 s_idx = 0
-                
-            cursor.execute('''
-                SELECT t.step_index, t.source, t.content, m.content_hash
-                FROM transcripts_fts t
-                LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
-                WHERE t.conversation_id = ? AND CAST(t.step_index AS INTEGER) BETWEEN ? AND ?
-                ORDER BY CAST(t.step_index AS INTEGER) ASC
-            ''', (conv_id, s_idx - context_window, s_idx + context_window))
-            
+            cursor.execute('\n                SELECT t.step_index, t.source, t.content, m.content_hash\n                FROM transcripts_fts t\n                LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index\n                WHERE t.conversation_id = ? AND CAST(t.step_index AS INTEGER) BETWEEN ? AND ?\n                ORDER BY CAST(t.step_index AS INTEGER) ASC\n            ', (conv_id, s_idx - context_window, s_idx + context_window))
             ctx_rows = cursor.fetchall()
-            for (c_idx, c_source, c_content, c_hash) in ctx_rows:
+            for c_idx, c_source, c_content, c_hash in ctx_rows:
                 is_target = str(c_idx) == str(step_idx)
-                prefix = ">>" if is_target else "  "
-                style = "bold red" if is_target else "dim"
-                border = "red" if is_target else "cyan"
-                
+                prefix = '>>' if is_target else '  '
+                style = 'bold red' if is_target else 'dim'
+                border = 'red' if is_target else 'cyan'
                 raw_content = str(c_content)
-                if len(raw_content) > 2000 and not is_target:
-                    raw_content = raw_content[:2000] + "\n\n... [TRUNCADO TERMODINÁMICO: >2000 chars] ..."
-                
-                # Renderizamos con Markdown para evitar romper los saltos de línea (C5-REAL Isomorphism)
+                if len(raw_content) > 2000 and (not is_target):
+                    raw_content = raw_content[:2000] + '\n\n... [TRUNCADO TERMODINÁMICO: >2000 chars] ...'
                 renderable = Markdown(raw_content)
-                
                 import re
-                # V8: Semantic Taint (URLs and absolute paths extraction)
-                urls = re.findall(r'(https?://[^\s]+|file://[^\s]+|/[a-zA-Z0-9_/-]+\.[a-zA-Z0-9]+)', raw_content)
-                taint_str = f" | 🔗 {len(urls)} refs" if urls else ""
-                
-                # V9: Git Sentinel Inverted Extraction
-                sentinel_hashes = re.findall(r'\[[a-zA-Z0-9_/-]+\s([a-f0-9]{7,40})\]|([a-f0-9]{7,40})\s(?:feat|fix|refactor|docs|chore|test)', raw_content)
-                sentinel_str = ""
+                urls = re.findall('(https?://[^\\s]+|file://[^\\s]+|/[a-zA-Z0-9_/-]+\\.[a-zA-Z0-9]+)', raw_content)
+                taint_str = f' | 🔗 {len(urls)} refs' if urls else ''
+                sentinel_hashes = re.findall('\\[[a-zA-Z0-9_/-]+\\s([a-f0-9]{7,40})\\]|([a-f0-9]{7,40})\\s(?:feat|fix|refactor|docs|chore|test)', raw_content)
+                sentinel_str = ''
                 for group in sentinel_hashes:
                     hash_val = group[0] or group[1]
                     if hash_val:
-                        sentinel_str += f" | [bold green]🛡️ SENTINEL {hash_val[:7]}[/bold green]"
-                
-                merkle_str = f" | [magenta]Merkle: {c_hash[:8]}[/magenta]" if c_hash else ""
-                
-                console.print(Panel(renderable, title=f"[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}{merkle_str}[/{style}]{sentinel_str}", border_style=border, padding=(0, 2)))
-
-    console.print(f"\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]")
-    
-    # Validar integridad Merkle
-    cursor.execute("SELECT COUNT(*) FROM merkle_ledger")
+                        sentinel_str += f' | [bold green]🛡️ SENTINEL {hash_val[:7]}[/bold green]'
+                merkle_str = f' | [magenta]Merkle: {c_hash[:8]}[/magenta]' if c_hash else ''
+                console.print(Panel(renderable, title=f'[{style}]{prefix} Step: {c_idx} | Source: {c_source}{taint_str}{merkle_str}[/{style}]{sentinel_str}', border_style=border, padding=(0, 2)))
+    console.print(f'\n[bold cyan]⚡ AUDIT COMPLETE[/bold cyan] Total inyecciones extraídas: {len(rows)} | TTFT Latency: [bold yellow]{latency_ms:.2f}ms[/bold yellow]')
+    cursor.execute('SELECT COUNT(*) FROM merkle_ledger')
     merkle_count = cursor.fetchone()[0]
-    console.print(f"[bold green]🛡️ SAGA PIPELINE[/bold green] Integridad de Libro Mayor validada: {merkle_count} bloques anclados.")
+    console.print(f'[bold green]🛡️ SAGA PIPELINE[/bold green] Integridad de Libro Mayor validada: {merkle_count} bloques anclados.')
 
 def uds_server_thread():
-    sock_path = "/tmp/nexus_bridge.sock"
+    sock_path = '/tmp/nexus_bridge.sock'
     if os.path.exists(sock_path):
         os.remove(sock_path)
-    
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     server.bind(sock_path)
     server.listen(5)
-    
-    console.print(f"[bold green]🔌 UDS IPC Socket[/bold green] SAGA-Write Pipeline Enforced en {sock_path}")
-    
-    # SQLite objects created in a thread can only be used in that same thread
+    console.print(f'[bold green]🔌 UDS IPC Socket[/bold green] SAGA-Write Pipeline Enforced en {sock_path}')
     local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
-    local_conn.execute("PRAGMA busy_timeout=5000")
-    
-    
+    local_conn.execute('PRAGMA busy_timeout=5000')
     while True:
         client, _ = server.accept()
-        client.settimeout(2.0) # K1: Fail-Fast contra asimetría de red (Local Slowloris)
-        
-        # C5-REAL Buffer seguro (Evitando TCP fragmentation flaws)
-        data = b""
+        client.settimeout(2.0)
+        data = b''
         try:
             while True:
                 chunk = client.recv(4096)
@@ -317,58 +187,37 @@ def uds_server_thread():
                 if b'\n' in chunk or len(chunk) < 4096:
                     break
         except socket.timeout:
-            client.sendall(json.dumps({"error": "SAGA_ABORT: IPC Read Timeout (Anergía Evadida)"}).encode('utf-8'))
+            client.sendall(json.dumps({'error': 'SAGA_ABORT: IPC Read Timeout (Anergía Evadida)'}).encode('utf-8'))
             client.close()
             continue
-            
         payload_str = data.decode('utf-8').strip()
         if payload_str:
             try:
-                # SAGA-1: Validación de Guard
                 payload = json.loads(payload_str)
-                if "query" not in payload:
+                if 'query' not in payload:
                     raise ValueError("SAGA-1_VIOLATION: Payload inválido, falta 'query'.")
-                
-                q = payload["query"]
-                limit = payload.get("limit", 10)
-                
-                # SAGA-3: Validación de Esquema (Determinista)
+                q = payload['query']
+                limit = payload.get('limit', 10)
                 if not isinstance(q, str) or not isinstance(limit, int):
                     raise ValueError("SAGA-3_VIOLATION: Tipado estricto roto. Se requiere 'query' [str] y 'limit' [int].")
-                
-                # SAGA-2: Firma Taint (Cryptographic Trace)
                 import hashlib
                 taint_hash = hashlib.sha3_256(payload_str.encode('utf-8')).hexdigest()
-                
                 import re
-                clean_query = re.sub(r'[^\w\s-]', '', q).strip()
-                if clean_query and '*' not in q and '"' not in q:
+                clean_query = re.sub('[^\\w\\s-]', '', q).strip()
+                if clean_query and '*' not in q and ('"' not in q):
                     words = clean_query.split()
                     safe_query = ' '.join([f'"{w}"*' for w in words])
                 else:
                     safe_query = q.replace("'", "''")
-                    
-                # SAGA-6 & SAGA-7 (Read Path determinista)
                 cur = local_conn.cursor()
-                cur.execute('''
-                    SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[', ']', '...', 15) 
-                    FROM transcripts_fts t
-                    LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index
-                    WHERE transcripts_fts MATCH ? 
-                    ORDER BY rank LIMIT ?
-                ''', (safe_query, limit))
+                cur.execute("\n                    SELECT t.conversation_id, t.step_index, t.source, m.content_hash, snippet(transcripts_fts, 3, '[', ']', '...', 15) \n                    FROM transcripts_fts t\n                    LEFT JOIN merkle_ledger m ON t.conversation_id = m.conversation_id AND t.step_index = m.step_index\n                    WHERE transcripts_fts MATCH ? \n                    ORDER BY rank LIMIT ?\n                ", (safe_query, limit))
                 results = cur.fetchall()
-                
-                response = json.dumps({
-                    "status": "ok", 
-                    "cortex_taint": taint_hash,
-                    "results": results
-                })
+                response = json.dumps({'status': 'ok', 'cortex_taint': taint_hash, 'results': results})
                 client.sendall(response.encode('utf-8'))
             except json.JSONDecodeError as e:
-                client.sendall(json.dumps({"error": f"SAGA_ABORT (JSON): {str(e)}"}).encode('utf-8'))
+                client.sendall(json.dumps({'error': f'SAGA_ABORT (JSON): {str(e)}'}).encode('utf-8'))
             except ValueError as e:
-                client.sendall(json.dumps({"error": f"SAGA_ABORT (VALUE): {str(e)}"}).encode('utf-8'))
+                client.sendall(json.dumps({'error': f'SAGA_ABORT (VALUE): {str(e)}'}).encode('utf-8'))
         client.close()
 
 def start_daemon(conn: sqlite3.Connection):
@@ -378,21 +227,18 @@ def start_daemon(conn: sqlite3.Connection):
     except ImportError:
         console.print("[bold red]FATAL:[/bold red] 'watchdog' no instalado. Usa: pip install watchdog")
         sys.exit(1)
-        
+
     class TranscriptHandler(FileSystemEventHandler):
+
         def on_modified(self, event):
-            if not event.is_directory and event.src_path.endswith("transcript.jsonl"):
+            if not event.is_directory and event.src_path.endswith('transcript.jsonl'):
                 sync_transcripts(conn, force=False)
-                
     observer = Observer()
     handler = TranscriptHandler()
     observer.schedule(handler, str(BRAIN_DIR), recursive=True)
     observer.start()
-    
-    # Spawn UDS IPC Thread
     threading.Thread(target=uds_server_thread, daemon=True).start()
-    
-    console.print(f"[bold magenta]👁️ NEXUS WATCHER[/bold magenta] Daemon iniciado sobre {BRAIN_DIR}. Presiona Ctrl+C para abortar.")
+    console.print(f'[bold magenta]👁️ NEXUS WATCHER[/bold magenta] Daemon iniciado sobre {BRAIN_DIR}. Presiona Ctrl+C para abortar.')
     try:
         while True:
             time.sleep(1)
@@ -401,29 +247,24 @@ def start_daemon(conn: sqlite3.Connection):
     observer.join()
 
 def main():
-    parser = argparse.ArgumentParser(description="Nexus Conversation Bridge (C5-REAL V7)")
-    parser.add_argument("--query", help="Keyword para buscar en FTS5.")
-    parser.add_argument("--limit", type=int, default=100, help="Límite termodinámico.")
-    parser.add_argument("--sync", action="store_true", help="Forzar sincronización delta de logs a SQLite.")
-    parser.add_argument("--force-sync", action="store_true", help="Forzar purga y resincronización total.")
-    parser.add_argument("--purge", action="store_true", help="Elimina los jsonl tras la ingesta para reducir entropía (C5-REAL).")
-    parser.add_argument("--context", type=int, default=0, help="Extrae N pasos anteriores y posteriores a la inyección (Contexto Causal).")
-    parser.add_argument("--daemon", action="store_true", help="Inicia un Watcher en segundo plano para ingesta O(1).")
+    parser = argparse.ArgumentParser(description='Nexus Conversation Bridge (C5-REAL V7)')
+    parser.add_argument('--query', help='Keyword para buscar en FTS5.')
+    parser.add_argument('--limit', type=int, default=100, help='Límite termodinámico.')
+    parser.add_argument('--sync', action='store_true', help='Forzar sincronización delta de logs a SQLite.')
+    parser.add_argument('--force-sync', action='store_true', help='Forzar purga y resincronización total.')
+    parser.add_argument('--purge', action='store_true', help='Elimina los jsonl tras la ingesta para reducir entropía (C5-REAL).')
+    parser.add_argument('--context', type=int, default=0, help='Extrae N pasos anteriores y posteriores a la inyección (Contexto Causal).')
+    parser.add_argument('--daemon', action='store_true', help='Inicia un Watcher en segundo plano para ingesta O(1).')
     args = parser.parse_args()
-    
     conn = init_db()
-    
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM sync_metadata")
+    cursor.execute('SELECT COUNT(*) FROM sync_metadata')
     count = cursor.fetchone()[0]
-    
     if count == 0 or args.sync or args.force_sync:
         sync_transcripts(conn, force=args.force_sync, purge=args.purge)
-        
     if args.daemon:
         start_daemon(conn)
     elif args.query:
         search_fts(conn, args.query, args.limit, args.context)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
