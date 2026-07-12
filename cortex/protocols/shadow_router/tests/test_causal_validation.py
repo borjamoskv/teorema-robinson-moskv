@@ -7,7 +7,7 @@ from cortex.protocols.shadow_router.proxy_evaluation.sampled_set_regret import (
 )
 
 
-def test_paired_proxy_difference_estimation():
+def test_paired_proxy_difference_estimation() -> None:
     diffs = np.array([120, -50, 200, 10, 80])
     indicators = np.array([1, 1, 1, 1, 1])
     propensities = np.array([200, 500, 200, 1000, 500])
@@ -25,7 +25,7 @@ def test_paired_proxy_difference_estimation():
     )
 
 
-def test_observed_proxy_regret_nonnegative():
+def test_observed_proxy_regret_nonnegative() -> None:
     regret = calculate_observed_proxy_regret(
         primary_route_id="gemini-flash",
         primary_utility_basis_points=8000,

@@ -124,7 +124,7 @@ class BFTLedgerActor:
         return future
 
     async def _worker(self) -> None:
-        async with aiosqlite.connect(self._db_path, isolation_level=None) as db:
+        async with aiosqlite.connect(self._db_path, isolation_level=None, timeout=5.0) as db:
             await db.create_function(
                 "c5_compute_hash", 12, _compute_entry_hash_wrapper, deterministic=True
             )

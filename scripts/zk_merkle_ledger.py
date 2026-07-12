@@ -9,7 +9,7 @@ DB_PATH = "$CORTEX_ROOT/.babylon60/zk_ledger.db"
 
 
 class ZKMerkleLedgerDaemon:
-    def __init__(self):
+    def __init__(self) -> "Any":
         os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
         self.conn = sqlite3.connect(DB_PATH, timeout=5.0)
         self.conn.execute("PRAGMA journal_mode=WAL;")
@@ -17,7 +17,7 @@ class ZKMerkleLedgerDaemon:
         self._init_schema()
         self.write_queue = asyncio.Queue()
 
-    def _init_schema(self):
+    def _init_schema(self) -> "Any":
         self.conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS causal_chain (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                payload TEXT NOT NULL,\n                cortex_taint TEXT NOT NULL,\n                prev_hash TEXT NOT NULL,\n                merkle_root TEXT NOT NULL UNIQUE\n            );\n        "
         )
@@ -37,7 +37,7 @@ class ZKMerkleLedgerDaemon:
         h.update(data.encode("utf-8"))
         return h.hexdigest()
 
-    def _sync_insert(self, payload_dict: dict, caller_id: str):
+    def _sync_insert(self, payload_dict: dict, caller_id: str) -> "Any":
         cursor = self.conn.cursor()
         cursor.execute(
             "SELECT id, merkle_root FROM causal_chain ORDER BY id DESC LIMIT 1"
@@ -76,7 +76,7 @@ class ZKMerkleLedgerDaemon:
             finally:
                 self.write_queue.task_done()
 
-    def close(self):
+    def close(self) -> "Any":
         self.conn.close()
 
 

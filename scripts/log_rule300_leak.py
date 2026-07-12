@@ -3,9 +3,9 @@ import hashlib
 import time
 
 
-def log_leak():
+def log_leak() -> "Any":
     db_path = "$CORTEX_ROOT/30_BABYLON-60/nexus_anchors.db"
-    with sqlite3.connect(db_path) as conn:
+    with sqlite3.connect(db_path, timeout=5.0) as conn:
         conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS causal_collapse (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                timestamp INTEGER,\n                event_type TEXT,\n                payload_hash TEXT,\n                status TEXT,\n                cortex_taint TEXT\n            )\n        "
         )

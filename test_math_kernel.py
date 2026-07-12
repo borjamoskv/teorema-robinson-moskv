@@ -7,7 +7,7 @@ pytest.importorskip("babylon60", reason="módulo nativo babylon60 no compilado")
 from math_kernel import calculate_exergy, DB_PATH
 
 
-def run_tests():
+def run_tests() -> "Any":
     try:
         node1 = calculate_exergy(10, 2.5)
         assert node1.exergy == 400.0, "Violación termodinámica: Cálculo erróneo."

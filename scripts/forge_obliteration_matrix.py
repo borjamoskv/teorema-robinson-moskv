@@ -48,7 +48,7 @@ DOMAINS = {
 }
 
 
-def generate_300_primitives():
+def generate_300_primitives() -> "Any":
     matrix = {"C5_REAL_OBLITERATION_MATRIX": {"version": "1.0.0", "primitives": []}}
     for domain, (prefix, desc) in DOMAINS.items():
         domain_block = {"domain": domain, "description": desc, "primitives": []}

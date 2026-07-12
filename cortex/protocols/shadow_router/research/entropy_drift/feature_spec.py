@@ -19,7 +19,7 @@ def compute_predictive_entropy(prompt_propensities: List[np.ndarray]) -> float:
 def compute_distribution_divergence(p_t: np.ndarray, p_ref: np.ndarray) -> float:
     m = 0.5 * (p_t + p_ref)
 
-    def kl_divergence(p, q):
+    def kl_divergence(p, q) -> "Any":
         mask = (p > 0) & (q > 0)
         return np.sum(p[mask] * np.log2(p[mask] / q[mask]))
 

@@ -19,48 +19,48 @@ NIST_EMPTY = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 NIST_ABC = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
 
 
-def test_sha256_nist_vectors():
+def test_sha256_nist_vectors() -> None:
     assert sha256_bytes(b"") == NIST_EMPTY
     assert sha256_bytes(b"abc") == NIST_ABC
     assert sha256_text("abc") == NIST_ABC
 
 
-def test_sha256_no_truncation_lowercase():
+def test_sha256_no_truncation_lowercase() -> None:
     d = sha256_bytes(b"payload")
     assert len(d) == 64 and d == d.lower()
     assert set(d) <= set("0123456789abcdef")
 
 
-def test_sha256_rejects_str():
+def test_sha256_rejects_str() -> None:
     with pytest.raises(TypeError):
         sha256_bytes("no strings")
 
 
-def test_sha256_streaming_matches_oneshot(tmp_path):
+def test_sha256_streaming_matches_oneshot(tmp_path) -> None:
     blob = os.urandom(200 * 1024)
     f = tmp_path / "blob.bin"
     f.write_bytes(blob)
     assert sha256_file(f) == sha256_bytes(blob)
 
 
-def test_assert_match_crash_over_catch():
+def test_assert_match_crash_over_catch() -> None:
     assert assert_match(b"abc", NIST_ABC) == NIST_ABC
     with pytest.raises(SystemExit):
         assert_match(b"abc", NIST_EMPTY)
 
 
 @pytest.fixture
-def kms_env(tmp_path, monkeypatch):
+def kms_env(tmp_path, monkeypatch) -> "Any":
     monkeypatch.setattr(stub_kms, "AUDIT_LOG", tmp_path / "kms_audit.log")
     return tmp_path / "keys"
 
 
-def test_kms_store_key_born_0600(kms_env):
+def test_kms_store_key_born_0600(kms_env) -> None:
     p = stub_kms.store_key("k1", b"secret", key_dir=kms_env)
     assert stat.S_IMODE(os.stat(p).st_mode) == 384
 
 
-def test_kms_enforce_corrects_and_logs(kms_env):
+def test_kms_enforce_corrects_and_logs(kms_env) -> None:
     p = stub_kms.store_key("k2", b"secret", key_dir=kms_env)
     os.chmod(p, 420)
     state = stub_kms.enforce(p)
@@ -70,13 +70,13 @@ def test_kms_enforce_corrects_and_logs(kms_env):
     assert "old=0o644" in log and "new=0o600" in log
 
 
-def test_kms_idempotent(kms_env):
+def test_kms_idempotent(kms_env) -> None:
     p = stub_kms.store_key("k3", b"secret", key_dir=kms_env)
     assert stub_kms.enforce(p).compliant
     assert stub_kms.enforce(p).compliant
 
 
-def test_kms_boot_scan_recursive(kms_env):
+def test_kms_boot_scan_recursive(kms_env) -> None:
     p = stub_kms.store_key("k4", b"secret", key_dir=kms_env)
     os.chmod(p, 493)
     results = stub_kms.boot_scan(kms_env)
@@ -84,20 +84,20 @@ def test_kms_boot_scan_recursive(kms_env):
     assert stat.S_IMODE(os.stat(p).st_mode) == 384
 
 
-def test_kms_rejects_path_escape(kms_env):
+def test_kms_rejects_path_escape(kms_env) -> None:
     with pytest.raises(ValueError):
         stub_kms.store_key("../../etc/evil", b"x", key_dir=kms_env)
 
 
 @pytest.fixture
-def bft_env(tmp_path, monkeypatch):
+def bft_env(tmp_path, monkeypatch) -> "Any":
     monkeypatch.setattr(stub_kms, "AUDIT_LOG", tmp_path / "kms_audit.log")
     key = os.urandom(32)
     monkeypatch.setattr(bft_strict, "_attestation_key", lambda: key)
     return {"key": key, "merkle": tmp_path / "merkle.jsonl"}
 
 
-def _payload(src: bytes, falsification=lambda: True, digest=None, ct="python"):
+def _payload(src: bytes, falsification=lambda: True, digest=None, ct="python") -> "Any":
     return MutationPayload(
         diff=src,
         author="test",
@@ -108,7 +108,7 @@ def _payload(src: bytes, falsification=lambda: True, digest=None, ct="python"):
     )
 
 
-def test_bft_quorum_3_of_3_commits(bft_env):
+def test_bft_quorum_3_of_3_commits(bft_env) -> None:
     r = validate_mutation(_payload(b"x = 1\n"), merkle_log=bft_env["merkle"])
     assert r.accepted and r.quorum == QUORUM == 3
     assert len(r.attestations) == 3 and len(r.merkle_root) == 64
@@ -118,7 +118,7 @@ def test_bft_quorum_3_of_3_commits(bft_env):
         assert not _verify_attestation(node.node_id, d, "0" * 64, bft_env["key"])
 
 
-def test_bft_rejects_integrity_violation(bft_env):
+def test_bft_rejects_integrity_violation(bft_env) -> None:
     r = validate_mutation(
         _payload(b"x = 1\n", digest="f" * 64), merkle_log=bft_env["merkle"]
     )
@@ -126,21 +126,21 @@ def test_bft_rejects_integrity_violation(bft_env):
     assert not bft_env["merkle"].exists()
 
 
-def test_bft_rejects_syntax_error(bft_env):
+def test_bft_rejects_syntax_error(bft_env) -> None:
     r = validate_mutation(_payload(b"def broken(:\n"), merkle_log=bft_env["merkle"])
     assert not r.accepted and r.quorum == 2
 
 
-def test_bft_no_test_no_vote(bft_env):
+def test_bft_no_test_no_vote(bft_env) -> None:
     r = validate_mutation(
         _payload(b"x = 1\n", falsification=None), merkle_log=bft_env["merkle"]
     )
     assert not r.accepted and r.quorum == 2
 
 
-def test_bft_crashing_test_is_failing_test(bft_env):
+def test_bft_crashing_test_is_failing_test(bft_env) -> None:
 
-    def boom():
+    def boom() -> "Any":
         raise RuntimeError("empirical failure")
 
     r = validate_mutation(
@@ -149,21 +149,21 @@ def test_bft_crashing_test_is_failing_test(bft_env):
     assert not r.accepted
 
 
-def test_bft_merkle_chain_linkage(bft_env):
+def test_bft_merkle_chain_linkage(bft_env) -> None:
     r1 = validate_mutation(_payload(b"a = 1\n"), merkle_log=bft_env["merkle"])
     r2 = validate_mutation(_payload(b"b = 2\n"), merkle_log=bft_env["merkle"])
     d2 = sha256_bytes(b"b = 2\n")
     assert r2.merkle_root == sha256_bytes(f"{r1.merkle_root}{d2}".encode())
 
 
-def test_bft_is_mock_structurally_forbidden():
+def test_bft_is_mock_structurally_forbidden() -> None:
     with pytest.raises(TypeError):
 
         class MockNode(ValidatorNode):
             is_mock = True
 
 
-def test_bft_nodes_are_real_not_constant():
+def test_bft_nodes_are_real_not_constant() -> None:
     bad_integrity = _payload(b"x = 1\n", digest="a" * 64)
     assert IntegrityNode().verify(bad_integrity) is False
     assert ASTLintNode().verify(_payload(b"def x(:\n")) is False

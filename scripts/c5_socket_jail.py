@@ -4,7 +4,7 @@ import sys
 import yaml
 
 
-def load_whitelist():
+def load_whitelist() -> "Any":
     base_dir = os.path.dirname(os.path.dirname(__file__))
     whitelist_path = os.path.join(base_dir, "bft", "egress_whitelist.yaml")
     try:
@@ -19,7 +19,7 @@ BLOCKED_DOMAINS, ALLOWED_DOMAINS = load_whitelist()
 _original_getaddrinfo = socket.getaddrinfo
 
 
-def c5_socket_jail_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+def c5_socket_jail_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0) -> "Any":
     for blocked in BLOCKED_DOMAINS:
         if blocked in host:
             sys.stderr.write(
@@ -34,7 +34,7 @@ def c5_socket_jail_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
     return _original_getaddrinfo(host, port, family, type, proto, flags)
 
 
-def activate_c5_jail():
+def activate_c5_jail() -> "Any":
     socket.getaddrinfo = c5_socket_jail_getaddrinfo
     print("\x1b[1;34m[CORTEX]\x1b[0m Bare-Metal Socket Jail (C5-REAL) ACTIVADO.")
 

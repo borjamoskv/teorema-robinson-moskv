@@ -43,7 +43,7 @@ isomorphism_data = {
 }
 
 
-def main():
+def main() -> "Any":
     target_path = "$CORTEX_ROOT/30_BABYLON-60/cortex/ontology/gelabp_human_isomorphism.yaml"
     with open(target_path, "w") as f:
         yaml.dump(isomorphism_data, f, allow_unicode=True, sort_keys=False)

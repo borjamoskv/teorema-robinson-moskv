@@ -3,7 +3,7 @@ from typing import List
 
 
 class TemporalValidator:
-    def __init__(self, step_size_hours: int = 6):
+    def __init__(self, step_size_hours: int = 6) -> "Any":
         self.step_size = step_size_hours
 
     def rolling_origin_validation(

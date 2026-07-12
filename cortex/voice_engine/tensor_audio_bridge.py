@@ -12,13 +12,13 @@ class VoiceModality(Enum):
 
 
 class TensorAudioBridge:
-    def __init__(self, modality: VoiceModality = VoiceModality.INDUSTRIAL_NOIR):
+    def __init__(self, modality: VoiceModality = VoiceModality.INDUSTRIAL_NOIR) -> "Any":
         self.device = "mlx"
         self.precision = "q4"
         self.modality = modality
         self._ensure_hardware_asymmetry()
 
-    def _ensure_hardware_asymmetry(self):
+    def _ensure_hardware_asymmetry(self) -> "Any":
         pass
 
     def filter_acoustic_theater(self, text_ast: str) -> str:

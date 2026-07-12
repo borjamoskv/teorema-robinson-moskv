@@ -12,9 +12,9 @@ L_PRP = "🛡️"
 L_CMT = "✅"
 
 
-def setup_ledger():
+def setup_ledger() -> "Any":
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute(
         "\n        CREATE TABLE IF NOT EXISTS ipc_ledger (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            node_id INTEGER,\n            phase TEXT,\n            payload TEXT,\n            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP\n        )\n    "
@@ -22,7 +22,7 @@ def setup_ledger():
     conn.close()
 
 
-def log_to_ledger(node_id, phase, payload):
+def log_to_ledger(node_id, phase, payload) -> "Any":
     conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
     conn.execute(
         "INSERT INTO ipc_ledger (node_id, phase, payload) VALUES (?, ?, ?)",
@@ -31,7 +31,7 @@ def log_to_ledger(node_id, phase, payload):
     conn.close()
 
 
-def run_node(node_id, queues, is_byzantine=False):
+def run_node(node_id, queues, is_byzantine=False) -> "Any":
     sys.stdout.write(
         f" [ PID {os.getpid()} ] Nodo {node_id} Inicializado. Bizantino: {is_byzantine}\n"
     )
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     sys.stdout.write(
         "\n❖ [ AUDITORÍA DEL LEDGER MAESTRO (Últimas transacciones WAL) ] ❖\n"
     )
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=5.0)
     cursor = conn.execute(
         "SELECT node_id, phase, payload FROM ipc_ledger ORDER BY id DESC LIMIT 6"
     )

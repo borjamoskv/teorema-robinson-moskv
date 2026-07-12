@@ -9,7 +9,7 @@ from cortex.protocols.shadow_router.signing.trust_store import TrustStore
 
 
 class EgressGate:
-    def __init__(self, trust_store: TrustStore):
+    def __init__(self, trust_store: TrustStore) -> "Any":
         self.trust_store = trust_store
         self.used_permits: Set[str] = set()
 

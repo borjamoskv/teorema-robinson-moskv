@@ -8,7 +8,7 @@ from cortex.protocols.shadow_router.signing.ed25519_signer import (
 from cortex.protocols.shadow_router.signing.trust_store import TrustStore
 
 
-def test_strict_canonicalization():
+def test_strict_canonicalization() -> None:
     payload1 = {"z": 1, "a": "hello"}
     payload2 = {"a": "hello", "z": 1}
     bytes1 = canonicalize_json(payload1)
@@ -17,7 +17,7 @@ def test_strict_canonicalization():
     assert b" " not in bytes1
 
 
-def test_ed25519_signing_and_verification():
+def test_ed25519_signing_and_verification() -> None:
     private_key_hex = secrets.token_bytes(32).hex()
     signer = Ed25519Signer(private_key_hex)
     public_key_hex = signer.public_key_hex
@@ -32,7 +32,7 @@ def test_ed25519_signing_and_verification():
     assert is_valid is True
 
 
-def test_ed25519_tampered_payload_fails():
+def test_ed25519_tampered_payload_fails() -> None:
     private_key_hex = secrets.token_bytes(32).hex()
     signer = Ed25519Signer(private_key_hex)
     public_key_hex = signer.public_key_hex
@@ -48,7 +48,7 @@ def test_ed25519_tampered_payload_fails():
     assert is_valid is False
 
 
-def test_trust_store_fail_fast():
+def test_trust_store_fail_fast() -> None:
     store = TrustStore()
     store.register_issuer("did:cortex:router1", "aabbccdd")
     assert store.get_public_key("did:cortex:router1") == "aabbccdd"

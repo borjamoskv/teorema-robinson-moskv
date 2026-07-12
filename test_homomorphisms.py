@@ -9,18 +9,18 @@ if not os.path.exists(DB_PATH):
     )
 
 
-def parse_td(s):
+def parse_td(s) -> "Any":
     m = re.match("T(\\d+)\\.D(\\d+)", s)
     if m:
         return (int(m.group(1)), int(m.group(2)))
     return None
 
 
-def test_assert_cyclic_dimensional_homomorphism_invariant():
+def test_assert_cyclic_dimensional_homomorphism_invariant() -> None:
     assert os.path.exists(DB_PATH), f"Database not found at {DB_PATH}"
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    cursor = conn.cursor(, timeout=5.0)
     cursor.execute(
         "SELECT source, target, type FROM L2_isomorphism_edges WHERE type = 'Dimensional'"
     )
@@ -50,10 +50,10 @@ def test_assert_cyclic_dimensional_homomorphism_invariant():
         )
 
 
-def test_assert_local_primitive_nodes_bijections():
+def test_assert_local_primitive_nodes_bijections() -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    cursor = conn.cursor(, timeout=5.0)
     cursor.execute("SELECT id, theory, dimension, name FROM L1_primitive_nodes")
     nodes = [dict(row) for row in cursor.fetchall()]
     cursor.execute(

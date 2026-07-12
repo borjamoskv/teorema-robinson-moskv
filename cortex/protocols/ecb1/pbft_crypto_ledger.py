@@ -14,26 +14,26 @@ L_CMT = "✅"
 L_REP = "📤"
 
 
-def sign_payload(node_id, payload):
+def sign_payload(node_id, payload) -> "Any":
     return hmac.new(NODE_KEYS[node_id], payload.encode(), hashlib.sha256).hexdigest()
 
 
-def verify_signature(node_id, payload, signature):
+def verify_signature(node_id, payload, signature) -> "Any":
     expected = sign_payload(node_id, payload)
     return hmac.compare_digest(expected, signature)
 
 
 class CryptoLedgerFusion:
-    def __init__(self):
+    def __init__(self) -> "Any":
         self.view = 0
         self.last_hash = (
             "0000000000000000000000000000000000000000000000000000000000000000"
         )
         self.setup_ledger()
 
-    def setup_ledger(self):
+    def setup_ledger(self) -> "Any":
         os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-        self.conn = sqlite3.connect(DB_PATH, isolation_level=None)
+        self.conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
         self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS pbft_crypto_ledger (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                view INTEGER,\n                phase TEXT,\n                node_id INTEGER,\n                payload TEXT,\n                signature TEXT,\n                prev_hash TEXT UNIQUE,\n                block_hash TEXT UNIQUE,\n                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP\n            )\n        "
@@ -45,7 +45,7 @@ class CryptoLedgerFusion:
         if row:
             self.last_hash = row[0]
 
-    def write_block(self, phase, node_id, payload, signature):
+    def write_block(self, phase, node_id, payload, signature) -> "Any":
         if not verify_signature(node_id, payload, signature):
             raise ValueError(f"Firma criptográfica inválida para el Nodo {node_id}")
         block_data = (
@@ -72,7 +72,7 @@ class CryptoLedgerFusion:
                 "Integridad de Merkle comprometida: Prev_Hash duplicado (Fork detectado)."
             )
 
-    def run_crypto_consensus(self):
+    def run_crypto_consensus(self) -> "Any":
         primary = 0
         sys.stdout.write(
             f"❖ [ VISTA: {self.view} | LÍDER: N{primary} | INICIO DE BLOQUE CRIPTOGRÁFICO ] ❖\n\n"
@@ -118,7 +118,7 @@ class CryptoLedgerFusion:
         sys.stdout.write(f"    Consenso cerrado en Hash: {final_hash}\n")
         return final_hash
 
-    def audit_chain(self):
+    def audit_chain(self) -> "Any":
         sys.stdout.write("\n❖ [ AUDITORÍA MERKLE CHAIN (HASH CHAIN) ] ❖\n")
         cursor = self.conn.execute(
             "SELECT phase, node_id, block_hash, prev_hash FROM pbft_crypto_ledger ORDER BY id DESC LIMIT 5"

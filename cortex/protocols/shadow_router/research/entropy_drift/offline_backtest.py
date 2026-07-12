@@ -4,7 +4,7 @@ from .label_quality import EvaluatorBrierScore
 from .temporal_validation import TemporalValidator
 
 
-def run_offline_backtest(records: List[Dict], horizons: List[int] = [6, 12, 24, 48]):
+def run_offline_backtest(records: List[Dict], horizons: List[int] = [6, 12, 24, 48]) -> "Any":
     print("Iniciando Offline Backtest para H-ED-01...")
     brier_engine = EvaluatorBrierScore(min_coverage_threshold=30)
     brier = brier_engine.compute_brier(records)

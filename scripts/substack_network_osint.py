@@ -4,7 +4,7 @@ import hashlib
 from collections import defaultdict
 
 
-def shannon_entropy(timestamps):
+def shannon_entropy(timestamps) -> "Any":
     if not timestamps:
         return 0.0
     binned = [t // 600 for t in timestamps]
@@ -15,7 +15,7 @@ def shannon_entropy(timestamps):
     return -sum((count / total * math.log2(count / total) for count in freq.values()))
 
 
-def jaccard_similarity(set_a, set_b):
+def jaccard_similarity(set_a, set_b) -> "Any":
     if not set_a or not set_b:
         return 0.0
     intersection = len(set_a.intersection(set_b))
@@ -23,11 +23,11 @@ def jaccard_similarity(set_a, set_b):
     return intersection / union
 
 
-def anonymize_user(handle):
+def anonymize_user(handle) -> "Any":
     return hashlib.sha256(handle.encode("utf-8")).hexdigest()[:16]
 
 
-def analyze_cib_network(interactions, anonymize=False):
+def analyze_cib_network(interactions, anonymize=False) -> "Any":
     all_interactors = set()
     user_to_notes_liked = defaultdict(set)
     user_to_timestamps = defaultdict(list)

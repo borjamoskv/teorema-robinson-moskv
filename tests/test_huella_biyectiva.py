@@ -10,11 +10,11 @@ YAML_PATH = str(
 )
 
 
-def test_yaml_exists():
+def test_yaml_exists() -> None:
     assert os.path.exists(YAML_PATH), f"El archivo YAML no existe en {YAML_PATH}"
 
 
-def test_yaml_structure():
+def test_yaml_structure() -> None:
     with open(YAML_PATH, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     assert data is not None, "El YAML está vacío o corrupto."
@@ -29,7 +29,7 @@ def test_yaml_structure():
         assert key in data, f"Falta el nodo obligatorio: {key}"
 
 
-def test_isomorphisms_density():
+def test_isomorphisms_density() -> None:
     with open(YAML_PATH, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     mappings = data.get("Topologia_Isomorfica_Borja_Moskv", [])
@@ -48,7 +48,7 @@ def test_isomorphisms_density():
         assert "Resolucion_C5" in mapping, f"Falta Resolucion_C5 en el mapeo índice {i}"
 
 
-def test_cryptographic_signature():
+def test_cryptographic_signature() -> None:
     with open(YAML_PATH, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     signature = data.get("Firma_Ejecucion", {})

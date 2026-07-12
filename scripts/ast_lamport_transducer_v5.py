@@ -1,4 +1,4 @@
-def refactor(filename, class_name):
+def refactor(filename, class_name) -> "Any":
     with open(filename, "r") as f:
         content = f.read()
     wrapper = "\ndef _compute_entry_hash_wrapper(event_id, stream, entity_id, event_type, payload_json, source_db, source_table, source_pk, cortex_taint, lamport_t, prev_hash, created_at):\n    return _compute_entry_hash(event_id, stream, entity_id, event_type, payload_json, source_db, source_table, source_pk, cortex_taint, lamport_t, prev_hash, created_at)\n"

@@ -12,7 +12,7 @@ L_BAD = "📦🧠💀"
 
 
 class PBFTNetwork:
-    def __init__(self, primary_id, byzantine_config):
+    def __init__(self, primary_id, byzantine_config) -> "Any":
         self.primary = primary_id
         self.byzantine = byzantine_config
         self.logs = {i: [] for i in range(N)}
@@ -20,7 +20,7 @@ class PBFTNetwork:
         self.commits = {i: [] for i in range(N)}
         self.executed = {i: None for i in range(N)}
 
-    def simulate_round(self):
+    def simulate_round(self) -> "Any":
         sys.stdout.write("  [ 1. PRE-PREPARE ]\n")
         for target in range(N):
             if target == self.primary:

@@ -2,7 +2,7 @@ import time
 import requests
 
 
-def test_3ms_latency():
+def test_3ms_latency() -> None:
     url = "https://dola.us.openbytealfa.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",

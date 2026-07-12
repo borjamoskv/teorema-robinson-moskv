@@ -55,7 +55,7 @@ def enforce_matrix_node(node_id: str, data: dict, maestro: UIMaestro) -> Dict[st
         return {"status": "failed", "error": str(e)}
 
 
-def main():
+def main() -> "Any":
     print("=== STARTING MATRIX-DRIVEN ZERO-FRICTION ENFORCEMENT ===")
     matrix_path = "scripts/privacy_matrix.yaml"
     if not os.path.exists(matrix_path):

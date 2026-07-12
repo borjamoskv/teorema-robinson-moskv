@@ -5,7 +5,7 @@ import hashlib
 
 
 class ConcertaInjector:
-    def __init__(self):
+    def __init__(self) -> "Any":
         self.tda_markers = [
             "aquí tienes",
             "espero que",
@@ -50,7 +50,7 @@ class ConcertaInjector:
             return "\n".join(code_blocks).strip()
         return purged_text.strip()
 
-    def sigkill_purge(self, analysis: dict):
+    def sigkill_purge(self, analysis: dict) -> "Any":
         proof = {
             "Claim": "SIGKILL_STATE_PURGE",
             "Proof": {

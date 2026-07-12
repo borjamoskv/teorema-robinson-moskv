@@ -27,7 +27,7 @@ TELEMETRY_DB = BRAIN_DIR.parent / "telemetry.db"
 
 
 def init_db() -> sqlite3.Connection:
-    conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA synchronous=NORMAL")
     conn.execute("PRAGMA busy_timeout=5000")
@@ -49,7 +49,7 @@ def init_db() -> sqlite3.Connection:
     conn.execute(
         "\n        CREATE TABLE IF NOT EXISTS merkle_ledger (\n            conversation_id TEXT,\n            step_index INTEGER,\n            content_hash TEXT,\n            prev_hash TEXT,\n            PRIMARY KEY(conversation_id, step_index)\n        )\n    "
     )
-    conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
+    conn_tel = sqlite3.connect(TELEMETRY_DB, isolation_level=None, timeout=5.0)
     conn_tel.execute("PRAGMA journal_mode=WAL")
     conn_tel.execute(
         "\n        CREATE TABLE IF NOT EXISTS ttft_metrics (\n            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n            query TEXT,\n            latency_ms REAL,\n            results_count INTEGER\n        )\n    "
@@ -58,8 +58,8 @@ def init_db() -> sqlite3.Connection:
     return conn
 
 
-def record_telemetry(query: str, latency_ms: float, results_count: int):
-    conn = sqlite3.connect(TELEMETRY_DB, isolation_level=None)
+def record_telemetry(query: str, latency_ms: float, results_count: int) -> "Any":
+    conn = sqlite3.connect(TELEMETRY_DB, isolation_level=None, timeout=5.0)
     conn.execute(
         "INSERT INTO ttft_metrics (query, latency_ms, results_count) VALUES (?, ?, ?)",
         (query, latency_ms, results_count),
@@ -265,7 +265,7 @@ def search_fts(
     )
 
 
-def uds_server_thread():
+def uds_server_thread() -> "Any":
     sock_path = "/tmp/nexus_bridge.sock"
     if os.path.exists(sock_path):
         os.remove(sock_path)
@@ -275,7 +275,7 @@ def uds_server_thread():
     console.print(
         f"[bold green]🔌 UDS IPC Socket[/bold green] SAGA-Write Pipeline Enforced en {sock_path}"
     )
-    local_conn = sqlite3.connect(DB_PATH, isolation_level=None)
+    local_conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
     local_conn.execute("PRAGMA busy_timeout=5000")
     while True:
         client, _ = server.accept()
@@ -347,7 +347,7 @@ def uds_server_thread():
         client.close()
 
 
-def start_daemon(conn: sqlite3.Connection):
+def start_daemon(conn: sqlite3.Connection) -> "Any":
     try:
         from watchdog.observers import Observer
         from watchdog.events import FileSystemEventHandler
@@ -358,7 +358,7 @@ def start_daemon(conn: sqlite3.Connection):
         sys.exit(1)
 
     class TranscriptHandler(FileSystemEventHandler):
-        def on_modified(self, event):
+        def on_modified(self, event) -> "Any":
             if not event.is_directory and event.src_path.endswith("transcript.jsonl"):
                 sync_transcripts(conn, force=False)
 
@@ -378,7 +378,7 @@ def start_daemon(conn: sqlite3.Connection):
     observer.join()
 
 
-def main():
+def main() -> "Any":
     parser = argparse.ArgumentParser(
         description="Nexus Conversation Bridge (C5-REAL V7)"
     )

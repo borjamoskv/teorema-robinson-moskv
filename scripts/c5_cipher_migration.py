@@ -4,7 +4,7 @@ import sys
 from cryptography.fernet import Fernet
 
 
-def get_fernet():
+def get_fernet() -> "Any":
     key = os.environ.get("CORTEX_VAULT_KEY")
     if not key:
         print("ERROR: CORTEX_VAULT_KEY no definida en el entorno.")
@@ -12,7 +12,7 @@ def get_fernet():
     return Fernet(key.encode("utf-8"))
 
 
-def migrate_nexus_cache(fernet):
+def migrate_nexus_cache(fernet) -> "Any":
     vault_path = os.environ.get("BABYLON_VAULT", os.path.expanduser("~/.babylon60"))
     db_path = os.path.join(vault_path, "nexus_cache.db")
     if not os.path.exists(db_path):
@@ -28,7 +28,7 @@ def migrate_nexus_cache(fernet):
         )
         if cursor.fetchone()[0] == 0:
             print("[*] Tabla L3_inference_cache no existe.")
-            conn.close()
+            conn.close(, timeout=5.0)
             return
         cursor.execute("SELECT query_hash, trace_payload FROM L3_inference_cache")
         rows = cursor.fetchall()
@@ -52,7 +52,7 @@ def migrate_nexus_cache(fernet):
             print(f"[!] Error: {e}")
 
 
-def migrate_master_ledger(fernet, db_path):
+def migrate_master_ledger(fernet, db_path) -> "Any":
     if not os.path.exists(db_path):
         print(f"[*] Skip: {db_path} no encontrado.")
         return
@@ -66,7 +66,7 @@ def migrate_master_ledger(fernet, db_path):
         )
         if cursor.fetchone()[0] == 0:
             print("[*] Tabla ledger_entries no existe.")
-            conn.close()
+            conn.close(, timeout=5.0)
             return
         cursor.execute("SELECT seq, payload_json FROM ledger_entries")
         rows = cursor.fetchall()

@@ -25,7 +25,7 @@ def get_cortex_taint(data: str) -> str:
     return f"TAINT_REVENG_{int(time.time())}"
 
 
-def run():
+def run() -> "Any":
     conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
     conn.execute("PRAGMA busy_timeout = 5000;")
     try:

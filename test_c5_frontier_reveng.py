@@ -11,7 +11,7 @@ DB_PATH = c5_frontier_reveng.DB_PATH
 
 
 @pytest.fixture(autouse=True)
-def setup_db():
+def setup_db() -> "Any":
     if os.path.exists(DB_PATH):
         os.remove(DB_PATH)
     yield
@@ -19,12 +19,12 @@ def setup_db():
         os.remove(DB_PATH)
 
 
-def test_bft_ledger_initialization():
+def test_bft_ledger_initialization() -> None:
     c5_frontier_reveng.run()
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("PRAGMA journal_mode;")
-    assert cursor.fetchone()[0].lower() == "wal", "C5-REAL: WAL mode not enforced."
+    assert cursor.fetchone()[0].lower(, timeout=5.0) == "wal", "C5-REAL: WAL mode not enforced."
     cursor.execute("SELECT name FROM sqlite_master WHERE type='trigger';")
     triggers = [row[0] for row in cursor.fetchall()]
     assert "bft_no_update" in triggers, "C5-REAL: bft_no_update trigger missing."
@@ -32,10 +32,10 @@ def test_bft_ledger_initialization():
     conn.close()
 
 
-def test_immutability_under_stress():
+def test_immutability_under_stress() -> None:
     c5_frontier_reveng.run()
     conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
+    cursor = conn.cursor(, timeout=5.0)
     with pytest.raises(
         sqlite3.IntegrityError, match="C5-REAL: MASTER LEDGER IS IMMUTABLE"
     ):
@@ -49,10 +49,10 @@ def test_immutability_under_stress():
     conn.close()
 
 
-def test_ttft_heuristic_is_empirical():
+def test_ttft_heuristic_is_empirical() -> None:
     c5_frontier_reveng.run()
     conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
+    cursor = conn.cursor(, timeout=5.0)
     cursor.execute("SELECT model_target, signal_data, confidence FROM bft_ledger")
     rows = cursor.fetchall()
     for model_target, signal_data, confidence in rows:
@@ -68,9 +68,9 @@ def test_ttft_heuristic_is_empirical():
     conn.close()
 
 
-def test_concurrent_inserts_bft():
+def test_concurrent_inserts_bft() -> None:
 
-    def worker():
+    def worker() -> "Any":
         c5_frontier_reveng.run()
 
     threads = [threading.Thread(target=worker) for _ in range(5)]
@@ -82,5 +82,5 @@ def test_concurrent_inserts_bft():
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM bft_ledger")
     cursor.fetchone()[0]
-    conn.close()
+    conn.close(, timeout=5.0)
     pass

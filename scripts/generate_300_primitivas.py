@@ -68,7 +68,7 @@ OUTCOMES = [
 ]
 
 
-def generate_primitives():
+def generate_primitives() -> "Any":
     primitives = []
     count = 1
     for c in CATEGORIES:
@@ -98,7 +98,7 @@ def generate_primitives():
     return primitives
 
 
-def main():
+def main() -> "Any":
     target_dir = os.path.join(
         "$CORTEX_ROOT/30_BABYLON-60", "cortex", "ontology"
     )

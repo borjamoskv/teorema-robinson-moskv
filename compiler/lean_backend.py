@@ -1,4 +1,4 @@
-def generate_proof_ir():
+def generate_proof_ir() -> "Any":
     lean_ast = "\ndef causal_EV_2_EV_3 : Nat := 2\n\ntheorem causal_order_valid (a b : Nat) (h : a <= b) : True := by\n  trivial\n"
     return lean_ast
 

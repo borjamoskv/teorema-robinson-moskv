@@ -20,7 +20,7 @@ class GELABP_Matrix:
         return True
 
 
-def main():
+def main() -> "Any":
     matrix = GELABP_Matrix(
         gradiente=True,
         entropia_cost=0.0,

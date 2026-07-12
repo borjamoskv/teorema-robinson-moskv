@@ -77,7 +77,7 @@ def compute_kolmogorov_approximation(text_data: str) -> dict:
     }
 
 
-def compute_asymmetric_trust_isomorphism(provenance_hash, test_passed, entropy_metric):
+def compute_asymmetric_trust_isomorphism(provenance_hash, test_passed, entropy_metric) -> "Any":
     if not provenance_hash or not test_passed:
         return {
             "trust_index": Decimal("0.0"),
@@ -97,7 +97,7 @@ def compute_asymmetric_trust_isomorphism(provenance_hash, test_passed, entropy_m
     }
 
 
-def main():
+def main() -> "Any":
     if len(sys.argv) < 2:
         print(json.dumps({"error": "No action specified"}))
         sys.exit(1)
@@ -110,7 +110,7 @@ def main():
         sys.exit(1)
 
     class DecimalEncoder(json.JSONEncoder):
-        def default(self, obj):
+        def default(self, obj) -> "Any":
             if isinstance(obj, Decimal):
                 return float(obj)
             return super(DecimalEncoder, self).default(obj)

@@ -8,7 +8,7 @@ DB_PATH = "$CORTEX_ROOT/.babylon60/arena_alpha_ledger.db"
 OUTPUT_DIR = "$CORTEX_ROOT/.babylon60/mlx_datasets"
 
 
-def distill_ledger_to_mlx(exergy_threshold=1000):
+def distill_ledger_to_mlx(exergy_threshold=1000) -> "Any":
     if not os.path.exists(DB_PATH):
         print(f"❌ [CRASH CAUSAL] Master Ledger no hallado en {DB_PATH}")
         return
@@ -16,7 +16,7 @@ def distill_ledger_to_mlx(exergy_threshold=1000):
     out_file = Path(OUTPUT_DIR) / "arena_alpha_train.jsonl"
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    cursor = conn.cursor(, timeout=5.0)
     query = "\n        SELECT prompt, winner, response_a, response_b, entropy_a, entropy_b\n        FROM alpha_ledger\n        WHERE winner IN ('A', 'B')\n    "
     cursor.execute(query)
     rows = cursor.fetchall()

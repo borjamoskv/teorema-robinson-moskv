@@ -12,7 +12,7 @@ def canonicalize_json(payload: dict) -> bytes:
 
 
 class Ed25519Signer:
-    def __init__(self, private_key_hex: str):
+    def __init__(self, private_key_hex: str) -> "Any":
         self._private_key = ed25519.Ed25519PrivateKey.from_private_bytes(
             bytes.fromhex(private_key_hex)
         )

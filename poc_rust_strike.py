@@ -32,7 +32,7 @@ def compute_kolmogorov_python(text_data: str) -> dict:
     }
 
 
-def main():
+def main() -> "Any":
     print("█▄ CORTEX RUST-STRIKE (PRUEBA DE CONCEPTO) █▄")
     print("Generando Payload Entrópico Estocástico (5MB)...")
     payload_size = 5 * 1024 * 1024

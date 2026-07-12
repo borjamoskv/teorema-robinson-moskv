@@ -25,7 +25,7 @@ IGNORED_EXTS = {".pyc", ".db", ".png", ".jpg", ".pdf", ".zip", ".tar", ".gz"}
 DB_PATH = "cortex_surface_map.db"
 
 
-def init_db():
+def init_db() -> "Any":
     conn = sqlite3.connect(DB_PATH, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA busy_timeout=5000")
@@ -50,7 +50,7 @@ def calculate_shannon_entropy(text: str) -> Decimal:
     return Decimal(str(round(float(entropy), 4)))
 
 
-def extract_python_primitives(content: str):
+def extract_python_primitives(content: str) -> "Any":
     classes = []
     functions = []
     imports = []
@@ -72,7 +72,7 @@ def extract_python_primitives(content: str):
     return (classes, functions, list(set(imports)))
 
 
-def extract_generic_primitives(content: str):
+def extract_generic_primitives(content: str) -> "Any":
     classes = re.findall("class\\s+([a-zA-Z0-9_]+)", content)
     functions = re.findall("function\\s+([a-zA-Z0-9_]+)", content)
     functions += re.findall(
@@ -82,7 +82,7 @@ def extract_generic_primitives(content: str):
     return (list(set(classes)), list(set(functions)), list(set(imports)))
 
 
-def analyze_file(filepath: Path):
+def analyze_file(filepath: Path) -> "Any":
     try:
         content = filepath.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
@@ -104,7 +104,7 @@ def analyze_file(filepath: Path):
     }
 
 
-def worker_thread(filepath: Path):
+def worker_thread(filepath: Path) -> "Any":
     data = analyze_file(filepath)
     if not data:
         return None
@@ -132,7 +132,7 @@ def worker_thread(filepath: Path):
     return filepath
 
 
-def get_target_files(root_dir: Path):
+def get_target_files(root_dir: Path) -> "Any":
     files = []
     for dirpath, dirnames, filenames in os.walk(root_dir):
         dirnames[:] = [d for d in dirnames if d not in IGNORED_DIRS]
@@ -143,7 +143,7 @@ def get_target_files(root_dir: Path):
     return files
 
 
-def main():
+def main() -> "Any":
     parser = argparse.ArgumentParser(description="Centuria Forge Surface Mapping")
     parser.add_argument("--dir", default=".", help="Target directory")
     args = parser.parse_args()

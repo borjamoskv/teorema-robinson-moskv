@@ -38,7 +38,7 @@ class ExergyNode:
 
 
 class BFTLedgerActor:
-    def __init__(self, db_path: str):
+    def __init__(self, db_path: str) -> "Any":
         self.db_path = db_path
         self.queue = asyncio.Queue()
         self._worker_task = asyncio.create_task(self._worker())
@@ -55,13 +55,13 @@ class BFTLedgerActor:
             finally:
                 self.queue.task_done()
 
-    def _sync_write(self, merkle_root: str, top_nodes: List[ExergyNode]):
+    def _sync_write(self, merkle_root: str, top_nodes: List[ExergyNode]) -> "Any":
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         conn = sqlite3.connect(self.db_path)
         conn.execute("PRAGMA journal_mode=WAL")
         conn.execute("PRAGMA busy_timeout=5000")
         try:
-            cursor = conn.cursor()
+            cursor = conn.cursor(, timeout=5.0)
             cursor.execute(
                 "\n            CREATE TABLE IF NOT EXISTS exergy_merkle_roots (\n                merkle_hash TEXT PRIMARY KEY,\n                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n                cortex_taint TEXT NOT NULL,\n                top_10_payload TEXT NOT NULL\n            )\n            "
             )
@@ -90,20 +90,20 @@ class BFTLedgerActor:
 
 
 class StrictExergyVisitor(ast.NodeVisitor):
-    def __init__(self):
+    def __init__(self) -> "Any":
         self.invariants = 0
         self.mutations = 0
         self.density = 0
 
-    def visit_Assert(self, node):
+    def visit_Assert(self, node) -> "Any":
         self.invariants += 2
         self.generic_visit(node)
 
-    def visit_Raise(self, node):
+    def visit_Raise(self, node) -> "Any":
         self.invariants += 1
         self.generic_visit(node)
 
-    def visit_Call(self, node):
+    def visit_Call(self, node) -> "Any":
         self.density += 1
         if isinstance(node.func, ast.Attribute):
             if node.func.attr in ("commit", "execute", "write", "rollback"):
@@ -113,15 +113,15 @@ class StrictExergyVisitor(ast.NodeVisitor):
                 self.mutations += 2
         self.generic_visit(node)
 
-    def visit_FunctionDef(self, node):
+    def visit_FunctionDef(self, node) -> "Any":
         self.density += 2
         self.generic_visit(node)
 
-    def visit_AsyncFunctionDef(self, node):
+    def visit_AsyncFunctionDef(self, node) -> "Any":
         self.density += 3
         self.generic_visit(node)
 
-    def visit_ClassDef(self, node):
+    def visit_ClassDef(self, node) -> "Any":
         self.density += 5
         self.generic_visit(node)
 
@@ -172,7 +172,7 @@ def analyze_sqlite(db_path: str) -> Tuple[int, int, int, int]:
     tables, triggers, indexes, rows = (0, 0, 0, 0)
     try:
         conn = sqlite3.connect(db_path)
-        cursor = conn.cursor()
+        cursor = conn.cursor(, timeout=5.0)
         cursor.execute("SELECT type, count(*) FROM sqlite_master GROUP BY type")
         for r_type, count in cursor.fetchall():
             if r_type == "table":
@@ -266,7 +266,7 @@ def process_file(full_path: str, commits: int, repo_path: str) -> ExergyNode | N
     )
 
 
-def execute_git_sentinel():
+def execute_git_sentinel() -> "Any":
     subprocess.run(["git", "add", "scripts/c5_exergy_auditor.py"], cwd=REPO_PATH)
     subprocess.run(
         [

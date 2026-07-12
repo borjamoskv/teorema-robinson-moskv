@@ -64,7 +64,7 @@ def _verify_attestation(
 class ValidatorNode:
     node_id: str = "base"
 
-    def __init_subclass__(cls, **kw):
+    def __init_subclass__(cls, **kw) -> "Any":
         super().__init_subclass__(**kw)
         if "is_mock" in cls.__dict__:
             raise TypeError(

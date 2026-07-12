@@ -13,7 +13,7 @@ def shannon_entropy(data: list) -> float:
     return -sum((count / total * math.log2(count / total) for count in freq.values()))
 
 
-def analyze_interactions(interactions):
+def analyze_interactions(interactions) -> "Any":
     out_degrees = defaultdict(set)
     in_degrees = defaultdict(set)
     all_users = set()

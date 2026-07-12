@@ -4,7 +4,7 @@ from kernel.bft_strict import MutationPayload, validate_mutation, QUORUM
 from kernel.stub_sha256 import sha256_bytes
 
 
-def validate_bft_quorum(diff: bytes, falsification=None, author: str = "operator"):
+def validate_bft_quorum(diff: bytes, falsification=None, author: str = "operator") -> "Any":
     payload = MutationPayload(
         diff=diff,
         author=author,

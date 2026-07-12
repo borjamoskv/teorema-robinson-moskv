@@ -3,7 +3,7 @@ from typing import List, Optional, Dict, Any
 
 
 class EvaluatorBrierScore:
-    def __init__(self, min_coverage_threshold: int = 30):
+    def __init__(self, min_coverage_threshold: int = 30) -> "Any":
         self.min_coverage = min_coverage_threshold
 
     def compute_brier(self, records: List[Dict[str, Any]]) -> Optional[float]:

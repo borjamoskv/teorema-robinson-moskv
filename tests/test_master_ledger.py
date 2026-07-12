@@ -11,9 +11,9 @@ def db_path(tmp_path: Path) -> Path:
 
 
 @pytest.fixture
-def event_factory():
+def event_factory() -> "Any":
 
-    def _create(idx: int):
+    def _create(idx: int) -> "Any":
         return LedgerEvent(
             stream="test_stream",
             entity_id=f"ent_{idx}",

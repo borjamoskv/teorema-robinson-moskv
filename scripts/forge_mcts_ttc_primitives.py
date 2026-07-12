@@ -21,7 +21,7 @@ DOMAINS = [
 COMPLEXITY_BOUNDS = ["O(1)", "O(log N)", "O(N)", "O(N log N)", "O(b^d)", "O(V + E)"]
 
 
-def generate_base_description(domain, index):
+def generate_base_description(domain, index) -> "Any":
     seed = index * 7 % 11
     properties = {
         "MCTS_SELECTION_BOUNDS": [
@@ -102,7 +102,7 @@ def generate_base_description(domain, index):
     return f"{text} (Invariant Marker: 0x{hashlib.md5(str(index).encode()).hexdigest()[:6].upper()})"
 
 
-def forge_primitives():
+def forge_primitives() -> "Any":
     primitives = []
     db_rows = []
     db_path = (
@@ -112,7 +112,7 @@ def forge_primitives():
         os.remove(db_path)
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA journal_mode=WAL;")
-    conn.execute("PRAGMA synchronous=NORMAL;")
+    conn.execute("PRAGMA synchronous=NORMAL;", timeout=5.0)
     conn.execute(
         "\n        CREATE TABLE mcts_primitives (\n            uuid TEXT PRIMARY KEY,\n            domain TEXT,\n            description TEXT,\n            ttc_budget_ms INTEGER,\n            atp_leverage INTEGER,\n            complexity_bound TEXT,\n            signature TEXT,\n            timestamp_utc TEXT\n        );\n    "
     )

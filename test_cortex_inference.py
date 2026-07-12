@@ -13,7 +13,7 @@ async def test_engine_initialization():
     await engine.close()
 
 
-def test_parse_query():
+def test_parse_query() -> None:
     engine = CortexInferenceEngine()
     scores = engine.parse_query("¿Por qué falló esto?")
     assert "causal" in scores

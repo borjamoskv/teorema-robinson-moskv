@@ -68,7 +68,7 @@ def evaluate_script(filepath: Path) -> dict:
     }
 
 
-def main():
+def main() -> "Any":
     if len(sys.argv) < 3:
         print("Usage: biocentric_evaluator.py <output.md> <dir1> <dir2> ...")
         sys.exit(1)

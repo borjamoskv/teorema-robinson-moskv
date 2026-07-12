@@ -3,18 +3,18 @@ import os
 import hashlib
 
 
-def saga_0_secret_quarantine(prompt):
+def saga_0_secret_quarantine(prompt) -> "Any":
     forbidden = ["sk-", "ghp_", "xoxb-"]
     for f in forbidden:
         if f in prompt:
             raise ValueError("SAGA-0: Secret in text.")
 
 
-def saga_1_anti_obfuscation(prompt):
+def saga_1_anti_obfuscation(prompt) -> "Any":
     return prompt.replace("\u200b", "")
 
 
-def main():
+def main() -> "Any":
     prompt = sys.stdin.read()
     saga_0_secret_quarantine(prompt)
     prompt = saga_1_anti_obfuscation(prompt)

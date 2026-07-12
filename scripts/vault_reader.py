@@ -11,7 +11,7 @@ except ImportError:
     pass
 
 
-def main():
+def main() -> "Any":
     if len(sys.argv) < 2:
         print("Usage: python vault_reader.py <filename_without_enc>")
         sys.exit(1)

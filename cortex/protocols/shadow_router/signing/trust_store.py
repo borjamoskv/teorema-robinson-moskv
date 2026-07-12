@@ -3,7 +3,7 @@ from cortex.protocols.shadow_router.signing.ed25519 import verify_envelope
 
 
 class TrustStore:
-    def __init__(self, trust_info: dict = None):
+    def __init__(self, trust_info: dict = None) -> "Any":
         self._authorized_keys = {}
         self._revoked_keys = set()
         if trust_info:
@@ -22,12 +22,12 @@ class TrustStore:
             envelope.payload, envelope.signature.value, public_key_hex
         )
 
-    def register_issuer(self, issuer_id: str, public_key_hex: str):
+    def register_issuer(self, issuer_id: str, public_key_hex: str) -> "Any":
         if issuer_id in self._revoked_keys:
             raise ValueError(f"CRITICAL: Issuer {issuer_id} is revoked.")
         self._authorized_keys[issuer_id] = public_key_hex
 
-    def revoke_issuer(self, issuer_id: str):
+    def revoke_issuer(self, issuer_id: str) -> "Any":
         self._revoked_keys.add(issuer_id)
         if issuer_id in self._authorized_keys:
             del self._authorized_keys[issuer_id]

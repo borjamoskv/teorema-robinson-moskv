@@ -20,7 +20,7 @@ logging.basicConfig(
 
 
 class AcousticKernel:
-    def __init__(self):
+    def __init__(self) -> "Any":
         self._mutex = asyncio.Lock()
         self._state_hash = None
         self._audio_queue = asyncio.Queue()
@@ -28,7 +28,7 @@ class AcousticKernel:
         self.session_id = self.ledger.start_session()
         self._warmup_model()
 
-    def _warmup_model(self):
+    def _warmup_model(self) -> "Any":
         logging.info("Warming up MLX Whisper model...")
         temp_dir = "$CORTEX_ROOT/.gemini/antigravity/scratch"
         os.makedirs(temp_dir, exist_ok=True)

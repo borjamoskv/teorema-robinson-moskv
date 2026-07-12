@@ -14,13 +14,13 @@ class StateMutation:
 
 
 class BFT_Ledger:
-    def __init__(self, db_path: str = "master_ledger.db"):
-        self.conn = sqlite3.connect(db_path, isolation_level=None)
+    def __init__(self, db_path: str = "master_ledger.db") -> "Any":
+        self.conn = sqlite3.connect(db_path, isolation_level=None, timeout=5.0)
         self.conn.execute("PRAGMA journal_mode=WAL;")
         self.conn.execute("PRAGMA synchronous=NORMAL;")
         self._init_tables()
 
-    def _init_tables(self):
+    def _init_tables(self) -> "Any":
         self.conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS state_log (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                mutation_hash TEXT UNIQUE NOT NULL,\n                agent_id TEXT NOT NULL,\n                payload BLOB NOT NULL,\n                ts REAL NOT NULL\n            )\n        "
         )

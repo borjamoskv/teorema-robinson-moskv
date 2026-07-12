@@ -2,7 +2,7 @@ import yaml
 import hashlib
 
 
-def purge_primitives():
+def purge_primitives() -> "Any":
     file_path = "$CORTEX_ROOT/30_BABYLON-60/cortex/ontology/300_primitivas_post_hoc.yaml"
     with open(file_path, "r") as f:
         data = yaml.safe_load(f)

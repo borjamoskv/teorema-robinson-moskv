@@ -5,7 +5,7 @@ import os
 import time
 
 
-def compress_git_history():
+def compress_git_history() -> "Any":
     result = subprocess.run(
         ["git", "log", "--format=%H:%s"], capture_output=True, text=True
     )

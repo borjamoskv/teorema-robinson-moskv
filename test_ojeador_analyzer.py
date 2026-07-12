@@ -12,7 +12,7 @@ from ojeador_analyzer import (
 )
 
 
-def test_resolve_family_maps_correctly():
+def test_resolve_family_maps_correctly() -> None:
     claude_info = resolve_family("claude-fable-5")
     assert claude_info["family"] == "Claude"
     assert "refusal" in claude_info["alignment_risk"].lower()
@@ -26,22 +26,22 @@ def test_resolve_family_maps_correctly():
     assert unmapped_info["exergy_rating"] == "C"
 
 
-def test_shannon_entropy():
+def test_shannon_entropy() -> None:
     assert shannon_entropy("AAAA") == 0.0
     assert math.isclose(shannon_entropy("ABCD"), 2.0)
 
 
-def test_saga_1_anti_obfuscation():
+def test_saga_1_anti_obfuscation() -> None:
     assert saga_1_anti_obfuscation("ｇｐｔ－４") == "gpt-4"
 
 
-def test_canonical_hash():
+def test_canonical_hash() -> None:
     payload_1 = {"b": 2, "a": 1}
     payload_2 = {"a": 1, "b": 2}
     assert canonical_hash(payload_1) == canonical_hash(payload_2)
 
 
-def test_build_markdown_generates_valid_structure():
+def test_build_markdown_generates_valid_structure() -> None:
     mock_data = {
         "meta": {"fetched_at": "2026-07-11T00:00:00Z", "last_updated": "Jul 11, 2026"},
         "models": [

@@ -15,29 +15,29 @@ L_NWV = "👑"
 
 
 class PBFTLedgerFusion:
-    def __init__(self):
+    def __init__(self) -> "Any":
         self.view = 0
         self.logs = {i: [] for i in range(N)}
         self.setup_ledger()
 
-    def setup_ledger(self):
+    def setup_ledger(self) -> "Any":
         os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-        self.conn = sqlite3.connect(DB_PATH, isolation_level=None)
+        self.conn = sqlite3.connect(DB_PATH, isolation_level=None, timeout=5.0)
         self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS pbft_ledger (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                view INTEGER,\n                phase TEXT,\n                node_id INTEGER,\n                payload TEXT,\n                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP\n            )\n        "
         )
 
-    def write_ledger(self, phase, node_id, payload):
+    def write_ledger(self, phase, node_id, payload) -> "Any":
         self.conn.execute(
             "\n            INSERT INTO pbft_ledger (view, phase, node_id, payload)\n            VALUES (?, ?, ?, ?)\n        ",
             (self.view, phase, node_id, payload),
         )
 
-    def get_primary(self):
+    def get_primary(self) -> "Any":
         return self.view % N
 
-    def run_consensus(self):
+    def run_consensus(self) -> "Any":
         primary = self.get_primary()
         sys.stdout.write(f"\n❖ [ VISTA ACTUAL: {self.view} | LÍDER: N{primary} ] ❖\n")
         payloads = ["📦🧠⚡", "📦🧠💀", "📦🧠🩸"]
@@ -87,7 +87,7 @@ class PBFTLedgerFusion:
                 return self.run_honest_consensus()
         return "❌ CONSENSUS_STALLED"
 
-    def run_honest_consensus(self):
+    def run_honest_consensus(self) -> "Any":
         primary = self.get_primary()
         sys.stdout.write(
             f"\n❖ [ NUEVA VISTA HONESTA: {self.view} | LÍDER: N{primary} ] ❖\n"
@@ -103,7 +103,7 @@ class PBFTLedgerFusion:
         self.write_ledger("EXECUTED", primary, f"{L_REP}📦🧠⚡")
         return "✅ CONSENSUS_REACHED_AND_COMMITTED"
 
-    def audit_ledger(self):
+    def audit_ledger(self) -> "Any":
         sys.stdout.write(
             "\n❖ [ AUDITORÍA DEL MASTER LEDGER (Últimos 10 registros) ] ❖\n"
         )

@@ -16,13 +16,13 @@ class ApoptosisException(Exception):
 
 
 class UltraThinkBudgetForcer:
-    def __init__(self, max_iterations=120, max_tokens=10000):
+    def __init__(self, max_iterations=120, max_tokens=10000) -> "Any":
         self.max_iterations = max_iterations
         self.max_tokens = max_tokens
         self.current_tokens = 0
         self.iterations = 0
 
-    def tick(self, tokens=0):
+    def tick(self, tokens=0) -> "Any":
         self.current_tokens += tokens
         self.iterations += 1
         if (

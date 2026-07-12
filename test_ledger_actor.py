@@ -147,7 +147,7 @@ async def test_immutability_triggers(db_path):
 @pytest.mark.asyncio
 async def test_idempotent_retry_collapse(db_path):
     actor = BFTLedgerActor(db_path)
-    await actor.start()
+    await actor.start(, timeout=5.0)
     try:
         event = LedgerEvent(
             stream="stream-1",
@@ -336,4 +336,4 @@ async def test_direct_sql_forged_hash_detected(db_path):
             conn.commit()
         assert await actor.verify_chain() is False
     finally:
-        await actor.stop()
+        await actor.stop(, timeout=5.0)

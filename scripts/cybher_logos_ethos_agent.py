@@ -14,7 +14,7 @@ EXCLUDE_DIRS = {
 
 
 class CybherHypervigilantAgent:
-    def __init__(self, target_dir: str, db_path: str):
+    def __init__(self, target_dir: str, db_path: str) -> "Any":
         self.target_dir = os.path.abspath(os.path.expanduser(target_dir))
         self.db_path = os.path.abspath(os.path.expanduser(db_path))
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
@@ -28,13 +28,13 @@ class CybherHypervigilantAgent:
         self.lamport_t = self._get_max_lamport()
         self.prev_hash = f"GENESIS_{self.lamport_t}"
 
-    def _init_db(self):
+    def _init_db(self) -> "Any":
         self.conn.execute(
             "\n            CREATE TABLE IF NOT EXISTS ethos_ledger (\n                lamport_t INTEGER PRIMARY KEY,\n                agent_id TEXT,\n                file_path TEXT,\n                prev_hash TEXT UNIQUE,\n                payload_hash TEXT,\n                cortex_taint TEXT\n            )\n        "
         )
         self.conn.commit()
 
-    def _get_max_lamport(self):
+    def _get_max_lamport(self) -> "Any":
         cursor = self.conn.execute("SELECT MAX(lamport_t) FROM ethos_ledger")
         row = cursor.fetchone()
         return row[0] or 0
@@ -60,7 +60,7 @@ class CybherHypervigilantAgent:
                 self._flush_batch(batch)
                 batch.clear()
 
-    def _flush_batch(self, batch):
+    def _flush_batch(self, batch) -> "Any":
         try:
             self.conn.executemany(
                 "\n                INSERT INTO ethos_ledger (lamport_t, agent_id, file_path, prev_hash, payload_hash, cortex_taint)\n                VALUES (?, ?, ?, ?, ?, ?)\n            ",
@@ -71,7 +71,7 @@ class CybherHypervigilantAgent:
             print("[!] SIGKILL_State_Purge: IntegrityError BFT_STATE_LOOP.")
             os._exit(1)
 
-    def _fast_scandir(self, path):
+    def _fast_scandir(self, path) -> "Any":
         try:
             with os.scandir(path) as it:
                 for entry in it:

@@ -8,7 +8,7 @@ from cortex.protocols.shadow_router.signing.trust_store import TrustStore
 from cortex.protocols.shadow_router.routing.egress_gate import EgressGate
 
 
-def test_egress_gate_single_use():
+def test_egress_gate_single_use() -> None:
     trust_info = {
         "did:key:z6MkpTHR8VNsBxRcmStjecrxVCoVdPk2yFw6J22tCSZazn1x": {
             "public_key_hex": "2b3be5d4a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c",

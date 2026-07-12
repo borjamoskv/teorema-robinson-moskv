@@ -68,7 +68,7 @@ def shannon_entropy(data: str) -> float:
     )
 
 
-def saga_0_secret_quarantine(payload_str: str):
+def saga_0_secret_quarantine(payload_str: str) -> "Any":
     if "eyJhbGciOi" in payload_str or "sk-proj-" in payload_str:
         print("💀 [SAGA-0] QUARANTINE ABORT: Secreto detectado en payload.")
         sys.exit(1)
@@ -178,7 +178,7 @@ async def fetch_leaderboard():
     return (json.loads(payload), payload, latency_ms)
 
 
-def build_markdown(data, latency_ms, entropy):
+def build_markdown(data, latency_ms, entropy) -> "Any":
     meta = data.get("meta", {})
     models = data.get("models", [])
     fetched_at = meta.get("fetched_at", datetime.now().isoformat())

@@ -16,7 +16,7 @@ from datetime import datetime
 
 
 class MockProviderClient:
-    def __init__(self, egress_gate: EgressGate):
+    def __init__(self, egress_gate: EgressGate) -> "Any":
         self.egress_gate = egress_gate
 
     async def invoke_streaming(

@@ -5,17 +5,17 @@ import logging
 
 
 class VoiceLedger:
-    def __init__(self, db_path: str = "cortex/voice_engine/voice_ledger.db"):
+    def __init__(self, db_path: str = "cortex/voice_engine/voice_ledger.db") -> "Any":
         self.db_path = db_path
         self._init_db()
 
-    def _get_conn(self):
+    def _get_conn(self) -> "Any":
         conn = sqlite3.connect(self.db_path, timeout=5.0)
         conn.execute("PRAGMA journal_mode=WAL;")
         conn.execute("PRAGMA synchronous=NORMAL;")
         return conn
 
-    def _init_db(self):
+    def _init_db(self) -> "Any":
         schema_path = "cortex/voice_engine/voice_ledger.sql"
         with open(schema_path, "r") as f:
             schema = f.read()

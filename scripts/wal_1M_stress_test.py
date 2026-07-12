@@ -5,7 +5,7 @@ import os
 import hashlib
 
 
-def worker_task(worker_id, num_inserts, db_path):
+def worker_task(worker_id, num_inserts, db_path) -> "Any":
     conn = sqlite3.connect(db_path, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL;")
     conn.execute("PRAGMA synchronous=NORMAL;")
@@ -36,7 +36,7 @@ def worker_task(worker_id, num_inserts, db_path):
     return time.time() - start_time
 
 
-def run_stress_test():
+def run_stress_test() -> "Any":
     db_path = (
         "$CORTEX_ROOT/30_BABYLON-60/cortex/vault/stress_1M_ledger.db"
     )
@@ -44,7 +44,7 @@ def run_stress_test():
         os.remove(db_path)
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA journal_mode=WAL;")
-    conn.execute("PRAGMA synchronous=NORMAL;")
+    conn.execute("PRAGMA synchronous=NORMAL;", timeout=5.0)
     conn.execute(
         "\n        CREATE TABLE stress_1m (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            worker_id INTEGER,\n            entropy_hash TEXT,\n            timestamp_utc REAL\n        )\n    "
     )
@@ -79,4 +79,4 @@ def run_stress_test():
 
 
 if __name__ == "__main__":
-    run_stress_test()
+    run_stress_test(, timeout=5.0)

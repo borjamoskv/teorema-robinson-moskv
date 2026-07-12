@@ -20,7 +20,7 @@ def upload_to_ipfs(ciphertext: bytes) -> str:
     return f"QmMock{h[:40]}"
 
 
-def pipeline(manifest_batch: list, tenant_key: bytes):
+def pipeline(manifest_batch: list, tenant_key: bytes) -> "Any":
     print(f"Encrypting batch of {len(manifest_batch)} receipts...")
     encrypted_batch = encrypt_payload({"batch": manifest_batch}, tenant_key)
     cid = upload_to_ipfs(encrypted_batch)

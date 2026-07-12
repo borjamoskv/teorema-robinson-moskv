@@ -11,7 +11,7 @@ class Ed25519Signer:
 
 
 class EvaluatorT2:
-    def __init__(self, signer: Ed25519Signer):
+    def __init__(self, signer: Ed25519Signer) -> "Any":
         self.signer = signer
         self.LAMBDA_Q = 0.8
         self.LAMBDA_L = 0.1

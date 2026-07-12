@@ -37,7 +37,7 @@ TRANSITIONS = {
 }
 
 
-def build_adjacency_matrix():
+def build_adjacency_matrix() -> "Any":
     emojis = list(LEXICON.keys())
     len(emojis)
     matrix = {e1: {e2: 0 for e2 in emojis} for e1 in emojis}
@@ -47,7 +47,7 @@ def build_adjacency_matrix():
     return (emojis, matrix)
 
 
-def print_matrix(emojis, matrix):
+def print_matrix(emojis, matrix) -> "Any":
     sys.stdout.write(
         "❖ [ C5-DAEMON-CORE :: MATRIZ DE ADYACENCIA EMOJI (EXERGY) ] ❖\n\n"
     )
@@ -62,7 +62,7 @@ def print_matrix(emojis, matrix):
         sys.stdout.write(row_str + f"  ({LEXICON[row_emoji]})\n")
 
 
-def check_invariants():
+def check_invariants() -> "Any":
     sys.stdout.write("\n❖ [ AUDITORÍA ESTRUCTURAL DE GRAFO ] ❖\n")
     terminals = [e for e, edges in TRANSITIONS.items() if len(edges) == 0]
     sys.stdout.write(
@@ -83,7 +83,7 @@ def check_invariants():
     sys.stdout.write(f"  [ ✔ ] Nodos Inalcanzables (Islas): {unreachable}\n")
 
 
-def export_yaml():
+def export_yaml() -> "Any":
     data = {
         "Ontology": "ECB-1_PBFT_Matrix",
         "Entities": LEXICON,

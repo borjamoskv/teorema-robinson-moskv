@@ -31,9 +31,9 @@ PROMPT_MATRIX = [
 ]
 
 
-def init_db():
+def init_db() -> "Any":
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH, timeout=5000, isolation_level=None)
+    conn = sqlite3.connect(DB_PATH, timeout=5000, isolation_level=None, timeout=5.0)
     conn.execute("PRAGMA journal_mode=WAL;")
     conn.execute("PRAGMA synchronous=NORMAL;")
     conn.execute(

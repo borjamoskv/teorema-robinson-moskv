@@ -6,7 +6,7 @@ videos_dir = "$CORTEX_ROOT/30_BABYLON-60/public/videos"
 os.makedirs(videos_dir, exist_ok=True)
 
 
-def record_all():
+def record_all() -> "Any":
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         files = sorted([f for f in os.listdir(demos_dir) if f.endswith(".html")])

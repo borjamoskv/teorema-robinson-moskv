@@ -54,7 +54,7 @@ def connect_db() -> sqlite3.Connection:
     return conn
 
 
-def init_db():
+def init_db() -> "Any":
     with connect_db() as conn:
         conn.execute("PRAGMA journal_mode=WAL")
         conn.execute(
@@ -73,7 +73,7 @@ def init_db():
 init_db()
 
 
-def load_cluster_keys():
+def load_cluster_keys() -> "Any":
     with connect_db() as conn:
         rows = conn.execute(
             "SELECT node_id, public_key_hex FROM cluster_keys"
@@ -149,13 +149,13 @@ def append_event(
 app = FastAPI(title="MCON C5-REAL (Zero-Trust BFT)", version="3.0.0")
 
 
-def require_api_key(x_api_key: Optional[str] = Header(default=None)):
+def require_api_key(x_api_key: Optional[str] = Header(default=None)) -> "Any":
     if API_KEY and (not x_api_key or not secrets.compare_digest(x_api_key, API_KEY)):
         raise HTTPException(status_code=401, detail="API key inválida")
 
 
 @app.post("/register-node", dependencies=[Depends(require_api_key)])
-def register_node(node_id: str = Query(...), pub_key_hex: str = Query(...)):
+def register_node(node_id: str = Query(...), pub_key_hex: str = Query(...)) -> "Any":
     try:
         vk = VerifyingKey.from_string(bytes.fromhex(pub_key_hex), curve=SECP256k1)
         CLUSTER_KEYS[node_id] = vk

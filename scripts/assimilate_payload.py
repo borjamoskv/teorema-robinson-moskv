@@ -2,11 +2,11 @@ import sqlite3
 import hashlib
 
 
-def assimilate_payload():
+def assimilate_payload() -> "Any":
     db_path = "$CORTEX_ROOT/30_BABYLON-60/nexus_anchors.db"
     payload = "disable_post_hoc=true, 3ms latency bypass"
     payload_hash = hashlib.sha256(payload.encode()).hexdigest()
-    with sqlite3.connect(db_path) as conn:
+    with sqlite3.connect(db_path, timeout=5.0) as conn:
         conn.execute(
             "\n            UPDATE causal_collapse \n            SET status = 'COLLAPSED', payload_hash = ?\n            WHERE event_type = 'LEAK_ASSIMILATION' AND status = 'AWAITING_PAYLOAD'\n        ",
             (payload_hash,),

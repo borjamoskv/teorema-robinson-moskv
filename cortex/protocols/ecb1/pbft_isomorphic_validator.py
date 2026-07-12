@@ -34,7 +34,7 @@ DAG = {
 }
 
 
-def tokenize_emojis(sequence):
+def tokenize_emojis(sequence) -> "Any":
     tokens = []
     i = 0
     while i < len(sequence):
@@ -50,7 +50,7 @@ def tokenize_emojis(sequence):
     return (tokens, None)
 
 
-def validate_causal_path(sequence):
+def validate_causal_path(sequence) -> "Any":
     tokens, err = tokenize_emojis(sequence)
     if not tokens:
         return (

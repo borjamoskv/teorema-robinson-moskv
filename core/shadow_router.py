@@ -12,7 +12,7 @@ class Ed25519Signer:
 
 
 class ShadowRouter:
-    def __init__(self, signer: Ed25519Signer):
+    def __init__(self, signer: Ed25519Signer) -> "Any":
         self.signer = signer
         self.shadow_queue: asyncio.Queue[Dict[str, Any]] = asyncio.Queue()
 

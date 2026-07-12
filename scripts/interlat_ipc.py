@@ -8,10 +8,10 @@ INSTRUCTION_REV = {v: k for k, v in INSTRUCTION_MAP.items()}
 
 
 class InterlatBridge:
-    def __init__(self, shared_secret: bytes = None):
+    def __init__(self, shared_secret: bytes = None) -> "Any":
         self.shared_secret = shared_secret or secrets.token_bytes(32)
 
-    def _derive_keys(self, nonce: bytes):
+    def _derive_keys(self, nonce: bytes) -> "Any":
         kdf = hmac.new(self.shared_secret, nonce, hashlib.sha256).digest()
         return (kdf[:16], kdf[16:])
 

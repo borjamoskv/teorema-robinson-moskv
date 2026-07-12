@@ -56,7 +56,7 @@ VOCAB = [
 ]
 
 
-def main():
+def main() -> "Any":
     print("Initiating 1000-cycle EXERGY L3 Memoization Protocol...")
     engine = CortexInferenceEngine()
     unique_queries = set()

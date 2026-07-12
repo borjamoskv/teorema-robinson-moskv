@@ -15,7 +15,7 @@ class PositivityViolationError(CausalViolationError):
 
 
 class ShadowRouterSimulator:
-    def __init__(self, capacity: int = 10):
+    def __init__(self, capacity: int = 10) -> "Any":
         self.capacity = capacity
         self.concurrent_load = 0
 
@@ -40,14 +40,14 @@ class ShadowRouterSimulator:
         return {"latency": actual_latency, "status": "success"}
 
 
-def test_sutva_violation_fail_fast():
+def test_sutva_violation_fail_fast() -> None:
     router = ShadowRouterSimulator(capacity=10)
     with pytest.raises(SUTVAViolationError):
         for i in range(50):
             router.route_request(prompt_difficulty=0.5, target_model="model_a")
 
 
-def test_positivity_violation_fail_fast():
+def test_positivity_violation_fail_fast() -> None:
     router = ShadowRouterSimulator()
     with pytest.raises(PositivityViolationError):
         router.route_request(
@@ -55,7 +55,7 @@ def test_positivity_violation_fail_fast():
         )
 
 
-def test_ignorability_confounder_detection():
+def test_ignorability_confounder_detection() -> None:
     outcomes = [
         {"model": "A", "difficulty": 0.9, "success": 1},
         {"model": "A", "difficulty": 0.8, "success": 1},

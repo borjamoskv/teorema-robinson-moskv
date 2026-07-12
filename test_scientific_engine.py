@@ -10,7 +10,7 @@ from scientific_engine import (
 )
 
 
-def test_compute_shannon_entropy():
+def test_compute_shannon_entropy() -> None:
     data = ["A", "A", "B", "B"]
     res = compute_shannon_entropy(data)
     assert math.isclose(res["entropy"], 1.0)
@@ -18,13 +18,13 @@ def test_compute_shannon_entropy():
     assert math.isclose(res["efficiency"], 0.5)
 
 
-def test_compute_fisher_information():
+def test_compute_fisher_information() -> None:
     series = [10.0, 10.0, 10.0]
     res = compute_fisher_information(series)
     assert math.isclose(res["fisher_information"], 0.0)
 
 
-def test_solve_d_separation():
+def test_solve_d_separation() -> None:
     nodes = ["A", "B", "C"]
     edges = [["A", "B"], ["B", "C"]]
     res = solve_d_separation(nodes, edges, "A", "C", ["B"])
@@ -33,7 +33,7 @@ def test_solve_d_separation():
     assert res2["d_separated"] is False
 
 
-def test_compute_kolmogorov_approximation():
+def test_compute_kolmogorov_approximation() -> None:
     data = "A" * 1000
     res = compute_kolmogorov_approximation(data)
     assert res["compressed_size"] < res["raw_size"]

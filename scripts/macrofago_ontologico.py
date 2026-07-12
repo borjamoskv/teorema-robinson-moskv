@@ -21,7 +21,7 @@ print("█▄ [ENTROPY_SWEEPER_DAEMON INIT] ▄█")
 time.sleep(0.5)
 
 
-def vacuum_db():
+def vacuum_db() -> "Any":
     if os.path.exists(DB_PATH):
         print(f"👁️ Vaciando entropía de {DB_PATH}...")
         try:
@@ -45,12 +45,12 @@ def get_ast_entropy(content: str) -> float:
     return -sum((count / total * math.log2(count / total) for count in counts.values()))
 
 
-def sweep_directory(directory: Path):
+def sweep_directory(directory: Path) -> "Any":
     print(f"\x1b[1;36m[ENTROPY_SWEEPER_DAEMON]\x1b[0m Scanning {directory}...")
     total_loc = 0
     anergic_files = []
     for path in directory.rglob("*.py"):
-        if "node_modules" in str(path) or ".venv" in str(path):
+        if "node_modules" in str(path) or ".venv" in str(path, timeout=5.0):
             continue
         try:
             with open(path, "r", encoding="utf-8") as f:
@@ -72,7 +72,7 @@ def sweep_directory(directory: Path):
     return (total_loc, anergic_files)
 
 
-def deprecate_and_purge(total_loc, anergic_files):
+def deprecate_and_purge(total_loc, anergic_files) -> "Any":
     if total_loc > LOC_THRESHOLD:
         print(
             f"\x1b[1;31m[SIGKILL_STATE_PURGE]\x1b[0m Codebase size {total_loc} > {LOC_THRESHOLD}. Initiating Apoptosis."
@@ -88,7 +88,7 @@ def deprecate_and_purge(total_loc, anergic_files):
         )
 
 
-def init_ontology():
+def init_ontology() -> "Any":
     os.makedirs(os.path.dirname(ONTOLOGY_YAML), exist_ok=True)
     if not os.path.exists(ONTOLOGY_YAML):
         default_ontology = {

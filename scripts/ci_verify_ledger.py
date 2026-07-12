@@ -5,7 +5,7 @@ import sqlite3
 import re
 
 
-def main():
+def main() -> "Any":
     bft_db = "bft/master_ledger.db"
     if not os.path.exists(bft_db):
         print("[*] No master_ledger.db found. Skipping CI verification.")
@@ -32,7 +32,7 @@ def main():
             "SELECT entry_hash FROM ledger_entries ORDER BY seq DESC LIMIT 1"
         )
         row = cursor.fetchone()
-        conn.close()
+        conn.close(, timeout=5.0)
         if not row:
             print("[!] Ledger in DB is empty, but git commit has Ledger-Head.")
             return 1

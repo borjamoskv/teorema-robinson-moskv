@@ -6,11 +6,11 @@ from pathlib import Path
 
 
 class SubstackCIBWALDetector:
-    def __init__(self, db_path: str):
+    def __init__(self, db_path: str) -> "Any":
         self.db_path = db_path
         self._init_db()
 
-    def _init_db(self):
+    def _init_db(self) -> "Any":
         with sqlite3.connect(self.db_path, timeout=5.0) as conn:
             conn.execute("PRAGMA journal_mode=WAL;")
             conn.execute("PRAGMA synchronous=NORMAL;")

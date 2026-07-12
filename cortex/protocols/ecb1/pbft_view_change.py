@@ -10,14 +10,14 @@ L_NWV = "👑"
 
 
 class PBFTNetwork:
-    def __init__(self):
+    def __init__(self) -> "Any":
         self.view = 0
         self.logs = {i: [] for i in range(N)}
 
-    def get_primary(self):
+    def get_primary(self) -> "Any":
         return self.view % N
 
-    def simulate_view_change_round(self):
+    def simulate_view_change_round(self) -> "Any":
         primary = self.get_primary()
         sys.stdout.write(f"\n❖ [ VISTA ACTUAL: {self.view} | LÍDER: N{primary} ] ❖\n")
         sys.stdout.write("  [ 1. PRE-PREPARE ]\n")

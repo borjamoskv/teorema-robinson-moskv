@@ -55,7 +55,7 @@ class CortexInferenceEngine:
         ),
     }
 
-    def __init__(self, db_path=None, cache_db_path=None):
+    def __init__(self, db_path=None, cache_db_path=None) -> "Any":
         self.config = ENGINE_CONFIG
         self.target_db = db_path or DB_PATH
         self.target_cache = cache_db_path or CACHE_DB_PATH
@@ -95,7 +95,7 @@ class CortexInferenceEngine:
         if self.cache_db:
             await self.cache_db.close()
 
-    def parse_query(self, query):
+    def parse_query(self, query) -> "Any":
         scores = {k: Decimal("0.0") for k in self.TRIGGERS.keys()}
         for key, pattern in self.TRIGGERS.items():
             matches = pattern.findall(query)
@@ -217,7 +217,7 @@ class CortexInferenceEngine:
         else:
             confidence = "C5-REAL" if len(primitives) > 3 else "C4-SIM"
 
-        def decimal_to_str(obj):
+        def decimal_to_str(obj) -> "Any":
             if isinstance(obj, dict):
                 return {k: decimal_to_str(v) for k, v in obj.items()}
             elif isinstance(obj, list):
