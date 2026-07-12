@@ -26,6 +26,8 @@ class VoiceLedger:
             with self._get_conn() as conn:
                 conn.executescript(schema)
                 conn.commit()
+        except Exception as e:
+            logging.error(f"Error initializing DB schema: {e}")
 
 
     def start_session(self) -> str:

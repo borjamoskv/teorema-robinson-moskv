@@ -14,6 +14,12 @@ Requires-Dist: pytest
 Requires-Dist: aiosqlite
 Requires-Dist: pydantic
 Requires-Dist: pynacl
+Requires-Dist: torch>=2.13.0
+Requires-Dist: torchaudio>=2.11.0
+Requires-Dist: einops>=0.8.2
+Requires-Dist: descript-audio-codec>=1.0.0
+Requires-Dist: librosa>=0.11.0
+Requires-Dist: numba>=0.66.0
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](LICENSE)

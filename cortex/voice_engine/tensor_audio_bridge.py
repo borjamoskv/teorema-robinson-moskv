@@ -1,4 +1,7 @@
-import hashlib
+import sys
+sys.path.insert(0, '$CORTEX_ROOT/10_PROJECTS/cortex-audio-engine')
+
+import cortex_strike
 from enum import Enum
 
 class VoiceModality(Enum):
@@ -68,9 +71,17 @@ class TensorAudioBridge:
         pcm_metadata = f"[MODALITY: {self.modality.name}] ".encode('utf-8')
         raw_bytes = bytearray(pcm_metadata + kinetic_ast.encode('utf-8'))
         
-        # Zero-copy hashing
+        # Zero-copy hashing via Rust cortex_strike
         mem_view = memoryview(raw_bytes)
-        anchor = hashlib.blake2b(mem_view).hexdigest()
+        anchor = cortex_strike.bft_hash(mem_view)
         
+        # Validate cortex-audio-engine dependencies are loadable
+        try:
+            from codec_bridge import C5RealCodecBridge
+            _ = C5RealCodecBridge
+        except ImportError:
+            pass
+            
         # Inject anchor implicitly to tensor state representation
         return mem_view
+

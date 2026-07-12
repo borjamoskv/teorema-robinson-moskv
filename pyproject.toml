@@ -21,6 +21,12 @@ dependencies = [
     "aiosqlite",
     "pydantic",
     "pynacl",
+    "torch>=2.13.0",
+    "torchaudio>=2.11.0",
+    "einops>=0.8.2",
+    "descript-audio-codec>=1.0.0",
+    "librosa>=0.11.0",
+    "numba>=0.66.0",
 ]
 
 [project.urls]
