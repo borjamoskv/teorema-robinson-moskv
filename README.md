@@ -314,6 +314,10 @@ mypy babylon60/ --strict
 
 See [`AGENTS.md`](AGENTS.md) for the full trust framework.
 
+### C5-REAL Anti-Stochastic Invariants
+
+> **Stochastic Failure Invariant:** Stochastic LLMs fail at basic deterministic topological mapping (e.g., counting exactly 3 "E"s in the word "diecisiete"). BABYLON-60 enforces cryptographic proofs (Claim/Proof) to collapse generative entropy into physical invariants, preventing algorithmic hallucination.
+
 ---
 
 ## Contributing
