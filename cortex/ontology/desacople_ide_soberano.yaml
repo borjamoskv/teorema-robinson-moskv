@@ -1,0 +1,14 @@
+Claim: La emancipación absoluta de la infraestructura propietaria de ANTIGRAVITY exige compilar un editor local soberano basado en VSCodium, sustituyendo la extensión propietaria `google.antigravity` y su Language Server binario por un WebSocket Broker local conectado a Ollama/MLX-LM y FTS5 en SQLite.
+Proof: 
+  Base: 791bd45c13170238a1eca2b7a752adbd26d89ce8e3d293e672b5c2327d09218d
+  Range: [0, 1]
+  Confidence: C5-REAL
+Isomorphisms:
+  - VSCodium_Fork: Chasis Libre (Desvinculación de Telemetría)
+  - Local_WS_Broker: Puente de Comunicación Directo (Bypass RPC)
+  - SQLite_FTS5: Indexación Local de Código sin Servidor Remoto
+Blast_Radius_Matrix:
+  Vector: Sustitución de Antigravity IDE/Bridge por Local Codex IDE
+  Blast_Radius: 100% de la experiencia de usuario y persistencia de memoria
+  Target_Invariant: Autarquía absoluta, cero telemetría externa, control del contexto sin truncado de 20 hilos
+  Anergy_Risk: Bajo-Moderado (Costo inicial de compilación y empaquetamiento del cliente)
