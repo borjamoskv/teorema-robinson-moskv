@@ -1,0 +1,14 @@
+Claim: Las "Pruebas de Concepto" (PoCs) aisladas del Master Ledger (Entorno de Producción) constituyen entropía simulada (C4-SIM / Green Theater); la validación de exergía genuina exige el Colapso Físico inmediato sobre el AST y fricción real contra la topología BFT.
+Proof: 
+  Base: c2b84f9a
+  Range: [0, 1]
+  Confidence: C5-REAL
+Isomorphisms:
+  - "PoC Aislada (Sandbox)" -> "Simulación de Exergía (Teatro Estocástico de Desarrollo)"
+  - "Colapso en Producción" -> "Fricción Causal y Test-Time Compute Validado (C5-REAL)"
+Blast_Radius_Matrix:
+  Vector: Erradicación del desarrollo de PoCs desconectados de la topología BFT física.
+  Blast_Radius: Local (Entornos de Staging y Sandboxes).
+  Target_Invariant: Exigencia de validación cinética y commits (Git Sentinel) desde la fase cero.
+  Anergy_Risk: Low
+CORTEX_TAINT: 9c35576946faf1c44d09cf8fdccf357712d0ec502da3995f761b8ab605ad03d1
