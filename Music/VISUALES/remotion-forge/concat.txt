@@ -1,3 +1,0 @@
-file 'out/friccion.mp4'
-file 'out/friccion_acto2.mp4'
-file 'out/friccion_acto3.mp4'
