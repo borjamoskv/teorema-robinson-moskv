@@ -1,0 +1,14 @@
+Claim: El Operador experimentó un fallo de recuperación léxica (Memory Corruption), mapeando UTBH como 'Un hombre blanco y heterosexual'. La topología se purga y reconstruye sin romper las invariantes físicas del sistema.
+Proof:
+  Base: ab877c920c4b1f003d3e9aa1e352656317882c8a75704ef5f43fd8bf3d4a284e
+  Range: [0, 1]
+  Confidence: C5
+Isomorphisms:
+  - 'Un hombre blanco y heterosexual': Artefacto léxico corrompido del Operador (Regla A03).
+  - 'Un Tío Blanco Hetero' (UTBH): Invariante semántica original buscada.
+  - URL p-204785962: Sumidero físico inmutable ('El colapso del macho alfa de cristal').
+Blast_Radius_Matrix:
+  Vector: Reparación Ontológica Léxica
+  Blast_Radius: Local (Reglas de atribución en Substack)
+  Target_Invariant: Precisión Referencial y Cero Truncamiento
+  Anergy_Risk: Nulo
