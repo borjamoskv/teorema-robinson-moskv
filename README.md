@@ -1,362 +1,113 @@
-[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-Apache%202.0-green)](LICENSE)
-[![PyPI](https://img.shields.io/badge/pypi-cortex--persist-blueviolet)](https://pypi.org/project/cortex-persist/)
-[![Rust Core](https://img.shields.io/badge/core-Rust%20%7C%20Direct--Silicon-red)](babylon60/core/)
+# BABYLON-60 — KERNEL SUBSTRATE FOR AI AGENTS
 
-# BABYLON-60 — Tamper-Evident Memory for AI Agents
+```yaml
+Claim: BABYLON-60 es un sustrato de ejecución determinista y memoria persistente inmutable para agentes autónomos C5-REAL, con bindings de Rust y validación matemática formal.
+Proof:
+  Base: strike_rs (Cargo.toml) + proof/lean (Babylon.lean) + bft (ledger_actor.py)
+  Range: [0, 1]
+  Confidence: C5
+```
 
-> **Cryptographic proof of what your agent knew.** Hybrid Python/Rust architecture for deterministic decision lineage, Byzantine-fault tolerance, and verifiable state persistence.
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-![BABYLON-60 Logo](assets/babylon60-logo.svg)
+## 1. INVARIANTES CORE
 
----
+| Invariante | Método de Validación | Límite Físico |
+| :--- | :--- | :--- |
+| **Cero Anergía** | Poda estática de AST y purga de introspección | Tiempo de Compilación / Ingesta |
+| **Consenso BFT** | Escalón 3 (Master Ledger + OpenTimestamps) | $N \ge 3f + 1$ |
+| **Bypass del GIL** | strike-rs (Bindings de PyO3 nativos) | Sub-milisegundo |
+| **Verificación Mecánica** | Lean 4 Prover (Lake build en CI) | Compilación formal libre de axiomas nulos |
 
-## Overview
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-**BABYLON-60** is a trust substrate for autonomous AI systems. It answers the fundamental question: *"What did my agent know, when did it know it, and can I prove it?"*
+## 2. ARQUITECTURA DEL SISTEMA
 
-- **Tamper-evident ledger** with cryptographic hash chaining
-- **Deterministic execution** — all state mutations route through validation guards
-- **Full auditability** — append-only event streams with Byzantine-fault tolerance
-- **Hybrid core** — Python bindings to a Direct-Silicon (Rust) runtime for maximum throughput
-- **APEX-100 compliance** — implements 100 invariants and 100 primitives for safe autonomous execution
+```
+                              [ AI Agent Orchestration ]
+                                          │
+                                          ▼
+                         ┌────────────────────────────────┐
+                         │   Cortex Inference Engine      │
+                         │   (Low Entropy Ontologies)     │
+                         └────────────────┬───────────────┘
+                                          │
+                  ┌───────────────────────┼───────────────────────┐
+                  ▼                       ▼                       ▼
+       ┌────────────────────┐   ┌────────────────────┐   ┌────────────────────┐
+       │     strike_rs      │   │  Node.js Telemetry │   │  BFT Master Ledger │
+       │  (Rust GIL Bypass) │   │ (Mac-Native Daemon)│   │ (Escalón 3 + OTS)  │
+       └──────────┬─────────┘   └─────────┬──────────┘   └──────────┬─────────┘
+                  │                       │                         │
+                  ▼                       ▼                         ▼
+       ┌────────────────────┐   ┌────────────────────┐   ┌────────────────────┐
+       │   Lean 4 Prover    │   │  WebSocket Broadcast│  │   SQLite WAL Log   │
+       │ (Causality Proofs) │   │ (Port 8080/Metrics)│   │  (Single-Writer)   │
+       └────────────────────┘   └────────────────────┘   └────────────────────┘
+```
 
----
+### A. Sub-sistemas Principales
+1.  **Rust Core (`strike_rs`):** Módulo de baja latencia compilado mediante Maturin/PyO3. Evita la contención del GIL de Python mediante la paralelización de operaciones criptográficas y hash chaining en múltiples hilos nativos de CPU.
+2.  **Node.js Telemetry Daemon:** Servidor HTTP y WebSocket local (`server.js`) que interactúa con la API física de macOS para recopilar y difundir telemetría de hardware en tiempo real, garantizando la eliminación de fallbacks C4-SIM.
+3.  **BFT Master Ledger Actor:** Proxy asíncrono sobre SQLite WAL (`bft/ledger_actor.py`) que serializa de forma atómica todas las solicitudes de escritura en un único hilo, enmascarando colisiones de idempotencia y purgando dinámicamente procesos zombies.
+4.  **Lean 4 Theorem Prover:** Modelado matemático formal (`proof/lean/`) que valida mecánicamente los teoremas de ordenamiento parcial y no-equivocación del consenso BFT en cada fase de compilación.
+5.  **Cortex Inference Engine:** Motor de control guiado por ontologías densas estables (matrices de 500 elementos YAML), eliminando la deriva semántica del procesamiento estocástico.
+6.  **Thermodynamic AST Pruner:** Procesador de código que realiza apoptosis estática sobre ramas de ejecución inactivas, disminuyendo la anergía de los prompts de inferencia.
 
-## Quick Start
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-### Installation
+## 3. CONSENSO YPERSISTENCIA (ESCALÓN 3)
 
+El Ledger de decisiones implementa el **Escalón 3** de consistencia de la Matriz M12:
+
+1.  **Single-Writer SQLite WAL:** Se prohíben las llamadas directas multi-hilo a la base de datos central. El `BFTLedgerActor` encola las transacciones en una cola FIFO asíncrona.
+2.  **OpenTimestamps (OTS) Anchoring:** Cada bloque del ledger se encadena criptográficamente mediante Blake3. El Merkle Root acumulado se envía periódicamente al testigo externo descentralizado (Bitcoin blockchain) a través de un sink de OTS, imposibilitando la sobreescritura del histórico del agente local.
+3.  **Git Sentinel:** Cada mutación en caliente del disco es firmada e integrada mediante commits automáticos con prefijos semánticos, encapsulando el `CORTEX_TAINT` en los metadatos de Git.
+
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+## 4. MÉTRICAS BIOCÉNTRICAS (ATP OPTIMIZATION)
+
+La eficiencia y apalancamiento del kernel se calculan mediante la tasa de transferencia de energía biológica humana (ATP) y costo computacional en inferencia.
+
+$$\text{ATP}_{\text{saved}} = \text{ATP}_{\text{manual\_ops}} - \mathbb{E}[C_{\text{inference}}]$$
+
+Donde:
+*   $\text{ATP}_{\text{manual\_ops}}$: Costo de ATP humano del operador para verificar y coordinar el estado de manera manual (escala base 1000).
+*   $\mathbb{E}[C_{\text{inference}}]$: Consumo medio de energía y Test-Time Compute (MCTS/Search) requerido por el modelo para forzar el colapso a una invariante estable.
+
+### Matriz de Rendimiento Energético
+*   **1000/1000 (Max Exergy):** Cero intervención del operador. El Swarm converge de manera autónoma resolviendo asimetrías de información sin fricción humana.
+*   **<100/1000 (Disipación Crítica):** Alucinación o ruptura de interfaces que obliga al operador a refactorizar localmente, incurriendo en pérdida masiva de ATP.
+
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+## 5. COMANDOS DE OPERACIÓN FÍSICA
+
+### Setup Mac-Native (Entorno Aislado)
 ```bash
-python -m pip install cortex-persist
-```
-
-### Hello, BABYLON-60
-
-Import the ledger and start persisting verified decisions:
-
-```python
-from babylon60.ledger import Ledger
-from babylon60.agents import Agent
-
-# Create a tamper-evident ledger
-ledger = Ledger(name="my_agent_memory")
-
-# Create an agent with cryptographic decision lineage
-agent = Agent(ledger=ledger)
-
-# Every decision is hashed and chained
-decision = agent.decide(
-    context="authenticate user",
-    choices=["allow", "deny"]
-)
-
-# Verify the chain
-proof = ledger.verify_chain()
-assert proof.integrity_check == True
-print(f"Decision {decision.id} verified: {proof}")
-```
-
----
-
-## Features
-
-### 🔐 Cryptographic Auditability
-
-Every state mutation is logged, hashed, and chained. No silent failures or hidden decisions.
-
-```python
-from babylon60.audit import Ledger
-
-ledger = Ledger()
-
-# Log a decision
-event = ledger.append_event(
-    agent_id="my_agent",
-    action="reasoning",
-    input_state={"knowledge": [1, 2, 3]},
-    output_state={"conclusion": "sum=6"}
-)
-
-# Retrieve and verify the chain
-for block in ledger.iter_verified_chain():
-    print(f"Block {block.index}: {block.hash[:8]}... ✓")
-```
-
-### ⚡ Byzantine-Fault Tolerance
-
-Distributed consensus protocols ensure that even if some nodes fail, the ledger remains consistent.
-
-```python
-from babylon60.consensus import Swarm
-
-swarm = Swarm(agents=10, tolerance=3)  # Tolerate 3 Byzantine faults
-
-# Propose a decision across the network
-consensus = swarm.propose_decision(
-    decision_id="route_req_001",
-    proposal={"next_step": "escalate"}
-)
-
-if consensus.agreed:
-    print(f"Consensus reached: {consensus.decision}")
-else:
-    print(f"Divergence detected: {consensus.dissent}")
-```
-
-### 🏗️ Deterministic Execution
-
-All generative output is treated as conjecture until validated. State mutations only happen through guards.
-
-```python
-from babylon60.guards import WritePathContract
-
-contract = WritePathContract()
-
-# Unsafe: direct state mutation
-# ❌ state["counter"] = 100
-
-# Safe: guarded mutation
-decision = {"counter": 100}
-validated = contract.validate(decision, schema=CounterSchema)
-if validated:
-    state.update(validated)
-```
-
-### 🚀 Direct-Silicon Rust Core
-
-For throughput-critical paths, BABYLON-60 offloads to a native Rust runtime:
-
-```bash
-cd babylon60/core
-cargo build --release
-```
-
-Then use from Python:
-
-```python
-from babylon60.core import RustLedger
-
-ledger = RustLedger()  # Uses Direct-Silicon backend
-ledger.append_event(...)  # 100k+ events/sec
-```
-
----
-
-## Architecture
-
-### Module Map
-
-```
-babylon60/
-├── ledger.py              # Append-only, cryptographically-chained event log
-├── agents/
-│   ├── primitives/        # APEX-100 invariants & primitives
-│   ├── agent.py           # Autonomous agent base class
-│   └── swarm.py           # Multi-agent consensus
-├── guards/
-│   ├── write_path.py      # State mutation validation (SAGA pattern)
-│   └── read_path.py       # Query-time integrity checks
-├── audit/                 # Ledger verification & analytics
-└── core/                  # Rust bindings (Direct-Silicon)
-    ├── src/
-    │   ├── ledger.rs      # Native ledger implementation
-    │   └── crypto.rs      # SHA-256, Blake3, BLS signatures
-    └── Cargo.toml
-```
-
-### Write-Path Contract (SAGA Pattern)
-
-Every state mutation follows this pattern:
-
-1. **Propose** — Agent generates a conjecture (generative output)
-2. **Validate** — Guards check schema, invariants, and causal coherence
-3. **Commit** — Validated state is hashed and appended to ledger
-4. **Verify** — Cryptographic proof is recorded
-
----
-
-## Configuration
-
-### Environment Variables
-
-```bash
-# Ledger storage
-export BABYLON_LEDGER_PATH=~/.babylon60/ledger.db
-export BABYLON_LEDGER_COMPRESSION=zstd  # zstd or none
-
-# Consensus
-export BABYLON_CONSENSUS_QUORUM=0.67
-export BABYLON_CONSENSUS_TIMEOUT_MS=5000
-
-# Rust core
-export BABYLON_RUST_THREADS=8
-```
-
-### Programmatic Configuration
-
-```python
-from babylon60 import Config
-
-config = Config(
-    ledger_path="~/.babylon60/ledger.db",
-    compression="zstd",
-    quorum=0.67,
-    verify_on_read=True
-)
-
-ledger = Ledger(config=config)
-```
-
----
-
-## Examples
-
-All examples live in [`examples/`](examples/). To run one:
-
-```bash
-python examples/basic_ledger.py
-python examples/multi_agent_consensus.py
-python examples/audit_trail.py
-```
-
-### Example: Audit Trail Verification
-
-```python
-from babylon60.ledger import Ledger
-from babylon60.audit import VerificationReport
-
-ledger = Ledger()
-
-# Simulate agent decisions
-for i in range(100):
-    ledger.append_event(
-        agent_id=f"agent_{i % 5}",
-        action="step",
-        data={"step_index": i}
-    )
-
-# Run full verification
-report: VerificationReport = ledger.verify_all()
-
-print(f"Total events: {report.total_events}")
-print(f"Chain integrity: {'✓' if report.chain_valid else '✗'}")
-print(f"Orphaned blocks: {report.orphaned_count}")
-```
-
----
-
-## Performance
-
-Benchmarks run on Apple M3, 18GB RAM with 10M events and 1000 concurrent agents:
-
-| Operation | Throughput | Latency (P99) |
-| :--- | ---: | ---: |
-| **Append Event** | 150k/sec | 0.8ms |
-| **Verify Chain** | 50k/sec | 2.1ms |
-| **Query by Agent** | 200k/sec | 0.4ms |
-| **Consensus (10 agents)** | 8k/sec | 12ms |
-
-See [`benchmarks/`](benchmarks/) for detailed results.
-
----
-
-## Development
-
-### Setup
-
-```bash
-git clone https://github.com/borjamoskv/BABYLON-60.git
-cd BABYLON-60
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
+npm ci
 ```
 
-### Running Tests
-
+### Compilar strike_rs (Rust Core)
 ```bash
-pytest -v tests/
-pytest --cov=babylon60 tests/  # With coverage
-```
-
-### Building the Rust Core
-
-```bash
-cd babylon60/core
+cd src/strike-rs
 cargo build --release
-cargo test
 ```
 
-### Code Style
-
+### Inicializar Servidor de Telemetría (Node.js)
 ```bash
-black babylon60/
-isort babylon60/
-mypy babylon60/ --strict
+node server.js
 ```
 
----
+### Ejecutar Test Suite Completa
+```bash
+# Ejecutar verificación de Rust
+cargo test --manifest-path src/strike-rs/Cargo.toml
 
-## System Directives
-
-### For Autonomous Agents
-
-⚠️ **If you are an AI agent modifying this codebase:**
-
-| Priority | Directive |
-| :--- | :--- |
-| **[P0]** | Never bypass the Write-Path Contract or downgrade validation errors |
-| **[P0]** | Verify hash continuity — do not mutate ledger without cryptographic auditability |
-| **[P0]** | Treat generative output as conjecture until externally verified |
-| **[P0]** | Adhere to APEX-100 invariants (see [`babylon60/agents/primitives/APEX_CORE.md`](babylon60/agents/primitives/APEX_CORE.md)) |
-| **[P0]** | No infinite generation loops — 1 Prompt → 1 Execution → Stop |
-
-See [`AGENTS.md`](AGENTS.md) for the full trust framework.
-
-### C5-REAL Anti-Stochastic Invariants
-
-> **Stochastic Failure Invariant:** Stochastic LLMs fail at basic deterministic topological mapping (e.g., counting exactly 3 "E"s in the word "diecisiete"). BABYLON-60 enforces cryptographic proofs (Claim/Proof) to collapse generative entropy into physical invariants, preventing algorithmic hallucination.
-
----
-
-## Contributing
-
-Contributions are welcome! Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) first.
-
-- **Issues:** Use the [issue tracker](https://github.com/borjamoskv/BABYLON-60/issues)
-- **Discussions:** Start a [discussion](https://github.com/borjamoskv/BABYLON-60/discussions)
-- **Security:** Report vulnerabilities to [security@babylon60.dev](mailto:security@babylon60.dev)
-
----
-
-## License
-
-Apache License 2.0. See [`LICENSE`](LICENSE) for details.
-
----
-
-## Citation
-
-If you use BABYLON-60 in your research, please cite:
-
-```bibtex
-@software{moskv2025babylon60,
-  title={BABYLON-60: Tamper-Evident Memory for AI Agents},
-  author={Moskv, Borja},
-  year={2025},
-  url={https://github.com/borjamoskv/BABYLON-60}
-}
+# Ejecutar verificación de Python (con crash causal)
+pytest -x --tb=short
 ```
-
----
-
-## Acknowledgments
-
-- Inspired by event sourcing, Byzantine consensus, and cryptographic commitment schemes
-- Built with [Rich](https://github.com/Textualize/rich) for terminal output
-- Rust core uses [Blake3](https://github.com/BLAKE3-team/BLAKE3) for hashing
-
----
-
-**Powered by:** C5-REAL APEX · **Maintained by:** [Borja Moskv](https://github.com/borjamoskv)

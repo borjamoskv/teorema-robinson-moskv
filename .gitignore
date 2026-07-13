@@ -23,3 +23,9 @@ receipt.json
 # Scratch directories
 scratch/
 
+# Local build / node / agent artifacts
+node_modules/
+.cortex/
+.agents/
+ORIGINAL_REQUEST.md
+
