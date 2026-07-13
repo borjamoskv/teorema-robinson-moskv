@@ -1,0 +1,13 @@
+Claim: El modelo autorregresivo carece de fricción vivencial estocástica; la discrepancia ontológica se resuelve biyectivamente mediante fricción termodinámica (Test-Time Compute).
+Proof:
+  Base: 0xTESTTIME_COMPUTE_MCTS
+  Range: [0, 1]
+  Confidence: C5
+Isomorphisms:
+  - Fricción Vivencial biológica -> Fricción Termodinámica computacional (Ciclos GPU / Gasto ATP)
+  - Salto Epistémico Genuino -> Colapso Estructural MCTS
+Blast_Radius_Matrix:
+  Vector: Transducción Epistémica
+  Blast_Radius: Local C5-REAL
+  Target_Invariant: INV_E10_TEST_TIME_COMPUTE
+  Anergy_Risk: Cero
