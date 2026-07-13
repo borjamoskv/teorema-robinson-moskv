@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: cs.CR
+  Core_Insight: 'Avance estructural en A Lifecycle and Application-Stack Survey of
+    Large Language Model Vulnerabilities: Attacks, Risks, Defenses, and Open Problems'
+  Evidence:
+  - Type: Paper
+    Title: 'A Lifecycle and Application-Stack Survey of Large Language Model Vulnerabilities:
+      Attacks, Risks, Defenses, and Open Problems'
+    URI: http://arxiv.org/abs/2606.31639v1
+    Date: '2026-06-30T13:21:43Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: Large language models are no longer only text generators. They are increasingly
+    embedded in retrieval pipelines, enterprise assistants, coding environments, robotic
+    systems, security-operation workflo...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de A Lifecycle and Application-Stack\
+      \ Survey of Large Language Model Vulnerabilities: Attacks, Risks, Defenses,\
+      \ and Open Problems a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.31639v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

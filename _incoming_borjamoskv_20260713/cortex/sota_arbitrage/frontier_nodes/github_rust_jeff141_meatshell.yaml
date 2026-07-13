@@ -1,0 +1,33 @@
+Frontier_Node:
+  Domain: Systems
+  Subdomain: Rust
+  Core_Insight: Avance estructural en jeff141/meatshell
+  Evidence:
+  - Type: Repo
+    Title: jeff141/meatshell
+    URI: https://github.com/jeff141/meatshell
+    Date: '2026-06-04T07:13:39Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: 'yes'
+  Mechanism: "\u4E00\u4E2A\u8F7B\u91CF\u7EA7\u3001\u4F4E\u5185\u5B58\u5360\u7528\u7684\
+    \ SSH / \u7EC8\u7AEF\u5BA2\u6237\u7AEF\uFF08A lightweight, low-memory SSH / terminal\
+    \ client\uFF09"
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de jeff141/meatshell a menor costo\
+      \ entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://github.com/jeff141/meatshell
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

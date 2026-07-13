@@ -1,0 +1,32 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: hn_sec
+  Core_Insight: 'Avance estructural en The OWASP Agentic Security Initiative Top:
+    A Practical Developer Guide'
+  Evidence:
+  - Type: Discussion
+    Title: 'The OWASP Agentic Security Initiative Top: A Practical Developer Guide'
+    URI: https://agentsafelabs.com/blog/the-owasp-agentic-security-initiative-top-10-a-practical-developer-guide-for-langchain-and-crewai/
+    Date: Tue, 30 Jun 2026 00:57:24 +0000
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: '<p>Article URL: <a href="https://agentsafelabs.com/blog/the-owasp-agentic-security-initiative-top-10-a-practical-developer-guide-for-langchain-and-crewai/">https://agentsafelabs.com/blog/the-owasp-age...'
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de The OWASP Agentic Security Initiative\
+      \ Top: A Practical Developer Guide a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://agentsafelabs.com/blog/the-owasp-agentic-security-initiative-top-10-a-practical-developer-guide-for-langchain-and-crewai/
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

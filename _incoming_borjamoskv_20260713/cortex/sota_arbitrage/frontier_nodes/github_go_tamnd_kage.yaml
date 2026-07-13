@@ -1,0 +1,32 @@
+Frontier_Node:
+  Domain: Systems
+  Subdomain: Go
+  Core_Insight: Avance estructural en tamnd/kage
+  Evidence:
+  - Type: Repo
+    Title: tamnd/kage
+    URI: https://github.com/tamnd/kage
+    Date: '2026-06-14T11:21:55Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: 'yes'
+  Mechanism: Shadow any website for offline viewing, with the JavaScript stripped
+    out
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de tamnd/kage a menor costo entr\xF3\
+      pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://github.com/tamnd/kage
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

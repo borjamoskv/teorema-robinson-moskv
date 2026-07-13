@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: AI
+  Subdomain: cs.DS
+  Core_Insight: 'Avance estructural en Decoupling Trust in Byzantine CRDTs: Fine-grained
+    Post-Compromise Handling without Breaking Causality'
+  Evidence:
+  - Type: Paper
+    Title: 'Decoupling Trust in Byzantine CRDTs: Fine-grained Post-Compromise Handling
+      without Breaking Causality'
+    URI: http://arxiv.org/abs/2606.31759v1
+    Date: '2026-06-30T14:48:31Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: Conflict-free Replicated Data Types (CRDTs) provide strong eventual consistency
+    without coordination, but classical approaches assume benign participants. In
+    Byzantine settings, convergence is typical...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Decoupling Trust in Byzantine\
+      \ CRDTs: Fine-grained Post-Compromise Handling without Breaking Causality a\
+      \ menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.31759v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

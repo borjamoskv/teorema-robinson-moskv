@@ -1,0 +1,32 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: hn_sec
+  Core_Insight: "Avance estructural en Top 1 Million Analysis \u2013 June 2026: Ten\
+    \ Years of Web Security"
+  Evidence:
+  - Type: Discussion
+    Title: "Top 1 Million Analysis \u2013 June 2026: Ten Years of Web Security"
+    URI: https://scotthelme.co.uk/top-1-million-analysis-june-2026-ten-years-of-web-security/
+    Date: Tue, 30 Jun 2026 09:21:10 +0000
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: '<p>Article URL: <a href="https://scotthelme.co.uk/top-1-million-analysis-june-2026-ten-years-of-web-security/">https://scotthelme.co.uk/top-1-million-analysis-june-2026-ten-years-of-web-security/</a><...'
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de Top 1 Million Analysis \u2013\
+      \ June 2026: Ten Years of Web Security a menor costo entr\xF3pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en https://scotthelme.co.uk/top-1-million-analysis-june-2026-ten-years-of-web-security/
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85

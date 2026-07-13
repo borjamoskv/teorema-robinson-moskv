@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTEX KERNEL | Visual Topology & ZK-ML Forensics</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/zkllm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <!-- Chart.js and Plotly.js CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <h1>CORTEX <span>KERNEL</span></h1>
+            <div class="status-indicator">
+                <span class="dot pulse"></span>
+                <span>C5-REAL ACTIVE</span>
+            </div>
+        </div>
+        <div class="stats" id="stats">
+            <!-- Stats injected here -->
+        </div>
+    </header>
+
+    <div class="container" style="padding: 0 2rem; max-width: 1400px; margin: 0 auto;">
+        <!-- Top level tabs navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="tab-topology">🔍 CORTEX TOPOLOGY EXPLORER</button>
+            <button class="tab-btn" data-tab="tab-zkllm">⚡ zkLLM & tlookup SANDBOX</button>
+        </nav>
+    </div>
+
+    <!-- Tab 1: Original Topology Dashboard -->
+    <main id="tab-topology" class="tab-content active dashboard">
+        <aside class="sidebar">
+            <nav class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">ALL NODES</button>
+                <button class="filter-btn" data-filter="PRIMITIVAS">PRIMITIVAS</button>
+                <button class="filter-btn" data-filter="INVARIANTES">INVARIANTES</button>
+                <button class="filter-btn" data-filter="ANTIPATRONES">ANTIPATRONES</button>
+                <button class="filter-btn" data-filter="REDUNDANCIAS">REDUNDANCIAS</button>
+                <button class="filter-btn" data-filter="VECTORES">VECTORES</button>
+            </nav>
+        </aside>
+
+        <section class="grid-container" id="grid">
+            <!-- Cards injected here -->
+        </section>
+    </main>
+
+    <!-- Tab 2: zkLLM and tlookup Sandbox -->
+    <main id="tab-zkllm" class="tab-content" style="padding: 0 2rem; max-width: 1400px; margin: 0 auto;">
+        <div class="zk-container">
+            <!-- Left Side: Algebra & Performance Metrics -->
+            <div class="glass-panel">
+                <h2 class="glass-title"><span class="u-icon">⚡</span> Problema Causal: Operaciones No Lineales en ZK-ML</h2>
+                <p>Las pruebas de conocimiento cero (ZKPs) sobre redes neuronales (ZK-ML) enfrentan un cuello de botella fundamental: las <strong>operaciones no aritméticas</strong> (funciones de activación no lineales como ReLU, GELU, SwiGLU y la operación de Softmax). Intentar probar estas operaciones mediante circuitos aritméticos convencionales genera una sobrecarga computacional prohibitiva.</p>
+                
+                <h3 class="glass-title"><span class="u-icon">🔍</span> Solución Algebraica: El Protocolo $tlookup$</h3>
+                <p>La arquitectura pionera <strong>zkLLM</strong> introduce <strong>tlookup</strong>, un argumento de búsqueda (lookup argument) paralelizado, diseñado específicamente para acelerar la computación de tensores no aritméticos en GPUs. Al mapear valores de entrada a tablas de búsqueda pre-calculadas, elimina la necesidad de descomponer funciones complejas en sumas y multiplicaciones polinomiales dentro del circuito.</p>
+
+                <div class="math-block">
+                    // Formulación conceptual de la búsqueda tensorial paralela en tlookup
+                    // Sea T el tensor de entrada de dimensión D, y L la tabla de búsqueda del operador.
+                    // tlookup prueba que para todo i en [1..D]: T[i] ∈ L sin sobrecarga asintótica O(1) adicional.
+                    Prueba_tlookup(T) = Prove({ T[i] ∈ L | i ∈ [1..D] }) en O(D) pasos paralelos
+                </div>
+
+                <p>En lugar de procesar cada entrada secuencialmente, <code>tlookup</code> paraleliza el argumento de búsqueda utilizando kernels CUDA optimizados en la GPU, logrando que el tiempo asintótico de generación de la prueba dependa únicamente del tamaño del tensor de entrada, no de la complejidad de la función no lineal.</p>
+
+                <!-- Chart.js Visualization (Parallel Efficiency) -->
+                <div style="margin-top: 2rem;">
+                    <h3 class="glass-title"><span class="u-icon">📊</span> Throughput Comparativo de Paralelización</h3>
+                    <p class="flow-step-desc">Comparativa del rendimiento de operaciones de búsqueda por segundo (en millones) para un tensor de entrada de tamaño N = 2^20 elementos en GPU/CPU.</p>
+                    <div class="chart-wrapper">
+                        <canvas id="parallelEfficiencyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: zkAttn Flow Diagram, Hardware & Security Metrics -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div class="glass-panel">
+                    <h2 class="glass-title"><span class="u-icon">🔒</span> zkAttn: Pipeline de Atención Verificable</h2>
+                    <p class="flow-step-desc">Construcción sobre tlookup para probar la capa de Auto-Atención sin sobrecarga:</p>
+                    
+                    <!-- CSS-only Flow Diagram -->
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="flow-step-num">FASE 01</div>
+                            <div class="flow-step-title">Q, K, V Proj</div>
+                            <div class="flow-step-desc">Multiplicaciones matriciales aritméticas estándar.</div>
+                        </div>
+                        <div class="flow-connector">▶</div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">FASE 02</div>
+                            <div class="flow-step-title">tlookup Softmax</div>
+                            <div class="flow-step-desc">Evaluación del exponente y normalización vía tabla paralela.</div>
+                        </div>
+                        <div class="flow-connector">▶</div>
+                        <div class="flow-step">
+                            <div class="flow-step-num">FASE 03</div>
+                            <div class="flow-step-title">Score Attn</div>
+                            <div class="flow-step-desc">Combinación del mapa de atención con el tensor V.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel">
+                    <h2 class="glass-title"><span class="u-icon">📈</span> Asimetría de Rendimiento (LLaMA-2)</h2>
+                    <p class="flow-step-desc">Comparativa del tiempo requerido para generar la prueba (GPU A100) vs. el tiempo empleado por el verificador (CPU convencional) para modelos LLaMA-2 7B y 13B.</p>
+                    <div id="doubleAxisPerformanceChart" style="width: 100%; height: 350px;"></div>
+                </div>
+
+                <div class="glass-panel">
+                    <h2 class="glass-title"><span class="u-icon">⚠️</span> Consideraciones de Seguridad & Criptoanálisis</h2>
+                    <p>Aunque <code>tlookup</code> elimina la sobrecarga asintótica en la generación de pruebas, los sistemas que lo implementan deben blindarse ante vectores adversariales específicos de ZK-ML:</p>
+                    
+                    <div class="alert-box">
+                        <div class="alert-box-title"><span class="u-icon">🚨</span> VECTOR-089: Desbordamiento de Tabla en Lookup</div>
+                        <p class="flow-step-desc" style="margin: 0; color: #fca5a5;">Riesgo de inyección de valores fuera de rango. Si el tensor de entrada contiene elementos que exceden los límites preestablecidos de la tabla de búsqueda, el probador puede engañar al circuito si no se implementan restricciones de rango (Range Proofs) robustas antes de la fase de búsqueda.</p>
+                    </div>
+                    
+                    <div class="alert-box" style="background: rgba(138, 43, 226, 0.05); border-color: rgba(138, 43, 226, 0.2);">
+                        <div class="alert-box-title" style="color: #a04ef6;"><span class="u-icon">🛡️</span> Mitigación Causal</div>
+                        <p class="flow-step-desc" style="margin: 0; color: #d8b4fe;">Implementar pruebas de rango de base 2^k sobre las entradas del tensor antes del lookup argument y asegurar el sellado criptográfico del polinomio de tabla (table polynomial commitment).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/zkllm.js"></script>
+</body>
+</html>

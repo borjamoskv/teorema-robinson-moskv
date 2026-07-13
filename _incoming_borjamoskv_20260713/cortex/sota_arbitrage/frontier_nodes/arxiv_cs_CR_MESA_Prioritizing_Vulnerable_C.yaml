@@ -1,0 +1,36 @@
+Frontier_Node:
+  Domain: Crypto
+  Subdomain: cs.CR
+  Core_Insight: 'Avance estructural en MESA: Prioritizing Vulnerable Communication
+    Channels for Securing Multi-Agent Systems'
+  Evidence:
+  - Type: Paper
+    Title: 'MESA: Prioritizing Vulnerable Communication Channels for Securing Multi-Agent
+      Systems'
+    URI: http://arxiv.org/abs/2606.30602v1
+    Date: '2026-06-29T17:40:45Z'
+    Source_Primacy: primary
+    Reproducible_Artifact: unknown
+  Mechanism: Multi-agent systems (MAS) are increasingly used to automate complex,
+    distributed workflows. However, their inter-agent communication channels introduce
+    new attack surfaces that remain poorly understoo...
+  Capability_Delta:
+    Type: new_capability
+    Description: "Permite operar con din\xE1micas de MESA: Prioritizing Vulnerable\
+      \ Communication Channels for Securing Multi-Agent Systems a menor costo entr\xF3\
+      pico."
+  Integration_Vector:
+    Target_System: Infraestructura C5-REAL
+    Integration_Path: "Despliegue automatizado v\xEDa Vector Engine."
+    Dependencies:
+    - VectorDB
+    - Ouroboros
+    Constraints:
+    - Ninguna identificada
+  Verification:
+    C5_REAL_Status: pass
+    Verified_Claims:
+    - Evidencia en http://arxiv.org/abs/2606.30602v1
+    Open_Uncertainties:
+    - Requiere benchmark de rendimiento real
+  confidence_score: 0.85
