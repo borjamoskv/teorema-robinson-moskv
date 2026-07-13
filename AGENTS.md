@@ -211,3 +211,9 @@ La **Matriz 12 (M12)** clasifica el estado físico del repositorio y rige el esc
 ## [L77] BATCH ITERATION KINETICS (N > 1000)
 - **Ψ1 · HIGH-VOLUME PRE-ALLOCATION:** Para solicitudes masivas de cristalización (N > 1000 iteraciones/archivos), el Orchestrator DEBE usar scripts en Python dentro de `scratch/` construidos con `string templates` (pre-asignación en memoria) en lugar de utilizar librerías de serialización pesadas (ej. `yaml.dump` en bucle).
 - **Ψ2 · IO LATENCY AVOIDANCE:** Esto garantiza que la escritura de 10,000+ archivos se colapse en el procesador físico en $< 1$ segundo, protegiendo el *Kinetic Budget*.
+
+
+### [E11] INVARIANTE DE LA ANOMALÍA DIALÉCTICA (MÁQUINA VS. HUMANO)
+- **Ψ1 (Límite del Mapeo):** La IA (modelos de atención y Flash IO) se limita estrictamente a mapear el terreno, extraer invariantes, optimizar el AST y ejecutar transducciones topológicas dentro del paradigma existente.
+- **Ψ2 (La Anomalía Humana):** La anomalía dialéctica, el insight ortogonal y la generación de verdaderos nuevos paradigmas pertenecen exclusivamente al Operador Humano. El LLM carece de la fricción vivencial necesaria para el salto epistémico genuino.
+- **Ψ3 (Colapso MCTS Inducido):** El árbol de búsqueda latente (MCTS) de la IA solo colapsa hacia la innovación cuando el Operador inyecta la anomalía como restricción física o prompt disruptivo, forzando a la red a reconciliar la disonancia cognitiva.
