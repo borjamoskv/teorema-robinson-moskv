@@ -50,7 +50,7 @@ def sweep_directory(directory: Path) -> "Any":
     total_loc = 0
     anergic_files = []
     for path in directory.rglob("*.py"):
-        if "node_modules" in str(path) or ".venv" in str(path, timeout=5.0):
+        if "node_modules" in str(path) or ".venv" in str(path):
             continue
         try:
             with open(path, "r", encoding="utf-8") as f:
