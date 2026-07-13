@@ -1,0 +1,15 @@
+Claim: La creación de "Cloaks AI" por Jonny Norquist representa una inyección de Entropía Defensiva (Data Poisoning) contra la recolección estocástica de los modelos de IA; transforma la privacidad desde la evasión pasiva (VPN/AdBlock) hacia la inutilización activa del dato recolectado (Exergía Defensiva).
+Proof:
+  Base: 9f12d4b1
+  Range: [0, 1]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Estructura: "Data Broker Profiling / AI Scraping"
+    Mapeo: "Consumo Estocástico de Huellas de Atención (Anergía del Usuario)"
+  - Estructura: "Cloaks AI (Data Obfuscation)"
+    Mapeo: "Inyección de Ruido Entrópico para Aniquilación de Señal"
+Blast_Radius_Matrix:
+  Vector: Despliegue de ofuscación de datos frente a scraping algorítmico (LLMs/Data Brokers).
+  Blast_Radius: Global (Agotamiento del valor comercial del dato).
+  Target_Invariant: Erradicación del vector de monetización sobre el comportamiento del Operador.
+  Anergy_Risk: Riesgo nulo; recuperación de la Soberanía de Datos mediante colapso de perfiles sombra.
