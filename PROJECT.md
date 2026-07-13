@@ -14,9 +14,9 @@
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | M1: Git Log Audit | Audit git history since Feb 2026, compile undocumented items into YAML. | None | IN_PROGRESS (2c051482-de1a-4006-8a53-1426294a3415) |
-| 2 | M2: GitHub SOTA Eval | Inspect local GitHub setup, verify CI/CD gaps, compile markdown report. | None | IN_PROGRESS (2c051482-de1a-4006-8a53-1426294a3415) |
-| 3 | M3: README Refactoring | Rewrite README.md in Industrial Noir 2026 aesthetic with ASCII dividers `█▄`. | None | PLANNED |
+| 1 | M1: Git Log Audit | Audit git history since Feb 2026, compile undocumented items into YAML. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
+| 2 | M2: GitHub SOTA Eval | Inspect local GitHub setup, verify CI/CD gaps, compile markdown report. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
+| 3 | M3: README Refactoring | Rewrite README.md in Industrial Noir 2026 aesthetic with ASCII dividers `█▄`. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
 | 4 | M4: Git Sentinel Anchoring | Commit all changes under Git Sentinel to seal the ledger state. | M1, M2, M3 | PLANNED |
 
 ## Interface Contracts
