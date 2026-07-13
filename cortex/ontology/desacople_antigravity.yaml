@@ -1,0 +1,13 @@
+Claim: El desacople absoluto de ANTIGRAVITY exige la migración hacia primitivas locales soberanas (Ollama/MLX) y la orquestación mediante un Swarm de Subagentes desvinculado de SDKs propietarios.
+Proof: 
+  Base: 8389726e7393f158cc45f7a843f22192e10b9bc077810cbd40a8061d4a264f95
+  Range: [0, 1]
+  Confidence: C5-REAL
+Isomorphisms:
+  - Antigravity_Dependency: Entropía Centralizada (SPOF Termodinámico)
+  - Desacople_Soberano: Autopoiesis BFT Local
+Blast_Radius_Matrix:
+  Vector: Sustitución de SDK Antigravity por Orquestador Local C5-REAL
+  Blast_Radius: 100% de la capa de comunicación RPC y gestión de estado
+  Target_Invariant: Autarquía del Kernel (Cero telemetría externa)
+  Anergy_Risk: Alto (Pérdida temporal de abstracciones de alto nivel)
