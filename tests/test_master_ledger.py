@@ -2,7 +2,7 @@ import sqlite3
 import pytest
 import aiosqlite
 from pathlib import Path
-from core.master_ledger import BFTLedgerActor, LedgerEvent
+from bft.ledger_actor import BFTLedgerActor, LedgerEvent
 
 
 @pytest.fixture
@@ -53,7 +53,7 @@ async def test_ledger_append_and_idempotency(db_path: Path, event_factory):
             row = await cur.fetchone()
             assert row[0] == 1
         await actor.stop()
-        with pytest.raises(RuntimeError, match="Zombie Actor detected"):
+        with pytest.raises(RuntimeError, match="Zombie Actor Prevention triggered"):
             actor.append(event_factory(2))
     finally:
         await actor.stop()

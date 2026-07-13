@@ -9,7 +9,7 @@ from typing import Dict, List, Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
-from core.master_ledger import BFTLedgerActor, LedgerEvent
+from bft.ledger_actor import BFTLedgerActor, LedgerEvent
 
 LEDGER_DB_PATH = PROJECT_ROOT / "cortex" / "nexus_anchors.db"
 IMMUNEFI_PROJECTS_URL = "https://raw.githubusercontent.com/infosec-us-team/Immunefi-Bug-Bounty-Programs-Unofficial/main/projects.json"
