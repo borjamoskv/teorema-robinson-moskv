@@ -14,10 +14,10 @@
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | M1: Git Log Audit | Audit git history since Feb 2026, compile undocumented items into YAML. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
-| 2 | M2: GitHub SOTA Eval | Inspect local GitHub setup, verify CI/CD gaps, compile markdown report. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
-| 3 | M3: README Refactoring | Rewrite README.md in Industrial Noir 2026 aesthetic with ASCII dividers `█▄`. | None | IN_PROGRESS (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
-| 4 | M4: Git Sentinel Anchoring | Commit all changes under Git Sentinel to seal the ledger state. | M1, M2, M3 | PLANNED |
+| 1 | M1: Git Log Audit | Audit git history since Feb 2026, compile undocumented items into YAML. | None | DONE (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
+| 2 | M2: GitHub SOTA Eval | Inspect local GitHub setup, verify CI/CD gaps, compile markdown report. | None | DONE (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
+| 3 | M3: README Refactoring | Rewrite README.md in Industrial Noir 2026 aesthetic with ASCII dividers `█▄`. | None | DONE (Worker 84fd2ac7-7791-4ac5-addf-8e6ab6fa26f2) |
+| 4 | M4: Git Sentinel Anchoring | Commit all changes under Git Sentinel to seal the ledger state. | M1, M2, M3 | IN_PROGRESS (Reviewer 0bf1f44a-5a1e-45ed-a519-8613286dd356) |
 
 ## Interface Contracts
 - **Git Log format** ↔ **YAML parser**: Extract commit hashes, authors, dates, and message bodies. Output to `cortex/audits/hitos_no_remarcados.yaml` in YAML format.
