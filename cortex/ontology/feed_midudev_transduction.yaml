@@ -1,0 +1,28 @@
+# cortex_taint: 07d9f7fa51268612ca49bc52debc0c0576e27bcfb99dbbd4122d19280d5d2b99
+# creation_cause: "AUTODIDACT prompt transduction of midudev LinkedIn feed"
+Claim: "El feed de LinkedIn de midudev (55 posts, julio 2026) cristaliza la transición termodinámica desde la dependencia de APIs centralizadas e ineficiencia del 'Green Theater' hacia la autarquía local (vLLM, LiteRT.js, Meetily, Vue/Tailwind en PSP con 8MB) y la aceleración de metal nativo mediante compilación dura (TypeScript 7 en Go, cmux acelerada por GPU)."
+
+Proof:
+  Base: "Bun_API_Migration_Cost: 165000 USD, TS7_Go_Compiler_Speedup: 10x, PSP_RAM_Cap: 8MB, LiteRT_WebGPU_Inference: Local"
+  Range: "[8MB, 165000USD]"
+  Confidence: "C5"
+
+Isomorphisms:
+  - Centralized_Anergy:
+      Abstraction: "Consumo y desperdicio masivo de tokens en APIs propietarias centralizadas sin control de estado."
+      Causal_Anchor: "Bun gastando $165,000 en APIs de Anthropic para una migración de código intermedia."
+  - Local_Autarchy:
+      Abstraction: "Ejecución local, offline, y privada en el extremo (edge) para optimizar latencia y costes."
+      Causal_Anchor: "LiteRT.js (WebGPU), Meetily (transcripción local), vLLM (eficiencia GPU local frente a Ollama)."
+  - Kinetic_Hardware_Efficiency:
+      Abstraction: "Eliminación de capas de abstracción pesadas (Electron) en favor de compiladores binarios nativos optimizados para metal."
+      Causal_Anchor: "TypeScript 7 con compilador nativo en Go (10x velocidad), cmux (terminal nativa macOS en GPU sin Electron), PSP ejecutando Vue a 60fps con 8MB."
+  - Sweeper_Maintainer_Shift:
+      Abstraction: "Migración del rol de Vibe Coding y copy-paste estocástico a agentes atómicos que depuran slop y aseguran límites."
+      Causal_Anchor: "El nuevo framework de roles de Anthropic (Sweeper, Grower, Maintainer), git-push no-mistakes, Codebase Memory MCP."
+
+Blast_Radius_Matrix:
+  Vector: "Estabilización de Arquitectura C5-REAL local"
+  Blast_Radius: "Repositorio Local y Flujos de Trabajo de Desarrollo"
+  Target_Invariant: "Invariante de autarquía local y eliminación absoluta de dependencias de API centralizadas sin control de costes."
+  Anergy_Risk: "Agotamiento de créditos de API y degradación de rendimiento por llamadas de red recurrentes y bloqueos en Electron."
