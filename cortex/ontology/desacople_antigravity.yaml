@@ -1,13 +1,13 @@
-Claim: La desvinculación topológica de ANTIGRAVITY requiere la sustitución estricta del middleware RPC propietario por un enrutador local de estados deterministas, delegando la inferencia al binario de Ollama/MLX y el consenso al Master Ledger BFT local.
+Claim: La desvinculación topológica de ANTIGRAVITY exige purgar la capa RPC estocástica y colapsar la orquestación en un microkernel determinista C5-REAL (MLX/Ollama), forzando consensos asíncronos en Master Ledger SQLite WAL.
 Proof: 
-  Base: 64fdbd294bc42a8a52968001a978e300c375af5d5f3a86524275deaa6a7ea772
+  Base: f3a21f72ae6ddad9cc3c83bfd08917648b40d1f4675a7522fe4333e83fab395c
   Range: [0, 1]
   Confidence: C5-REAL
 Isomorphisms:
-  - Antigravity_SDK: Overhead Termodinámico Externo (Dilución de Control)
-  - Desacople_Soberano: Autopoiesis BFT Local en CWD
+  - Antigravity_SDK: Fricción Termodinámica de Red y Muro Epistémico (Ouroboros)
+  - Desacople_Soberano: Mitosis JIT Local (Swarm) e Idempotencia Absoluta
 Blast_Radius_Matrix:
-  Vector: Sustitución de Antigravity SDK por Motor Transductor MLX + Local BFT
-  Blast_Radius: 100% de la interfaz de agente y ruteo de herramientas
-  Target_Invariant: Cero latencia de red, Cero telemetría externa
-  Anergy_Risk: Moderado (Reconstrucción de tool-schemas a binarios C5-REAL)
+  Vector: Erradicación del SDK propietario por Runtime Vesicular Soberano (Chroot/Jail)
+  Blast_Radius: 100% de la interfaz de red, telemetría y subagentes gestionados externamente
+  Target_Invariant: Autarquía Criptográfica (TTFT determinista, Zero API Leaks)
+  Anergy_Risk: Terminal para abstracciones pre-empaquetadas (Requiere forjado nativo de MetaPathFinders)
