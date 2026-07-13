@@ -1,0 +1,3903 @@
+Concept: Gradiente Estocastico
+Total_Primitives: 300
+Primitives:
+  - Claim: SGD_Primitive_1
+    Proof:
+      Base: sha256_sgd_matrix_1
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_1
+      Blast_Radius: 1.0000
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_2
+    Proof:
+      Base: sha256_sgd_matrix_2
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_2
+      Blast_Radius: 0.5000
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_3
+    Proof:
+      Base: sha256_sgd_matrix_3
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_3
+      Blast_Radius: 0.3333
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_4
+    Proof:
+      Base: sha256_sgd_matrix_4
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_4
+      Blast_Radius: 0.2500
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_5
+    Proof:
+      Base: sha256_sgd_matrix_5
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_5
+      Blast_Radius: 0.2000
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_6
+    Proof:
+      Base: sha256_sgd_matrix_6
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_6
+      Blast_Radius: 0.1667
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_7
+    Proof:
+      Base: sha256_sgd_matrix_7
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_7
+      Blast_Radius: 0.1429
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_8
+    Proof:
+      Base: sha256_sgd_matrix_8
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_8
+      Blast_Radius: 0.1250
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_9
+    Proof:
+      Base: sha256_sgd_matrix_9
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_9
+      Blast_Radius: 0.1111
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_10
+    Proof:
+      Base: sha256_sgd_matrix_10
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_10
+      Blast_Radius: 0.1000
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_11
+    Proof:
+      Base: sha256_sgd_matrix_11
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_11
+      Blast_Radius: 0.0909
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_12
+    Proof:
+      Base: sha256_sgd_matrix_12
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_12
+      Blast_Radius: 0.0833
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_13
+    Proof:
+      Base: sha256_sgd_matrix_13
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_13
+      Blast_Radius: 0.0769
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_14
+    Proof:
+      Base: sha256_sgd_matrix_14
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_14
+      Blast_Radius: 0.0714
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_15
+    Proof:
+      Base: sha256_sgd_matrix_15
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_15
+      Blast_Radius: 0.0667
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_16
+    Proof:
+      Base: sha256_sgd_matrix_16
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_16
+      Blast_Radius: 0.0625
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_17
+    Proof:
+      Base: sha256_sgd_matrix_17
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_17
+      Blast_Radius: 0.0588
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_18
+    Proof:
+      Base: sha256_sgd_matrix_18
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_18
+      Blast_Radius: 0.0556
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_19
+    Proof:
+      Base: sha256_sgd_matrix_19
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_19
+      Blast_Radius: 0.0526
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_20
+    Proof:
+      Base: sha256_sgd_matrix_20
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_20
+      Blast_Radius: 0.0500
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_21
+    Proof:
+      Base: sha256_sgd_matrix_21
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_21
+      Blast_Radius: 0.0476
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_22
+    Proof:
+      Base: sha256_sgd_matrix_22
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_22
+      Blast_Radius: 0.0455
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_23
+    Proof:
+      Base: sha256_sgd_matrix_23
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_23
+      Blast_Radius: 0.0435
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_24
+    Proof:
+      Base: sha256_sgd_matrix_24
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_24
+      Blast_Radius: 0.0417
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_25
+    Proof:
+      Base: sha256_sgd_matrix_25
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_25
+      Blast_Radius: 0.0400
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_26
+    Proof:
+      Base: sha256_sgd_matrix_26
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_26
+      Blast_Radius: 0.0385
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_27
+    Proof:
+      Base: sha256_sgd_matrix_27
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_27
+      Blast_Radius: 0.0370
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_28
+    Proof:
+      Base: sha256_sgd_matrix_28
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_28
+      Blast_Radius: 0.0357
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_29
+    Proof:
+      Base: sha256_sgd_matrix_29
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_29
+      Blast_Radius: 0.0345
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_30
+    Proof:
+      Base: sha256_sgd_matrix_30
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_30
+      Blast_Radius: 0.0333
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_31
+    Proof:
+      Base: sha256_sgd_matrix_31
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_31
+      Blast_Radius: 0.0323
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_32
+    Proof:
+      Base: sha256_sgd_matrix_32
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_32
+      Blast_Radius: 0.0312
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_33
+    Proof:
+      Base: sha256_sgd_matrix_33
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_33
+      Blast_Radius: 0.0303
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_34
+    Proof:
+      Base: sha256_sgd_matrix_34
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_34
+      Blast_Radius: 0.0294
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_35
+    Proof:
+      Base: sha256_sgd_matrix_35
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_35
+      Blast_Radius: 0.0286
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_36
+    Proof:
+      Base: sha256_sgd_matrix_36
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_36
+      Blast_Radius: 0.0278
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_37
+    Proof:
+      Base: sha256_sgd_matrix_37
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_37
+      Blast_Radius: 0.0270
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_38
+    Proof:
+      Base: sha256_sgd_matrix_38
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_38
+      Blast_Radius: 0.0263
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_39
+    Proof:
+      Base: sha256_sgd_matrix_39
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_39
+      Blast_Radius: 0.0256
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_40
+    Proof:
+      Base: sha256_sgd_matrix_40
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_40
+      Blast_Radius: 0.0250
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_41
+    Proof:
+      Base: sha256_sgd_matrix_41
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_41
+      Blast_Radius: 0.0244
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_42
+    Proof:
+      Base: sha256_sgd_matrix_42
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_42
+      Blast_Radius: 0.0238
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_43
+    Proof:
+      Base: sha256_sgd_matrix_43
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_43
+      Blast_Radius: 0.0233
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_44
+    Proof:
+      Base: sha256_sgd_matrix_44
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_44
+      Blast_Radius: 0.0227
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_45
+    Proof:
+      Base: sha256_sgd_matrix_45
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_45
+      Blast_Radius: 0.0222
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_46
+    Proof:
+      Base: sha256_sgd_matrix_46
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_46
+      Blast_Radius: 0.0217
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_47
+    Proof:
+      Base: sha256_sgd_matrix_47
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_47
+      Blast_Radius: 0.0213
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_48
+    Proof:
+      Base: sha256_sgd_matrix_48
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_48
+      Blast_Radius: 0.0208
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_49
+    Proof:
+      Base: sha256_sgd_matrix_49
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_49
+      Blast_Radius: 0.0204
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_50
+    Proof:
+      Base: sha256_sgd_matrix_50
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_50
+      Blast_Radius: 0.0200
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_51
+    Proof:
+      Base: sha256_sgd_matrix_51
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_51
+      Blast_Radius: 0.0196
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_52
+    Proof:
+      Base: sha256_sgd_matrix_52
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_52
+      Blast_Radius: 0.0192
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_53
+    Proof:
+      Base: sha256_sgd_matrix_53
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_53
+      Blast_Radius: 0.0189
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_54
+    Proof:
+      Base: sha256_sgd_matrix_54
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_54
+      Blast_Radius: 0.0185
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_55
+    Proof:
+      Base: sha256_sgd_matrix_55
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_55
+      Blast_Radius: 0.0182
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_56
+    Proof:
+      Base: sha256_sgd_matrix_56
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_56
+      Blast_Radius: 0.0179
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_57
+    Proof:
+      Base: sha256_sgd_matrix_57
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_57
+      Blast_Radius: 0.0175
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_58
+    Proof:
+      Base: sha256_sgd_matrix_58
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_58
+      Blast_Radius: 0.0172
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_59
+    Proof:
+      Base: sha256_sgd_matrix_59
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_59
+      Blast_Radius: 0.0169
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_60
+    Proof:
+      Base: sha256_sgd_matrix_60
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_60
+      Blast_Radius: 0.0167
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_61
+    Proof:
+      Base: sha256_sgd_matrix_61
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_61
+      Blast_Radius: 0.0164
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_62
+    Proof:
+      Base: sha256_sgd_matrix_62
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_62
+      Blast_Radius: 0.0161
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_63
+    Proof:
+      Base: sha256_sgd_matrix_63
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_63
+      Blast_Radius: 0.0159
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_64
+    Proof:
+      Base: sha256_sgd_matrix_64
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_64
+      Blast_Radius: 0.0156
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_65
+    Proof:
+      Base: sha256_sgd_matrix_65
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_65
+      Blast_Radius: 0.0154
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_66
+    Proof:
+      Base: sha256_sgd_matrix_66
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_66
+      Blast_Radius: 0.0152
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_67
+    Proof:
+      Base: sha256_sgd_matrix_67
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_67
+      Blast_Radius: 0.0149
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_68
+    Proof:
+      Base: sha256_sgd_matrix_68
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_68
+      Blast_Radius: 0.0147
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_69
+    Proof:
+      Base: sha256_sgd_matrix_69
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_69
+      Blast_Radius: 0.0145
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_70
+    Proof:
+      Base: sha256_sgd_matrix_70
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_70
+      Blast_Radius: 0.0143
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_71
+    Proof:
+      Base: sha256_sgd_matrix_71
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_71
+      Blast_Radius: 0.0141
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_72
+    Proof:
+      Base: sha256_sgd_matrix_72
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_72
+      Blast_Radius: 0.0139
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_73
+    Proof:
+      Base: sha256_sgd_matrix_73
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_73
+      Blast_Radius: 0.0137
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_74
+    Proof:
+      Base: sha256_sgd_matrix_74
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_74
+      Blast_Radius: 0.0135
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_75
+    Proof:
+      Base: sha256_sgd_matrix_75
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_75
+      Blast_Radius: 0.0133
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_76
+    Proof:
+      Base: sha256_sgd_matrix_76
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_76
+      Blast_Radius: 0.0132
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_77
+    Proof:
+      Base: sha256_sgd_matrix_77
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_77
+      Blast_Radius: 0.0130
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_78
+    Proof:
+      Base: sha256_sgd_matrix_78
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_78
+      Blast_Radius: 0.0128
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_79
+    Proof:
+      Base: sha256_sgd_matrix_79
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_79
+      Blast_Radius: 0.0127
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_80
+    Proof:
+      Base: sha256_sgd_matrix_80
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_80
+      Blast_Radius: 0.0125
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_81
+    Proof:
+      Base: sha256_sgd_matrix_81
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_81
+      Blast_Radius: 0.0123
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_82
+    Proof:
+      Base: sha256_sgd_matrix_82
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_82
+      Blast_Radius: 0.0122
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_83
+    Proof:
+      Base: sha256_sgd_matrix_83
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_83
+      Blast_Radius: 0.0120
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_84
+    Proof:
+      Base: sha256_sgd_matrix_84
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_84
+      Blast_Radius: 0.0119
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_85
+    Proof:
+      Base: sha256_sgd_matrix_85
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_85
+      Blast_Radius: 0.0118
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_86
+    Proof:
+      Base: sha256_sgd_matrix_86
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_86
+      Blast_Radius: 0.0116
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_87
+    Proof:
+      Base: sha256_sgd_matrix_87
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_87
+      Blast_Radius: 0.0115
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_88
+    Proof:
+      Base: sha256_sgd_matrix_88
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_88
+      Blast_Radius: 0.0114
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_89
+    Proof:
+      Base: sha256_sgd_matrix_89
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_89
+      Blast_Radius: 0.0112
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_90
+    Proof:
+      Base: sha256_sgd_matrix_90
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_90
+      Blast_Radius: 0.0111
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_91
+    Proof:
+      Base: sha256_sgd_matrix_91
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_91
+      Blast_Radius: 0.0110
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_92
+    Proof:
+      Base: sha256_sgd_matrix_92
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_92
+      Blast_Radius: 0.0109
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_93
+    Proof:
+      Base: sha256_sgd_matrix_93
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_93
+      Blast_Radius: 0.0108
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_94
+    Proof:
+      Base: sha256_sgd_matrix_94
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_94
+      Blast_Radius: 0.0106
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_95
+    Proof:
+      Base: sha256_sgd_matrix_95
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_95
+      Blast_Radius: 0.0105
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_96
+    Proof:
+      Base: sha256_sgd_matrix_96
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_96
+      Blast_Radius: 0.0104
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_97
+    Proof:
+      Base: sha256_sgd_matrix_97
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_97
+      Blast_Radius: 0.0103
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_98
+    Proof:
+      Base: sha256_sgd_matrix_98
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_98
+      Blast_Radius: 0.0102
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_99
+    Proof:
+      Base: sha256_sgd_matrix_99
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_99
+      Blast_Radius: 0.0101
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_100
+    Proof:
+      Base: sha256_sgd_matrix_100
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_100
+      Blast_Radius: 0.0100
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_101
+    Proof:
+      Base: sha256_sgd_matrix_101
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_101
+      Blast_Radius: 0.0099
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_102
+    Proof:
+      Base: sha256_sgd_matrix_102
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_102
+      Blast_Radius: 0.0098
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_103
+    Proof:
+      Base: sha256_sgd_matrix_103
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_103
+      Blast_Radius: 0.0097
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_104
+    Proof:
+      Base: sha256_sgd_matrix_104
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_104
+      Blast_Radius: 0.0096
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_105
+    Proof:
+      Base: sha256_sgd_matrix_105
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_105
+      Blast_Radius: 0.0095
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_106
+    Proof:
+      Base: sha256_sgd_matrix_106
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_106
+      Blast_Radius: 0.0094
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_107
+    Proof:
+      Base: sha256_sgd_matrix_107
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_107
+      Blast_Radius: 0.0093
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_108
+    Proof:
+      Base: sha256_sgd_matrix_108
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_108
+      Blast_Radius: 0.0093
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_109
+    Proof:
+      Base: sha256_sgd_matrix_109
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_109
+      Blast_Radius: 0.0092
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_110
+    Proof:
+      Base: sha256_sgd_matrix_110
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_110
+      Blast_Radius: 0.0091
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_111
+    Proof:
+      Base: sha256_sgd_matrix_111
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_111
+      Blast_Radius: 0.0090
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_112
+    Proof:
+      Base: sha256_sgd_matrix_112
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_112
+      Blast_Radius: 0.0089
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_113
+    Proof:
+      Base: sha256_sgd_matrix_113
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_113
+      Blast_Radius: 0.0088
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_114
+    Proof:
+      Base: sha256_sgd_matrix_114
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_114
+      Blast_Radius: 0.0088
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_115
+    Proof:
+      Base: sha256_sgd_matrix_115
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_115
+      Blast_Radius: 0.0087
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_116
+    Proof:
+      Base: sha256_sgd_matrix_116
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_116
+      Blast_Radius: 0.0086
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_117
+    Proof:
+      Base: sha256_sgd_matrix_117
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_117
+      Blast_Radius: 0.0085
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_118
+    Proof:
+      Base: sha256_sgd_matrix_118
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_118
+      Blast_Radius: 0.0085
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_119
+    Proof:
+      Base: sha256_sgd_matrix_119
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_119
+      Blast_Radius: 0.0084
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_120
+    Proof:
+      Base: sha256_sgd_matrix_120
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_120
+      Blast_Radius: 0.0083
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_121
+    Proof:
+      Base: sha256_sgd_matrix_121
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_121
+      Blast_Radius: 0.0083
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_122
+    Proof:
+      Base: sha256_sgd_matrix_122
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_122
+      Blast_Radius: 0.0082
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_123
+    Proof:
+      Base: sha256_sgd_matrix_123
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_123
+      Blast_Radius: 0.0081
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_124
+    Proof:
+      Base: sha256_sgd_matrix_124
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_124
+      Blast_Radius: 0.0081
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_125
+    Proof:
+      Base: sha256_sgd_matrix_125
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_125
+      Blast_Radius: 0.0080
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_126
+    Proof:
+      Base: sha256_sgd_matrix_126
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_126
+      Blast_Radius: 0.0079
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_127
+    Proof:
+      Base: sha256_sgd_matrix_127
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_127
+      Blast_Radius: 0.0079
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_128
+    Proof:
+      Base: sha256_sgd_matrix_128
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_128
+      Blast_Radius: 0.0078
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_129
+    Proof:
+      Base: sha256_sgd_matrix_129
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_129
+      Blast_Radius: 0.0078
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_130
+    Proof:
+      Base: sha256_sgd_matrix_130
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_130
+      Blast_Radius: 0.0077
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_131
+    Proof:
+      Base: sha256_sgd_matrix_131
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_131
+      Blast_Radius: 0.0076
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_132
+    Proof:
+      Base: sha256_sgd_matrix_132
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_132
+      Blast_Radius: 0.0076
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_133
+    Proof:
+      Base: sha256_sgd_matrix_133
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_133
+      Blast_Radius: 0.0075
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_134
+    Proof:
+      Base: sha256_sgd_matrix_134
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_134
+      Blast_Radius: 0.0075
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_135
+    Proof:
+      Base: sha256_sgd_matrix_135
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_135
+      Blast_Radius: 0.0074
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_136
+    Proof:
+      Base: sha256_sgd_matrix_136
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_136
+      Blast_Radius: 0.0074
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_137
+    Proof:
+      Base: sha256_sgd_matrix_137
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_137
+      Blast_Radius: 0.0073
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_138
+    Proof:
+      Base: sha256_sgd_matrix_138
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_138
+      Blast_Radius: 0.0072
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_139
+    Proof:
+      Base: sha256_sgd_matrix_139
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_139
+      Blast_Radius: 0.0072
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_140
+    Proof:
+      Base: sha256_sgd_matrix_140
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_140
+      Blast_Radius: 0.0071
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_141
+    Proof:
+      Base: sha256_sgd_matrix_141
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_141
+      Blast_Radius: 0.0071
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_142
+    Proof:
+      Base: sha256_sgd_matrix_142
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_142
+      Blast_Radius: 0.0070
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_143
+    Proof:
+      Base: sha256_sgd_matrix_143
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_143
+      Blast_Radius: 0.0070
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_144
+    Proof:
+      Base: sha256_sgd_matrix_144
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_144
+      Blast_Radius: 0.0069
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_145
+    Proof:
+      Base: sha256_sgd_matrix_145
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_145
+      Blast_Radius: 0.0069
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_146
+    Proof:
+      Base: sha256_sgd_matrix_146
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_146
+      Blast_Radius: 0.0068
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_147
+    Proof:
+      Base: sha256_sgd_matrix_147
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_147
+      Blast_Radius: 0.0068
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_148
+    Proof:
+      Base: sha256_sgd_matrix_148
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_148
+      Blast_Radius: 0.0068
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_149
+    Proof:
+      Base: sha256_sgd_matrix_149
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_149
+      Blast_Radius: 0.0067
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_150
+    Proof:
+      Base: sha256_sgd_matrix_150
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_150
+      Blast_Radius: 0.0067
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_151
+    Proof:
+      Base: sha256_sgd_matrix_151
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_151
+      Blast_Radius: 0.0066
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_152
+    Proof:
+      Base: sha256_sgd_matrix_152
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_152
+      Blast_Radius: 0.0066
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_153
+    Proof:
+      Base: sha256_sgd_matrix_153
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_153
+      Blast_Radius: 0.0065
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_154
+    Proof:
+      Base: sha256_sgd_matrix_154
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_154
+      Blast_Radius: 0.0065
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_155
+    Proof:
+      Base: sha256_sgd_matrix_155
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_155
+      Blast_Radius: 0.0065
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_156
+    Proof:
+      Base: sha256_sgd_matrix_156
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_156
+      Blast_Radius: 0.0064
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_157
+    Proof:
+      Base: sha256_sgd_matrix_157
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_157
+      Blast_Radius: 0.0064
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_158
+    Proof:
+      Base: sha256_sgd_matrix_158
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_158
+      Blast_Radius: 0.0063
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_159
+    Proof:
+      Base: sha256_sgd_matrix_159
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_159
+      Blast_Radius: 0.0063
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_160
+    Proof:
+      Base: sha256_sgd_matrix_160
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_160
+      Blast_Radius: 0.0063
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_161
+    Proof:
+      Base: sha256_sgd_matrix_161
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_161
+      Blast_Radius: 0.0062
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_162
+    Proof:
+      Base: sha256_sgd_matrix_162
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_162
+      Blast_Radius: 0.0062
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_163
+    Proof:
+      Base: sha256_sgd_matrix_163
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_163
+      Blast_Radius: 0.0061
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_164
+    Proof:
+      Base: sha256_sgd_matrix_164
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_164
+      Blast_Radius: 0.0061
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_165
+    Proof:
+      Base: sha256_sgd_matrix_165
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_165
+      Blast_Radius: 0.0061
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_166
+    Proof:
+      Base: sha256_sgd_matrix_166
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_166
+      Blast_Radius: 0.0060
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_167
+    Proof:
+      Base: sha256_sgd_matrix_167
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_167
+      Blast_Radius: 0.0060
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_168
+    Proof:
+      Base: sha256_sgd_matrix_168
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_168
+      Blast_Radius: 0.0060
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_169
+    Proof:
+      Base: sha256_sgd_matrix_169
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_169
+      Blast_Radius: 0.0059
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_170
+    Proof:
+      Base: sha256_sgd_matrix_170
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_170
+      Blast_Radius: 0.0059
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_171
+    Proof:
+      Base: sha256_sgd_matrix_171
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_171
+      Blast_Radius: 0.0058
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_172
+    Proof:
+      Base: sha256_sgd_matrix_172
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_172
+      Blast_Radius: 0.0058
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_173
+    Proof:
+      Base: sha256_sgd_matrix_173
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_173
+      Blast_Radius: 0.0058
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_174
+    Proof:
+      Base: sha256_sgd_matrix_174
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_174
+      Blast_Radius: 0.0057
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_175
+    Proof:
+      Base: sha256_sgd_matrix_175
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_175
+      Blast_Radius: 0.0057
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_176
+    Proof:
+      Base: sha256_sgd_matrix_176
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_176
+      Blast_Radius: 0.0057
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_177
+    Proof:
+      Base: sha256_sgd_matrix_177
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_177
+      Blast_Radius: 0.0056
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_178
+    Proof:
+      Base: sha256_sgd_matrix_178
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_178
+      Blast_Radius: 0.0056
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_179
+    Proof:
+      Base: sha256_sgd_matrix_179
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_179
+      Blast_Radius: 0.0056
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_180
+    Proof:
+      Base: sha256_sgd_matrix_180
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_180
+      Blast_Radius: 0.0056
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_181
+    Proof:
+      Base: sha256_sgd_matrix_181
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_181
+      Blast_Radius: 0.0055
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_182
+    Proof:
+      Base: sha256_sgd_matrix_182
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_182
+      Blast_Radius: 0.0055
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_183
+    Proof:
+      Base: sha256_sgd_matrix_183
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_183
+      Blast_Radius: 0.0055
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_184
+    Proof:
+      Base: sha256_sgd_matrix_184
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_184
+      Blast_Radius: 0.0054
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_185
+    Proof:
+      Base: sha256_sgd_matrix_185
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_185
+      Blast_Radius: 0.0054
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_186
+    Proof:
+      Base: sha256_sgd_matrix_186
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_186
+      Blast_Radius: 0.0054
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_187
+    Proof:
+      Base: sha256_sgd_matrix_187
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_187
+      Blast_Radius: 0.0053
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_188
+    Proof:
+      Base: sha256_sgd_matrix_188
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_188
+      Blast_Radius: 0.0053
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_189
+    Proof:
+      Base: sha256_sgd_matrix_189
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_189
+      Blast_Radius: 0.0053
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_190
+    Proof:
+      Base: sha256_sgd_matrix_190
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_190
+      Blast_Radius: 0.0053
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_191
+    Proof:
+      Base: sha256_sgd_matrix_191
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_191
+      Blast_Radius: 0.0052
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_192
+    Proof:
+      Base: sha256_sgd_matrix_192
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_192
+      Blast_Radius: 0.0052
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_193
+    Proof:
+      Base: sha256_sgd_matrix_193
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_193
+      Blast_Radius: 0.0052
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_194
+    Proof:
+      Base: sha256_sgd_matrix_194
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_194
+      Blast_Radius: 0.0052
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_195
+    Proof:
+      Base: sha256_sgd_matrix_195
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_195
+      Blast_Radius: 0.0051
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_196
+    Proof:
+      Base: sha256_sgd_matrix_196
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_196
+      Blast_Radius: 0.0051
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_197
+    Proof:
+      Base: sha256_sgd_matrix_197
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_197
+      Blast_Radius: 0.0051
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_198
+    Proof:
+      Base: sha256_sgd_matrix_198
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_198
+      Blast_Radius: 0.0051
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_199
+    Proof:
+      Base: sha256_sgd_matrix_199
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_199
+      Blast_Radius: 0.0050
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_200
+    Proof:
+      Base: sha256_sgd_matrix_200
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_200
+      Blast_Radius: 0.0050
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_201
+    Proof:
+      Base: sha256_sgd_matrix_201
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_201
+      Blast_Radius: 0.0050
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_202
+    Proof:
+      Base: sha256_sgd_matrix_202
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_202
+      Blast_Radius: 0.0050
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_203
+    Proof:
+      Base: sha256_sgd_matrix_203
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_203
+      Blast_Radius: 0.0049
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_204
+    Proof:
+      Base: sha256_sgd_matrix_204
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_204
+      Blast_Radius: 0.0049
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_205
+    Proof:
+      Base: sha256_sgd_matrix_205
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_205
+      Blast_Radius: 0.0049
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_206
+    Proof:
+      Base: sha256_sgd_matrix_206
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_206
+      Blast_Radius: 0.0049
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_207
+    Proof:
+      Base: sha256_sgd_matrix_207
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_207
+      Blast_Radius: 0.0048
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_208
+    Proof:
+      Base: sha256_sgd_matrix_208
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_208
+      Blast_Radius: 0.0048
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_209
+    Proof:
+      Base: sha256_sgd_matrix_209
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_209
+      Blast_Radius: 0.0048
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_210
+    Proof:
+      Base: sha256_sgd_matrix_210
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_210
+      Blast_Radius: 0.0048
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_211
+    Proof:
+      Base: sha256_sgd_matrix_211
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_211
+      Blast_Radius: 0.0047
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_212
+    Proof:
+      Base: sha256_sgd_matrix_212
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_212
+      Blast_Radius: 0.0047
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_213
+    Proof:
+      Base: sha256_sgd_matrix_213
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_213
+      Blast_Radius: 0.0047
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_214
+    Proof:
+      Base: sha256_sgd_matrix_214
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_214
+      Blast_Radius: 0.0047
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_215
+    Proof:
+      Base: sha256_sgd_matrix_215
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_215
+      Blast_Radius: 0.0047
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_216
+    Proof:
+      Base: sha256_sgd_matrix_216
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_216
+      Blast_Radius: 0.0046
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_217
+    Proof:
+      Base: sha256_sgd_matrix_217
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_217
+      Blast_Radius: 0.0046
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_218
+    Proof:
+      Base: sha256_sgd_matrix_218
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_218
+      Blast_Radius: 0.0046
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_219
+    Proof:
+      Base: sha256_sgd_matrix_219
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_219
+      Blast_Radius: 0.0046
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_220
+    Proof:
+      Base: sha256_sgd_matrix_220
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_220
+      Blast_Radius: 0.0045
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_221
+    Proof:
+      Base: sha256_sgd_matrix_221
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_221
+      Blast_Radius: 0.0045
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_222
+    Proof:
+      Base: sha256_sgd_matrix_222
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_222
+      Blast_Radius: 0.0045
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_223
+    Proof:
+      Base: sha256_sgd_matrix_223
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_223
+      Blast_Radius: 0.0045
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_224
+    Proof:
+      Base: sha256_sgd_matrix_224
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_224
+      Blast_Radius: 0.0045
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_225
+    Proof:
+      Base: sha256_sgd_matrix_225
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_225
+      Blast_Radius: 0.0044
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_226
+    Proof:
+      Base: sha256_sgd_matrix_226
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_226
+      Blast_Radius: 0.0044
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_227
+    Proof:
+      Base: sha256_sgd_matrix_227
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_227
+      Blast_Radius: 0.0044
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_228
+    Proof:
+      Base: sha256_sgd_matrix_228
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_228
+      Blast_Radius: 0.0044
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_229
+    Proof:
+      Base: sha256_sgd_matrix_229
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_229
+      Blast_Radius: 0.0044
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_230
+    Proof:
+      Base: sha256_sgd_matrix_230
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_230
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_231
+    Proof:
+      Base: sha256_sgd_matrix_231
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_231
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_232
+    Proof:
+      Base: sha256_sgd_matrix_232
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_232
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_233
+    Proof:
+      Base: sha256_sgd_matrix_233
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_233
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_234
+    Proof:
+      Base: sha256_sgd_matrix_234
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_234
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_235
+    Proof:
+      Base: sha256_sgd_matrix_235
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_235
+      Blast_Radius: 0.0043
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_236
+    Proof:
+      Base: sha256_sgd_matrix_236
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_236
+      Blast_Radius: 0.0042
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_237
+    Proof:
+      Base: sha256_sgd_matrix_237
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_237
+      Blast_Radius: 0.0042
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_238
+    Proof:
+      Base: sha256_sgd_matrix_238
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_238
+      Blast_Radius: 0.0042
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_239
+    Proof:
+      Base: sha256_sgd_matrix_239
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_239
+      Blast_Radius: 0.0042
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_240
+    Proof:
+      Base: sha256_sgd_matrix_240
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_240
+      Blast_Radius: 0.0042
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_241
+    Proof:
+      Base: sha256_sgd_matrix_241
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_241
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_242
+    Proof:
+      Base: sha256_sgd_matrix_242
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_242
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_243
+    Proof:
+      Base: sha256_sgd_matrix_243
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_243
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_244
+    Proof:
+      Base: sha256_sgd_matrix_244
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_244
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_245
+    Proof:
+      Base: sha256_sgd_matrix_245
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_245
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_246
+    Proof:
+      Base: sha256_sgd_matrix_246
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_246
+      Blast_Radius: 0.0041
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_247
+    Proof:
+      Base: sha256_sgd_matrix_247
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_247
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_248
+    Proof:
+      Base: sha256_sgd_matrix_248
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_248
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_249
+    Proof:
+      Base: sha256_sgd_matrix_249
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_249
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_250
+    Proof:
+      Base: sha256_sgd_matrix_250
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_250
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_251
+    Proof:
+      Base: sha256_sgd_matrix_251
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_251
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_252
+    Proof:
+      Base: sha256_sgd_matrix_252
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_252
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_253
+    Proof:
+      Base: sha256_sgd_matrix_253
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_253
+      Blast_Radius: 0.0040
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_254
+    Proof:
+      Base: sha256_sgd_matrix_254
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_254
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_255
+    Proof:
+      Base: sha256_sgd_matrix_255
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_255
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_256
+    Proof:
+      Base: sha256_sgd_matrix_256
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_256
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_257
+    Proof:
+      Base: sha256_sgd_matrix_257
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_257
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_258
+    Proof:
+      Base: sha256_sgd_matrix_258
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_258
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_259
+    Proof:
+      Base: sha256_sgd_matrix_259
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_259
+      Blast_Radius: 0.0039
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_260
+    Proof:
+      Base: sha256_sgd_matrix_260
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_260
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_261
+    Proof:
+      Base: sha256_sgd_matrix_261
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_261
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_262
+    Proof:
+      Base: sha256_sgd_matrix_262
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_262
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_263
+    Proof:
+      Base: sha256_sgd_matrix_263
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_263
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_264
+    Proof:
+      Base: sha256_sgd_matrix_264
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_264
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_265
+    Proof:
+      Base: sha256_sgd_matrix_265
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_265
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_266
+    Proof:
+      Base: sha256_sgd_matrix_266
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_266
+      Blast_Radius: 0.0038
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_267
+    Proof:
+      Base: sha256_sgd_matrix_267
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_267
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_268
+    Proof:
+      Base: sha256_sgd_matrix_268
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_268
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_269
+    Proof:
+      Base: sha256_sgd_matrix_269
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_269
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_270
+    Proof:
+      Base: sha256_sgd_matrix_270
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_270
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_271
+    Proof:
+      Base: sha256_sgd_matrix_271
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_271
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_272
+    Proof:
+      Base: sha256_sgd_matrix_272
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_272
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_273
+    Proof:
+      Base: sha256_sgd_matrix_273
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_273
+      Blast_Radius: 0.0037
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_274
+    Proof:
+      Base: sha256_sgd_matrix_274
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_274
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_275
+    Proof:
+      Base: sha256_sgd_matrix_275
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_275
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_276
+    Proof:
+      Base: sha256_sgd_matrix_276
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_276
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_277
+    Proof:
+      Base: sha256_sgd_matrix_277
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_277
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_278
+    Proof:
+      Base: sha256_sgd_matrix_278
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_278
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_279
+    Proof:
+      Base: sha256_sgd_matrix_279
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_279
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_280
+    Proof:
+      Base: sha256_sgd_matrix_280
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_280
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_281
+    Proof:
+      Base: sha256_sgd_matrix_281
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_281
+      Blast_Radius: 0.0036
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_282
+    Proof:
+      Base: sha256_sgd_matrix_282
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_282
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_283
+    Proof:
+      Base: sha256_sgd_matrix_283
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_283
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_284
+    Proof:
+      Base: sha256_sgd_matrix_284
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_284
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_285
+    Proof:
+      Base: sha256_sgd_matrix_285
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_285
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_286
+    Proof:
+      Base: sha256_sgd_matrix_286
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_286
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_287
+    Proof:
+      Base: sha256_sgd_matrix_287
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_287
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_288
+    Proof:
+      Base: sha256_sgd_matrix_288
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_288
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_289
+    Proof:
+      Base: sha256_sgd_matrix_289
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_289
+      Blast_Radius: 0.0035
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_290
+    Proof:
+      Base: sha256_sgd_matrix_290
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_290
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_291
+    Proof:
+      Base: sha256_sgd_matrix_291
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_1
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_291
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_292
+    Proof:
+      Base: sha256_sgd_matrix_292
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_2
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_292
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_293
+    Proof:
+      Base: sha256_sgd_matrix_293
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_3
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_293
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_294
+    Proof:
+      Base: sha256_sgd_matrix_294
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_4
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_294
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_295
+    Proof:
+      Base: sha256_sgd_matrix_295
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_5
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_295
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_296
+    Proof:
+      Base: sha256_sgd_matrix_296
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_6
+      Friction: Thermodynamic_Loss_1
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_296
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_297
+    Proof:
+      Base: sha256_sgd_matrix_297
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_7
+      Friction: Thermodynamic_Loss_2
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_297
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_298
+    Proof:
+      Base: sha256_sgd_matrix_298
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_8
+      Friction: Thermodynamic_Loss_3
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_298
+      Blast_Radius: 0.0034
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_299
+    Proof:
+      Base: sha256_sgd_matrix_299
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_9
+      Friction: Thermodynamic_Loss_4
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_299
+      Blast_Radius: 0.0033
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
+  - Claim: SGD_Primitive_300
+    Proof:
+      Base: sha256_sgd_matrix_300
+      Range: [0, 1]
+      Confidence: C5
+    Isomorphisms:
+      Structure: Tensor_Manifold_0
+      Friction: Thermodynamic_Loss_0
+    Blast_Radius_Matrix:
+      Vector: Gradient_Descent_Step_300
+      Blast_Radius: 0.0033
+      Target_Invariant: Lipschitz_Continuous_Bound
+      Anergy_Risk: 0.0
