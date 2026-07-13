@@ -3,6 +3,9 @@ from typing import Optional
 
 
 class AnergiaPurger(ast.NodeTransformer):
+    def __init__(self):
+        self.injected_kill = False
+
     def visit_Expr(self, node: ast.Expr) -> Optional[ast.AST]:
         if isinstance(node.value, ast.Constant):
             return None
@@ -40,7 +43,17 @@ class AnergiaPurger(ast.NodeTransformer):
                     )
                 )
                 node.handlers[i].body = [kill_node]
+                self.injected_kill = True
         return self.generic_visit(node)
+
+    def visit_Module(self, node: ast.Module) -> ast.AST:
+        node = self.generic_visit(node)
+        if self.injected_kill:
+            import_os = ast.Import(names=[ast.alias(name='os', asname=None)])
+            import_signal = ast.Import(names=[ast.alias(name='signal', asname=None)])
+            node.body.insert(0, import_signal)
+            node.body.insert(0, import_os)
+        return node
 
 
 def transmute_file(filepath: str) -> None:
