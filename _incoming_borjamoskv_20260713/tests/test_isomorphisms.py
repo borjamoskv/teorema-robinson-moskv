@@ -53,7 +53,7 @@ def test_ast_projection_isomorphism():
     # Compile and execute the mutated tree to verify execution and injected print statement
     code_obj = compile(mutated_tree, filename="<string>", mode="exec")
     namespace = {}
-    exec(code_obj, namespace)
+    exec(code_obj, namespace)  # noqa: S102
     
     # Check that the function exists
     assert "simple_func" in namespace
