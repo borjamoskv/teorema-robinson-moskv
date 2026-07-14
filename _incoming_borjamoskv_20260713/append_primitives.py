@@ -1,4 +1,3 @@
-import os
 
 file_path = "$CORTEX_ROOT/10_PROJECTS/Teorema-Robinson-Moskv/cortex/agents/ontology/01_PRIMITIVAS_DE_COLAPSO.md"
 
@@ -31,7 +30,7 @@ for i in range(61, 151):
     name = f"Entropía Vectorial {i} (Vector Entropy {i})"
     desc = f"Degradación del nivel de estado estructural debido a un fallo en la aserción de la invariante {i}."
     trigger = f"Desviación de umbral de entropía {i}."
-    sintoma = f"Lectura de anergía en el sistema C5-REAL."
+    sintoma = "Lectura de anergía en el sistema C5-REAL."
     escala = "Inmediata" if i % 2 == 0 else "Progresiva"
     gravedad = "C4" if i % 3 == 0 else "C5"
     intervencion = "Recalibración del Isomorfismo Causal y purga BFT."

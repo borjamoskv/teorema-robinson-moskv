@@ -1,7 +1,6 @@
 # eip7702_hunter.py | Nivel de Realidad: #C5-REAL | Exergy Score: 0.9836
 import time
 from web3 import Web3
-from web3.types import TxData
 from ctre_engine import CommitTimeReconciliationEngine
 
 class NegentropicHunter:
@@ -20,7 +19,7 @@ class NegentropicHunter:
 
     def run_ignition_loop(self, timeout_seconds: int = 3600):
         start_time = time.time()
-        print(f"[C5-REAL] Ignición del cazador EIP-7702 iniciada en Bare-Metal.")
+        print("[C5-REAL] Ignición del cazador EIP-7702 iniciada en Bare-Metal.")
 
         while (time.time() - start_time) < timeout_seconds:
             self.mempool_variance_buffer.append(self._sample_network_entropy())

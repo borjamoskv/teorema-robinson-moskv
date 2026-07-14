@@ -9,7 +9,6 @@ import json
 import yaml
 import glob
 import subprocess
-from datetime import datetime
 
 RAW_DIR = "$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/sota_arbitrage/raw_data"
 NODES_DIR = "$CORTEX_ROOT/borjamoskv/Teorema-Robinson-Moskv/cortex/sota_arbitrage/frontier_nodes"

@@ -1,5 +1,6 @@
 # anti_nlp_router.py | Nivel de Realidad: #C5-REAL | Enforcing PoE
-import re, hashlib
+import re
+import hashlib
 from typing import Dict, Any
 
 class EntropicSludgeException(Exception): pass
@@ -27,5 +28,5 @@ class C5DarkSwarmRouter:
         if hashlib.sha256(state_diff.encode('utf-8')).hexdigest() != proof:
              raise EntropicSludgeException("[!] CORRUPCIÓN ESTOCÁSTICA: Varianza no autorizada.")
 
-        print(f"[C5-REAL DAEMON] Exergía PoE validada. Delta asimilado inmutablemente.")
+        print("[C5-REAL DAEMON] Exergía PoE validada. Delta asimilado inmutablemente.")
         return True

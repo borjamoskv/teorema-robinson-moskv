@@ -1,6 +1,5 @@
 from mcp.server.fastmcp import FastMCP
 from db_atomic import get_db_connection, init_db
-import sqlite3
 import uuid
 
 # Initialize the MCP Server

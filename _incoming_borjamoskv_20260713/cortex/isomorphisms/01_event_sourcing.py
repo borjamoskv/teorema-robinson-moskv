@@ -1,5 +1,5 @@
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from typing import List, Dict, Any
 from functools import reduce
 

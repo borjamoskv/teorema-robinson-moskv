@@ -1,6 +1,5 @@
 import re
 import yaml
-import sys
 
 file_path = "$CORTEX_ROOT/Music/VISUALES/los_100_ciclos_digestion_cosmica_substack.md"
 with open(file_path, "r", encoding="utf-8") as f:

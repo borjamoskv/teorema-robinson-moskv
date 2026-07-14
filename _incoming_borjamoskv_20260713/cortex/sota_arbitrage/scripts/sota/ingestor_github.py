@@ -6,7 +6,6 @@ Extrae los repositorios más populares creados recientemente en Rust y Go.
 import urllib.request
 import json
 import os
-import sys
 from datetime import datetime, timedelta, timezone
 
 LANGUAGES = ["Rust", "Go"]

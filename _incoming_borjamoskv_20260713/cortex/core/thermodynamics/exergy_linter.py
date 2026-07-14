@@ -1,4 +1,7 @@
-import ast, os, sys, json
+import ast
+import os
+import sys
+import json
 
 class ExergyVisitor(ast.NodeVisitor):
     def __init__(self): self.guards_count = 0

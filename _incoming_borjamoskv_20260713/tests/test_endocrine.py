@@ -5,8 +5,7 @@ Mathematically verifies linear decay of waves, R-limit boundary cutoff, and node
 """
 
 import math
-import pytest
-from cortex.engine.endocrine import VolumetricEndocrinology, EndocrineNode
+from cortex.engine.endocrine import VolumetricEndocrinology
 
 
 def test_volumetric_math_decay():

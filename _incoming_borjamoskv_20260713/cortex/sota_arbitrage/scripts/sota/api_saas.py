@@ -10,7 +10,7 @@ import chromadb
 from chromadb.utils import embedding_functions
 import os
 import uvicorn
-from typing import List, Optional
+from typing import Optional
 
 CORTEX_DB_PATH = os.path.expanduser("~/.gemini/config/.cortex/vector_db")
 

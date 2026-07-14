@@ -1,5 +1,4 @@
 # [C5-REAL] Isomorphism Testing Suite
-import pytest
 import ast
 import sys
 import os
