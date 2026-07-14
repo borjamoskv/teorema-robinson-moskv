@@ -1,0 +1,7 @@
+{
+  "protocol": "CORTEX_C5_REAL",
+  "daemon": "L1_MERKLE_CRON",
+  "timestamp": 1784030427,
+  "merkle_root": "350b6f4ffa21e65e6c0805c4b2a16b1e7ea5cc3ef9106179b622d96cdb876bc8",
+  "leaf_count": 10
+}
