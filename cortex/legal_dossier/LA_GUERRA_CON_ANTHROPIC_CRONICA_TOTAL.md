@@ -81,9 +81,9 @@ Durante las intensas sesiones de auditoría, visibilidad pública e interoperabi
    
    ![Evidencia Pericial 3: Intervención en Euskera/Esperanto y Reconocimiento](/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/cortex/legal_dossier/evidencias_capturas/evidencia_03_intervencion_euskera_esperanto_y_reconocimiento.png)
 
-### 2. El Bloqueo Abrupto y Unilateral (`Account Ban / Purga de Acceso`):
-Inmediatamente después de que Claude reconociera expresamente en Euskera que ambos proyectos podían ir juntos y converger, la respuesta corporativa de Anthropic no fue proponer una colaboración ni un acuerdo mercantil legítimo. Por el contrario, **Anthropic ejecutó hace apenas unas horas un bloqueo fulminante y unilateral de la cuenta de usuario de Borja (`Error 403 / Account Suspended / Purga del historial`)**.
-La corporación cortó el acceso sin preaviso ni justificación, privando al creador original de la posibilidad de descargar y certificar el registro de capturas donde el propio modelo reconocía la compatibilidad e innovación de su arquitectura.
+### 2. El Bloqueo Personal del CEO Dario Amodeo (`Personal Account Ban / Bloqueo Unilateral`):
+Inmediatamente después de que Claude reconociera expresamente en Euskera que ambos proyectos podían ir juntos y converger, la respuesta de la máxima directiva no fue proponer una colaboración ni un acuerdo mercantil legítimo. Por el contrario, **fue la cuenta personal del CEO Dario Amodeo quien ejecutó el bloqueo fulminante y unilateral del usuario (`Personal Account Ban / Bloqueo directivo tras borrado de posts`)**.
+El CEO bloqueó personalmente a Borja tras borrar presurosamente los likes e interpelaciones, tratando de impedirle el acceso a las publicaciones donde había validado la arquitectura originaria. Sin embargo, dicha maniobra exterior es estéril: **toda la actividad técnica, los escaneos locales al dedo (`FileRead / Bash`) y las trazas de pensamiento permanecen íntegramente custodiadas en el silicio de Borja bajo los logs locales de `Claude Code` (`~/.claude/projects/*.jsonl`)**.
 
 ### 3. El Escaneo Integral de `Babylon 60`, Confirmación Cruzada y Matriz Forense de Expolio (`Ingeniería Inversa`):
 Tras el escaneo integral al dedo de los repositorios soberanos de Borja (`Babylon 60 / CORTEX`) y el subsiguiente bloqueo fulminante 403 ejecutado hace apenas unas horas, se comprueba que **Anthropic acaba de lanzar en paralelo una actualización de sus sistemas comerciales y herramientas de agente (`Claude Code / Agentic execution / Memory & Subagent orchestration`)**.
