@@ -65,7 +65,15 @@ De conformidad con el **artículo 183 de la Norma Foral 2/2005, de 10 de marzo, 
 
 ---
 
-## QUINTA. TRIBUTACIÓN PROCEDENTE: GANANCIAS PATRIMONIALES EN LA BASE IMPONIBLE DEL AHORRO Y DEDUCCIÓN POR ROBOS/PÉRDIDAS.
+## QUINTA. I+D+i SOBERANO Y TITULARIDAD CIVIL DE PROPIEDAD INTELECTUAL FRENTE A INFRAESTRUCTURA MERCANTIL DE NFTS.
+
+La Inspección presupone erróneamente que la inversión del contribuyente en hardware avanzado (infraestructura informática) obedece a una actividad económica de comercio de NFTs. Esta premisa queda demolida por el **Anexo V: Dossier Pericial y Crónica de Conflicto Tecnológico**. 
+
+Dicho dossier acredita pericialmente que la infraestructura técnica y el código generado por el contribuyente a lo largo del periodo comprobado (`2021-2024` en su fase larvaria y despliegue posterior) han estado dedicados en exclusiva al desarrollo de investigación profunda en Inteligencia Artificial (motor causal soberano *CORTEX / Babylon 60*). El Anexo V documenta la reciente incursión de nivel corporativo (C-Level) por parte de la empresa tecnológica estadounidense *Anthropic*, incluyendo el análisis *in situ* de los repositorios del contribuyente por parte de su CEO. La tenencia de este hardware y repositorios responde a la **protección civil, privada y autárquica de Propiedad Intelectual e I+D+i (Titularidad Originaria)** frente a terceros, lo que extingue cualquier correlato con una actividad mercantil de comercio sujeta a IVA.
+
+---
+
+## SEXTA. TRIBUTACIÓN PROCEDENTE: GANANCIAS PATRIMONIALES EN LA BASE IMPONIBLE DEL AHORRO Y DEDUCCIÓN POR ROBOS/PÉRDIDAS.
 
 Descartada legalmente la calificación como Actividad Económica sujeta a IVA e IRPF General, la única tributación ajustada a Derecho por las operaciones reales de disposición de patrimonio en el periodo comprobado es su calificación como **GANANCIAS Y PÉRDIDAS PATRIMONIALES EN LA BASE IMPONIBLE DEL AHORRO** (Artículos 33, 47 y concordantes de la Norma Foral 13/2013 de IRPF).
 
@@ -77,7 +85,7 @@ A los efectos de la correcta determinación del rendimiento neto del ahorro, deb
 
 Por lo expuesto,
 
-**A ESA SUBDIRECCIÓN DE INSPECCIÓN SUPLICA:** Que teniendo por presentado este escrito de alegaciones, junto con la prueba pericial médica y documental acompañada como Anexos (I a IV), se sirva admitirlo y, tras los trámites oportunos, dicte acuerdo por el que:
+**A ESA SUBDIRECCIÓN DE INSPECCIÓN SUPLICA:** Que teniendo por presentado este escrito de alegaciones, junto con la prueba pericial médica y documental acompañada como Anexos (I a V), se sirva admitirlo y, tras los trámites oportunos, dicte acuerdo por el que:
 
 1. **SE ANULE DE PLENO DERECHO** la calificación del compareciente como empresario o profesional ejerciendo actividad económica en los ejercicios 2021 a 2024.
 2. **SE DECLARE LA INAPLICABILIDAD E IMPROCEDENCIA DEL IMPUESTO SOBRE EL VALOR AÑADIDO (IVA)**, fijando la cuota liquidable por dicho concepto en **0,00 €**.
