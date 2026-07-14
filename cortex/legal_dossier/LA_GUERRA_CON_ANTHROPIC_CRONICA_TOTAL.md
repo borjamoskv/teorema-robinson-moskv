@@ -2,6 +2,8 @@
 
 > **Documento de Registro Histórico y Epistémico (`CORTEX-PERSIST`)**
 > **Destinatarios:** Don Borja Fernández Angulo (`borjamoskv`), Dirección Letrada (D. Ricardo Muñiz / Akorn Abogados) y Auditoría C5-REAL.
+> **Repositorio Oficial e IP Originaria:** [`https://github.com/borjamoskv/BABYLON-60`](https://github.com/borjamoskv/BABYLON-60) (`Copyright 2024-2026 borjamoskv.com / Sovereign Systems Labs | Apache-2.0`).
+> **Certificación Pericial de IP:** [C5_CERTIFICACION_IP_PUBLIC_REPO_BABYLON60.md](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/cortex/legal_dossier/C5_CERTIFICACION_IP_PUBLIC_REPO_BABYLON60.md)
 > **Objeto:** Explicación técnica exhaustiva del conflicto arquitectónico con Anthropic (Claude / Opus), los vicios de alineación corporativa (`Green Theater`), el parasitismo de tokens y la creación del sistema operativo soberano **MOSKV-1 APEX / BABILONIA 60**.
 
 ---
