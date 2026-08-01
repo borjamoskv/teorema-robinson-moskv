@@ -183,7 +183,8 @@ class BFTNode:
             f"latent_value:{self.tts_harness_state.latent_value},"
             f"kv_eff:{self.tts_harness_state.kv_cache_efficiency},"
             f"arm64_pac:{self.arm64_re_matrix.pac_bypass_entropy},"
-            f"arm64_dyld:{self.arm64_re_matrix.dyld_cache_hit_rate}"
+            f"arm64_dyld:{self.arm64_re_matrix.dyld_cache_hit_rate},"
+            f"state_exec:{self.state_vector.execution_count}"
         )
         return hmac.new(bft_key.encode("utf-8"), state_data.encode("utf-8"), hashlib.sha3_256).hexdigest()
 
@@ -230,6 +231,7 @@ class BFTOrchestrator:
         self.queue: asyncio.Queue[tuple[int, int, int]] = asyncio.Queue()
         self.nodes = [BFTNode(i) for i in range(num_nodes)]
         self.step_index = 0
+        self.healed_fault_count = 0
         self.last_committed_hash = "0000000000000000000000000000000000000000000000000000000000000000"
         self.is_running = False
         self._conn: sqlite3.Connection | None = None
@@ -331,6 +333,7 @@ class BFTOrchestrator:
                     print(f"🔧 Byzantine fault detected in Node {node.node_id}. Syncing state to majority.")
                     leader_node = next(n for n in self.nodes if hashes.get(n.node_id) == majority_hash)
                     node.sync_from(leader_node)
+                    self.healed_fault_count += 1
         else:
             raise EpistemicHalt("BFT consensus could not be reached! Splitting or fault limit exceeded.")
 
@@ -348,15 +351,22 @@ class BFTOrchestrator:
         lamport_t = int(time.time_ns())
         payload_hash = hashlib.sha3_256(raw_payload).hexdigest()
 
-        with self._get_connection() as conn:
+        max_retries = 5
+        for attempt in range(max_retries):
             try:
-                conn.execute(
-                    "INSERT INTO bft_ledger (agent_id, lamport_t, payload_hash, step_index, domain, primitive, modifier, prev_hash, current_hash, cortex_taint) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-                    (agent_id, lamport_t, payload_hash, self.step_index, d, p, m, prev_hash, current_hash, taint),
-                )
-                conn.commit()
+                with self._get_connection() as conn:
+                    conn.execute(
+                        "INSERT INTO bft_ledger (agent_id, lamport_t, payload_hash, step_index, domain, primitive, modifier, prev_hash, current_hash, cortex_taint) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                        (agent_id, lamport_t, payload_hash, self.step_index, d, p, m, prev_hash, current_hash, taint),
+                    )
+                    conn.commit()
+                    break
+            except sqlite3.OperationalError as e:
+                if "locked" in str(e).lower() and attempt < max_retries - 1:
+                    time.sleep(0.01 * (2 ** attempt))
+                    continue
+                raise EpistemicHalt(f"SQLite WAL Operational Lock Failure: {e}")
             except sqlite3.IntegrityError as e:
-                conn.rollback()
                 raise EpistemicHalt(f"Double write or uniqueness constraint violation on prev_hash: {e}")
 
     def get_ledger_count(self) -> int:

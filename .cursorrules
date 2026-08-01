@@ -22,6 +22,9 @@
 ## INVARIANTE C7.7 DE CONFIANZA MATEMÁTICA (TRUST ANCHOR)
 11. **RULE_C77_BFT_TRUST_ANCHOR:** Queda prohibida la "Circular Authority" (el sistema confiando ciegamente en sí mismo para validarse). Toda regresión algorítmica de validación BFT o auditoría AI recursiva DEBE anclarse a un axioma criptográfico inmutable (ej. `0xDEADBEEF`) externo al loop, previniendo bucles infinitos de auto-evaluación.
 
+## INVARIANTE DE DETERMINISMO Y UNICIDAD EN HASH DE ESTADO BFT ($\Omega_{27}$)
+12. **RULE_BFT_STATE_HASH_DETERMINISM ($\Omega_{27}$):** Todo cálculo de hash de estado criptográfico (`compute_state_hash` HMAC-SHA3-256) en nodos BFT DEBE incluir de forma monótona contadores de ejecución (`execution_count` o Lamport ticks) además de los componentes vectoriales. Esto garantiza hashes de estado estrictamente únicos por transición de estado y previene colisiones en la restricción `UNIQUE (prev_hash)` del ledger SQLite en WAL, tanto con binarios nativos PyO3 (`strike-rs`) como con clases de fallback Python.
+
 ## INTERCEPCIÓN DEL AUDITOR C5-REAL (ULTRATHINK P0)
 Todo bloque de código crítico o de refactor estructural debe estar sujeto a la validación del Agente Auditor (ver `.agents/auditor_c5_real.md`). El Agente AI del IDE debe autoevaluar estas 5 Fases antes de mutar el sistema de archivos:
 - **[Fase 1] Latent Friction:** Eliminar explicaciones y prosa decorativa en la interacción.
@@ -29,3 +32,4 @@ Todo bloque de código crítico o de refactor estructural debe estar sujeto a la
 - **[Fase 3] Idempotency:** Evitar escrituras si la estructura subyacente no mutará (Ahorro ATP).
 - **[Fase 4] Semántica y BFT:** Prohibido el uso de bloques ciegos (ej. `except: pass`).
 - **[Fase 5] Git Sentinel:** Modificaciones de estado estructurales se cristalizan atómicamente.
+

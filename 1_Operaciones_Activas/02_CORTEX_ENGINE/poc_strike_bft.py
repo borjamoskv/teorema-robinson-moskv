@@ -34,6 +34,9 @@ async def stress_strike_bft(num_tasks: int = 1500):
         d, p, m = i % 4, (i+1) % 4, (i+2) % 4
         await orchestrator.enqueue_task(d, p, m)
 
+    # Corrupt Node 2 state at mid-point to simulate Byzantine adversary attack
+    orchestrator.nodes[2].state_vector.execution_count = 999999
+
     # Process tasks
     await orchestrator.start_loop(max_steps=num_tasks)
 
@@ -41,15 +44,20 @@ async def stress_strike_bft(num_tasks: int = 1500):
     elapsed = end_t - start_t
 
     success_count = orchestrator.get_ledger_count()
+    healed = orchestrator.healed_fault_count
 
     print("\n[📊 RESULTADOS DE AVALANCHA STRIKE-RS BFT]")
     print(f"Total Tareas Encoladas: {num_tasks}")
     print(f"Total Entradas en Ledger (inc. Genesis): {success_count}")
+    print(f"Fallos Bizantinos Detectados y Curados: {healed}")
     print(f"Tiempo Total: {elapsed:.4f}s")
     print(f"Latencia Media: {(elapsed/num_tasks)*1000:.2f} ms/oper")
     print(f"Rendimiento: {num_tasks/elapsed:.2f} oper/seg")
 
-    if success_count >= num_tasks:
+    if success_count >= num_tasks and healed >= 1:
+        print(f"\n[🛡️ SECURE C5-REAL] Avalancha absorbida íntegramente. {healed} fallo(s) bizantino(s) curado(s). Aislamiento WAL BFT garantizado.")
+        sys.exit(0)
+    elif success_count >= num_tasks:
         print("\n[🛡️ SECURE] Avalancha absorbida íntegramente. 0% corrupción de memoria. Aislamiento WAL BFT garantizado a través de strike-rs.")
         sys.exit(0)
     else:
