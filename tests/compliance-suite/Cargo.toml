@@ -4,7 +4,7 @@ name = "verifiable_inference_engine"
 version = "0.1.0"
 edition = "2021"
 authors = ["Teorema Robinson-Moskv Team <dev@robinson-moskv.org>"]
-description = "Verifiable Inference Suite: Rust FFI Bridge, CF-GKAT, WASM Sandbox, SCITT RFC 9942 & ZK-SNARK Circuit Proofs"
+description = "Verifiable Inference Suite: Rust FFI Bridge, CF-GKAT, WASM Sandbox, SCITT RFC 9942 & Groth16 BLS12-381 ZK-SNARK Proofs"
 
 [lib]
 name = "verifiable_inference_engine"

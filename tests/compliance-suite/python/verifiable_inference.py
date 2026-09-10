@@ -3,7 +3,7 @@
 """
 Python FFI Bindings for Verifiable Inference Suite Engine.
 Provides Python wrappers via ctypes for C SIMD 10-primitives, Landauer energy,
-standard part map st(x) noise dissipation, ZK-SNARK BN254 R1CS proof generation/verification,
+standard part map st(x) noise dissipation, Groth16 BLS12-381 ZK-SNARK proof generation/verification,
 and LogUp fractional lookup table argument provers.
 """
 
