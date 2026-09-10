@@ -16,7 +16,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                       THE 4 CIO COMMERCIAL VECTORS                          │
 ├────────────────────────────────┬────────────────────────────────────────────┤
-│ 1. Legal Certainty & Compliance │ Zero personal liability under EU AI Act.   │
+│ 1. Legal Certainty & Compliance │ Verifiable statutory defense (EU AI Act).  │
 │    (Articles 14, 15, 28)       │ Provable cryptographic audit receipts.     │
 ├────────────────────────────────┼────────────────────────────────────────────┤
 │ 2. Contractual Liability Cap   │ Strict risk containment (€100k-€150k ARR). │

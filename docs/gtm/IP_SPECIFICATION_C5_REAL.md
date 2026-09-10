@@ -18,7 +18,7 @@ These components constitute the patentable inventions and must be fiercely prote
 
 ### 2.3 Write-Once-Read-Many (WORM) Epistemic Quarantine
 **Object:** A forensic preservation system for high-risk AI failures.
-- **Claim:** The cryptographic halting (`CRITICAL HALT`) and hardware-signed freezing (TPM 2.0 / SCITT) of the precise memory frame that triggered an invariant violation, guaranteeing zero destruction of evidence.
+- **Claim:** The cryptographic halting (`CRITICAL HALT`) and software-signed state freezing via local COSE Sign1 / SHA3-256 receipts (`INV_C5_14`) of the precise memory frame that triggered an invariant violation, guaranteeing zero destruction of evidence (with hardware TPM 2.0 / federated SCITT anchoring as an architectural roadmap extension).
 
 ## 3. Strict Boundary Enforcement (Landauer Prohibition)
 To maintain commercial viability and avoid academic alienation of enterprise clients (CIOs), the following theoretical concepts are strictly **internal trade secrets and architectural invariants**. They MUST NOT be used in sales pitches, marketing materials, or SLAs:
@@ -29,7 +29,7 @@ To maintain commercial viability and avoid academic alienation of enterprise cli
 
 ## 4. Public Value Vectors (Commercial Pitch)
 All external communication regarding C5-REAL translates the complex internal invariants into four explicitly actionable enterprise value vectors:
-1. **Legal Certainty and Compliance (EU AI Act):** Full adherence to Articles 9-14 via SCITT receipts and WORM forensic quarantine. "Nobody goes to jail."
+1. **Legal Certainty and Compliance (EU AI Act):** Full adherence to Articles 9-14 via cryptographic audit receipts and WORM forensic quarantine, providing rigorous due diligence defense against algorithmic liability.
 2. **Contractual Liability Cap:** By mathematically halting unauthorized drift, the infrastructure provider absorbs liability.
 3. **Zero Cloud Operating Costs:** "Local-first" Edge execution eliminating massive AWS/Azure inference bills.
 4. **Guaranteed SLA and Fail-Stop:** Absolute deterministic containment ensuring the core business logic never crashes due to AI hallucinations.

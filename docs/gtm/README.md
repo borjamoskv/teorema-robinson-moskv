@@ -20,8 +20,8 @@ Conforme a la **Regla de Traducción Comercial** (Prohibición de Landauer), tod
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                       THE 4 CIO COMMERCIAL VECTORS                          │
 ├────────────────────────────────┬────────────────────────────────────────────┤
-│ 1. Legal Certainty & Compliance │ Zero personal liability under EU AI Act.   │
-│    (Articles 14, 15, 28)       │ Provable SCITT immutable receipts.         │
+│ 1. Legal Certainty & Compliance │ Verifiable statutory defense (EU AI Act).  │
+│    (Articles 14, 15, 28)       │ Provable cryptographic audit receipts.     │
 ├────────────────────────────────┼────────────────────────────────────────────┤
 │ 2. Contractual Liability Cap   │ Strict risk containment (€100k-€150k ARR). │
 │    (Declared Scope INV-1/INV-2)│ Vendor assumes full liability within scope.│
@@ -36,7 +36,7 @@ Conforme a la **Regla de Traducción Comercial** (Prohibición de Landauer), tod
 
 | Vector Comercial | Descripción Técnica Interna | Garantía Contractual |
 | :--- | :--- | :--- |
-| **Certidumbre Legal y Compliance** | Atestación criptográfica SCITT Merkle Tree SHA3-256 en Ring-0. | Cumplimiento estricto Arts. 9-15 EU AI Act & SOC 2 Type II. |
+| **Certidumbre Legal y Compliance** | Atestación criptográfica SHA3-256 / COSE Sign1 en Ring-0 (`INV_C5_14`). | Alineamiento estricto con Arts. 9-15 EU AI Act y criterios de auditoría SOC 2 Type II. |
 | **Cap Contractual de Responsabilidad** | Delimitación del Alcance Declarado (S) con rollback atómico CAS. | Absorción de responsabilidad delimitada al 100% del ARR paid (€100k-€150k). |
 | **Coste Operativo Cero (€0 COGS)** | Sandbox WASM e IPC determinista en memoria del cliente. | Cero costes marginales de API o computación remota en nube. |
 | **SLA y Fail-Stop Garantizado** | Conmutación sub-milisegundo a slot estable fallback ante varentropía. | Disponibilidad 99.99% excluyendo paradas preventivas legalmente blindadas. |
