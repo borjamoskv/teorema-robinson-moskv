@@ -35,7 +35,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 ## 2. Invariant INV-1: Declared Scope & Deterministic Invariance
 
 1. **Declared Scope (S):** The Provider guarantees that any model output evaluated by the C5-REAL Ring-0 Kernel will adhere strictly to the formal grammatical, relational, and business constraints declared in the Master Policy File (`EpochManifest`).
-2. **Deterministic Attestation:** Every state transition passed to the execution environment is signed using an Ed25519 cryptographic receipt compliant with the IETF SCITT standard (RFC 9942 / RFC 9943) and recorded in the local tamper-evident ledger (`cortex_ledger.db`).
+2. **Deterministic Attestation:** Every state transition passed to the execution environment is signed using an Ed25519 cryptographic receipt compliant with the IETF SCITT standard (RFC 9942 / RFC 9943) and recorded in the local tamper-evident ledger (`cortex_ledger.db`). All anchoring guaranteed under this Agreement is **software-signed** (SHA3-256 Merkle roots and COSE Sign1 receipts in the local ledger). Optional anchoring of Merkle roots to public timestamping calendars (OpenTimestamps / Bitcoin L1) is an experimental, best-effort integration dependent on an external `ots` client, produces only *pending* (unconfirmed) timestamp proofs, and is expressly excluded from the guaranteed SLA boundaries; hardware-rooted attestation (e.g., TPM 2.0) is a planned roadmap extension, not part of the current implementation.
 3. **Phenomenological Agnosticism:** The Provider makes no claims regarding internal machine cognition or subjective LLM intent. Operational certainty is enforced purely at the boundary layer through deterministic runtime policy checks and verifiable state transitions.
 
 ---
@@ -58,7 +58,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 ## 5. Invariant INV-4: ISO/IEC 42001 & ENISA Governance Auditability
 
 1. **Management System Alignment:** The C5-REAL Kernel provides automated compliance controls mapped directly to **ISO/IEC 42001:2023** (Artificial Intelligence Management System) and **ENISA** cybersecurity guidelines.
-2. **Continuous Auditability:** Enterprise compliance auditors can extract deterministic proof bundles at any time via the C5 CLI (`python3 -m c5real audit --export`), eliminating manual audit preparation costs.
+2. **Continuous Auditability:** Enterprise compliance auditors can generate and independently verify SCITT receipts at any time via the implemented attestation CLI (`babylon60-attest attest` / `babylon60-attest verify`), reducing manual audit preparation costs. A unified audit-bundle export front-end (`c5real audit --export`) is a planned roadmap convenience and is not part of the current implementation.
 
 ---
 
