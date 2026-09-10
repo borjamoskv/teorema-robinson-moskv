@@ -27,9 +27,9 @@ The technological moat encompasses four core patent-eligible innovation areas:
 * **Technical Scope**: Automated Ring-0 entropy sentinel mechanism executing atomic CAS (Compare-And-Swap) rollback to fallback memory slots upon detecting statistical drift, semantic variance, or assertion failure within inference windows.
 * **Commercial Vector**: **Guaranteed Fail-Stop SLA**. Guarantees system state integrity and zero-downtime quarantine, protecting enterprise applications from stochastic LLM degradation.
 
-### Innovation Area C: Cryptographic Receipt Stream & SCITT L5 Immutable Attestation
-* **Technical Scope**: Asynchronous, non-blocking anchoring of state transition Merkle trees to decentralized ledgers (Bitcoin L5 / OpenTimestamps / SCITT standard) with zero-cost main-thread execution locks.
-* **Commercial Vector**: **Certidumbre Legal & Compliance**. Mathematical proof of compliance for EU AI Act (Article 15/28), SOC 2 Type II, and enterprise DPA audits.
+### Innovation Area C: Cryptographic Receipt Stream & Verifiable Transparency Architecture
+* **Technical Scope**: Asynchronous, non-blocking local cryptographic state transition logging via COSE Sign1/CWT receipts and SQLite WAL Merkle chaining (`INV_C5_14`), coupled with an interoperable export interface for public transparency ledgers (IETF SCITT / Bitcoin L1 OP_RETURN roadmap).
+* **Commercial Vector**: **Certidumbre Legal & Compliance**. Mathematical proof of compliance for EU AI Act (Article 15/28), SOC 2 Type II, and enterprise DPA audits through non-repudiable audit trails.
 
 ### Innovation Area D: Contractual Liability Cap & Declaratory Containment Engine
 * **Technical Scope**: Runtime isolation sandbox enforcing execution boundary conditions and output assertion containment coupled with deterministic risk-budget limits.

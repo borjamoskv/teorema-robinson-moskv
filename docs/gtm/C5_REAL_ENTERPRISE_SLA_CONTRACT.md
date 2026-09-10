@@ -17,7 +17,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 │                       THE 4 CIO COMMERCIAL VECTORS                          │
 ├────────────────────────────────┬────────────────────────────────────────────┤
 │ 1. Legal Certainty & Compliance │ Zero personal liability under EU AI Act.   │
-│    (Articles 14, 15, 28)       │ Provable SCITT immutable receipts.         │
+│    (Articles 14, 15, 28)       │ Provable cryptographic audit receipts.     │
 ├────────────────────────────────┼────────────────────────────────────────────┤
 │ 2. Contractual Liability Cap   │ Strict risk containment (€100k-€150k ARR). │
 │    (Declared Scope INV-1/INV-2)│ Vendor assumes full liability within scope.│
@@ -35,7 +35,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 ## 2. Invariant INV-1: Declared Scope & Deterministic Invariance
 
 1. **Declared Scope (S):** The Provider guarantees that any model output evaluated by the C5-REAL Ring-0 Kernel will adhere strictly to the formal grammatical, relational, and business constraints declared in the Master Policy File (`EpochManifest`).
-2. **Deterministic Attestation:** Every state transition passed to the execution environment is signed using an Ed25519 cryptographic receipt compliant with the IETF SCITT standard (RFC 9942 / RFC 9943) and recorded in the local tamper-evident ledger (`cortex_ledger.db`).
+2. **Deterministic Attestation:** Every state transition passed to the execution environment is signed using an Ed25519 cryptographic receipt formatted according to COSE Sign1 / IETF SCITT standards (RFC 9052 / RFC 9942) and recorded in the local tamper-evident ledger (`cortex_ledger.db`), with optional export to federated SCITT transparency services.
 3. **Phenomenological Agnosticism:** The Provider makes no claims regarding internal machine cognition or subjective LLM intent. Operational certainty is enforced purely at the boundary layer through deterministic runtime policy checks and verifiable state transitions.
 
 ---
@@ -44,7 +44,7 @@ This Master Services Agreement & Service Level Agreement ("Agreement") establish
 
 1. **Contractual Liability Cap:** The Provider's total aggregate liability arising out of or related to this Agreement shall be strictly capped at **100% of the Annual Recurring Revenue (ARR)** paid by the Customer during the preceding twelve (12) months.
 2. **EU AI Act Article 28 Reclassification:** By deploying the C5-REAL Deterministic Runtime, the Customer satisfies the regulatory requirements for High-Risk AI Systems (EU AI Act Articles 14 and 15). The C5-REAL Kernel acts as the certified technical boundary, transferring operational liability for non-deterministic model drift from the Customer to the Provider within the Declared Scope.
-3. **Defense Against Product Liability Directive (EU 2024/2853):** The cryptographically verifiable SCITT receipts generated at Ring-0 serve as **admissible forensic evidence**, legally refuting any presumption of defect or unpredictable stochastic behavior in corporate litigation.
+3. **Defense Against Product Liability Directive (EU 2024/2853):** The cryptographically verifiable COSE/SCITT receipts generated at Ring-0 serve as **admissible forensic evidence**, legally refuting any presumption of defect or unpredictable stochastic behavior in corporate litigation.
 
 ---
 
@@ -95,7 +95,7 @@ If monthly system availability falls below the guaranteed 99.99% SLA (excluding 
 
 1. **Absolute Data Sovereignty:** Customer retains exclusive ownership of all prompts, inputs, outputs, domain data, and enterprise policy configurations.
 2. **Zero Model Training Guarantee:** Provider covenants and warrants that no Customer data, payloads, or telemetry will ever be transmitted outside the Customer perimeter, used for external model training, or retained by Provider.
-3. **Zero-Knowledge Ledger Design:** The SCITT ledger (`cortex_ledger.db`) stores only cryptographic Merkle root hashes (SHA3-256) and COSE receipts. No cleartext Personally Identifiable Information (PII) or proprietary trade secrets are recorded in the ledger.
+3. **Zero-Knowledge Ledger Design:** The local audit ledger (`cortex_ledger.db`) stores only cryptographic Merkle root hashes (SHA3-256) and COSE Sign1 receipts. No cleartext Personally Identifiable Information (PII) or proprietary trade secrets are recorded in the ledger.
 
 ---
 
@@ -110,14 +110,14 @@ If monthly system availability falls below the guaranteed 99.99% SLA (excluding 
 ## 9. Term, Commercial Consideration & Sovereign Exit Protocol
 
 1. **Initial Term & ARR Fee:** The initial term of this Agreement shall be twelve (12) months at a fixed fee of **€100,000 — €150,000 ARR** per enterprise account.
-2. **Sovereign Exit Guarantee (Anti-Lock-In):** Upon expiration or termination of this Agreement, Customer retains full, perpetual, offline ownership of all generated SCITT receipts, local SQLite ledgers, and WASM binary modules. No data extraction fee or proprietary lock-in shall apply.
+2. **Sovereign Exit Guarantee (Anti-Lock-In):** Upon expiration or termination of this Agreement, Customer retains full, perpetual, offline ownership of all generated cryptographic receipts, local SQLite ledgers, and WASM binary modules. No data extraction fee or proprietary lock-in shall apply.
 
 ---
 
 ## 10. Governing Law, Jurisdiction & Fast-Track Technical Arbitration
 
 1. **Governing Law:** This Agreement shall be governed by and construed in accordance with the laws of the European Union and the jurisdiction of the Courts of Madrid, Spain (or Customer's designated EU Member State).
-2. **Fast-Track Technical Arbitration:** Any dispute regarding SCITT receipt validity or SLA latency bounds shall be submitted to fast-track technical arbitration before an independent certified cryptographic expert agreed upon by the Parties.
+2. **Fast-Track Technical Arbitration:** Any dispute regarding cryptographic receipt validity or SLA latency bounds shall be submitted to fast-track technical arbitration before an independent certified cryptographic expert agreed upon by the Parties.
 
 ---
 
