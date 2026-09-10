@@ -27,8 +27,10 @@ The technological moat encompasses four core patent-eligible innovation areas:
 * **Technical Scope**: Automated Ring-0 entropy sentinel mechanism executing atomic CAS (Compare-And-Swap) rollback to fallback memory slots upon detecting statistical drift, semantic variance, or assertion failure within inference windows.
 * **Commercial Vector**: **Guaranteed Fail-Stop SLA**. Guarantees system state integrity and zero-downtime quarantine, protecting enterprise applications from stochastic LLM degradation.
 
-### Innovation Area C: Cryptographic Receipt Stream & SCITT L5 Immutable Attestation
-* **Technical Scope**: Asynchronous, non-blocking anchoring of state transition Merkle trees to decentralized ledgers (Bitcoin L5 / OpenTimestamps / SCITT standard) with zero-cost main-thread execution locks.
+### Innovation Area C: Cryptographic Receipt Stream & SCITT-Compatible Immutable Attestation
+* **Claim (implemented)**: Asynchronous, non-blocking emission of software-signed attestation receipts for state transitions — SHA3-256 Merkle trees and COSE Sign1 (Ed25519) receipts in SCITT-compatible format (RFC 9942 / RFC 9943) — persisted to a local append-only, tamper-evident ledger, with zero-cost main-thread execution locks.
+* **Claim (experimental integration)**: Optional, best-effort anchoring of Merkle roots to public OpenTimestamps calendars via the external `ots` CLI. This produces *pending* (unconfirmed) timestamp proofs, runs fully asynchronously, and is skipped entirely when the `ots` client is not available. It is not part of the guaranteed core runtime.
+* **Claim (planned extension / roadmap)**: Bitcoin L1 confirmation of anchored proofs (`ots upgrade` against the Bitcoin chain), registration with a public SCITT transparency service, and hardware-rooted attestation (TPM 2.0). Not part of the current implementation.
 * **Commercial Vector**: **Certidumbre Legal & Compliance**. Mathematical proof of compliance for EU AI Act (Article 15/28), SOC 2 Type II, and enterprise DPA audits.
 
 ### Innovation Area D: Contractual Liability Cap & Declaratory Containment Engine
