@@ -33,3 +33,8 @@ build-guard:
 	@clang -O3 -bundle -undefined dynamic_lookup $$(python3-config --cflags) src/02_engines/cortex_guard/cortex_guard_core.c -o /tmp/cortex_exergy_build/cortex_guard_core.so
 	@echo "[PASS] cortex_guard_core.so compilado determinísticamente en /tmp/cortex_exergy_build."
 
+
+build-panopticon:
+	@echo "[C5-REAL] Compiling Ring-0 CORTEX_PANOPTICON Daemon..."
+	@clang -O3 -o /tmp/cortex_panopticon src/02_engines/cortex_panopticon/src/panopticon_core.c
+	@echo "[PASS] cortex_panopticon compiled to /tmp/cortex_panopticon."
