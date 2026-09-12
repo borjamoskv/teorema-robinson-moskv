@@ -30,5 +30,6 @@ audit:
 build-guard:
 	@echo "[ULTRATHINK] Compiling Native C-Extension OUT-OF-TREE (/tmp/cortex_exergy_build)..."
 	@mkdir -p /tmp/cortex_exergy_build
-	@cd cortex_guard && uv run python setup.py build_ext --build-lib /tmp/cortex_exergy_build --build-temp /tmp/cortex_exergy_build/temp
+	@clang -O3 -bundle -undefined dynamic_lookup $$(python3-config --cflags) src/02_engines/cortex_guard/cortex_guard_core.c -o /tmp/cortex_exergy_build/cortex_guard_core.so
+	@echo "[PASS] cortex_guard_core.so compilado determinísticamente en /tmp/cortex_exergy_build."
 

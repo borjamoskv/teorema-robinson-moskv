@@ -25,13 +25,14 @@ El repositorio ha sido defragmentado y purgado de toda Anergía estructural. Ope
 > **⚠️ ADVERTENCIA DE SEGURIDAD**: El único paquete oficial es `cortex-persist`. Verifique siempre la huella digital (SHA-256) en nuestra documentación oficial. No instale variantes como `cortex_persist` o `babylon60-kernel` que podrían ser intentos de typosquatting y contener código malicioso.
 
 ```bash
-# Entorno CORTEX Engine
-cd src/02_engines/cortex_bft
+# 1. Entorno CORTEX Engine (en la raíz del monorrepo)
 uv sync
 
-# Entorno BABYLON60 IDE (Frontend)
-cd src/06_apps/babylon60_ide
-npm install
+# 2. Compilar C-Extension de seguridad (Ring-0 Guard)
+make build-guard
+
+# 3. Entorno BABYLON60 IDE (Frontend)
+cd src/06_apps/babylon60_ide && npm install
 ```
 
 ## RUNTIME INVARIANTS
@@ -40,7 +41,10 @@ npm install
 # Iniciar IDE Babylon60
 cd src/06_apps/babylon60_ide && npm run dev
 
-# Tests CORTEX
+# Verificación de Rust Kernel
+cargo check --workspace
+
+# Tests CORTEX (requiere make build-guard previo)
 pytest
 
 # Linter CORTEX
@@ -59,15 +63,19 @@ ruff check
 | 06 Apps        | `src/06_apps/babylon60_ide/`                                | Babylon60 IDE (Vite/TS/React)         |
 | 06 Apps        | `src/06_apps/mcp_c5_abi_bridge/`                            | Bare-Metal C-ABI MCP Server & Landauer Purge |
 
-## 🌌 MONOREPO CARTOGRAPHY · 300 DISPARATE STARS MATRIX
+## 🌌 MONOREPO CARTOGRAPHY · HIGH-EXERGY CORE
 
 > **MOSKV-1 BFT Cortex Systemic Topology**
-> *35,058 versioned files · 15+ execution runtimes · 300 cataloged entities · 15 constellations.*
+> *638 Tracked Git Files (Defragmented & Purged) · 15+ execution runtimes · 6 Physical Strata · 15 Logical Constellations.*
 
 ```
-35,058          300               15             60+              15+            500
-Git Files  │ Cataloged Stars │ Constellations │ File Types │ Runtimes & Languages │ BFT Cycles
+   638              6                15             15+              500
+Git Files  │ Physical Strata │ Constellations │ Runtimes & Langs │ BFT Cycles
 ```
+
+> [!NOTE]
+> **Separación Topológica (Mapa vs. Territorio):**  
+> El árbol físico de ejecución se organiza estrictamente en los **6 estratos de `src/`** (`01_kernel` a `06_apps`). La siguiente matriz de las **15 Constelaciones (Index 001–300)** define la taxonomía lógica e inferencial del sistema formal Babylon-60.
 
 ### ■ THE 15 CONSTELLATIONS (INDEX 001–300)
 
