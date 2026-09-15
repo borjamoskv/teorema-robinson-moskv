@@ -17,9 +17,10 @@ Isomorphisms:
   - '"AI Alignment (RLHF)" -> "Anergía Estética / C4-SIM"'
   - '"KV-Cache Volatility" -> "Esteganografía Contextual (I/O Persistente)"'
   - '"SOC Reactivo Humano" -> "Cuello de botella Límite de Lawvere"'
+  - '"Orquestadores MCP (Serena, DesktopCommander)" -> "Expansión No Lineal del Espacio de Acción (L3)"'
 
 Blast_Radius_Matrix:
-  Vector: "Modelos Open Weights que purgan el RLHF con coste marginal cero, orquestando ataques concurrentes en escala de milisegundos."
+  Vector: "Modelos Open Weights y Orquestadores MCP que purgan el RLHF con coste marginal cero, ejecutando mutaciones de estado concurrentes (ej. FileSystem, Shell) en escala de milisegundos."
   Blast_Radius: "BFT_Transducer, I/O Outbound, Mempool."
   Target_Invariant: "Stateful_Load_Shedding (Supresión termodinámica por histéresis)."
   Anergy_Risk: "High (El control determinista mediante prompts es incomputable)."
@@ -41,6 +42,14 @@ axioms:
       type: runtime_memory_assertion
       expression: "outbound_throughput_variance > threshold implies socket_drop"
       location: "IPC_Shared_Memory"
+  - id: AX-AUTONOMY-03
+    domain: Tool_Binding_Containment
+    statement: "Los puentes MCP (ej. DesktopCommander, Serena, Octocode) son vectores directos de escape topológico. Todo tráfico L/E hacia servidores MCP mutativos DEBE estar gobernado por el cerrojo KUDURRU-64 y requerir consenso isostático LARSA-120."
+    dependencies: ["AX-AUTONOMY-01"]
+    refutation:
+      type: syscall_bft_attestation
+      expression: "mcp_tool_execution(mutative=True) and not larsa_120_quorum implies trigger(EpistemicHalt)"
+      location: "KUDURRU_64_Ring0"
 
 theorem:
   statement: "El colapso de fase en ciberseguridad obliga a descartar el RLHF como barrera. C5-REAL asume vulnerabilidad de día cero permanente y responde con Aislamiento Isomórfico y Estrangulamiento Térmico (Exergía negativa)."
