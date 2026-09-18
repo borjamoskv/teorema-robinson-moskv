@@ -51,7 +51,7 @@ El mapa epistémico se traduce directamente en las 6 capas de ejecución del có
 
 ### 3. Primitivas Categóricas y Enjambres ([`primitives/`](primitives/))
 - **Primitivas Lógicas**: [`primitives/101_categorical_logic_primitives.yaml`](primitives/101_categorical_logic_primitives.yaml) — Deducción categórica y funciones monoidales.
-- **Orquestación**: [`primitives/swarm_centuria_matrix.yaml`](primitives/swarm_centuria_matrix.yaml) — Blueprint de coordinación de subagentes en paralelo.
+- **Orquestación**: [`primitives/swarm_sharur_3600_matrix.yaml`](primitives/swarm_sharur_3600_matrix.yaml) — Blueprint de coordinación de subagentes en paralelo.
 
 ### 4. Arquitectura de Memoria Compartida C5-REAL ([`architecture/`](architecture/))
 - **Manifiesto Ring Buffer**: [`architecture/c5_real_ring_buffer_manifesto.md`](architecture/c5_real_ring_buffer_manifesto.md) — Protocolo IPC de memoria compartida determinista de 64 bytes (`#[repr(C, align(64))]`) con validación SHA-256 en Ring-0 Rust.

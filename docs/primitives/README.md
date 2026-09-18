@@ -16,7 +16,7 @@ Este subdirectorio especifica las **Primitivas Categóricas**, monoides de trans
 
 - [`101_categorical_logic_primitives.yaml`](101_categorical_logic_primitives.yaml): Deducción categórica, morfismos y composición de funciones.
 - [`unified_primitives_architecture_manifest.yaml`](unified_primitives_architecture_manifest.yaml): Arquitectura unificada de primitivas de transformación.
-- [`swarm_centuria_matrix.yaml`](swarm_centuria_matrix.yaml): Matriz de coordinación y límites de concurrencia para 100 subagentes (Centuria).
+- [`swarm_sharur_3600_matrix.yaml`](swarm_sharur_3600_matrix.yaml): Matriz de coordinación y límites de concurrencia para 3600 subagentes (SHARUR-3600).
 - [`swarm_v4_blueprint.yaml`](swarm_v4_blueprint.yaml): Blueprint arquitectónico de la v4 de enjambres.
 - [`vibe_code_ide_architecture.yaml`](vibe_code_ide_architecture.yaml): Integración de ejecución de primitivas directamente en el Antigravity IDE / Babylon IDE.
 - [`ephesus_reverse_engineering.yaml`](ephesus_reverse_engineering.yaml): Especificación de ingeniería inversa de primitivas binarias.
