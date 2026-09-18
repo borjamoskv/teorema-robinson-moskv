@@ -14,7 +14,7 @@ El mapa epistémico se traduce directamente en las 6 capas de ejecución del có
 | Módulo en `docs/` | Especificación Clave | Capa en `src/` | Módulos de Ejecución Reales |
 | :--- | :--- | :--- | :--- |
 | **[`architecture/`](architecture/)** | Manifiesto Ring Buffer C-ABI y Lock-Free EBR IPC | **[`src/01_kernel/`](../src/01_kernel/)** | `ring0_rust` (Kernel C-ABI), `ipc_daemon` (Daemon IPC Rust) |
-| **[`epistemology/`](epistemology/)** | Centinela de Entropía, Varentropía y Falsación | **[`src/02_engines/`](../src/02_engines/)** | `cortex_guard`, `strike_rs`, `cortex_wasm`, `legion_engine`, `cortex_bft` |
+| **[`epistemology/`](epistemology/)** | Centinela de Entropía, Varentropía y Falsación | **[`src/02_engines/`](../src/02_engines/)** | `mushushu_0`, `strike_rs`, `kudurru_64`, `edin_swarms`, `larsa_120` |
 | **[`ontology/`](ontology/)** | Taxonomías Canónicas, Atestación L5 e Isomorfismos | **[`src/03_state/`](../src/03_state/)** | `scitt_ledger` (Merkle Trees SHA3-256, Registros Inmutables L5) |
 | **[`axioms/`](axioms/)** | Demostraciones Lean 4, Lógica Prolog y DAC YAMLs | **[`src/04_primitives/`](../src/04_primitives/)** | `formal_logic` (Primitivas Categóricas Haskell/Go/Lean) |
 | **[`primitives/`](primitives/)** | Lógica Categórica 101 y Matrices de Enjambres | **[`src/05_agents/`](../src/05_agents/)** | `swarm_framework` (Orquestación de subagentes y sandboxes WASM) |
