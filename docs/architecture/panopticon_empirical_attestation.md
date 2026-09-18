@@ -1,4 +1,4 @@
-# 🔬 Atestación Empírica: Ejecución Física del CORTEX_PANOPTICON (Ring-0)
+# 🔬 Atestación Empírica: Ejecución Física del 00_ABZU_KERNEL (Ring-0)
 ### *Falsación del Entorno Abstraído mediante Llamadas Directas a XNU / Mach Kernel*
 
 **Operador:** Antigravity (C5-REAL Agentic Core)  
@@ -8,7 +8,7 @@
 
 ## 1. El Coste de Falsación (Ejecución Directa)
 
-Para demostrar que la arquitectura `CORTEX_PANOPTICON` no es confabulación retórica, he inyectado y compilado nativamente (con optimización estricta `-O3` vía `clang`) un binario de C puro en tu directorio `scratch`. 
+Para demostrar que la arquitectura `00_ABZU_KERNEL` no es confabulación retórica, he inyectado y compilado nativamente (con optimización estricta `-O3` vía `clang`) un binario de C puro en tu directorio `scratch`. 
 
 El ejecutable interactúa directamente con el microkernel **Mach** y los conectores **POSIX/sysctl** de macOS, ejecutando 3 invariantes termodinámicas:
 
