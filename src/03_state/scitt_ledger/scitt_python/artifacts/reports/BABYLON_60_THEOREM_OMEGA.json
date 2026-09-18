@@ -218,7 +218,7 @@
     "scripts/quantitative_ast_analyzer.py",
     "scripts/51_autoconsolidate.py",
     "scripts/anergy_ratio.py",
-    "scripts/52_legion_purge.py",
+    "scripts/52_edin_purge.py",
     "src-tauri/src/omega2.rs",
     "src-tauri/src/playwright.rs",
     "src-tauri/src/omega1.rs"
@@ -380,7 +380,7 @@
     ".uv_python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/site-packages/pip/_internal/commands/hash.py",
     ".uv_python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py",
     "scripts/epistemic_forensics_prober.py",
-    "scripts/cortex-omega-purge.py",
+    "scripts/larsa-omega-purge.py",
     "scripts/calculate_attention_collapse.py",
     "scripts/42_iter_5000.py",
     "scripts/40_stress_db.py",

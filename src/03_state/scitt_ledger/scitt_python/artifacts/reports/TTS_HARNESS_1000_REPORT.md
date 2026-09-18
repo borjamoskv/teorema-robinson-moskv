@@ -54,13 +54,13 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 ## 2. Archivos Cristalizados en C5-REAL
 
-1. [tts_harness_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/tts_harness_1000_taxonomy.yaml): Especificación ontológica canónica.
+1. [tts_harness_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/tts_harness_1000_taxonomy.yaml): Especificación ontológica canónica.
 2. [generate_tts_harness.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/scripts/generate_tts_harness.py): Generador determinista de transductores.
 3. [tts_harness.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/tts_harness.go): Kernel transductor en Go de alta velocidad.
 4. [tts_harness_test.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/tts_harness_test.go): Suite de pruebas unitarias Go (100% Cobertura).
 5. [tts_harness.rs](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/src-tauri/src/tts_harness.rs): Kernel transductor en Rust para Tauri UI.
-6. [tts_harness.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/tts_harness.py): Simulador matricial en Python.
-7. [tts_harness_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/tts_harness_test.py): Suite de pruebas unitarias Python.
+6. [tts_harness.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/tts_harness.py): Simulador matricial en Python.
+7. [tts_harness_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/tts_harness_test.py): Suite de pruebas unitarias Python.
 
 ---
 
@@ -68,5 +68,5 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 - **Go Test Suite (`go test ./primitives -v -run TestTTSHarnessKernelCoverage`)**:
   `PASS: 1000/1000 Primitives Executed (Final Score: 0.486770, Wall Time: 0.576s)`
-- **Python Test Suite (`python3 -m unittest cortex/tts_harness_test.py`)**:
+- **Python Test Suite (`python3 -m unittest larsa/tts_harness_test.py`)**:
   `PASS: 1000/1000 Primitives Executed (Final Score: 0.486770, Wall Time: 0.001s)`

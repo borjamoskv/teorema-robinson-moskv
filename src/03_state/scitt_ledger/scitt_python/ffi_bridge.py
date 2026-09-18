@@ -44,8 +44,8 @@ class EpochState(ctypes.Structure):
 class C5RealFFIBridge:
     def __init__(self, workspace_root: str):
         # Resolver la ruta de la librería compilada dinámica (.dylib en mac / .so en linux)
-        release_path = os.path.join(workspace_root, "target", "release", "libcortex_kernel.dylib")
-        debug_path = os.path.join(workspace_root, "target", "debug", "libcortex_kernel.dylib")
+        release_path = os.path.join(workspace_root, "target", "release", "liblarsa_kernel.dylib")
+        debug_path = os.path.join(workspace_root, "target", "debug", "liblarsa_kernel.dylib")
 
         candidates = []
         if os.path.exists(release_path):
@@ -55,7 +55,7 @@ class C5RealFFIBridge:
 
         if not candidates:
             raise FileNotFoundError(
-                "No se encuentra libcortex_kernel.dylib. \n"
+                "No se encuentra liblarsa_kernel.dylib. \n"
                 "Por favor, compila el kernel de Rust antes de iniciar el puente FFI."
             )
 

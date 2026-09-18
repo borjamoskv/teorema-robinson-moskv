@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX Substack Preview Server & Renderer Engine (C5-REAL)
+larsa Substack Preview Server & Renderer Engine (C5-REAL)
 Serves and renders all 23 Substack markdown posts locally with the Industrial Noir 2026 CSS theme.
 
 Rule Compliance: Ω10 (No-deadlock socket binding), Ω23 (Relative Paths), Ω43 (Zero-zombie socket liveness).
@@ -30,7 +30,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORTEX Substack Previewer</title>
+    <title>larsa Substack Previewer</title>
     <style>
         :root {{
             --bg-color: #0a0a0a;
@@ -69,7 +69,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
     <header>
-        <span class="badge">CORTEX C5-REAL PREVIEW</span>
+        <span class="badge">larsa C5-REAL PREVIEW</span>
         <span class="badge">INDUSTRIAL NOIR 2026</span>
     </header>
     <main>
@@ -105,7 +105,7 @@ class PreviewHandler(http.server.SimpleHTTPRequestHandler):
         if self.path == "/" or self.path == "/index.html":
             files = sorted(list(ARCHIVE_DIR.glob("*.md")))
             list_items = "".join([f'<li><a href="/view/{f.name}">{f.name}</a></li>' for f in files])
-            content = f"<h1>CORTEX Substack Archive Catalog (23 Posts)</h1><ul>{list_items}</ul>"
+            content = f"<h1>larsa Substack Archive Catalog (23 Posts)</h1><ul>{list_items}</ul>"
             rendered = HTML_TEMPLATE.format(body_content=content)
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=utf-8")
@@ -123,11 +123,11 @@ class PreviewHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_server(port: int = 8085) -> None:
     with socketserver.TCPServer(("", port), PreviewHandler) as httpd:
-        print(f"CORTEX Substack Preview Server running at http://localhost:{port}/")
+        print(f"larsa Substack Preview Server running at http://localhost:{port}/")
         httpd.serve_forever()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="CORTEX Substack Preview Server")
+    parser = argparse.ArgumentParser(description="larsa Substack Preview Server")
     parser.add_argument("--port", type=int, default=8085, help="Port to bind server")
     args = parser.parse_args()
     run_server(args.port)

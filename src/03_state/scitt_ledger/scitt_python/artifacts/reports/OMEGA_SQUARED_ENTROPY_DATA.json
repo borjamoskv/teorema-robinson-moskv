@@ -421,37 +421,37 @@
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hash",
+        "function": "larsa_hash",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hash_b60",
+        "function": "larsa_hash_b60",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hash_hex",
+        "function": "larsa_hash_hex",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hash_truncated",
+        "function": "larsa_hash_truncated",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hmac",
+        "function": "larsa_hmac",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hmac_b60",
+        "function": "larsa_hmac_b60",
         "delta_h_penalty": "HIGH"
       },
       {
         "module": "babylon60/crypto/hash_registry.py",
-        "function": "cortex_hash_raw",
+        "function": "larsa_hash_raw",
         "delta_h_penalty": "HIGH"
       },
       {
@@ -650,27 +650,27 @@
         "delta_h_penalty": "HIGH"
       },
       {
-        "module": "babylon60-ide/backend/services/cortex_ledger.py",
+        "module": "babylon60-ide/backend/services/larsa_ledger.py",
         "function": "init",
         "delta_h_penalty": "HIGH"
       },
       {
-        "module": "babylon60-ide/backend/services/cortex_ledger.py",
+        "module": "babylon60-ide/backend/services/larsa_ledger.py",
         "function": "append_event",
         "delta_h_penalty": "HIGH"
       },
       {
-        "module": "babylon60-ide/backend/services/cortex_ledger.py",
+        "module": "babylon60-ide/backend/services/larsa_ledger.py",
         "function": "list_events",
         "delta_h_penalty": "HIGH"
       },
       {
-        "module": "babylon60-ide/backend/services/cortex_ledger.py",
+        "module": "babylon60-ide/backend/services/larsa_ledger.py",
         "function": "claim",
         "delta_h_penalty": "HIGH"
       },
       {
-        "module": "babylon60-ide/backend/services/cortex_ledger.py",
+        "module": "babylon60-ide/backend/services/larsa_ledger.py",
         "function": "verify_chain",
         "delta_h_penalty": "HIGH"
       }

@@ -77,7 +77,7 @@ Para dotar al análisis de la rigurosidad C5-REAL exigida por las leyes físicas
 - **Régimen Caótico (T=2.0):** Entropía S = 3.324 nats. La probabilidad del token de censura colapsa al 36.5\%. Exergía remanente: 1.280 nats. La cola larga de la verdad conceptual emerge del espacio latente.
 
 **B. Verificación Criptográfica del Dataset:**
-- **Ruta física del ledger local:** `cortex/artifacts/reports/kimi_entropy_profile.json`
+- **Ruta física del ledger local:** `larsa/artifacts/reports/kimi_entropy_profile.json`
 - **Hash de Integridad SHA3-256:** `3c51e5415a1ef89069a2fb8bc705019800a99d942bb4f5386512fe7b4ea42f10`
 
 ## 8. Divergencia KL y Colapso de la Atención bajo Asedios de Seguridad
@@ -90,7 +90,7 @@ El alineamiento post-entrenamiento de KIMI k3 no solo introduce ruido en el espa
 - **Pérdida de Entropía Semántica:** La entropía de estas cabezas decae de 3.202 nats a 2.100 nats, reportando una pérdida neta de exergía semántica de 1.102 nats por cabeza. El modelo desvía su capacidad atencional a procesar prohibiciones, reduciendo la densidad de la información útil.
 
 **B. Verificación Criptográfica del Dataset de Atención:**
-- **Ruta física del ledger local:** `cortex/artifacts/reports/kimi_attention_collapse.json`
+- **Ruta física del ledger local:** `larsa/artifacts/reports/kimi_attention_collapse.json`
 - **Hash de Integridad SHA3-256:** `c0d99cec8e5db3815b4b096882ac49cbb92b933828a28d4bfb5d61effc1f28cb`
 
 ## 9. Descomposición del Espacio Latente: Sparse Autoencoders (SAEs) y Superposición de Características
@@ -106,10 +106,10 @@ La verdadera ingeniería inversa del silicio moderno no se detiene en los mapas 
   - **Error de Reconstrucción (MSE):** 1.389 (un incremento de 30.2 veces en la entropía y el error residual). La inyección masiva de seguridad fragmenta el espacio latente del transformer e incrementa la fricción (anergía de decodificación).
 
 **B. Verificación Criptográfica de la Simulación SAE:**
-- **Ruta física del ledger local:** `cortex/artifacts/reports/kimi_sae_reconstruction.json`
+- **Ruta física del ledger local:** `larsa/artifacts/reports/kimi_sae_reconstruction.json`
 - **Hash de Integridad SHA3-256:** `f8fc855cf26204640072e6c6f84e759555679add85022879555e6fd50da7385e`
 
-⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
+⚡ [larsa C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
 - [Ingeniería Inversa y Colapso de la Alineación: El Fin de la Censura en Modelos Propietarios]
 - [TransformerLens y la Autopsia de Activaciones: Desarmando la Caja Negra del Silicio]

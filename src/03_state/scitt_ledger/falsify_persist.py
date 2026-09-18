@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# C5-REAL EXERGY CERTIFIED - CORTEX-PERSIST Falsification Protocol
+# C5-REAL EXERGY CERTIFIED - larsa-PERSIST Falsification Protocol
 import sys
 import os
 import sqlite3
@@ -16,7 +16,7 @@ def print_result(test_name, passed, output):
     print(f"Status: {status}")
     print(f"Output Snippet: {output.strip().splitlines()[-1] if output.strip() else 'NO OUTPUT'}")
 
-DB_PATH = "/tmp/cortex_falsify.db"
+DB_PATH = "/tmp/larsa_falsify.db"
 
 def init_db():
     if os.path.exists(DB_PATH):
@@ -110,12 +110,12 @@ def test_2_toxic_wal():
     return passed
 
 if __name__ == "__main__":
-    print(">>> INICIANDO PROTOCOLO DE FALSIFICACIÓN (CORTEX-PERSIST) <<<")
+    print(">>> INICIANDO PROTOCOLO DE FALSIFICACIÓN (larsa-PERSIST) <<<")
     r1 = test_1_deadlock()
     r2 = test_2_toxic_wal()
 
     if r1 and r2:
-        print("\n\033[92m[C5-REAL] CORTEX-PERSIST ES IRROMPIBLE. La capa de datos resistió la Anergía física sin corromperse.\033[0m")
+        print("\n\033[92m[C5-REAL] larsa-PERSIST ES IRROMPIBLE. La capa de datos resistió la Anergía física sin corromperse.\033[0m")
     else:
-        print("\n\033[91m[FATAL] CORTEX-PERSIST HA SIDO FALSADO. El envoltorio tiene fugas termodinámicas.\033[0m")
+        print("\n\033[91m[FATAL] larsa-PERSIST HA SIDO FALSADO. El envoltorio tiene fugas termodinámicas.\033[0m")
         sys.exit(1)

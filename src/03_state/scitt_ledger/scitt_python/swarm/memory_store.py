@@ -17,7 +17,7 @@ DEFAULT_CHROMA_PATH = os.path.join(MONOREPO_ROOT, "db/chroma_memory")
 
 class AgentMemory:
     def __init__(self, db_path: str = DEFAULT_DB_PATH, chroma_path: str = DEFAULT_CHROMA_PATH) -> None:
-        is_test = "PYTEST_CURRENT_TEST" in os.environ or os.environ.get("CORTEX_TEST_MODE") == "1"
+        is_test = "PYTEST_CURRENT_TEST" in os.environ or os.environ.get("larsa_TEST_MODE") == "1"
         if is_test and db_path == DEFAULT_DB_PATH:
             db_path = ":memory:"
 
@@ -68,7 +68,7 @@ class AgentMemory:
 
             chroma_settings = Settings(anonymized_telemetry=False)
 
-            if "PYTEST_CURRENT_TEST" in os.environ or os.environ.get("CORTEX_TEST_MODE") == "1":
+            if "PYTEST_CURRENT_TEST" in os.environ or os.environ.get("larsa_TEST_MODE") == "1":
                 self.chroma_client = chromadb.EphemeralClient(settings=chroma_settings)
             else:
                 self.chroma_client = chromadb.PersistentClient(path=chroma_path, settings=chroma_settings)

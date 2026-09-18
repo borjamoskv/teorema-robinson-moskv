@@ -22,7 +22,7 @@ El compilador devolvió el binario y su ejecución arrojó un código de salida 
 
 ```json
 {
-  "panopticon_status": "ACTIVE",
+  "scitt_ledger_status": "ACTIVE",
   "mlock_status": 0,
   "mlock_bytes_locked": 10485760,
   "mach_free_pages": 17894,

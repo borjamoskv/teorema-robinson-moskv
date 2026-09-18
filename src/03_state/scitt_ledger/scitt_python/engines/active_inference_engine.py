@@ -8,7 +8,7 @@ from scitt_python.core.observer import dispatch_state_observer, StateVector
 from scitt_python.core.neuro_chain import dispatch_neuro_chain, CognitiveChainVector
 from scitt_python.core.tts_harness import dispatch_tts_harness, TTSHarnessState
 
-logger = logging.getLogger("cortex.active_inference")
+logger = logging.getLogger("larsa.active_inference")
 
 @dataclasses.dataclass(frozen=True)
 class ActiveInferenceResult:

@@ -11,5 +11,5 @@ build:
 	@echo "[PASS] libmushushu_0.dylib generado determinísticamente."
 
 clean:
-	@echo "[CORTEX] Ejecutando purga termodinámica (Ω24)..."
+	@echo "[larsa] Ejecutando purga termodinámica (Ω24)..."
 	rm -f $(TARGET)

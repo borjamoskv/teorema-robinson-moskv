@@ -54,13 +54,13 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 ## 2. Archivos Cristalizados en C5-REAL
 
-1. [noether_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/noether_1000_taxonomy.yaml): Especificación ontológica canónica.
+1. [noether_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/noether_1000_taxonomy.yaml): Especificación ontológica canónica.
 2. [generate_noether.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/scripts/generate_noether.py): Generador determinista de transductores.
 3. [noether.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/noether.go): Kernel transductor en Go de alta velocidad.
 4. [noether_test.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/noether_test.go): Suite de pruebas unitarias Go (100% Cobertura).
 5. [noether.rs](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/src-tauri/src/noether.rs): Kernel transductor en Rust.
-6. [noether.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/noether.py): Simulador en Python.
-7. [noether_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/noether_test.py): Suite de pruebas unitarias Python (100% Cobertura).
+6. [noether.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/noether.py): Simulador en Python.
+7. [noether_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/noether_test.py): Suite de pruebas unitarias Python (100% Cobertura).
 
 ---
 
@@ -68,5 +68,5 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 - **Go Test Suite (`go test ./primitives -v -run TestNoetherKernelCoverage`)**:
   `PASS: 1000/1000 Primitives Executed (Final Charge: 0.002192, Wall Time: 0.384s)`
-- **Python Test Suite (`python3 -m unittest cortex/noether_test.py`)**:
+- **Python Test Suite (`python3 -m unittest larsa/noether_test.py`)**:
   `PASS: 1000/1000 Primitives Executed (Final Charge: 0.002192, Wall Time: 0.001s)`

@@ -20,12 +20,12 @@ from typing import Any, Dict, Optional, Tuple
 # Ω23: Dynamic Resolution of Paths
 # ---------------------------------------------------------------------------
 _ENGINE_DIR = Path(__file__).resolve().parent
-_CORTEX_DIR = _ENGINE_DIR.parent
-_REPO_ROOT = _CORTEX_DIR.parents[1]
-_DEFAULT_DB_PATH = _REPO_ROOT / ".cortex" / "license_ledger.db"
+_larsa_DIR = _ENGINE_DIR.parent
+_REPO_ROOT = _larsa_DIR.parents[1]
+_DEFAULT_DB_PATH = _REPO_ROOT / ".larsa" / "license_ledger.db"
 
 # Secret key for HMAC token signing (default fallback for dev/test)
-DEFAULT_LICENSE_SECRET = os.getenv("CORTEX_LICENSE_SECRET", "C5_REAL_BFT_TRUST_SECRET_0xDEADBEEF")
+DEFAULT_LICENSE_SECRET = os.getenv("larsa_LICENSE_SECRET", "C5_REAL_BFT_TRUST_SECRET_0xDEADBEEF")
 
 
 class LicenseTier(str, Enum):

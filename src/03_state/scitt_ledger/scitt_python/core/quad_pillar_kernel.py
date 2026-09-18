@@ -18,7 +18,7 @@ import platform
 import asyncio
 from typing import Dict, Any, List
 
-DB_PATH = ".cortex/quad_pillar.db"
+DB_PATH = ".larsa/quad_pillar.db"
 
 class QuadPillarException(Exception):
     """Base exception for Quad-Pillar failures (Ω26)."""

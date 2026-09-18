@@ -3,7 +3,7 @@ import sys
 import os
 
 # [ULTRATHINK V3] Dynamic Out-Of-Tree Import (Ω1 / Ω24)
-sys.path.insert(0, "/tmp/cortex_exergy_build")
+sys.path.insert(0, "/tmp/larsa_exergy_build")
 
 try:
     import mushushu_0_core

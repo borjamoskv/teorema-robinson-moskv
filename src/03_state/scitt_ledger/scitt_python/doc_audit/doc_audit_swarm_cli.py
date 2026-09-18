@@ -154,7 +154,7 @@ class DocAuditSwarmOrchestrator:
 def main():
     if len(sys.argv) < 2:
         print("C5-REAL Low-Level Document Audit Swarm Engine")
-        print("Uso: python3 -m cortex_python.doc_audit.doc_audit_swarm_cli <archivo_objetivo> [--verbose]")
+        print("Uso: python3 -m larsa_python.doc_audit.doc_audit_swarm_cli <archivo_objetivo> [--verbose]")
         sys.exit(1)
 
     filepath = sys.argv[1]

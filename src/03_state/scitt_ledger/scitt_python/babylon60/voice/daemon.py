@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-"""Cortex Voice Daemon for VAD (Voice Activity Detection) and hardware acoustic capture."""
+"""larsa Voice Daemon for VAD (Voice Activity Detection) and hardware acoustic capture."""
 import time
 import logging
 import math

@@ -18,7 +18,7 @@ IGNORE_DIRS = {
     ".uv_python",
     "tmp_fastapi_pkg",
     "tmp_chroma_pkg",
-    ".cortex",
+    ".larsa",
     ".vscode",
     "scratch",
 }
@@ -93,7 +93,7 @@ def main() -> None:
         BashCommand(binary="git", args=("add", "."), cwd=ROOT_DIR).execute()
         BashCommand(
             binary="git",
-            args=("commit", "-m", f"chore(cortex): maximizar exergia en {mutated_files} archivos (C5-REAL A->Z)"),
+            args=("commit", "-m", f"chore(larsa): maximizar exergia en {mutated_files} archivos (C5-REAL A->Z)"),
             cwd=ROOT_DIR,
         ).execute()
         res = BashCommand(binary="git", args=("rev-parse", "HEAD"), cwd=ROOT_DIR).execute()

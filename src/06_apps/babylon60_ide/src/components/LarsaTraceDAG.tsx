@@ -21,7 +21,7 @@ interface Props {
   onSelectNode?: (node: TraceNode) => void;
 }
 
-export const CortexTraceDAG: React.FC<Props> = ({ traces, onSelectNode }) => {
+export const LarsaTraceDAG: React.FC<Props> = ({ traces, onSelectNode }) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const handleSelect = (node: TraceNode) => {
@@ -102,7 +102,7 @@ export const CortexTraceDAG: React.FC<Props> = ({ traces, onSelectNode }) => {
   };
 
   return (
-    <div className="cortex-trace-dag-panel" style={{ width: '100%', padding: '16px', background: '#0b0b0e', borderRadius: '6px' }}>
+    <div className="larsa-trace-dag-panel" style={{ width: '100%', padding: '16px', background: '#0b0b0e', borderRadius: '6px' }}>
       <div
         className="dag-header"
         style={{
@@ -117,7 +117,7 @@ export const CortexTraceDAG: React.FC<Props> = ({ traces, onSelectNode }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Activity size={16} color="#d4af37" />
           <span style={{ fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.5px', color: '#e0e0e0' }}>
-            CORTEX C5-REAL Trace DAG (Zero-Network Ingest)
+            LARSA C5-REAL Trace DAG (Zero-Network Ingest)
           </span>
         </div>
         <span style={{ fontSize: '0.7rem', color: '#3ab370', fontFamily: 'monospace' }}>● SCITT VERIFIED // SUB-MS LATENCY</span>

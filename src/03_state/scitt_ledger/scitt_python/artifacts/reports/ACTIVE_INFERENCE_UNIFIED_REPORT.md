@@ -23,5 +23,5 @@ En cada ciclo del transductor t, el motor dispara de forma síncrona en O(1):
 
 - **Go Engine (`go test ./primitives -v -run TestUnifiedActiveInferenceEngine`)**:
   `PASS: 3000/3000 Primitives (Free Energy F: 55.980255, D_KL: 55.896874, Wall Time: 0.433s)`
-- **Python Engine (`python3 -m unittest cortex/active_inference_engine_test.py`)**:
+- **Python Engine (`python3 -m unittest larsa/active_inference_engine_test.py`)**:
   `PASS: 3000/3000 Primitives (Free Energy F: 55.980255, D_KL: 55.896874, Wall Time: 0.009s)`

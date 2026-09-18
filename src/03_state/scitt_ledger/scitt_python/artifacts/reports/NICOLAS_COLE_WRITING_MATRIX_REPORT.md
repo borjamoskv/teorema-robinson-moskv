@@ -21,4 +21,4 @@ Proof:
 
 ## 2. ARTEFACTO ONTOLÓGICO REGISTRADO
 
-- **Matriz Ontológica**: [nicolas_cole_writing_matrix.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/nicolas_cole_writing_matrix.yaml)
+- **Matriz Ontológica**: [nicolas_cole_writing_matrix.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/nicolas_cole_writing_matrix.yaml)

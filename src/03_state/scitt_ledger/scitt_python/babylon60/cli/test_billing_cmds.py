@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-"""Unit tests for cortex_persist.cli.billing_cmds (Axiom Ω5 & Ω9)."""
+"""Unit tests for larsa_persist.cli.billing_cmds (Axiom Ω5 & Ω9)."""
 from click.testing import CliRunner
 from babylon60.cli.billing_cmds import billing
 

@@ -1,7 +1,7 @@
 # C5_IGNORE_NESTING
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX Substack Publisher & Formatting Transducer Tool (C5-REAL)
+larsa Substack Publisher & Formatting Transducer Tool (C5-REAL)
 Automates the conversion of raw markdown into high-exergy Substack-ready posts
 under the Telmo Dinámico de Moskv persona and Industrial Noir 2026 aesthetic.
 
@@ -9,7 +9,7 @@ Features:
 - Enforces zero Markdown tables (|---| -> bold nested lists)
 - Enforces zero raw LaTeX $ delimiters (converts to clean Unicode math)
 - Dynamically injects random canonical article embeds from borjamoskv.substack.com
-- Appends the mandatory CORTEX C5-REAL signature block
+- Appends the mandatory larsa C5-REAL signature block
 
 Rule Compliance: Ω11 (Rich-Text Compatibility), R12 (Substack Exergy), Ω23 (Relative Paths).
 """
@@ -59,7 +59,7 @@ SUBSTACK_CATALOG = [
         "https://borjamoskv.substack.com/p/kant-fugazi-diy-ethics-5-dollar-show",
     ),
     (
-        "CORTEX Persist / BABYLON-60: investigación técnica",
+        "larsa Persist / BABYLON-60: investigación técnica",
         "https://borjamoskv.substack.com/p/scitt_ledger-babylon-60-investigacion",
     ),
 ]
@@ -72,7 +72,7 @@ def format_signature_block(count: int = 4) -> str:
     # Select random items
     selected = random.sample(remaining_links, min(count, len(remaining_links)))
 
-    block = "⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):\n"
+    block = "⚡ [larsa C5-REAL] Sinergias de Exergía Máxima (Top 99.99):\n"
     block += f"- [{mandatory_link[0]}]({mandatory_link[1]})\n"
     for title, url in selected:
         block += f"- [{title}]({url})\n"
@@ -120,7 +120,7 @@ def convert_tables_to_lists(text: str) -> str:
 def process_markdown_for_substack(raw_md: str) -> str:
     cleaned = purge_latex_math(raw_md)
     cleaned = convert_tables_to_lists(cleaned)
-    if "⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima" not in cleaned:
+    if "⚡ [larsa C5-REAL] Sinergias de Exergía Máxima" not in cleaned:
         cleaned += "\n\n---\n\n" + format_signature_block()
     return cleaned
 

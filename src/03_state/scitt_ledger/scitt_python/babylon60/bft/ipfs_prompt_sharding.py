@@ -11,7 +11,7 @@ from typing import Dict
 # o el Orquestador aprovecha el Context Caching si el CID coincide con la caché caliente de Gemini/Claude.
 
 class IPFS_Prompt_Ledger:
-    def __init__(self, vault_path: str = ".cortex/ipfs_vault"):
+    def __init__(self, vault_path: str = ".larsa/ipfs_vault"):
         self.vault_path = vault_path
         os.makedirs(self.vault_path, exist_ok=True)
         self.cid_index: Dict[str, str] = {}

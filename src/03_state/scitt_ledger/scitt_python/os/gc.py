@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX-OS Epistemic Garbage Collector.
+larsa-OS Epistemic Garbage Collector.
 Purges expired context, merges isomorphic knowledge nodes, invalidates unverified assumptions.
 """
 

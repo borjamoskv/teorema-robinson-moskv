@@ -1,7 +1,7 @@
 # C5-REAL EXERGY CERTIFIED
 #!/usr/bin/env python3
 """
-CORTEX Escohotado Unified CLI Transducer (C5-REAL)
+larsa Escohotado Unified CLI Transducer (C5-REAL)
 Command-line interface to query and inspect all 3 Escohotado SQLite Ledgers:
 1. Caos y Orden Entropy & Lyapunov Phase Space (ledgers/escohotado_chaos_entropy.db)
 2. Market & Prohibition Economics (ledgers/escohotado_economics.db)
@@ -74,7 +74,7 @@ def query_substance_db() -> List[Dict[str, Any]]:
     return rows
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="CORTEX Escohotado Unified CLI Transducer (C5-REAL)")
+    parser = argparse.ArgumentParser(description="larsa Escohotado Unified CLI Transducer (C5-REAL)")
     parser.add_argument(
         "--module",
         choices=["chaos", "econ", "substance", "all"],
@@ -97,7 +97,7 @@ def main() -> None:
         print(json.dumps(payload, indent=2, ensure_ascii=False))
     else:
         print("================================================================================")
-        print("            CORTEX ESCOHOTADO UNIFIED C5-REAL METRIC TRANSDUCER                ")
+        print("            larsa ESCOHOTADO UNIFIED C5-REAL METRIC TRANSDUCER                ")
         print("================================================================================")
         if "caos_y_orden" in payload:
             print("\n[1] CAOS Y ORDEN (Sistemas No Lineales & Entropía Física):")

@@ -23,7 +23,7 @@ Este es el corazón transaccional. Garantiza que ninguna mutación de estado ocu
   - Exige que el cálculo del hash del payload propuesto se realice sobre una representación **CBOR Canónica** para evitar la deriva estocástica (Anergía) de JSON.
 - **`master_ledger_queue.py` & `ledger_actor.py`**:
   - Implementan el invariante físico **Ω13 (Serialización de Escritura)**. Todas las mutaciones del Swarm son empujadas a una `asyncio.Queue`.
-  - El `ledger_actor` es el *único* escritor físico autorizado a interactuar con SQLite (`cortex.db`). Esto aniquila por completo la posibilidad de *Deadlocks* (Ω10) al configurar `busy_timeout=5000ms` y forzar el modo `WAL` de SQLite.
+  - El `ledger_actor` es el *único* escritor físico autorizado a interactuar con SQLite (`larsa.db`). Esto aniquila por completo la posibilidad de *Deadlocks* (Ω10) al configurar `busy_timeout=5000ms` y forzar el modo `WAL` de SQLite.
 
 ### 2.2. Subsistema del Compilador Causal (`babylon60/compiler/`)
 A diferencia de un LLM estándar que emite strings, BABYLON-60 transcompila intenciones.

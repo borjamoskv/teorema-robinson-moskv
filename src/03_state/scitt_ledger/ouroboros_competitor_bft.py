@@ -83,5 +83,5 @@ def execute_ouroboros_100_nodes():
     print("Exergía Maximizada. Cero Anergía.")
 
 if __name__ == '__main__':
-    # run_ultrathink_pipeline() # Banned by Axiom Ω3 in CORTEX-PERSIST topology
+    # run_ultrathink_pipeline() # Banned by Axiom Ω3 in larsa-PERSIST topology
     execute_ouroboros_100_nodes()

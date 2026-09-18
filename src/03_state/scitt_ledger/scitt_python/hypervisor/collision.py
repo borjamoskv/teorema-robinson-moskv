@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-"""Collision primitives for teleonomic control within the Cortex hypervisor.
+"""Collision primitives for teleonomic control within the larsa hypervisor.
 
 Implements purpose-driven (teleonomic) collision detection and resolution.
 All operations are logged to the C5-REAL ledger via the QuadPillarKernel.

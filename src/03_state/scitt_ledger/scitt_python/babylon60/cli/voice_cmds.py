@@ -23,5 +23,5 @@ def voice_listen():
             # Here we would execute the command
 
     # For simulation, we will just print that it started
-    console.print("[bold green]■ CORTEX VOICE DAEMON ACTIVO Y ESCUCHANDO.[/bold green]")
+    console.print("[bold green]■ larsa VOICE DAEMON ACTIVO Y ESCUCHANDO.[/bold green]")
     # daemon.listen(process_audio)

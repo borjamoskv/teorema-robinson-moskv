@@ -85,7 +85,7 @@ def parse_yaml_routes(filepath: str) -> List[RouteConfig]:
 class C5LLMRouter:
     """Enrutador de inferencia C5-REAL con tolerancia a fallos en cascada."""
 
-    def __init__(self, routes_path: str = "cortex/ontology/llms_gratuitos_front_routes.yaml") -> None:
+    def __init__(self, routes_path: str = "larsa/ontology/llms_gratuitos_front_routes.yaml") -> None:
         if not os.path.isabs(routes_path):
             project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             routes_path = os.path.join(project_root, routes_path)

@@ -6,7 +6,7 @@ import { IdeaValuator } from './components/IdeaValuator';
 import { CausalVisualizer } from './components/CausalVisualizer';
 import { RingBufferVisualizer, EpochSlot } from './components/RingBufferVisualizer';
 import { ReceiptStream, ScittReceipt } from './components/ReceiptStream';
-import { CortexTraceDAG, TraceNode } from './components/CortexTraceDAG';
+import { LarsaTraceDAG, TraceNode } from './components/LarsaTraceDAG';
 import {
   Shield,
   Activity,
@@ -322,7 +322,7 @@ function App() {
         {/* Dedicated Traces view when selected explicitly in ADHD Single Mode */}
         {activeTab === 'traces' && (
           <div className="adhd-full-traces-view" style={{ padding: '20px', overflowY: 'auto' }}>
-            <CortexTraceDAG traces={mockTraces} />
+            <LarsaTraceDAG traces={mockTraces} />
             <RingBufferVisualizer slots={mockSlots} activeEpochPtr={3} fallbackEpochPtr={2} />
             <ReceiptStream receipts={mockReceipts} />
           </div>

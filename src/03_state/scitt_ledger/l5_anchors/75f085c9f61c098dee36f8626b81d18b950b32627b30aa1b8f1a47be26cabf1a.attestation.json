@@ -30,8 +30,8 @@
   },
   "witness": {
     "anchor": {
-      "data": "/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_CORTEX_ENGINE/cortex-persist/l5_anchors/75f085c9f61c098dee36f8626b81d18b950b32627b30aa1b8f1a47be26cabf1a.digest",
-      "ots": "/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_CORTEX_ENGINE/cortex-persist/l5_anchors/75f085c9f61c098dee36f8626b81d18b950b32627b30aa1b8f1a47be26cabf1a.digest.ots",
+      "data": "/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_larsa_ENGINE/larsa-persist/l5_anchors/75f085c9f61c098dee36f8626b81d18b950b32627b30aa1b8f1a47be26cabf1a.digest",
+      "ots": "/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_larsa_ENGINE/larsa-persist/l5_anchors/75f085c9f61c098dee36f8626b81d18b950b32627b30aa1b8f1a47be26cabf1a.digest.ots",
       "status": "STAMPED"
     },
     "attested_at_utc": "2026-08-01T05:00:57.370359+00:00",

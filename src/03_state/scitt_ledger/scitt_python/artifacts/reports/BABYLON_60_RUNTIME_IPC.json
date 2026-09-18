@@ -1,15 +1,15 @@
 {
   "network_endpoints": [
     {
-      "file": "cortex/deliverability_validator.py",
+      "file": "larsa/deliverability_validator.py",
       "type": "Raw Socket"
     },
     {
-      "file": "cortex/llm_router.py",
+      "file": "larsa/llm_router.py",
       "type": "HTTP Client"
     },
     {
-      "file": "cortex/llm_router_test.py",
+      "file": "larsa/llm_router_test.py",
       "type": "HTTP Client"
     },
     {
@@ -483,7 +483,7 @@
   ],
   "ffi_bindings": [
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "type": "Rust PyO3"
     },
     {
@@ -581,47 +581,47 @@
   ],
   "database_locks": [
     {
-      "file": "cortex/github_webhook_daemon.py",
+      "file": "larsa/github_webhook_daemon.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/invariant_sentinel.py",
+      "file": "larsa/invariant_sentinel.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/kimi.py",
+      "file": "larsa/kimi.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/substack_subscriber_audit.py",
+      "file": "larsa/substack_subscriber_audit.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/mcts_vnode_compiler.py",
+      "file": "larsa/mcts_vnode_compiler.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/swarm/architect_agent.py",
+      "file": "larsa/swarm/architect_agent.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/swarm/memory_store.py",
+      "file": "larsa/swarm/memory_store.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/swarm/orchestrator_test.py",
+      "file": "larsa/swarm/orchestrator_test.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/swarm/orchestrator.py",
+      "file": "larsa/swarm/orchestrator.py",
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "cortex/babylon60/neuromorphic_primitives.py",
+      "file": "larsa/babylon60/neuromorphic_primitives.py",
       "type": "SQLite WAL/Timeout"
     },
     {
@@ -897,7 +897,7 @@
       "type": "SQLite WAL/Timeout"
     },
     {
-      "file": "scripts/cortex-omega-purge.py",
+      "file": "scripts/larsa-omega-purge.py",
       "type": "SQLite WAL/Timeout"
     },
     {
@@ -927,11 +927,11 @@
   ],
   "multiprocessing_ipc": [
     {
-      "file": "cortex/mcts_vnode_compiler.py",
+      "file": "larsa/mcts_vnode_compiler.py",
       "type": "Concurrency primitive"
     },
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "type": "Concurrency primitive"
     },
     {

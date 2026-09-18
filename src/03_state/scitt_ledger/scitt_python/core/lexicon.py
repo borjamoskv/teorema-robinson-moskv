@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-"""Cortex Ontological Lexicon Transducer (cortex/lexicon.py)
+"""larsa Ontological Lexicon Transducer (larsa/lexicon.py)
 
 Executable transducer for loading, verifying, programmatically querying,
 and cryptographically persisting the Sovereign Lexicon / Glosario (glosario.md)
@@ -43,13 +43,13 @@ class C5EnrichedEnvelope(TypedDict):
     created_at: str
 
 # --- CAPA DE SEGURIDAD: VAULT FERNET ---
-class CortexVault:
+class larsaVault:
     """Gestiona el cifrado/descifrado de payloads bajo el estándar C5ENC: de BABYLON-60."""
     __slots__ = ("cipher", "active")
 
     def __init__(self):
-        # Lee la clave de entorno CORTEX_VAULT_KEY; si no existe, opera en texto plano
-        key = os.getenv("CORTEX_VAULT_KEY")
+        # Lee la clave de entorno larsa_VAULT_KEY; si no existe, opera en texto plano
+        key = os.getenv("larsa_VAULT_KEY")
         if key:
             self.cipher = Fernet(key.encode('utf-8'))
             self.active = True
@@ -85,7 +85,7 @@ class GitSentinel:
         """Captura el rastro causal y el hash SHA3 dentro del árbol de Git de forma asíncrona."""
         async with self.lock:
             try:
-                msg = f"CORTEX_L3_WITNESS [seq={seq}] | Hash: {entry_hash} | Taint: {taint}"
+                msg = f"larsa_L3_WITNESS [seq={seq}] | Hash: {entry_hash} | Taint: {taint}"
 
                 # Ejecuciones en subprocesos asíncronos para evitar el bloqueo del bucle de eventos
                 p1 = await asyncio.create_subprocess_exec(
@@ -249,7 +249,7 @@ class SQLiteAppendOnlyStorage:
 class LexiconLedgerActor:
     def __init__(self, db_path: Path, bft_node: Optional[BFTNode] = None):
         self.storage = SQLiteAppendOnlyStorage(db_path)
-        self.vault = CortexVault()
+        self.vault = larsaVault()
         self.sentinel = GitSentinel(db_path.parent)
         self.queue: asyncio.Queue = asyncio.Queue()
         self._loop_task: Optional[asyncio.Task] = None
@@ -326,7 +326,7 @@ class LexiconLedgerActor:
 
                     shielded_payload = self.vault.shield_payload(canonical_payload)
                     shielded_event_id = self.vault.shield_payload(event_id)
-                    shielded_stream = self.vault.shield_payload("cortex.ontology")
+                    shielded_stream = self.vault.shield_payload("larsa.ontology")
                     shielded_taint = self.vault.shield_payload(taint)
 
                     envelope_data = f"{temp_seq}|{shielded_event_id}|{shielded_payload}|{shielded_taint}|{temp_lamport}|{self.last_hash}|{created_at}"

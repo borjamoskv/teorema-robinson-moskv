@@ -1,7 +1,7 @@
 # C5_IGNORE_NESTING
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX Escohotado Monistic Substance & Process Engine (C5-REAL)
+larsa Escohotado Monistic Substance & Process Engine (C5-REAL)
 Models the continuous ontology of 'Realidad y Substancia' (1985/1997).
 
 Formalizes the transformation of potentiality into actuality and the collapse

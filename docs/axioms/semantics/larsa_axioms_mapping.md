@@ -3,7 +3,7 @@
 
 Este documento establece la demostración formal y empírica (isomorfismo estricto) entre los axiomas teóricos del sistema (la *Potencia*) y su implementación en el núcleo de ejecución **01_KISH_ENGINE** (el *Acto*).
 
-Cualquier discrepancia futura entre los axiomas aquí descritos y la estructura de `src/cortex-engine/cortex_execution_pipeline.py` constituye un colapso semántico (Anergía) que abortará la compilación.
+Cualquier discrepancia futura entre los axiomas aquí descritos y la estructura de `src/larsa-engine/larsa_execution_pipeline.py` constituye un colapso semántico (Anergía) que abortará la compilación.
 
 ---
 
@@ -12,7 +12,7 @@ Cualquier discrepancia futura entre los axiomas aquí descritos y la estructura 
 **Axioma Teórico:** *"Todo identificador (clase, variable, función) debe colapsar exactamente sobre la Matriz Ontológica del Sistema. La ambigüedad es un fallo de compilación."*
 
 **Implementación en 01_KISH_ENGINE:**
-El archivo `cortex_execution_pipeline.py` materializa esta restricción de naming 1:1. No existen variables intermedias abstractas genéricas (`data`, `processor`, `helper`); todas están mapeadas sobre el marco físico de la información.
+El archivo `larsa_execution_pipeline.py` materializa esta restricción de naming 1:1. No existen variables intermedias abstractas genéricas (`data`, `processor`, `helper`); todas están mapeadas sobre el marco físico de la información.
 
 | Concepto Axiomático (Potencia) | Entidad de Código (Acto) | Tipo (C-ABI/Python) | Descripción de Mapeo Estructural |
 | :--- | :--- | :--- | :--- |

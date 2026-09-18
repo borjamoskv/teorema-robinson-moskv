@@ -55,7 +55,7 @@ El flujo de dependencias sigue una estructura estrictamente acíclica (DAG) a ni
                                           (FFI / PyO3 / IPC)
                                                   │
                                                   ▼
-                                         [strike_rs (Rust)] ──(BLAKE3)──> [Cortex Poset Taint]
+                                         [strike_rs (Rust)] ──(BLAKE3)──> [larsa Poset Taint]
                                                   │
                                             (CoreAudio)
                                                   │
@@ -140,8 +140,8 @@ El sistema define límites de seguridad estrictos (Sandboxes) para mitigar la ej
   - *Fallo Crítico Encontrado:* La validación ingenua mediante `.startswith()` puede eludirse enviando direcciones como `http://localhost.attacker.com` o `http://localhost@attacker.com`, rompiendo este límite de confianza.
 - **Causal Taint Gatekeeper:** Ningún cambio del sistema de archivos puede fusionarse a la rama activa si no contiene una firma criptográfica Cortex-Taint válida generada por `strike_rs`.
 
-⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
+⚡ [larsa C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [Fase 1: Arquitectura Global y Reconstrucción del Sistema](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/artifacts/reports/BABYLON_60_PHASE_1_ARCHITECTURE.md)
+- [Fase 1: Arquitectura Global y Reconstrucción del Sistema](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/artifacts/reports/BABYLON_60_PHASE_1_ARCHITECTURE.md)
 - [El Fragmento Hereditario Harrop y la Guillotina de Hume en Sistemas Inteligentes]
 - [Causal Poset y Kahn Invariant: Prevención de Bucles Cíclicos en Rust]

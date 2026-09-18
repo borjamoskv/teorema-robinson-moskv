@@ -18,7 +18,7 @@ except ImportError:
     _HAS_NUMPY = False
 
 # C5-REAL MCTS IDE INVARIANT (v3.0 - OMEGATRON APEX)
-# Traza CORTEX: [CORTEX-TAINT:borjamoskv:mcts_vnode_compiler_v3:2026-07-21]
+# Traza larsa: [CORTEX-TAINT:borjamoskv:mcts_vnode_compiler_v3:2026-07-21]
 # PHYSICAL SIMULATION ENTROPY MAPPING [Ω31] Enforced. Zero Stubs.
 # DYNAMIC CAUSAL TAINT INVARIANT [Ω113] Enforced.
 

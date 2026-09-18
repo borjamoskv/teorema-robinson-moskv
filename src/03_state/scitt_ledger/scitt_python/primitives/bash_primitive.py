@@ -7,11 +7,11 @@ from pathlib import Path
 from typing import Tuple
 
 # [ULTRATHINK V3] Dynamic Out-Of-Tree Import for BFT Kernel Verification
-sys.path.insert(0, "/tmp/cortex_exergy_build")
+sys.path.insert(0, "/tmp/larsa_exergy_build")
 try:
-    import cortex_guard_core
+    import larsa_guard_core
 except ImportError:
-    sys.stderr.write("\n[FATAL] cortex_guard_core C-Extension not built in /tmp/. Run 'make build-guard'. HALTING LEDGER.\n")
+    sys.stderr.write("\n[FATAL] larsa_guard_core C-Extension not built in /tmp/. Run 'make build-guard'. HALTING LEDGER.\n")
     sys.stderr.flush()
     os.abort()
 
@@ -45,7 +45,7 @@ class BashCommand:
         if self.check:
             # O(1) Kernel-Level Physical Validation
             # Bypasses Python exception layers. Throws SIGABRT if tool missing.
-            cortex_guard_core.verify_dependencies([self.binary])
+            larsa_guard_core.verify_dependencies([self.binary])
 
     def execute(self) -> CommandResult:
         """

@@ -24,13 +24,13 @@ Homeostasis(E) \xrightarrow{Free Energy Min} Prediction(P) \xrightarrow{Attentio
 
 ## 2. Archivos Cristalizados en C5-REAL
 
-1. [neuro_chain_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/neuro_chain_1000_taxonomy.yaml): Especificación ontológica canónica.
+1. [neuro_chain_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/neuro_chain_1000_taxonomy.yaml): Especificación ontológica canónica.
 2. [generate_neuro_chain.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/scripts/generate_neuro_chain.py): Generador determinista de transductores.
 3. [neuro_chain.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/neuro_chain.go): Kernel transductor en Go de alta velocidad.
 4. [neuro_chain_test.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/neuro_chain_test.go): Suite de pruebas unitarias Go (100% Cobertura).
 5. [neuro_chain.rs](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/src-tauri/src/neuro_chain.rs): Kernel transductor en Rust para Tauri UI.
-6. [neuro_chain.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/neuro_chain.py): Simulador matricial en Python.
-7. [neuro_chain_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/neuro_chain_test.py): Suite de pruebas unitarias Python.
+6. [neuro_chain.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/neuro_chain.py): Simulador matricial en Python.
+7. [neuro_chain_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/neuro_chain_test.py): Suite de pruebas unitarias Python.
 
 ---
 
@@ -38,5 +38,5 @@ Homeostasis(E) \xrightarrow{Free Energy Min} Prediction(P) \xrightarrow{Attentio
 
 - **Go Test Suite (`go test ./primitives -v -run TestNeuroChainKernelCoverage`)**:
   `PASS: 1000/1000 Primitives Executed (Final Entropy: 3.453370, Wall Time: 0.406s)`
-- **Python Test Suite (`python3 -m unittest cortex/neuro_chain_test.py`)**:
+- **Python Test Suite (`python3 -m unittest larsa/neuro_chain_test.py`)**:
   `PASS: 1000/1000 Primitives Executed (Final Entropy: 3.453370, Wall Time: 0.001s)`

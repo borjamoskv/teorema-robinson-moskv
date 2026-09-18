@@ -49,9 +49,9 @@
     "babylon60/extensions/signals/sharded_bus.py",
     "tests/test_shadow_router_c5.py",
     "babylon60/extensions/llm/__init__.py",
-    "tests/test_cortex_ssm_mamba.py",
+    "tests/test_larsa_ssm_mamba.py",
     "scripts/demo_exergy_poc.py",
-    "cortex/agents/arsenal_896/centuria_meta_transducer.py",
+    "larsa/agents/arsenal_896/centuria_meta_transducer.py",
     "babylon60/extensions/aether/daemon.py",
     "babylon60/extensions/genesis/renderers/__init__.py",
     "babylon60/extensions/daemon/ccr_proxy.py",
@@ -76,12 +76,12 @@
     "tests/test_genomics_engine.py",
     "tests/test_hotstuff_consensus.py",
     "babylon60/extensions/sap/client.py",
-    "scripts/bootstrap_cortex_memory.py",
+    "scripts/bootstrap_larsa_memory.py",
     "babylon60/extensions/swarm/centauro_engine.py",
     "babylon60/extensions/immune/breaker.py",
     "babylon60/extensions/immune/membrane.py",
     "babylon60/extensions/llamaindex_bridge.py",
-    "cortex/agents/arsenal_896/__init__.py",
+    "larsa/agents/arsenal_896/__init__.py",
     "babylon60/extensions/ui/swarm_board.py",
     "babylon60/extensions/bci/osc_bridge.py",
     "babylon60/extensions/daemon/core_support.py",
@@ -193,7 +193,7 @@
     "babylon60/extensions/mejoralo/effectiveness.py",
     "babylon60/extensions/scraper/extractors.py",
     "babylon60/extensions/daemon/health_loop.py",
-    "tests/test_cortex_mamba_block.py",
+    "tests/test_larsa_mamba_block.py",
     "babylon60/extensions/sync/read.py",
     "babylon60/extensions/billing/metering.py",
     "babylon60/extensions/manifold/core.py",
@@ -227,7 +227,7 @@
       "Violates": [],
       "Requires": []
     },
-    "cortex_mamba_inference.py": {
+    "larsa_mamba_inference.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -246,7 +246,7 @@
       "Violates": [],
       "Requires": []
     },
-    "cortex_purge_anergy.py": {
+    "larsa_purge_anergy.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -257,7 +257,7 @@
         "\u03a95"
       ]
     },
-    "cortex_ssm_mamba_core.py": {
+    "larsa_ssm_mamba_core.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -268,7 +268,7 @@
         "\u03a95"
       ]
     },
-    "cortex/__init__.py": {
+    "larsa/__init__.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -279,7 +279,7 @@
         "\u03a95"
       ]
     },
-    "cortex/agents/__init__.py": {
+    "larsa/agents/__init__.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -290,7 +290,7 @@
         "\u03a95"
       ]
     },
-    "cortex/agents/arsenal_896/registry.py": {
+    "larsa/agents/arsenal_896/registry.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -301,7 +301,7 @@
         "\u03a95"
       ]
     },
-    "cortex/agents/arsenal_896/__init__.py": {
+    "larsa/agents/arsenal_896/__init__.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -312,7 +312,7 @@
         "\u03a95"
       ]
     },
-    "cortex/agents/arsenal_896/centuria_meta_transducer.py": {
+    "larsa/agents/arsenal_896/centuria_meta_transducer.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -446,7 +446,7 @@
       "Violates": [],
       "Requires": []
     },
-    "tests/test_cortex_ssm_mamba.py": {
+    "tests/test_larsa_ssm_mamba.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -517,7 +517,7 @@
         "\u03a95"
       ]
     },
-    "tests/test_cortex_mamba_network.py": {
+    "tests/test_larsa_mamba_network.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -647,7 +647,7 @@
         "\u03a95"
       ]
     },
-    "tests/test_cortex_mamba_inference.py": {
+    "tests/test_larsa_mamba_inference.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -658,7 +658,7 @@
         "\u03a95"
       ]
     },
-    "tests/test_cortex_bpe_tokenizer.py": {
+    "tests/test_larsa_bpe_tokenizer.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -680,7 +680,7 @@
         "\u03a95"
       ]
     },
-    "tests/test_cortex_mamba_block.py": {
+    "tests/test_larsa_mamba_block.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -957,7 +957,7 @@
         "\u03a95"
       ]
     },
-    "babylon60/core/cortex_persist.py": {
+    "babylon60/core/larsa_persist.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -1703,7 +1703,7 @@
         "\u03a95"
       ]
     },
-    "babylon60/extensions/artist_cortex/artist_cortex.py": {
+    "babylon60/extensions/artist_larsa/artist_larsa.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -4807,7 +4807,7 @@
         "\u03a95"
       ]
     },
-    "babylon60/extensions/evolution/cortex_metrics.py": {
+    "babylon60/extensions/evolution/larsa_metrics.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -6189,7 +6189,7 @@
         "\u03a95"
       ]
     },
-    "scripts/bootstrap_cortex_memory.py": {
+    "scripts/bootstrap_larsa_memory.py": {
       "Preserves": [],
       "Violates": [],
       "Requires": [
@@ -6522,7 +6522,7 @@
         "\u03a92"
       ]
     },
-    "babylon60-ide/backend/services/cortex_ledger.py": {
+    "babylon60-ide/backend/services/larsa_ledger.py": {
       "Preserves": [
         "\u03a92",
         "\u03a94"

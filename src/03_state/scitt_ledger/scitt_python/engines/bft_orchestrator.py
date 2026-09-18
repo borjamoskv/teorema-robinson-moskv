@@ -29,7 +29,7 @@ _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
-from cortex_env import get_bft_key
+from larsa_env import get_bft_key
 
 # Import schema creation logic from scripts/00_init_ledger.py for deduplication
 try:
@@ -131,7 +131,7 @@ __all__ = [
 ]
 
 # DB Concurrency & Persist Configurations (R10)
-DB_PATH = ".cortex/cortex.db"
+DB_PATH = ".larsa/larsa.db"
 
 def init_bft_database() -> None:
     """Initializes SQLite Master Ledger with WAL, busy_timeout, and write protection triggers (R10, Ω11)."""

@@ -3,7 +3,7 @@
   "circular_dependencies": [],
   "hotspots": [
     {
-      "file": "cortex/llm_router.py",
+      "file": "larsa/llm_router.py",
       "score": 37,
       "complexity": 33,
       "fan_in": 2,
@@ -11,7 +11,7 @@
       "loc": 192
     },
     {
-      "file": "cortex/swarm/engine_fsm.py",
+      "file": "larsa/swarm/engine_fsm.py",
       "score": 34,
       "complexity": 18,
       "fan_in": 6,
@@ -19,7 +19,7 @@
       "loc": 133
     },
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "score": 31,
       "complexity": 28,
       "fan_in": 1,
@@ -59,7 +59,7 @@
       "loc": 289
     },
     {
-      "file": "cortex/mcts_vnode_compiler.py",
+      "file": "larsa/mcts_vnode_compiler.py",
       "score": 28,
       "complexity": 24,
       "fan_in": 2,
@@ -75,7 +75,7 @@
       "loc": 149
     },
     {
-      "file": "cortex/substack_subscriber_audit.py",
+      "file": "larsa/substack_subscriber_audit.py",
       "score": 23,
       "complexity": 17,
       "fan_in": 3,
@@ -83,7 +83,7 @@
       "loc": 246
     },
     {
-      "file": "scripts/cortex-omega-purge.py",
+      "file": "scripts/larsa-omega-purge.py",
       "score": 23,
       "complexity": 23,
       "fan_in": 0,
@@ -99,7 +99,7 @@
       "loc": 245
     },
     {
-      "file": "cortex/escohotado_chaos_engine.py",
+      "file": "larsa/escohotado_chaos_engine.py",
       "score": 22,
       "complexity": 20,
       "fan_in": 1,
@@ -123,7 +123,7 @@
       "loc": 171
     },
     {
-      "file": "cortex/babylon60/extensions/ide_agent/dual_context.py",
+      "file": "larsa/babylon60/extensions/ide_agent/dual_context.py",
       "score": 20,
       "complexity": 20,
       "fan_in": 0,
@@ -131,7 +131,7 @@
       "loc": 125
     },
     {
-      "file": "cortex/swarm/memory_store.py",
+      "file": "larsa/swarm/memory_store.py",
       "score": 19,
       "complexity": 7,
       "fan_in": 6,
@@ -147,7 +147,7 @@
       "loc": 690
     },
     {
-      "file": "cortex/swarm/architect_agent.py",
+      "file": "larsa/swarm/architect_agent.py",
       "score": 18,
       "complexity": 13,
       "fan_in": 2,
@@ -155,7 +155,7 @@
       "loc": 113
     },
     {
-      "file": "cortex/claude_bridge.py",
+      "file": "larsa/claude_bridge.py",
       "score": 17,
       "complexity": 15,
       "fan_in": 1,
@@ -165,7 +165,7 @@
   ],
   "top_50_complex": [
     {
-      "file": "cortex/llm_router.py",
+      "file": "larsa/llm_router.py",
       "complexity": 33
     },
     {
@@ -185,7 +185,7 @@
       "complexity": 30
     },
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "complexity": 28
     },
     {
@@ -193,11 +193,11 @@
       "complexity": 25
     },
     {
-      "file": "cortex/mcts_vnode_compiler.py",
+      "file": "larsa/mcts_vnode_compiler.py",
       "complexity": 24
     },
     {
-      "file": "scripts/cortex-omega-purge.py",
+      "file": "scripts/larsa-omega-purge.py",
       "complexity": 23
     },
     {
@@ -213,11 +213,11 @@
       "complexity": 21
     },
     {
-      "file": "cortex/escohotado_chaos_engine.py",
+      "file": "larsa/escohotado_chaos_engine.py",
       "complexity": 20
     },
     {
-      "file": "cortex/babylon60/extensions/ide_agent/dual_context.py",
+      "file": "larsa/babylon60/extensions/ide_agent/dual_context.py",
       "complexity": 20
     },
     {
@@ -225,11 +225,11 @@
       "complexity": 19
     },
     {
-      "file": "cortex/swarm/engine_fsm.py",
+      "file": "larsa/swarm/engine_fsm.py",
       "complexity": 18
     },
     {
-      "file": "cortex/substack_subscriber_audit.py",
+      "file": "larsa/substack_subscriber_audit.py",
       "complexity": 17
     },
     {
@@ -237,11 +237,11 @@
       "complexity": 16
     },
     {
-      "file": "cortex/claude_bridge.py",
+      "file": "larsa/claude_bridge.py",
       "complexity": 15
     },
     {
-      "file": "cortex/escohotado_cli.py",
+      "file": "larsa/escohotado_cli.py",
       "complexity": 15
     },
     {
@@ -257,7 +257,7 @@
       "complexity": 15
     },
     {
-      "file": "cortex/laboratory/tercer_experimento_c5/03_codigo.py",
+      "file": "larsa/laboratory/tercer_experimento_c5/03_codigo.py",
       "complexity": 14
     },
     {
@@ -273,7 +273,7 @@
       "complexity": 13
     },
     {
-      "file": "cortex/swarm/architect_agent.py",
+      "file": "larsa/swarm/architect_agent.py",
       "complexity": 13
     },
     {
@@ -281,7 +281,7 @@
       "complexity": 13
     },
     {
-      "file": "scripts/52_legion_purge.py",
+      "file": "scripts/52_edin_purge.py",
       "complexity": 13
     },
     {
@@ -289,15 +289,15 @@
       "complexity": 13
     },
     {
-      "file": "cortex/github_webhook_daemon.py",
+      "file": "larsa/github_webhook_daemon.py",
       "complexity": 12
     },
     {
-      "file": "cortex/invariant_sentinel.py",
+      "file": "larsa/invariant_sentinel.py",
       "complexity": 12
     },
     {
-      "file": "cortex/substack_publisher_tool.py",
+      "file": "larsa/substack_publisher_tool.py",
       "complexity": 12
     },
     {
@@ -309,7 +309,7 @@
       "complexity": 12
     },
     {
-      "file": "cortex/babylon60/neuromorphic_primitives.py",
+      "file": "larsa/babylon60/neuromorphic_primitives.py",
       "complexity": 11
     },
     {
@@ -329,23 +329,23 @@
       "complexity": 11
     },
     {
-      "file": "cortex/active_inference_engine.py",
+      "file": "larsa/active_inference_engine.py",
       "complexity": 10
     },
     {
-      "file": "cortex/vibe_ide_engine.py",
+      "file": "larsa/vibe_ide_engine.py",
       "complexity": 10
     },
     {
-      "file": "cortex/escohotado_substance_ontology.py",
+      "file": "larsa/escohotado_substance_ontology.py",
       "complexity": 9
     },
     {
-      "file": "cortex/swarm/sanitizer.py",
+      "file": "larsa/swarm/sanitizer.py",
       "complexity": 9
     },
     {
-      "file": "cortex/swarm/cli.py",
+      "file": "larsa/swarm/cli.py",
       "complexity": 9
     },
     {
@@ -361,7 +361,7 @@
       "complexity": 9
     },
     {
-      "file": "cortex/deliverability_validator.py",
+      "file": "larsa/deliverability_validator.py",
       "complexity": 8
     }
   ],
@@ -375,11 +375,11 @@
       "loc": 395
     },
     {
-      "file": "cortex/bft_orchestrator.py",
+      "file": "larsa/bft_orchestrator.py",
       "loc": 332
     },
     {
-      "file": "cortex/mcts_vnode_compiler.py",
+      "file": "larsa/mcts_vnode_compiler.py",
       "loc": 307
     },
     {
@@ -387,7 +387,7 @@
       "loc": 289
     },
     {
-      "file": "cortex/mcts_vnode_compiler_test.py",
+      "file": "larsa/mcts_vnode_compiler_test.py",
       "loc": 257
     },
     {
@@ -395,7 +395,7 @@
       "loc": 252
     },
     {
-      "file": "cortex/substack_subscriber_audit.py",
+      "file": "larsa/substack_subscriber_audit.py",
       "loc": 246
     },
     {
@@ -423,7 +423,7 @@
       "loc": 211
     },
     {
-      "file": "cortex/github_webhook_daemon_test.py",
+      "file": "larsa/github_webhook_daemon_test.py",
       "loc": 207
     },
     {
@@ -431,7 +431,7 @@
       "loc": 199
     },
     {
-      "file": "cortex/llm_router.py",
+      "file": "larsa/llm_router.py",
       "loc": 192
     },
     {
@@ -443,11 +443,11 @@
       "loc": 189
     },
     {
-      "file": "cortex/babylon60/neuromorphic_primitives.py",
+      "file": "larsa/babylon60/neuromorphic_primitives.py",
       "loc": 188
     },
     {
-      "file": "scripts/52_legion_purge.py",
+      "file": "scripts/52_edin_purge.py",
       "loc": 186
     },
     {
@@ -455,7 +455,7 @@
       "loc": 176
     },
     {
-      "file": "cortex/escohotado_chaos_engine.py",
+      "file": "larsa/escohotado_chaos_engine.py",
       "loc": 175
     },
     {
@@ -479,7 +479,7 @@
       "loc": 158
     },
     {
-      "file": "scripts/cortex-omega-purge.py",
+      "file": "scripts/larsa-omega-purge.py",
       "loc": 157
     },
     {
@@ -487,47 +487,47 @@
       "loc": 149
     },
     {
-      "file": "cortex/swarm/memory_store.py",
+      "file": "larsa/swarm/memory_store.py",
       "loc": 147
     },
     {
-      "file": "cortex/github_webhook_daemon.py",
+      "file": "larsa/github_webhook_daemon.py",
       "loc": 143
     },
     {
-      "file": "cortex/substack_publisher_tool.py",
+      "file": "larsa/substack_publisher_tool.py",
       "loc": 135
     },
     {
-      "file": "cortex/escohotado_market_prohibition_engine.py",
+      "file": "larsa/escohotado_market_prohibition_engine.py",
       "loc": 134
     },
     {
-      "file": "cortex/swarm/engine_fsm.py",
+      "file": "larsa/swarm/engine_fsm.py",
       "loc": 133
     },
     {
-      "file": "cortex/escohotado_substance_ontology.py",
+      "file": "larsa/escohotado_substance_ontology.py",
       "loc": 131
     },
     {
-      "file": "cortex/bft_orchestrator_test.py",
+      "file": "larsa/bft_orchestrator_test.py",
       "loc": 130
     },
     {
-      "file": "cortex/substack_preview_server.py",
+      "file": "larsa/substack_preview_server.py",
       "loc": 130
     },
     {
-      "file": "cortex/claude_bridge.py",
+      "file": "larsa/claude_bridge.py",
       "loc": 128
     },
     {
-      "file": "cortex/escohotado_cli.py",
+      "file": "larsa/escohotado_cli.py",
       "loc": 127
     },
     {
-      "file": "cortex/babylon60/extensions/ide_agent/dual_context.py",
+      "file": "larsa/babylon60/extensions/ide_agent/dual_context.py",
       "loc": 125
     },
     {
@@ -543,7 +543,7 @@
       "loc": 120
     },
     {
-      "file": "cortex/vibe_ide_engine.py",
+      "file": "larsa/vibe_ide_engine.py",
       "loc": 116
     },
     {
@@ -551,11 +551,11 @@
       "loc": 116
     },
     {
-      "file": "cortex/swarm/architect_agent.py",
+      "file": "larsa/swarm/architect_agent.py",
       "loc": 113
     },
     {
-      "file": "cortex/laboratory/tercer_experimento_c5/03_codigo.py",
+      "file": "larsa/laboratory/tercer_experimento_c5/03_codigo.py",
       "loc": 110
     },
     {
@@ -563,7 +563,7 @@
       "loc": 108
     },
     {
-      "file": "cortex/substack_subscriber_audit_test.py",
+      "file": "larsa/substack_subscriber_audit_test.py",
       "loc": 107
     }
   ]

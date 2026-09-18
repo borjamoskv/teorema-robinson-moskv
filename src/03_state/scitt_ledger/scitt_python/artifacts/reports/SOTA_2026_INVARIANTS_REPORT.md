@@ -24,5 +24,5 @@ Proof:
 
 ## 2. RECURSOS Y ARTEFACTOS CRISTALIZADOS
 
-- **Matriz de Invariantes**: [sota_2026_invariants_subagent.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/sota_2026_invariants_subagent.yaml)
+- **Matriz de Invariantes**: [sota_2026_invariants_subagent.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/sota_2026_invariants_subagent.yaml)
 - **Subagente de Origen**: `84cc4ff9-9b30-4001-975e-36b5ed950bc3`

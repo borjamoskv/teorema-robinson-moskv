@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX CLAUDE CODE BRIDGE (C5-REAL)
+larsa CLAUDE CODE BRIDGE (C5-REAL)
 Puente Causal e Isomórfico entre MOSKV-1 APEX (Antigravity) y Claude Code CLI.
 Soporta Consenso BFT Multi-Kernel (Ω1b), Fallback por Cuota (Ω27) e IPC Estructurado (Ω45).
 """

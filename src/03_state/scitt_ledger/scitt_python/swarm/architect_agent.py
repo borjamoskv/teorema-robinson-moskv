@@ -40,7 +40,7 @@ class CyclomaticComplexityVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
 class ArchitectAgent:
-    def __init__(self, target_dir: str = "cortex") -> None:
+    def __init__(self, target_dir: str = "larsa") -> None:
         self.memory = AgentMemory()
         self.target_dir = target_dir
 

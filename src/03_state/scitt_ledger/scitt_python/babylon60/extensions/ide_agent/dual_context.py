@@ -43,7 +43,7 @@ class DualContextAgent:
                 os.environ["LARSA_IPC_SOCKET"] = socket_env
 
         if not socket_env:
-            socket_env = "/tmp/cortex_ipc.sock"
+            socket_env = "/tmp/larsa_ipc.sock"
             os.environ["LARSA_IPC_SOCKET"] = socket_env
             logging.info(f"[C5-REAL] LARSA_IPC_SOCKET asignado por defecto a {socket_env}")
 

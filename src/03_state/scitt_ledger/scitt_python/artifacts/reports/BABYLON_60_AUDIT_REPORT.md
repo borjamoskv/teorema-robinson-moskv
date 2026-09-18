@@ -22,7 +22,7 @@ La pila tecnológica de BABYLON-60 se compone de cuatro subsistemas heterogéneo
 
 **B. Capa de API y Ruteo Local (FastAPI + Python):**
 - **FastAPI Backend:** Expone endpoints para el control de la memoria agéntica, taxonomía, telemetría y ejecución de inferencia en local.
-- **CortexLedger:** Motor local de persistencia basado en SQLite con journal_mode=WAL y busy_timeout=5000ms.
+- **larsaLedger:** Motor local de persistencia basado en SQLite con journal_mode=WAL y busy_timeout=5000ms.
 
 **C. Capa de Verificación Causal y Lógica (strike_rs en Rust):**
 - **Poset Causal (`TaintEngine`):** Construye el Grafo Dirigido Acíclico (DAG) de dependencias causales. Realiza el hashing BLAKE3 de las transmutaciones siguiendo un ordenamiento topológico estricto.
@@ -52,7 +52,7 @@ A nivel macro, el acoplamiento sigue una estructura acíclica de DAG (Direct Acy
 
 **A. Relaciones de Importación:**
 - `babylon60-ide/frontend` → Consume la API expuesta por `babylon60-ide/backend`.
-- `babylon60-ide/backend` → Carga `babylon60` core python y llama dinámicamente a `core_graph_ledger` y `cortex_mamba_network`.
+- `babylon60-ide/backend` → Carga `babylon60` core python y llama dinámicamente a `core_graph_ledger` y `larsa_mamba_network`.
 - `babylon60` core → Llama a `causal_isomorphism` para validar la transducción y usa `BFT_Ledger` para transacciones.
 - `BFT_Ledger` → Llama a `strike_rs` a través de bindings compilados para calcular el cortex-taint y la inmutabilidad de los bloques.
 - `strike_rs` → No tiene dependencias de capas superiores. Actúa como el sumidero de exergía absoluto y el kernel matemático inmutable.
@@ -67,7 +67,7 @@ A nivel macro, el acoplamiento sigue una estructura acíclica de DAG (Direct Acy
 - **DRY (Don't Repeat Yourself):** Se detecta anergía estructural en los scripts generadores de código (`10_codegen_constants.py` a `18_codegen_kimi.py`) que repiten plantillas de interpolación.
 
 **B. Arquitectura de Agentes y Memoria:**
-- **Hipocampo Local:** Implementa una red de atención Mamba recurrente (`cortex_ssm_mamba_core.py`) que corre a nivel de silicio de forma local (Ollama/MLX).
+- **Hipocampo Local:** Implementa una red de atención Mamba recurrente (`larsa_ssm_mamba_core.py`) que corre a nivel de silicio de forma local (Ollama/MLX).
 - **Body-Doubling Asíncrono:** Tauri implementa un cursor periférico (Body-Doubling) e interfaces de audio (CoreAudio DSP) que reaccionan acústicamente ante excepciones lógicas o bloqueos del programador, reduciendo la fatiga atencional.
 
 ---
@@ -162,7 +162,7 @@ graph TD
         Omega0[Omega0 Harrop Logic Kernel]
     end
     subgraph DB [Persistencia Local]
-        SQLite[SQLite WAL / cortex.db]
+        SQLite[SQLite WAL / larsa.db]
     end
 
     User -->|Modificaciones & Eventos AST| MV3
@@ -176,8 +176,8 @@ graph TD
     BFTLedgerActor -->|Atomic Writes WAL| SQLite
 ```
 
-⚡ [CORTEX C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
+⚡ [larsa C5-REAL] Sinergias de Exergía Máxima (Top 99.99):
 - [Un hombre blanco y heterosexual](https://substack.com/home/post/p-204785962)
-- [Ingeniería Inversa de BABYLON-60: Auditoría Forense de la Memoria Agéntica](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/artifacts/reports/BABYLON_60_AUDIT_REPORT.md)
+- [Ingeniería Inversa de BABYLON-60: Auditoría Forense de la Memoria Agéntica](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/artifacts/reports/BABYLON_60_AUDIT_REPORT.md)
 - [El Fragmento Hereditario Harrop y la Guillotina de Hume en Sistemas Inteligentes]
 - [Causal Poset y Kahn Invariant: Prevención de Bucles Cíclicos en Rust]

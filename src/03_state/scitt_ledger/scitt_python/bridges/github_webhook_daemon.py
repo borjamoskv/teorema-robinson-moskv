@@ -11,21 +11,21 @@ import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 # C5-REAL Invariant: Zero External Dependencies for perception.
-CORTEX_DB_PATH = ".cortex/cortex.db"
-SECRET_KEY = os.environ.get("CORTEX_GITHUB_SECRET")
-TRIGGER_PATH = ".cortex/.trigger_swarm"
+larsa_DB_PATH = ".larsa/larsa.db"
+SECRET_KEY = os.environ.get("larsa_GITHUB_SECRET")
+TRIGGER_PATH = ".larsa/.trigger_swarm"
 
 def get_secret_key() -> str:
-    key = os.environ.get("CORTEX_GITHUB_SECRET") or SECRET_KEY
+    key = os.environ.get("larsa_GITHUB_SECRET") or SECRET_KEY
     if not key:
-        raise RuntimeError("CORTEX_GITHUB_SECRET env var is required (Ω25).")
+        raise RuntimeError("larsa_GITHUB_SECRET env var is required (Ω25).")
     return key
 
 def init_perception_ledger() -> None:
-    if not os.path.exists(".cortex"):
-        os.makedirs(".cortex", exist_ok=True)
+    if not os.path.exists(".larsa"):
+        os.makedirs(".larsa", exist_ok=True)
 
-    conn = sqlite3.connect(CORTEX_DB_PATH, timeout=5.0)
+    conn = sqlite3.connect(larsa_DB_PATH, timeout=5.0)
     cursor = conn.cursor()
     cursor.execute("PRAGMA journal_mode = WAL;")
     cursor.execute("PRAGMA busy_timeout = 5000;")
@@ -44,7 +44,7 @@ def init_perception_ledger() -> None:
     conn.close()
 
 def log_event(event_type: str, payload_bytes: bytes) -> bool:
-    conn = sqlite3.connect(CORTEX_DB_PATH, timeout=5.0)
+    conn = sqlite3.connect(larsa_DB_PATH, timeout=5.0)
     cursor = conn.cursor()
 
     cursor.execute("SELECT MAX(lamport_t) FROM github_events")

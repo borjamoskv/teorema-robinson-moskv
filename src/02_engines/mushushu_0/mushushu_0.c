@@ -9,8 +9,8 @@
 // If condition is false (0), the OS kernel murders the process.
 void bft_assert(int condition, const char* constraint_name) {
     if (!condition) {
-        fprintf(stderr, "\n[CORTEX-GUARD: FATAL] Invariant Violated: %s\n", constraint_name);
-        fprintf(stderr, "[CORTEX-GUARD: FATAL] Escalamiento BFT. Detonando SIGABRT (Core Dump)...\n\n");
+        fprintf(stderr, "\n[larsa-GUARD: FATAL] Invariant Violated: %s\n", constraint_name);
+        fprintf(stderr, "[larsa-GUARD: FATAL] Escalamiento BFT. Detonando SIGABRT (Core Dump)...\n\n");
         fflush(stderr);
         abort(); // Invocación POSIX. Intérprete Python aniquilado.
     }

@@ -23,7 +23,7 @@ IGNORE_DIRS: Set[str] = {
     "target",
     ".mypy_cache",
     ".ruff_cache",
-    ".cortex",
+    ".larsa",
     "scratch",
     ".scratch",
     ".agents",

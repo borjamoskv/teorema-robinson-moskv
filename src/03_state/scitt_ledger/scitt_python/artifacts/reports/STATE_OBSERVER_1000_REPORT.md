@@ -54,13 +54,13 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 ## 2. Archivos Cristalizados en C5-REAL
 
-1. [state_observer_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/ontology/state_observer_1000_taxonomy.yaml): Especificación ontológica canónica.
+1. [state_observer_1000_taxonomy.yaml](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/ontology/state_observer_1000_taxonomy.yaml): Especificación ontológica canónica.
 2. [generate_state_observer.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/scripts/generate_state_observer.py): Generador determinista de transductores.
 3. [state_observer.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/state_observer.go): Kernel transductor en Go de alta velocidad.
 4. [state_observer_test.go](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/primitives/state_observer_test.go): Suite de pruebas unitarias Go (100% Cobertura).
 5. [state_observer.rs](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/src-tauri/src/state_observer.rs): Kernel transductor en Rust para Tauri UI.
-6. [state_observer.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/state_observer.py): Simulador matricial en Python.
-7. [state_observer_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/cortex/state_observer_test.py): Suite de pruebas unitarias Python.
+6. [state_observer.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/state_observer.py): Simulador matricial en Python.
+7. [state_observer_test.py](file:///Users/borjafernandezangulo/borjamoskv/Teorema-Robinson-Moskv/larsa/state_observer_test.py): Suite de pruebas unitarias Python.
 
 ---
 
@@ -68,5 +68,5 @@ Code = D \times 100 + P \times 10 + M, \quad D, P, M \in \{0, \dots, 9\}
 
 - **Go Test Suite (`go test ./primitives -v -run TestStateObserverKernelCoverage`)**:
   `PASS: 1000/1000 Primitives Executed (NormError: 0.199010, Wall Time: 0.462s)`
-- **Python Test Suite (`python3 -m unittest cortex/state_observer_test.py`)**:
+- **Python Test Suite (`python3 -m unittest larsa/state_observer_test.py`)**:
   `PASS: 1000/1000 Primitives Executed (NormError: 0.199010, Wall Time: 0.002s)`

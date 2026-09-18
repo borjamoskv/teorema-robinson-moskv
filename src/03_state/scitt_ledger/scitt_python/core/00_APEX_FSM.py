@@ -57,7 +57,7 @@ class ApexFiniteStateMachine:
                         INSERT OR IGNORE INTO master_ledger
                         (event_id, stream, payload_json, cortex_taint, lamport_t, entry_hash, created_at)
                         VALUES (?, ?, ?, ?, ?, ?, ?)
-                    """, (str(uuid.uuid4()), "cortex.apex", payload, taint, 1, entry_hash, datetime.now(timezone.utc).isoformat()))
+                    """, (str(uuid.uuid4()), "larsa.apex", payload, taint, 1, entry_hash, datetime.now(timezone.utc).isoformat()))
                     conn.commit()
 
                 print(f"[✅ C5-REAL] Estado consolidado localmente en L1. Hash: {entry_hash[:16]}. Cero fricción de red.")

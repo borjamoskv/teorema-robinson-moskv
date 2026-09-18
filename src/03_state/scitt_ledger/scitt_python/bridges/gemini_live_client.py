@@ -16,7 +16,7 @@ import os
 import time
 from typing import Dict, Optional
 
-logger = logging.getLogger("cortex.gemini_live")
+logger = logging.getLogger("larsa.gemini_live")
 
 # Standard Audio Specifications
 INPUT_SAMPLE_RATE_HZ = 16000

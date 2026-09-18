@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX-OS v4.0 Cognitive Operating System Package.
+larsa-OS v4.0 Cognitive Operating System Package.
 """
 
 from scitt_python.os.kernel import LarsaMicrokernel

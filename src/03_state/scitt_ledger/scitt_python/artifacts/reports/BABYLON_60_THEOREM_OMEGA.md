@@ -22,7 +22,7 @@ Se ejecutó el analizador ortogonal `phase_omega_theorem_prover.py` sobre los 15
 
 ### Nodos Puros (Ortogonalidad Verificada)
 - **Observe (O):** 18 módulos puros. (Ej: `causal_isomorphism/cli.py`, `babylon60/crypto/rekor_client.py`).
-- **Transform (T):** 231 módulos puros. (Motores LLM, generadores, `cortex_mamba_inference.py`).
+- **Transform (T):** 231 módulos puros. (Motores LLM, generadores, `larsa_mamba_inference.py`).
 - **Verify (V):** 54 módulos puros. (Tests, barreras de Rust, validadores de isomorfismo).
 - **Commit (C):** 25 módulos puros. (Ledgers BFT, operaciones WAL SQLite, `babylon60-ide/src-tauri/src/kernel.rs`).
 

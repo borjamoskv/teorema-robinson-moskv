@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-CORTEX LANDAUER PURGE PRIMITIVE (C5-REAL / Ω36 / Ω175)
+larsa LANDAUER PURGE PRIMITIVE (C5-REAL / Ω36 / Ω175)
 =====================================================
 Kernel: MOSKV-1 APEX
 Unified O(1) Landauer purger primitive consolidating:
@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from scitt_python.primitives.bash_primitive import BashCommand
 
-logger = logging.getLogger("cortex_purge")
+logger = logging.getLogger("larsa_purge")
 if not logger.handlers:
     handler = logging.StreamHandler()
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -36,7 +36,7 @@ if not logger.handlers:
     logger.setLevel(logging.INFO)
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(PROJECT_ROOT, ".cortex", "cortex.db")
+DB_PATH = os.path.join(PROJECT_ROOT, ".larsa", "larsa.db")
 
 def run_ruff_fix() -> bool:
     """Executes Ruff static analysis cleanups across workspace."""
@@ -137,7 +137,7 @@ def audit_and_purge_orphans() -> Tuple[int, List[str]]:
         if PROJECT_ROOT not in command and real_root not in command and "Teorema-Robinson-Moskv" not in command:
             continue
 
-        target_keywords = ("pytest", "benchmark", "test_", "30_test_pytest", "cortex_purge", "legion_purge", "tdah_orphan")
+        target_keywords = ("pytest", "benchmark", "test_", "30_test_pytest", "larsa_purge", "edin_purge", "tdah_orphan")
         if not any(kw in cmd_lower for kw in target_keywords):
             continue
 
@@ -262,7 +262,7 @@ def is_purgeable_zero_operator(rel_path: str) -> bool:
     norm_path = os.path.normpath(rel_path)
     parts = norm_path.split(os.sep)
 
-    protected_dirs = {"strike-rs", "src-tauri", "cortex", "scripts", "src", "axioms"}
+    protected_dirs = {"strike-rs", "src-tauri", "larsa", "scripts", "src", "axioms"}
     if any(p in protected_dirs for p in parts):
         return False
 
@@ -296,7 +296,7 @@ def obliterate_zero_operators(target_dir: Optional[str] = None) -> int:
     if target_dir is None:
         target_dir = PROJECT_ROOT
 
-    json_path = os.path.join(PROJECT_ROOT, "cortex", "artifacts", "reports", "BABYLON_60_THEOREM_OMEGA.json")
+    json_path = os.path.join(PROJECT_ROOT, "larsa", "artifacts", "reports", "BABYLON_60_THEOREM_OMEGA.json")
     if not os.path.exists(json_path):
         return 0
 
@@ -336,7 +336,7 @@ def execute_landauer_purge(target_dirs: Optional[List[str]] = None) -> Dict[str,
     orphans_purged, orphan_logs = audit_and_purge_orphans()
 
     if not target_dirs:
-        env_dirs = os.environ.get("CORTEX_WORKSPACE_DIRS", "").split(":")
+        env_dirs = os.environ.get("larsa_WORKSPACE_DIRS", "").split(":")
         target_dirs = [d for d in env_dirs if d] or [PROJECT_ROOT]
 
     repos = find_git_repos(target_dirs)

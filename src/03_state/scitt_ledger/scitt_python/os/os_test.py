@@ -1,6 +1,6 @@
 # C5-REAL EXERGY CERTIFIED
 """
-Unit test suite for CORTEX-OS v4.0 Microkernel Runtime.
+Unit test suite for larsa-OS v4.0 Microkernel Runtime.
 """
 
 from scitt_python.os.kernel import LarsaMicrokernel
@@ -8,7 +8,7 @@ from scitt_python.os.memory import MemoryTier
 from scitt_python.os.scheduler import CognitiveScheduler, ProcessTask
 from scitt_python.os.syscalls import SyscallRequest, SyscallType
 
-def test_cortex_microkernel_spawn_and_syscalls() -> None:
+def test_larsa_microkernel_spawn_and_syscalls() -> None:
     kernel = LarsaMicrokernel()
     pid = kernel.spawn_process("AuditorAgent", capabilities={"Syscall_OBSERVE", "Syscall_VERIFY", "Syscall_AUDIT"})
     assert pid == 1000

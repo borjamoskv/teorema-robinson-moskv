@@ -3,12 +3,12 @@ import sys
 from guard import enforce_invariant
 
 def main():
-    print("[CORTEX] Testeando BFT Vanguard Guard...")
-    print("[CORTEX] Comprobando invariante válido...")
+    print("[larsa] Testeando BFT Vanguard Guard...")
+    print("[larsa] Comprobando invariante válido...")
     enforce_invariant(True, "VALID_STATE")
     print("[PASS] Invariante válido sobrevivió.")
 
-    print("[CORTEX] Simulando colapso de invariante estructural...")
+    print("[larsa] Simulando colapso de invariante estructural...")
     # This will trigger abort() and crash the process
     enforce_invariant(False, "STOCHASTIC_HALLUCINATION_DETECTED")
 

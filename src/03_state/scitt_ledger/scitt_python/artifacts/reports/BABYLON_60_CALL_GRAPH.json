@@ -19,7 +19,7 @@
       "f.readlines"
     ]
   },
-  "cortex/observer.py": {
+  "larsa/observer.py": {
     "functions": {
       "__init__": [
         "range"
@@ -38,7 +38,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/haskell_test.py": {
+  "larsa/haskell_test.py": {
     "functions": {
       "test_haskell_coverage": [
         "HaskellStateVector",
@@ -52,7 +52,7 @@
       "unittest.main"
     ]
   },
-  "cortex/bft_orchestrator_test.py": {
+  "larsa/bft_orchestrator_test.py": {
     "functions": {
       "setUp": [
         "BFTOrchestrator",
@@ -111,7 +111,7 @@
       "unittest.main"
     ]
   },
-  "cortex/deliverability_validator.py": {
+  "larsa/deliverability_validator.py": {
     "functions": {
       "validate_syntax": [
         "EMAIL_REGEX.match",
@@ -140,7 +140,7 @@
       "re.compile"
     ]
   },
-  "cortex/noether.py": {
+  "larsa/noether.py": {
     "functions": {
       "resolve_noether_identity": [
         "ValueError"
@@ -155,7 +155,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/neuro_chain_test.py": {
+  "larsa/neuro_chain_test.py": {
     "functions": {
       "test_neuro_coverage": [
         "CognitiveChainVector",
@@ -169,7 +169,7 @@
       "unittest.main"
     ]
   },
-  "cortex/neuro_chain.py": {
+  "larsa/neuro_chain.py": {
     "functions": {
       "resolve_neuro_identity": [
         "ValueError"
@@ -187,7 +187,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/noether_test.py": {
+  "larsa/noether_test.py": {
     "functions": {
       "test_noether_coverage": [
         "NoetherStateVector",
@@ -201,7 +201,7 @@
       "unittest.main"
     ]
   },
-  "cortex/escohotado_chaos_engine_test.py": {
+  "larsa/escohotado_chaos_engine_test.py": {
     "functions": {
       "test_entropy_computation": [
         "range",
@@ -228,7 +228,7 @@
       "resolve"
     ]
   },
-  "cortex/playwright.py": {
+  "larsa/playwright.py": {
     "functions": {
       "resolve_playwright_identity": [
         "ValueError"
@@ -245,7 +245,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/cognitive_state_observer.py": {
+  "larsa/cognitive_state_observer.py": {
     "functions": {
       "potential_energy": [
         "range",
@@ -276,7 +276,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/mcts_vnode_compiler_test.py": {
+  "larsa/mcts_vnode_compiler_test.py": {
     "functions": {
       "test_empty_bytes_returns_zero": [
         "calculate_shannon_entropy"
@@ -340,7 +340,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/post_substack_all_publications_test.py": {
+  "larsa/post_substack_all_publications_test.py": {
     "functions": {
       "test_substack_publication_formatting_invariants": [
         "open",
@@ -354,7 +354,7 @@
       "resolve"
     ]
   },
-  "cortex/substack_publisher_tool_test.py": {
+  "larsa/substack_publisher_tool_test.py": {
     "functions": {
       "test_format_signature_block": [
         "sig.count",
@@ -372,7 +372,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/llm_router.py": {
+  "larsa/llm_router.py": {
     "functions": {
       "parse_yaml_routes": [
         "routes.append",
@@ -436,7 +436,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/github_webhook_daemon_test.py": {
+  "larsa/github_webhook_daemon_test.py": {
     "functions": {
       "get": [
         "get",
@@ -538,7 +538,7 @@
       "setdefault"
     ]
   },
-  "cortex/fsharp_kernel_test.py": {
+  "larsa/fsharp_kernel_test.py": {
     "functions": {
       "test_fsharp_kernel_compilation_and_ontology": [
         "subprocess.run",
@@ -550,7 +550,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/escohotado_chaos_engine.py": {
+  "larsa/escohotado_chaos_engine.py": {
     "functions": {
       "init_db": [
         "dirname",
@@ -602,7 +602,7 @@
       "resolve"
     ]
   },
-  "cortex/escohotado_dashboard_test.py": {
+  "larsa/escohotado_dashboard_test.py": {
     "functions": {
       "test_dashboard_file_integrity": [
         "open",
@@ -616,7 +616,7 @@
       "resolve"
     ]
   },
-  "cortex/github_webhook_daemon.py": {
+  "larsa/github_webhook_daemon.py": {
     "functions": {
       "init_perception_ledger": [
         "conn.close",
@@ -671,7 +671,7 @@
       "run_daemon"
     ]
   },
-  "cortex/tts_harness.py": {
+  "larsa/tts_harness.py": {
     "functions": {
       "resolve_tts_identity": [
         "ValueError"
@@ -686,7 +686,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/invariant_sentinel.py": {
+  "larsa/invariant_sentinel.py": {
     "functions": {
       "get_current_branch": [
         "subprocess.check_output",
@@ -711,7 +711,7 @@
       "audit_and_align_invariants"
     ]
   },
-  "cortex/escohotado_market_prohibition_engine.py": {
+  "larsa/escohotado_market_prohibition_engine.py": {
     "functions": {
       "init_db": [
         "dirname",
@@ -749,7 +749,7 @@
       "resolve"
     ]
   },
-  "cortex/llm_router_test.py": {
+  "larsa/llm_router_test.py": {
     "functions": {
       "test_parse_yaml_routes": [
         "parse_yaml_routes",
@@ -772,7 +772,7 @@
       "unittest.main"
     ]
   },
-  "cortex/substack_preview_server_test.py": {
+  "larsa/substack_preview_server_test.py": {
     "functions": {
       "test_render_post_html_valid_file": [
         "render_post_html"
@@ -786,7 +786,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/deliverability_validator_test.py": {
+  "larsa/deliverability_validator_test.py": {
     "functions": {
       "test_valid_syntax": [
         "DeliverabilityValidator.validate_syntax",
@@ -808,7 +808,7 @@
       "unittest.main"
     ]
   },
-  "cortex/active_inference_engine.py": {
+  "larsa/active_inference_engine.py": {
     "functions": {
       "__init__": [
         "TTSHarnessState",
@@ -828,7 +828,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/post_substack_escohotado_test.py": {
+  "larsa/post_substack_escohotado_test.py": {
     "functions": {
       "test_substack_post_formatting_invariants": [
         "open",
@@ -842,7 +842,7 @@
       "resolve"
     ]
   },
-  "cortex/post_substack_archive_catalog_test.py": {
+  "larsa/post_substack_archive_catalog_test.py": {
     "functions": {
       "get_archive_files": [
         "ARCHIVE_DIR.exists",
@@ -866,7 +866,7 @@
       "resolve"
     ]
   },
-  "cortex/kimi_test.py": {
+  "larsa/kimi_test.py": {
     "functions": {
       "test_kimi_coverage": [
         "dispatch_kimi",
@@ -880,7 +880,7 @@
       "unittest.main"
     ]
   },
-  "cortex/playwright_test.py": {
+  "larsa/playwright_test.py": {
     "functions": {
       "test_playwright_coverage": [
         "self.assertEqual",
@@ -894,7 +894,7 @@
       "unittest.main"
     ]
   },
-  "cortex/fundamental_constants.py": {
+  "larsa/fundamental_constants.py": {
     "functions": {
       "resolve_constants_identity": [
         "ValueError"
@@ -911,7 +911,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/substack_preview_server.py": {
+  "larsa/substack_preview_server.py": {
     "functions": {
       "render_post_html": [
         "open",
@@ -951,7 +951,7 @@
       "resolve"
     ]
   },
-  "cortex/substack_subscriber_audit_test.py": {
+  "larsa/substack_subscriber_audit_test.py": {
     "functions": {
       "setUp": [
         "csv.writer",
@@ -994,7 +994,7 @@
       "unittest.main"
     ]
   },
-  "cortex/kimi.py": {
+  "larsa/kimi.py": {
     "functions": {
       "resolve_kimi_identity": [
         "ValueError"
@@ -1011,7 +1011,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/escohotado_substance_ontology.py": {
+  "larsa/escohotado_substance_ontology.py": {
     "functions": {
       "init_db": [
         "dirname",
@@ -1049,7 +1049,7 @@
       "resolve"
     ]
   },
-  "cortex/escohotado_cli_test.py": {
+  "larsa/escohotado_cli_test.py": {
     "functions": {
       "test_cli_ledger_queries": [
         "query_substance_db",
@@ -1060,7 +1060,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/observer_test.py": {
+  "larsa/observer_test.py": {
     "functions": {
       "test_observer_coverage": [
         "StateVector",
@@ -1074,7 +1074,7 @@
       "unittest.main"
     ]
   },
-  "cortex/tts_harness_test.py": {
+  "larsa/tts_harness_test.py": {
     "functions": {
       "test_tts_coverage": [
         "TTSHarnessState",
@@ -1088,7 +1088,7 @@
       "unittest.main"
     ]
   },
-  "cortex/substack_subscriber_audit.py": {
+  "larsa/substack_subscriber_audit.py": {
     "functions": {
       "from_row": [
         "row.get",
@@ -1148,7 +1148,7 @@
       "field"
     ]
   },
-  "cortex/escohotado_substance_ontology_test.py": {
+  "larsa/escohotado_substance_ontology_test.py": {
     "functions": {
       "test_substance_state_monism": [
         "compute_substance_state"
@@ -1171,7 +1171,7 @@
       "resolve"
     ]
   },
-  "cortex/vibe_ide_engine_test.py": {
+  "larsa/vibe_ide_engine_test.py": {
     "functions": {
       "test_vibe_ide_normal_flow": [
         "engine.process_intent",
@@ -1199,7 +1199,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/escohotado_cli.py": {
+  "larsa/escohotado_cli.py": {
     "functions": {
       "query_chaos_db": [
         "conn.close",
@@ -1246,7 +1246,7 @@
       "main"
     ]
   },
-  "cortex/mcts_vnode_compiler.py": {
+  "larsa/mcts_vnode_compiler.py": {
     "functions": {
       "calculate_shannon_entropy": [
         "math.log2",
@@ -1289,7 +1289,7 @@
       "dataclasses.dataclass"
     ]
   },
-  "cortex/active_inference_engine_test.py": {
+  "larsa/active_inference_engine_test.py": {
     "functions": {
       "test_3000_primitives_orquestated": [
         "self.assertEqual",
@@ -1303,7 +1303,7 @@
       "unittest.main"
     ]
   },
-  "cortex/haskell.py": {
+  "larsa/haskell.py": {
     "functions": {
       "resolve_haskell_identity": [
         "ValueError"
@@ -1321,7 +1321,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/post_substack_200_catalog_test.py": {
+  "larsa/post_substack_200_catalog_test.py": {
     "functions": {
       "get_200_archive_files": [
         "ARCHIVE_200_DIR.exists",
@@ -1345,7 +1345,7 @@
       "get_200_archive_files"
     ]
   },
-  "cortex/bft_orchestrator.py": {
+  "larsa/bft_orchestrator.py": {
     "functions": {
       "init_bft_database": [
         "conn.close",
@@ -1425,7 +1425,7 @@
       "self._process_task_parallel"
     ]
   },
-  "cortex/substack_publisher_tool.py": {
+  "larsa/substack_publisher_tool.py": {
     "functions": {
       "format_signature_block": [
         "random.sample",
@@ -1463,7 +1463,7 @@
       "resolve"
     ]
   },
-  "cortex/cognitive_state_observer_test.py": {
+  "larsa/cognitive_state_observer_test.py": {
     "functions": {
       "test_attractor_convergence_and_divergence_minimization": [
         "CognitiveStateObserver",
@@ -1480,7 +1480,7 @@
       "unittest.main"
     ]
   },
-  "cortex/gemini_pool_test.py": {
+  "larsa/gemini_pool_test.py": {
     "functions": {
       "setUp": [
         "start",
@@ -1518,7 +1518,7 @@
       "unittest.main"
     ]
   },
-  "cortex/fundamental_constants_test.py": {
+  "larsa/fundamental_constants_test.py": {
     "functions": {
       "test_constants_coverage": [
         "ConstantsStateVector",
@@ -1532,7 +1532,7 @@
       "unittest.main"
     ]
   },
-  "cortex/vibe_ide_engine.py": {
+  "larsa/vibe_ide_engine.py": {
     "functions": {
       "__init__": [
         "AgentMemory",
@@ -1569,7 +1569,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/escohotado_market_prohibition_engine_test.py": {
+  "larsa/escohotado_market_prohibition_engine_test.py": {
     "functions": {
       "test_simulation_bounds_and_monotonies": [
         "simulate_prohibition_and_property"
@@ -1592,7 +1592,7 @@
       "resolve"
     ]
   },
-  "cortex/swarm/sanitizer_test.py": {
+  "larsa/swarm/sanitizer_test.py": {
     "functions": {
       "test_sanitizer_clean_input": [
         "sanitizer.validate",
@@ -1617,7 +1617,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/swarm/sanitizer.py": {
+  "larsa/swarm/sanitizer.py": {
     "functions": {
       "check_length": [
         "len"
@@ -1641,7 +1641,7 @@
       "re.compile"
     ]
   },
-  "cortex/swarm/engine_fsm_test.py": {
+  "larsa/swarm/engine_fsm_test.py": {
     "functions": {
       "test_fsm_normal_flow": [
         "fsm.transition_state",
@@ -1664,7 +1664,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/swarm/architect_agent.py": {
+  "larsa/swarm/architect_agent.py": {
     "functions": {
       "visit_If": [
         "self.generic_visit"
@@ -1718,7 +1718,7 @@
       "agent.trigger_refactoring"
     ]
   },
-  "cortex/swarm/memory_store.py": {
+  "larsa/swarm/memory_store.py": {
     "functions": {
       "__init__": [
         "execute",
@@ -1757,7 +1757,7 @@
       "abspath"
     ]
   },
-  "cortex/swarm/reviewer_agent_test.py": {
+  "larsa/swarm/reviewer_agent_test.py": {
     "functions": {
       "test_reviewer_clean_diff": [
         "res.startswith",
@@ -1786,7 +1786,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/swarm/reviewer_agent.py": {
+  "larsa/swarm/reviewer_agent.py": {
     "functions": {
       "evaluate_diff": [
         "pattern.search"
@@ -1796,7 +1796,7 @@
       "re.compile"
     ]
   },
-  "cortex/swarm/orchestrator_test.py": {
+  "larsa/swarm/orchestrator_test.py": {
     "functions": {
       "test_orchestrator_process_clean_issue": [
         "engine.process_issue",
@@ -1814,7 +1814,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/swarm/sandbox.py": {
+  "larsa/swarm/sandbox.py": {
     "functions": {
       "execute_safely": [
         "subprocess.run"
@@ -1822,7 +1822,7 @@
     },
     "module_level_calls": []
   },
-  "cortex/swarm/cli.py": {
+  "larsa/swarm/cli.py": {
     "functions": {
       "main": [
         "subparsers.add_parser",
@@ -1846,7 +1846,7 @@
       "main"
     ]
   },
-  "cortex/swarm/orchestrator.py": {
+  "larsa/swarm/orchestrator.py": {
     "functions": {
       "__init__": [
         "ArchitectAgent",
@@ -1874,7 +1874,7 @@
       "autonomous_loop"
     ]
   },
-  "cortex/swarm/engine_fsm.py": {
+  "larsa/swarm/engine_fsm.py": {
     "functions": {
       "__init__": [
         "AgentMemory",
@@ -1915,7 +1915,7 @@
       "run_fsm_cycle"
     ]
   },
-  "cortex/laboratory/primer_experimento_c5/03_codigo.py": {
+  "larsa/laboratory/primer_experimento_c5/03_codigo.py": {
     "functions": {
       "execute": [
         "Path.home",
@@ -1933,7 +1933,7 @@
       "resolve"
     ]
   },
-  "cortex/babylon60/neuromorphic_primitives.py": {
+  "larsa/babylon60/neuromorphic_primitives.py": {
     "functions": {
       "__init__": [
         "asyncio.Event",
@@ -1988,7 +1988,7 @@
       "self._apply_leak"
     ]
   },
-  "cortex/babylon60/test_neuromorphic_primitives.py": {
+  "larsa/babylon60/test_neuromorphic_primitives.py": {
     "functions": {},
     "module_level_calls": [
       "asyncio.create_task",
@@ -2009,7 +2009,7 @@
       "motor.wait_and_fire"
     ]
   },
-  "cortex/babylon60/extensions/ide_agent/dual_context.py": {
+  "larsa/babylon60/extensions/ide_agent/dual_context.py": {
     "functions": {
       "__init__": [
         "os.getcwd",
@@ -2054,7 +2054,7 @@
       "logging.error"
     ]
   },
-  "cortex/babylon60/bft/ipfs_prompt_sharding.py": {
+  "larsa/babylon60/bft/ipfs_prompt_sharding.py": {
     "functions": {
       "__init__": [
         "os.makedirs"
@@ -96100,13 +96100,13 @@
         "phase_4_bft_consensus",
         "phase_2_phantom_target",
         "phase_5_git_sentinel",
-        "write_to_cortex_ledger",
+        "write_to_larsa_ledger",
         "phase_3_idempotency_lock",
         "phase_1_latent_friction",
         "print",
         "time.strftime"
       ],
-      "write_to_cortex_ledger": [
+      "write_to_larsa_ledger": [
         "hashlib.sha3_256",
         "conn.close",
         "get",
@@ -96771,7 +96771,7 @@
     },
     "module_level_calls": []
   },
-  "scripts/cortex-omega-purge.py": {
+  "scripts/larsa-omega-purge.py": {
     "functions": {
       "find_git_repos": [
         "os.walk",
@@ -97227,7 +97227,7 @@
       "abspath"
     ]
   },
-  "scripts/52_legion_purge.py": {
+  "scripts/52_edin_purge.py": {
     "functions": {
       "run_ruff_fix": [
         "print",

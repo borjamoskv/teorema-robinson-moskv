@@ -5,7 +5,7 @@ import hashlib
 from typing import List, Optional
 
 # ==============================================================================
-# CORTEX ENGINE - CTA FALSIFICATION BENCHMARK HARNESS (V2.1 - Crypto Receipts)
+# larsa ENGINE - CTA FALSIFICATION BENCHMARK HARNESS (V2.1 - Crypto Receipts)
 # Protocolo: C5-REAL / Ultra-Exergy
 # Base Teórica: Guarded Kleene Algebra (GKAT) + Cryptographic Commit Gate (PCC)
 # ==============================================================================
