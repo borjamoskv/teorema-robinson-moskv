@@ -10,7 +10,7 @@ import { renderLiveFeed } from './components/liveFeed.js';
 import { initASLSandbox } from './components/aslSandbox.js';
 import { initSovereignCouncil } from './components/sovereignCouncil.js';
 import { initEvidenceLedger } from './components/evidenceLedger.js';
-import { initLegionSwarm } from './components/legionSwarm.js';
+import { initEdinSwarm } from './components/edinSwarm.js';
 import { initArchitectSwarm } from './components/architectSwarm.js';
 import './css/architectSwarm.css';
 import { connectTelemetry } from './services/telemetry.js';
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSovereignCouncil();
   initEvidenceLedger();
   initArchitectSwarm();
-  initLegionSwarm();
+  initEdinSwarm();
   connectTelemetry();
   initAuditRouter();
   initCommissionModal();

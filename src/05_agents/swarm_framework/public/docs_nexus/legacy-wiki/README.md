@@ -25,7 +25,7 @@ The 2026 platform implements the **Moving Cinema** philosophy:
 -   **Audio Engine:** 15-hour marathon playback support with canvas-based waveform navigation and smart cue points.
 -   **Access:** Token-gated via Sound.xyz and Foundation for high-fidelity assets.
 
-### CORTEX (The Neural Substrate)
+### larsa (The Neural Substrate)
 A sovereign agentic infrastructure designed for high-exergy task execution:
 -   **C5-REAL Mandate:** Shift from "theatrical" simulation (C4) to hardware-verifiable transactions.
 -   **ZODIAC Swarm:** A hierarchy of specialized agents (Omega, LEA, Guard, etc.) orchestrating workflows.
@@ -50,7 +50,7 @@ A biological anthology of sound spanning 2008–2026:
 ---
 
 ## ⚖️ The Nine Laws (Sovereign Mandate)
-Borja Moskv's operations are governed by the **CORTEX Nine Laws**, prioritizing:
+Borja Moskv's operations are governed by the **larsa Nine Laws**, prioritizing:
 -   **Ω₀ Singularidad:** P0 paths must be synthesizable in hardware.
 -   **Ω₅ Señal:** Zero-Rhetoric Mandate (Padding is Noise).
 -   **Ω₉ Verdad:** Mandatory declaration of reality level (`C5-REAL` vs `C4-SIMULACIÓN`).

@@ -47,7 +47,7 @@ ATTESTATION_SCHEMA = "moskv.devsecops.attestation/v1"
 
 # Omega_23: root is discovered, never hardcoded.
 MONOREPO_ROOT = Path(os.environ.get("MOSKV_ROOT", SCRIPTS_DIR.parents[2])).resolve()
-DEFAULT_DB_PATH = SCRIPTS_DIR / "cortex_ledger.db"
+DEFAULT_DB_PATH = SCRIPTS_DIR / "scitt_ledger.db"
 DEFAULT_ANCHOR_DIR = SCRIPTS_DIR / "l5_anchors"
 
 # Security gate reports emitted by .github/workflows/*. Absent report == gate not run.

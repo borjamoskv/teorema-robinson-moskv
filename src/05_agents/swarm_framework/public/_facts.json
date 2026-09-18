@@ -180,7 +180,7 @@
     "confidence": "C5-REAL"
   },
   {
-    "id": "CORTEX-NET-C5-01",
+    "id": "LARSA-NET-C5-01",
     "target_name": "EVM Topography",
     "severity": "Info",
     "platform": "MOSKV-10k-RS",

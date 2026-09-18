@@ -1,7 +1,7 @@
 <!-- C5-REAL EXERGY CERTIFIED -->
 # AGENTS.archi — Sovereign Agentic Architecture Registry (C5-REAL APEX)
 
-> **AGENTS.archi is the definitive hub for multi-agent design patterns, CORTEX protocols, and Industrial Noir AI infrastructure.**
+> **AGENTS.archi is the definitive hub for multi-agent design patterns, larsa protocols, and Industrial Noir AI infrastructure.**
 > Verifiable agentic safety, formal specification, and cryptographic proof of execution.
 
 > [!WARNING]
@@ -86,7 +86,7 @@ npx wrangler pages dev . --binding STRIPE_SECRET_KEY="sk_test_..."
 
 ## 📜 Licencia & Gobernanza
 
-Desarrollado bajo los estándares de **CORTEX PERSIST FOUNDATION**.
+Desarrollado bajo los estándares de **larsa PERSIST FOUNDATION**.
 
 - **Autor / Investigador Principal:** Borja Moskv (`@borjamoskv`)
 - **Runtime de Inferencia Protegido:** [BABYLON60](https://babylon60.com)

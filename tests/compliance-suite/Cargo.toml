@@ -27,11 +27,11 @@ ciborium = "0.2"
 coset = "0.3"
 
 [dev-dependencies]
-legion-core = { path = "../../src/02_engines/legion_engine/legion-core" }
-legion-apfs = { path = "../../src/02_engines/legion_engine/legion-apfs" }
-legion-exergy = { path = "../../src/02_engines/legion_engine/legion-exergy" }
-legion-lang = { path = "../../src/02_engines/legion_engine/legion-lang" }
-legion-healer = { path = "../../src/02_engines/legion_engine/legion-healer" }
+edin-core = { path = "../../src/02_engines/edin_swarms/edin-core" }
+edin-apfs = { path = "../../src/02_engines/edin_swarms/edin-apfs" }
+edin-exergy = { path = "../../src/02_engines/edin_swarms/edin-exergy" }
+edin-lang = { path = "../../src/02_engines/edin_swarms/edin-lang" }
+edin-healer = { path = "../../src/02_engines/edin_swarms/edin-healer" }
 
 [build-dependencies]
 cc = "1.0"

@@ -4,7 +4,7 @@ import json
 import shutil
 from pathlib import Path
 
-# CORTEX Nexus Ingestion Protocol
+# larsa Nexus Ingestion Protocol
 # Compresses semantic trees from legacy submodules into a unified graph.
 
 ROOT = Path(__file__).parent.parent
@@ -36,7 +36,7 @@ def _ingest_submodule(submodule_path, submodule, index):
 def ingest_submodules():
     index = []
 
-    for submodule in ["legacy-wiki", "legacy-cortex-docs"]:
+    for submodule in ["legacy-wiki", "legacy-larsa-docs"]:
         submodule_path = DOCS_DIR / submodule
         if submodule_path.exists():
             _ingest_submodule(submodule_path, submodule, index)

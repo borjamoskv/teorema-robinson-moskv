@@ -12,7 +12,7 @@ import {
   getActiveHelpers,
 } from '../data/architectTemplate.js';
 
-import { fetchComplianceStatus, generateSovereignCertificate } from '../services/cortexApi.js';
+import { fetchComplianceStatus, generateSovereignCertificate } from '../services/larsaApi.js';
 
 let activeFilter = 'all';
 let crystallizationCount = 0;
@@ -64,11 +64,11 @@ function saveSwarmState() {
     id: h.id,
     context: h.context
   }));
-  localStorage.setItem('cortex_swarm_state', JSON.stringify(state));
+  localStorage.setItem('larsa_swarm_state', JSON.stringify(state));
 }
 
 function loadSwarmState() {
-  const saved = localStorage.getItem('cortex_swarm_state');
+  const saved = localStorage.getItem('larsa_swarm_state');
   if (!saved) return;
   try {
     const state = JSON.parse(saved);
@@ -720,7 +720,7 @@ async function runSovereignAudit() {
     }
 
     // 3. Backend Integrity Check
-    addLogLineToAudit(logContainer, "CONNECTING_TO_CORTEX_LEDGER...");
+    addLogLineToAudit(logContainer, "CONNECTING_TO_SCITT_LEDGER...");
     const compliance = await fetchComplianceStatus();
     addLogLineToAudit(logContainer, `LEDGER_VALID: ${compliance.ledger_valid}`);
     addLogLineToAudit(logContainer, `COMPLIANCE_LEVEL: ${compliance.compliance_level}`);

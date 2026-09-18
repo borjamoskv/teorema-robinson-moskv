@@ -1,8 +1,8 @@
 <!-- C5-REAL EXERGY CERTIFIED -->
-# AGENTS.md — CORTEX C5-REAL Standard
+# AGENTS.md — larsa C5-REAL Standard
 
 ## Project Context
-<!-- JULES: This repo is part of the CORTEX ecosystem by Borja Moskv (borjamoskv). -->
+<!-- JULES: This repo is part of the larsa ecosystem by Borja Moskv (borjamoskv). -->
 <!-- Customize this section per repo if needed. -->
 
 ## Setup Commands

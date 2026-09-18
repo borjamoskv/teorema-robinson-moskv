@@ -22,7 +22,7 @@ export function initAmbientOrbs() {
 
 // ── 2. HERO TERMINAL ANIMATION ────────────────────────────
 const TERMINAL_LINES = [
-  { cls: 't-prompt',  text: '$ cortex audit --target=k2-lending' },
+  { cls: 't-prompt',  text: '$ larsa audit --target=k2-lending' },
   { cls: 't-output',  text: '→ Scanning KineticRouter.sol …' },
   { cls: 't-warning', text: '⚠  close-factor: unbounded (0x2e3…)' },
   { cls: 't-output',  text: '→ Generating Anvil-Lang PoC …' },

@@ -13,7 +13,7 @@ export function initCommissionModal() {
   });
 }
 
-const AUDIT_CONTACT_EMAIL = 'borja@cortexpersist.com';
+const AUDIT_CONTACT_EMAIL = 'borja@larsapersist.com';
 const DEPTH_LABELS = {
   surface: 'Surface Audit (C4-Verification)',
   deep: 'Deep Formal Verification (ASL-Verified)',

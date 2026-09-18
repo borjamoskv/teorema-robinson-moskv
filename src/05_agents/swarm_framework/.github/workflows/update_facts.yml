@@ -12,12 +12,12 @@ jobs:
         run: |
           curl -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
                -H "Accept: application/vnd.github.v3.raw" \
-               -L https://api.github.com/repos/borjamoskv/Cortex-Persist/contents/data/portfolio.json \
+               -L https://api.github.com/repos/borjamoskv/larsa-Persist/contents/data/portfolio.json \
                > _facts.json
       - name: Commit and push
         run: |
-          git config user.name "CORTEX Bot"
-          git config user.email "bot@cortexpersist.com"
+          git config user.name "LARSA Bot"
+          git config user.email "bot@larsapersist.com"
           git add _facts.json
-          git commit -m "chore: sync portfolio.json from cortex-persist" || echo "No changes to commit"
+          git commit -m "chore: sync portfolio.json from scitt_ledger" || echo "No changes to commit"
           git push

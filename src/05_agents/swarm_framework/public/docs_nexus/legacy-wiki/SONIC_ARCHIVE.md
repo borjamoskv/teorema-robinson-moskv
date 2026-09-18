@@ -28,7 +28,7 @@
 
 ---
 
-## 🧪 Análisis de Espectro (CORTEX Audit)
+## 🧪 Análisis de Espectro (larsa Audit)
 *   **Influencias Detectadas:** IDM (Warp Records), Detroit Techno, Italo-Cosmic, Post-Punk Español.
 *   **Metadatos Tácticos:** Frecuente uso de sátira política y deconstrucción de memes (p. ej. "Yo vi a Jordi Wild en una rave").
 *   **Higiene de Audio:** Transición hacia el estándar `C5-REAL` con eliminación de ruido térmico no deseado en favor del ruido de textura deliberado.

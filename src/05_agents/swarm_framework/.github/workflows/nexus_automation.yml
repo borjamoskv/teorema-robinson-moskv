@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-name: CORTEX Nexus Ingestion Protocol
+name: larsa Nexus Ingestion Protocol
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit and Push if changed
         run: |
-          git config --global user.name "CORTEX Nexus Bot"
+          git config --global user.name "LARSA Nexus Bot"
           git config --global user.email "nexus@agents.archi"
           git add public/docs_nexus scripts/nexus_ingest.py
           # Prefix with [bridge] to satisfy Context Guard if applicable in CI

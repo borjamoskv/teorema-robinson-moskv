@@ -4,17 +4,17 @@ resolver = "2"
 members = [
     "src/01_kernel/ring0_rust",
     "src/01_kernel/ipc_daemon",
-    "src/02_engines/cortex_wasm",
+    "src/02_engines/kudurru_64",
     "src/02_engines/strike_rs",
-    "src/02_engines/legion_engine/legion-core",
-    "src/02_engines/legion_engine/legion-apfs",
-    "src/02_engines/legion_engine/legion-exergy",
-    "src/02_engines/legion_engine/legion-healer",
-    "src/02_engines/legion_engine/legion-cli",
-    "src/02_engines/legion_engine/legion-lang",
+    "src/02_engines/edin_swarms/edin-core",
+    "src/02_engines/edin_swarms/edin-apfs",
+    "src/02_engines/edin_swarms/edin-exergy",
+    "src/02_engines/edin_swarms/edin-healer",
+    "src/02_engines/edin_swarms/edin-cli",
+    "src/02_engines/edin_swarms/edin-lang",
     "src/03_state/scitt_ledger/kernel_rs",
     "tests/compliance-suite"
-, "src/02_engines/cortex_guard/rust_core"]
+, "src/02_engines/mushushu_0/rust_core"]
 
 # Perfil para desarrollo rápido (Alineado con el C5-REAL)
 [profile.dev]

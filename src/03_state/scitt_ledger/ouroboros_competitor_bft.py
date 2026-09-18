@@ -12,7 +12,7 @@ def run_ultrathink_pipeline():
         "1_Operaciones_Activas/scripts/58_thermodynamic_wallpaper_ultrathink.py",
     ], check=True)
     subprocess.run(
-        "CORTEX_BRAIN_DIR=/Users/borjafernandezangulo/.gemini/antigravity/brain python3 1_Operaciones_Activas/scripts/51_autoconsolidate.py",
+        "LARSA_BRAIN_DIR=/Users/borjafernandezangulo/.gemini/antigravity/brain python3 1_Operaciones_Activas/scripts/51_autoconsolidate.py",
         shell=True, check=True)
     subprocess.run([
         "python3",
@@ -25,7 +25,7 @@ def run_ultrathink_pipeline():
     ], check=True)
 
 def execute_ouroboros_100_nodes():
-    db_path = '/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_CORTEX_ENGINE/cortex-persist/cortex_ledger.db'
+    db_path = '/Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/1_Operaciones_Activas/02_LARSA_120/scitt_ledger/scitt_ledger.db'
 
     competitors = [
         {"name": "Cognition AI (Devin)", "weakness": "Estocasticidad sin consenso BFT", "vector": "Monolítico / Blackbox"},

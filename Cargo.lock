@@ -571,13 +571,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 
 [[package]]
-name = "cortex-wasm"
-version = "0.1.0"
-dependencies = [
- "wasm-bindgen",
-]
-
-[[package]]
 name = "cortex_kernel"
 version = "0.1.0"
 dependencies = [
@@ -969,6 +962,78 @@ dependencies = [
  "sha2",
  "subtle",
  "zeroize",
+]
+
+[[package]]
+name = "edin-apfs"
+version = "0.1.0"
+dependencies = [
+ "edin-core",
+ "libc",
+ "serde",
+ "sha3",
+]
+
+[[package]]
+name = "edin-cli"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "clap",
+ "colored",
+ "crossterm",
+ "edin-apfs",
+ "edin-core",
+ "edin-exergy",
+ "edin-healer",
+ "edin-lang",
+ "ratatui",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "edin-core"
+version = "0.1.0"
+dependencies = [
+ "libc",
+ "serde",
+ "serde_json",
+ "sha3",
+]
+
+[[package]]
+name = "edin-exergy"
+version = "0.1.0"
+dependencies = [
+ "edin-apfs",
+ "edin-core",
+ "rayon",
+ "regex",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "edin-healer"
+version = "0.1.0"
+dependencies = [
+ "edin-core",
+ "libc",
+ "serde",
+]
+
+[[package]]
+name = "edin-lang"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "colored",
+ "edin-apfs",
+ "edin-core",
+ "edin-exergy",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -1603,6 +1668,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "kudurru_64"
+version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1619,78 +1691,6 @@ name = "leb128fmt"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09edd9e8b54e49e587e4f6295a7d29c3ea94d469cb40ab8ca70b288248a81db2"
-
-[[package]]
-name = "legion-apfs"
-version = "0.1.0"
-dependencies = [
- "legion-core",
- "libc",
- "serde",
- "sha3",
-]
-
-[[package]]
-name = "legion-cli"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "clap",
- "colored",
- "crossterm",
- "legion-apfs",
- "legion-core",
- "legion-exergy",
- "legion-healer",
- "legion-lang",
- "ratatui",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "legion-core"
-version = "0.1.0"
-dependencies = [
- "libc",
- "serde",
- "serde_json",
- "sha3",
-]
-
-[[package]]
-name = "legion-exergy"
-version = "0.1.0"
-dependencies = [
- "legion-apfs",
- "legion-core",
- "rayon",
- "regex",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "legion-healer"
-version = "0.1.0"
-dependencies = [
- "legion-core",
- "libc",
- "serde",
-]
-
-[[package]]
-name = "legion-lang"
-version = "0.1.0"
-dependencies = [
- "clap",
- "colored",
- "legion-apfs",
- "legion-core",
- "legion-exergy",
- "serde",
- "serde_json",
-]
 
 [[package]]
 name = "libc"
@@ -2996,11 +2996,11 @@ dependencies = [
  "ciborium",
  "coset",
  "ed25519-dalek",
- "legion-apfs",
- "legion-core",
- "legion-exergy",
- "legion-healer",
- "legion-lang",
+ "edin-apfs",
+ "edin-core",
+ "edin-exergy",
+ "edin-healer",
+ "edin-lang",
  "libc",
  "rand 0.8.7",
  "rand_chacha 0.3.1",

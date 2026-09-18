@@ -378,7 +378,7 @@ const INITIAL_HELPERS = [
 ];
 
 // ── Systematic Expansion to 100 Agents ──
-const CORTEX_ROLES = [
+const LARSA_ROLES = [
   { role: 'Consensus Validator', cap: 'byzantine-fault-tolerance' },
   { role: 'Cryptographic Guard', cap: 'ed25519-verification' },
   { role: 'Vector Encoder',      cap: 'embedding-synthesis' },
@@ -406,7 +406,7 @@ const EXPANDED_HELPERS = [...INITIAL_HELPERS];
 
 for (let i = EXPANDED_HELPERS.length + 1; i <= 100; i++) {
   const domain = DOMAIN_LIST[i % DOMAIN_LIST.length];
-  const roleData = CORTEX_ROLES[i % CORTEX_ROLES.length];
+  const roleData = LARSA_ROLES[i % LARSA_ROLES.length];
   const isStandby = i % 7 === 0;
   const tier = i < 45 ? 'commander' : 'specialist';
 

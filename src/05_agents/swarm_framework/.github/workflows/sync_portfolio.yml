@@ -1,5 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
-name: Sync Portfolio from Cortex Persist
+name: Sync Portfolio from larsa Persist
 
 on:
   repository_dispatch:
@@ -18,7 +18,7 @@ jobs:
           curl -H "Authorization: token ${{ secrets.DISPATCH_PAT }}" \
                -H "Accept: application/vnd.github.v3.raw" \
                -o public/_facts.json \
-               -L https://api.github.com/repos/borjamoskv/cortex-persist/contents/data/portfolio.json
+               -L https://api.github.com/repos/borjamoskv/scitt_ledger/contents/data/portfolio.json
 
       - name: Convert to JSONL for liveFeed backward compatibility
         run: |
@@ -33,8 +33,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name "CORTEX-Ouroboros[bot]"
-          git config --global user.email "bot@cortexpersist.com"
+          git config --global user.name "LARSA-Ouroboros[bot]"
+          git config --global user.email "bot@larsapersist.com"
           git add public/_facts.json public/ouroboros.jsonl
-          git commit -m "chore(sync): automated portfolio update from CORTEX canonical registry" || echo "No changes to commit"
+          git commit -m "chore(sync): automated portfolio update from larsa canonical registry" || echo "No changes to commit"
           git push

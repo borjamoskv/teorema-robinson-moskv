@@ -182,7 +182,7 @@ function updateMetrics() {
     σ += Math.random() * 0.12 + 0.02;
     yieldEl.textContent = `Σ ${σ.toFixed(2)} ops/s`;
   }, 800);
-  // _intervalId exposed here; attach to window.CORTEX_CLEANUP if needed.
+  // _intervalId exposed here; attach to window.LARSA_CLEANUP if needed.
   return _intervalId;
 }
 
