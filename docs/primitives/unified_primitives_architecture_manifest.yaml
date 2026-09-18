@@ -4,7 +4,7 @@ Version: 10.0-SINGULARITY
 Blueprint_Modules:
   - 101_categorical_logic_primitives.yaml
   - ephesus_reverse_engineering.yml
-  - swarm_centuria_matrix.yml
+  - swarm_sharur_3600_matrix.yml
   - swarm_v4_blueprint.yml
   - vibe_code_ide_architecture.yml
 
@@ -194,9 +194,9 @@ Architecture_Definitions:
     reverse_engineered_by: "MOSKV-1 APEX Sovereign Kernel"
     reality_level: "C5-REAL"
 
-  swarm_centuria_matrix.yml:
-    cortex_taint: "CORTEX-TAINT:borjamoskv:swarm_centuria_matrix:2026-07-18T10:40:20Z:cf23a890de894bc7"
-    description: "Centuria Matrix: 100 Invariantes y Antipatrones deterministas condensando 1000 primitivas APEX para Gestión Autónoma de Repositorios."
+  swarm_sharur_3600_matrix.yml:
+    cortex_taint: "CORTEX-TAINT:borjamoskv:swarm_sharur_3600_matrix:2026-07-18T10:40:20Z:cf23a890de894bc7"
+    description: "SHARUR-3600 Matrix: 3600 Invariantes y Antipatrones deterministas condensando 1000 primitivas APEX para Gestión Autónoma de Repositorios."
     domains:
       - id: D1
         name: "Gobernanza e IAM (Access Control & Escrow)"
