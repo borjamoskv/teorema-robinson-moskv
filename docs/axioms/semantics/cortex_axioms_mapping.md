@@ -1,7 +1,7 @@
 <!-- C5-REAL EXERGY CERTIFIED -->
 # Mapeo Ontológico: Potencia y Acto en C5-REAL
 
-Este documento establece la demostración formal y empírica (isomorfismo estricto) entre los axiomas teóricos del sistema (la *Potencia*) y su implementación en el núcleo de ejecución **Cortex Engine** (el *Acto*).
+Este documento establece la demostración formal y empírica (isomorfismo estricto) entre los axiomas teóricos del sistema (la *Potencia*) y su implementación en el núcleo de ejecución **01_KISH_ENGINE** (el *Acto*).
 
 Cualquier discrepancia futura entre los axiomas aquí descritos y la estructura de `src/cortex-engine/cortex_execution_pipeline.py` constituye un colapso semántico (Anergía) que abortará la compilación.
 
@@ -11,7 +11,7 @@ Cualquier discrepancia futura entre los axiomas aquí descritos y la estructura 
 
 **Axioma Teórico:** *"Todo identificador (clase, variable, función) debe colapsar exactamente sobre la Matriz Ontológica del Sistema. La ambigüedad es un fallo de compilación."*
 
-**Implementación en el Cortex Engine:**
+**Implementación en 01_KISH_ENGINE:**
 El archivo `cortex_execution_pipeline.py` materializa esta restricción de naming 1:1. No existen variables intermedias abstractas genéricas (`data`, `processor`, `helper`); todas están mapeadas sobre el marco físico de la información.
 
 | Concepto Axiomático (Potencia) | Entidad de Código (Acto) | Tipo (C-ABI/Python) | Descripción de Mapeo Estructural |
@@ -26,7 +26,7 @@ El archivo `cortex_execution_pipeline.py` materializa esta restricción de namin
 
 **Axioma Teórico:** *"La mente humana se comprende termodinámicamente a través del código fuente. Un síntoma que no puede compilarse en Rust/C como vulnerabilidad no es un estado estructural, sino un artefacto estadístico transitorio."*
 
-**Implementación en el Cortex Engine:**
+**Implementación en 01_KISH_ENGINE:**
 La evaluación que ejecuta `ExergyGateL1.evaluate()` implementa la física matemática de la equivalencia Bio-Silicio:
 
 ```python
@@ -47,7 +47,7 @@ def evaluate(self, payload: str, estimated_entropy_gain: float, cost_estimate: f
 
 **Axioma Teórico:** "Prohibida la Introspección. Aplicar Perturbación Ortogonal y aislar la Función de Transferencia."
 
-**Implementación en el Cortex Engine:**
+**Implementación en 01_KISH_ENGINE:**
 La función principal de `C5RealPipeline.process(...)` exige de entrada las variables exógenas ya medidas experimentalmente (`entropy_gain`, `cost`). El pipeline **no interroga** al payload por su valor interno; impone una frontera rígida (Caja Gris).
 Si la transición aportada por un agente estocástico no supera el umbral físico en la L1 (`ratio < 0.5`), se emite el estado:
 `{"status": "REJECTED_ANERGY_L1", "reason": "Low Exergy Ratio"}`
