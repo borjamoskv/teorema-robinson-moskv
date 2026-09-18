@@ -44,7 +44,7 @@ cffi==2.1.1
     #   pynacl
 charset-normalizer==3.5.0
     # via requests
-chroma-hnswlib==0.7.3
+chroma-hnswlib==0.7.6
     # via chromadb
 chromadb==0.4.20
     # via teorema-robinson-moskv (pyproject.toml)
