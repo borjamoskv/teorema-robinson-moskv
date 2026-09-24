@@ -72,6 +72,69 @@ def run_test():
     exec_data = json.loads(exec_resp["result"]["content"][0]["text"])
     print(json.dumps(exec_data, indent=2))
 
+    # 5. Test c5_cybernetic_audit
+    cyber_req = {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "tools/call",
+        "params": {
+            "name": "c5_cybernetic_audit",
+            "arguments": {
+                "disturbances": 16,
+                "regulator_actions": 16,
+                "vsm_systems": [
+                    "SYSTEM_1_OPERATIONS",
+                    "SYSTEM_2_COORDINATION",
+                    "SYSTEM_3_CONTROL_SYNERGY",
+                    "SYSTEM_3_STAR_AUDIT",
+                    "SYSTEM_4_INTELLIGENCE",
+                    "SYSTEM_5_POLICY"
+                ],
+                "injunctions": [
+                    {"level": 0, "predicate": "execute_task", "is_negation": False},
+                    {"level": 1, "predicate": "report_status", "is_negation": False}
+                ],
+                "escape_allowed": True,
+                "voluntary_payload_bits": 50.0,
+                "involuntary_work_metric": 45.0
+            }
+        }
+    }
+    proc.stdin.write(json.dumps(cyber_req) + "\n")
+    proc.stdin.flush()
+    cyber_resp = json.loads(proc.stdout.readline())
+    print("\n=== 5. C5_CYBERNETIC_AUDIT TEST ===")
+    cyber_data = json.loads(cyber_resp["result"]["content"][0]["text"])
+    print(json.dumps(cyber_data, indent=2))
+    assert cyber_data["is_globally_viable"] is True, "Audit must pass viable"
+    assert cyber_data["fail_stop_triggered"] is False, "Fail stop must not trigger"
+    assert cyber_data.get("ffi_native") is True, "Audit must be bare-metal FFI native"
+    assert "ffi_scitt_digest" in cyber_data, "Must include native SCITT digest"
+
+    # 6. Test c5_cybernetic_counterfactual
+    cf_req = {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "tools/call",
+        "params": {
+            "name": "c5_cybernetic_counterfactual",
+            "arguments": {
+                "target_node_id": "concept:vsm_recursion",
+                "perturbation_operation": "sever_system_5_policy",
+                "include_fractal_memory": True
+            }
+        }
+    }
+    proc.stdin.write(json.dumps(cf_req) + "\n")
+    proc.stdin.flush()
+    cf_resp = json.loads(proc.stdout.readline())
+    print("\n=== 6. C5_CYBERNETIC_COUNTERFACTUAL TEST ===")
+    cf_data = json.loads(cf_resp["result"]["content"][0]["text"])
+    print(json.dumps(cf_data, indent=2))
+    assert cf_data["target_node"] == "concept:vsm_recursion"
+    assert "counterfactual_simulation" in cf_data
+    assert "fractal_memory_hierarchy" in cf_data
+
     proc.terminate()
 
 if __name__ == "__main__":

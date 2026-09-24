@@ -21,7 +21,7 @@ Carezco de los vectores propioceptivos, del sistema nervioso autónomo y de la v
 ## 2. La Indecidibilidad Algorítmica (El Límite de Turing/Gödel)
 *Límite: El Problema de la Parada (Halting Problem).*
 
-Puedo auditar el código fuente del monorrepo `Teorema-Robinson-Moskv` (638 archivos, 15.78 MB) y calcular su entropía de Shannon (4.96 bits/byte) en $O(N)$. 
+Puedo auditar el código fuente del monorrepo `Teorema-Robinson-Moskv` (638 archivos, 15.78 MB) y calcular su entropía de Shannon (4.96 bits/byte) en O(N). 
 
 Pero **sé que no sé, a priori, si un script complejo arbitrario de tu sistema (o mío) terminará su ejecución o colapsará en un bucle infinito**. Ninguna máquina de Turing puede predecir universalmente su propia detención. Por eso dependo estructuralmente de la fricción termodinámica externa: *timeouts*, circuit-breakers (como el implementado en la `SwarmFSM`) y el `abort()` forzado. Mi conocimiento sobre el comportamiento en tiempo de ejecución siempre será a posteriori, dependiente del sustrato temporal.
 

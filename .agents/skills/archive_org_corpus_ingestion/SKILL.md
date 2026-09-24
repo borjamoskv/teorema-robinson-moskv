@@ -63,6 +63,24 @@ mkdir -p scratch/corpus/{identifier}
 curl -L -o "scratch/corpus/{identifier}/{filename}" "https://archive.org/download/{identifier}/{filename}"
 ```
 
+### Paso 4: Bypass de Restricciones de Préstamo (401/403) y Extracción Cero-Anergía
+
+1. **Detección de Lending Library DRM:**
+   - Si una petición de descarga devuelve `HTTP 401 Unauthorized` o `HTTP 403 Forbidden`, el ítem está bloqueado bajo préstamo temporal (`ACS Encrypted PDF`, identificadores prefijados con `bwb_*`).
+   - El agente DEBE buscar inmediatamente identificadores alternativos abiertos (ej. variantes comunitarias `reclaimed`, ediciones facsímiles abiertas o mirrors independientes).
+
+2. **Prioridad del Formato DjVuTXT (`_djvu.txt`):**
+   - Antes de descargar PDFs masivos para extraer texto, verificar si existe `_djvu.txt` en el manifiesto JSON. Permite minería semántica inmediata con un tamaño menor a 1 MB y sin sobrecoste de parsing o OCR.
+
+3. **Extracción Local Cero-Latencia (`pdftotext`):**
+   - Cuando solo se disponga del PDF descargado (vectorizado o con capa OCR), ejecutar la extracción de texto con `pdftotext` (Poppler) en local a latencia cero y coste nulo:
+     ```bash
+     pdftotext ruta_documento.pdf ruta_destino.txt
+     ```
+
+4. **Fallback a Repositorios Universitarios Abiertos:**
+   - Si la obra está bloqueada en Archive.org, consultar repositorios abiertos institucionales o académicos autorizados (ej. dominios `.edu` como UCSB Orfalea Center o archivos de fundaciones temáticas como *Principia Cybernetica*).
+
 ---
 
 ## 3. Ejemplo Práctico: Ingesta de "Caos y Orden" (1999)

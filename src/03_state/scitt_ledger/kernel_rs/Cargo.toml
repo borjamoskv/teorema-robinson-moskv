@@ -5,6 +5,7 @@ version = "0.1.0"
 edition = "2024"
 
 [lib]
+name = "abzu_kernel"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]

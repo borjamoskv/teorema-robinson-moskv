@@ -38,7 +38,7 @@ class DeterministicKernelL3:
         return True, {
             "status": "VERIFIED_C5_REAL",
             "proof_hash": verification_hash,
-            "timestamp": time.time_ns()
+            "timestamp": time.monotonic_ns()
         }
 
 class C5RealPipeline:
