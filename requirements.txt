@@ -46,7 +46,7 @@ charset-normalizer==3.5.0
     # via requests
 chroma-hnswlib==0.7.3
     # via chromadb
-chromadb==0.4.20
+chromadb==1.5.9
     # via teorema-robinson-moskv (pyproject.toml)
 click==8.4.2
     # via
@@ -158,7 +158,7 @@ numpy==1.26.4
     #   matplotlib
     #   numba
     #   onnxruntime
-oauthlib==3.3.1
+oauthlib==4.0.0
     # via requests-oauthlib
 onnxruntime==1.28.0
     # via chromadb
