@@ -14,7 +14,7 @@ import json
 import os
 import re
 from datetime import datetime
-from collections import defaultdict, Counter
+from collections import Counter
 
 def clean_req(text):
     if not text:

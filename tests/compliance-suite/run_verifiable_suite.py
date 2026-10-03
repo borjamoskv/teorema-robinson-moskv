@@ -10,7 +10,6 @@ BN254 R1CS satisfied constraints, LogUp lookups, and st(x) noise dissipation.
 """
 
 import sys
-import os
 import time
 import math
 import ctypes
@@ -24,7 +23,7 @@ try:
 except ImportError:
     RICH_AVAILABLE = False
 
-from python.verifiable_inference import VerifiableInferenceEngine, PrimitiveResults
+from python.verifiable_inference import VerifiableInferenceEngine
 
 
 def main():
@@ -123,7 +122,7 @@ def main():
 
     if logup_valid and not logup_invalid:
         passed_tests += 1
-        print(f"  ■ LogUp Fractional Lookup Argument: Valid Lookups: True | Invalid Rejection: True [PASS]")
+        print("  ■ LogUp Fractional Lookup Argument: Valid Lookups: True | Invalid Rejection: True [PASS]")
     else:
         print(f"  ❌ LogUp argument verification failed: valid={logup_valid}, invalid={logup_invalid}")
 
@@ -191,10 +190,10 @@ def main():
     print(f"> ■ Execution Throughput      : {ops_per_sec:,.2f} ops/sec (Target: > 400,000,000 ops/sec)")
     print(f"> ■ Average Batch Latency     : {avg_latency_ns:.2f} ns / iteration")
     print(f"> ■ Test Pass Rate            : {pass_rate:.1f}% ({passed_tests}/{total_tests} test suites passed)")
-    print(f"> ■ Unhandled Exceptions      : 0")
-    print(f"> ■ Thermodynamic Integrity   : Landauer E_min bound satisfied")
-    print(f"> ■ Non-Standard Analysis     : Infinitesimal noise st(x) dissipated")
-    print(f"> ■ Zero-Knowledge Integrity   : BN254 R1CS & LogUp verified")
+    print("> ■ Unhandled Exceptions      : 0")
+    print("> ■ Thermodynamic Integrity   : Landauer E_min bound satisfied")
+    print("> ■ Non-Standard Analysis     : Infinitesimal noise st(x) dissipated")
+    print("> ■ Zero-Knowledge Integrity   : BN254 R1CS & LogUp verified")
     print("--------------------------------------------------------------------------------")
 
     if passed_tests == total_tests and pass_rate == 100.0 and ops_per_sec > 400_000_000:

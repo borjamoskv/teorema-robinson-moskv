@@ -5,13 +5,12 @@
 import os
 import sys
 import json
-import time
 import urllib.request
 import urllib.error
 
 # Import local C-ABI MCP server engine
 sys.path.insert(0, os.path.dirname(__file__))
-from mcp_server import purge_semantic_anergy_ffi, generate_scitt_cose_receipt
+from mcp_server import purge_semantic_anergy_ffi
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 

@@ -100,7 +100,7 @@ def generate_report(target_url: str, html_path: str, output_path: str = None):
     for ep in endpoints[:15]:
         report_content += f"- `{ep}`\n"
 
-    report_content += f"""
+    report_content += """
 ---
 
 ## 5. Invariantes de Silicio & Termodinámica
@@ -112,7 +112,7 @@ def generate_report(target_url: str, html_path: str, output_path: str = None):
 ## 6. Mapeo Comercial Enterprise
 1. **Compliance**: EU AI Act / DPA / SOC 2.
 2. **COGS**: Margen Bruto estimado ~95%+ (Zero Marginal Cloud COGS).
-3. **SLA**: Target $T_{{\\text{{eff}}}} < 5\\text{{ ms}}$.
+3. **SLA**: Target $T_{\\text{eff}} < 5\\text{ ms}$.
 """
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

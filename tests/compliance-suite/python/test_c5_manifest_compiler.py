@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os
 import sys
-import shutil
 import tempfile
 import subprocess
 from pathlib import Path

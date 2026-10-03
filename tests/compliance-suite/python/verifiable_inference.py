@@ -9,7 +9,6 @@ and LogUp fractional lookup table argument provers.
 
 import ctypes
 import os
-import sys
 import struct
 from typing import List, Tuple, Optional, Union
 

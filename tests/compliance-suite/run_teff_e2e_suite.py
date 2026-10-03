@@ -13,10 +13,7 @@ Executes >1,000 end-to-end Teff transition cycles through Rust FFI:
 """
 
 import sys
-import os
 import time
-import math
-import ctypes
 
 try:
     from rich.console import Console
@@ -27,7 +24,7 @@ try:
 except ImportError:
     RICH_AVAILABLE = False
 
-from python.verifiable_inference import VerifiableInferenceEngine, TeffResult
+from python.verifiable_inference import VerifiableInferenceEngine
 
 
 def main():
@@ -86,7 +83,7 @@ def main():
         print(f"  ■ SCITT Receipt Emitter: COSE Signed | Merkle Root: {bytes(res1.scitt_merkle_root).hex()[:16]}... "
               f"| Signing Latency: {res1.scitt_latency_us} µs [PASS]")
     else:
-        print(f"  ❌ SCITT Receipt emission failed")
+        print("  ❌ SCITT Receipt emission failed")
 
     # --------------------------------------------------------------------------
     # PHASE 4: MASSIVE STRESS & OVERHEAD BENCHMARK (>1,000 TRANSITIONS)

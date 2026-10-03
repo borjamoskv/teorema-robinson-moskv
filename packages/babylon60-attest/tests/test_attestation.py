@@ -1,6 +1,5 @@
 # C5-REAL EXERGY CERTIFIED
 """End-to-end tests: attest → verify → ledger round-trip."""
-import json
 import os
 import tempfile
 

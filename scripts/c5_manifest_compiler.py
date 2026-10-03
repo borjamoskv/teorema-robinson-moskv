@@ -6,7 +6,6 @@ Enforces topologic and epistemological rules declared in AGENTS.md.
 Execution MUST Fail-Stop (exit code > 0) upon detecting any anergy.
 """
 
-import os
 import re
 import ast
 import sys

@@ -268,7 +268,7 @@ def main():
     if args.json:
         print(json.dumps(res, indent=2, ensure_ascii=False))
     else:
-        print(f"[EntropyByteScanner] Diagnóstico forense de bajo nivel:")
+        print("[EntropyByteScanner] Diagnóstico forense de bajo nivel:")
         print(f"  Archivo:                  {res['filepath']}")
         print(f"  Tamaño:                   {res['file_size']} bytes")
         print(f"  Formato Detectado:        {res['detected_format']} (Magic Match: {res['magic_matched']})")

@@ -1,10 +1,9 @@
 # C5-REAL EXERGY CERTIFIED
 #!/usr/bin/env python3
-import sys
 import time
 import math
 import ctypes
-from python.verifiable_inference import VerifiableInferenceEngine, PrimitiveResults
+from python.verifiable_inference import VerifiableInferenceEngine
 
 def run_adversarial_suite():
     print("=== ADVERSARIAL STRESS SUITE FOR VERIFIABLE INFERENCE ENGINE ===")

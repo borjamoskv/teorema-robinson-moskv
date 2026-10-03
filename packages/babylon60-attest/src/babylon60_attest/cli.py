@@ -68,12 +68,12 @@ def cmd_verify(args: argparse.Namespace) -> int:
 
 def cmd_info(_: argparse.Namespace) -> int:
     print(f"babylon60-attest v{__version__}")
-    print(f"Schema: babylon60.llm.attestation/v1")
-    print(f"Hash: SHA3-256")
-    print(f"Tree: Binary Merkle (4-leaf: prompt, output, model, operator)")
-    print(f"Ledger: SQLite WAL, append-only (BFT triggers)")
-    print(f"Standard: IETF SCITT RFC 9943")
-    print(f"Dependencies: 0 (stdlib only)")
+    print("Schema: babylon60.llm.attestation/v1")
+    print("Hash: SHA3-256")
+    print("Tree: Binary Merkle (4-leaf: prompt, output, model, operator)")
+    print("Ledger: SQLite WAL, append-only (BFT triggers)")
+    print("Standard: IETF SCITT RFC 9943")
+    print("Dependencies: 0 (stdlib only)")
     return 0
 
 

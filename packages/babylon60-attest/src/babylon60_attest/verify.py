@@ -10,7 +10,6 @@ prompt or output — produces a divergence that no authority can sign away.
 from __future__ import annotations
 
 import json
-from dataclasses import asdict
 from typing import Any, Dict
 
 from babylon60_attest.merkle import MerkleTree, sha3_256, sha3_256_str

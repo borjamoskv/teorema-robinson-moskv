@@ -8,7 +8,6 @@ Inspect Web Target - Automated Stage 1-5 Forensics for Web Application Reverse E
 import sys
 import os
 import re
-import json
 import urllib.request
 from bs4 import BeautifulSoup
 
@@ -50,7 +49,7 @@ def inspect_url(url: str, output_dir: str = "scratch"):
 
     # Stage 2: Inlined CSS & Clamps
     styles = soup.find_all("style")
-    print(f"\n--- STAGE 2: CSS & FLUID MATH ---")
+    print("\n--- STAGE 2: CSS & FLUID MATH ---")
     print(f"  Inline <style> blocks count: {len(styles)}")
     total_css = "\n".join([s.string or "" for s in styles])
     css_vars = set(re.findall(r'--[a-zA-Z0-9_\-]+', total_css))
@@ -59,7 +58,7 @@ def inspect_url(url: str, output_dir: str = "scratch"):
     print(f"  Fluid clamp() functions ({len(clamps)}): {sorted(list(clamps))[:10]}")
 
     # Stage 3: Scripts & Bundles
-    print(f"\n--- STAGE 3: SCRIPTS & JS LIBRARIES ---")
+    print("\n--- STAGE 3: SCRIPTS & JS LIBRARIES ---")
     script_srcs = []
     for s in soup.find_all("script"):
         src = s.get("src")
@@ -70,7 +69,7 @@ def inspect_url(url: str, output_dir: str = "scratch"):
         print(f"   -> {src}")
 
     # Stage 4: DOM Controllers & Actions
-    print(f"\n--- STAGE 4: DOM MICRO-CONTROLLERS ---")
+    print("\n--- STAGE 4: DOM MICRO-CONTROLLERS ---")
     controllers = set()
     actions = set()
     for el in soup.find_all(True):
@@ -83,7 +82,7 @@ def inspect_url(url: str, output_dir: str = "scratch"):
     print(f"  data-action attributes (sample): {sorted(list(actions))[:15]}")
 
     # Stage 5: Endpoints & Framework Signals
-    print(f"\n--- STAGE 5: ENDPOINTS & BACKEND SIGNALS ---")
+    print("\n--- STAGE 5: ENDPOINTS & BACKEND SIGNALS ---")
     urls = set(re.findall(r'/[a-zA-Z0-9_\-\?&=%/\.]+', html))
     filtered_endpoints = [u for u in urls if any(kw in u for kw in ["api", "search", "fragment", "vote", "user", "admin", "graphql", "json"])]
     print(f"  Endpoints discovered in HTML ({len(filtered_endpoints)}): {sorted(filtered_endpoints)[:20]}")

@@ -8,8 +8,7 @@ and Epistemic Quarantining (Zero-Width Stego & Byte Entropy).
 
 import sys
 import os
-import json
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 # C5-REAL Validators
 # Add the parent directory to sys.path if needed

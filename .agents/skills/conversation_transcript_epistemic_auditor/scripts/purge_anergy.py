@@ -16,7 +16,7 @@ import argparse
 import sys
 import time
 import concurrent.futures
-from typing import Callable, Tuple, List, Optional
+from typing import Tuple
 
 # Iteration 12: Zero-Copy Parser (Rust Binding)
 try:

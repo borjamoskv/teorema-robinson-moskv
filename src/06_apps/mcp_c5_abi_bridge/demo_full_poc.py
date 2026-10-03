@@ -5,7 +5,6 @@
 import os
 import sys
 import json
-import time
 import subprocess
 
 # Ensure local importability
@@ -91,7 +90,7 @@ def run_full_demo():
     bridge = OpenRouterExergyBridge()
     prompt_sample = "Analiza el estado de la memoria C-ABI y ejecuta la sincronización de estado."
     res = bridge.chat_completion(prompt_sample)
-    print(f"    Pre-Filtrado Landauer Activo: SÍ")
+    print("    Pre-Filtrado Landauer Activo: SÍ")
     print(f"    Herramientas MCP Registradas en OpenRouter Payload: {len(bridge.get_mcp_tools_schema())} herramientas")
     print(f"    Estado de Petición: {res.get('status', 'SUCCESS')}")
 
