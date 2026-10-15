@@ -372,7 +372,7 @@ websocket-client==1.9.0
     # via
     #   teorema-robinson-moskv (pyproject.toml)
     #   kubernetes
-websockets==17.0.1
+websockets==17.1
     # via uvicorn
 wrapt==2.3.0
     # via opentelemetry-instrumentation
