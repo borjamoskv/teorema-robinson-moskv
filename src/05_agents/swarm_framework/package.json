@@ -10,7 +10,7 @@
     "9router": "npx -y 9router start"
   },
   "devDependencies": {
-    "vite": "8.0.10"
+    "vite": "8.3.1"
   },
   "dependencies": {
     "stripe": "22.1.1"
