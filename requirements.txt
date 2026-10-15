@@ -119,7 +119,7 @@ importlib-resources==7.1.0
     # via chromadb
 iniconfig==2.3.0
     # via pytest
-kiwisolver==1.5.0
+kiwisolver==1.5.1
     # via matplotlib
 kubernetes==36.0.3
     # via chromadb
