@@ -249,7 +249,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94893f1e0c6eeab764ade8dc4c0db24caf4fe7cbbaafc0eba0a9030f447b5185"
 dependencies = [
  "num-traits",
- "rand 0.8.7",
+ "rand 0.8.8",
 ]
 
 [[package]]
@@ -378,7 +378,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d8144c22e24bbcf26ade86cb6501a0916c46b7e4787abdb0045a467eb1645a1d"
 dependencies = [
  "ambient-authority",
- "rand 0.8.7",
+ "rand 0.8.8",
 ]
 
 [[package]]
@@ -2145,9 +2145,9 @@ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
 
 [[package]]
 name = "rand"
-version = "0.8.7"
+version = "0.8.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22f6172bdec972074665ed81ed53b71da00bfc44b65a753cfde883ec4c702a1a"
+checksum = "e058c7de0b26af77780c769414d6257830bb240f3c38477dbc2c16e5f54d6d4c"
 dependencies = [
  "libc",
  "rand_chacha 0.3.1",
@@ -3002,7 +3002,7 @@ dependencies = [
  "edin-healer",
  "edin-lang",
  "libc",
- "rand 0.8.7",
+ "rand 0.9.5",
  "rand_chacha 0.3.1",
  "sha2",
  "thiserror 1.0.69",
