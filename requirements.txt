@@ -362,7 +362,7 @@ urllib3==2.7.0
     #   teorema-robinson-moskv (pyproject.toml)
     #   kubernetes
     #   requests
-uvicorn==0.52.3
+uvicorn==0.53.0
     # via chromadb
 uvloop==0.22.1
     # via uvicorn
