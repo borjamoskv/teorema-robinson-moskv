@@ -5,7 +5,7 @@ Enforces:
 1. Native WebSocket (WSS) streaming configuration.
 2. Audio stream format assertion: 16kHz PCM mono input, 24kHz PCM mono output.
 3. Barge-in real-time audio buffer purge.
-4. Ephemeral token validation and zero-leak auth containment.
+4. Caller-supplied ephemeral token handling without local token fabrication.
 5. Dynamic Causal Taint tracing (Ω113).
 """
 
@@ -15,6 +15,7 @@ import logging
 import os
 import time
 from typing import Dict, Optional
+from urllib.parse import urlencode
 
 logger = logging.getLogger("larsa.gemini_live")
 
@@ -107,22 +108,34 @@ class GeminiLiveClient:
         logger.info(f"Barge-in triggered for session {session_id}: purged {purged_bytes} bytes")
         return purged_bytes
 
-    def generate_websocket_url(self, session_id: str, use_ephemeral_token: bool = True) -> str:
-        """Constructs secure WSS endpoint URL for Live API."""
+    def generate_websocket_url(
+        self,
+        session_id: str,
+        use_ephemeral_token: bool = True,
+        *,
+        ephemeral_token: Optional[str] = None,
+    ) -> str:
+        """Build a Live API URL for an active session.
+
+        For ephemeral authentication, pass the token name issued by Gemini's
+        auth_tokens API. This method does not create or validate that token.
+        URLs contain credentials and must be handled as secrets.
+        """
         if session_id not in self.active_sessions:
             raise KeyError(f"Session {session_id} not found")
 
-        base_host = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent"
-
+        base_host = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage"
         if use_ephemeral_token:
-            token = self._generate_ephemeral_token(session_id)
-            return f"{base_host}?key={token}&version=v1alpha"
-        else:
-            if not self.api_key:
-                raise ValueError("API Key is missing and ephemeral tokens are disabled")
-            return f"{base_host}?key={self.api_key}"
+            if not ephemeral_token or not ephemeral_token.strip():
+                raise ValueError("A Gemini-issued ephemeral token is required")
+            if self.api_key and ephemeral_token == self.api_key:
+                raise ValueError("The API key cannot be used as an ephemeral token")
+            endpoint = f"{base_host}.v1beta.GenerativeService.BidiGenerateContentConstrained"
+            return f"{endpoint}?{urlencode({'access_token': ephemeral_token})}"
 
-    def _generate_ephemeral_token(self, session_id: str) -> str:
-        """Generates mock ephemeral token derived from SHA3-256 for secure client handoff."""
-        raw = f"{session_id}:{self.api_key}:{time.time_ns()}"
-        return f"eph_{hashlib.sha3_256(raw.encode('utf-8')).hexdigest()[:32]}"
+        if ephemeral_token is not None:
+            raise ValueError("ephemeral_token cannot be used with API key authentication")
+        if not self.api_key:
+            raise ValueError("API Key is missing and ephemeral tokens are disabled")
+        endpoint = f"{base_host}.v1alpha.GenerativeService.BidiGenerateContent"
+        return f"{endpoint}?{urlencode({'key': self.api_key})}"
