@@ -214,7 +214,7 @@ packaging==26.3
     #   pip-audit
     #   pip-requirements-parser
     #   pytest
-pillow==12.3.0
+pillow==13.0.0
     # via
     #   teorema-robinson-moskv (pyproject.toml)
     #   matplotlib
