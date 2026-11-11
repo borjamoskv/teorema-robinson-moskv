@@ -125,3 +125,6 @@ target/
 
 # Added by Antigravity C5-REAL Audit
 .vercel
+
+# Cloudflare Wrangler local state and cache (account metadata); matches at any depth
+.wrangler/
